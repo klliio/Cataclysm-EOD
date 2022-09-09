@@ -92,7 +92,8 @@
       { "item": "cloak", "prob": 15 },
       { "item": "cloak_leather", "prob": 20 },
       { "item": "cloak_wool", "prob": 10 },
-      { "item": "pride_flag", "prob": 2 }
+      { "item": "pride_flag", "prob": 2 },
+      { "item": "state_flag", "prob": 1 }
     ]
   },
   {
@@ -327,6 +328,7 @@
       { "item": "felinesuit", "prob": 10 },
       { "item": "bondage_suit", "prob": 15 },
       { "item": "dinosuit", "prob": 10 },
+      { "item": "sharksuit", "prob": 10 },
       { "item": "beekeeping_suit", "prob": 5 },
       { "item": "zentai", "prob": 5 }
     ]
