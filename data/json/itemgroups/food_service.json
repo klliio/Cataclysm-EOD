@@ -227,6 +227,8 @@
     "type": "item_group",
     "subtype": "distribution",
     "entries": [
+      { "item": "lime_juice", "prob": 10 },
+      { "item": "lemon_juice", "prob": 10 },
       { "item": "water_clean", "prob": 50 },
       { "item": "water_mineral", "prob": 20 },
       { "item": "grenadine_syrup", "prob": 40 },
@@ -943,6 +945,8 @@
     "id": "restaur_fridge",
     "type": "item_group",
     "items": [
+      [ "paprika", 15 ],
+      [ "lime", 5 ],
       [ "water_clean", 10 ],
       [ "water_mineral", 10 ],
       [ "milk", 20 ],
@@ -1444,6 +1448,7 @@
     "type": "item_group",
     "subtype": "collection",
     "items": [
+      [ "paprika", 15 ],
       [ "water_clean", 10 ],
       [ "water_mineral", 10 ],
       [ "milk", 20 ],

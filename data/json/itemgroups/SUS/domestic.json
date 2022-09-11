@@ -635,6 +635,7 @@
     "//2": "This group is for cupboard, drawer, or rack with spices.",
     "subtype": "collection",
     "entries": [
+      { "item": "paprika", "prob": 50 },
       { "item": "salt", "count": [ 2, 4 ] },
       { "item": "pepper" },
       { "item": "cinnamon", "prob": 75 },

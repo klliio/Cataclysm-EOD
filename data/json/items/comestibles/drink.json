@@ -841,6 +841,7 @@
     "id": "lemonade",
     "looks_like": "juice",
     "name": { "str_sp": "lemonade" },
+    "conditional_names": [ { "type": "COMPONENT_ID", "condition": "lime_juice", "name": { "str_sp": "limeade" } } ]
     "weight": "260 g",
     "color": "yellow",
     "container": "bottle_plastic",

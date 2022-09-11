@@ -565,7 +565,7 @@
     "type": "item_group",
     "id": "oa_ig_ash_pile",
     "//": "for ws_regional_dump",
-    "items": [ [ "ash", 100 ] ]
+    "items": [ [ "ash_other", 100 ] ]
   },
   {
     "id": "library_elec",
@@ -1304,6 +1304,7 @@
     "type": "item_group",
     "id": "mine_storage",
     "items": [
+      [ "chem_tnt", 20 ],
       [ "shovel", 10 ],
       [ "pickaxe", 2 ],
       [ "bucket", 20 ],
@@ -2561,7 +2562,7 @@
     "id": "mil_base_ash",
     "type": "item_group",
     "//": "Remains of bodies burned in the corpse pits.",
-    "items": [ [ "ash", 35 ] ]
+    "items": [ [ "corpse_ash", 35 ] ]
   },
   {
     "id": "mil_base_bodybag",

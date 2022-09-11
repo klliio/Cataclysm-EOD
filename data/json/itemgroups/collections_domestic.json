@@ -635,6 +635,7 @@
     "magazine": 100,
     "subtype": "distribution",
     "entries": [
+      { "item": "paprika", "prob": 10 },
       { "group": "snacks", "prob": 370 },
       { "item": "aluminum_foil", "prob": 25 },
       { "item": "rolling_pin", "prob": 25 },
@@ -816,6 +817,8 @@
     "//": "This is a terrible item group and should be phased out.  See SUS_fridge in SUS - > domestic.json for a more modern take on things.",
     "subtype": "distribution",
     "entries": [
+      { "item": "lime", "prob": 25 },
+      { "item": "irradiated_lime", "prob": 10 },
       { "item": "water_clean", "prob": 90 },
       { "item": "water_mineral", "prob": 10 },
       { "item": "oj", "prob": 50 },
