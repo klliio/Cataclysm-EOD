@@ -852,6 +852,7 @@
     "id": "mil_food",
     "subtype": "distribution",
     "entries": [
+      { "item": "oxygen_mask", "prob": 20 },
       { "group": "mil_food_nodrugs", "prob": 1410 },
       { "item": "codeine", "prob": 15, "charges": [ 1, 10 ] },
       { "item": "antibiotics", "prob": 25, "charges": [ 1, 15 ] },
