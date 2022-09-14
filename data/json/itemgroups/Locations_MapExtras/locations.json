@@ -172,6 +172,7 @@
     "type": "item_group",
     "id": "hospital_lab",
     "items": [
+      [ "oxygen_mask", 40 ],
       [ "blood", 20 ],
       [ "iodine", 5 ],
       [ "prussian_blue", 5 ],
@@ -565,7 +566,7 @@
     "type": "item_group",
     "id": "oa_ig_ash_pile",
     "//": "for ws_regional_dump",
-    "items": [ [ "ash", 100 ] ]
+    "items": [ [ "ash_other", 100 ] ]
   },
   {
     "id": "library_elec",
@@ -593,6 +594,7 @@
     "type": "item_group",
     "//": "For fishing themed locations",
     "items": [
+      [ "scuba_harness", 5 ],
       [ "flotation_vest", 50 ],
       [ "swimming_kickboard", 5 ],
       [ "plastic_sheet", 10 ],
@@ -1304,6 +1306,7 @@
     "type": "item_group",
     "id": "mine_storage",
     "items": [
+      [ "chem_tnt", 20 ],
       [ "shovel", 10 ],
       [ "pickaxe", 2 ],
       [ "bucket", 20 ],
@@ -2561,7 +2564,7 @@
     "id": "mil_base_ash",
     "type": "item_group",
     "//": "Remains of bodies burned in the corpse pits.",
-    "items": [ [ "ash", 35 ] ]
+    "items": [ [ "corpse_ash", 35 ] ]
   },
   {
     "id": "mil_base_bodybag",

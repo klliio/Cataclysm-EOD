@@ -43,6 +43,8 @@
     "type": "item_group",
     "id": "farming_tools",
     "items": [
+      { "item": "chem_sodium_nitrate", "prob": 15, "charges-min": 10, "charges-max": 50 },
+      { "item": "chem_urea", "prob": 15 },
       [ "hoe", 60 ],
       [ "shovel", 60 ],
       [ "g_shovel", 60 ],

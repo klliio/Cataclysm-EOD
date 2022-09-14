@@ -3774,19 +3774,11 @@
   {
     "type": "profession",
     "id": "reenactor",
-    "name": { "male": "Historical Reenactor", "female": "Ahistorical Reenactor" },
-    "description": {
-      "male": "You were on your way to the Annual All New England Revolutionary War Living History exhibition when the end of the world permanently derailed your plans.",
-      "female": "You were on your way to the Annual All New England Revolutionary War Living History exhibition when the end of the world made traditional gender roles obsolete."
-    },
+    "name": "Revolutionary War Frontline Reenactor",
+    "description": "You were on your way to the Annual All New England Revolutionary War Living History exhibition when the end of the world permanently derailed your plans.",
     "points": 3,
     "proficiencies": [ "prof_gunsmithing_basic", "prof_metalworking", "prof_gunsmithing_antique" ],
-    "skills": [
-      { "level": 2, "name": "tailor" },
-      { "level": 2, "name": "gun" },
-      { "level": 1, "name": "mechanics" },
-      { "level": 1, "name": "cooking" }
-    ],
+    "skills": [ { "level": 2, "name": "gun" }, { "level": 1, "name": "mechanics" } ],
     "items": {
       "both": {
         "items": [
@@ -3795,13 +3787,6 @@
           "pipe_tobacco",
           "tobacco",
           "backpack",
-          "knee_high_boots",
-          "breeches",
-          "waistcoat",
-          "peacoat",
-          "leather_belt",
-          "knit_scarf",
-          "tricorne",
           "hatchet",
           "hardtack",
           "pipe_cleaner"
@@ -3815,26 +3800,20 @@
           { "group": "charged_smart_phone" },
           { "group": "charged_matches" }
         ]
-      }
+      },
+      "male": [ "knee_high_boots", "breeches", "waistcoat", "peacoat", "leather_belt", "knit_scarf", "tricorne", "briefs" ],
+      "female": [ "dress", "boots", "gloves_leather", "long_knit_scarf", "hat_fur", "purse", "corset", "panties" ]
     }
   },
   {
     "type": "profession",
     "id": "reenactor2",
-    "name": { "male": "Ahistorical Reenactor", "female": "Historical Reenactor" },
-    "description": {
-      "male": "You were on your way to the Annual All New England Revolutionary War Living History exhibition when the end of the world made traditional gender roles obsolete.",
-      "female": "You were on your way to the Annual All New England Revolutionary War Living History exhibition when the end of the world permanently derailed your plans."
-    },
+    "name": "Revolutionary War Camp Follower Reenactor",
+    "description": "You were on your way to the Annual All New England Revolutionary War Living History exhibition when the end of the world permanently derailed your plans.",
     "points": 3,
     "proficiencies": [ "prof_spinning", "prof_closures", "prof_knitting" ],
-    "skills": [
-      { "level": 2, "name": "tailor" },
-      { "level": 2, "name": "gun" },
-      { "level": 1, "name": "mechanics" },
-      { "level": 1, "name": "cooking" }
-    ],
-    "items": {
+    "skills": [ { "level": 2, "name": "tailor" }, { "level": 1, "name": "cooking" } ],
+     "items": {
       "both": {
         "items": [
           "stockings",
@@ -3842,13 +3821,7 @@
           "pipe_tobacco",
           "tobacco",
           "backpack",
-          "dress",
           "apron_leather",
-          "boots",
-          "gloves_leather",
-          "long_knit_scarf",
-          "hat_fur",
-          "purse",
           "pot",
           "cornmeal",
           "salt"
@@ -3859,7 +3832,9 @@
           { "group": "charged_smart_phone" },
           { "group": "charged_matches" }
         ]
-      }
+      },
+      "male": [ "knee_high_boots", "breeches", "waistcoat", "peacoat", "leather_belt", "knit_scarf", "tricorne", "briefs" ],
+      "female": [ "dress", "boots", "gloves_leather", "long_knit_scarf", "hat_fur", "purse", "corset", "panties" ]
     }
   },
   {

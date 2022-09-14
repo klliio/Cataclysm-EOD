@@ -343,6 +343,7 @@
     "id": "produce",
     "subtype": "distribution",
     "entries": [
+      { "item": "lime", "prob": 25 },
       { "item": "apple", "prob": 70 },
       { "item": "orange", "prob": 65 },
       { "item": "banana", "prob": 40 },
@@ -398,6 +399,7 @@
     "magazine": 100,
     "subtype": "distribution",
     "entries": [
+      { "item": "lime", "prob": 25 },
       { "item": "apple", "prob": 10 },
       { "item": "orange", "prob": 65 },
       { "item": "lemon", "prob": 50 },

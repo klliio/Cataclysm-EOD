@@ -92,6 +92,7 @@
     "id": "launchers",
     "subtype": "distribution",
     "entries": [
+      { "item": "mm1", "prob": 1 },
       { "item": "m79", "prob": 10 },
       { "item": "m320", "prob": 50 },
       { "item": "mgl", "prob": 60 },

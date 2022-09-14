@@ -154,6 +154,9 @@
     "ammo": 50,
     "magazine": 100,
     "items": [
+      { "item": "chem_sodium_nitrate", "prob": 10 },
+      { "item": "chem_urea", "prob": 10 },
+      { "item": "chem_magnesium_oxide", "prob": 10 },
       { "group": "supplies_reagents_lab", "prob": 60 },
       { "item": "ether", "prob": 5, "charges-min": 100 },
       { "item": "iodine", "prob": 5, "charges": [ 1, 10 ] },
@@ -426,6 +429,7 @@
     "type": "item_group",
     "id": "surgery",
     "items": [
+      [ "oxygen_mask", 50 ],
       [ "blood", 20 ],
       { "item": "saline", "prob": 20, "container-item": "bag_iv" },
       { "item": "iodine", "prob": 5, "charges": [ 1, 10 ] },

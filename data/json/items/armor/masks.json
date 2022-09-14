@@ -246,7 +246,7 @@
       {
         "id": "flag_mask_dust",
         "name": { "str": "flag dust mask" },
-        "description": "It's printed with an American flag pattern.  Perfect for a real patriot.",
+        "description": "It's printed with an American flag pattern.",
         "color": "light_red",
         "weight": 2,
         "append": true

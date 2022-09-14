@@ -473,6 +473,7 @@
     "//": "Less common rifles including those only used by police/paramilitary forces.",
     "//2": "Making the assumption any loaded gun will have additional ammo and mags with it.",
     "items": [
+      { "group": "nested_m1919a4", "prob": 5 },
       { "group": "nested_m16_auto_rifle", "prob": 25 },
       { "group": "nested_colt_lightning", "prob": 15 },
       { "group": "nested_fn_fal", "prob": 40 },
@@ -572,6 +573,7 @@
     "//": "Imported or otherwise very obscure rifles.",
     "//2": "Making the assumption any loaded gun will have additional ammo and mags with it.",
     "items": [
+      { "group": "nested_m1917lewis", "prob": 50 },
       { "group": "nested_ak47", "prob": 100 },
       { "group": "nested_ak74", "prob": 60 },
       { "group": "nested_bh_m89", "prob": 20 },
