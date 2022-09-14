@@ -443,6 +443,7 @@
     "type": "item_group",
     "//": "Consumable supplies excluding seeds used for farming or other agriculture",
     "items": [
+      { "item": "chem_sodium_nitrate", "prob": 15, "charges-min": 10, "charges-max": 50 },
       [ "fertilizer_commercial", 100 ],
       [ "fertilizer_liquid", 60 ],
       [ "material_quicklime", 80 ],

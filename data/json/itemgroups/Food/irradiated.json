@@ -4,6 +4,7 @@
     "id": "pre_irradiated_food",
     "//": "Products valid for irradiation process.",
     "items": [
+      [ "lime", 50 ],
       [ "rose_hips", 50 ],
       [ "elderberries", 50 ],
       [ "mulberries", 50 ],
@@ -54,6 +55,7 @@
     "id": "irradiated_food",
     "//": "Products of irradiation process.",
     "items": [
+      [ "irradiated_lime", 50 ],
       [ "irradiated_rose_hips", 50 ],
       [ "irradiated_elderberries", 50 ],
       [ "irradiated_mulberries", 50 ],

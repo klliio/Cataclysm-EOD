@@ -215,7 +215,7 @@
     "replace": "pistol_tiny_mag"
   },
   {
-    "id": [ "belt223", "belt308" ],
+    "id": [ "belt223", "belt308", "belt3006", "50clothbelt3006", "250clothbelt3006" ],
     "type": "MIGRATION",
     "replace": "rifle_belt"
   },
@@ -275,6 +275,8 @@
       "akmag30",
       "akmag40",
       "akdrum75",
+      "lewismag_47rd",
+      "lewismag_97rd",
       "vz58mag30",
       "vz58mag10",
       "8x40_100_mag",
