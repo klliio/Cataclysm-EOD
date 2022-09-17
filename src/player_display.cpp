@@ -1233,16 +1233,6 @@ static bool handle_player_display_action( Character &you, unsigned int &line,
                 show_proficiencies_window( you );
                 break;
         }
-    } else if( action == "CHANGE_PROFESSION_NAME" ) {
-        string_input_popup popup;
-        popup.title( _( "Profession Name: " ) )
-        .width( 25 )
-        .text( "" )
-        .max_length( 25 )
-        .query();
-
-        you.custom_profession = popup.text();
-        ui_tip.invalidate_ui();
     } else if( action == "VIEW_PROFICIENCIES" ) {
         show_proficiencies_window( you );
     } else if( action == "VIEW_BODYSTAT" ) {
@@ -1250,13 +1240,20 @@ static bool handle_player_display_action( Character &you, unsigned int &line,
     } else if( customize_character && action == "SWITCH_GENDER" ) {
         uilist cmenu;
         cmenu.title = _( "Customize Character" );
-        cmenu.addentry( 1, true, 'y', _( "Change gender" ) );
+        cmenu.addentry( 1, true, 'y', _( "Change profession" ) );
         cmenu.addentry( 2, true, 'n', _( "Change name" ) );
 
         cmenu.query();
         if( cmenu.ret == 1 ) {
-            you.male = !you.male;
-            popup( _( "Gender set to %s." ), you.male ? _( "Male" ) : _( "Female" ) );
+            string_input_popup popup;
+            popup.title( _( "Profession Name: " ) )
+            .width( 25 )
+            .text( "" )
+            .max_length( 25 )
+            .query();
+
+            you.custom_profession = popup.text();
+            ui_tip.invalidate_ui();
         } else if( cmenu.ret == 2 ) {
             std::string filterstring = you.play_name.value_or( std::string() );
             string_input_popup popup;
@@ -1474,8 +1471,7 @@ void Character::disp_info( bool customize_character )
     ctxt.register_action( "PREV_TAB", to_translation( "Cycle to previous category" ) );
     ctxt.register_action( "QUIT" );
     ctxt.register_action( "CONFIRM", to_translation( "Toggle skill training / Upgrade stat" ) );
-    ctxt.register_action( "CHANGE_PROFESSION_NAME", to_translation( "Change profession name" ) );
-    ctxt.register_action( "SWITCH_GENDER", to_translation( "Customize base appearance and name" ) );
+    ctxt.register_action( "SWITCH_GENDER", to_translation( "Customize profession and name" ) );
     ctxt.register_action( "VIEW_PROFICIENCIES", to_translation( "View character proficiencies" ) );
     ctxt.register_action( "VIEW_BODYSTAT", to_translation( "View character's body status" ) );
     ctxt.register_action( "SCROLL_INFOBOX_UP", to_translation( "Scroll information box up" ) );

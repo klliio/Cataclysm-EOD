@@ -1404,7 +1404,7 @@
   {
     "type": "keybinding",
     "id": "CHANGE_GENDER",
-    "name": "Change gender",
+    "name": "Change sex",
     "bindings": [ { "input_method": "keyboard_char", "key": "@" }, { "input_method": "keyboard_code", "key": "2", "mod": [ "shift" ] } ]
   },
   {
@@ -4083,16 +4083,6 @@
       { "input_method": "keyboard_any", "key": "RETURN" },
       { "input_method": "keyboard_any", "key": "KEYPAD_ENTER" },
       { "input_method": "mouse", "key": "MOUSE_LEFT" }
-    ]
-  },
-  {
-    "type": "keybinding",
-    "id": "CHANGE_PROFESSION_NAME",
-    "name": "Change profession name",
-    "bindings": [
-      { "input_method": "keyboard_char", "key": "*" },
-      { "input_method": "keyboard_code", "key": "KEYPAD_MULTIPLY" },
-      { "input_method": "keyboard_code", "key": "8", "mod": [ "shift" ] }
     ]
   },
   {

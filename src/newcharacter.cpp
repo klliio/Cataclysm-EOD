@@ -931,10 +931,10 @@ static void draw_filter_and_sorting_indicators( const catacurses::window &w,
 static const char *g_switch_msg( const avatar &u )
 {
     return  u.male ?
-            //~ Gender switch message. 1s - change key name, 2s - profession name.
+            //~ Sex switch message. 1s - change key name, 2s - profession name.
             _( "Press <color_light_green>%1$s</color> to switch "
                "to <color_magenta>%2$s</color> (<color_pink>female</color>)." ) :
-            //~ Gender switch message. 1s - change key name, 2s - profession name.
+            //~ Sex switch message. 1s - change key name, 2s - profession name.
             _( "Press <color_light_green>%1$s</color> to switch "
                "to <color_magenta>%2$s</color> (<color_light_cyan>male</color>)." );
 }
@@ -3273,11 +3273,11 @@ enum description_selector {
 static void draw_gender( const catacurses::window &w_gender, const avatar &you,
                          const bool highlight )
 {
-    unsigned male_pos = 1 + utf8_width( _( "Gender:" ) );
+    unsigned male_pos = 1 + utf8_width( _( "Sex:" ) );
     unsigned female_pos = 2 + male_pos + utf8_width( _( "Male" ) );
 
     werase( w_gender );
-    mvwprintz( w_gender, point_zero, highlight ? COL_SELECT : c_light_gray, _( "Gender:" ) );
+    mvwprintz( w_gender, point_zero, highlight ? COL_SELECT : c_light_gray, _( "Sex:" ) );
     mvwprintz( w_gender, point( male_pos, 0 ), ( you.male ? c_light_cyan : c_light_gray ),
                _( "Male" ) );
     mvwprintz( w_gender, point( female_pos, 0 ), ( you.male ? c_light_gray : c_pink ),
@@ -3684,7 +3684,7 @@ void set_description( tab_manager &tabs, avatar &you, const bool allow_reroll,
             }
 
             fold_and_print( w_guide, point( 0, getmaxy( w_guide ) - 6 ), TERMX, c_light_gray,
-                            _( "Press <color_light_green>%s</color> to switch gender." ),
+                            _( "Press <color_light_green>%s</color> to switch sex." ),
                             ctxt.get_desc( "CHANGE_GENDER" ) );
 
             if( !get_option<bool>( "SELECT_STARTING_CITY" ) ) {
@@ -3704,7 +3704,7 @@ void set_description( tab_manager &tabs, avatar &you, const bool allow_reroll,
                             ctxt.get_desc( "DOWN" ) );
 
             fold_and_print( w_guide, point( 0, getmaxy( w_guide ) - 3 ), TERMX, c_light_gray,
-                            _( "Press <color_light_green>%s</color> and <color_light_green>%s</color> to change gender, height, age, and blood type." ),
+                            _( "Press <color_light_green>%s</color> and <color_light_green>%s</color> to change sex, height, age, and blood type." ),
                             ctxt.get_desc( "LEFT" ),
                             ctxt.get_desc( "RIGHT" ) );
 
@@ -4099,7 +4099,7 @@ void set_description( tab_manager &tabs, avatar &you, const bool allow_reroll,
                 }
                 case char_creation::GENDER: {
                     uilist gselect;
-                    gselect.text = _( "Select gender" );
+                    gselect.text = _( "Select sex" );
                     gselect.addentry( 0, true, '1', _( "Female" ) );
                     gselect.addentry( 1, true, '2', _( "Male" ) );
                     gselect.query();
