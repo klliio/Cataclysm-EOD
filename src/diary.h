@@ -39,7 +39,7 @@ struct diary_page {
     std::map<mtype_id, int> kills;
     /*names of killed npc`s*/
     std::vector<std::string> npc_kills;
-    /*gender*/
+    /*sex*/
     bool male = false;
     /*base character stats*/
     int strength = 0;

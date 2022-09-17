@@ -1525,6 +1525,7 @@ static void character_edit_desc_menu( Character &you )
     smenu.addentry( 2, true, 'a', "%s: %d", _( "Current age" ), you.base_age() );
     smenu.addentry( 3, true, 'h', "%s: %d", _( "Current height in cm" ), you.base_height() );
     smenu.addentry( 4, true, 'b', "%s: %s", _( "Current blood type" ), current_bloodt );
+    smenu.addentry( 5, true, 'y', "%s: %s", _( "Current sex" ), you.male ? _( "Male" ) : _( "Female" ) );
     smenu.query();
     switch( smenu.ret ) {
         case 0: {
@@ -1597,6 +1598,11 @@ static void character_edit_desc_menu( Character &you )
             you.my_blood_type = static_cast<blood_type>( btype.ret );
             you.blood_rh_factor = static_cast<bool>( bfac.ret );
             break;
+        }
+        break;
+        case 5: {
+            you.male = !you.male;
+            popup( _( "Sex set to %s." ), you.male ? _( "Male" ) : _( "Female" ) );
         }
     }
 }
@@ -1674,7 +1680,7 @@ static void character_edit_menu()
         D_WRITE_EOCS, D_KILL_XP, D_CHECK_TEMP, D_EDIT_VARS
     };
     nmenu.addentry( D_DESC, true, 'D', "%s",
-                    _( "Edit description - name, age, height or blood type" ) );
+                    _( "Edit description - name, age, sex, height or blood type" ) );
     nmenu.addentry( D_SKILLS, true, 's', "%s", _( "Edit skills" ) );
     nmenu.addentry( D_THEORY, true, 'T', "%s", _( "Edit theoretical skill knowledge" ) );
     nmenu.addentry( D_PROF, true, 'P', "%s", _( "Edit proficiencies" ) );
