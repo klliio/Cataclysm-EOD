@@ -37,6 +37,8 @@ Made with [contrib.rocks](https://contrib.rocks).
 
 ## Community
 
+Cataclysm: Era Of Decay Discord server: https://discord.com/invite/unUDhupwfQ
+
 GitHub repo:
 https://github.com/AtomicFox556/Cataclysm-EOD
 
