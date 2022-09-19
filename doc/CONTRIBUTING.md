@@ -7,12 +7,12 @@ read the [Guide to adding new content to CDDA for first time
 contributors](https://github.com/CleverRaven/Cataclysm-DDA/wiki/Guide-to-adding-new-content-to-CDDA-for-first-time-contributors)
 on the CDDA wiki.
 
-Cataclysm:Dark Days Ahead is released under the Creative Commons Attribution ShareAlike 3.0 license. The code and content of the game is free to use, modify, and redistribute for any purpose whatsoever. See http://creativecommons.org/licenses/by-sa/3.0/ for details.
+Cataclysm: Era Of Decay is released under the Creative Commons Attribution ShareAlike 3.0 license. The code and content of the game is free to use, modify, and redistribute for any purpose whatsoever. See http://creativecommons.org/licenses/by-sa/3.0/ for details.
 This means any contribution you make to the project will also be covered by the same license, and this license is irrevocable.
 
 ## Using a good text editor
 
-Most of the Cataclysm: Dark Days Ahead game data is defined in JSON files.
+Most of the Cataclysm: Era Of Decay game data is defined in JSON files.
 These files are intended to be easy for you to edit, but there are some
 pitfalls.  Using Windows Notepad can get you into trouble, because it likes to
 insert a special character called a [BOM](https://en.wikipedia.org/wiki/Byte_order_mark) at the start of the file, which CDDA
@@ -53,7 +53,7 @@ See [the Changelog Guidelines](../doc/CHANGELOG_GUIDELINES.md) for explanations 
 
 ## Contributing via GitHub
 
-Contributing to Cataclysm: Dark Days Ahead is easy — simply [fork](https://github.com/CleverRaven/Cataclysm-DDA/fork) the repository here on GitHub, make your changes, and then send us a pull request.
+Contributing to Cataclysm: Era Of Decay is easy — simply [fork](https://github.com/AtomicFox556/Cataclysm-EOD/fork) the repository here on GitHub, make your changes, and then send us a pull request.
 
 There are a couple of guidelines we suggest sticking to (see [#Example Workflow](#example-workflow)):
 
@@ -137,22 +137,22 @@ Helpful pages:
 
 *(This only needs to be done once.)*
 
-1. [Fork](https://github.com/CleverRaven/Cataclysm-DDA/fork) this repository here on GitHub.
+1. [Fork](https://github.com/AtomicFox556/Cataclysm-EOD/fork) this repository here on GitHub.
 
 2. Clone your fork locally.
 
     ```bash
     # Clones your fork of the repository into the current directory in terminal
-    $ git clone https://github.com/YOUR_USERNAME/Cataclysm-DDA.git
+    $ git clone https://github.com/YOUR_USERNAME/Cataclysm-EOD.git
     # Alternatively if you don't want to clone an entire big history (5GB!)
-    $ git clone --depth=1 https://github.com/YOUR_USERNAME/Cataclysm-DDA.git
+    $ git clone --depth=1 https://github.com/YOUR_USERNAME/Cataclysm-EOD.git
     ```
 
 3. Set commit message template.
 
     ```bash
-    # Changes the active directory in the prompt to the newly cloned "Cataclysm-DDA" directory
-    $ cd Cataclysm-DDA
+    # Changes the active directory in the prompt to the newly cloned "Cataclysm-EOD" directory
+    $ cd Cataclysm-EOD
     # Set commit message template to the custom one in the repo
     $ git config --local commit.template .gitmessage
     ```
@@ -161,7 +161,7 @@ Helpful pages:
 
     ```bash
     # Assigns the original repository to a remote called "upstream"
-    $ git remote add -f upstream https://github.com/CleverRaven/Cataclysm-DDA.git
+    $ git remote add -f upstream https://github.com/AtomicFox556/Cataclysm-EOD.git
     ```
 
 For further details about commit message guidelines please visit:
@@ -300,11 +300,11 @@ You can also set the tracking information at the same time as creating the branc
 
     ```bash
     $ git push
-    error: The requested URL returned error: 403 while accessing https://github.com/CleverRaven/Cataclysm-DDA.git
+    error: The requested URL returned error: 403 while accessing https://github.com/CleverRaven/Cataclysm-EOD.git
     fatal: HTTP request failed
     $ git push origin
     ....
-    To https://github.com/YOUR_USERNAME/Cataclysm-DDA.git
+    To https://github.com/YOUR_USERNAME/Cataclysm-EOD.git
     xxxx..xxxx  new_feature -> new_feature
     ```
 
@@ -365,7 +365,7 @@ If `git pull --ff-only` shows an error, it means that you've committed directly 
 
 ```bash
 $ git pull --ff-only upstream master
-From https://github.com/CleverRaven/Cataclysm-DDA
+From https://github.com/AtomicFox556/Cataclysm-EOD
  * branch            master     -> FETCH_HEAD
 fatal: Not possible to fast-forward, aborting.
 $ git branch new_branch master          # mark the current commit with a tmp branch
@@ -384,7 +384,7 @@ $ git checkout new_branch
 ```
 
 #### Oh no! I've made my changes to `master` branch and have pushed it to my repo! What should I do now?
-Assuming `upstream` is `CleverRaven/Cataclysm-DDA` and `origin` is your fork, do the commands:
+Assuming `upstream` is `CleverRaven/Cataclysm-EOD` and `origin` is your fork, do the commands:
 ```
 git reset upstream/master
 git push --repo=origin --force
