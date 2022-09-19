@@ -265,7 +265,7 @@
       {
         "id": "lion_flag",
         "name": { "str": "lion flag" },
-        "description": "This one is displaying a crab lying on a black field.",
+        "description": "This one is displaying a lion face lying on a black field.",
         "weight": 1,
         "append": true
       },
