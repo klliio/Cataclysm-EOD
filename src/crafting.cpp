@@ -408,7 +408,7 @@ bool Character::check_eligible_containers_for_crafting( const recipe &rec, int b
 
     map &here = get_map();
     for( const item &prod : all ) {
-        if( !prod.made_of( phase_id::LIQUID ) ) {
+        if( !prod.made_of( phase_id::LIQUID ) && !prod.made_of( phase_id::GAS ) ) {
             continue;
         }
 
@@ -450,9 +450,13 @@ bool Character::check_eligible_containers_for_crafting( const recipe &rec, int b
     return true;
 }
 
-static bool is_container_eligible_for_crafting( const item &cont, bool allow_bucket )
+static bool is_container_eligible_for_crafting( const item &cont, bool allow_bucket, bool gas )
 {
-    if( cont.is_watertight_container() && cont.num_item_stacks() <= 1 && ( allow_bucket ||
+    if( gas && cont.is_airtight_container() && cont.num_item_stacks() <= 1 && ( allow_bucket ||
+            !cont.will_spill() ) ) {
+        return !cont.is_container_full( allow_bucket );
+    }
+	if( cont.is_watertight_container() && cont.num_item_stacks() <= 1 && ( allow_bucket ||
             !cont.will_spill() ) ) {
         return !cont.is_container_full( allow_bucket );
     }
@@ -460,25 +464,25 @@ static bool is_container_eligible_for_crafting( const item &cont, bool allow_buc
 }
 
 static std::vector<const item *> get_eligible_containers_recursive( const item &cont,
-        bool allow_bucket )
+        bool allow_bucket, bool gas )
 {
     std::vector<const item *> ret;
 
-    if( is_container_eligible_for_crafting( cont, allow_bucket ) ) {
+    if( is_container_eligible_for_crafting( cont, allow_bucket, gas ) ) {
         ret.push_back( &cont );
     }
     for( const item *it : cont.all_items_top( item_pocket::pocket_type::CONTAINER ) ) {
         //buckets are never allowed when inside another container
-        std::vector<const item *> inside = get_eligible_containers_recursive( *it, false );
+        std::vector<const item *> inside = get_eligible_containers_recursive( *it, false, gas );
         ret.insert( ret.end(), inside.begin(), inside.end() );
     }
     return ret;
 }
 
-void outfit::get_eligible_containers_for_crafting( std::vector<const item *> &conts ) const
+void outfit::get_eligible_containers_for_crafting( std::vector<const item *> &conts, bool gas ) const
 {
     for( const item &it : worn ) {
-        std::vector<const item *> eligible = get_eligible_containers_recursive( it, false );
+        std::vector<const item *> eligible = get_eligible_containers_recursive( it, false, gas );
         conts.insert( conts.begin(), eligible.begin(), eligible.end() );
     }
 }
@@ -488,10 +492,10 @@ std::vector<const item *> Character::get_eligible_containers_for_crafting() cons
     std::vector<const item *> conts;
     const item_location weapon = get_wielded_item();
     if( weapon ) {
-        conts = get_eligible_containers_recursive( *weapon, true );
+        conts = get_eligible_containers_recursive( *weapon, true, false );
     }
 
-    worn.get_eligible_containers_for_crafting( conts );
+    worn.get_eligible_containers_for_crafting( conts, false );
 
     map &here = get_map();
     // get all potential containers within PICKUP_RANGE tiles including vehicles
@@ -502,7 +506,7 @@ std::vector<const item *> Character::get_eligible_containers_for_crafting() cons
         }
         if( here.accessible_items( loc ) ) {
             for( const item &it : here.i_at( loc ) ) {
-                std::vector<const item *> eligible = get_eligible_containers_recursive( it, true );
+                std::vector<const item *> eligible = get_eligible_containers_recursive( it, true, false );
                 conts.insert( conts.begin(), eligible.begin(), eligible.end() );
             }
         }
@@ -510,7 +514,7 @@ std::vector<const item *> Character::get_eligible_containers_for_crafting() cons
         if( const cata::optional<vpart_reference> vp = here.veh_at( loc ).part_with_feature( "CARGO",
                 true ) ) {
             for( const item &it : vp->vehicle().get_items( vp->part_index() ) ) {
-                std::vector<const item *> eligible = get_eligible_containers_recursive( it, true );
+                std::vector<const item *> eligible = get_eligible_containers_recursive( it, true, false );
                 conts.insert( conts.begin(), eligible.begin(), eligible.end() );
             }
         }
@@ -684,7 +688,7 @@ static cata::optional<item_location> wield_craft( Character &p, item &craft )
 static item_location set_item_inventory( Character &p, item &newit )
 {
     item_location ret_val = item_location::nowhere;
-    if( newit.made_of( phase_id::LIQUID ) ) {
+    if( newit.made_of( phase_id::LIQUID ) || newit.made_of( phase_id::GAS ) ) {
         liquid_handler::handle_all_liquid( newit, PICKUP_RANGE );
     } else {
         p.inv->assign_empty_invlet( newit, p );
@@ -1362,7 +1366,7 @@ void Character::complete_craft( item &craft, const cata::optional<tripoint> &loc
             food_contained.set_owner( get_faction()->id );
         }
 
-        if( newit.made_of( phase_id::LIQUID ) ) {
+        if( newit.made_of( phase_id::LIQUID ) || newit.made_of( phase_id::GAS ) ) {
             liquid_handler::handle_all_liquid( newit, PICKUP_RANGE );
         } else if( !loc && !has_wield_conflicts( craft ) &&
                    can_wield( newit ).success() ) {
@@ -1386,7 +1390,7 @@ void Character::complete_craft( item &craft, const cata::optional<tripoint> &loc
                 }
             }
             bp.set_owner( get_faction()->id );
-            if( bp.made_of( phase_id::LIQUID ) ) {
+            if( bp.made_of( phase_id::LIQUID ) || bp.made_of( phase_id::GAS ) ) {
                 liquid_handler::handle_all_liquid( bp, PICKUP_RANGE );
             } else if( !loc ) {
                 set_item_inventory( *this, bp );
@@ -2697,8 +2701,8 @@ void Character::complete_disassemble( item_location &target, const recipe &dis )
             }
         }
 
-        //NPCs are too dumb to be able to handle liquid (for now)
-        if( act_item.made_of( phase_id::LIQUID ) && !is_npc() ) {
+        //NPCs are too dumb to be able to handle liquid or gas (for now)
+        if( ( act_item.made_of( phase_id::LIQUID ) || newit.made_of( phase_id::GAS ) ) && !is_npc() ) {
             liquid_handler::handle_all_liquid( act_item, PICKUP_RANGE );
         } else {
             drop_items.push_back( act_item );
@@ -2765,7 +2769,7 @@ void remove_ammo( std::list<item> &dis_items, Character &p )
 
 void drop_or_handle( const item &newit, Character &p )
 {
-    if( newit.made_of( phase_id::LIQUID ) && p.is_avatar() ) { // TODO: what about NPCs?
+    if( ( newit.made_of( phase_id::LIQUID ) || newit.made_of( phase_id::GAS ) ) && p.is_avatar() ) { // TODO: what about NPCs?
         liquid_handler::handle_all_liquid( newit, PICKUP_RANGE );
     } else {
         item tmp( newit );

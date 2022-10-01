@@ -3276,11 +3276,11 @@ drop_locations inventory_drop_selector::execute()
 
     for( const std::pair<item_location, int> &drop_pair : to_use ) {
         bool should_drop = true;
-        if( drop_pair.first->made_of_from_type( phase_id::LIQUID ) &&
+        if( ( drop_pair.first->made_of_from_type( phase_id::LIQUID ) || drop_pair.first->made_of_from_type( phase_id::GAS ) ) &&
             !drop_pair.first->is_frozen_liquid() ) {
             if( should_drop_liquid == drop_liquid::ask ) {
                 if( !warn_liquid || query_yn(
-                        _( "You are dropping liquid from its container.  You might not be able to pick it back up.  Really do so?" ) ) ) {
+                        _( "You are dropping liquid or gas from its container.  You might not be able to pick it back up.  Really do so?" ) ) ) {
                     should_drop_liquid = drop_liquid::yes;
                 } else {
                     should_drop_liquid = drop_liquid::no;

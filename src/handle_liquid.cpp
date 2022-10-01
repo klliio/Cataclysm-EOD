@@ -171,7 +171,7 @@ static bool get_liquid_target( item &liquid, const item *const source, const int
                                const monster *const source_mon,
                                liquid_dest_opt &target )
 {
-    if( !liquid.made_of_from_type( phase_id::LIQUID ) ) {
+    if( !liquid.made_of_from_type( phase_id::LIQUID ) && !liquid.made_of_from_type( phase_id::GAS ) ) {
         dbg( D_ERROR ) << "game:handle_liquid: Tried to handle_liquid a non-liquid!";
         debugmsg( "Tried to handle_liquid a non-liquid!" );
         // "canceled by the user" because we *can* not handle it.
@@ -194,21 +194,30 @@ static bool get_liquid_target( item &liquid, const item *const source, const int
 
     map &here = get_map();
     const std::string liquid_name = liquid.display_name( liquid.charges );
+    std::string phasestring;
+    if( liquid.made_of_from_type( phase_id::GAS ) ) {
+        phasestring = "gas";
+	} else {
+        phasestring = "liquid";
+	}
+    
+    char* phase = const_cast<char*>(phasestring.c_str());
+    
     if( source_pos != nullptr ) {
         //~ %1$s: liquid name, %2$s: terrain name
-        menu.text = string_format( pgettext( "liquid", "What to do with the %1$s from %2$s?" ), liquid_name,
+        menu.text = string_format( pgettext( phase, "What to do with the %1$s from %2$s?" ), liquid_name,
                                    here.name( *source_pos ) );
     } else if( source_veh != nullptr ) {
         //~ %1$s: liquid name, %2$s: vehicle name
-        menu.text = string_format( pgettext( "liquid", "What to do with the %1$s from %2$s?" ), liquid_name,
+        menu.text = string_format( pgettext( phase, "What to do with the %1$s from %2$s?" ), liquid_name,
                                    source_veh->disp_name() );
     } else if( source_mon != nullptr ) {
         //~ %1$s: liquid name, %2$s: monster name
-        menu.text = string_format( pgettext( "liquid", "What to do with the %1$s from the %2$s?" ),
+        menu.text = string_format( pgettext( phase, "What to do with the %1$s from the %2$s?" ),
                                    liquid_name, source_mon->get_name() );
     } else {
         //~ %s: liquid name
-        menu.text = string_format( pgettext( "liquid", "What to do with the %s?" ), liquid_name );
+        menu.text = string_format( pgettext( phase, "What to do with the %s?" ), liquid_name );
     }
     std::vector<std::function<void()>> actions;
     if( player_character.can_consume_as_is( liquid ) && !source_mon && ( source_veh || source_pos ) ) {
@@ -340,7 +349,7 @@ bool perform_liquid_transfer( item &liquid, const tripoint *const source_pos,
                               const vehicle *const source_veh, const int part_num,
                               const monster *const /*source_mon*/, liquid_dest_opt &target )
 {
-    if( !liquid.made_of_from_type( phase_id::LIQUID ) ) {
+    if( !liquid.made_of_from_type( phase_id::LIQUID ) && !liquid.made_of_from_type( phase_id::GAS ) ) {
         dbg( D_ERROR ) << "game:handle_liquid: Tried to handle_liquid a non-liquid!";
         debugmsg( "Tried to handle_liquid a non-liquid!" );
         // "canceled by the user" because we *can* not handle it.
@@ -455,7 +464,7 @@ bool can_handle_liquid( const item &liquid )
         // "canceled by the user" because we *can* not handle it.
         return false;
     }
-    if( !liquid.made_of( phase_id::LIQUID ) ) {
+    if( !liquid.made_of( phase_id::LIQUID ) && !liquid.made_of( phase_id::GAS ) ) {
         add_msg( _( "The %s froze solid before you could finish." ), liquid.tname() );
         return false;
     }
@@ -476,8 +485,9 @@ bool handle_liquid( item &liquid, const item *const source, const int radius,
                            liquid_target ) ) {
         success = perform_liquid_transfer( liquid, source_pos, source_veh, part_num, source_mon,
                                            liquid_target );
-        if( success && ( ( liquid_target.dest_opt == LD_ITEM &&
-                           liquid_target.item_loc->is_watertight_container() ) || liquid_target.dest_opt == LD_KEG ) ) {
+        if( success && ( liquid_target.dest_opt == LD_ITEM &&
+                         ( ( ( liquid_target.item_loc->is_watertight_container() || liquid_target.dest_opt == LD_KEG ) && liquid.made_of( phase_id::LIQUID ) ) ||
+                         ( liquid_target.item_loc->is_watertight_container() && liquid.made_of( phase_id::GAS ) ) ) ) ) {
             liquid.unset_flag( flag_id( json_flag_FROM_FROZEN_LIQUID ) );
         }
         return success;

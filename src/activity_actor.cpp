@@ -1852,7 +1852,7 @@ void move_items_activity_actor::do_turn( player_activity &act, Character &who )
         }
 
         // Check that we can pick it up.
-        if( !target->made_of_from_type( phase_id::LIQUID ) ) {
+        if( !target->made_of_from_type( phase_id::LIQUID ) && !target->made_of_from_type( phase_id::GAS ) ) {
             item &leftovers = *target;
             // Make a copy to be put in the destination location
             item newit = leftovers;
@@ -4070,7 +4070,7 @@ void reload_activity_actor::finish( player_activity &act, Character &who )
             add_msg( m_neutral, _( "You insert %dx %s into the %s." ), quantity, ammo_name, reloadable_name );
         }
         make_reload_sound( who, reloadable );
-    } else if( reloadable.is_watertight_container() ) {
+    } else if( reloadable.is_watertight_container() || reloadable.is_airtight_container() ) {
         add_msg( m_neutral, _( "You refill the %s." ), reloadable_name );
     } else {
         add_msg( m_neutral, _( "You reload the %1$s with %2$s." ), reloadable_name, ammo_name );
@@ -6161,7 +6161,7 @@ static void move_item( Character &you, item &it, const int quantity, const tripo
 
     map &here = get_map();
     // Check that we can pick it up.
-    if( !it.made_of_from_type( phase_id::LIQUID ) ) {
+    if( !it.made_of_from_type( phase_id::LIQUID ) && !it.made_of_from_type( phase_id::GAS ) ) {
         you.mod_moves( -activity_handlers::move_cost( it, src, dest ) );
 
         put_into_vehicle_or_drop( you, item_drop_reason::deliberate, { it }, dest );
@@ -6379,7 +6379,7 @@ void unload_loot_activity_actor::do_turn( player_activity &act, Character &you )
             item &thisitem = *it->first;
 
             // skip unpickable liquid
-            if( thisitem.made_of_from_type( phase_id::LIQUID ) ) {
+            if( thisitem.made_of_from_type( phase_id::LIQUID ) || thisitem.made_of_from_type( phase_id::GAS ) ) {
                 ++num_processed;
                 continue;
             }

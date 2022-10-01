@@ -121,7 +121,7 @@ item::reload_option Character::select_ammo( const item_location &base,
 
     std::string name = name_override.empty() ? base->tname() : name_override;
     uilist menu;
-    menu.text = string_format( base->is_watertight_container() ? _( "Refill %s" ) :
+    menu.text = string_format( ( base->is_watertight_container() || base->is_airtight_container() ) ? _( "Refill %s" ) :
                                base->has_flag( flag_RELOAD_AND_SHOOT ) ? _( "Select ammo for %s" ) : _( "Reload %s" ),
                                name );
 
@@ -140,7 +140,7 @@ item::reload_option Character::select_ammo( const item_location &base,
                 return string_format( pgettext( "magazine", "%1$s with %2$s (%3$d)" ), e.ammo->type_name(),
                                       e.ammo->ammo_data()->nname( e.ammo->ammo_remaining() ), e.ammo->ammo_remaining() );
             }
-        } else if( e.ammo->is_watertight_container() ||
+        } else if( ( e.ammo->is_watertight_container() || e.ammo->is_airtight_container() ) ||
                    ( e.ammo->is_ammo_container() && is_worn( *e.ammo ) ) ) {
             // worn ammo containers should be named by their ammo contents with their location also updated below
             return e.ammo->first_ammo().display_name();
@@ -374,6 +374,8 @@ item::reload_option Character::select_ammo( const item_location &base, bool prom
                     name = base->ammo_data()->nname( 1 );
                 } else if( base->is_watertight_container() ) {
                     name = base->is_container_empty() ? "liquid" : base->legacy_front().tname();
+                } else if( base->is_airtight_container() ) {
+                    name = base->is_container_empty() ? "gas" : base->legacy_front().tname();
                 } else {
                     const std::set<ammotype> types_of_ammo = base->ammo_types();
                     name = enumerate_as_string( types_of_ammo.begin(),
@@ -425,7 +427,7 @@ item::reload_option Character::select_ammo( const item_location &base, bool prom
 
 int Character::item_reload_cost( const item &it, const item &ammo, int qty ) const
 {
-    if( ammo.is_ammo() || ammo.is_frozen_liquid() || ammo.made_of_from_type( phase_id::LIQUID ) ) {
+    if( ammo.is_ammo() || ammo.is_frozen_liquid() || ammo.made_of_from_type( phase_id::LIQUID ) || ammo.made_of_from_type( phase_id::GAS ) ) {
         qty = std::max( std::min( ammo.charges, qty ), 1 );
     } else if( ammo.is_ammo_container() ) {
         int min_clamp = 0;
