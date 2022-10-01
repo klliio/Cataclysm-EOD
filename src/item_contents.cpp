@@ -962,6 +962,17 @@ bool item_contents::can_contain_liquid( bool held_or_ground ) const
     return false;
 }
 
+bool item_contents::can_contain_gas( bool held_or_ground ) const
+{
+    for( const item_pocket &pocket : contents ) {
+        if( pocket.is_type( item_pocket::pocket_type::CONTAINER ) &&
+            pocket.can_contain_gas( held_or_ground ) ) {
+            return true;
+        }
+    }
+    return false;
+}
+
 bool item_contents::contains_no_solids() const
 {
     for( const item_pocket &pocket : contents ) {

@@ -822,6 +822,8 @@ class item : public visitable
         const item_pocket *contained_where( const item &contained ) const;
         /** Whether this is a container which can be used to store liquids. */
         bool is_watertight_container() const;
+        /** Whether this is a container which can be used to store gases. */
+        bool is_airtight_container() const;
         /** Whether this item has no contents at all. */
         bool is_container_empty() const;
         /**

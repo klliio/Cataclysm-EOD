@@ -211,7 +211,7 @@ bool good_for_pickup( const item &it, npc &who )
     int min_value = who.minimum_item_value();
 
     item &weap = who.get_wielded_item() ? *who.get_wielded_item() : null_item_reference();
-    if( ( !it.made_of_from_type( phase_id::LIQUID ) ) &&
+    if( ( !it.made_of_from_type( phase_id::LIQUID ) && !it.made_of_from_type( phase_id::GAS ) ) &&
         ( ( !whitelisting && who.value( it ) > min_value ) || who.item_whitelisted( it ) ) &&
         ( it.weight() <= weight_allowed ) &&
         ( who.can_stash( it ) ||

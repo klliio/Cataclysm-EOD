@@ -70,6 +70,7 @@ class item_contents
                                    units::volume remaining_parent_volume = 10000000_ml ) const;
         ret_val<void> can_contain_rigid( const item &it, bool ignore_pkt_settings = true ) const;
         bool can_contain_liquid( bool held_or_ground ) const;
+        bool can_contain_gas( bool held_or_ground ) const;
 
         bool contains_no_solids() const;
 

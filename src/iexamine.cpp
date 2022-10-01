@@ -3495,7 +3495,7 @@ void iexamine::fvat_full( Character &you, const tripoint &examp )
     }
 
     for( item &it : items_here ) {
-        if( !it.made_of_from_type( phase_id::LIQUID ) ) {
+        if( !it.made_of_from_type( phase_id::LIQUID ) && !it.made_of_from_type( phase_id::LIQUID ) ) {
             add_msg( _( "You remove %s from the vat." ), it.tname() );
             here.add_item_or_charges( you.pos(), it );
             here.i_rem( examp, &it );
@@ -3536,7 +3536,7 @@ void iexamine::fvat_full( Character &you, const tripoint &examp )
                 // TODO: Different age based on settings
                 item booze( result, brew_i.birthday(), brew_i.charges );
                 here.add_item( examp, booze );
-                if( booze.made_of_from_type( phase_id::LIQUID ) ) {
+                if( booze.made_of_from_type( phase_id::LIQUID ) || booze.made_of_from_type( phase_id::GAS ) ) {
                     add_msg( _( "The %s is now ready for bottling." ), booze.tname() );
                 }
             }

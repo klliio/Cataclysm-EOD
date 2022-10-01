@@ -234,5 +234,20 @@
     "autolearn": true,
     "tools": [ [ [ "gaspump", 40 ], [ "air_compressor_tool", 40 ] ] ],
     "components": [ [ [ "small_scuba_tank", 1 ] ] ]
+  },
+  {
+    "result": "gas_chlorine",
+    "type": "recipe",
+    "charges": 25,
+    "byproducts": [ [ "gas_hydrogen", 25 ], [ "lye" ] ],
+    "activity_level": "NO_EXERCISE",
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_CHEMICALS",
+    "skill_used": "chemistry",
+    "difficulty": 4,
+    "time": "1 h",
+    "book_learn": [ [ "textbook_chemistry", 4 ], [ "textbook_gaswarfare", 4 ], [ "atomic_survival", 3 ] ],
+    "tools": [ [ [ "gaspump", 10 ] ], [ [ "electrolyzer_makeshift", 1000 ] ] ],
+    "components": [ [ [ "salt_water", 2 ] ] ]
   }
 ]

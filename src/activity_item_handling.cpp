@@ -698,7 +698,7 @@ static void move_item( Character &you, item &it, const int quantity, const tripo
 
     map &here = get_map();
     // Check that we can pick it up.
-    if( !it.made_of_from_type( phase_id::LIQUID ) ) {
+    if( !it.made_of_from_type( phase_id::LIQUID ) && !it.made_of_from_type( phase_id::GAS ) ) {
         you.mod_moves( -activity_handlers::move_cost( it, src, dest ) );
         if( activity_to_restore == ACT_TIDY_UP ) {
             it.erase_var( "activity_var" );
@@ -1016,7 +1016,7 @@ static bool are_requirements_nearby(
         }
         for( item &elem2 : here.i_at( elem ) ) {
             if( in_loot_zones ) {
-                if( elem2.made_of_from_type( phase_id::LIQUID ) ) {
+                if( elem2.made_of_from_type( phase_id::LIQUID ) || elem2.made_of_from_type( phase_id::GAS ) ) {
                     continue;
                 }
 
@@ -2213,7 +2213,7 @@ void activity_on_turn_move_loot( player_activity &act, Character &you )
             item &thisitem = *it->first;
 
             // skip unpickable liquid
-            if( thisitem.made_of_from_type( phase_id::LIQUID ) ) {
+            if( thisitem.made_of_from_type( phase_id::LIQUID ) || thisitem.made_of_from_type( phase_id::GAS ) ) {
                 continue;
             }
 

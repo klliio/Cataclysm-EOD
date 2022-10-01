@@ -22,7 +22,7 @@ void find_ammo_helper( T &src, const item &obj, bool empty, Output out, bool nes
         }
 
         // Spills are not valid. spilled liquids have no parent.
-        if( parent == nullptr && node->made_of_from_type( phase_id::LIQUID ) ) {
+        if( parent == nullptr && ( node->made_of_from_type( phase_id::LIQUID ) || node->made_of_from_type( phase_id::GAS ) ) ) {
             return VisitResponse::SKIP;
         }
 

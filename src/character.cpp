@@ -10327,9 +10327,9 @@ bool Character::unload( item_location &loc, bool bypass_activity )
             ammo.set_flag( flag_FILTHY );
         }
 
-        if( ammo.made_of_from_type( phase_id::LIQUID ) ) {
+        if( ammo.made_of_from_type( phase_id::LIQUID ) || ammo.made_of_from_type( phase_id::GAS ) ) {
             if( !this->add_or_drop_with_msg( ammo ) ) {
-                qty -= ammo.charges; // only handled part (or none) of the liquid
+                qty -= ammo.charges; // only handled part (or none) of the liquid or gas
             }
             if( qty <= 0 ) {
                 return false; // no liquid was moved
