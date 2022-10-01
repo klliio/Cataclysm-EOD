@@ -456,7 +456,7 @@ static bool is_container_eligible_for_crafting( const item &cont, bool allow_buc
             !cont.will_spill() ) ) {
         return !cont.is_container_full( allow_bucket );
     }
-	if( cont.is_watertight_container() && cont.num_item_stacks() <= 1 && ( allow_bucket ||
+    if( cont.is_watertight_container() && cont.num_item_stacks() <= 1 && ( allow_bucket ||
             !cont.will_spill() ) ) {
         return !cont.is_container_full( allow_bucket );
     }

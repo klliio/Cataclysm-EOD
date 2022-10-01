@@ -197,9 +197,9 @@ static bool get_liquid_target( item &liquid, const item *const source, const int
     std::string phasestring;
     if( liquid.made_of_from_type( phase_id::GAS ) ) {
         phasestring = "gas";
-	} else {
+    } else {
         phasestring = "liquid";
-	}
+    }
     
     char* phase = const_cast<char*>(phasestring.c_str());
     
