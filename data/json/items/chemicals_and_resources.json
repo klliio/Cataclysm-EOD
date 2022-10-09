@@ -1692,18 +1692,18 @@
     "category": "chems",
     "description": "A flammable gas that explodes under pressure.  Combined with oxygen, acetylene makes a great welding gas.",
     "comestible_type": "INVALID",
-    "weight": "40 g",
-    "volume": "250 ml",
+    "weight": "1500 mg",
+    "volume": "100 ml",
     "price": 1200,
     "price_postapoc": 250,
     "material": [ "hydrocarbons" ],
     "symbol": "=",
     "color": "red",
     "stack_size": 100,
-    "phase": "liquid",
+    "phase": "gas",
     "explode_in_fire": true,
     "explosion": { "power": 20, "shrapnel": 0 },
-    "flags": [ "NO_DROP", "IRREMOVABLE" ]
+    "freezing_point": -81
   },
   {
     "id": "formic_acid",

@@ -13,7 +13,19 @@
     "color": "light_gray",
     "ammo": [ "oxygen" ],
     "use_action": [ "OXYGEN_BOTTLE" ],
-    "charges_per_use": 1,
-    "pocket_data": [ { "pocket_type": "MAGAZINE_WELL", "item_restriction": [ "smoxygen_tank", "oxygen_tank", "oxygen_cylinder" ] } ]
+    "charges_per_use": 2,
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE_WELL",
+        "item_restriction": [
+          "smoxygen_tank",
+          "oxygen_tank",
+          "oxygen_cylinder",
+          "smoxygen_tank_makeshift",
+          "oxygen_tank_makeshift",
+          "oxygen_cylinder_makeshift"
+        ]
+      }
+    ]
   }
 ]
