@@ -151,6 +151,25 @@
   },
   {
     "type": "COMESTIBLE",
+    "id": "gas_oxygen",
+    "name": { "str_sp": "oxygen" },
+    "weight": "1500 mg",
+    "color": "white",
+    "container": "pressure_tank",
+    "symbol": "~",
+    "description": "A colorless, odorless and tasteless gas, vital for most living organisms, including humans.  It is an oxidizer, and its uses include include production of steel, welding and cutting of steels and other metals, rocket propellant, oxygen therapy, and life support systems.",
+    "comestible_type": "INVALID",
+    "material": [ "powder_nonflam" ],
+    "price": 67,
+    "price_postapoc": 50,
+    "volume": "1 ml",
+    "phase": "gas",
+    "stack_size": 1,
+    "category": "chems",
+    "freezing_point": -219
+  },
+  {
+    "type": "COMESTIBLE",
     "id": "gas_hydrogen",
     "name": { "str_sp": "hydrogen" },
     "weight": "1500 mg",
@@ -169,5 +188,24 @@
     "stack_size": 1,
     "category": "chems",
     "freezing_point": -259
+  },
+  {
+    "type": "COMESTIBLE",
+    "id": "gas_nitrogen",
+    "name": { "str_sp": "nitrogen" },
+    "weight": "1500 mg",
+    "color": "white",
+    "container": "pressure_tank",
+    "symbol": "~",
+    "description": "A colorless and odorless gas that is a major component of air.",
+    "comestible_type": "INVALID",
+    "material": [ "powder_nonflam" ],
+    "price": 67,
+    "price_postapoc": 50,
+    "volume": "1 ml",
+    "phase": "gas",
+    "stack_size": 1,
+    "category": "chems",
+    "freezing_point": -210
   }
 ]

@@ -1,0 +1,70 @@
+[
+  {
+    "id": "small_propane_tank_makeshift",
+    "copy-from": "small_propane_tank",
+    "type": "MAGAZINE",
+    "name": { "str": "makeshift 1-gallon propane tank" },
+    "description": "This is a crude 1-gallon tank welded together from sheet metal, made to hold propane for use by stoves and other tools.  It can contain much less propane for the same volume than its better-quality counterparts.",
+    "material": [ "steel" ],
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE",
+        "airtight": true,
+        "watertight": true,
+        "rigid": true,
+        "ammo_restriction": { "propane": 10 }
+      }
+    ]
+  },
+  {
+    "id": "medium_propane_tank_makeshift",
+    "copy-from": "medium_propane_tank",
+    "type": "MAGAZINE",
+    "name": { "str": "makeshift 5-gallon propane tank" },
+    "description": "This is a crude 5-gallon tank welded together from sheet metal, made to hold propane for use by stoves and other tools.  It can contain much less propane for the same volume than its better-quality counterparts.",
+    "material": [ "steel" ],
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE",
+        "airtight": true,
+        "watertight": true,
+        "rigid": true,
+        "ammo_restriction": { "propane": 50 }
+      }
+    ]
+  },
+  {
+    "id": "large_propane_tank_makeshift",
+    "copy-from": "large_propane_tank",
+    "type": "MAGAZINE",
+    "name": { "str": "makeshift 20-gallon propane tank" },
+    "description": "This is a crude 20-gallon tank welded together from sheet metal, made to hold propane for use by stoves and other tools.  It can contain much less propane for the same volume than its better-quality counterparts.",
+    "material": [ "steel" ],
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE",
+        "airtight": true,
+        "watertight": true,
+        "rigid": true,
+        "ammo_restriction": { "propane": 200 }
+      }
+    ]
+  },
+  {
+    "id": "xl_propane_tank_makeshift",
+    "copy-from": "xl_propane_tank",
+    "type": "MAGAZINE",
+    "name": { "str": "makeshift 100-gallon propane tank" },
+    "description": "This is a crude 100-gallon tank welded together from sheet metal, made to hold propane for use by stoves and other tools.  It can contain much less propane for the same volume than its better-quality counterparts.",
+    "material": [ "steel" ],
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE",
+        "airtight": true,
+        "watertight": true,
+        "rigid": true,
+        "ammo_restriction": { "propane": 1000 }
+      }
+    ]
+  }
+]

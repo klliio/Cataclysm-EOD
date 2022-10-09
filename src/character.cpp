@@ -10179,7 +10179,7 @@ bool Character::defer_move( const tripoint &next )
 bool Character::add_or_drop_with_msg( item &it, const bool /*unloading*/, const item *avoid,
                                       const item *original_inventory_item )
 {
-    if( it.made_of( phase_id::LIQUID ) ) {
+    if( it.made_of( phase_id::LIQUID ) || it.made_of( phase_id::GAS ) ) {
         liquid_handler::consume_liquid( it, 1, avoid );
         return it.charges <= 0;
     }

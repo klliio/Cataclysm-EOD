@@ -3154,11 +3154,11 @@
   },
   {
     "id": "scuba_tank",
-    "type": "TOOL_ARMOR",
+    "type": "MAGAZINE",
     "category": "other",
     "name": { "str": "scuba tank" },
     "looks_like": "oxygen_tank",
-    "description": "This is a high-pressure 232 bar diving tank that can contain up to 12L of compressed mixture of oxygen and nitrogen.  It is equipped with an on-demand regulator and a mouthpiece designed mostly for underwater use.",
+    "description": "This is a high-pressure 232 bar diving tank that can contain up to 12L of compressed mixture of oxygen and nitrogen.  It needs to be connected to a suitable mouthpiece to be used.",
     "weight": "16000 g",
     "volume": "12 L",
     "price": 6000,
@@ -3166,26 +3166,22 @@
     "to_hit": -4,
     "bashing": 10,
     "material": [ "steel", "plastic" ],
-    "symbol": ";",
+    "symbol": "#",
     "color": "light_gray",
-    "ammo": "nitrox",
+    "ammo_type": [ "nitrox" ],
+    "capacity": 60,
+    "count": 60,
     "pocket_data": [
       { "pocket_type": "MAGAZINE", "airtight": true, "rigid": true, "watertight": true, "ammo_restriction": { "nitrox": 60 } }
-    ],
-    "flags": [ "WATER_FRIENDLY", "BELTED", "ONLY_ONE", "STURDY", "NO_UNLOAD", "NO_RELOAD" ],
-    "environmental_protection": 1,
-    "environmental_protection_with_filter": 16,
-    "material_thickness": 4,
-    "use_action": [ "DIVE_TANK" ],
-    "armor": [ { "encumbrance": 30, "coverage": 50, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ]
+    ]
   },
   {
     "id": "small_scuba_tank",
-    "type": "TOOL_ARMOR",
+    "type": "MAGAZINE",
     "category": "other",
     "name": { "str": "small scuba tank" },
-    "description": "This is a small high-pressure 200 bar backup diving tank, that can contain 4L of compressed mixture of oxygen and nitrogen.  It is equipped with an on-demand regulator and a mouthpiece designed mostly for underwater use.",
-    "looks_like": "smoxygen_tank",
+    "looks_like": "oxygen_tank",
+    "description": "This is a small high-pressure 200 bar backup diving tank, that can contain 4L of compressed mixture of oxygen and nitrogen.  It needs to be connected to a suitable mouthpiece to be used.",
     "weight": "7000 g",
     "volume": "4 L",
     "price": 4000,
@@ -3193,18 +3189,14 @@
     "to_hit": -3,
     "bashing": 6,
     "material": [ "aluminum", "plastic" ],
-    "symbol": ";",
+    "symbol": "#",
     "color": "light_gray",
-    "ammo": "nitrox",
+    "ammo_type": [ "nitrox" ],
+    "capacity": 20,
+    "count": 20,
     "pocket_data": [
       { "pocket_type": "MAGAZINE", "airtight": true, "rigid": true, "watertight": true, "ammo_restriction": { "nitrox": 20 } }
-    ],
-    "flags": [ "WATER_FRIENDLY", "BELTED", "ONLY_ONE", "STURDY", "NO_UNLOAD", "NO_RELOAD" ],
-    "environmental_protection": 1,
-    "environmental_protection_with_filter": 16,
-    "material_thickness": 4,
-    "use_action": [ "DIVE_TANK" ],
-    "armor": [ { "encumbrance": 30, "coverage": 50, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ]
+    ]
   },
   {
     "id": "electric_blanket",

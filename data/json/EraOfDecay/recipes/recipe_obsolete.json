@@ -9,5 +9,15 @@
     "type": "recipe",
     "result": "pur_tablets",
     "obsolete": true
+  },
+  {
+    "result": "tinyweldtank",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "weldtank",
+    "type": "recipe",
+    "obsolete": true
   }
 ]

@@ -94,12 +94,11 @@
     "symbol": "#",
     "color": "light_gray",
     "pocket_data": [
-      { "pocket_type": "MAGAZINE", "airtight": true, "watertight": true, "rigid": true, "ammo_restriction": { "oxygen": 12 } }
+      { "pocket_type": "MAGAZINE", "airtight": true, "watertight": true, "rigid": true, "ammo_restriction": { "oxygen": 24 } }
     ],
     "ammo_type": [ "oxygen" ],
-    "capacity": 12,
-    "count": 12,
-    "flags": [ "NO_UNLOAD", "NO_RELOAD" ]
+    "capacity": 24,
+    "count": 24
   },
   {
     "id": "syringe",
@@ -140,7 +139,7 @@
     "id": "oxygen_tank",
     "type": "MAGAZINE",
     "name": { "str": "oxygen tank" },
-    "description": "This is tank of compressed medical oxygen with a regulator and mask.  Commonly used in emergency situations, it provides immediate relief for asthma attacks or smoke inhalation, and can provide a brief burst of energy.",
+    "description": "This is tank of compressed medical oxygen with a regulator.  Commonly used in emergency situations, it provides immediate relief for asthma attacks or smoke inhalation, and can provide a brief burst of energy.  It needs to be connected to an oxygen mask to be used.",
     "weight": "2721 g",
     "volume": "3750 ml",
     "longest_side": "42 cm",
@@ -152,12 +151,11 @@
     "symbol": "#",
     "color": "light_gray",
     "pocket_data": [
-      { "pocket_type": "MAGAZINE", "airtight": true, "watertight": true, "rigid": true, "ammo_restriction": { "oxygen": 24 } }
+      { "pocket_type": "MAGAZINE", "airtight": true, "watertight": true, "rigid": true, "ammo_restriction": { "oxygen": 48 } }
     ],
     "ammo_type": [ "oxygen" ],
-    "capacity": 24,
-    "count": 24,
-    "flags": [ "NO_UNLOAD", "NO_RELOAD" ]
+    "capacity": 48,
+    "count": 48
   },
   {
     "id": "vacutainer",
