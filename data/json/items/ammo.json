@@ -19,17 +19,21 @@
     "//2": "1 battery is 1 kJ of energy. 40 batteries is an alkaline C-cell."
   },
   {
-    "type": "AMMO",
+    "type": "COMESTIBLE",
     "id": "butane",
-    "name": { "str_sp": "butane" },
+    "name": { "str_sp": "pressurized butane" },
     "symbol": "~",
-    "description": "A common flammable liquid used in lighters.",
+    "description": "A common flammable liquid (or gas, at room temperature and atmospheric pressure) used in lighters.",
+    "comestible_type": "INVALID",
     "volume": "1 ml",
-    "weight": "1 mg",
+    "weight": "550 mg",
+    "container": "pressure_tank",
     "color": "white",
-    "flags": [ "TRADER_AVOID" ],
-    "phase": "liquid",
-    "ammo_type": "butane"
+    "phase": "gas",
+    "explode_in_fire": true,
+    "explosion": { "power": 1, "shrapnel": 0 },
+    "ammo_data": { "ammo_type": "butane" },
+    "freezing_point": -134
   },
   {
     "type": "AMMO",

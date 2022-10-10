@@ -1,0 +1,14 @@
+[
+  {
+    "id": "electrolysis_membrane",
+    "copy-from": "spare_part",
+    "type": "GENERIC",
+    "name": { "str": "electrolysis membrane" },
+    "description": "A very thin high-tech membrane that is used to prevent electrolysis products from mixing with each other, while still conducting electricity.  It is vital for some electrolysis processes, but some could be done without it.",
+    "material": [ "plastic" ],
+    "weight": "100 g",
+    "volume": "250 ml",
+    "price": 10000,
+    "price_postapoc": 2000
+  }
+]

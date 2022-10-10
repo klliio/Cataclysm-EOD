@@ -138,8 +138,7 @@
     "book_learn": [ [ "adv_chemistry", 4 ] ],
     "charges": 49,
     "qualities": [ { "id": "CHEM", "level": 2 }, { "id": "SAW_M", "level": 1 } ],
-    "tools": [ [ [ "electrolysis_kit", 50 ] ] ],
-    "components": [ [ [ "scrap", 1 ] ], [ [ "salt_water", 4 ] ] ]
+    "components": [ [ [ "scrap", 1 ] ], [ [ "gas_chlorine", 100 ] ] ]
   },
   {
     "type": "recipe",
@@ -269,20 +268,14 @@
     "type": "recipe",
     "activity_level": "NO_EXERCISE",
     "result": "ammonia_liquid",
-    "charges": 2,
-    "byproducts": [ [ "salt_water", 1 ] ],
+    "charges": 1,
     "category": "CC_CHEM",
     "subcategory": "CSC_CHEM_CHEMICALS",
     "skill_used": "chemistry",
     "difficulty": 5,
-    "time": "30 m",
+    "time": "15 m",
     "autolearn": true,
-    "tools": [
-      [ [ "electrolyzer_makeshift", 10500 ] ],
-      [ [ "ammonia_machine_reactor", 50000 ] ],
-      [ [ "ammonia_machine_pipework", 5000 ] ],
-      [ [ "nitrogen_generator", 150 ] ]
-    ],
-    "components": [ [ [ "salt", 10 ] ], [ [ "water_clean", 2 ] ] ]
+    "tools": [ [ [ "ammonia_machine_reactor", 25000 ] ], [ [ "ammonia_machine_pipework", 2500 ] ] ],
+    "components": [ [ [ "gas_hydrogen", 75 ] ], [ [ "gas_nitrogen", 25 ] ] ]
   }
 ]

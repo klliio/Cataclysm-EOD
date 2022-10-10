@@ -19,5 +19,16 @@
     "result": "weldtank",
     "type": "recipe",
     "obsolete": true
+  },
+  {
+    "result": "lye",
+    "type": "recipe",
+    "id_suffix": "by_electrolysis",
+    "obsolete": true
+  },
+  {
+    "result": "chem_potassium_hydroxide",
+    "type": "recipe",
+    "obsolete": true
   }
 ]

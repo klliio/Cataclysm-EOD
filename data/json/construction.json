@@ -4322,12 +4322,14 @@
     "type": "construction",
     "id": "app_nitrogen_generator",
     "group": "place_nitrogen_generator",
-    "category": "APPLIANCE",
+    "category": "FURN",
     "required_skills": [ [ "fabrication", 0 ] ],
-    "time": "5 m",
+    "time": "1 m",
     "components": [ [ [ "nitrogen_generator", 1 ] ] ],
+    "pre_note": "Can be deconstructed without tools.",
     "pre_special": "check_empty",
-    "post_special": "done_appliance"
+    "post_terrain": "f_nitrogen_generator",
+    "activity_level": "LIGHT_EXERCISE"
   },
   {
     "type": "construction",

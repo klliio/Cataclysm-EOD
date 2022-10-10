@@ -646,8 +646,8 @@
     "components": [
       [ [ "pipe", 2 ] ],
       [ [ "sheet_metal_small", 12 ] ],
-      [ [ "jar_3l_glass_sealed", 8 ] ],
-      [ [ "lye", 16 ] ],
+      [ [ "aquarium_small", 1 ] ],
+      [ [ "electrolysis_membrane", 1 ] ],
       [ [ "sheet_metal", 1 ] ],
       [ [ "cable", 400 ] ],
       [ [ "scrap", 16 ] ],
@@ -783,15 +783,12 @@
       { "id": "SAW_M", "level": 2 }
     ],
     "components": [
-      [ [ "pipe", 2 ] ],
-      [ [ "hd_pipe", 2 ] ],
+      [ [ "pipe", 4 ] ],
       [ [ "sheet_metal_small", 2 ] ],
       [ [ "rag", 2 ] ],
       [ [ "metal_tank", 1 ] ],
       [ [ "nitrogen_membrane_filter", 1 ] ],
       [ [ "cable", 10 ] ],
-      [ [ "salt", 4000 ] ],
-      [ [ "hd_compressor", 1 ] ],
       [ [ "filter_air", 1 ], [ "filter_air_makeshift", 1 ] ]
     ]
   },
@@ -1077,9 +1074,9 @@
       { "id": "DRILL", "level": 2 },
       { "id": "FILE", "level": 2 }
     ],
-    "tools": [ [ [ "butane_tank", 30 ], [ "butane_can", 30 ] ] ],
     "proficiencies": [ { "proficiency": "prof_metalworking" }, { "proficiency": "prof_blacksmithing" } ],
     "components": [
+      [ [ "gas_butane", 30 ] ],
       [ [ "jerrycan_big", 1 ], [ "metal_tank_little", 1 ] ],
       [ [ "pipe", 1 ] ],
       [ [ "hose", 3 ] ],
@@ -1113,9 +1110,9 @@
       { "id": "DRILL", "level": 2 },
       { "id": "FILE", "level": 2 }
     ],
-    "tools": [ [ [ "butane_tank", 30 ], [ "butane_can", 30 ] ] ],
     "proficiencies": [ { "proficiency": "prof_metalworking" }, { "proficiency": "prof_blacksmithing" } ],
     "components": [
+      [ [ "gas_butane", 30 ] ],
       [ [ "30gal_drum", 1 ], [ "metal_tank", 1 ] ],
       [ [ "pipe", 3 ] ],
       [ [ "hose", 10 ] ],

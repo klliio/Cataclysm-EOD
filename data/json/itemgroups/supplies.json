@@ -293,6 +293,7 @@
       { "item": "gasket_plastic", "prob": 5, "count": [ 1, 3 ] },
       [ "pressure_gauge", 5 ],
       [ "pyrometer", 2 ],
+      [ "electrolysis_membrane", 2 ],
       [ "hd_compressor", 1 ],
       [ "large_pressure_vessel", 1 ],
       [ "small_pressure_vessel", 1 ],
