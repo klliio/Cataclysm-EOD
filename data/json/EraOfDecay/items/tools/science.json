@@ -19,5 +19,22 @@
     "pocket_data": [
       { "pocket_type": "MAGAZINE_WELL", "item_restriction": [ "battery_car", "storage_battery", "large_storage_battery" ] }
     ]
+  },
+  {
+    "id": "electric_arc_apparatus",
+    "type": "TOOL",
+    "name": { "str": "electric arc apparatus", "str_pl": "electric arc apparatuses" },
+    "description": "This is a round glass vessel with two openings, and some copper wire built into it, which creates an electric arc inside it if supplied with electricity.  Could be used for producing nitric acid via Birkeland-Eyde process from air, but this needs a lot of power.",
+    "weight": "3 kg",
+    "volume": "2 L",
+    "price": 20000,
+    "price_postapoc": 1000,
+    "material": [ "glass", "plastic" ],
+    "symbol": ";",
+    "color": "light_gray",
+    "ammo": [ "battery" ],
+    "pocket_data": [
+      { "pocket_type": "MAGAZINE_WELL", "rigid": true, "item_restriction": [ "storage_battery", "large_storage_battery" ] }
+    ]
   }
 ]
