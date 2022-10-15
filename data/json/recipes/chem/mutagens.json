@@ -1037,7 +1037,7 @@
         [ "tramadol", 15 ],
         [ "diazepam", 15 ],
         [ "codeine", 20 ],
-        [ "poppy_pain", 20 ]
+        [ "opium", 2 ]
       ],
       [
         [ "lsd", 5 ],
@@ -1046,7 +1046,7 @@
         [ "adderall", 10 ],
         [ "xanax", 10 ],
         [ "pills_sleep", 10 ],
-        [ "poppy_sleep", 15 ]
+        [ "opium", 2 ]
       ],
       [ [ "vitamins", 5 ], [ "iodine", 5 ], [ "disinfectant", 25 ], [ "protein_powder", 20 ] ]
     ],

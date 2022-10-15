@@ -34,6 +34,7 @@
       [ "umbrella", 20 ],
       { "item": "aspirin", "prob": 100, "charges": [ 1, 20 ] },
       { "item": "vitamins", "prob": 100, "charges": [ 1, 20 ] },
+      { "item": "vitc_supplement", "prob": 50, "charges": [ 1, 20 ] },
       [ "eyedrops", 50 ],
       { "item": "inhaler", "prob": 50, "charges-min": 10, "charges-max": 100 },
       { "item": "flashlight", "prob": 50, "charges": [ 0, 300 ] },

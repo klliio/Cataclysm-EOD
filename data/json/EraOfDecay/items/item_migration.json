@@ -18,5 +18,20 @@
     "id": "nitrogen_tank",
     "type": "MIGRATION",
     "replace": "pressure_tank"
+  },
+  {
+    "id": "poppy_pain",
+    "type": "MIGRATION",
+    "replace": "opium"
+  },
+  {
+    "id": "poppy_sleep",
+    "type": "MIGRATION",
+    "replace": "opium"
+  },
+  {
+    "id": "poppysyrup",
+    "type": "MIGRATION",
+    "replace": "opium"
   }
 ]

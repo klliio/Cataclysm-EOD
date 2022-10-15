@@ -59,6 +59,7 @@
       [ "rolling_paper", 9 ],
       [ "pipe_glass", 17 ],
       { "item": "coke", "prob": 8, "charges": [ 1, 8 ] },
+      { "item": "coca_leaf", "prob": 2, "charges": [ 1, 8 ] },
       { "item": "meth", "prob": 2, "charges": [ 1, 6 ] },
       { "item": "heroin", "prob": 1, "charges": [ 1, 4 ] },
       { "item": "crack", "prob": 4, "charges": [ 1, 4 ] },

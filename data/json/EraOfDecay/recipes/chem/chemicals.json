@@ -287,6 +287,7 @@
     "type": "recipe",
     "activity_level": "LIGHT_EXERCISE",
     "result": "gas_butane",
+    "byproducts": [ [ "salt", 2 ] ],
     "id_suffix": "from_ethanol",
     "charges": 110,
     "category": "CC_CHEM",
@@ -380,5 +381,21 @@
     "qualities": [ { "id": "BOIL", "level": 2 }, { "id": "CHEM", "level": 2 } ],
     "tools": [ [ [ "electrolysis_kit", 500 ] ] ],
     "components": [ [ [ "salt_water", 12 ] ], [ [ "red_phosphorous", 105 ] ], [ [ "chem_acetic_acid", 1 ] ], [ [ "chem_sodium_acetate", 295 ] ] ]
+  },
+  {
+    "type": "recipe",
+    "result": "chem_lithium_carbonate",
+    "charges": 50,
+    "activity_level": "NO_EXERCISE",
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_DRUGS",
+    "skill_used": "chemistry",
+    "difficulty": 5,
+    "skills_required": [ "firstaid", 3 ],
+    "time": "1 h",
+    "book_learn": [ [ "recipe_labchem", 6 ] ],
+    "batch_time_factors": [ 30, 5 ],
+    "qualities": [ { "id": "CHEM", "level": 2 } ],
+    "components": [ [ [ "chem_lithium", 125 ] ], [ [ "water_clean", 1 ] ], [ [ "gas_carbon_dioxide", 50 ] ] ]
   }
 ]

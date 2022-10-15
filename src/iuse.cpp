@@ -200,6 +200,7 @@ static const efftype_id effect_nausea( "nausea" );
 static const efftype_id effect_onfire( "onfire" );
 static const efftype_id effect_paincysts( "paincysts" );
 static const efftype_id effect_pet( "pet" );
+static const efftype_id effect_pkill2( "pkill2" );
 static const efftype_id effect_poison( "poison" );
 static const efftype_id effect_ridden( "ridden" );
 static const efftype_id effect_riding( "riding" );
@@ -556,6 +557,14 @@ cata::optional<int> iuse::alcohol_medium( Character *p, item *it, bool, const tr
 cata::optional<int> iuse::alcohol_strong( Character *p, item *it, bool, const tripoint & )
 {
     return alcohol( *p, *it, 2 );
+}
+
+cata::optional<int> iuse::laudanum( Character *p, item *it, bool, const tripoint & )
+{
+    p->add_effect( effect_took_flumed, 10_hours );
+    p->add_effect( effect_pkill2, 18_minutes );
+    p->add_msg_if_player( _( "You take some %s." ), it->tname() );
+    return alcohol( *p, *it, 0 );
 }
 
 /**
