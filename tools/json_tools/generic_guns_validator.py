@@ -32,6 +32,7 @@ AMMO_TYPE_WHITELIST = {
     'paintball',
     'pebble',
     'plasma',
+    'propane',
     'rock',
     'signal_flare',
     'methanol_fuelcell',
