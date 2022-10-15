@@ -41,7 +41,7 @@ static const itype_id itype_zentai( "zentai" );
 
 static const material_id material_wool( "wool" );
 
-static const recipe_id recipe_pur_tablets( "pur_tablets" );
+static const recipe_id recipe_iodine( "iodine" );
 
 static const skill_id skill_survival( "survival" );
 
@@ -2369,7 +2369,7 @@ TEST_CASE( "tool info", "[iteminfo][tool]" )
         CHECK( item_info_str( oxy_torch, magazine_compat ) ==
                "--\n"
                "<color_c_white>Compatible magazines</color>:\n"
-               "<color_c_white>Types</color>: small welding tank and welding tank\n" );
+               "<color_c_white>Types</color>: small welding tank, makeshift small welding tank, welding tank, and makeshift welding tank\n" );
     }
 }
 
@@ -2558,7 +2558,7 @@ TEST_CASE( "show available recipes with item as an ingredient", "[iteminfo][reci
     clear_avatar();
     avatar &player_character = get_avatar();
 
-    const recipe *purtab = &recipe_pur_tablets.obj();
+    const recipe *iodine = &recipe_iodine.obj();
     recipe_subset &known_recipes = const_cast<recipe_subset &>
                                    ( player_character.get_learned_recipes() );
     known_recipes.clear();
@@ -2566,35 +2566,35 @@ TEST_CASE( "show available recipes with item as an ingredient", "[iteminfo][reci
     // FIXME: Factor out of final_info
     std::vector<iteminfo_parts> crafting = { iteminfo_parts::DESCRIPTION_APPLICABLE_RECIPES };
 
-    GIVEN( "character has a potassium iodide tablet and no skill" ) {
+    GIVEN( "character has iodine crystals and no skill" ) {
         player_character.worn.wear_item( player_character, item( "backpack" ), false, false );
-        item_location iodine = player_character.i_add( item( "iodine" ) );
+        item_location crystal = player_character.i_add( item( "iodine_crystal" ) );
         player_character.empty_skills();
-        REQUIRE( !player_character.knows_recipe( purtab ) );
+        REQUIRE( !player_character.knows_recipe( iodine ) );
 
         THEN( "nothing is craftable from it" ) {
-            CHECK( item_info_str( *iodine, crafting ) ==
+            CHECK( item_info_str( *crystal, crafting ) ==
                    "--\nYou know of nothing you could craft with it.\n" );
         }
 
         WHEN( "they acquire the needed skills" ) {
-            player_character.set_skill_level( purtab->skill_used, purtab->difficulty );
-            REQUIRE( player_character.get_skill_level( purtab->skill_used ) == purtab->difficulty );
+            player_character.set_skill_level( iodine->skill_used, iodine->difficulty );
+            REQUIRE( player_character.get_skill_level( iodine->skill_used ) == iodine->difficulty );
 
             THEN( "still nothing is craftable from it" ) {
-                CHECK( item_info_str( *iodine, crafting ) ==
+                CHECK( item_info_str( *crystal, crafting ) ==
                        "--\nYou know of nothing you could craft with it.\n" );
             }
 
             WHEN( "they have no book, but have the recipe memorized" ) {
-                player_character.learn_recipe( purtab );
-                REQUIRE( player_character.knows_recipe( purtab ) );
+                player_character.learn_recipe( iodine );
+                REQUIRE( player_character.knows_recipe( iodine ) );
 
-                THEN( "they can use potassium iodide tablets to craft it" ) {
-                    CHECK( item_info_str( *iodine, crafting ) ==
+                THEN( "they can use iodine crystals to craft it" ) {
+                    CHECK( item_info_str( *crystal, crafting ) ==
                            "--\n"
                            "You could use it to craft: "
-                           "<color_c_dark_gray>water purification tablet</color>\n" );
+                           "<color_c_dark_gray>potassium iodide tablet</color>\n" );
                 }
             }
 
@@ -2605,11 +2605,11 @@ TEST_CASE( "show available recipes with item as an ingredient", "[iteminfo][reci
                 // update the crafting inventory cache
                 player_character.moves++;
 
-                THEN( "they can use potassium iodide tablets to craft it" ) {
-                    CHECK( item_info_str( *iodine, crafting ) ==
+                THEN( "they can use iodine crystals to craft it" ) {
+                    CHECK( item_info_str( *crystal, crafting ) ==
                            "--\n"
                            "You could use it to craft: "
-                           "<color_c_dark_gray>water purification tablet</color>\n" );
+                           "<color_c_dark_gray>potassium iodide tablet</color>\n" );
                 }
             }
         }

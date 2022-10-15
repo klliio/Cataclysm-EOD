@@ -215,7 +215,7 @@ if (MINGW AND NOT RELEASE)
     find_library(RuntimeLib_GCC_S_DW2_1  "gcc_s_dw2-1")
     find_library(RuntimeLib_STDC_PP_6    "stdc++-6")
     find_library(RuntimeLib_WINPTHREAD_1 "winpthread-1")
-    find_library(RuntimeLib_zlib  "zlib1")
+    find_library(RuntimeLib_zlib  "zlib-1.2.13")
 
     set(RuntimeLib_GCC_ALL
             ${RuntimeLib_GCC_S_DW2_1}

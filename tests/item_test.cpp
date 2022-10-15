@@ -234,7 +234,7 @@ static void assert_minimum_length_to_volume_ratio( const item &target )
     CAPTURE( target.volume() );
     CAPTURE( target.base_volume() );
     CAPTURE( target.type->volume );
-    if( target.made_of( phase_id::LIQUID ) || target.is_soft() ) {
+    if( target.made_of( phase_id::LIQUID ) || target.made_of( phase_id::GAS ) || target.is_soft() ) {
         CHECK( target.length() == 0_mm );
         return;
     }
