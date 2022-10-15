@@ -3781,16 +3781,7 @@
     "skills": [ { "level": 2, "name": "gun" }, { "level": 1, "name": "mechanics" } ],
     "items": {
       "both": {
-        "items": [
-          "stockings",
-          "pockknife",
-          "pipe_tobacco",
-          "tobacco",
-          "backpack",
-          "hatchet",
-          "hardtack",
-          "pipe_cleaner"
-        ],
+        "items": [ "stockings", "pockknife", "pipe_tobacco", "tobacco", "backpack", "hatchet", "hardtack", "pipe_cleaner" ],
         "entries": [
           { "item": "rifle_flintlock", "ammo-item": "flintlock_ammo", "charges": 1, "contents-item": "shoulder_strap" },
           { "item": "flintlock_pouch", "contents-group": "flintlock_pouch_reenactor" },
@@ -3813,19 +3804,9 @@
     "points": 3,
     "proficiencies": [ "prof_spinning", "prof_closures", "prof_knitting" ],
     "skills": [ { "level": 2, "name": "tailor" }, { "level": 1, "name": "cooking" } ],
-     "items": {
+    "items": {
       "both": {
-        "items": [
-          "stockings",
-          "pockknife",
-          "pipe_tobacco",
-          "tobacco",
-          "backpack",
-          "apron_leather",
-          "pot",
-          "cornmeal",
-          "salt"
-        ],
+        "items": [ "stockings", "pockknife", "pipe_tobacco", "tobacco", "backpack", "apron_leather", "pot", "cornmeal", "salt" ],
         "entries": [
           { "item": "needle_wood", "ammo-item": "thread", "charges": 200 },
           { "item": "oil_lamp", "charges": 750 },

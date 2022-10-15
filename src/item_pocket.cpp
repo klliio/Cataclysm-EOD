@@ -1214,7 +1214,8 @@ void item_pocket::contents_info( std::vector<iteminfo> &info, int pocket_number,
 
             const translation &desc = contents_item.type->description;
 
-            if( contents_item.made_of_from_type( phase_id::LIQUID ) || contents_item.made_of_from_type( phase_id::GAS ) ) {
+            if( contents_item.made_of_from_type( phase_id::LIQUID ) ||
+                contents_item.made_of_from_type( phase_id::GAS ) ) {
                 info.emplace_back( "DESCRIPTION", colorize( space + contents_item.display_name(),
                                    contents_item.color_in_inventory() ) );
                 info.emplace_back( vol_to_info( cont_type_str, desc + space, contents_item.volume() ) );

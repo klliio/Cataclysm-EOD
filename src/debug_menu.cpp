@@ -1531,7 +1531,8 @@ static void character_edit_desc_menu( Character &you )
     smenu.addentry( 2, true, 'a', "%s: %d", _( "Current age" ), you.base_age() );
     smenu.addentry( 3, true, 'h', "%s: %d", _( "Current height in cm" ), you.base_height() );
     smenu.addentry( 4, true, 'b', "%s: %s", _( "Current blood type" ), current_bloodt );
-    smenu.addentry( 5, true, 'y', "%s: %s", _( "Current sex" ), you.male ? _( "Male" ) : _( "Female" ) );
+    smenu.addentry( 5, true, 'y', "%s: %s", _( "Current sex" ),
+                    you.male ? _( "Male" ) : _( "Female" ) );
     smenu.query();
     switch( smenu.ret ) {
         case 0: {

@@ -4835,7 +4835,7 @@ item &map::add_item_or_charges( const tripoint &pos, item obj, bool overflow )
         if( obj.made_of_from_type( phase_id::LIQUID ) && has_flag( ter_furn_flag::TFLAG_SWIMMABLE, e ) ) {
             return false;
         }
-        
+
         // Gases dissipate into the air immediately if dropped without container.
         if( obj.made_of_from_type( phase_id::GAS ) ) {
             return false;
@@ -9842,7 +9842,7 @@ int map::reachability_cache_value( const tripoint &p, bool vertical_cache,
 static bool is_haulable( const item &it )
 {
     // Liquid or gas cannot be picked up
-    return !(it.made_of_from_type( phase_id::LIQUID ) || it.made_of_from_type( phase_id::GAS ) );
+    return !( it.made_of_from_type( phase_id::LIQUID ) || it.made_of_from_type( phase_id::GAS ) );
 }
 
 bool map::has_haulable_items( const tripoint &pos )

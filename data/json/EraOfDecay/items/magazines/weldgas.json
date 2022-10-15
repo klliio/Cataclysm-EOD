@@ -4,10 +4,18 @@
     "copy-from": "tinyweldtank",
     "type": "MAGAZINE",
     "name": { "str": "makeshift small welding tank" },
-    "description": "A compact makesshift steel cylinder designed for holding pressurized welding gases, welded together from sheet metal, with two sections; one for oxygen, and another one for acetylene.  It can contain much less gas for the same volume than its better-quality counterparts.",
+    "description": "A compact makeshift steel cylinder designed for holding pressurized welding gases, welded together from sheet metal, with two sections; one for oxygen, and another one for acetylene.  It can contain much less gas for the same volume than its better-quality counterparts.",
     "capacity": 20,
     "count": 20,
-    "pocket_data": [ { "pocket_type": "MAGAZINE", "rigid": true, "ammo_restriction": { "weldgas": 20 }, "airtight": true, "watertight": true } ]
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE",
+        "rigid": true,
+        "ammo_restriction": { "weldgas": 20 },
+        "airtight": true,
+        "watertight": true
+      }
+    ]
   },
   {
     "id": "weldtank_makeshift",
@@ -17,6 +25,14 @@
     "description": "A large makeshift steel cylinder designed for holding pressurized welding gases, with two sections; one for oxygen, and another one for acetylene.  It can contain much less gas for the same volume than its better-quality counterparts.",
     "capacity": 60,
     "count": 60,
-    "pocket_data": [ { "pocket_type": "MAGAZINE", "rigid": true, "ammo_restriction": { "weldgas": 60 }, "airtight": true, "watertight": true } ]
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE",
+        "rigid": true,
+        "ammo_restriction": { "weldgas": 60 },
+        "airtight": true,
+        "watertight": true
+      }
+    ]
   }
 ]

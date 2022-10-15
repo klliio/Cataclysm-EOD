@@ -1342,7 +1342,8 @@ bool item::stacks_with( const item &rhs, bool check_components, bool combine_liq
     if( active != rhs.active ) {
         return false;
     }
-    if( combine_liquid && has_temperature() && ( made_of_from_type( phase_id::LIQUID ) || made_of_from_type( phase_id::GAS ) ) ) {
+    if( combine_liquid && has_temperature() && ( made_of_from_type( phase_id::LIQUID ) ||
+            made_of_from_type( phase_id::GAS ) ) ) {
 
         // we can combine liquids of same type and different temperatures
         if( !equal_ignoring_elements( rhs.get_flags(), get_flags(),
@@ -1404,7 +1405,8 @@ bool item::stacks_with( const item &rhs, bool check_components, bool combine_liq
             clipped_time( get_shelf_life() - rot );
         std::pair<int, clipped_unit> other_clipped_time_to_rot =
             clipped_time( rhs.get_shelf_life() - rhs.rot );
-        if( ( !combine_liquid || ( !made_of_from_type( phase_id::LIQUID ) && !made_of_from_type( phase_id::GAS ) ) ) &&
+        if( ( !combine_liquid || ( !made_of_from_type( phase_id::LIQUID ) &&
+                                   !made_of_from_type( phase_id::GAS ) ) ) &&
             my_clipped_time_to_rot != other_clipped_time_to_rot ) {
             return false;
         }
@@ -5250,7 +5252,8 @@ void item::contents_info( std::vector<iteminfo> &info, const iteminfo_query *par
 
         const translation &description = contents_item->type->description;
 
-        if( contents_item->made_of_from_type( phase_id::LIQUID ) || contents_item->made_of_from_type( phase_id::GAS ) ) {
+        if( contents_item->made_of_from_type( phase_id::LIQUID ) ||
+            contents_item->made_of_from_type( phase_id::GAS ) ) {
             units::volume contents_volume = contents_item->volume() * batch;
             info.emplace_back( "DESCRIPTION", colorize( contents_item->display_name(),
                                contents_item->color_in_inventory() ) );
@@ -11570,7 +11573,8 @@ bool item::reload( Character &u, item_location ammo, int qty )
 
     // limit quantity of ammo loaded to remaining capacity
     int limit = 0;
-    if( ( is_watertight_container() && ammo->made_of_from_type( phase_id::LIQUID ) ) || ( is_airtight_container() && ammo->made_of_from_type( phase_id::GAS ) ) ) {
+    if( ( is_watertight_container() && ammo->made_of_from_type( phase_id::LIQUID ) ) ||
+        ( is_airtight_container() && ammo->made_of_from_type( phase_id::GAS ) ) ) {
         limit = get_remaining_capacity_for_liquid( *ammo );
     } else if( ammo->is_ammo() ) {
         limit = ammo_capacity( ammo->ammo_type() ) - ammo_remaining();
@@ -11607,7 +11611,8 @@ bool item::reload( Character &u, item_location ammo, int qty )
 
         put_in( item_copy, item_pocket::pocket_type::MAGAZINE );
 
-    } else if( ( is_watertight_container() && ammo->made_of_from_type( phase_id::LIQUID ) ) || ( is_airtight_container() && ammo->made_of_from_type( phase_id::GAS ) ) ) {
+    } else if( ( is_watertight_container() && ammo->made_of_from_type( phase_id::LIQUID ) ) ||
+               ( is_airtight_container() && ammo->made_of_from_type( phase_id::GAS ) ) ) {
         item contents( *ammo );
         fill_with( contents, qty );
         if( ammo.has_parent() ) {

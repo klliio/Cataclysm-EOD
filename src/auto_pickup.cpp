@@ -169,7 +169,8 @@ static std::vector<item_location> get_autopickup_items( item_location &from )
                 if( item_entry->is_container() ) {
                     // whitelisted containers should exclude contained blacklisted items
                     empty_autopickup_target( item_entry, from.position() );
-                } else if( item_entry->made_of_from_type( phase_id::LIQUID ) || item_entry->made_of_from_type( phase_id::GAS ) ) {
+                } else if( item_entry->made_of_from_type( phase_id::LIQUID ) ||
+                           item_entry->made_of_from_type( phase_id::GAS ) ) {
                     // liquid or gas items should never be picked up without container
                     force_pick_container = true;
                     break;

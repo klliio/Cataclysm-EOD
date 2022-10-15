@@ -121,7 +121,8 @@ item::reload_option Character::select_ammo( const item_location &base,
 
     std::string name = name_override.empty() ? base->tname() : name_override;
     uilist menu;
-    menu.text = string_format( ( base->is_watertight_container() || base->is_airtight_container() ) ? _( "Refill %s" ) :
+    menu.text = string_format( ( base->is_watertight_container() ||
+                                 base->is_airtight_container() ) ? _( "Refill %s" ) :
                                base->has_flag( flag_RELOAD_AND_SHOOT ) ? _( "Select ammo for %s" ) : _( "Reload %s" ),
                                name );
 
@@ -427,7 +428,8 @@ item::reload_option Character::select_ammo( const item_location &base, bool prom
 
 int Character::item_reload_cost( const item &it, const item &ammo, int qty ) const
 {
-    if( ammo.is_ammo() || ammo.is_frozen_liquid() || ammo.made_of_from_type( phase_id::LIQUID ) || ammo.made_of_from_type( phase_id::GAS ) ) {
+    if( ammo.is_ammo() || ammo.is_frozen_liquid() || ammo.made_of_from_type( phase_id::LIQUID ) ||
+        ammo.made_of_from_type( phase_id::GAS ) ) {
         qty = std::max( std::min( ammo.charges, qty ), 1 );
     } else if( ammo.is_ammo_container() ) {
         int min_clamp = 0;

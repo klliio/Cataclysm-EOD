@@ -8,6 +8,8 @@
     "material": [ "steel" ],
     "capacity": 20,
     "count": 20,
-    "pocket_data": [ { "pocket_type": "MAGAZINE", "rigid": true, "ammo_restriction": { "nitrox": 20 }, "airtight": true, "watertight": true } ]
+    "pocket_data": [
+      { "pocket_type": "MAGAZINE", "rigid": true, "ammo_restriction": { "nitrox": 20 }, "airtight": true, "watertight": true }
+    ]
   }
 ]
