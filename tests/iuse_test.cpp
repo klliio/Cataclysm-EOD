@@ -244,7 +244,7 @@ TEST_CASE( "oxygen tank", "[iuse][oxygen_bottle]" )
 
         THEN( "a dose of oxygen relieves the smoke inhalation" ) {
             dummy.invoke_item( &oxygen );
-            CHECK( oxygen.ammo_remaining() == charges_before - 1 );
+            CHECK( oxygen.ammo_remaining() == charges_before - 2 );
             CHECK_FALSE( dummy.has_effect( effect_smoke ) );
 
             AND_THEN( "it acts as a mild painkiller" ) {
@@ -259,7 +259,7 @@ TEST_CASE( "oxygen tank", "[iuse][oxygen_bottle]" )
 
         THEN( "a dose of oxygen relieves the effects of tear gas" ) {
             dummy.invoke_item( &oxygen );
-            CHECK( oxygen.ammo_remaining() == charges_before - 1 );
+            CHECK( oxygen.ammo_remaining() == charges_before - 2 );
             CHECK_FALSE( dummy.has_effect( effect_teargas ) );
 
             AND_THEN( "it acts as a mild painkiller" ) {
@@ -274,7 +274,7 @@ TEST_CASE( "oxygen tank", "[iuse][oxygen_bottle]" )
 
         THEN( "a dose of oxygen relieves the effects of asthma" ) {
             dummy.invoke_item( &oxygen );
-            CHECK( oxygen.ammo_remaining() == charges_before - 1 );
+            CHECK( oxygen.ammo_remaining() == charges_before - 2 );
             CHECK_FALSE( dummy.has_effect( effect_asthma ) );
 
             AND_THEN( "it acts as a mild painkiller" ) {
@@ -294,7 +294,7 @@ TEST_CASE( "oxygen tank", "[iuse][oxygen_bottle]" )
 
             THEN( "a dose of oxygen is stimulating" ) {
                 dummy.invoke_item( &oxygen );
-                CHECK( oxygen.ammo_remaining() == charges_before - 1 );
+                CHECK( oxygen.ammo_remaining() == charges_before - 2 );
                 // values should match iuse function `oxygen_bottle`
                 CHECK( dummy.get_stim() == 8 );
 
@@ -314,7 +314,7 @@ TEST_CASE( "oxygen tank", "[iuse][oxygen_bottle]" )
 
             THEN( "a dose of oxygen has no additional stimulation effects" ) {
                 dummy.invoke_item( &oxygen );
-                CHECK( oxygen.ammo_remaining() == charges_before - 1 );
+                CHECK( oxygen.ammo_remaining() == charges_before - 2 );
                 CHECK( dummy.get_stim() == max_stim );
 
                 AND_THEN( "it acts as a mild painkiller" ) {

@@ -487,7 +487,7 @@ class pickup_inventory_preset : public inventory_selector_preset
                     } else {
                         return _( "Can't pick up spilt liquids." );
                     }
-                } else if ( loc->made_of_from_type( phase_id::GAS ) && !loc->is_frozen_liquid() ) {
+                } else if( loc->made_of_from_type( phase_id::GAS ) && !loc->is_frozen_liquid() ) {
                     return _( "Can't pick up gases." );
                 } else if( loc->is_frozen_liquid() ) {
                     ret_val<crush_tool_type> can_crush = you.can_crush_frozen_liquid( loc );

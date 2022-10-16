@@ -84,6 +84,7 @@
       { "group": "full_1st_aid", "prob": 15 },
       { "group": "full_ifak", "prob": 15 },
       [ "vitamins", 75 ],
+      [ "vitc_supplement", 50 ],
       [ "calcium_tablet", 75 ],
       [ "aspirin", 45 ],
       [ "caffeine", 50 ],

@@ -88,9 +88,8 @@
       { "item": "cattail_jelly", "prob": 95 },
       { "item": "thyme_oil", "prob": 80, "charges": 2, "container-item": "jar_glass_sealed" },
       { "item": "mugwort_oil", "prob": 80, "charges": 2, "container-item": "jar_glass_sealed" },
-      { "item": "poppy_pain", "prob": 80, "charges": 2, "container-item": "jar_glass_sealed" },
-      { "item": "poppy_sleep", "prob": 80, "charges": 2, "container-item": "jar_glass_sealed" },
-      { "item": "poppysyrup", "prob": 80, "charges": 10, "container-item": "jar_glass_sealed" },
+      { "item": "poppy_tea", "prob": 80, "charges": 2, "container-item": "jar_glass_sealed" },
+      { "item": "laudanum", "prob": 80, "charges": 10, "container-item": "jar_glass_sealed" },
       { "item": "bee_balm_tea", "prob": 80, "charges": 2, "container-item": "jar_glass_sealed" },
       { "item": "chamomile_tea", "prob": 80, "charges": 2, "container-item": "jar_glass_sealed" },
       { "item": "dandelion_tea", "prob": 80, "charges": 2, "container-item": "jar_glass_sealed" },
@@ -286,7 +285,7 @@
       "opinion": { "trust": 1, "value": 1 },
       "effect": [
         { "u_spawn_item": "thyme_oil", "container": "jar_glass_sealed", "count": 2 },
-        { "u_spawn_item": "poppy_pain", "container": "jar_glass_sealed", "count": 20 }
+        { "u_spawn_item": "laudanum", "container": "jar_glass_sealed", "count": 20 }
       ]
     },
     "dialogue": {

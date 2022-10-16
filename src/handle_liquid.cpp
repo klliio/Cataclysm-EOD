@@ -200,9 +200,9 @@ static bool get_liquid_target( item &liquid, const item *const source, const int
     } else {
         phasestring = "liquid";
     }
-    
-    char* phase = const_cast<char*>(phasestring.c_str());
-    
+
+    char *phase = const_cast<char *>( phasestring.c_str() );
+
     if( source_pos != nullptr ) {
         //~ %1$s: liquid name, %2$s: terrain name
         menu.text = string_format( pgettext( phase, "What to do with the %1$s from %2$s?" ), liquid_name,
@@ -486,8 +486,9 @@ bool handle_liquid( item &liquid, const item *const source, const int radius,
         success = perform_liquid_transfer( liquid, source_pos, source_veh, part_num, source_mon,
                                            liquid_target );
         if( success && ( liquid_target.dest_opt == LD_ITEM &&
-                         ( ( ( liquid_target.item_loc->is_watertight_container() || liquid_target.dest_opt == LD_KEG ) && liquid.made_of( phase_id::LIQUID ) ) ||
-                         ( liquid_target.item_loc->is_watertight_container() && liquid.made_of( phase_id::GAS ) ) ) ) ) {
+                         ( ( ( liquid_target.item_loc->is_watertight_container() || liquid_target.dest_opt == LD_KEG ) &&
+                             liquid.made_of( phase_id::LIQUID ) ) ||
+                           ( liquid_target.item_loc->is_watertight_container() && liquid.made_of( phase_id::GAS ) ) ) ) ) {
             liquid.unset_flag( flag_id( json_flag_FROM_FROZEN_LIQUID ) );
         }
         return success;

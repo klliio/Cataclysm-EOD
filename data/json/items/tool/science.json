@@ -544,15 +544,7 @@
     "color": "light_gray",
     "ammo": [ "salt" ],
     "flags": [ "ALLOWS_REMOTE_USE" ],
-    "pocket_data": [
-    {
-      "pocket_type": "MAGAZINE",
-      "rigid": true,
-      "ammo_restriction": {
-        "salt": 4000
-      }
-    }
-  ]
+    "pocket_data": [ { "pocket_type": "MAGAZINE", "rigid": true, "ammo_restriction": { "salt": 4000 } } ]
   },
   {
     "id": "pressure_tank",

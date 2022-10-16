@@ -479,7 +479,8 @@ static std::vector<const item *> get_eligible_containers_recursive( const item &
     return ret;
 }
 
-void outfit::get_eligible_containers_for_crafting( std::vector<const item *> &conts, bool gas ) const
+void outfit::get_eligible_containers_for_crafting( std::vector<const item *> &conts,
+        bool gas ) const
 {
     for( const item &it : worn ) {
         std::vector<const item *> eligible = get_eligible_containers_recursive( it, false, gas );
@@ -2769,7 +2770,8 @@ void remove_ammo( std::list<item> &dis_items, Character &p )
 
 void drop_or_handle( const item &newit, Character &p )
 {
-    if( ( newit.made_of( phase_id::LIQUID ) || newit.made_of( phase_id::GAS ) ) && p.is_avatar() ) { // TODO: what about NPCs?
+    if( ( newit.made_of( phase_id::LIQUID ) || newit.made_of( phase_id::GAS ) ) &&
+        p.is_avatar() ) { // TODO: what about NPCs?
         liquid_handler::handle_all_liquid( newit, PICKUP_RANGE );
     } else {
         item tmp( newit );

@@ -30,5 +30,20 @@
     "result": "chem_potassium_hydroxide",
     "type": "recipe",
     "obsolete": true
+  },
+  {
+    "result": "poppy_pain",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "poppy_sleep",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "poppysyrup",
+    "type": "recipe",
+    "obsolete": true
   }
 ]

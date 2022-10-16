@@ -2082,7 +2082,15 @@
     "capacity": 240,
     "count": 240,
     "flags": [ "NO_UNLOAD", "NO_RELOAD" ],
-    "pocket_data": [ { "pocket_type": "MAGAZINE", "rigid": true, "ammo_restriction": { "weldgas": 240 }, "watertight": true } ]
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE",
+        "rigid": true,
+        "ammo_restriction": { "weldgas": 240 },
+        "watertight": true,
+        "airtight": true
+      }
+    ]
   },
   {
     "type": "TOOL",

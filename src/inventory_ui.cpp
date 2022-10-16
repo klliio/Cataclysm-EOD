@@ -3276,7 +3276,8 @@ drop_locations inventory_drop_selector::execute()
 
     for( const std::pair<item_location, int> &drop_pair : to_use ) {
         bool should_drop = true;
-        if( ( drop_pair.first->made_of_from_type( phase_id::LIQUID ) || drop_pair.first->made_of_from_type( phase_id::GAS ) ) &&
+        if( ( drop_pair.first->made_of_from_type( phase_id::LIQUID ) ||
+              drop_pair.first->made_of_from_type( phase_id::GAS ) ) &&
             !drop_pair.first->is_frozen_liquid() ) {
             if( should_drop_liquid == drop_liquid::ask ) {
                 if( !warn_liquid || query_yn(

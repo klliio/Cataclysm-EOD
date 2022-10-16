@@ -915,7 +915,8 @@ bool advanced_inventory::move_all_items()
     size_t liquid_items = 0;
     for( const advanced_inv_listitem &elem : spane.items ) {
         for( const item_location &elemit : elem.items ) {
-            if( ( elemit->made_of_from_type( phase_id::LIQUID ) || elemit->made_of_from_type( phase_id::GAS ) ) && !elemit->is_frozen_liquid() ) {
+            if( ( elemit->made_of_from_type( phase_id::LIQUID ) ||
+                  elemit->made_of_from_type( phase_id::GAS ) ) && !elemit->is_frozen_liquid() ) {
                 liquid_items++;
             }
         }
@@ -1916,7 +1917,8 @@ bool advanced_inventory::query_charges( aim_location destarea, const advanced_in
     amount = input_amount;
 
     // Includes moving from/to inventory and around on the map.
-    if( ( it.made_of_from_type( phase_id::LIQUID ) || it.made_of_from_type( phase_id::GAS ) ) && !it.is_frozen_liquid() ) {
+    if( ( it.made_of_from_type( phase_id::LIQUID ) || it.made_of_from_type( phase_id::GAS ) ) &&
+        !it.is_frozen_liquid() ) {
         popup( _( "Spilt liquid cannot be picked back up.  Try mopping it instead." ) );
         return false;
     }

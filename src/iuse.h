@@ -50,6 +50,7 @@ cata::optional<int> flusleep( Character *, item *, bool, const tripoint & );
 cata::optional<int> fungicide( Character *, item *, bool, const tripoint & );
 cata::optional<int> honeycomb( Character *, item *, bool, const tripoint & );
 cata::optional<int> inhaler( Character *, item *, bool, const tripoint & );
+cata::optional<int> laudanum( Character *, item *, bool, const tripoint & );
 cata::optional<int> marloss( Character *, item *, bool, const tripoint & );
 cata::optional<int> marloss_gel( Character *, item *, bool, const tripoint & );
 cata::optional<int> marloss_seed( Character *, item *, bool, const tripoint & );
