@@ -74,7 +74,7 @@
     "stim": -17,
     "healthy": -3,
     "container": "bottle_plastic",
-    "comestible_type": "DRINK",
+    "comestible_type": "MED",
     "symbol": "~",
     "quench": -10,
     "calories": 80,

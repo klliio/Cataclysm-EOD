@@ -93,7 +93,7 @@
     "material": [ "water" ],
     "volume": "250 ml",
     "phase": "liquid",
-    "flags": [ "NO_AUTO_CONSUME" ],
+    "flags": [ "NUTRIENT_OVERRIDE", "NO_AUTO_CONSUME" ],
     "fun": 16,
     "use_action": { "type": "consume_drug", "effects": [ { "id": "pkill2", "duration": "10 m" } ] }
   }
