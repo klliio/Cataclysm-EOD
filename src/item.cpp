@@ -6914,7 +6914,8 @@ units::mass item::weight( bool include_contents, bool integral ) const
 
 units::length item::length() const
 {
-    if( made_of( phase_id::LIQUID ) || made_of( phase_id::GAS ) || ( is_soft() && is_container_empty() ) ) {
+    if( made_of( phase_id::LIQUID ) || made_of( phase_id::GAS ) || ( is_soft() &&
+            is_container_empty() ) ) {
         return 0_mm;
     }
 
