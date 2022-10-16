@@ -77,7 +77,7 @@
     "ammo": [ "battery" ],
     "charges_per_use": 1,
     "power_draw": "800 J",
-    "flags": [ "NONCONDUCTIVE", "WATER_BREAK", "ELECTRONIC" ],
+    "flags": [ "NONCONDUCTIVE", "WATER_BREAK" ],
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
@@ -302,7 +302,7 @@
     "symbol": ";",
     "color": "yellow",
     "ammo": [ "battery" ],
-    "flags": [ "WATER_BREAK", "ELECTRONIC" ],
+    "flags": [ "WATER_BREAK" ],
     "charges_per_use": 5,
     "qualities": [ [ "SCREW", 1 ] ],
     "charged_qualities": [ [ "DRILL", 3 ] ],
@@ -334,7 +334,7 @@
     "symbol": ";",
     "color": "yellow",
     "ammo": [ "battery" ],
-    "flags": [ "WATER_BREAK", "ELECTRONIC" ],
+    "flags": [ "WATER_BREAK" ],
     "charges_per_use": 10,
     "qualities": [ [ "WRENCH", 1 ] ],
     "charged_qualities": [ [ "WRENCH", 2 ], [ "WHEEL_FAST", 1 ] ],
@@ -931,7 +931,7 @@
     "charges_per_use": 1,
     "charged_qualities": [ [ "GRIND", 2 ] ],
     "ammo": [ "battery" ],
-    "flags": [ "TRADER_AVOID", "WATER_BREAK", "ELECTRONIC" ],
+    "flags": [ "TRADER_AVOID", "WATER_BREAK" ],
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
@@ -978,7 +978,7 @@
     "ammo": [ "battery" ],
     "charges_per_use": 1,
     "power_draw": "800 J",
-    "flags": [ "NONCONDUCTIVE", "WATER_BREAK", "ELECTRONIC" ],
+    "flags": [ "NONCONDUCTIVE", "WATER_BREAK" ],
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
@@ -1179,7 +1179,7 @@
       },
       { "flame": false, "type": "cauterize" }
     ],
-    "flags": [ "SPEAR", "BELT_CLIP", "ALLOWS_REMOTE_USE", "WATER_BREAK", "ELECTRONIC" ],
+    "flags": [ "SPEAR", "BELT_CLIP", "ALLOWS_REMOTE_USE", "WATER_BREAK" ],
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
@@ -1352,7 +1352,7 @@
         "move_cost": 500
       }
     ],
-    "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK", "ELECTRONIC" ],
+    "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK" ],
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
@@ -1409,7 +1409,7 @@
         "move_cost": 1000
       }
     ],
-    "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK", "ELECTRONIC" ],
+    "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK" ],
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
@@ -1468,7 +1468,7 @@
         "move_cost": 500
       }
     ],
-    "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK", "ELECTRONIC" ],
+    "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK" ],
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
