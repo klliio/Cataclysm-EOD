@@ -1,0 +1,22 @@
+[
+  {
+    "id": "BIO_INTERFACE",
+    "type": "json_flag",
+    "info": "This gear will draw power from a bionic interface while worn, if one is available."
+  },
+  {
+    "id": "POWERARMOR_COMPONENT",
+    "type": "json_flag",
+    "info": "This gear is a component of power armor, and can't be worn on its own without a suit of power armor."
+  },
+  {
+    "id": "POWERARMOR_BASE",
+    "type": "json_flag",
+    "info": "This gear allows wearing other components of power armor."
+  },
+  {
+    "id": "THREATENING",
+    "type": "json_flag",
+    "info": "This gear, if worn, makes you a high-priority target in combat."
+  }
+]

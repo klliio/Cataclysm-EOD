@@ -184,7 +184,7 @@
     "symbol": ";",
     "color": "light_gray",
     "material_thickness": 1,
-    "flags": [ "DEAF", "OVERSIZE", "POWERARMOR_COMPATIBLE" ]
+    "flags": [ "DEAF", "OVERSIZE" ]
   },
   {
     "id": "gobag",
