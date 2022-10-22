@@ -16,6 +16,7 @@ aerially
 aeterna
 aetheric
 afterbirth
+afterglow
 afterimage
 afterlife
 aftermarket
@@ -44,10 +45,11 @@ alkahest
 alkalis
 alkyl
 alleghaniensis
-allosaurus
 allosaurid
+allosaurus
 allucination
 alnico
+alquerque
 altamente
 alternators
 alumentum
@@ -258,6 +260,7 @@ bugout
 builtin
 bulette
 bullhead
+bullheads
 bullpup
 burdocks
 burette
@@ -318,6 +321,7 @@ champed
 channnnce
 chasin
 chasmosaurus
+chaturanga
 chausses
 cheapshot
 cheescutter
@@ -404,6 +408,7 @@ craftable
 craftsfolk
 craftswoman
 craftwork
+crappie
 creeply
 creped
 cresent
@@ -435,6 +440,7 @@ cyberdog
 cyberterror
 cybug
 cyphers
+cyprinids
 d
 dagnabbit
 dambreaker
@@ -534,6 +540,7 @@ dryptosaurus
 drywalled
 dunderfuck
 dyoplosaurus
+dysmorphia
 dysrhythmia
 earthbag
 earthbags
@@ -565,6 +572,7 @@ encumbers
 endochitin
 endolymph
 ener
+enervating
 enjoyability
 envenomations
 eocs
@@ -599,6 +607,7 @@ exchangeable
 exodii
 exosuit
 exosuits
+expansionary
 explodin
 explosivity
 extensible
@@ -788,6 +797,7 @@ greatclubs
 greatsword
 greatswords
 greenways
+gridded
 grindle
 grinny
 grnd
@@ -859,6 +869,7 @@ hivemind
 hjklyubn
 hmm
 hmmm
+hnefatafl
 hollowpoint
 holybook
 homebrewing
@@ -948,6 +959,7 @@ j
 jabberwock
 jabberwocks
 jackolantern
+jackstraws
 jawless
 jerrypack
 jewelboxes
@@ -1029,6 +1041,7 @@ lambeosaurus
 lamellar
 landshark
 langourous
+latrunculi
 latticed
 lavrae
 lawd
@@ -1055,9 +1068,9 @@ lifestraw
 lightnin
 lightsource
 lightstrip
-limbed
 lilypad
 lilypads
+limbed
 listlessly
 lithely
 litheness
@@ -1283,6 +1296,7 @@ nodachi
 nodosaurus
 noisiness
 nomex
+nonfunctional
 nonpareils
 nonrevealing
 nonsedated
@@ -1322,6 +1336,7 @@ ornithomimid
 ornithomimus
 orrery
 oryctodromeus
+osho
 otes
 otha
 otherland
@@ -1347,6 +1362,7 @@ pachyrhinosaurus
 packable
 paf
 palpably
+palpitate
 panoplosaurus
 papyrifera
 parabellum
@@ -1383,6 +1399,7 @@ peytral
 phelloderm
 phelloderms
 phenotypes
+phenotypic
 phenotypical
 phenotypically
 phloem
@@ -1393,11 +1410,11 @@ photochromic
 photodiode
 photophore
 phthalocyanine
-phenotypic
 phyle
 physicochemical
 picatinny
 pickelhaube
+pickerel
 pickhead
 pickin
 piezomechanical
@@ -1478,6 +1495,7 @@ pts
 pufts
 pukers
 pumpkinseed
+pumpkinseeds
 purslane
 purviews
 pushmower
@@ -1540,7 +1558,7 @@ reckonin
 recolherem
 recrafted
 recursively
-recurve 
+recurve
 redcaps
 redear
 redits
@@ -1582,6 +1600,7 @@ rhytidomes
 ribbonlike
 ridged
 riendly
+rightmost
 rigida
 riotbot
 riskin
@@ -1656,6 +1675,7 @@ seguiram
 semiaquatic
 sendin
 sendo
+senet
 serendipitously
 serrate
 servomotors
@@ -1679,6 +1699,7 @@ shlip
 shlop
 shoddiness
 shoggoth
+shogi
 shopkeep
 shoppette
 shorthair
@@ -1934,6 +1955,7 @@ tricorne
 trifacet
 trifacets
 trilaser
+trilobite
 tripcore
 troglobite
 troodon
@@ -1941,6 +1963,7 @@ troublin
 tryphillum
 tshirt
 tshk
+tsumi
 ttitude
 tumescences
 tundras
@@ -1976,6 +1999,7 @@ undulates
 uneasing
 unfavorite
 unfermented
+unfixable
 unflavored
 unfoldable
 ungraspable
@@ -2024,12 +2048,12 @@ utilibot
 uttarasanga
 v
 vajra
+valhallist
 vambraces
 vantablack
 varanid
 vars
 vatgrown
-valhallist
 vaulters
 veggy
 venandi
@@ -2059,6 +2083,7 @@ wammles
 wanderin
 wantin
 warframe
+wargame
 warhammer
 warmouth
 wastebread
@@ -2105,6 +2130,7 @@ wk
 wolfshead
 woodchips
 woodcutting
+woodlouse
 woodsmanship
 workcycle
 workshifts
@@ -2162,5 +2188,3 @@ zweitimbers
 zygomaticus
 zzz
 zzzzchzzzzchurzzzpileus
-trilobite
-woodlouse
