@@ -679,7 +679,7 @@
   {
     "id": "RAD_PROOF",
     "type": "json_flag",
-    "info": "This clothing <good>completely protects</good> you from <info>radiation</info>.",
+    "info": "This clothing <good>completely protects</good> you from <info>radiation</info> if it completely covers you.  Otherwise, it provides only partial protection.",
     "conflicts": [ "RAD_RESIST" ]
   },
   {
@@ -888,12 +888,6 @@
   {
     "id": "WET",
     "type": "json_flag"
-  },
-  {
-    "id": "POWERARMOR_COMPATIBLE",
-    "type": "json_flag",
-    "//": "Allows power armor to be worn with compatible armors like ear plugs and mouthpieces.",
-    "info": "This item can be worn simultaneously with power armor."
   },
   {
     "id": "ZERO_WEIGHT",

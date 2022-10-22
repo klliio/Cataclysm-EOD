@@ -5422,10 +5422,22 @@ bool Character::is_immune_damage( const damage_type dt ) const
     }
 }
 
-bool Character::is_rad_immune() const
+radiation_protection Character::is_rad_protected() const
 {
-    bool has_helmet = false;
-    return ( is_wearing_power_armor( &has_helmet ) && has_helmet ) || worn_with_flag( flag_RAD_PROOF );
+    // check if you have some radiation resistance
+    radiation_protection fallback = radiation_protection::NONE;
+    if( worn_with_flag( flag_RAD_PROOF ) || worn_with_flag( flag_RAD_RESIST ) ) {
+        fallback = radiation_protection::RESISTS;
+    }
+
+    // check if each bodypart is radiation proof
+    for( const bodypart_id bp : get_all_body_parts() ) {
+        if( !worn_with_flag( flag_RAD_PROOF, bp ) ) {
+            return fallback;
+        }
+    }
+
+    return radiation_protection::IMMUNE;
 }
 
 int Character::throw_range( const item &it ) const
@@ -9116,7 +9128,7 @@ float Character::power_rating() const
     if( get_size() == creature_size::huge ) {
         ret += 1;
     }
-    if( is_wearing_power_armor( nullptr ) ) {
+    if( worn_with_flag( flag_THREATENING ) ) {
         ret = 5; // No mercy!
     }
     return ret;

@@ -926,9 +926,6 @@ bool item::covers( const bodypart_id &bp ) const
 
 cata::optional<side> item::covers_overlaps( const item &rhs ) const
 {
-    if( get_layer() != rhs.get_layer() ) {
-        return cata::nullopt;
-    }
     const islot_armor *armor = find_armor_data();
     if( armor == nullptr ) {
         return cata::nullopt;
@@ -937,6 +934,28 @@ cata::optional<side> item::covers_overlaps( const item &rhs ) const
     if( rhs_armor == nullptr ) {
         return cata::nullopt;
     }
+
+    const std::vector<layer_level> it1 = get_layer();
+    const std::vector<layer_level> it2 = rhs.get_layer();
+
+    bool layer_overlap = false;
+    // TODO: Handle armor with variable layer depending on body part.
+    for( unsigned int i = 0; i < it1.size(); ++i ) {
+        for( unsigned int j = 0; j < it2.size(); ++j ) {
+            if( it1[i] == it2[j] ) {
+                layer_overlap = true;
+                break;
+            }
+        }
+        if( layer_overlap ) {
+            break;
+        }
+    }
+
+    if( !layer_overlap ) {
+        return cata::nullopt;
+    }
+
     body_part_set this_covers;
     for( const armor_portion_data &data : armor->data ) {
         if( data.covers.has_value() ) {
@@ -1126,7 +1145,7 @@ bool item::has_noisy_pockets() const
 
 bool item::is_worn_only_with( const item &it ) const
 {
-    return is_power_armor() && it.is_power_armor() && it.covers( bodypart_id( "torso" ) );
+    return has_flag( flag_POWERARMOR_COMPONENT ) && it.has_flag( flag_POWERARMOR_BASE );
 }
 bool item::is_worn_by_player() const
 {
@@ -7695,11 +7714,7 @@ int item::get_base_env_resist_w_filter() const
 
 bool item::is_power_armor() const
 {
-    const islot_armor *t = find_armor_data();
-    if( t == nullptr ) {
-        return is_pet_armor() ? type->pet_armor->power_armor : false;
-    }
-    return t->power_armor;
+    return has_flag( flag_POWERARMOR_COMPONENT ) || has_flag( flag_POWERARMOR_BASE );
 }
 
 int item::get_avg_encumber( const Character &p, encumber_flags flags ) const
@@ -9146,9 +9161,9 @@ item::armor_status item::damage_armor_durability( damage_unit &du, const bodypar
             return armor_status::UNDAMAGED;
         }
     } else {
-        // Sturdy items and power armors never take chip damage.
+        // Sturdy items never take chip damage.
         // Other armors have 0.5% of getting damaged from hits below their armor value.
-        if( has_flag( flag_STURDY ) || is_power_armor() || !one_in( 200 ) ) {
+        if( has_flag( flag_STURDY ) || !one_in( 200 ) ) {
             return armor_status::UNDAMAGED;
         }
     }
