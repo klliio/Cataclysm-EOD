@@ -415,5 +415,81 @@
     "batch_time_factors": [ 30, 5 ],
     "qualities": [ { "id": "CHEM", "level": 2 } ],
     "components": [ [ [ "chem_lithium", 125 ] ], [ [ "water_clean", 1 ] ], [ [ "gas_carbon_dioxide", 50 ] ] ]
+  },
+  {
+    "type": "recipe",
+    "activity_level": "LIGHT_EXERCISE",
+    "result": "chem_nitrocellulose",
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_CHEMICALS",
+    "skill_used": "chemistry",
+    "difficulty": 7,
+    "time": "1 h",
+    "charges": 205,
+    "book_learn": [ [ "textbook_anarch", 7 ], [ "recipe_labchem", 4 ], [ "textbook_chemistry", 4 ] ],
+    "qualities": [ { "id": "CHEM", "level": 2 }, { "id": "CONTAIN", "level": 1 } ],
+    "components": [
+      [ [ "cotton_ball", 20 ] ],
+      [ [ "chem_nitric_acid", 1 ] ],
+      [ [ "chem_sulphuric_acid", 1 ] ],
+      [ [ "chem_washing_soda", 10 ], [ "chem_baking_soda", 10 ] ],
+      [ [ "water_clean", 40 ] ]
+    ]
+  },
+  {
+    "type": "recipe",
+    "activity_level": "LIGHT_EXERCISE",
+    "result": "chem_camphor",
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_CHEMICALS",
+    "skill_used": "chemistry",
+    "difficulty": 6,
+    "time": "2 h",
+    "charges": 250,
+    "book_learn": [ [ "textbook_anarch", 7 ], [ "recipe_labchem", 4 ], [ "textbook_chemistry", 4 ] ],
+    "qualities": [ { "id": "CHEM", "level": 2 }, { "id": "FINE_DISTILL", "level": 1 } ],
+    "tools": [ [ [ "surface_heat", 20, "LIST" ] ] ],
+    "components": [
+      [ [ "chem_turpentine", 800 ] ],
+      [ [ "chem_muriatic_acid", 1 ] ],
+      [ [ "chem_aniline", 50 ] ],
+      [ [ "chem_sulphur", 50 ] ],
+      [ [ "water_clean", 1 ] ]
+    ]
+  },
+  {
+    "type": "recipe",
+    "activity_level": "LIGHT_EXERCISE",
+    "result": "chem_aniline",
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_CHEMICALS",
+    "skill_used": "chemistry",
+    "difficulty": 6,
+    "time": "2 h",
+    "charges": 250,
+    "book_learn": [ [ "textbook_anarch", 7 ], [ "recipe_labchem", 4 ], [ "textbook_chemistry", 4 ] ],
+    "qualities": [ { "id": "CHEM", "level": 2 } ],
+    "tools": [ [ [ "surface_heat", 20, "LIST" ] ], [ [ "platinum_grille", -1 ] ] ],
+    "components": [
+      [ [ "chem_benzene", 250 ] ],
+      [ [ "chem_nitric_acid", 1 ] ],
+      [ [ "chem_sulphuric_acid", 1 ] ],
+      [ [ "gas_hydrogen", 50 ] ]
+    ]
+  },
+  {
+    "type": "recipe",
+    "activity_level": "LIGHT_EXERCISE",
+    "result": "chem_diphenylamine",
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_CHEMICALS",
+    "skill_used": "chemistry",
+    "difficulty": 6,
+    "time": "1 h",
+    "charges": 125,
+    "book_learn": [ [ "textbook_anarch", 7 ], [ "recipe_labchem", 4 ], [ "textbook_chemistry", 4 ] ],
+    "qualities": [ { "id": "CHEM", "level": 2 }, { "id": "FINE_DISTILL", "level": 1 } ],
+    "tools": [ [ [ "surface_heat", 50, "LIST" ] ], [ [ "pressure_cooker", -1 ] ], [ [ "chem_muriatic_acid", -1 ] ] ],
+    "components": [ [ [ "chem_aniline", 250 ] ] ]
   }
 ]

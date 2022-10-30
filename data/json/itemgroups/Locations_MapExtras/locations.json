@@ -1769,6 +1769,7 @@
     "id": "church",
     "subtype": "distribution",
     "entries": [
+      { "item": "chem_camphor", "prob": 20 },
       { "group": "clothing_glasses", "prob": 80 },
       { "item": "child_book", "prob": 60 },
       { "item": "oil_lamp_clay", "prob": 20 },

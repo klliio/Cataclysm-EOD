@@ -1,0 +1,79 @@
+[
+  {
+    "type": "recipe",
+    "activity_level": "LIGHT_EXERCISE",
+    "result": "gunpowder",
+    "id_suffix": "single_base",
+    "category": "CC_AMMO",
+    "subcategory": "CSC_AMMO_COMPONENTS",
+    "skill_used": "chemistry",
+    "difficulty": 8,
+    "time": "1 h",
+    "charges": 4200,
+    "book_learn": [ [ "textbook_anarch", 7 ], [ "recipe_labchem", 4 ], [ "textbook_chemistry", 4 ] ],
+    "qualities": [ { "id": "CHEM", "level": 2 } ],
+    "tools": [ [ [ "surface_heat", 5, "LIST" ] ], [ [ "pastaextruder", -1 ] ] ],
+    "components": [
+      [ [ "chem_nitrocellulose", 500 ] ],
+      [ [ "chem_ethanol", 5 ], [ "denat_alcohol", 5 ] ],
+      [ [ "ether", 5 ] ],
+      [ [ "chem_diphenylamine", 8 ] ],
+      [ [ "water_clean", 1 ] ],
+      [ [ "chem_camphor", 8 ] ],
+      [ [ "rosin", 15 ] ]
+    ]
+  },
+  {
+    "type": "recipe",
+    "activity_level": "LIGHT_EXERCISE",
+    "result": "gunpowder",
+    "id_suffix": "double_base",
+    "category": "CC_AMMO",
+    "subcategory": "CSC_AMMO_COMPONENTS",
+    "skill_used": "chemistry",
+    "difficulty": 8,
+    "time": "3 h",
+    "charges": 5000,
+    "book_learn": [ [ "textbook_anarch", 7 ], [ "recipe_labchem", 4 ], [ "textbook_chemistry", 4 ] ],
+    "qualities": [ { "id": "CHEM", "level": 2 } ],
+    "tools": [ [ [ "surface_heat", 50, "LIST" ] ], [ [ "pastaextruder", -1 ] ] ],
+    "components": [
+      [ [ "chem_nitrocellulose", 250 ] ],
+      [ [ "chem_ethanol", 5 ], [ "denat_alcohol", 5 ] ],
+      [ [ "ether", 5 ] ],
+      [ [ "chem_diphenylamine", 8 ], [ "chem_petroleumjelly", 8 ], [ "chem_aniline", 8 ] ],
+      [ [ "water_clean", 24 ] ],
+      [ [ "chem_camphor", 40 ] ],
+      [ [ "chem_sulphuric_acid", 2 ] ],
+      [ [ "chem_nitric_acid", 1 ] ],
+      [ [ "chem_washing_soda", 5 ], [ "chem_baking_soda", 5 ] ],
+      [ [ "chem_glycerol", 2 ] ]
+    ]
+  },
+  {
+    "type": "recipe",
+    "activity_level": "LIGHT_EXERCISE",
+    "result": "gunpowder",
+    "id_suffix": "double_base2",
+    "category": "CC_AMMO",
+    "subcategory": "CSC_AMMO_COMPONENTS",
+    "skill_used": "chemistry",
+    "difficulty": 8,
+    "time": "3 h",
+    "charges": 5000,
+    "book_learn": [ [ "textbook_anarch", 7 ], [ "recipe_labchem", 4 ], [ "textbook_chemistry", 4 ] ],
+    "qualities": [ { "id": "CHEM", "level": 2 } ],
+    "tools": [ [ [ "surface_heat", 50, "LIST" ] ], [ [ "pastaextruder", -1 ] ] ],
+    "components": [
+      [ [ "chem_nitrocellulose", 250 ] ],
+      [ [ "chem_acetone", 1 ] ],
+      [ [ "chem_diphenylamine", 8 ], [ "chem_petroleumjelly", 8 ], [ "chem_aniline", 8 ] ],
+      [ [ "water_clean", 24 ] ],
+      [ [ "chem_camphor", 40 ] ],
+      [ [ "chem_sulphuric_acid", 2 ] ],
+      [ [ "chem_nitric_acid", 1 ] ],
+      [ [ "chem_washing_soda", 5 ], [ "chem_baking_soda", 5 ] ],
+      [ [ "chem_glycerol", 2 ] ]
+    ]
+  }
+]

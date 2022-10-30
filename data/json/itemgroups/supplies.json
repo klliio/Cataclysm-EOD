@@ -240,6 +240,7 @@
     "//": "General purpose supplies for building / blue collar work.",
     "//2": "Stuff you might find in a jobsite, a hardware store, or a home workshop.",
     "items": [
+      { "item": "chem_petroleumjelly", "prob": 5 },
       { "item": "nuts_bolts", "prob": 80, "charges": [ 5, 10 ], "container-item": "box_small" },
       [ "concrete", 20 ],
       {
@@ -328,6 +329,10 @@
     "id": "supplies_reagents_lab",
     "//": "General laboratory reagents and expendibles.  This list contains most conceivable chemicals in the game.  More specific lists for each type of lab would be reasonable eventually.",
     "items": [
+      { "item": "chem_camphor", "prob": 3 },
+      { "item": "chem_diphenylamine", "prob": 3 },
+      { "item": "chem_petroleumjelly", "prob": 5 },
+      { "item": "chem_aniline", "prob": 5 },
       { "item": "water_clean", "prob": 90, "charges-min": 1, "container-item": "bottle_plastic", "sealed": false },
       { "item": "salt_water", "prob": 20, "charges-min": 1 },
       { "item": "detergent", "prob": 10, "charges": [ 1, 20 ] },

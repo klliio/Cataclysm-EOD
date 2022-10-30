@@ -549,7 +549,7 @@
     "id": "disinfectant",
     "type": "COMESTIBLE",
     "comestible_type": "MED",
-    "name": { "str_sp": "antiseptic" },
+    "name": { "str_sp": "isopropyl alcohol" },
     "description": "A powerful antiseptic commonly used to disinfect wounds.",
     "weight": "27 g",
     "volume": "250 ml",
