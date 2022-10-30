@@ -1379,7 +1379,7 @@
     "category": "chems",
     "price": 10,
     "price_postapoc": 5,
-    "name": { "str_sp": "ether" },
+    "name": { "str_sp": "diethyl ether" },
     "symbol": "!",
     "quench": -96,
     "healthy": -20,

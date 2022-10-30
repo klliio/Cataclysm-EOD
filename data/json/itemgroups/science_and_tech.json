@@ -155,6 +155,10 @@
     "ammo": 50,
     "magazine": 100,
     "items": [
+      { "item": "chem_camphor", "prob": 3 },
+      { "item": "chem_diphenylamine", "prob": 3 },
+      { "item": "chem_petroleumjelly", "prob": 5 },
+      { "item": "chem_aniline", "prob": 5 },
       { "item": "chem_sodium_nitrate", "prob": 10 },
       { "item": "chem_urea", "prob": 10 },
       { "item": "chem_magnesium_oxide", "prob": 10 },
