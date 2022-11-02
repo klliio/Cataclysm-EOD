@@ -1208,10 +1208,6 @@ TEST_CASE( "armor fit and sizing", "[iteminfo][armor][fit]" )
     CHECK( item_info_str( briefcase, sided ) ==
            "--\n"
            "* This item can be worn on <color_c_cyan>either side</color> of the body.\n" );
-
-    item power_armor( "test_power_armor" );
-    CHECK_THAT( item_info_str( power_armor, powerarmor ),
-                Catch::EndsWith( "* This gear is a part of power armor.\n" ) );
 }
 
 static void expected_armor_values( const item &armor, float bash, float cut, float stab,
@@ -2545,7 +2541,8 @@ TEST_CASE( "item description flags", "[iteminfo][flags]" )
            " <color_c_cyan>any gas</color>.\n"
            "* This gear is generally <color_c_cyan>worn over</color> clothing.\n"
            "* This clothing <color_c_green>completely protects</color> you from"
-           " <color_c_cyan>radiation</color>.\n"
+           " <color_c_cyan>radiation</color> if it completely covers you.  Otherwise, it"
+           " provides only partial protection.\n"
            "* This clothing is designed to keep you <color_c_cyan>dry</color> in the rain.\n"
            "* This clothing <color_c_cyan>won't let water through</color>."
            "  Unless you jump in the river or something like that.\n" );
