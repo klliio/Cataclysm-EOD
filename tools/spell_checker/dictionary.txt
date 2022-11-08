@@ -156,6 +156,7 @@ barebones
 barghest
 barkin
 barosaurus
+barotrarumatic
 basecamp
 basecamps
 baselard
@@ -566,6 +567,7 @@ electrochemistry
 electrohack
 electrolaser
 electrolasers
+electromancy
 electroreceptors
 elete
 elopements
@@ -1821,6 +1823,7 @@ stegosaurus
 stegosaurusfindsrobot
 stenonychosaurus
 stimulative
+stimulators
 stimulatory
 stipe
 stirfry
@@ -1907,6 +1910,8 @@ temaki
 tems
 tenontosaurus
 tenuously
+teravolt
+teravolts
 terpenes
 terranean
 testbed
