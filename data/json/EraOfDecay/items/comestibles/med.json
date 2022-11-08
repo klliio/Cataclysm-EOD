@@ -150,5 +150,30 @@
     "container": "bottle_plastic_pill_prescription",
     "flags": [ "EDIBLE_FROZEN" ],
     "use_action": [ "PROZAC" ]
+  },
+  {
+    "id": "modafinil",
+    "type": "COMESTIBLE",
+    "comestible_type": "MED",
+    "name": { "str_sp": "modafinil" },
+    "description": "A central nervous system stimulant medication used to treat sleepiness due to narcolepsy, shift work sleep disorder, and obstructive sleep apnea.  It has also seen off-label use as a purported cognitive enhancer.  It is usually taken once per day in the morning, and has a low potential for addiction.",
+    "looks_like": "adderall",
+    "weight": "1 g",
+    "volume": "1 ml",
+    "stack_size": 1,
+    "price": 2000,
+    "symbol": "!",
+    "color": "white",
+    "healthy": -1,
+    "fun": 4,
+    "addiction_potential": 3,
+    "addiction_type": "cocaine",
+    "container": "bottle_plastic_pill_prescription",
+    "flags": [ "WATER_DISSOLVE", "EDIBLE_FROZEN" ],
+    "use_action": {
+      "type": "consume_drug",
+      "activation_message": "You take some modafinil.",
+      "effects": [ { "id": "effect_modafinil", "duration": "12 h" } ]
+    }
   }
 ]

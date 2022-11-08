@@ -3190,6 +3190,7 @@
       { "item": "antifungal", "prob": 1, "charges": [ 0, 10 ] },
       { "item": "antiparasitic", "prob": 5, "charges": [ 0, 10 ] },
       { "item": "diazepam", "prob": 1, "charges": [ 0, 10 ] },
+      { "item": "modafinil", "prob": 1, "charges": [ 0, 10 ] },
       [ "throw_extinguisher", 2 ],
       { "item": "small_repairkit", "prob": 14, "charges": [ 0, 500 ] },
       [ "grapnel", 6 ],

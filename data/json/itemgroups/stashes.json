@@ -67,6 +67,7 @@
       { "item": "antifungal", "prob": 1, "charges": [ 1, 5 ] },
       { "item": "antiparasitic", "prob": 2, "charges": [ 1, 10 ] },
       { "item": "diazepam", "prob": 1, "charges": [ 1, 10 ] },
+      { "item": "modafinil", "prob": 1, "charges": [ 1, 10 ] },
       { "item": "lsd", "prob": 6, "charges": [ 1, 5 ] }
     ]
   },

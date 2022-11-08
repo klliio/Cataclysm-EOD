@@ -217,6 +217,7 @@ static const efftype_id effect_disrupted_sleep( "disrupted_sleep" );
 static const efftype_id effect_downed( "downed" );
 static const efftype_id effect_drunk( "drunk" );
 static const efftype_id effect_earphones( "earphones" );
+static const efftype_id effect_modafinil( "effect_modafinil" );
 static const efftype_id effect_flu( "flu" );
 static const efftype_id effect_foodpoison( "foodpoison" );
 static const efftype_id effect_fungus( "fungus" );
@@ -3283,14 +3284,16 @@ void Character::do_skill_rust()
 
 int Character::focus_equilibrium_fatigue_cap( int equilibrium ) const
 {
-    if( get_fatigue() >= fatigue_levels::MASSIVE_FATIGUE && equilibrium > 20 ) {
-        return 20;
-    } else if( get_fatigue() >= fatigue_levels::EXHAUSTED && equilibrium > 40 ) {
-        return 40;
-    } else if( get_fatigue() >= fatigue_levels::DEAD_TIRED && equilibrium > 60 ) {
-        return 60;
-    } else if( get_fatigue() >= fatigue_levels::TIRED && equilibrium > 80 ) {
-        return 80;
+    if( !has_effect( effect_modafinil ) ) {
+        if( get_fatigue() >= fatigue_levels::MASSIVE_FATIGUE && equilibrium > 20 ) {
+            return 20;
+        } else if( get_fatigue() >= fatigue_levels::EXHAUSTED && equilibrium > 40 ) {
+            return 40;
+        } else if( get_fatigue() >= fatigue_levels::DEAD_TIRED && equilibrium > 60 ) {
+            return 60;
+        } else if( get_fatigue() >= fatigue_levels::TIRED && equilibrium > 80 ) {
+            return 80;
+        }
     }
     return equilibrium;
 }
@@ -4550,7 +4553,10 @@ void Character::update_needs( int rate_multiplier )
     if( get_fatigue() < 1050 && !asleep && !debug_ls ) {
         if( rates.fatigue > 0.0f ) {
             int fatigue_roll = roll_remainder( rates.fatigue * rate_multiplier );
-            mod_fatigue( fatigue_roll );
+            // Modafinil will stop fatigue accumulation, but not sleep deprivation accumulation.
+            if( !has_effect( effect_modafinil ) ) {
+                mod_fatigue( fatigue_roll );
+            }
 
             // Synaptic regen bionic stops SD while awake and boosts it while sleeping
             if( !has_flag( json_flag_STOP_SLEEP_DEPRIVATION ) ) {
@@ -4864,20 +4870,24 @@ void Character::check_needs_extremes()
     // Check if we're falling asleep, unless we're sleeping
     if( get_fatigue() >= fatigue_levels::EXHAUSTED + 25 && !in_sleep_state() ) {
         if( get_fatigue() >= fatigue_levels::MASSIVE_FATIGUE ) {
+            // Modafinil won't prevent falling asleep here, but in this case it should only be reachable if fatigue is caused by
+            // something more than just time spent awake.
             add_msg_if_player( m_bad, _( "Survivor sleep now." ) );
             get_event_bus().send<event_type::falls_asleep_from_exhaustion>( getID() );
             mod_fatigue( -10 );
             fall_asleep();
-        } else if( get_fatigue() >= 800 && calendar::once_every( 30_minutes ) ) {
+        } else if( get_fatigue() >= 800 && calendar::once_every( 30_minutes ) &&
+                   !has_effect( effect_modafinil ) ) {
             add_msg_if_player( m_warning, _( "Anywhere would be a good place to sleep…" ) );
-        } else if( calendar::once_every( 30_minutes ) ) {
+        } else if( calendar::once_every( 30_minutes ) && !has_effect( effect_modafinil ) ) {
             add_msg_if_player( m_warning, _( "You feel like you haven't slept in days." ) );
         }
     }
 
     // Even if we're not Exhausted, we really should be feeling lack/sleep earlier
     // Penalties start at Dead Tired and go from there
-    if( get_fatigue() >= fatigue_levels::DEAD_TIRED && !in_sleep_state() ) {
+    if( get_fatigue() >= fatigue_levels::DEAD_TIRED && !in_sleep_state() &&
+        !has_effect( effect_modafinil ) ) {
         if( get_fatigue() >= 700 ) {
             if( calendar::once_every( 30_minutes ) ) {
                 add_msg_if_player( m_warning, _( "You're too physically tired to stop yawning." ) );
@@ -4941,13 +4951,17 @@ void Character::check_needs_extremes()
             // Microsleeps are slightly worse if you're sleep deprived, but not by much. (chance: 1 in (75 + int_cur) at lethal sleep deprivation)
             // Note: these can coexist with fatigue-related microsleeps
             /** @EFFECT_INT slightly decreases occurrence of short naps when sleep deprived */
-            if( one_in( static_cast<int>( sleep_deprivation_pct * 75 ) + int_cur ) ) {
+            if( one_in( static_cast<int>( sleep_deprivation_pct * 75 ) + int_cur ) &&
+                !has_effect( effect_modafinil ) ) {
                 fall_asleep( 30_seconds );
             }
 
             // Stimulants can be used to stay awake a while longer, but after a while you'll just collapse.
-            bool can_pass_out = ( get_stim() < 30 && sleep_deprivation >= SLEEP_DEPRIVATION_MINOR ) ||
-                                sleep_deprivation >= SLEEP_DEPRIVATION_MAJOR;
+            // Modafinil will help more, but won't allow to stay awake forever either.
+            bool can_pass_out = ( ( !has_effect( effect_modafinil ) || get_stim() < 30 ) &&
+                                  sleep_deprivation >= SLEEP_DEPRIVATION_MINOR ) ||
+                                ( sleep_deprivation >= SLEEP_DEPRIVATION_MAJOR && !has_effect( effect_modafinil ) ) ||
+                                sleep_deprivation >= SLEEP_DEPRIVATION_MASSIVE;
 
             if( can_pass_out && calendar::once_every( 10_minutes ) ) {
                 /** @EFFECT_PER slightly increases resilience against passing out from sleep deprivation */

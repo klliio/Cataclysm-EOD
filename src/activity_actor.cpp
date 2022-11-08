@@ -150,6 +150,7 @@ static const activity_id ACT_WORKOUT_MODERATE( "ACT_WORKOUT_MODERATE" );
 static const ammotype ammo_plutonium( "plutonium" );
 
 static const efftype_id effect_docile( "docile" );
+static const efftype_id effect_modafinil( "effect_modafinil" );
 static const efftype_id effect_paid( "paid" );
 static const efftype_id effect_pet( "pet" );
 static const efftype_id effect_sensor_stun( "sensor_stun" );
@@ -3201,7 +3202,7 @@ std::unique_ptr<activity_actor> craft_activity_actor::deserialize( JsonValue &js
 
 void workout_activity_actor::start( player_activity &act, Character &who )
 {
-    if( who.get_fatigue() > fatigue_levels::DEAD_TIRED ) {
+    if( who.get_fatigue() > fatigue_levels::DEAD_TIRED && !who.has_effect( effect_modafinil ) ) {
         who.add_msg_if_player( _( "You are too tired to exercise." ) );
         act_id = activity_id::NULL_ID();
         act.set_to_null();
@@ -3308,7 +3309,7 @@ void workout_activity_actor::start( player_activity &act, Character &who )
 
 void workout_activity_actor::do_turn( player_activity &act, Character &who )
 {
-    if( who.get_fatigue() > fatigue_levels::DEAD_TIRED ) {
+    if( who.get_fatigue() > fatigue_levels::DEAD_TIRED && !who.has_effect( effect_modafinil ) ) {
         who.add_msg_if_player( _( "You are exhausted so you finish your workout early." ) );
         act.set_to_null();
         return;

@@ -83,6 +83,7 @@
       [ "antifungal", 100 ],
       [ "antiparasitic", 100 ],
       [ "diazepam", 100 ],
+      [ "modafinil", 100 ],
       [ "calcium_tablet", 100 ],
       [ "inj_iron", 100 ],
       [ "prozac", 100 ],
@@ -196,6 +197,7 @@
       { "item": "antiparasitic", "prob": 3, "charges": [ 1, 10 ] },
       [ "survnote", 1 ],
       { "item": "diazepam", "prob": 4, "charges": [ 1, 10 ] },
+      { "item": "modafinil", "prob": 4, "charges": [ 1, 10 ] },
       [ "flu_shot", 5 ],
       [ "syringe", 8 ]
     ]
