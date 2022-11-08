@@ -1568,8 +1568,9 @@ cata::optional<int> iuse::petfood( Character *p, item *it, bool, const tripoint 
         return cata::nullopt;
     }
 
-    const cata::optional<tripoint> pnt = choose_adjacent( string_format( _( "Put the %s where?" ),
-                                         it->tname() ) );
+    const cata::optional<tripoint> pnt = choose_adjacent( string_format(
+            _( "Tame which animal with %s?" ),
+            it->tname() ) );
     if( !pnt ) {
         return cata::nullopt;
     }
@@ -8670,7 +8671,7 @@ cata::optional<int> iuse::cable_attach( Character *p, item *it, bool, const trip
                     return itm.has_flag( flag_SOLARPACK_ON );
                 };
                 if( you != nullptr )                     {
-                    loc = game_menus::inv::titled_filter_menu( solar_filter, *you, choose_solar, dont_have_solar );
+                    loc = game_menus::inv::titled_filter_menu( solar_filter, *you, choose_solar, -1, dont_have_solar );
                 }
                 if( !loc ) {
                     add_msg( _( "Never mind" ) );
@@ -8683,7 +8684,7 @@ cata::optional<int> iuse::cable_attach( Character *p, item *it, bool, const trip
                 return 0;
             } else if( choice == 3 ) {
                 if( you != nullptr )                     {
-                    loc = game_menus::inv::titled_filter_menu( filter, *you, choose_ups, dont_have_ups );
+                    loc = game_menus::inv::titled_filter_menu( filter, *you, choose_ups, -1, dont_have_ups );
                 }
                 if( !loc ) {
                     add_msg( _( "Never mind" ) );
@@ -8791,7 +8792,7 @@ cata::optional<int> iuse::cable_attach( Character *p, item *it, bool, const trip
                 return itm.has_flag( flag_SOLARPACK_ON );
             };
             if( you != nullptr )                     {
-                loc = game_menus::inv::titled_filter_menu( solar_filter, *you, choose_solar, dont_have_solar );
+                loc = game_menus::inv::titled_filter_menu( solar_filter, *you, choose_solar, -1, dont_have_solar );
             }
             if( !loc ) {
                 add_msg( _( "Never mind" ) );
@@ -8803,7 +8804,7 @@ cata::optional<int> iuse::cable_attach( Character *p, item *it, bool, const trip
             p->add_msg_if_player( m_good, _( "You are now plugged to the solar backpack." ) );
             return 0;
         } else if( choice == 4 ) {
-            loc = game_menus::inv::titled_filter_menu( filter, *you, choose_ups, dont_have_ups );
+            loc = game_menus::inv::titled_filter_menu( filter, *you, choose_ups, -1, dont_have_ups );
             // connecting self to UPS
             if( !loc ) {
                 add_msg( _( "Never mind" ) );
@@ -9793,7 +9794,7 @@ cata::optional<int> iuse::electricstorage( Character *p, item *it, bool t, const
 
     item_location storage_card = game_menus::inv::titled_filter_menu(
                                      filter, *p->as_avatar(), _( "Use what storage device?" ),
-                                     _( "You don't have any empty book storage devices." ) );
+                                     -1, _( "You don't have any empty book storage devices." ) );
 
     if( !storage_card ) {
         return cata::nullopt;
@@ -9922,7 +9923,7 @@ cata::optional<int> iuse::ebooksave( Character *p, item *it, bool t, const tripo
     [&p, &ebooks]( const item & itm ) {
         return itm.is_book() && p->has_identified( itm.typeId() ) && !ebooks.count( itm.typeId() );
     },
-    *p->as_avatar(), _( "Scan which book?" ) );
+    *p->as_avatar(), _( "Scan which book?" ), PICKUP_RANGE );
 
     if( !book ) {
         p->add_msg_if_player( m_info, _( "Nevermind." ) );
