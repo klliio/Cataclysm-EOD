@@ -1717,7 +1717,7 @@
     "id": "NARCOLEPTIC",
     "name": { "str": "Narcoleptic" },
     "points": -3,
-    "description": "You randomly fall asleep without any reason.",
+    "description": "You randomly fall asleep without any reason.  This can be prevented by taking modafinil.",
     "starting_trait": true,
     "category": [ "MEDICAL" ]
   },
