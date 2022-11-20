@@ -1,0 +1,53 @@
+[
+  {
+    "abstract": "reagent_powder",
+    "type": "AMMO",
+    "name": { "str_sp": "powder reagent" },
+    "weight": "1 g",
+    "volume": "1 ml",
+    "price": 3000,
+    "price_postapoc": 500,
+    "container": "bottle_plastic_small",
+    "material": [ "powder_nonflam" ],
+    "symbol": "=",
+    "category": "chems",
+    "color": "white",
+    "ammo_type": "components",
+    "count": 1
+  },
+  {
+    "abstract": "reagent_liquid",
+    "type": "COMESTIBLE",
+    "comestible_type": "INVALID",
+    "name": { "str_sp": "liquid reagent" },
+    "weight": "1 g",
+    "volume": "1 ml",
+    "price": 3000,
+    "price_postapoc": 500,
+    "phase": "liquid",
+    "container": "flask_glass",
+    "material": [ "liquid_nonflam" ],
+    "symbol": "~",
+    "category": "chems",
+    "color": "light_gray",
+    "flags": [ "INEDIBLE" ]
+  },
+  {
+    "abstract": "reagent_gas",
+    "type": "COMESTIBLE",
+    "comestible_type": "INVALID",
+    "name": { "str_sp": "gas reagent" },
+    "weight": "10 mg",
+    "volume": "1 ml",
+    "price": 67,
+    "price_postapoc": 50,
+    "phase": "gas",
+    "container": "pressure_tank",
+    "material": [ "gas_nonflam" ],
+    "symbol": "~",
+    "category": "chems",
+    "color": "light_gray",
+    "stack_size": 1,
+    "flags": [ "INEDIBLE" ]
+  }
+]

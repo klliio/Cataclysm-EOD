@@ -83,12 +83,12 @@
   {
     "type": "item_action",
     "id": "HOTPLATE",
-    "name": { "str": "Heat up food (with it)" }
+    "name": { "str": "Heat up something (with it)" }
   },
   {
     "type": "item_action",
     "id": "HOTPLATE_ATOMIC",
-    "name": { "str": "Heat up food (with it)" }
+    "name": { "str": "Heat up something (with it)" }
   },
   {
     "type": "item_action",
@@ -593,7 +593,7 @@
   {
     "type": "item_action",
     "id": "HEAT_FOOD",
-    "name": { "str": "Heat up food (in it)" }
+    "name": { "str": "Heat up something (in it)" }
   },
   {
     "type": "item_action",

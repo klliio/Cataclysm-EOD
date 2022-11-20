@@ -657,7 +657,7 @@ class comestible_inventory_preset : public inventory_selector_preset
                     return to_string_clipped( spoils );
                 }
                 //~ Used for permafood shelf life in the Eat menu
-                return std::string( _( "indefinite" ) );
+                return std::string( _( "unlimited" ) );
             }, _( "SHELF LIFE" ) );
 
             append_cell( []( const item_location & loc ) {

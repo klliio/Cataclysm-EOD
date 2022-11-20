@@ -481,7 +481,7 @@
     "material": [ "rubber" ],
     "symbol": ",",
     "color": "green",
-    "qualities": [ [ "HOSE", 1 ] ]
+    "qualities": [ [ "HOSE", 1 ], [ "CHEM_GAS", 2 ] ]
   },
   {
     "id": "jack",
@@ -1598,7 +1598,7 @@
     "material": [ "leather" ],
     "symbol": ",",
     "color": "green",
-    "qualities": [ [ "HOSE", 1 ] ]
+    "qualities": [ [ "HOSE", 1 ], [ "CHEM_GAS", 1 ] ]
   },
   {
     "id": "makeshift_hand_drill",

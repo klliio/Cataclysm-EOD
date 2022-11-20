@@ -101,8 +101,8 @@ constexpr units::temperature fridge = units::from_fahrenheit( 37 ); // ~ 2.7 Cel
 // Temperature at which things are considered "cold".
 constexpr units::temperature cold = units::from_fahrenheit( 40 ); // ~4.4 C
 
-// Temperature inside an active freezer in Fahrenheit.
-constexpr units::temperature freezer = units::from_celsius( -5 ); // -5 Celsius
+// Temperature inside an active freezer in Celsius.
+constexpr units::temperature freezer = units::from_celsius( -18 ); // -18 Celsius
 
 // Temperature in which water freezes.
 constexpr units::temperature freezing = units::from_celsius( 0 ); // 0 Celsius

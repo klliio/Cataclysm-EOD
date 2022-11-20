@@ -125,6 +125,7 @@ static const activity_id ACT_GAME( "ACT_GAME" );
 static const activity_id ACT_GENERIC_GAME( "ACT_GENERIC_GAME" );
 static const activity_id ACT_HAND_CRANK( "ACT_HAND_CRANK" );
 static const activity_id ACT_HEATING( "ACT_HEATING" );
+static const activity_id ACT_COOLING( "ACT_COOLING" );
 static const activity_id ACT_JACKHAMMER( "ACT_JACKHAMMER" );
 static const activity_id ACT_MEND_ITEM( "ACT_MEND_ITEM" );
 static const activity_id ACT_MOVE_LOOT( "ACT_MOVE_LOOT" );
@@ -293,6 +294,7 @@ activity_handlers::finish_functions = {
     { ACT_PULP, pulp_finish },
     { ACT_REPAIR_ITEM, repair_item_finish },
     { ACT_HEATING, heat_item_finish },
+    { ACT_COOLING, cool_item_finish },
     { ACT_MEND_ITEM, mend_item_finish },
     { ACT_TOOLMOD_ADD, toolmod_add_finish },
     { ACT_WAIT, wait_finish },
@@ -2388,18 +2390,48 @@ void activity_handlers::heat_item_finish( player_activity *act, Character *you )
     }
     item &target = *heat;
     if( target.has_own_flag( flag_FROZEN ) ) {
-        target.apply_freezerburn();
-        if( target.has_flag( flag_EATEN_COLD ) ) {
-            target.cold_up();
+        if( target.has_own_flag( flag_EATEN_COLD ) ) {
+            // We first output a message and then actually heat up the item, otherwise new temperature flags will get into the message.
             you->add_msg_if_player( m_info,
-                                    _( "You defrost the food, but don't heat it up, since you enjoy it cold." ) );
+                                    _( "You defrost your %s, but don't heat it up, since you enjoy it cold." ), target.tname() );
+            target.cold_up();
         } else {
+            you->add_msg_if_player( m_info, _( "You defrost and heat up your %s." ), target.tname() );
             target.heat_up();
-            you->add_msg_if_player( m_info, _( "You defrost and heat up the food." ) );
         }
     } else {
+        you->add_msg_if_player( m_info, _( "You heat up your %s." ), target.tname() );
         target.heat_up();
-        you->add_msg_if_player( m_info, _( "You heat up the food." ) );
+    }
+}
+
+void activity_handlers::cool_item_finish( player_activity *act, Character *you )
+{
+    act->set_to_null();
+    if( act->targets.size() != 1 ) {
+        debugmsg( "invalid arguments to ACT_COOLING" );
+        return;
+    }
+    item_location &loc = act->targets[ 0 ];
+    item *const cool = loc.get_item();
+    if( cool == nullptr ) {
+        return;
+    }
+    if( !cool->has_temperature() ) {
+        debugmsg( "item %s is not coolable", cool->typeId().str() );
+        return;
+    }
+    item &target = *cool;
+    const bool want_to_freeze = !( target.has_flag( flag_FREEZERBURN ) ||
+                                   target.has_flag( flag_EATEN_COLD ) ) || target.has_flag( flag_MELTS ) ||
+                                target.has_flag( flag_COLD );
+    if( want_to_freeze ) {
+        // We first output a message and then actually cool down the item, otherwise new temperature flags will get into the message.
+        you->add_msg_if_player( m_info, _( "You freeze your %s." ), target.tname() );
+        target.freeze_up();
+    } else {
+        you->add_msg_if_player( m_info, _( "You cool down your %s." ), target.tname() );
+        target.cold_up();
     }
 }
 

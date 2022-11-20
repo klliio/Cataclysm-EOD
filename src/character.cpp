@@ -135,6 +135,7 @@ static const activity_id ACT_FISH( "ACT_FISH" );
 static const activity_id ACT_GAME( "ACT_GAME" );
 static const activity_id ACT_HAND_CRANK( "ACT_HAND_CRANK" );
 static const activity_id ACT_HEATING( "ACT_HEATING" );
+static const activity_id ACT_COOLING( "ACT_COOLING" );
 static const activity_id ACT_MEDITATE( "ACT_MEDITATE" );
 static const activity_id ACT_MEND_ITEM( "ACT_MEND_ITEM" );
 static const activity_id ACT_MOVE_ITEMS( "ACT_MOVE_ITEMS" );
@@ -8452,6 +8453,7 @@ bool Character::can_use_floor_warmth() const
            has_activity( ACT_GAME ) ||
            has_activity( ACT_HAND_CRANK ) ||
            has_activity( ACT_HEATING ) ||
+           has_activity( ACT_COOLING ) ||
            has_activity( ACT_VIBE ) ||
            has_activity( ACT_TRY_SLEEP ) ||
            has_activity( ACT_OPERATION ) ||
