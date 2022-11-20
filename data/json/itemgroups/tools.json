@@ -663,6 +663,8 @@
       [ "burette", 3 ],
       [ "rotovap", 3 ],
       [ "still_lab", 3 ],
+      [ "cooler_portable", 3 ],
+      [ "uv_lamp", 3 ],
       [ "gelbox", 5 ],
       [ "microcentrifuge", 5 ],
       [ "ketene_lamp", 1 ],

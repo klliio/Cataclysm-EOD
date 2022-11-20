@@ -12863,42 +12863,43 @@ void item::calc_temp( const units::temperature temp, const float insulation,
 
 void item::set_temp_flags( units::temperature new_temperature, float freeze_percentage )
 {
-    units::temperature freezing_temperature = get_freeze_point();
     // Apply temperature tags tags
     // Hot = over  temperatures::hot
     // Warm = over temperatures::warm
     // Cold = below temperatures::cold
     // Frozen = Over 50% frozen
-    if( has_own_flag( flag_FROZEN ) ) {
-        unset_flag( flag_FROZEN );
-        if( freeze_percentage < 0.5 ) {
+    if( new_temperature >= temperatures::hot ) {
+        unset_flag( flag_COLD );
+        set_flag( flag_HOT );
+    } else if( new_temperature > temperatures::cold ) {
+        unset_flag( flag_COLD );
+        unset_flag( flag_HOT );
+    } else {
+        set_flag( flag_COLD );
+        unset_flag( flag_HOT );
+    }
+
+    if( new_temperature <= get_freeze_point() && freeze_percentage > 0.5 ) {
+        set_flag( flag_FROZEN );
+    } else {
+        if( has_own_flag( flag_FROZEN ) ) {
             // Item melts and becomes mushy
-            current_phase = type->phase;
             apply_freezerburn();
-            unset_flag( flag_SHREDDED );
             if( made_of( phase_id::LIQUID ) ) {
                 set_flag( flag_FROM_FROZEN_LIQUID );
             }
         }
-    } else if( has_own_flag( flag_COLD ) ) {
-        unset_flag( flag_COLD );
-    } else if( has_own_flag( flag_HOT ) ) {
-        unset_flag( flag_HOT );
+        unset_flag( flag_FROZEN );
+        unset_flag( flag_SHREDDED );
     }
-    if( new_temperature > temperatures::hot ) {
-        set_flag( flag_HOT );
-    } else if( freeze_percentage > 0.5 ) {
-        set_flag( flag_FROZEN );
-        current_phase = phase_id::SOLID;
-        // If below freezing temp AND the food may have parasites AND food does not have "NO_PARASITES" tag then add the "NO_PARASITES" tag.
-        if( is_food() && new_temperature < freezing_temperature && get_comestible()->parasites > 0 ) {
-            set_flag( flag_NO_PARASITES );
-        }
-    } else if( new_temperature < temperatures::cold ) {
-        set_flag( flag_COLD );
+    // Parasites, if any, are assumed to die at -15 C and at 165 F (73.89 C), regardless of food itself being hot/cold/frozen/etc. In case of low temperature, food would actually need to be kept at that temperature for many days to become parasite-free, but that is abstracted away at the moment.
+    if( ( new_temperature <= units::from_celsius( -15 ) ||
+          new_temperature >= units::from_fahrenheit( 165 ) ) && is_food() &&
+        get_comestible()->parasites > 0 ) {
+        set_flag( flag_NO_PARASITES );
     }
-
-    // Convert water into clean water if it starts boiling
+    // Make water safe to drink (convert it into clean water with no poison) if it reaches boiling temperature.
+    // Freezing water will not make it safe to drink, no matter how low the temperature is; unlike macroscopic parasites, some microorganisms can survive even absolute zero temperature (-273.15 C).
     if( typeId() == itype_water && new_temperature > temperatures::boiling ) {
         convert( itype_water_clean ).poison = 0;
     }
@@ -12910,34 +12911,34 @@ float item::get_item_thermal_energy() const
     return units::to_joule_per_gram( specific_energy ) * mass;
 }
 
-void item::heat_up()
+void item::heat_or_cool_to( units::temperature temp )
 {
-    unset_flag( flag_COLD );
-    unset_flag( flag_FROZEN );
-    unset_flag( flag_SHREDDED );
-    set_flag( flag_HOT );
+    float freeze_percentage = 0;
+    if( temp <= get_freeze_point() ) {
+        freeze_percentage = 1;
+    }
+    set_temp_flags( temp, freeze_percentage );
     current_phase = type->phase;
-    // Set item temperature to 60 C (333.15 K, 122 F)
+    // Set item temperature to min_temp specified
     // Also set the energy to match
-    temperature = units::from_celsius( 60 );
-    specific_energy = get_specific_energy_from_temperature( units::from_celsius( 60 ) );
+    temperature = temp;
+    specific_energy = get_specific_energy_from_temperature( temp );
 
     reset_temp_check();
 }
 
+void item::heat_up()
+{
+    heat_or_cool_to( units::from_celsius( 60 ) );
+}
+
 void item::cold_up()
 {
-    unset_flag( flag_HOT );
-    unset_flag( flag_FROZEN );
-    unset_flag( flag_SHREDDED );
-    set_flag( flag_COLD );
-    current_phase = type->phase;
-    // Set item temperature to 3 C (276.15 K, 37.4 F)
-    // Also set the energy to match
-    temperature = units::from_celsius( 3 );
-    specific_energy = get_specific_energy_from_temperature( units::from_celsius( 3 ) );
-
-    reset_temp_check();
+    heat_or_cool_to( units::from_celsius( 3 ) );
+}
+void item::freeze_up()
+{
+    heat_or_cool_to( temperatures::freezer );
 }
 
 void item::reset_temp_check()

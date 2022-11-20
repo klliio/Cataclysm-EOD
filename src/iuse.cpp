@@ -127,6 +127,7 @@ static const activity_id ACT_GAME( "ACT_GAME" );
 static const activity_id ACT_GENERIC_GAME( "ACT_GENERIC_GAME" );
 static const activity_id ACT_HAND_CRANK( "ACT_HAND_CRANK" );
 static const activity_id ACT_HEATING( "ACT_HEATING" );
+static const activity_id ACT_COOLING( "ACT_COOLING" );
 static const activity_id ACT_JACKHAMMER( "ACT_JACKHAMMER" );
 static const activity_id ACT_PICKAXE( "ACT_PICKAXE" );
 static const activity_id ACT_ROBOT_CONTROL( "ACT_ROBOT_CONTROL" );
@@ -5221,7 +5222,7 @@ static bool heat_item( Character &p )
                ( !itm->made_of_from_type( phase_id::LIQUID ) ||
                  itm.where() == item_location::type::container ||
                  get_map().has_flag_furn( ter_furn_flag::TFLAG_LIQUIDCONT, itm.position() ) );
-    }, _( "Heat up what?" ), 1, _( "You don't have any appropriate food to heat up." ) );
+    }, _( "Heat up what?" ), 1, _( "You don't have anything worth heating up." ) );
 
     item *heat = loc.get_item();
     if( heat == nullptr ) {
@@ -5232,12 +5233,45 @@ static bool heat_item( Character &p )
     // this is x2 to simulate larger delta temperature of frozen food in relation to
     // heating non-frozen food (x1); no real life physics here, only approximations
     int duration = to_turns<int>( time_duration::from_seconds( to_gram( heat->weight() ) ) ) * 10;
-    if( heat->has_own_flag( flag_FROZEN ) && !heat->has_flag( flag_EATEN_COLD ) ) {
+    if( heat->has_own_flag( flag_FROZEN ) && !heat->has_own_flag( flag_EATEN_COLD ) ) {
         duration *= 2;
     }
-    p.add_msg_if_player( m_info, _( "You start heating up the food." ) );
+    p.add_msg_if_player( m_info, _( "You start heating up your %s." ), heat->tname() );
     p.assign_activity( ACT_HEATING, duration );
     p.activity.targets.emplace_back( p, heat );
+    return true;
+}
+
+static bool cool_item( Character &p )
+{
+    item_location loc = g->inv_map_splice( []( const item_location & itm ) {
+        // Minimum temperature achievable by the freezer is assumed to be -18 C.
+        // Anything that is already cold and freezes below that won't be included.
+        return itm->has_temperature() && !itm->has_own_flag( flag_FROZEN ) &&
+               !( itm->has_own_flag( flag_COLD ) && itm->get_freeze_point() < temperatures::freezer ) &&
+               ( !itm->made_of_from_type( phase_id::LIQUID ) ||
+                 itm.where() == item_location::type::container ||
+                 get_map().has_flag_furn( ter_furn_flag::TFLAG_LIQUIDCONT, itm.position() ) );
+    }, _( "Cool down what?" ), 1, _( "You don't have anything worth cooling down." ) );
+
+    item *cool = loc.get_item();
+    if( cool == nullptr ) {
+        add_msg( m_info, _( "Never mind." ) );
+        return false;
+    }
+    const bool want_to_freeze = !( cool->has_flag( flag_FREEZERBURN ) ||
+                                   cool->has_flag( flag_EATEN_COLD ) ) || cool->has_flag( flag_MELTS ) || cool->has_flag( flag_COLD );
+    // simulates heat capacity of food, more weight = longer cooling time
+    // this is x2 to simulate larger delta temperature of hot food in relation to
+    // frozen food; no real life physics here, only approximations
+    // Also 10x time needed compared to heating, as fridges are much less cold than hotplates are hot, and therefore the item temperature changes slower.
+    int duration = to_turns<int>( time_duration::from_seconds( to_gram( cool->weight() ) ) ) * 100;
+    if( cool->has_own_flag( flag_HOT ) && want_to_freeze ) {
+        duration *= 2;
+    }
+    p.add_msg_if_player( m_info, _( "You start cooling down your %s." ), cool->tname() );
+    p.assign_activity( ACT_COOLING, duration );
+    p.activity.targets.emplace_back( p, cool );
     return true;
 }
 
@@ -5247,6 +5281,22 @@ cata::optional<int> iuse::heatpack( Character *p, item *it, bool, const tripoint
         it->convert( itype_heatpack_used );
     }
     return 0;
+}
+
+cata::optional<int> iuse::cooler( Character *p, item *it, bool, const tripoint & )
+{
+    if( p->is_mounted() ) {
+        p->add_msg_if_player( m_info, _( "You can't do that while mounted." ) );
+        return cata::nullopt;
+    }
+    if( !it->ammo_sufficient( p ) ) {
+        p->add_msg_if_player( m_info, _( "The %s's batteries are dead." ), it->tname() );
+        return cata::nullopt;
+    }
+    if( cool_item( *p ) ) {
+        return 1;
+    }
+    return cata::nullopt;
 }
 
 cata::optional<int> iuse::heat_food( Character *p, item *it, bool, const tripoint & )

@@ -1122,7 +1122,8 @@
         [ "mushroom_cooked", 1 ],
         [ "morel_cooked", 1 ],
         [ "mushroom", 1 ],
-        [ "dry_mushroom", 1 ]
+        [ "dry_mushroom", 1 ],
+        [ "chem_peptone_broth", 14 ]
       ],
       [
         [ "hot_sauce", 1 ],
@@ -1132,7 +1133,8 @@
         [ "soysauce", 1 ],
         [ "pepper", 4 ],
         [ "garlic_clove", 2 ],
-        [ "salt", 4 ]
+        [ "salt", 4 ],
+        [ "chem_peptone_broth", 14 ]
       ]
     ]
   },

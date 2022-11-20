@@ -702,60 +702,96 @@ morale_type Character::allergy_type( const item &food ) const
 
 ret_val<edible_rating> Character::can_eat( const item &food ) const
 {
-    if( !food.is_comestible() ) {
-        return ret_val<edible_rating>::make_failure( _( "That doesn't look edible." ) );
+    if( !food.is_comestible() || food.is_craft() ) {
+        return ret_val<edible_rating>::make_failure( _( "This is inedible." ) );
+    }
+
+    if( food.has_own_flag( flag_DIRTY ) ) {
+        return ret_val<edible_rating>::make_failure( _( "Can't consume; too dirty." ) );
+    }
+
+    if( is_underwater() && !has_trait( trait_WATERSLEEP ) ) {
+        return ret_val<edible_rating>::make_failure( _( "Can't consume this while underwater." ) );
+    }
+
+    if( food.has_flag( flag_INEDIBLE ) ) {
+        if( !food.has_flag( flag_CATTLE ) && !food.has_flag( flag_FELINE ) &&
+            !food.has_flag( flag_LUPINE ) && !food.has_flag( flag_BIRD ) ) {
+            return ret_val<edible_rating>::make_failure( _( "This is inedible." ) );
+        } else if( food.has_flag( flag_CATTLE ) && !has_trait( trait_THRESH_CATTLE ) ) {
+            return ret_val<edible_rating>::make_failure( _( "This is only edible for cattle." ) );
+        } else if( food.has_flag( flag_FELINE ) && !has_trait( trait_THRESH_FELINE ) ) {
+            return ret_val<edible_rating>::make_failure( _( "This is only edible for cats." ) );
+        } else if( food.has_flag( flag_LUPINE ) && !has_trait( trait_THRESH_LUPINE ) ) {
+            return ret_val<edible_rating>::make_failure( _( "This is only edible for dogs." ) );
+        } else if( food.has_flag( flag_BIRD ) && !has_trait( trait_THRESH_BIRD ) ) {
+            return ret_val<edible_rating>::make_failure( _( "This is only edible for birds." ) );
+        }
     }
 
     const auto &comest = food.get_comestible();
 
-    if( food.has_flag( flag_INEDIBLE ) ) {
-        if( ( food.has_flag( flag_CATTLE ) && !has_trait( trait_THRESH_CATTLE ) ) ||
-            ( food.has_flag( flag_FELINE ) && !has_trait( trait_THRESH_FELINE ) ) ||
-            ( food.has_flag( flag_LUPINE ) && !has_trait( trait_THRESH_LUPINE ) ) ||
-            ( food.has_flag( flag_BIRD ) && !has_trait( trait_THRESH_BIRD ) ) ) {
-            return ret_val<edible_rating>::make_failure( _( "That doesn't look edible to you." ) );
-        }
-    }
-
-    if( food.is_craft() ) {
-        return ret_val<edible_rating>::make_failure( _( "That doesn't look edible in its current form." ) );
-    }
-
-    if( food.has_own_flag( flag_DIRTY ) ) {
-        return ret_val<edible_rating>::make_failure(
-                   _( "This is full of dirt after being on the ground." ) );
-    }
-
     const bool eat_verb  = food.has_flag( flag_USE_EAT_VERB );
     const bool edible    = eat_verb ||  comest->comesttype == comesttype_FOOD;
     const bool drinkable = !eat_verb && comest->comesttype == comesttype_DRINK;
+    // TODO: should have the following here:
+    // INHALANT (for meth, cigarettes and similar)
+    // INJECT (for heroin, injectable mutagens and similar)
+    // DERMAL (for disinfectants, bandages, salves and similar)
+    // BUCCAL (for anything that should be put into mouth but not swallowed, such as chewing gum)
+    // OPHTHALMIC (for eyedrops and similar)
+    // Pills should be FOOD, liquid medicine (such as cough syrup) should be DRINK.
 
     // TODO: This condition occurs way too often. Unify it.
     // update Sep. 26 2018: this apparently still occurs way too often. yay!
-    if( is_underwater() && !has_trait( trait_WATERSLEEP ) ) {
-        return ret_val<edible_rating>::make_failure( _( "You can't do that while underwater." ) );
-    }
 
     if( edible || drinkable ) {
         for( const auto &elem : food.type->materials ) {
             if( !elem.first->edible() ) {
-                return ret_val<edible_rating>::make_failure( _( "That doesn't look edible in its current form." ) );
+                return ret_val<edible_rating>::make_failure( _( "This is inedible." ) );
+                // TODO: such items shouldn't be listed in the consumption menu in the first place.
             }
         }
         // For all those folks who loved eating Marloss berries.  D:< mwuhahaha
         if( has_trait( trait_M_DEPENDENT ) && !food.has_flag( flag_MYCUS_OK ) ) {
             return ret_val<edible_rating>::make_failure( INEDIBLE_MUTATION,
-                    _( "We can't eat that.  It's not right for us." ) );
+                    _( "We can't consume that.  It's not suitable for us." ) );
+        }
+        if( has_trait( trait_PROBOSCIS ) && !drinkable ) {
+            return ret_val<edible_rating>::make_failure( INEDIBLE_MUTATION,
+                    _( "Can't eat this; can only drink liquids." ) );
+        }
+
+        if( has_trait( trait_CARNIVORE ) && nutrition_for( food ) > 0 &&
+            food.has_any_flag( carnivore_blacklist ) && !food.has_flag( flag_CARNIVORE_OK ) ) {
+            if( edible ) {
+                return ret_val<edible_rating>::make_failure( INEDIBLE_MUTATION,
+                        _( "Can't eat this; too much plant-based products." ) );
+            } else if( drinkable ) {
+                return ret_val<edible_rating>::make_failure( INEDIBLE_MUTATION,
+                        _( "Can't drink this; too much plant-based products." ) );
+            }
+        }
+
+        if( ( has_trait( trait_HERBIVORE ) || has_trait( trait_RUMINANT ) ) &&
+            food.has_any_flag( herbivore_blacklist ) && nutrition_for( food ) > 0 ) {
+            // Like non-cannibal, but more strict!
+            if( edible ) {
+                return ret_val<edible_rating>::make_failure( INEDIBLE_MUTATION,
+                        _( "Can't eat this; too much animal-based products." ) );
+            } else if( drinkable ) {
+                return ret_val<edible_rating>::make_failure( INEDIBLE_MUTATION,
+                        _( "Can't drink this; too much animal-based products." ) );
+            }
         }
     }
     if( food.has_own_flag( flag_FROZEN ) && !food.has_flag( flag_EDIBLE_FROZEN ) &&
         !food.has_flag( flag_MELTS ) ) {
         if( edible ) {
             return ret_val<edible_rating>::make_failure(
-                       _( "It's frozen solid.  You must defrost it before you can eat it." ) );
-        }
-        if( drinkable ) {
-            return ret_val<edible_rating>::make_failure( _( "You can't drink it while it's frozen." ) );
+                       _( "Must be defrosted before eating." ) );
+        } else if( drinkable ) {
+            return ret_val<edible_rating>::make_failure( _( "Must be defrosted before drinking." ) );
         }
     }
 
@@ -769,7 +805,7 @@ ret_val<edible_rating> Character::can_eat( const item &food ) const
                              : has_amount( tool.first, 1 );
             if( !has ) {
                 return ret_val<edible_rating>::make_failure( NO_TOOL,
-                        string_format( _( "You need a %s to consume that!" ),
+                        string_format( _( "You need a %s to consume that." ),
                                        item::nname( tool.first ) ) );
             }
         }
@@ -789,32 +825,14 @@ ret_val<edible_rating> Character::can_eat( const item &food ) const
                          : has_amount( comest->tool, 1 );
         if( !has ) {
             return ret_val<edible_rating>::make_failure( NO_TOOL,
-                    string_format( _( "You need a %s to consume that!" ),
+                    string_format( _( "You need a %s to consume that." ),
                                    item::nname( comest->tool ) ) );
         }
     }
 
-    // Here's why PROBOSCIS is such a negative trait.
-    if( has_trait( trait_PROBOSCIS ) && !( drinkable || food.is_medication() ) ) {
-        return ret_val<edible_rating>::make_failure( INEDIBLE_MUTATION, _( "Ugh, you can't drink that!" ) );
-    }
-
-    if( has_trait( trait_CARNIVORE ) && nutrition_for( food ) > 0 &&
-        food.has_any_flag( carnivore_blacklist ) && !food.has_flag( flag_CARNIVORE_OK ) ) {
-        return ret_val<edible_rating>::make_failure( INEDIBLE_MUTATION,
-                _( "Eww.  Inedible plant stuff!" ) );
-    }
-
-    if( ( has_trait( trait_HERBIVORE ) || has_trait( trait_RUMINANT ) ) &&
-        food.has_any_flag( herbivore_blacklist ) ) {
-        // Like non-cannibal, but more strict!
-        return ret_val<edible_rating>::make_failure( INEDIBLE_MUTATION,
-                _( "The thought of eating that makes you feel sick." ) );
-    }
-
     for( const trait_id &mut : get_mutations() ) {
         if( !food.made_of_any( mut.obj().can_only_eat ) && !mut.obj().can_only_eat.empty() ) {
-            return ret_val<edible_rating>::make_failure( INEDIBLE_MUTATION, _( "You can't eat this." ) );
+            return ret_val<edible_rating>::make_failure( INEDIBLE_MUTATION, _( "You can't consume this." ) );
         }
     }
 

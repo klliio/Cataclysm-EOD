@@ -63,6 +63,7 @@
         [ "condom", 2 ],
         [ "gloves_medical", 2 ],
         [ "chunk_rubber", 1 ],
+        [ "shredded_rubber", 25 ],
         [ "latex", 2 ],
         [ "gum", 20 ],
         [ "sheet_neoprene", 11 ],

@@ -1588,6 +1588,7 @@ void Item_factory::init()
     add_iuse( "E_COMBATSAW_OFF", &iuse::e_combatsaw_off );
     add_iuse( "E_COMBATSAW_ON", &iuse::e_combatsaw_on );
     add_iuse( "CONTACTS", &iuse::contacts );
+    add_iuse( "COOLER", &iuse::cooler );
     add_iuse( "CROWBAR", &iuse::crowbar );
     add_iuse( "CROWBAR_WEAK", &iuse::crowbar_weak );
     add_iuse( "DATURA", &iuse::datura );

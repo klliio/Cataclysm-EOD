@@ -203,7 +203,8 @@
     "material_thickness": 2,
     "environmental_protection": 1,
     "flags": [ "WATER_FRIENDLY" ],
-    "armor": [ { "encumbrance": 5, "coverage": 95, "covers": [ "eyes" ], "rigid_layer_only": true } ]
+    "armor": [ { "encumbrance": 5, "coverage": 95, "covers": [ "eyes" ], "rigid_layer_only": true } ],
+    "qualities": [ [ "EYE_PROTECTION", 1 ] ]
   },
   {
     "id": "glass_goggles",
@@ -221,7 +222,8 @@
     "material_thickness": 1,
     "environmental_protection": 1,
     "flags": [ "WATER_FRIENDLY", "FRAGILE" ],
-    "armor": [ { "encumbrance": 5, "coverage": 95, "covers": [ "eyes" ], "rigid_layer_only": true } ]
+    "armor": [ { "encumbrance": 5, "coverage": 95, "covers": [ "eyes" ], "rigid_layer_only": true } ],
+    "qualities": [ [ "EYE_PROTECTION", 1 ] ]
   },
   {
     "id": "goggles_ski",

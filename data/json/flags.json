@@ -216,12 +216,12 @@
   {
     "id": "EATEN_COLD",
     "type": "json_flag",
-    "info": "This tastes <good>better</good> while <color_light_cyan>cold</color>."
+    "info": "Tastes <good>better</good> while <color_light_cyan>cold</color>."
   },
   {
     "id": "EATEN_HOT",
     "type": "json_flag",
-    "info": "This tastes <good>better</good> while <color_red>hot</color>."
+    "info": "Tastes <good>better</good> while <color_red>hot</color>, providing a separate morale bonus (<good>+5</good>)."
   },
   {
     "id": "ELECTRIC_IMMUNE",
@@ -1279,7 +1279,8 @@
   },
   {
     "id": "EDIBLE_FROZEN",
-    "type": "json_flag"
+    "type": "json_flag",
+    "info": "This item is <info>edible</info> even while <color_light_cyan>frozen</color>."
   },
   {
     "id": "EFFECT_IMPEDING",

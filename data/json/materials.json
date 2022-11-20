@@ -1671,8 +1671,8 @@
   {
     "type": "material",
     "id": "powder",
-    "name": "Powder",
-    "density": 1,
+    "name": "Flammable Powder",
+    "density": 22.59,
     "specific_heat_liquid": 1.5,
     "specific_heat_solid": 1.2,
     "latent_heat": 10,
@@ -1695,8 +1695,8 @@
   {
     "type": "material",
     "id": "powder_nonflam",
-    "name": "Powder",
-    "density": 3.5,
+    "name": "Nonflammable Powder",
+    "density": 22.59,
     "specific_heat_liquid": 1.5,
     "specific_heat_solid": 1.2,
     "latent_heat": 10,

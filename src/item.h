@@ -997,11 +997,17 @@ class item : public visitable
         bool process_temperature_rot( float insulation, const tripoint &pos, map &here, Character *carrier,
                                       temperature_flag flag = temperature_flag::NORMAL, float spoil_modifier = 1.0f );
 
-        /** Set the item to HOT and resets last_temp_check */
+        /** Set the item temperature to specified temperature and reset last_temp_check */
+        void heat_or_cool_to( units::temperature temp );
+
+        /** Set the item temperature to 60 C and reset last_temp_check */
         void heat_up();
 
-        /** Set the item to COLD and resets last_temp_check*/
+        /** Set the item temperature to 3 C and reset last_temp_check*/
         void cold_up();
+
+        /** Set the item temperature to -18 C and reset last_temp_check*/
+        void freeze_up();
 
         /** Sets the item temperature and item energy from new temperature and resets last_temp_check */
         void set_item_temperature( units::temperature new_temperature );
