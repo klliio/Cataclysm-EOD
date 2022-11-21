@@ -62,7 +62,7 @@ TEST_CASE( "cannot eat non-comestible", "[can_eat][will_eat][edible_rating][nonf
         item rag( "rag" );
 
         THEN( "they cannot eat it" ) {
-            expect_cannot_eat( dummy, rag, "That doesn't look edible.", INEDIBLE );
+            expect_cannot_eat( dummy, rag, "This is inedible.", INEDIBLE );
         }
     }
 }
@@ -77,7 +77,7 @@ TEST_CASE( "cannot eat dirty food", "[can_eat][edible_rating][dirty]" )
         REQUIRE( chocolate.has_own_flag( flag_DIRTY ) );
 
         THEN( "they cannot eat it" ) {
-            expect_cannot_eat( dummy, chocolate, "This is full of dirt after being on the ground." );
+            expect_cannot_eat( dummy, chocolate, "Can't consume; too dirty." );
         }
     }
 }
@@ -97,11 +97,11 @@ TEST_CASE( "who can eat while underwater", "[can_eat][edible_rating][underwater]
             REQUIRE_FALSE( dummy.has_trait( trait_WATERSLEEP ) );
 
             THEN( "they cannot eat" ) {
-                expect_cannot_eat( dummy, sushi, "You can't do that while underwater." );
+                expect_cannot_eat( dummy, sushi, "Can't consume this while underwater." );
             }
 
             THEN( "they cannot drink" ) {
-                expect_cannot_eat( dummy, water, "You can't do that while underwater." );
+                expect_cannot_eat( dummy, water, "Can't consume this while underwater." );
             }
         }
 
@@ -145,7 +145,7 @@ TEST_CASE( "when frozen food can be eaten", "[can_eat][edible_rating][frozen]" )
             REQUIRE( apple.has_own_flag( flag_FROZEN ) );
 
             THEN( "they cannot eat it" ) {
-                expect_cannot_eat( dummy, apple, "It's frozen solid.  You must defrost it before you can eat it." );
+                expect_cannot_eat( dummy, apple, "Must be defrosted before eating." );
             }
         }
     }
@@ -168,7 +168,7 @@ TEST_CASE( "when frozen food can be eaten", "[can_eat][edible_rating][frozen]" )
             REQUIRE( water.has_own_flag( flag_FROZEN ) );
 
             THEN( "they cannot drink it" ) {
-                expect_cannot_eat( dummy, water, "You can't drink it while it's frozen." );
+                expect_cannot_eat( dummy, water, "Must be defrosted before drinking." );
             }
         }
     }
@@ -227,14 +227,15 @@ TEST_CASE( "who can eat inedible animal food", "[can_eat][edible_rating][inedibl
             REQUIRE_FALSE( dummy.has_trait( trait_THRESH_BIRD ) );
             REQUIRE_FALSE( dummy.has_trait( trait_THRESH_CATTLE ) );
 
-            const std::string expect_reason = "That doesn't look edible to you.";
+            const std::string expect_reason_cattle = "This is only edible for cattle.";
+            const std::string expect_reason_bird = "This is only edible for birds.";
 
             THEN( "they cannot eat bird food" ) {
-                expect_cannot_eat( dummy, birdfood, expect_reason );
+                expect_cannot_eat( dummy, birdfood, expect_reason_bird );
             }
 
             THEN( "they cannot eat cattle fodder" ) {
-                expect_cannot_eat( dummy, cattlefodder, expect_reason );
+                expect_cannot_eat( dummy, cattlefodder, expect_reason_cattle );
             }
         }
 
@@ -267,7 +268,7 @@ TEST_CASE( "what herbivores can eat", "[can_eat][edible_rating][herbivore]" )
         dummy.toggle_trait( trait_HERBIVORE );
         REQUIRE( dummy.has_trait( trait_HERBIVORE ) );
 
-        std::string expect_reason = "The thought of eating that makes you feel sick.";
+        std::string expect_reason = "Can't eat this; too much animal-based products.";
 
         THEN( "they cannot eat meat" ) {
             item meat( "meat_cooked" );
@@ -294,7 +295,7 @@ TEST_CASE( "what carnivores can eat", "[can_eat][edible_rating][carnivore]" )
         dummy.toggle_trait( trait_CARNIVORE );
         REQUIRE( dummy.has_trait( trait_CARNIVORE ) );
 
-        std::string expect_reason = "Eww.  Inedible plant stuff!";
+        std::string expect_reason = "Can't eat this; too much plant-based products.";
 
         THEN( "they cannot eat veggies" ) {
             item veggy( "veggy" );
@@ -347,7 +348,7 @@ TEST_CASE( "what you can eat with a mycus dependency", "[can_eat][edible_rating]
             item nuts( "pine_nuts" );
             REQUIRE_FALSE( nuts.has_flag( flag_MYCUS_OK ) );
 
-            expect_cannot_eat( dummy, nuts, "We can't eat that.  It's not right for us.", INEDIBLE_MUTATION );
+            expect_cannot_eat( dummy, nuts, "We can't consume that.  It's not suitable for us.", INEDIBLE_MUTATION );
         }
 
         THEN( "they can eat mycus food" ) {
@@ -369,7 +370,7 @@ TEST_CASE( "what you can drink with a proboscis", "[can_eat][edible_rating][prob
         REQUIRE( dummy.has_trait( trait_PROBOSCIS ) );
 
         // Cannot drink
-        std::string expect_reason = "Ugh, you can't drink that!";
+        std::string expect_reason = "Can't eat this; can only drink liquids.";
 
         GIVEN( "a drink that is 'eaten' (USE_EAT_VERB)" ) {
             item soup( "soup_veggy" );
