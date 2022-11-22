@@ -347,7 +347,8 @@ TEST_CASE( "what you can eat with a mycus dependency", "[can_eat][edible_rating]
             item nuts( "pine_nuts" );
             REQUIRE_FALSE( nuts.has_flag( flag_MYCUS_OK ) );
 
-            expect_cannot_eat( dummy, nuts, "We can't eat that.  It's not right for us.", INEDIBLE_MUTATION );
+            expect_cannot_eat( dummy, nuts, "We can't consume that.  It's not suitable for us.",
+                               INEDIBLE_MUTATION );
         }
 
         THEN( "they can eat mycus food" ) {
