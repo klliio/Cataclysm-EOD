@@ -12888,9 +12888,11 @@ void item::set_temp_flags( units::temperature new_temperature, float freeze_perc
 
     if( new_temperature <= get_freeze_point() && freeze_percentage > 0.5 ) {
         set_flag( flag_FROZEN );
+        current_phase = phase_id::SOLID;
     } else {
         if( has_own_flag( flag_FROZEN ) ) {
             // Item melts and becomes mushy
+            current_phase = type->phase;
             apply_freezerburn();
             if( made_of( phase_id::LIQUID ) ) {
                 set_flag( flag_FROM_FROZEN_LIQUID );
@@ -12925,7 +12927,6 @@ void item::heat_or_cool_to( units::temperature temp )
         freeze_percentage = 1;
     }
     set_temp_flags( temp, freeze_percentage );
-    current_phase = type->phase;
     // Set item temperature to min_temp specified
     // Also set the energy to match
     temperature = temp;
