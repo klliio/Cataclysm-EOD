@@ -1,0 +1,15 @@
+[
+  {
+    "type": "recipe",
+    "result": "disinfectant_kmno4",
+    "activity_level": "NO_EXERCISE",
+    "category": "CC_OTHER",
+    "subcategory": "CSC_OTHER_MEDICAL",
+    "skill_used": "chemistry",
+    "time": "30 s",
+    "autolearn": true,
+    "charges": 40,
+    "flags": [ "BLIND_HARD" ],
+    "components": [ [ [ "chem_potassium_permanganate", 1 ] ], [ [ "water_clean", 4 ] ] ]
+  }
+]

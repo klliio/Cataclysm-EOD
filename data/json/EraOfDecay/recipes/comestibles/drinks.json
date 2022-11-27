@@ -126,5 +126,19 @@
     "charges": 30,
     "autolearn": true,
     "components": [ [ [ "water", 30 ] ], [ [ "bleach_waterdisinfectant", 1 ] ] ]
+  },
+  {
+    "type": "recipe",
+    "activity_level": "NO_EXERCISE",
+    "result": "water_clean",
+    "id_suffix": "using_kmno4",
+    "category": "CC_FOOD",
+    "subcategory": "CSC_FOOD_DRINKS",
+    "skill_used": "cooking",
+    "time": "1 m",
+    "autolearn": true,
+    "charges": 80,
+    "flags": [ "BLIND_HARD" ],
+    "components": [ [ [ "water", 80 ] ], [ [ "chem_potassium_permanganate", 1 ] ] ]
   }
 ]
