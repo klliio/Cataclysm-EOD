@@ -14,10 +14,12 @@
       [ [ "duct_tape", 20 ], [ "medical_tape", 5 ] ],
       [
         [ "disinfectant", 5 ],
+        [ "disinfectant_kmno4", 5 ],
+        [ "disinfectant_makeshift", 5 ],
         [ "thyme_oil", 1 ],
-        [ "chem_ethanol", 250 ],
-        [ "denat_alcohol", 250 ],
-        [ "methed_alcohol", 250 ]
+        [ "chem_ethanol", 125 ],
+        [ "denat_alcohol", 125 ],
+        [ "methed_alcohol", 125 ]
       ]
     ]
   },
@@ -73,8 +75,12 @@
     "time": "1 m",
     "batch_time_factors": [ 50, 2 ],
     "autolearn": true,
+    "charges": 10,
     "qualities": [ { "id": "CUT", "level": 2 } ],
-    "components": [ [ [ "medical_gauze", 1 ] ], [ [ "duct_tape", 1 ], [ "medical_tape", 1 ] ] ]
+    "components": [
+      [ [ "medical_gauze", 1 ], [ "bandages_makeshift_boiled", 1 ], [ "bandages_makeshift_bleached", 1 ] ],
+      [ [ "duct_tape", 1 ], [ "medical_tape", 1 ] ]
+    ]
   },
   {
     "result": "tourniquet_upper",
@@ -201,11 +207,14 @@
     "autolearn": true,
     "charges": 2,
     "flags": [ "BLIND_EASY" ],
-    "components": [ [ [ "cotton_patchwork", 2 ] ], [ [ "disinfectant", 1 ] ] ]
+    "components": [
+      [ [ "cotton_patchwork", 2 ] ],
+      [ [ "disinfectant", 1 ], [ "disinfectant_kmno4", 1 ], [ "disinfectant_makeshift", 1 ], [ "thyme_oil", 1 ] ]
+    ]
   },
   {
     "type": "recipe",
-    "activity_level": "fake",
+    "activity_level": "LIGHT_EXERCISE",
     "result": "disincotton_ball",
     "category": "CC_*",
     "subcategory": "CSC_*_NESTED",
@@ -215,7 +224,10 @@
     "autolearn": true,
     "charges": 4,
     "flags": [ "BLIND_EASY" ],
-    "components": [ [ [ "cotton_ball", 4 ] ], [ [ "disinfectant", 1 ] ] ]
+    "components": [
+      [ [ "cotton_ball", 4 ] ],
+      [ [ "disinfectant", 1 ], [ "disinfectant_kmno4", 1 ], [ "disinfectant_makeshift", 1 ], [ "thyme_oil", 1 ] ]
+    ]
   },
   {
     "type": "recipe",

@@ -196,5 +196,32 @@
     "batch_time_factors": [ 30, 5 ],
     "qualities": [ { "id": "CHEM", "level": 2 } ],
     "components": [ [ [ "scrap", 5 ] ], [ [ "water_clean", 1 ] ], [ [ "chem_sulphuric_acid", 1 ] ] ]
+  },
+  {
+    "type": "recipe",
+    "result": "modafinil",
+    "activity_level": "NO_EXERCISE",
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_DRUGS",
+    "skill_used": "chemistry",
+    "difficulty": 8,
+    "time": "12 h",
+    "batch_time_factors": [ 80, 2 ],
+    "book_learn": [ [ "adv_chemistry", 6 ], [ "textbook_chemistry", 8 ], [ "recipe_labchem", 7 ] ],
+    "qualities": [ { "id": "CHEM", "level": 2 }, { "id": "STIR_BAR", "level": 1 } ],
+    "tools": [ [ [ "magnetic_stirrer", 100 ] ] ],
+    "charges": 239,
+    "components": [
+      [ [ "chem_tetrahydrofuran", 116 ] ],
+      [ [ "water_clean", 2 ] ],
+      [ [ "chem_hydrobromic_acid", 26 ] ],
+      [ [ "lye", 1 ] ],
+      [ [ "chem_acetic_acid", 35 ] ],
+      [ [ "chem_hydrogen_peroxide_conc", 12 ] ],
+      [ [ "chem_methanol", 250 ] ],
+      [ [ "chem_benzhydrol", 32 ] ],
+      [ [ "chem_thiourea", 13 ] ],
+      [ [ "chem_chloroacetamide", 35 ] ]
+    ]
   }
 ]

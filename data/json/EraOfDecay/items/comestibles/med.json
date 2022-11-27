@@ -175,5 +175,23 @@
       "activation_message": "You take some modafinil.",
       "effects": [ { "id": "effect_modafinil", "duration": "12 h" } ]
     }
+  },
+  {
+    "id": "disinfectant_kmno4",
+    "type": "COMESTIBLE",
+    "comestible_type": "MED",
+    "name": { "str_sp": "potassium permanganate solution" },
+    "description": "A purple-colored weak aqueous solution of potassium permanganate prepared for wound disinfection.",
+    "weight": "25 g",
+    "volume": "250 ml",
+    "price": 1500,
+    "price_postapoc": 500,
+    "charges": 10,
+    "symbol": "~",
+    "color": "magenta",
+    "phase": "liquid",
+    "container": "flask_glass",
+    "flags": [ "NO_INGEST", "WATER_DISSOLVE" ],
+    "use_action": { "type": "heal", "disinfectant_power": 4, "bite": 0.95, "move_cost": 3000 }
   }
 ]

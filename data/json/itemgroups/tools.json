@@ -651,6 +651,11 @@
     "//": "tools and equipment you might find on lab benches of nearly any lab.",
     "items": [
       { "item": "chemistry_set", "prob": 5, "charges": [ 0, 500 ] },
+      [ "cooler_portable_kit", 5 ],
+      [ "stir_bar", 5 ],
+      [ "magnetic_stirrer", 5 ],
+      [ "vacuum_chamber", 2 ],
+      [ "high_pressure_reactor", 2 ],
       [ "chemistry_set_basic", 2 ],
       [ "analytical_set_basic", 5 ],
       [ "spectrophotometer", 5 ],

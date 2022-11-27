@@ -598,6 +598,8 @@
       [ [ "chem_saltpetre", 25 ], [ "ash", 125 ], [ "chem_potassium_chloride", 150 ] ],
       [
         [ "ammonia_liquid", 1 ],
+        [ "chem_thiourea", 125 ],
+        [ "chem_calcium_cyanamide", 125 ],
         [ "chem_urea", 125 ],
         [ "chem_ammonium_nitrate", 125 ],
         [ "chem_saltpetre", 25 ],
