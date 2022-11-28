@@ -548,7 +548,7 @@
   },
   {
     "id": "pressure_tank",
-    "type": "TOOL",
+    "type": "GENERIC",
     "name": { "str": "pressurized tank" },
     "description": "This is a tank designed to hold high pressure gasses.",
     "weight": "2268 g",
@@ -567,7 +567,7 @@
         "rigid": true,
         "airtight": true,
         "max_contains_volume": "1600 ml",
-        "max_contains_weight": "10 kg",
+        "max_contains_weight": "50 kg",
         "watertight": true
       }
     ]
