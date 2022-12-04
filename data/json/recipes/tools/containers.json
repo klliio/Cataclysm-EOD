@@ -241,6 +241,7 @@
     "type": "recipe",
     "activity_level": "MODERATE_EXERCISE",
     "result": "can_medium",
+    "result_mult": 3,
     "category": "CC_OTHER",
     "subcategory": "CSC_OTHER_CONTAINERS",
     "skill_used": "fabrication",
