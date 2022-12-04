@@ -6,7 +6,6 @@
     "description": "A crude clay pot made for both cooking and serving, particularly one-pot dinners.",
     "type": "GENERIC",
     "symbol": ")",
-    "to_hit": 1,
     "price": 500,
     "price_postapoc": 10,
     "use_action": [ "HEAT_FOOD" ],
