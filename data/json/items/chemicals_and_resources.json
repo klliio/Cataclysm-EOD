@@ -780,7 +780,7 @@
     "id": "chem_acetic_acid",
     "copy-from": "reagent_liquid",
     "name": { "str_sp": "acetic acid" },
-    "description": "Concentrated acetic acid, typically used as a chemical reagent and antifungal agent.  Despite its horrid smell, it was used to prepare several types of perfumes, but would making perfume not be too fancy for postapocalyptic New England?",
+    "description": "Concentrated acetic acid, typically used as a chemical reagent and antifungal agent.  Despite its horrid smell, it was used to prepare several types of perfumes, but would making perfume not be too fancy for post-apocalyptic New England?",
     "//molar_mass": "60.052 g/mol",
     "//units_per_mol": "58",
     "//weight_per_mol": "60.842 g",

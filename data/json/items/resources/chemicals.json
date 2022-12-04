@@ -26,7 +26,7 @@
     "id": "chem_calcium_chloride",
     "copy-from": "reagent_powder",
     "name": { "str_sp": "calcium chloride" },
-    "description": "A white odorless strongly hygroscopic powder with an extremely salty taste.  Often used as a de-icing agent or as dessicant.",
+    "description": "A white odorless strongly hygroscopic powder with an extremely salty taste.  Often used as a de-icing agent or as desiccant.",
     "container": "bag_canvas",
     "weight": "2150 mg"
   },
