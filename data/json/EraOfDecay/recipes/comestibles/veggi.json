@@ -183,10 +183,7 @@
     ],
     "using": [ [ "woods_soup_ingredients_veggy", 1 ] ],
     "tools": [ [ [ "surface_heat", 5, "LIST" ] ], [ [ "can_sealer", -1 ] ] ],
-    "components": [
-      [ [ "can_food", 1 ] ],
-      [ [ "canlid_small", 1 ] ]
-    ]
+    "components": [ [ [ "can_food", 1 ] ], [ [ "canlid_small", 1 ] ] ]
   },
   {
     "type": "recipe",
@@ -211,10 +208,7 @@
     ],
     "using": [ [ "woods_soup_ingredients_veggy", 2 ] ],
     "tools": [ [ [ "surface_heat", 10, "LIST" ] ], [ [ "can_sealer", -1 ] ] ],
-    "components": [
-      [ [ "can_medium", 1 ] ],
-      [ [ "canlid_medium", 1 ] ]
-    ]
+    "components": [ [ [ "can_medium", 1 ] ], [ [ "canlid_medium", 1 ] ] ]
   },
   {
     "type": "recipe",
@@ -239,10 +233,7 @@
     ],
     "using": [ [ "woods_soup_ingredients_veggy", 12 ] ],
     "tools": [ [ [ "surface_heat", 60, "LIST" ] ], [ [ "can_sealer", -1 ] ] ],
-    "components": [
-      [ [ "can_food_big", 1 ] ],
-      [ [ "canlid_big", 1 ] ]
-    ]
+    "components": [ [ [ "can_food_big", 1 ] ], [ [ "canlid_big", 1 ] ] ]
   },
   {
     "type": "recipe",
@@ -309,10 +300,7 @@
     ],
     "using": [ [ "tomato_soup_ingredients", 1 ] ],
     "tools": [ [ [ "surface_heat", 5, "LIST" ] ], [ [ "can_sealer", -1 ] ] ],
-    "components": [
-      [ [ "can_food", 1 ] ],
-      [ [ "canlid_small", 1 ] ]
-    ]
+    "components": [ [ [ "can_food", 1 ] ], [ [ "canlid_small", 1 ] ] ]
   },
   {
     "type": "recipe",
@@ -337,10 +325,7 @@
     ],
     "using": [ [ "tomato_soup_ingredients", 2 ] ],
     "tools": [ [ [ "surface_heat", 10, "LIST" ] ], [ [ "can_sealer", -1 ] ] ],
-    "components": [
-      [ [ "can_medium", 1 ] ],
-      [ [ "canlid_medium", 1 ] ]
-    ]
+    "components": [ [ [ "can_medium", 1 ] ], [ [ "canlid_medium", 1 ] ] ]
   },
   {
     "type": "recipe",
@@ -365,10 +350,7 @@
     ],
     "using": [ [ "tomato_soup_ingredients", 12 ] ],
     "tools": [ [ [ "surface_heat", 60, "LIST" ] ], [ [ "can_sealer", -1 ] ] ],
-    "components": [
-      [ [ "can_food_big", 1 ] ],
-      [ [ "canlid_big", 1 ] ]
-    ]
+    "components": [ [ [ "can_food_big", 1 ] ], [ [ "canlid_big", 1 ] ] ]
   },
   {
     "type": "recipe",
