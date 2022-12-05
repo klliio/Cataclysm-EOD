@@ -318,7 +318,7 @@
   {
     "type": "COMESTIBLE",
     "id": "PBJ_Toast",
-    "name": { "str_sp": "PBJ Toast" },
+    "name": { "str_sp": "PBJ toast" },
     "copy-from": "toast",
     "description": "A slice of toast with peanut butter and jelly on top, with added butter for flavor.",
     "material": [ "fruit", "milk", "wheat" ],
@@ -328,7 +328,7 @@
   {
     "type": "COMESTIBLE",
     "id": "PBJ_Toast_wheat_free",
-    "name": { "str_sp": "wheat-free PBJ Toast" },
+    "name": { "str_sp": "wheat-free PBJ toast" },
     "copy-from": "toast_wheat_free",
     "description": "A slice of wheat-free toast with peanut butter and jelly on top, with added butter for flavor.",
     "material": [ "fruit", "milk", "veggy" ],
