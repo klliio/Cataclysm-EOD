@@ -10,5 +10,50 @@
     "volume": "250 ml",
     "price": 10000,
     "price_postapoc": 2000
+  },
+  {
+    "id": "canlid_small",
+    "type": "AMMO",
+    "category": "spare_parts",
+    "name": { "str": "small tin can lid" },
+    "description": "An intact steel lid, intended to seal a small tin can.  Can be used for canning.",
+    "weight": "15200 mg",
+    "volume": "2 ml",
+    "price": 500,
+    "price_postapoc": 10,
+    "material": [ "steel" ],
+    "symbol": ",",
+    "color": "light_gray",
+    "ammo_type": "components"
+  },
+  {
+    "id": "canlid_medium",
+    "type": "AMMO",
+    "category": "spare_parts",
+    "name": { "str": "medium tin can lid" },
+    "description": "An intact steel lid, intended to seal a medium tin can.  Can be used for canning.",
+    "weight": "22800 mg",
+    "volume": "3 ml",
+    "price": 500,
+    "price_postapoc": 10,
+    "material": [ "steel" ],
+    "symbol": ",",
+    "color": "light_gray",
+    "ammo_type": "components"
+  },
+  {
+    "id": "canlid_big",
+    "type": "AMMO",
+    "category": "spare_parts",
+    "name": { "str": "large tin can lid" },
+    "description": "An intact steel lid, intended to seal a large tin can.  Can be used for canning.",
+    "weight": "45600 mg",
+    "volume": "6 ml",
+    "price": 500,
+    "price_postapoc": 10,
+    "material": [ "steel" ],
+    "symbol": ",",
+    "color": "light_gray",
+    "ammo_type": "components"
   }
 ]
