@@ -4,11 +4,7 @@
     "type": "requirement",
     "components": [
       [ [ "broth", 1 ] ],
-      [
-        [ "tomato", 1 ],
-        [ "irradiated_tomato", 1 ],
-        [ "can_tomato", 1 ]
-      ],
+      [ [ "tomato", 1 ], [ "irradiated_tomato", 1 ], [ "can_tomato", 1 ] ],
       [ [ "veggy_any", 1, "LIST" ] ]
     ]
   }

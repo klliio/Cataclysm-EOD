@@ -79,8 +79,10 @@ ankylosaurus
 annelids
 antarvasa
 antiasthmatic
+antifouling
 antihelmintic
 antihemorrhagic
+antihypertensive
 antimateriel
 antioxidant
 antipodes
@@ -185,7 +187,12 @@ benchtop
 bendier
 benzamine
 benzete
+benzhydrol
+benzinoform
 benzoate
+benzophenone
+benzoylbenzene
+benzoylphenyl
 betavoltaic
 betavoltaics
 bicephalous
@@ -259,6 +266,8 @@ brennt
 brewable
 brimless
 broadswords
+bromides
+bromine
 bronchodilator
 bronchospasm
 bubblicious
@@ -277,7 +286,10 @@ burdocks
 burette
 burnback
 burs
+butanediol
+butene
 buttstock
+butynediol
 buzzz
 bzzt
 bzzz
@@ -300,6 +312,7 @@ caparison
 capiche
 caprison
 carapaces
+carboxylic
 carryin
 cartilaginous
 casehead
@@ -352,6 +365,7 @@ chitin
 chitinous
 chitinworking
 chk
+chloroacetamide
 chokepoints
 chonker
 chonkiness
@@ -441,6 +455,7 @@ ctivating
 ctulaly
 cuirasses
 cummer
+cupric
 curarines
 curasse
 currywurst
@@ -449,6 +464,7 @@ customization
 cutlasses
 cuvette
 cuvettes
+cyanamide
 cybercop
 cyberdog
 cyberterror
@@ -508,13 +524,17 @@ diminute
 dimorphism
 dimorphodon
 dioicus
+diol
 dionaea
 diphenyl
 diphenylamine
+diphenylcarbinol
+diphenylmethanol
 diplodocus
 discoes
 disconcertingly
 disdainer
+dishware
 dissector
 dissoluted
 distillate
@@ -660,6 +680,7 @@ faultline
 fauxben
 fc
 feaver
+feedstock
 fermionic
 ferrocyanide
 ferrofluid
@@ -686,6 +707,7 @@ firesuits
 fireweed
 fishfolk
 fishily
+fixative
 fl
 flagration
 flairs
@@ -756,6 +778,8 @@ fungaloid
 fungaloids
 fungicidal
 funnelcap
+furanidin
+furoic
 fursuit
 fusillies
 fusilly
@@ -877,6 +901,7 @@ helpdesk
 hemolymph
 hemostatics
 heoretical
+hepatotoxins
 heptahydrate
 herbalism
 herbology
@@ -924,7 +949,9 @@ hund
 hunllef
 hydria
 hydrogel
+hydroxydiphenylmethane
 hygrometer
+hygroscopic
 hypacrosaurus
 hyperaggressive
 hypergeometric
@@ -946,6 +973,7 @@ inactionable
 includin
 incompetencies
 inductance
+industrially
 ineffectively
 inertially
 infeme
@@ -1016,6 +1044,7 @@ keikogi
 kennit
 kerblam
 kerchang
+ketone
 keybind
 keybinding
 keybindings
@@ -1098,6 +1127,7 @@ lifestraw
 lightnin
 lightsource
 lightstrip
+lignocellulosic
 lilypad
 lilypads
 limbed
@@ -1209,6 +1239,7 @@ mininuke
 minireactor
 mirrorshades
 misc
+miscible
 misjudgements
 misprogram
 misshapened
@@ -1321,6 +1352,7 @@ nimbleness
 nimbler
 niter
 nitrocellulose
+nitrolime
 nittlebam
 nn
 nocking
@@ -1329,6 +1361,7 @@ nodachi
 nodosaurus
 noisiness
 nomex
+nonflammable
 nonfunctional
 nonpareils
 nonrevealing
@@ -1364,6 +1397,7 @@ openable
 openair
 opengl
 openingly
+organobromide
 orichalcum
 ornithomimid
 ornithomimus
@@ -1391,6 +1425,7 @@ overtop
 owlbear
 owww
 oxidants
+oxolane
 p
 pachycephalosaurus
 pachyrhinosaurus
@@ -1425,6 +1460,7 @@ penetrators
 pentaceratops
 pentacerops
 peptone
+perchloromethane
 peridots
 peripheric
 permutator
@@ -1469,6 +1505,7 @@ planer
 planers
 planetside
 plantlike
+plasticizers
 plastron
 platemail
 playthroughs
@@ -1488,6 +1525,7 @@ polymerized
 polymorph
 polymorphed
 polypous
+polyurethanes
 pomelos
 pomengranate
 pomes
@@ -1495,6 +1533,7 @@ ponderously
 populifolia
 popups
 porkbelly
+posca
 postcolonial
 posteriori
 posthuman
@@ -1615,6 +1654,7 @@ reenabled
 refeeding
 refillable
 reforging
+refrigerants
 refuelable
 reimpose
 reisendre
@@ -1958,6 +1998,8 @@ teravolts
 terpenes
 terranean
 testbed
+tetrachloride
+tetrachloromethane
 tetradrachm
 th
 thawb
@@ -1965,6 +2007,7 @@ thawbs
 thermochemistry
 thermoplastics
 thescelosaurus
+thiocarbamide
 thonged
 thorned
 thosun
@@ -2014,6 +2057,7 @@ travelpack
 traversal
 treatin
 treelines
+trematocide
 triacetone
 tribesperson
 tribot
