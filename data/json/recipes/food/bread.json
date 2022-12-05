@@ -292,6 +292,11 @@
     "activity_level": "LIGHT_EXERCISE",
     "result": "PBJ_Toast_wheat_free",
     "copy-from": "buttered_toast",
-    "components": [ [ [ "jam_fruit", 1 ] ], [ [ "any_butter", 1, "LIST" ] ], [ [ "any_peanutbutter", 1, "LIST" ] ], [ [ "toast_wheat_free", 1 ] ] ]
+    "components": [
+      [ [ "jam_fruit", 1 ] ],
+      [ [ "any_butter", 1, "LIST" ] ],
+      [ [ "any_peanutbutter", 1, "LIST" ] ],
+      [ [ "toast_wheat_free", 1 ] ]
+    ]
   }
 ]
