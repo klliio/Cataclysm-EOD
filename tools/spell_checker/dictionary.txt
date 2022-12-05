@@ -352,6 +352,8 @@ chitin
 chitinous
 chitinworking
 chk
+chloroacetamide
+chloroacetic
 chokepoints
 chonker
 chonkiness
@@ -441,6 +443,8 @@ ctivating
 ctulaly
 cuirasses
 cummer
+cupric
+cuprous
 curarines
 curasse
 currywurst
@@ -756,6 +760,10 @@ fungaloid
 fungaloids
 fungicidal
 funnelcap
+furan
+furanidin
+furfural
+furoic
 fursuit
 fusillies
 fusilly
@@ -923,6 +931,7 @@ hummmmm
 hund
 hunllef
 hydria
+hydrobromic
 hydrogel
 hygrometer
 hypacrosaurus
@@ -1145,6 +1154,7 @@ manafusion
 manageably
 manball
 manfriendwich
+manganate
 manhack
 manhacks
 manuc
@@ -1548,6 +1558,7 @@ pushmower
 pussywillows
 pwn
 pyrolusite
+pyromucic
 pyrophoric
 pyroxylin
 pyrrolidone
@@ -1959,12 +1970,16 @@ terpenes
 terranean
 testbed
 tetradrachm
+tetrahydrofuran
+tetramethylene
 th
 thawb
 thawbs
 thermochemistry
 thermoplastics
 thescelosaurus
+thiocarbamide
+thiourea
 thonged
 thorned
 thosun
