@@ -726,7 +726,7 @@
   {
     "type": "COMESTIBLE",
     "id": "pemmican_meat",
-    "name": { "str_sp": "pemmican (meat only)" },
+    "name": { "str_sp": "plant-free pemmican" },
     "conditional_names": [
       { "type": "FLAG", "condition": "CANNIBALISM", "name": { "str_sp": "prepper %s" } },
       { "type": "FLAG", "condition": "STRICT_HUMANITARIANISM", "name": { "str_sp": "Orley %s" } },
