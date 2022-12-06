@@ -1065,6 +1065,7 @@ kinbot
 kinderling
 kippah
 kirpan
+kirpans
 kittel
 kjempe
 klompen
@@ -1272,6 +1273,7 @@ moonflowers
 mordant
 moriatur
 morningstar
+morningstars
 moroi
 mortems
 mosasaurus
@@ -1309,6 +1311,7 @@ mythologically
 n
 nable
 nagamaki
+naginata
 nailboard
 nakha
 nanocompound
@@ -2035,6 +2038,8 @@ tireplate
 titanochelon
 tm
 toecaps
+toettchen
+toettchens
 togetha
 toggled
 tollitur
@@ -2306,6 +2311,8 @@ zombullfrogs
 zpzzzzpzz
 zubon
 zuul
+zweihaender
+zweihaenders
 zweitimber
 zweitimbers
 zygomaticus
