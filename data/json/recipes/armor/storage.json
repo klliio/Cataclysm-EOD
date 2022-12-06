@@ -1516,7 +1516,7 @@
     "difficulty": 1,
     "time": "8 h",
     "autolearn": true,
-    "reversible": true,
+    "reversible": { "time": "6 m" },
     "components": [ [ [ "plant_cordage", 6, "LIST" ] ] ],
     "qualities": [ { "id": "CUT", "level": 1 } ],
     "proficiencies": [ { "proficiency": "prof_basketweaving" } ]

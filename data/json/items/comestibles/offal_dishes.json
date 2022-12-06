@@ -228,7 +228,7 @@
     "id": "tÖttchen",
     "type": "COMESTIBLE",
     "comestible_type": "FOOD",
-    "name": { "str": "töttchen" },
+    "name": { "str": "toettchen" },
     "symbol": "%",
     "looks_like": "offal_cooked",
     "quench": 2,
