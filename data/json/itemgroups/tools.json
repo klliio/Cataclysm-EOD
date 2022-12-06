@@ -760,6 +760,7 @@
     "//": "tools and equipment you might find on robotics laboratories.",
     "items": [
       [ "recipe_lab_elec", 4 ],
+      [ "book_cryptology", 2 ],
       { "item": "UPS_off", "prob": 6, "charges": [ 0, 1000 ] },
       [ "file", 10 ],
       [ "atomic_lamp", 1 ],

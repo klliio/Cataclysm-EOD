@@ -948,6 +948,7 @@
     "difficulty": 1,
     "time": "2 h",
     "autolearn": true,
+    "reversible": { "time": "5 m" },
     "proficiencies": [ { "proficiency": "prof_basketweaving" } ],
     "components": [ [ [ "straw_pile", 4 ], [ "birchbark", 6 ] ] ]
   },

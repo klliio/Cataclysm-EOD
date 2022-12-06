@@ -132,6 +132,9 @@
     "copy-from": "reagent_powder",
     "name": { "str_sp": "limestone" },
     "description": "A handful of small chunks of limestone.  Useful for experiments at science fairs, but pretty useless as ammo.  Also known as calcium carbonate.",
+    "//molar_mass": "100.0869 g/mol",
+    "//units_per_mol": "37",
+    "//weight_per_mol": "100.307 g",
     "price": 50,
     "price_postapoc": 10,
     "weight": "2711 mg"
@@ -142,6 +145,9 @@
     "copy-from": "reagent_powder",
     "name": { "str_sp": "quicklime" },
     "description": "The product of burning limestone, this white powder is a crucial ingredient in making cement.  That said, it is also extremely caustic and will cause severe burns to any tissue it comes in contact with.  Also known as calcium oxide.",
+    "//molar_mass": "56.0774 g/mol",
+    "//units_per_mol": "17",
+    "//weight_per_mol": "56.78 g",
     "price": 100,
     "price_postapoc": 10,
     "weight": "3340 mg"

@@ -438,6 +438,7 @@
     "skill_used": "tailor",
     "difficulty": 1,
     "time": "4 h",
+    "autolearn": [ [ "tailor", 5 ] ],
     "book_learn": [ [ "manual_tailor", 1 ], [ "mag_tailor", 0 ], [ "textbook_survival", 2 ], [ "pocket_survival", 2 ] ],
     "using": [ [ "tailoring_cotton_patchwork", 1 ] ]
   },

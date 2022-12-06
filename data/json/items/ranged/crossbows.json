@@ -533,7 +533,7 @@
     "//": "Cho-ku-no style repeating crossbow, very short draw and very light pull. 30lb draw weight, 10 in draw distance. 0.25 Slugs",
     "price": 324000,
     "material": [ "steel", "wood" ],
-    "flags": [ "FIRE_TWOHAND", "PRIMITIVE_RANGED_WEAPON", "TRADER_AVOID" ],
+    "flags": [ "FIRE_TWOHAND", "PRIMITIVE_RANGED_WEAPON", "TRADER_AVOID", "RELOAD_ONE" ],
     "skill": "smg",
     "ammo": [ "bolt" ],
     "weight": "3628 g",
@@ -549,7 +549,7 @@
     "recoil": 30,
     "durability": 6,
     "clip_size": 10,
-    "reload": 900,
+    "reload": 90,
     "valid_mod_locations": [ [ "dampening", 1 ] ],
     "pocket_data": [ { "pocket_type": "MAGAZINE", "ammo_restriction": { "bolt": 10 } } ]
   }

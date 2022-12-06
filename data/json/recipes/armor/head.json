@@ -7,9 +7,9 @@
     "subcategory": "CSC_ARMOR_HEAD",
     "skill_used": "tailor",
     "difficulty": 2,
-    "skills_required": [ "survival", 1 ],
     "time": "1 h",
-    "autolearn": true,
+    "autolearn": [ [ "tailor", 4 ] ],
+    "book_learn": [ [ "textbook_tailor", 2 ], [ "manual_tailor", 2 ], [ "tailor_portfolio", 2 ] ],
     "reversible": true,
     "using": [ [ "tailoring_cotton_patchwork", 2 ] ]
   },
@@ -1814,9 +1814,10 @@
     "category": "CC_ARMOR",
     "subcategory": "CSC_ARMOR_HEAD",
     "skill_used": "tailor",
-    "difficulty": 6,
+    "difficulty": 3,
     "time": "3 h 30 m",
-    "autolearn": true,
+    "autolearn": [ [ "tailor", 7 ] ],
+    "book_learn": [ [ "textbook_tailor", 3 ], [ "manual_tailor", 4 ], [ "tailor_portfolio", 3 ] ],
     "using": [ [ "tailoring_felt_patchwork", 4 ] ],
     "byproducts": [ [ "felt_patch", 4 ] ]
   },
@@ -2222,6 +2223,7 @@
     "skill_used": "tailor",
     "difficulty": 3,
     "time": "45 m",
+    "reversible": { "time": "6 m" },
     "book_learn": [ [ "mag_tailor", 1 ], [ "manual_tailor", 1 ], [ "mag_beauty", 1 ], [ "textbook_tailor", 0 ] ],
     "components": [ [ [ "straw_pile", 7 ], [ "birchbark", 10 ] ] ],
     "proficiencies": [ { "proficiency": "prof_basketweaving" } ]
@@ -2236,6 +2238,7 @@
     "difficulty": 1,
     "time": "45 m",
     "autolearn": true,
+    "reversible": { "time": "6 m" },
     "components": [ [ [ "straw_pile", 3 ], [ "birchbark", 5 ] ] ],
     "proficiencies": [ { "proficiency": "prof_basketweaving" } ]
   },
