@@ -1,0 +1,14 @@
+[
+  {
+    "id": "uncured_rubber_ingredients",
+    "type": "requirement",
+    "//": "Components for producing rubber items, per 1 rubber chunk (38 g) worth of mass.",
+    "components": [ [ [ "rubber_uncured", 35 ] ], [ [ "chem_sulphur", 5 ] ] ]
+  },
+  {
+    "id": "oil_rubber_ingredients",
+    "type": "requirement",
+    "//": "Components for producing rubber items from polymerized vegetable oil, per 1 rubber chunk (38 g) worth of mass.  Vaguely based on factice and vulcanized vegetable oils.  The properties of resulting material are unclear and there's little information on this in general; anyone who knows more is welcome to correct this if it's wrong.  Material can't be re-molded, and must be cast into final shape right as it is produced.  Adding more sulfur could produce ebonite instead.",
+    "components": [ [ [ "cooking_oil", 4 ] ], [ [ "chem_sulphur", 3 ] ] ]
+  }
+]
