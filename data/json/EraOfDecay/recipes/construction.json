@@ -9,5 +9,27 @@
     "components": [ [ [ "gaspump", 1 ] ] ],
     "pre_special": "check_empty",
     "post_special": "done_appliance"
+  },
+  {
+    "type": "construction",
+    "id": "app_dry_ice_maker",
+    "group": "place_dry_ice_maker",
+    "category": "APPLIANCE",
+    "required_skills": [ [ "fabrication", 0 ] ],
+    "time": "5 m",
+    "components": [ [ [ "dry_ice_maker", 1 ] ] ],
+    "pre_special": "check_empty",
+    "post_special": "done_appliance"
+  },
+  {
+    "type": "construction",
+    "id": "app_chloroprene_machine",
+    "group": "place_chloroprene_machine",
+    "category": "APPLIANCE",
+    "required_skills": [ [ "fabrication", 0 ] ],
+    "time": "5 m",
+    "components": [ [ [ "chloroprene_machine", 1 ] ] ],
+    "pre_special": "check_empty",
+    "post_special": "done_appliance"
   }
 ]

@@ -440,7 +440,7 @@
     "id": "shoe_rubber",
     "type": "requirement",
     "//": "Materials needed to make a pair of rubber shoe soles.",
-    "components": [ [ [ "sole_rubber", 2 ], [ "chunk_rubber", 7 ], [ "rubber_tire_chunk", 2 ], [ "rubber_tire_strip", 1 ] ] ]
+    "components": [ [ [ "sole_rubber", 2 ] ] ]
   },
   {
     "id": "tire_rubber",

@@ -651,6 +651,7 @@
     "//": "tools and equipment you might find on lab benches of nearly any lab.",
     "items": [
       { "item": "chemistry_set", "prob": 5, "charges": [ 0, 500 ] },
+      [ "dry_ice_maker", 1 ],
       [ "cooler_portable_kit", 5 ],
       [ "stir_bar", 5 ],
       [ "magnetic_stirrer", 5 ],
