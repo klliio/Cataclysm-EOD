@@ -3,5 +3,15 @@
     "type": "construction_group",
     "id": "place_gaspump",
     "name": "Place Gas Pump"
+  },
+  {
+    "type": "construction_group",
+    "id": "place_dry_ice_maker",
+    "name": "Place Dry Ice Maker"
+  },
+  {
+    "type": "construction_group",
+    "id": "place_chloroprene_machine",
+    "name": "Place Chloroprene Machine"
   }
 ]

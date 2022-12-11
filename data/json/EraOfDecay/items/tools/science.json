@@ -275,5 +275,57 @@
         "default_magazine": "light_disposable_cell"
       }
     ]
+  },
+  {
+    "id": "dry_ice_maker",
+    "type": "TOOL",
+    "name": { "str": "dry ice maker" },
+    "description": "A rather large electricity-powered box-shaped device meant to be used for the production of dry ice pellets for cooling, if supplied with carbon dioxide.",
+    "weight": "143 kg",
+    "volume": "470 L",
+    "longest_side": "1120 mm",
+    "price": 2400000,
+    "price_postapoc": 1000,
+    "to_hit": -4,
+    "bashing": 20,
+    "material": [ "steel" ],
+    "symbol": ";",
+    "color": "green",
+    "flags": [ "WATER_BREAK" ],
+    "ammo": [ "battery" ],
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE_WELL",
+        "rigid": true,
+        "flag_restriction": [ "BATTERY_MEDIUM" ],
+        "default_magazine": "medium_battery_cell"
+      }
+    ]
+  },
+  {
+    "id": "chloroprene_machine",
+    "type": "TOOL",
+    "name": { "str": "makeshift chloroprene machine" },
+    "description": "A set of pipes and various vessels built to produce vinylacetylene and then chloroprene from acetylene.  It consists of a spiral humidifier, a reactor with built-in electric heater and thermostat, water vessels, drying columns, condenser, and a cryogenic fractional distillation column.",
+    "weight": "100 kg",
+    "volume": "200 L",
+    "longest_side": "70 cm",
+    "price": 2400000,
+    "price_postapoc": 1000,
+    "to_hit": -4,
+    "bashing": 20,
+    "material": [ "steel" ],
+    "symbol": ";",
+    "color": "green",
+    "flags": [ "WATER_BREAK" ],
+    "ammo": [ "battery" ],
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE_WELL",
+        "rigid": true,
+        "flag_restriction": [ "BATTERY_MEDIUM" ],
+        "default_magazine": "medium_battery_cell"
+      }
+    ]
   }
 ]

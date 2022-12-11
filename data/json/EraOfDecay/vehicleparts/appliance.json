@@ -28,5 +28,51 @@
       { "item": "power_supply", "prob": 25 },
       { "item": "cable", "charges": [ 20, 40 ] }
     ]
+  },
+  {
+    "id": "ap_dry_ice_maker",
+    "type": "vehicle_part",
+    "name": { "str": "dry ice maker" },
+    "item": "dry_ice_maker",
+    "description": "A dry ice maker, with a power cord to connect it to an electric grid.",
+    "categories": [ "utility" ],
+    "location": "structure",
+    "symbol": "&",
+    "broken_symbol": "x",
+    "color": "green",
+    "broken_color": "green",
+    "damage_modifier": 10,
+    "damage_reduction": { "all": 20 },
+    "durability": 80,
+    "flags": [ "OBSTACLE", "APPLIANCE" ],
+    "pseudo_tools": [ { "id": "dry_ice_maker" } ],
+    "breaks_into": [
+      { "count": [ 4, 5 ], "item": "steel_lump" },
+      { "count": [ 4, 6 ], "item": "steel_chunk" },
+      { "count": [ 4, 6 ], "item": "scrap" }
+    ]
+  },
+  {
+    "id": "ap_chloroprene_machine",
+    "type": "vehicle_part",
+    "name": { "str": "chloroprene machine" },
+    "item": "dry_ice_maker",
+    "description": "A chloroprene machine, with a power cord to connect it to an electric grid.",
+    "categories": [ "utility" ],
+    "location": "structure",
+    "symbol": "&",
+    "broken_symbol": "x",
+    "color": "green",
+    "broken_color": "green",
+    "damage_modifier": 10,
+    "damage_reduction": { "all": 20 },
+    "durability": 80,
+    "flags": [ "OBSTACLE", "APPLIANCE" ],
+    "pseudo_tools": [ { "id": "chloroprene_machine" } ],
+    "breaks_into": [
+      { "count": [ 4, 5 ], "item": "steel_lump" },
+      { "count": [ 4, 6 ], "item": "steel_chunk" },
+      { "count": [ 4, 6 ], "item": "scrap" }
+    ]
   }
 ]

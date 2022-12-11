@@ -552,6 +552,9 @@
     "copy-from": "reagent_powder",
     "name": { "str_sp": "potassium chloride" },
     "description": "A handful of potassium chloride.  Although it occurs naturally in the mineral sylvite, it can be produced as a byproduct of the reaction of saltpeter and hydrochloric acid.  It can be used for making fertilizer, or potassium hydroxide by way of electrolysis.",
+    "//molar_mass": "74.555 g/mol",
+    "//units_per_mol": "38",
+    "//weight_per_mol": "75.392 g",
     "weight": "1984 mg"
   },
   {
@@ -748,6 +751,9 @@
     "copy-from": "reagent_powder",
     "name": { "str_sp": "saltpeter" },
     "description": "A handful of saltpeter.  Sometimes used as a fertilizer, this ubiquitous nitrate is the principal constituent of black gunpowder and simple rocket propellants, such as rocket candy.  Also known as potassium nitrate.",
+    "//molar_mass": "101.1032 g/mol",
+    "//units_per_mol": "48",
+    "//weight_per_mol": "101.232 g",
     "container": "bag_canvas",
     "price": 200,
     "price_postapoc": 500,
