@@ -146,7 +146,7 @@
       ]
     },
     "extend": { "flags": [ "USE_UPS", "TRADER_AVOID", "BIO_INTERFACE" ] },
-    "power_draw": "4 kJ",
+    "power_draw": "4 kW",
     "revert_to": "power_armor_basic",
     "use_action": { "type": "transform", "menu_text": "Turn off", "msg": "The %s armor disengages.", "target": "power_armor_basic" },
     "weight_capacity_bonus": "58628 g",
@@ -294,7 +294,7 @@
       ]
     },
     "extend": { "flags": [ "USE_UPS", "TRADER_AVOID", "BIO_INTERFACE" ] },
-    "power_draw": "4 kJ",
+    "power_draw": "4 kW",
     "revert_to": "power_armor_heavy",
     "use_action": { "type": "transform", "menu_text": "Turn off", "msg": "The %s armor disengages.", "target": "power_armor_heavy" },
     "weight_capacity_bonus": "80442 g",
@@ -370,7 +370,7 @@
     "looks_like": "power_armor_helmet_basic",
     "name": { "str": "environmental combat helmet (on)", "str_pl": "environmental combat helmets (on)" },
     "description": "A fully enclosed combat helmet for hazardous environments, this was designed to fit with a powered exoskeleton, using cameras to expand visual range.  In practice, the cameras were unreliable and easily fouled.  The environmental controls function best with direct-skin contact.  The environmental controls function best with direct-skin contact.  It is turned on and continually drawing power.  Use it to turn it off.",
-    "power_draw": "435 mJ",
+    "power_draw": "435 mW",
     "revert_to": "power_armor_helmet_basic",
     "use_action": { "type": "transform", "menu_text": "Turn off", "msg": "The %s disengages.", "target": "power_armor_helmet_basic" },
     "extend": {
@@ -455,7 +455,7 @@
     "looks_like": "power_armor_helmet_heavy",
     "name": { "str": "heavy environmental combat helmet (on)", "str_pl": "heavy environmental combat helmets (on)" },
     "description": "An extremely heavy-duty fully enclosed combat helmet for hazardous environments, this was designed to fit with a powered exoskeleton.  In the field, soldiers reported that the protection was not worth the awkward size and limited visuals.  The environmental controls function best with direct-skin contact.  It is turned on and continually drawing power.  Use it to turn it off.",
-    "power_draw": "435 mJ",
+    "power_draw": "435 mW",
     "revert_to": "power_armor_helmet_heavy",
     "use_action": { "type": "transform", "menu_text": "Turn off", "msg": "The %s disengages.", "target": "power_armor_helmet_heavy" },
     "extend": {
@@ -539,7 +539,7 @@
     "looks_like": "power_armor_helmet_light",
     "name": { "str": "light environmental combat helmet (on)", "str_pl": "light environmental combat helmets (on)" },
     "description": "This full-enclosure helmet was designed based on commercial diving equipment, in response to complaints that earlier designs were impossible to use in combat.  While still a little more restrictive than regular combat headgear - and frustrating should your nose itch - this one received far better reviews from soldiers.  Sadly, civilization ended before they could roll out in significant numbers.  The environmental controls function best with direct-skin contact.  It is turned on and continually drawing power.  Use it to turn it off.",
-    "power_draw": "435 mJ",
+    "power_draw": "435 mW",
     "revert_to": "power_armor_helmet_light",
     "use_action": { "type": "transform", "menu_text": "Turn off", "msg": "The %s disengages.", "target": "power_armor_helmet_light" },
     "extend": {
@@ -633,7 +633,7 @@
       ]
     },
     "extend": { "flags": [ "USE_UPS", "TRADER_AVOID", "BIO_INTERFACE" ] },
-    "power_draw": "4 kJ",
+    "power_draw": "4 kW",
     "revert_to": "power_armor_light",
     "use_action": { "type": "transform", "menu_text": "Turn off", "msg": "The %s armor disengages.", "target": "power_armor_light" },
     "weight_capacity_bonus": "14484 g",
