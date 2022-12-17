@@ -1,7 +1,7 @@
 [
   {
     "type": "effect_type",
-    "id": "effect_modafinil",
+    "id": "took_modafinil",
     "name": [ "Modafinil" ],
     "desc": [ "You have taken some modafinil recently." ],
     "rating": "good",

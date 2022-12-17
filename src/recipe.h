@@ -249,6 +249,8 @@ class recipe
 
         bool has_flag( const std::string &flag_name ) const;
 
+        float get_mult_from_options() const;
+
         bool is_reversible() const {
             return reversible;
         }

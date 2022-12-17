@@ -219,7 +219,7 @@ static const efftype_id effect_disrupted_sleep( "disrupted_sleep" );
 static const efftype_id effect_downed( "downed" );
 static const efftype_id effect_drunk( "drunk" );
 static const efftype_id effect_earphones( "earphones" );
-static const efftype_id effect_modafinil( "effect_modafinil" );
+static const efftype_id effect_took_modafinil( "took_modafinil" );
 static const efftype_id effect_flu( "flu" );
 static const efftype_id effect_foodpoison( "foodpoison" );
 static const efftype_id effect_fungus( "fungus" );
@@ -3282,7 +3282,7 @@ void Character::do_skill_rust()
 
 int Character::focus_equilibrium_fatigue_cap( int equilibrium ) const
 {
-    if( !has_effect( effect_modafinil ) ) {
+    if( !has_effect( effect_took_modafinil ) ) {
         if( get_fatigue() >= fatigue_levels::MASSIVE_FATIGUE && equilibrium > 20 ) {
             return 20;
         } else if( get_fatigue() >= fatigue_levels::EXHAUSTED && equilibrium > 40 ) {
@@ -4413,7 +4413,7 @@ int Character::weariness() const
 int Character::weary_threshold() const
 {
     const int bmr = base_bmr();
-    int threshold = bmr * get_option<float>( "WEARY_BMR_MULT" );
+    int threshold = bmr * 0.54 * get_option<float>( "WEARY_BMR_MULT" );
     // reduce by 1% per 14 points of fatigue after 150 points
     threshold *= 1.0f - ( ( std::max( fatigue, -20 ) - 150 ) / 1400.0f );
     // Each 2 points of morale increase or decrease by 1%
@@ -4433,7 +4433,7 @@ std::pair<int, int> Character::weariness_transition_progress() const
     while( amount >= 0 ) {
         amount -= threshold;
         if( threshold > 20 ) {
-            threshold *= get_option<float>( "WEARY_THRESH_SCALING" );
+            threshold *= 0.75 * get_option<float>( "WEARY_THRESH_SCALING" );
         }
     }
 
@@ -4451,7 +4451,7 @@ int Character::weariness_level() const
     while( amount >= 0 ) {
         amount -= threshold;
         if( threshold > 20 ) {
-            threshold *= get_option<float>( "WEARY_THRESH_SCALING" );
+            threshold *= 0.75 * get_option<float>( "WEARY_THRESH_SCALING" );
         }
         ++level;
     }
@@ -4467,7 +4467,7 @@ int Character::weariness_transition_level() const
     while( amount >= 0 ) {
         amount -= threshold;
         if( threshold > 20 ) {
-            threshold *= get_option<float>( "WEARY_THRESH_SCALING" );
+            threshold *= 0.75 * get_option<float>( "WEARY_THRESH_SCALING" );
         }
     }
 
@@ -4551,8 +4551,8 @@ void Character::update_needs( int rate_multiplier )
     if( get_fatigue() < 1050 && !asleep && !debug_ls ) {
         if( rates.fatigue > 0.0f ) {
             int fatigue_roll = roll_remainder( rates.fatigue * rate_multiplier );
-            // Modafinil will stop fatigue accumulation, but not sleep deprivation accumulation.
-            if( !has_effect( effect_modafinil ) ) {
+            // Modafinil will stop fatigue accumulation after a certain point to not disrupt sleep schedules, but not sleep deprivation accumulation.
+            if( !has_effect( effect_took_modafinil ) || get_fatigue() < fatigue_levels::TIRED ) {
                 mod_fatigue( fatigue_roll );
             }
 
@@ -4875,9 +4875,9 @@ void Character::check_needs_extremes()
             mod_fatigue( -10 );
             fall_asleep();
         } else if( get_fatigue() >= 800 && calendar::once_every( 30_minutes ) &&
-                   !has_effect( effect_modafinil ) ) {
+                   !has_effect( effect_took_modafinil ) ) {
             add_msg_if_player( m_warning, _( "Anywhere would be a good place to sleep…" ) );
-        } else if( calendar::once_every( 30_minutes ) && !has_effect( effect_modafinil ) ) {
+        } else if( calendar::once_every( 30_minutes ) && !has_effect( effect_took_modafinil ) ) {
             add_msg_if_player( m_warning, _( "You feel like you haven't slept in days." ) );
         }
     }
@@ -4885,7 +4885,7 @@ void Character::check_needs_extremes()
     // Even if we're not Exhausted, we really should be feeling lack/sleep earlier
     // Penalties start at Dead Tired and go from there
     if( get_fatigue() >= fatigue_levels::DEAD_TIRED && !in_sleep_state() &&
-        !has_effect( effect_modafinil ) ) {
+        !has_effect( effect_took_modafinil ) ) {
         if( get_fatigue() >= 700 ) {
             if( calendar::once_every( 30_minutes ) ) {
                 add_msg_if_player( m_warning, _( "You're too physically tired to stop yawning." ) );
@@ -4950,15 +4950,15 @@ void Character::check_needs_extremes()
             // Note: these can coexist with fatigue-related microsleeps
             /** @EFFECT_INT slightly decreases occurrence of short naps when sleep deprived */
             if( one_in( static_cast<int>( sleep_deprivation_pct * 75 ) + int_cur ) &&
-                !has_effect( effect_modafinil ) ) {
+                !has_effect( effect_took_modafinil ) ) {
                 fall_asleep( 30_seconds );
             }
 
             // Stimulants can be used to stay awake a while longer, but after a while you'll just collapse.
             // Modafinil will help more, but won't allow to stay awake forever either.
-            bool can_pass_out = ( ( !has_effect( effect_modafinil ) || get_stim() < 30 ) &&
+            bool can_pass_out = ( ( !has_effect( effect_took_modafinil ) || get_stim() < 30 ) &&
                                   sleep_deprivation >= SLEEP_DEPRIVATION_MINOR ) ||
-                                ( sleep_deprivation >= SLEEP_DEPRIVATION_MAJOR && !has_effect( effect_modafinil ) ) ||
+                                ( sleep_deprivation >= SLEEP_DEPRIVATION_MAJOR && !has_effect( effect_took_modafinil ) ) ||
                                 sleep_deprivation >= SLEEP_DEPRIVATION_MASSIVE;
 
             if( can_pass_out && calendar::once_every( 10_minutes ) ) {
@@ -5018,7 +5018,7 @@ void Character::get_sick()
     int disease_rarity = static_cast<int>( checks_per_year * health_factor * env_factor /
                                            base_diseases_per_year );
     add_msg_debug( debugmode::DF_CHAR_HEALTH, "disease_rarity = %d", disease_rarity );
-    if( one_in( disease_rarity ) ) {
+    if( one_in( disease_rarity ) && !x_in_y( get_option<int>( "DISEASE_FREQUENCY_MOD" ), 100 ) ) {
         if( one_in( 6 ) ) {
             // The flu typically lasts 3-10 days.
             add_effect( effect_flu, rng( 3_days, 10_days ) );
@@ -5850,9 +5850,9 @@ float Character::healing_rate( float at_rest_quality ) const
     // TODO: Cache
     float heal_rate;
     if( !is_npc() ) {
-        heal_rate = get_option< float >( "PLAYER_HEALING_RATE" );
+        heal_rate = 0.0001 * get_option< float >( "PLAYER_HEALING_RATE" );
     } else {
-        heal_rate = get_option< float >( "NPC_HEALING_RATE" );
+        heal_rate = 0.0001 * get_option< float >( "NPC_HEALING_RATE" );
     }
     float awake_rate = heal_rate * mutation_value( "healing_awake" );
     float final_rate = 0.0f;
@@ -6057,9 +6057,9 @@ int Character::height() const
 int Character::base_bmr() const
 {
     /**
-    Values are for males, and average!
+    Values are average!
     */
-    const int equation_constant = 5;
+    const int equation_constant = male ? 5 : -161;
     const int weight_factor = units::to_gram<int>( bodyweight() / 100.0 );
     const int height_factor = 6.25 * height();
     const int age_factor = 5 * age();
@@ -6328,8 +6328,8 @@ int Character::get_stamina_max() const
 
     // Cardiofit stamina mod defaults to 5, and get_cardiofit() should return a value in the vicinity
     // of 1000-3000, so this should add somewhere between 3000 to 15000 stamina.
-    int max_stamina = get_option<int>( player_max_stamina ) +
-                      get_option<int>( player_cardiofit_stamina_scale ) * get_cardiofit();
+    int max_stamina = ( 3500 * get_option<float>( player_max_stamina ) ) +
+                      ( 5 * get_option<float>( player_cardiofit_stamina_scale ) * get_cardiofit() );
     max_stamina = enchantment_cache->modify_value( enchant_vals::mod::MAX_STAMINA, max_stamina );
 
     return max_stamina;
@@ -6381,7 +6381,7 @@ void Character::burn_move_stamina( int moves )
         overburden_percentage = ( current_weight - max_weight ) * 100 / max_weight;
     }
 
-    int burn_ratio = get_option<int>( "PLAYER_BASE_STAMINA_BURN_RATE" );
+    int burn_ratio = 15 * get_option<float>( "PLAYER_BASE_STAMINA_BURN_RATE" );
     for( const bionic_id &bid : get_bionic_fueled_with_muscle() ) {
         if( has_active_bionic( bid ) ) {
             burn_ratio = burn_ratio * 2 - 3;
@@ -6415,7 +6415,7 @@ void Character::burn_move_stamina( int moves )
 void Character::update_stamina( int turns )
 {
     static const std::string player_base_stamina_regen_rate( "PLAYER_BASE_STAMINA_REGEN_RATE" );
-    const float base_regen_rate = get_option<float>( player_base_stamina_regen_rate );
+    const float base_regen_rate = 20 * get_option<float>( player_base_stamina_regen_rate );
     // Your stamina regen rate works as a function of how fit you are compared to your body size.
     // This allows it to scale more quickly than your stamina, so that at higher fitness levels you
     // recover stamina faster.

@@ -501,7 +501,11 @@ std::pair<int, int> Character::fun_for( const item &comest, bool ignore_already_
 
 time_duration Character::vitamin_rate( const vitamin_id &vit ) const
 {
-    time_duration res = vit.obj().rate();
+    time_duration res = vit.obj().rate() * get_option< float >( "VITAMIN_RATE" );
+    if( vit.obj().type() ==
+        vitamin_type::VITAMIN ) { // Mutagens and toxins are unaffected by this option.
+        res *= get_option< float >( "VITAMIN_RATE" );
+    }
 
     for( const auto &m : get_mutations() ) {
         const mutation_branch &mut = m.obj();

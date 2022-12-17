@@ -173,7 +173,7 @@
     "use_action": {
       "type": "consume_drug",
       "activation_message": "You take some modafinil.",
-      "effects": [ { "id": "effect_modafinil", "duration": "12 h" } ]
+      "effects": [ { "id": "took_modafinil", "duration": "12 h" } ]
     }
   },
   {

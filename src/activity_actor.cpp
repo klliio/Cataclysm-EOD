@@ -150,7 +150,7 @@ static const activity_id ACT_WORKOUT_MODERATE( "ACT_WORKOUT_MODERATE" );
 static const ammotype ammo_plutonium( "plutonium" );
 
 static const efftype_id effect_docile( "docile" );
-static const efftype_id effect_modafinil( "effect_modafinil" );
+static const efftype_id effect_took_modafinil( "took_modafinil" );
 static const efftype_id effect_paid( "paid" );
 static const efftype_id effect_pet( "pet" );
 static const efftype_id effect_sensor_stun( "sensor_stun" );
@@ -479,8 +479,8 @@ bool aim_activity_actor::load_RAS_weapon()
     }
 
     // Burn 0.6% max base stamina without cardio/BMI factored in x the strength required to fire.
-    you.mod_stamina( gun->get_min_str() * static_cast<int>( 0.006f *
-                     get_option<int>( "PLAYER_MAX_STAMINA_BASE" ) ) );
+    you.mod_stamina( gun->get_min_str() * static_cast<int>( 21 *
+                     get_option<float>( "PLAYER_MAX_STAMINA_BASE" ) ) );
     // At low stamina levels, firing starts getting slow.
     int sta_percent = ( 100 * you.get_stamina() ) / you.get_stamina_max();
     reload_time += ( sta_percent < 25 ) ? ( ( 25 - sta_percent ) * 2 ) : 0;
@@ -3202,7 +3202,7 @@ std::unique_ptr<activity_actor> craft_activity_actor::deserialize( JsonValue &js
 
 void workout_activity_actor::start( player_activity &act, Character &who )
 {
-    if( who.get_fatigue() > fatigue_levels::DEAD_TIRED && !who.has_effect( effect_modafinil ) ) {
+    if( who.get_fatigue() > fatigue_levels::DEAD_TIRED && !who.has_effect( effect_took_modafinil ) ) {
         who.add_msg_if_player( _( "You are too tired to exercise." ) );
         act_id = activity_id::NULL_ID();
         act.set_to_null();
@@ -3309,7 +3309,7 @@ void workout_activity_actor::start( player_activity &act, Character &who )
 
 void workout_activity_actor::do_turn( player_activity &act, Character &who )
 {
-    if( who.get_fatigue() > fatigue_levels::DEAD_TIRED && !who.has_effect( effect_modafinil ) ) {
+    if( who.get_fatigue() > fatigue_levels::DEAD_TIRED && !who.has_effect( effect_took_modafinil ) ) {
         who.add_msg_if_player( _( "You are exhausted so you finish your workout early." ) );
         act.set_to_null();
         return;
