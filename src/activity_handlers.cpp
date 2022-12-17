@@ -175,7 +175,7 @@ static const bionic_id bio_painkiller( "bio_painkiller" );
 
 static const efftype_id effect_blind( "blind" );
 static const efftype_id effect_controlled( "controlled" );
-static const efftype_id effect_modafinil( "effect_modafinil" );
+static const efftype_id effect_took_modafinil( "took_modafinil" );
 static const efftype_id effect_narcosis( "narcosis" );
 static const efftype_id effect_pet( "pet" );
 static const efftype_id effect_sleep( "sleep" );
@@ -1944,7 +1944,8 @@ void activity_handlers::hand_crank_do_turn( player_activity *act, Character *you
             add_msg( m_info, _( "You've charged the battery completely." ) );
         }
     }
-    if( you->get_fatigue() >= fatigue_levels::DEAD_TIRED && !you->has_effect( effect_modafinil ) ) {
+    if( you->get_fatigue() >= fatigue_levels::DEAD_TIRED &&
+        !you->has_effect( effect_took_modafinil ) ) {
         act->moves_left = 0;
         add_msg( m_info, _( "You're too exhausted to keep cranking." ) );
     }
@@ -1976,7 +1977,8 @@ void activity_handlers::vibe_do_turn( player_activity *act, Character *you )
         }
     }
     // Dead Tired: different kind of relaxation needed
-    if( you->get_fatigue() >= fatigue_levels::DEAD_TIRED && !you->has_effect( effect_modafinil ) ) {
+    if( you->get_fatigue() >= fatigue_levels::DEAD_TIRED &&
+        !you->has_effect( effect_took_modafinil ) ) {
         act->moves_left = 0;
         add_msg( m_info, _( "You're too tired to continue." ) );
     }

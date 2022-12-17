@@ -84,7 +84,7 @@ static const efftype_id effect_deaf( "deaf" );
 static const efftype_id effect_disabled( "disabled" );
 static const efftype_id effect_downed( "downed" );
 static const efftype_id effect_drunk( "drunk" );
-static const efftype_id effect_modafinil( "effect_modafinil" );
+static const efftype_id effect_took_modafinil( "took_modafinil" );
 static const efftype_id effect_fearparalyze( "fearparalyze" );
 static const efftype_id effect_formication( "formication" );
 static const efftype_id effect_grabbed( "grabbed" );
@@ -272,7 +272,7 @@ void suffer::mutation_power( Character &you, const trait_id &mut_id )
         }
         if( mut_id->fatigue ) {
             // Exhausted
-            if( you.get_fatigue() >= fatigue_levels::EXHAUSTED && !you.has_effect( effect_modafinil ) ) {
+            if( you.get_fatigue() >= fatigue_levels::EXHAUSTED && !you.has_effect( effect_took_modafinil ) ) {
                 you.add_msg_if_player( m_warning,
                                        _( "You're too exhausted to keep your %s going." ),
                                        you.mutation_name( mut_id ) );
@@ -389,7 +389,7 @@ void suffer::while_awake( Character &you, const int current_stim )
         suffer::from_schizophrenia( you );
     }
 
-    if( you.has_trait( trait_NARCOLEPTIC ) && !you.has_effect( effect_modafinil ) ) {
+    if( you.has_trait( trait_NARCOLEPTIC ) && !you.has_effect( effect_took_modafinil ) ) {
         if( one_turn_in( 8_hours ) ) {
             you.add_msg_if_player( m_bad,
                                    _( "You're suddenly overcome with the urge to sleep and you pass out." ) );

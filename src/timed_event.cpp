@@ -333,7 +333,7 @@ void timed_event::per_turn()
     switch( type ) {
         case timed_event_type::WANTED: {
             // About once every 5 minutes. Suppress in classic zombie mode.
-            if( here.get_abs_sub().z() >= 0 && one_in( 50 ) && !get_option<bool>( "DISABLE_ROBOT_RESPONSE" ) ) {
+            if( here.get_abs_sub().z() >= 0 && one_in( 50 ) && get_option<bool>( "ENABLE_ROBOT_RESPONSE" ) ) {
                 point place = here.random_outdoor_tile();
                 if( place.x == -1 && place.y == -1 ) {
                     // We're safely indoors!

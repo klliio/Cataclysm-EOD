@@ -31,6 +31,7 @@
 #include "monster.h"
 #include "mtype.h"
 #include "npc.h"
+#include "options.h"
 #include "output.h"
 #include "point.h"
 #include "rng.h"
@@ -188,7 +189,7 @@ bool trapfunc::beartrap( const tripoint &p, Creature *c, item * )
         if( you != nullptr && !you->has_flag( json_flag_INFECTION_IMMUNE ) &&
             dealt_dmg.type_damage( damage_type::CUT ) > 0 ) {
             const int chance_in = you->has_trait( trait_INFRESIST ) ? 512 : 128;
-            if( one_in( chance_in ) ) {
+            if( one_in( chance_in ) && !x_in_y( get_option<int>( "DISEASE_FREQUENCY_MOD" ), 100 ) ) {
                 you->add_effect( effect_tetanus, 1_turns, true );
             }
         }
@@ -232,7 +233,7 @@ bool trapfunc::board( const tripoint &, Creature *c, item * )
                                 damage_type::CUT );
         if( !you->has_flag( json_flag_INFECTION_IMMUNE ) && total_cut_dmg > 0 ) {
             const int chance_in = you->has_trait( trait_INFRESIST ) ? 256 : 35;
-            if( one_in( chance_in ) ) {
+            if( one_in( chance_in ) && !x_in_y( get_option<int>( "DISEASE_FREQUENCY_MOD" ), 100 ) ) {
                 you->add_effect( effect_tetanus, 1_turns, true );
             }
         }
@@ -277,7 +278,7 @@ bool trapfunc::caltrops( const tripoint &, Creature *c, item * )
         Character *you = dynamic_cast<Character *>( c );
         if( you != nullptr && !you->has_flag( json_flag_INFECTION_IMMUNE ) && total_cut_dmg > 0 ) {
             const int chance_in = you->has_trait( trait_INFRESIST ) ? 256 : 35;
-            if( one_in( chance_in ) ) {
+            if( one_in( chance_in ) && !x_in_y( get_option<int>( "DISEASE_FREQUENCY_MOD" ), 100 ) ) {
                 you->add_effect( effect_tetanus, 1_turns, true );
             }
         }
@@ -923,7 +924,7 @@ bool trapfunc::pit_spikes( const tripoint &p, Creature *c, item * )
             if( !you->has_flag( json_flag_INFECTION_IMMUNE ) &&
                 dealt_dmg.type_damage( damage_type::CUT ) > 0 ) {
                 const int chance_in = you->has_trait( trait_INFRESIST ) ? 256 : 35;
-                if( one_in( chance_in ) ) {
+                if( one_in( chance_in ) && !x_in_y( get_option<int>( "DISEASE_FREQUENCY_MOD" ), 100 ) ) {
                     you->add_effect( effect_tetanus, 1_turns, true );
                 }
             }
@@ -1013,7 +1014,7 @@ bool trapfunc::pit_glass( const tripoint &p, Creature *c, item * )
             if( !you->has_flag( json_flag_INFECTION_IMMUNE ) &&
                 dealt_dmg.type_damage( damage_type::CUT ) > 0 ) {
                 const int chance_in = you->has_trait( trait_INFRESIST ) ? 256 : 35;
-                if( one_in( chance_in ) ) {
+                if( one_in( chance_in ) && !x_in_y( get_option<int>( "DISEASE_FREQUENCY_MOD" ), 100 ) ) {
                     you->add_effect( effect_tetanus, 1_turns, true );
                 }
             }

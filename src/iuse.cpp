@@ -175,7 +175,7 @@ static const efftype_id effect_docile( "docile" );
 static const efftype_id effect_downed( "downed" );
 static const efftype_id effect_drunk( "drunk" );
 static const efftype_id effect_earphones( "earphones" );
-static const efftype_id effect_modafinil( "effect_modafinil" );
+static const efftype_id effect_took_modafinil( "took_modafinil" );
 static const efftype_id effect_flushot( "flushot" );
 static const efftype_id effect_foodpoison( "foodpoison" );
 static const efftype_id effect_formication( "formication" );
@@ -4584,7 +4584,7 @@ cata::optional<int> iuse::hand_crank( Character *p, item *it, bool, const tripoi
         p->add_msg_if_player( m_info, _( "It's not waterproof enough to work underwater." ) );
         return cata::nullopt;
     }
-    if( p->get_fatigue() >= fatigue_levels::DEAD_TIRED && !p->has_effect( effect_modafinil ) ) {
+    if( p->get_fatigue() >= fatigue_levels::DEAD_TIRED && !p->has_effect( effect_took_modafinil ) ) {
         p->add_msg_if_player( m_info, _( "You're too exhausted to keep cranking." ) );
         return cata::nullopt;
     }
@@ -4630,7 +4630,7 @@ cata::optional<int> iuse::vibe( Character *p, item *it, bool, const tripoint & )
         p->add_msg_if_player( m_info, _( "The %s's batteries are dead." ), it->tname() );
         return cata::nullopt;
     }
-    if( p->get_fatigue() >= fatigue_levels::DEAD_TIRED && !p->has_effect( effect_modafinil ) ) {
+    if( p->get_fatigue() >= fatigue_levels::DEAD_TIRED && !p->has_effect( effect_took_modafinil ) ) {
         p->add_msg_if_player( m_info, _( "*Your* batteries are dead." ) );
         return cata::nullopt;
     } else {

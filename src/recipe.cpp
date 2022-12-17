@@ -25,6 +25,7 @@
 #include "json.h"
 #include "mapgen_functions.h"
 #include "npc.h"
+#include "options.h"
 #include "optional.h"
 #include "output.h"
 #include "proficiency.h"
@@ -98,7 +99,7 @@ int64_t recipe::batch_time( const Character &guy, int batch, float multiplier,
     // 0.33f is 1/3 speed
     if( multiplier == 0.0f ) {
         // If an item isn't craftable in the dark, show the time to complete as if you could craft it
-        multiplier = 1.0f;
+        multiplier = 1.0f * get_mult_from_options();
     }
 
     const double local_time = static_cast<double>( time_to_craft_moves( guy ) ) / multiplier;
@@ -134,6 +135,23 @@ int64_t recipe::batch_time( const Character &guy, int batch, float multiplier,
     }
 
     return static_cast<int64_t>( total_time );
+}
+
+float recipe::get_mult_from_options() const
+{
+    float option_multi = get_option<float>( "CRAFT_FAST_MOD" );
+
+    const time_duration basetime = time_duration::from_moves( time );
+    const time_duration timesoftcap = time_duration::from_minutes(
+                                          get_option<int>( "CRAFTTIME_SOFTCAP" ) );
+
+    if( timesoftcap > 0_minutes && basetime > timesoftcap ) {
+        // Regarding the math here: resulting time that should be the result of having a given multiplier is calculated via R = T-C*(T-B), where R is resulting time (in minutes), T is base time (in minutes), B is crafting time soft cap, C is speed multiplier for long recipes specified in options. A multiplier for the base time is calculated via N = T/R, where N is actual multiplier that is applied to the recipe. Final formula is N = T/(T-C*(T-B))
+        const float longmult = get_option<float>( "CRAFT_SLOW_MOD" );
+        option_multi = basetime / ( basetime - longmult * ( basetime - timesoftcap ) );
+    }
+
+    return option_multi;
 }
 
 bool recipe::has_flag( const std::string &flag_name ) const
@@ -485,6 +503,8 @@ void recipe::finalize()
         if( rpof.time_multiplier == 0.0f ) {
             rpof.time_multiplier = rpof.id->default_time_multiplier();
         }
+
+        rpof.time_multiplier = ( ( rpof.time_multiplier - 1 ) * get_option<float>( "PROF_TIME_MOD" ) ) + 1;
 
         if( rpof.fail_multiplier == 0.0f ) {
             rpof.fail_multiplier = rpof.id->default_fail_multiplier();

@@ -268,7 +268,7 @@ float Character::crafting_speed_multiplier( const recipe &rec ) const
 {
     const float result = morale_crafting_speed_multiplier( rec ) *
                          lighting_craft_speed_multiplier( rec ) *
-                         get_limb_score( limb_score_manip );
+                         get_limb_score( limb_score_manip ) * rec.get_mult_from_options();
     add_msg_debug( debugmode::DF_CHARACTER, "Limb score multiplier %.1f, crafting speed multiplier %1f",
                    get_limb_score( limb_score_manip ), result );
 
@@ -285,12 +285,13 @@ float Character::crafting_speed_multiplier( const item &craft,
 
     const recipe &rec = craft.get_making();
 
+    const float option_multi = rec.get_mult_from_options();
     const float light_multi = lighting_craft_speed_multiplier( rec );
     const float bench_multi = workbench_crafting_speed_multiplier( *this, craft, loc );
     const float morale_multi = morale_crafting_speed_multiplier( rec );
     const float mut_multi = mutation_value( "crafting_speed_multiplier" );
 
-    const float total_multi = light_multi * bench_multi * morale_multi * mut_multi *
+    const float total_multi = light_multi * bench_multi * morale_multi * mut_multi * option_multi *
                               get_limb_score( limb_score_manip );
 
     if( light_multi <= 0.0f ) {

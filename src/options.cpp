@@ -2127,6 +2127,23 @@ void options_manager::add_options_graphics()
          true, COPT_CURSES_HIDE
        );
 
+    add( "RETRACT_ISO_WALLS", "graphics", to_translation( "Draw walls retracted in ISO tile-sets" ),
+    to_translation( "Draw walls normal, retracted, or automatically retracting near player." ), {
+        { 0, to_translation( "Normal" ) }, { 1, to_translation( "Retracted" ) },
+        { 2, to_translation( "Auto" ) }
+    }, 0, 0
+       );
+
+    add( "RETRACT_DIST_MIN", "graphics", to_translation( "Minimum distance for auto-retracting walls" ),
+         to_translation( "Minimum distance for auto-retracting walls.  Values above zero overwrite tileset settings." ),
+         0.0, 60.0, 0.0, 0.1
+       );
+
+    add( "RETRACT_DIST_MAX", "graphics", to_translation( "Maximum distance for auto-retracting walls" ),
+         to_translation( "Maximum distance for auto-retracting walls.  Values above zero overwrite tileset settings." ),
+         0.0, 60.0, 0.0, 0.1
+       );
+
     add_empty_line();
 
     add( "ENABLE_ASCII_ART", "graphics",
@@ -2444,9 +2461,14 @@ void options_manager::add_options_world_default()
          0, 8, 4
        );
 
-    add( "SPAWN_DENSITY", "world_default", to_translation( "Spawn rate scaling factor" ),
-         to_translation( "A scaling factor that determines density of monster spawns.  A higher number means more monsters." ),
-         0.0, 50.0, 1.0, 0.1
+    add( "SPAWN_DENSITY", "world_default", to_translation( "Monster density multiplier" ),
+         to_translation( "Multiplies amount of monsters (such as zombies and robots) spawned.  Wildlife (including zombified and mutated) is unaffected.  0.5 means half as much monsters, 2 means twice as much numbers.  A higher number means more monsters spawned at the start, making the game harder." ),
+         0.00f, 50.00f, 1.00f, 0.01f
+       );
+
+    add( "SPAWN_ANIMAL_DENSITY", "world_default", to_translation( "Wildlife density multiplier" ),
+         to_translation( "Multiplies amount of wildlife (including zombified and mutated animals and insects) spawned.  Human zombies and robot spawns are unaffected.  0.5 means half as much wildlife, 2 means twice as much wildlife.  A higher number means more wildlife spawning, making food more abundant." ),
+         0.00f, 50.00f, 1.00f, 0.01f
        );
 
     add( "ITEM_SPAWNRATE", "world_default", to_translation( "Item spawn scaling factor" ),
@@ -2540,7 +2562,28 @@ void options_manager::add_options_world_default()
 
     add( "RAD_MUTATION", "world_default", to_translation( "Mutations by radiation" ),
          to_translation( "If true, radiation causes the player to mutate." ),
+         false
+       );
+
+    add_empty_line();
+
+    add( "ENABLE_ROBOT_RESPONSE", "world_default", to_translation( "Robot alarm response" ),
+         to_translation( "If true, alarms being triggered may cause a eyebot to spawn outdoors after a short delay, as long as player character isn't underground." ),
+         false
+       );
+
+    add_empty_line();
+
+    add( "EMP_DISABLE_ELECTRONICS", "world_default", to_translation( "Electronic items ruined by EMP" ),
+         to_translation( "If true, EMP effect can permanently render electric and electronic items useless." ),
          true
+       );
+
+    add_empty_line();
+
+    add( "ETERNAL_SEASON", "world_default", to_translation( "Eternal season" ),
+         to_translation( "If true, keep the initial season for ever." ),
+         false
        );
 
     add_empty_line();
@@ -2555,53 +2598,45 @@ void options_manager::add_options_world_default()
 
     add( "META_PROGRESS", "world_default", to_translation( "Meta Progression" ),
          to_translation( "Will you need to complete certain achievements to enable certain scenarios and professions?  Achievements are tracked from your memorial file so characters from any world will be checked.  Disabling this will spoil factions and situations you may otherwise stumble upon naturally.  Some scenarios are frustrating for the uninitiated and some professions skip portions of the games content.  If new to the game meta progression will help you be introduced to mechanics at a reasonable pace." ),
-         true
+         false
        );
-}
 
-void options_manager::add_options_debug()
-{
-    const auto add_empty_line = [&]() {
-        debug_page_.items_.emplace_back();
-    };
-
-    add( "DISTANCE_INITIAL_VISIBILITY", "debug", to_translation( "Distance initial visibility" ),
-         to_translation( "Determines the scope, which is known in the beginning of the game." ),
+    add( "DISTANCE_INITIAL_VISIBILITY", "world_default",
+         to_translation( "Initial visibility distance" ),
+         to_translation( "The radius of an area known at the beginning of the game, in overmap tiles.  Higher value results in more overmap tiles being known at game start." ),
          3, 20, 15
        );
 
     add_empty_line();
 
-    add( "INITIAL_STAT_POINTS", "debug", to_translation( "Initial stat points" ),
-         to_translation( "Initial points available to spend on stats on character generation." ),
+    add( "INITIAL_STAT_POINTS", "world_default", to_translation( "Initial stat points" ),
+         to_translation( "Initial points available to spend on stats on character generation.  Higher value allows creating characters with higher stats at game start." ),
          0, 1000, 6
        );
 
-    add( "INITIAL_TRAIT_POINTS", "debug", to_translation( "Initial trait points" ),
-         to_translation( "Initial points available to spend on traits on character generation." ),
+    add( "INITIAL_TRAIT_POINTS", "world_default", to_translation( "Initial trait points" ),
+         to_translation( "Initial points available to spend on traits on character generation.  Higher value allows creating characters with more powerful combinations of traits at game start." ),
          0, 1000, 0
        );
 
-    add( "INITIAL_SKILL_POINTS", "debug", to_translation( "Initial skill points" ),
-         to_translation( "Initial points available to spend on skills on character generation." ),
+    add( "INITIAL_SKILL_POINTS", "world_default", to_translation( "Initial skill points" ),
+         to_translation( "Initial points available to spend on skills on character generation.  Higher value allows creating characters with higher skills at game start." ),
          0, 1000, 2
        );
 
-    add( "MAX_TRAIT_POINTS", "debug", to_translation( "Maximum trait points" ),
-         to_translation( "Maximum trait points available for character generation." ),
+    add( "MAX_TRAIT_POINTS", "world_default", to_translation( "Maximum trait points" ),
+         to_translation( "Maximum amount of points that can be spent on positive traits and obtained from taking negative traits on character generation.  Higher value allows creating characters with more traits, both negative and positive, at game start." ),
          0, 1000, 12
        );
 
     add_empty_line();
 
-    add( "SKILL_TRAINING_SPEED", "debug", to_translation( "Skill training speed" ),
-         to_translation( "Scales experience gained from practicing skills and reading books.  0.5 is half as fast as default, 2.0 is twice as fast, 0.0 disables skill training except for NPC training." ),
-         0.0, 100.0, 1.0, 0.1
+    add( "SKILL_TRAINING_SPEED", "world_default", to_translation( "Skill training multiplier" ),
+         to_translation( "Multiplier for experience gained from practicing skills and reading books.  0.5 is half as fast as default, 2 is twice as fast, 0 disables skill training except for NPC training.  Higher value makes characters train skills faster." ),
+         0.00f, 100.00f, 1.00f, 0.01f
        );
 
-    add_empty_line();
-
-    add( "SKILL_RUST", "debug", to_translation( "Skill rust" ),
+    add( "SKILL_RUST", "world_default", to_translation( "Skill rust" ),
          to_translation( "Set the type of skill rust.  Vanilla: Skill rust can decrease levels.  - Capped: Skill rust cannot decrease levels.  - Off: None at all." ),
          //~ plain, default, normal
     {   { "vanilla", to_translation( "Vanilla" ) },
@@ -2611,7 +2646,167 @@ void options_manager::add_options_debug()
     },
     "vanilla" );
 
+    add( "INT_BASED_LEARNING_BASE_VALUE", "world_default",
+         to_translation( "Base intelligence for focus" ),
+         to_translation( "Value of intelligence stat needed to have an unmodified effect of focus on training speed.  Higher INT will raise training speed for characters, lower INT will lower it, by amount specified in 'Focus adjustment per intelligence' option.  Higher value makes characters train skills slower." ),
+         0, 50, 8
+       );
+
+    add( "INT_BASED_LEARNING_BASE_VALUE", "world_default",
+         to_translation( "Base intelligence for focus" ),
+         to_translation( "How much focus is added or substracted for each INT above or below a certain value.  0 results in intelligence having no effect on learning speed.  Higher value makes characters with low INT train skills slower, and characters with high INT train skills faster." ),
+         0, 50, 5
+       );
+
     add_empty_line();
+
+    add( "VITAMIN_RATE", "world_default", to_translation( "Vitamin consumption rate multiplier" ),
+         to_translation( "Multiplier for base rate at which vitamin levels drop.  Consumed toxins and mutagens are unaffected.  0.5 is twice as fast as default, 2 is half as fast.  Higher value makes vitamin levels drop slower, making vitamins less important to keep track of." ),
+         0.01f, 100.00f, 1.00f, 0.01f
+         // Due to how vitamin consumption rate is currently calculated, 0 may break things.
+         // TODO: make 0 result in no vitamin consumption happening.
+       );
+
+    add( "PLAYER_HUNGER_RATE", "world_default", to_translation( "Hunger multiplier" ),
+         to_translation( "Multiplier for how fast hunger accumulates over time.  0.5 is half as fast as default, 2 is twice as fast, 0 disables hunger accumulation over time, but not hunger from other sources.  Higher value makes characters need to eat more often, raising total food consumption." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "PLAYER_THIRST_RATE", "world_default", to_translation( "Thirst multiplier" ),
+         to_translation( "Multiplier for how fast thirst accumulates over time.  0.5 is half as fast as default, 2 is twice as fast, 0 disables thirst accumulation over time, but not thirst from other sources.  Higher value makes characters need to drink more often, raising total water consumption." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "PLAYER_FATIGUE_RATE", "world_default", to_translation( "Fatigue multiplier" ),
+         to_translation( "Multiplier for how fast fatigue accumulates over time.  0.5 is half as fast as default, 2 is twice as fast, 0 disables fatigue accumulation over time, but not fatigue from other sources.  Higher value makes characters need to sleep more often, reducing time between sleeps.  Sleep length is unaffected." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add_empty_line();
+
+    add( "PLAYER_HEALING_RATE", "world_default", to_translation( "Player heal speed multiplier" ),
+         to_translation( "Multiplier for base speed at which player character heals damage, further modified by many other factors.  0.5 is half as fast as default, 2 is twice as fast, 0 disables natural healing.  Higher value makes player character recover lost HP faster." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "NPC_HEALING_RATE", "world_default", to_translation( "NPC heal speed multiplier" ),
+         to_translation( "Multiplier for base speed at which non-player characters heal damage, further modified by many other factors (monsters are unaffected).  0.5 is half as fast as default, 2 is twice as fast, 0 disables natural healing.  Higher value makes non-player characters recover lost HP faster." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add_empty_line();
+
+    add( "DISEASE_FREQUENCY_MOD", "world_default", to_translation( "Disease frequency modifier" ),
+         to_translation( "A probability, in percents, to not catch an ambient disease such as cold, flu or tetauns, any time it'd otherwise happen.  0 means no reduction, 100 means ambient diseases never happen.  Higher value results in characters becoming sick more rarely." ),
+         0, 50, 0
+       );
+
+    add_empty_line();
+
+    add( "PLAYER_MAX_STAMINA_BASE", "world_default", to_translation( "Maximum stamina multiplier" ),
+         to_translation( "Multiplier for base maxiumum amount of stamina.  0.5 is half as much, 2 is twice as much, 0 sets base amount of stamina to 0 (only cardio will define max stamina).  Higher value enables characters to sprint and attack in melee for longer before becoming winded." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "PLAYER_CARDIOFIT_STAMINA_SCALING", "world_default",
+         to_translation( "Stamina from cardio multiplier" ),
+         to_translation( "Multiplier for amount of stamina gained/lost from mutations, high/low health, athletics skill and amount of physical activity.  0.5 is half as much, 2 is twice as much, 0 sets amount of stamina from cardio to 0 (the factors above won't have effect on stamina).  Higher value makes the above factors more relevant in defining the amount of stamina that the character has." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "PLAYER_BASE_STAMINA_REGEN_RATE", "world_default",
+         to_translation( "Stamina recovery multiplier" ),
+         to_translation( "Multiplier for how fast spent stamina recovers.  0.5 is half as fast, 2 is twice as fast.  Note that final recovery rate (after all calculations) can't be lower than 0.1.  Higher value makes the character recover stamina faster after sprinting or performing melee attacks." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "PLAYER_BASE_STAMINA_BURN_RATE", "world_default", to_translation( "Stamina use multiplier" ),
+         to_translation( "Multiplier for amount of stamina used up, any time it is used up.  0.5 is half as much, 2 is twice as much, 0 prevents sprinting and melee attacks from reducing stamina.  Higher value makes the character tire out faster while sprinting or performing melee attacks." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add_empty_line();
+
+    add( "WEARY_BMR_MULT", "world_default", to_translation( "Weariness BMR multiplier" ),
+         to_translation( "Multiplier for how much of an effect basal metabolic rate (BMR) has on weariness thresholds.  0.5 is half as much, 2 is twice as much, 0 sets base weariness thresholds to 0.  Higher value makes the character capable of accumulating more weariness before suffering negative effects from it." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "WEARY_THRESH_SCALING", "world_default", to_translation( "Weariness progression multiplier" ),
+         to_translation( "Multiplier for how much more accumulated weariness it takes to progress to higher levels of weariness.  0.5 is half as much, 2 is twice as much.  Higher value makes the character capable of accumulating more weariness before suffering more severe effects from it." ),
+         0.01f, 100.00f, 1.00f, 0.01f
+         // 0 may potentially break things.
+       );
+
+    add( "WEARY_INITIAL_STEP", "world_default",
+         to_translation( "Weariness initial threshold multiplier" ),
+         to_translation( "Multiplier for how much accumulated weariness it takes to progress to a first levels of weariness.  0.5 is half as much, 2 is twice as much.  Higher value makes the character capable of accumulating more weariness before suffering any negative effects from it." ),
+         0.01f, 100.00f, 1.00f, 0.01f
+         // 0 may potentially break things.
+       );
+
+    add( "WEARY_RECOVERY_MULT", "world_default", to_translation( "Weariness recover multiplier" ),
+         to_translation( "Multiplier for how fast weariness recovers over time.  0.5 is half as fast, 2 is twice as fast.  Higher value makes the character recover faster after accumulating weariness." ),
+         0.01f, 100.00f, 1.00f, 0.01f
+         // 0 may potentially break things.
+       );
+
+    add_empty_line();
+
+    add( "DISPERSION_PER_GUN_DAMAGE", "world_default",
+         to_translation( "Damaged gun dispersion multiplier" ),
+         to_translation( "Multiplier for amount of extra dispersion gained by damaged ranged weapons.  0.5 is half as much, 2 is twice as much, 0 results in damaged guns being as accurate as non-damaged ones.  Higher value makes damaged ranged weapons less accurate." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "GUN_DISPERSION_DIVIDER", "world_default", to_translation( "Gun dispersion modifier" ),
+         to_translation( "Modifier that increases ranged weapon accuracy by reducing dispersion.  0.5 is half as accurate, 2 is twice as accurate.  Higher value makes ranged weapons more accurate." ),
+         0.01f, 100.00f, 1.00f, 0.01f
+         // 0 not allowed because it'd result in division by zero.
+       );
+
+    add_empty_line();
+
+    add( "SPEEDYDEX_MIN_DEX", "world_default", to_translation( "Minimum dexterity to increase speed" ),
+         to_translation( "Value of dexterity stat above which character speed would be raised by amount specified in dexterity speed increase option, for each 1 DEX above this level.  0 means that this effect will always apply.  Higher value results in characters needing higher dexterity to quality for a speed bonus." ),
+         0, 50, 0
+       );
+
+    add( "SPEEDYDEX_DEX_SPEED", "world_default", to_translation( "Speed per dexterity point" ),
+         to_translation( "Amount of moves gained by characters for each 1 DEX above minumum dexterity needed to increase speed.  0 disables speed increase from dexterity.  Higher value results in characters with higher dexterity having higher speed." ),
+         0, 50, 0
+       );
+
+    add_empty_line();
+
+    add( "CRAFTTIME_SOFTCAP", "world_default", to_translation( "Crafting time soft cap" ),
+         to_translation( "Soft cap for crafting time.  Recipes with base time longer than that will make use of long craft time multiplier (only for the time period beyond this cap), all others will make use of short crafting time multiplier.  0 makes all recipes use short crafting time multiplier." ),
+         0, 10000, 0
+       );
+
+    add( "CRAFT_FAST_MOD", "world_default",
+         to_translation( "Fast crafting speed multiplier" ),
+         to_translation( "Multiplier for crafting speed for recipes with base time not higher than the crafting time soft cap.  0.5 is half as fast, 2 is twice as fast.  Higher value makes quick crafting recipes take less time." ),
+         0.01f, 100.00f, 1.00f, 0.01f
+         // 0 will make fast crafting impossible, and so is not allowed.
+       );
+
+    add( "CRAFT_SLOW_MOD", "world_default",
+         to_translation( "Slow crafting speed multiplier" ),
+         to_translation( "Represents the part of time above crafting time soft cap shaved off for any crafting recipes with base craft time longer than the crafting time soft cap.  0 disables speed reduction for long crafting, 1 turns soft cap into a hard cap, making all recipes never take longer than the max time specified.  Higher value makes slow crafting recipes take less time." ),
+         0.00f, 1.00f, 0.00f, 0.01f
+       );
+
+    add( "PROF_TIME_MOD", "world_default",
+         to_translation( "Proficiency crafting speed multiplier" ),
+         to_translation( "Represents the multiplier for the negative effect of missing proficiencies on crafting time.  0 disables speed reduction for missing proficiencies, 1 makes the game use the default time increase for missing proficiencies  Higher value makes proficiencies more important for quickly crafting recipes that require proficiencies." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+}
+
+void options_manager::add_options_debug()
+{
 
     add( "FOV_3D", "debug", to_translation( "Experimental 3D field of vision" ),
          to_translation( "If true and the world is in Z-level mode, the vision will extend beyond current Z-level.  If false, vision is limited to current Z-level.  Currently very bugged!" ),
@@ -2622,26 +2817,6 @@ void options_manager::add_options_debug()
          to_translation( "How many levels up and down the experimental 3D field of vision reaches.  (This many levels up, this many levels down.)  3D vision of the full height of the world can slow the game down a lot.  Seeing fewer Z-levels is faster." ),
          0, OVERMAP_LAYERS, 4
        );
-
-    add_empty_line();
-
-    add( "RETRACT_ISO_WALLS", "debug", to_translation( "Draw walls retracted in ISO tile-sets" ),
-    to_translation( "Draw walls normal, retracted, or automatically retracting near player." ), {
-        { 0, to_translation( "Normal" ) }, { 1, to_translation( "Retracted" ) },
-        { 2, to_translation( "Auto" ) }
-    }, 0, 0
-       );
-
-    add( "RETRACT_DIST_MIN", "debug", to_translation( "Minimum distance for auto-retracting walls" ),
-         to_translation( "Minimum distance for auto-retracting walls.  Values above zero overwrite tileset settings." ),
-         0.0, 60.0, 0.0, 0.1
-       );
-
-    add( "RETRACT_DIST_MAX", "debug", to_translation( "Maximum distance for auto-retracting walls" ),
-         to_translation( "Maximum distance for auto-retracting walls.  Values above zero overwrite tileset settings." ),
-         0.0, 60.0, 0.0, 0.1
-       );
-
 
     get_option( "FOV_3D_Z_RANGE" ).setPrerequisite( "FOV_3D" );
 }
