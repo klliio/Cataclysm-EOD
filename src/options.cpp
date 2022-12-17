@@ -2780,7 +2780,7 @@ void options_manager::add_options_world_default()
     add_empty_line();
 
     add( "CRAFTTIME_SOFTCAP", "world_default", to_translation( "Crafting time soft cap" ),
-         to_translation( "Soft cap for crafting time.  Recipes with base time longer than that will make use of long craft time multiplier (only for the time period beyond this cap), all others will make use of short crafting time multiplier.  0 makes all recipes use short crafting time multiplier." ),
+         to_translation( "Soft cap for crafting time, in minutes.  Recipes with base time longer than that will make use of long craft time multiplier (only for the time period beyond this cap), all others will make use of short crafting time multiplier.  0 makes all recipes use short crafting time multiplier." ),
          0, 10000, 0
        );
 
