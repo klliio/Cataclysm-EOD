@@ -219,7 +219,6 @@ static const efftype_id effect_disrupted_sleep( "disrupted_sleep" );
 static const efftype_id effect_downed( "downed" );
 static const efftype_id effect_drunk( "drunk" );
 static const efftype_id effect_earphones( "earphones" );
-static const efftype_id effect_took_modafinil( "took_modafinil" );
 static const efftype_id effect_flu( "flu" );
 static const efftype_id effect_foodpoison( "foodpoison" );
 static const efftype_id effect_fungus( "fungus" );
@@ -260,6 +259,7 @@ static const efftype_id effect_slept_through_alarm( "slept_through_alarm" );
 static const efftype_id effect_stunned( "stunned" );
 static const efftype_id effect_tapeworm( "tapeworm" );
 static const efftype_id effect_tied( "tied" );
+static const efftype_id effect_took_modafinil( "took_modafinil" );
 static const efftype_id effect_weed_high( "weed_high" );
 static const efftype_id effect_winded( "winded" );
 
@@ -4413,7 +4413,7 @@ int Character::weariness() const
 int Character::weary_threshold() const
 {
     const int bmr = base_bmr();
-    int threshold = bmr * 0.54 * get_option<float>( "WEARY_BMR_MULT" );
+    int threshold = bmr * 0.54f * get_option<float>( "WEARY_BMR_MULT" );
     // reduce by 1% per 14 points of fatigue after 150 points
     threshold *= 1.0f - ( ( std::max( fatigue, -20 ) - 150 ) / 1400.0f );
     // Each 2 points of morale increase or decrease by 1%
@@ -4433,7 +4433,7 @@ std::pair<int, int> Character::weariness_transition_progress() const
     while( amount >= 0 ) {
         amount -= threshold;
         if( threshold > 20 ) {
-            threshold *= 0.75 * get_option<float>( "WEARY_THRESH_SCALING" );
+            threshold *= 0.75f * get_option<float>( "WEARY_THRESH_SCALING" );
         }
     }
 
@@ -4451,7 +4451,7 @@ int Character::weariness_level() const
     while( amount >= 0 ) {
         amount -= threshold;
         if( threshold > 20 ) {
-            threshold *= 0.75 * get_option<float>( "WEARY_THRESH_SCALING" );
+            threshold *= 0.75f * get_option<float>( "WEARY_THRESH_SCALING" );
         }
         ++level;
     }
@@ -4467,7 +4467,7 @@ int Character::weariness_transition_level() const
     while( amount >= 0 ) {
         amount -= threshold;
         if( threshold > 20 ) {
-            threshold *= 0.75 * get_option<float>( "WEARY_THRESH_SCALING" );
+            threshold *= 0.75f * get_option<float>( "WEARY_THRESH_SCALING" );
         }
     }
 
@@ -5850,9 +5850,9 @@ float Character::healing_rate( float at_rest_quality ) const
     // TODO: Cache
     float heal_rate;
     if( !is_npc() ) {
-        heal_rate = 0.0001 * get_option< float >( "PLAYER_HEALING_RATE" );
+        heal_rate = 0.0001f * get_option< float >( "PLAYER_HEALING_RATE" );
     } else {
-        heal_rate = 0.0001 * get_option< float >( "NPC_HEALING_RATE" );
+        heal_rate = 0.0001f * get_option< float >( "NPC_HEALING_RATE" );
     }
     float awake_rate = heal_rate * mutation_value( "healing_awake" );
     float final_rate = 0.0f;

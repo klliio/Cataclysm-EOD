@@ -2652,9 +2652,9 @@ void options_manager::add_options_world_default()
          0, 50, 8
        );
 
-    add( "INT_BASED_LEARNING_BASE_VALUE", "world_default",
-         to_translation( "Base intelligence for focus" ),
-         to_translation( "How much focus is added or substracted for each INT above or below a certain value.  0 results in intelligence having no effect on learning speed.  Higher value makes characters with low INT train skills slower, and characters with high INT train skills faster." ),
+    add( "INT_BASED_LEARNING_FOCUS_ADJUSTMENT", "world_default",
+         to_translation( "Focus per intelligence" ),
+         to_translation( "How much focus is added or subtracted for each INT above or below a certain value.  0 results in intelligence having no effect on learning speed.  Higher value makes characters with low INT train skills slower, and characters with high INT train skills faster." ),
          0, 50, 5
        );
 
@@ -2697,14 +2697,14 @@ void options_manager::add_options_world_default()
     add_empty_line();
 
     add( "DISEASE_FREQUENCY_MOD", "world_default", to_translation( "Disease frequency modifier" ),
-         to_translation( "A probability, in percents, to not catch an ambient disease such as cold, flu or tetauns, any time it'd otherwise happen.  0 means no reduction, 100 means ambient diseases never happen.  Higher value results in characters becoming sick more rarely." ),
+         to_translation( "A probability, in percents, to not catch an ambient disease such as cold, flu or tetanus, any time it'd otherwise happen.  0 means no reduction, 100 means ambient diseases never happen.  Higher value results in characters becoming sick more rarely." ),
          0, 50, 0
        );
 
     add_empty_line();
 
     add( "PLAYER_MAX_STAMINA_BASE", "world_default", to_translation( "Maximum stamina multiplier" ),
-         to_translation( "Multiplier for base maxiumum amount of stamina.  0.5 is half as much, 2 is twice as much, 0 sets base amount of stamina to 0 (only cardio will define max stamina).  Higher value enables characters to sprint and attack in melee for longer before becoming winded." ),
+         to_translation( "Multiplier for base maximum amount of stamina.  0.5 is half as much, 2 is twice as much, 0 sets base amount of stamina to 0 (only cardio will define max stamina).  Higher value enables characters to sprint and attack in melee for longer before becoming winded." ),
          0.00f, 100.00f, 1.00f, 0.01f
        );
 
@@ -2773,7 +2773,7 @@ void options_manager::add_options_world_default()
        );
 
     add( "SPEEDYDEX_DEX_SPEED", "world_default", to_translation( "Speed per dexterity point" ),
-         to_translation( "Amount of moves gained by characters for each 1 DEX above minumum dexterity needed to increase speed.  0 disables speed increase from dexterity.  Higher value results in characters with higher dexterity having higher speed." ),
+         to_translation( "Amount of moves gained by characters for each 1 DEX above minimum dexterity needed to increase speed.  0 disables speed increase from dexterity.  Higher value results in characters with higher dexterity having higher speed." ),
          0, 50, 0
        );
 

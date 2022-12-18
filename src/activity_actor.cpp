@@ -150,13 +150,13 @@ static const activity_id ACT_WORKOUT_MODERATE( "ACT_WORKOUT_MODERATE" );
 static const ammotype ammo_plutonium( "plutonium" );
 
 static const efftype_id effect_docile( "docile" );
-static const efftype_id effect_took_modafinil( "took_modafinil" );
 static const efftype_id effect_paid( "paid" );
 static const efftype_id effect_pet( "pet" );
 static const efftype_id effect_sensor_stun( "sensor_stun" );
 static const efftype_id effect_sheared( "sheared" );
 static const efftype_id effect_sleep( "sleep" );
 static const efftype_id effect_tied( "tied" );
+static const efftype_id effect_took_modafinil( "took_modafinil" );
 static const efftype_id effect_took_thorazine( "took_thorazine" );
 static const efftype_id effect_worked_on( "worked_on" );
 
