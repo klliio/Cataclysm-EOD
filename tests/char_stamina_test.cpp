@@ -266,8 +266,8 @@ TEST_CASE( "stamina burn for movement", "[stamina][burn][move]" )
 {
     Character &dummy = get_player_character();
 
-    // Defined in game_balance.json
-    const int normal_burn_rate = get_option<int>( "PLAYER_BASE_STAMINA_BURN_RATE" );
+    // Defined in world options
+    const int normal_burn_rate = 15 * get_option<float>( "PLAYER_BASE_STAMINA_BURN_RATE" );
     REQUIRE( normal_burn_rate > 0 );
 
     GIVEN( "player is naked and unburdened" ) {
@@ -374,7 +374,7 @@ TEST_CASE( "stamina regeneration rate", "[stamina][update][regen]" )
     clear_avatar();
     int turn_moves = to_moves<int>( 1_turns );
 
-    const float normal_regen_rate = get_option<float>( "PLAYER_BASE_STAMINA_REGEN_RATE" );
+    const float normal_regen_rate = 20 * get_option<float>( "PLAYER_BASE_STAMINA_REGEN_RATE" );
     REQUIRE( normal_regen_rate > 0 );
 
     GIVEN( "character is not winded" ) {
@@ -443,7 +443,7 @@ TEST_CASE( "stamina regen with mouth encumbrance", "[stamina][update][regen][enc
     int turn_moves = to_moves<int>( 1_turns );
 
     // Ensure normal baseline regen rate and breathing modifier
-    const float normal_regen_rate = get_option<float>( "PLAYER_BASE_STAMINA_REGEN_RATE" );
+    const float normal_regen_rate = 20 * get_option<float>( "PLAYER_BASE_STAMINA_REGEN_RATE" );
     REQUIRE( normal_regen_rate == Approx( 20.0 ) );
     // Regen is reduced in proportion to stamina_recovery_breathing_modifier
     const float normal_breathing_mod = dummy.get_modifier(

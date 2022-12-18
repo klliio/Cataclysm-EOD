@@ -58,7 +58,7 @@ TEST_CASE( "baseline healing rate with no healing traits", "[heal][baseline]" )
     avatar dummy;
 
     // What is considered normal baseline healing rate comes from game_balance.json.
-    const float normal = get_option<float>( "PLAYER_HEALING_RATE" );
+    const float normal = 0.0001f * get_option<float>( "PLAYER_HEALING_RATE" );
     REQUIRE( normal > 1.0f * hp_per_day );
 
     // Ensure baseline hidden health stat
@@ -91,7 +91,7 @@ TEST_CASE( "traits and mutations affecting healing rate", "[heal][trait][mutatio
     // unmeasurable for `healing_rate` (ex. Deterioration)
 
     // Normal healing rate from game_balance.json
-    const float normal = get_option<float>( "PLAYER_HEALING_RATE" );
+    const float normal = 0.0001f * get_option<float>( "PLAYER_HEALING_RATE" );
     REQUIRE( normal > 1.0f * hp_per_day );
 
     // Ensure baseline hidden health stat
@@ -216,7 +216,7 @@ TEST_CASE( "health effects on healing rate", "[heal][health]" )
     avatar dummy;
 
     // Normal healing rate from game_balance.json
-    const float normal = get_option<float>( "PLAYER_HEALING_RATE" );
+    const float normal = 0.0001f * get_option<float>( "PLAYER_HEALING_RATE" );
     REQUIRE( normal > 1.0f * hp_per_day );
 
     SECTION( "normal health gives normal healing when asleep" ) {

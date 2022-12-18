@@ -108,7 +108,7 @@
     "comestible_type": "DRINK",
     "symbol": "~",
     "quench": 56,
-    "calories": 98,
+    "calories": 12,
     "description": "A recreation of the traditional Roman drink, consisting of vinegar (usually red wine vinegar), water, salt and honey.  This one was made with modern knowledge of optimal rehydration in mind, as the original Roman recipe for it was lost.",
     "price": 95,
     "price_postapoc": 50,

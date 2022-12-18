@@ -181,7 +181,7 @@
     "copy-from": "coat_rain_rubber",
     "type": "ARMOR",
     "name": { "str": "sleeveless long rubberized rain coat" },
-    "description": "A vintage-looking full-length sleeveless coat made from rubberized fabric and with two very large external pockets, meant to provide protection from rain, though it won't provide complete protection without sleeves.   It's somewhat similar to a Mackintosh coat.",
+    "description": "A vintage-looking full-length sleeveless coat made from rubberized fabric and with two very large external pockets, meant to provide protection from rain, though it won't provide complete protection without sleeves.  It's somewhat similar to a Mackintosh coat.",
     "armor": [
       {
         "covers": [ "torso" ],
