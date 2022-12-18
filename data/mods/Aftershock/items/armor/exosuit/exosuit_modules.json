@@ -53,7 +53,7 @@
     "symbol": "#",
     "looks_like": "1cyl_combustion",
     "color": "dark_gray",
-    "ammo": [ "gasoline", "diesel", "jp8", "avgas", "lamp_oil", "motor_oil", "propane", "conc_alcohol", "ammonia_liquid" ],
+    "ammo": [ "gasoline", "diesel", "jp8", "avgas", "lamp_oil", "motor_oil", "propane", "conc_alcohol" ],
     "flags": [ "FRAGILE", "CANT_WEAR", "WATERPROOF", "IS_UPS", "EXO_PSU", "ONLY_ONE" ],
     "armor": [ { "encumbrance": 0, "coverage": 40, "covers": [ "torso" ] } ],
     "pocket_data": [
@@ -71,8 +71,7 @@
           "lamp_oil": 5000,
           "motor_oil": 5000,
           "propane": 5000,
-          "conc_alcohol": 5000,
-          "ammonia_liquid": 5000
+          "conc_alcohol": 5000
         }
       }
     ]
@@ -473,9 +472,9 @@
     "material": [ "vacuum_carbide", "qt_steel" ],
     "symbol": "(",
     "color": "light_gray",
-    "ammo": [ "ammonia_liquid" ],
+    "ammo": [ "lamp_oil" ],
     "use_action": { "type": "cast_spell", "spell_id": "spell_exosuit_jetpack", "no_fail": true, "level": 5 },
-    "charges_per_use": 1,
+    "charges_per_use": 1000,
     "flags": [ "CANT_WEAR", "EXO_LARGE_GADGET" ],
     "pocket_data": [
       {
@@ -483,7 +482,7 @@
         "description": "This is the maneuvering unit's fuel tank.  Holds up to 10 liters of pressurized fuel.",
         "rigid": true,
         "watertight": true,
-        "ammo_restriction": { "ammonia_liquid": 10 }
+        "ammo_restriction": { "lamp_oil": 10000 }
       }
     ]
   },

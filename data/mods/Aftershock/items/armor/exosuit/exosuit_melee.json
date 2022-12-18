@@ -190,7 +190,7 @@
     "symbol": "/",
     "looks_like": "circsaw_off",
     "color": "light_red",
-    "ammo": [ "gasoline", "diesel", "jp8", "avgas", "lamp_oil", "motor_oil", "propane", "conc_alcohol", "ammonia_liquid" ],
+    "ammo": [ "gasoline", "diesel", "jp8", "avgas", "lamp_oil", "motor_oil", "propane", "conc_alcohol" ],
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE",
@@ -206,8 +206,7 @@
           "lamp_oil": 1000,
           "motor_oil": 1000,
           "propane": 1000,
-          "conc_alcohol": 1000,
-          "ammonia_liquid": 1000
+          "conc_alcohol": 1000
         }
       }
     ],
