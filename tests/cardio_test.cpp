@@ -46,8 +46,8 @@ static const int base_stamina = 8500;
 // Ensure the configured options from game_balance.json are what the tests assume they are
 static void verify_default_cardio_options()
 {
-    const int max_stamina_base = get_option<int>( "PLAYER_MAX_STAMINA_BASE" );
-    const int cardiofit_stamina_scaling = get_option<int>( "PLAYER_CARDIOFIT_STAMINA_SCALING" );
+    const int max_stamina_base = 3500 * get_option<float>( "PLAYER_MAX_STAMINA_BASE" );
+    const int cardiofit_stamina_scaling = 5 * get_option<float>( "PLAYER_CARDIOFIT_STAMINA_SCALING" );
     REQUIRE( max_stamina_base == 3500 );
     REQUIRE( cardiofit_stamina_scaling == 5 );
 }

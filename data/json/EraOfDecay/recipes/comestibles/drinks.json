@@ -199,11 +199,6 @@
     "skill_used": "cooking",
     "time": "3 m",
     "charges": 8,
-    "components": [
-      [ [ "honey_bottled", 1 ], [ "honey_glassed", 1 ] ],
-      [ [ "salt", 1 ] ],
-      [ [ "water_clean", 8 ] ],
-      [ [ "vinegar", 2 ] ]
-    ]
+    "components": [ [ [ "honey_bottled", 1 ] ], [ [ "salt", 1 ] ], [ [ "water_clean", 8 ] ], [ [ "vinegar", 2 ] ] ]
   }
 ]

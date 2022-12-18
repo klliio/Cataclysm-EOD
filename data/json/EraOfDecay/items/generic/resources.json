@@ -249,7 +249,7 @@
     "id": "chem_benzophenone",
     "copy-from": "reagent_powder",
     "name": { "str_sp": "benzophenone" },
-    "description": "White crystalline powder which smells like geranium. It is a widely used building block in organic chemistry.  Also known as phenyl ketone, diphenyl ketone, benzoylbenzene and benzoylphenyl.",
+    "description": "White crystalline powder which smells like geranium.  It is a widely used building block in organic chemistry.  Also known as phenyl ketone, diphenyl ketone, benzoylbenzene and benzoylphenyl.",
     "//molar_mass": "182.222 g/mol",
     "//units_per_mol": "165",
     "//weight_per_mol": "183.15 g",

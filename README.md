@@ -8,7 +8,7 @@ Cataclysm: Era Of Decay is a turn-based survival game set in a post-apocalyptic 
 
 ## Downloads
 
-**Releases** - Not available yet.
+**Releases** - [Experimental](https://github.com/AtomicFox556/Cataclysm-EOD/releases)
 
 **Source** - The source can be downloaded as a [.zip archive](https://github.com/AtomicFox556/Cataclysm-EOD/archive/master.zip), or cloned from our [GitHub repo](https://github.com/AtomicFox556/Cataclysm-EOD/).
 
