@@ -34,6 +34,7 @@ static const sleep_schedule sched_sleep{};
 TEST_CASE( "weary_assorted_tasks", "[weary][activities]" )
 {
     avatar &guy = get_avatar();
+    guy.male = true;
 
     tasklist desk_8h;
     desk_8h.enschedule( task_firstaid, 8_hours );

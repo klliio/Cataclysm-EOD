@@ -736,9 +736,9 @@ static std::string submap_cosmetic_ss(
     "  \"cosmetics\": [\n"
     "    [ 0, 0, \"GRAFFITI\",  \"This is written text.\" ],\n"
     "    [ 0, 11, \"SIGNAGE\",  \"Subway Map: illegible city name stop\" ],\n"
-    "    [ 11, 0, \"GRAFFITI\",  \"I <3 Dr. Hylke van der Schaaf.\" ],\n"
+    "    [ 11, 0, \"GRAFFITI\",  \"I <3 chocolate chip cookies.\" ],\n"
     "    [ 11, 11, \"SIGNAGE\",  \"This is a sign\" ],\n"
-    "    [ 4, 7, \"GRAFFITI\",  \"Santina is a heteronormative bully!\" ]\n"
+    "    [ 4, 7, \"GRAFFITI\",  \"Wake up and smell the ashes!\" ]\n"
     "  ],\n"
     "  \"spawns\": [ ],\n"
     "  \"vehicles\": [ ],\n"
@@ -1235,11 +1235,11 @@ TEST_CASE( "submap_cosmetics_load", "[submap][load]" )
     INFO( string_format( "se: %s", g_se ) );
     INFO( string_format( "ra: %s", g_ra ) );
     // Require to prevent the lower CHECK from being spammy
-    REQUIRE( g_nw == "I <3 Dr. Hylke van der Schaaf." );
+    REQUIRE( g_nw == "I <3 chocolate chip cookies." );
     REQUIRE( g_ne == "This is written text." );
     REQUIRE( g_sw == "This is a sign" );
     REQUIRE( g_se == "Subway Map: illegible city name stop" );
-    REQUIRE( g_ra == "Santina is a heteronormative bully!" );
+    REQUIRE( g_ra == "Wake up and smell the ashes!" );
 
     // Also, check we have no other cosmetics
     REQUIRE( sm.cosmetics.size() == 5 );
