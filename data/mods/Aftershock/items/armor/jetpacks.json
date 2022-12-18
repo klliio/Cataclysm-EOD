@@ -11,7 +11,7 @@
     "material": [ "steel", "superalloy" ],
     "symbol": "[",
     "looks_like": "rpg",
-    "ammo": [ "ammonia_liquid" ],
+    "ammo": [ "lamp_oil" ],
     "use_action": { "type": "cast_spell", "spell_id": "spell_rocket_jump", "no_fail": true, "level": 1 },
     "pocket_data": [
       {
@@ -19,11 +19,11 @@
         "description": "The rocket pack fuel tank.  Holds up to 10 liters of pressurized fuel.",
         "rigid": true,
         "watertight": true,
-        "ammo_restriction": { "ammonia_liquid": 10 }
+        "ammo_restriction": { "lamp_oil": 10000 }
       }
     ],
     "color": "white",
-    "charges_per_use": 1,
+    "charges_per_use": 1000,
     "warmth": 6,
     "material_thickness": 5,
     "flags": [ "BELTED", "JETPACK", "ONLY_ONE" ],
