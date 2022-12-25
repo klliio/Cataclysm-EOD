@@ -2682,6 +2682,11 @@ void options_manager::add_options_world_default()
          0.00f, 100.00f, 1.00f, 0.01f
        );
 
+    add( "STOMACH_CAPACITY", "world_default", to_translation( "Stomach capacity multiplier" ),
+         to_translation( "Multiplier for how large volume of food the character's stomach can hold.  0.5 is half as much, 2 is twice as much.  Higher value makes characters be able to eat larger volumes food at once." ),
+         0.01f, 100.00f, 1.00f, 0.01f // 0 would make eating impossible and so is forbidden.
+       );
+
     add_empty_line();
 
     add( "PLAYER_HEALING_RATE", "world_default", to_translation( "Player heal speed multiplier" ),
@@ -2799,8 +2804,43 @@ void options_manager::add_options_world_default()
 
     add( "PROF_TIME_MOD", "world_default",
          to_translation( "Proficiency crafting speed multiplier" ),
-         to_translation( "Represents the multiplier for the negative effect of missing proficiencies on crafting time.  0 disables speed reduction for missing proficiencies, 1 makes the game use the default time increase for missing proficiencies  Higher value makes proficiencies more important for quickly crafting recipes that require proficiencies." ),
+         to_translation( "Represents the multiplier for the negative effect of missing proficiencies on crafting time.  0 disables speed reduction for missing proficiencies, 1 makes the game use the default time increase for missing proficiencies  Higher value makes proficiencies more important for quickly crafting items with recipes that require proficiencies." ),
          0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "PROF_FAIL_MOD", "world_default",
+         to_translation( "Proficiency failure rate multiplier" ),
+         to_translation( "Represents the multiplier for the negative effect of missing proficiencies on crafting success chance.  0 disables success chance reduction for missing proficiencies, 1 makes the game use the default success chance penalty for missing proficiencies  Higher value makes proficiencies more important for successfully crafting items with recipes that require proficiencies." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "PROF_LEARN_MOD", "world_default",
+         to_translation( "Proficiency learning multiplier" ),
+         to_translation( "Represents the multiplier for the proficiency learning speed.  0.5 is half as fast, 2 is twice as fast.  0 disables proficiency learning.  Higher value makes proficiencies quicker to learn." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add_empty_line();
+
+    add( "PROF_HELI_REPAIR", "world_default", to_translation( "Need proficiency to repair aircraft" ),
+         to_translation( "If true, aircraft repair proficiency is necessary to repair aircraft without compromising flyability.  If false, any character can repair aircraft just like any other vehicle." ),
+         true
+       );
+
+    add( "PROF_HELI_MOD", "world_default", to_translation( "Need proficiency to modify aircraft" ),
+         to_translation( "If true, aircraft repair proficiency is necessary to modify aircraft without compromising flyability.  If false, any character can modify aircraft just like any other vehicle.  This has no effect on which specific parts are possible to install on aircraft without compromising flyability." ),
+         true
+       );
+
+    add( "COMPLEX_HELI_MOD", "world_default", to_translation( "Advanced aircraft modification" ),
+         to_translation( "If true, removes the limits on which parts can be installed on aircraft without compromising flyability; note that this is extremely unrealistic as there would be no limits on the resulting vehicle's shape.  This has no effect on whether a proficiency is needed to modify aircraft." ),
+         false
+       );
+
+    add( "HELI_FUEL_CONSUMPTION", "world_default",
+         to_translation( "Helicopter fuel consumption multiplier" ),
+         to_translation( "Multiplies the amount of fuel consumed by helicopters while flying.  0.5 is half as much, 2 is twice as much.  Higher value makes helicopters cost more fuel to use." ),
+         0.01f, 100.00f, 1.00f, 0.01f
        );
 
 }

@@ -4211,9 +4211,18 @@ int vehicle::get_z_change() const
 
 bool vehicle::would_install_prevent_flyable( const vpart_info &vpinfo, const Character &pc ) const
 {
-    if( flyable && !rotors.empty() && !( vpinfo.has_flag( "SIMPLE_PART" ) ||
-                                         vpinfo.has_flag( "AIRCRAFT_REPAIRABLE_NOPROF" ) ) ) {
-        return !pc.has_proficiency( proficiency_prof_aircraft_mechanic );
+    if( flyable && !rotors.empty() ) {
+        if( vpinfo.has_flag( "SIMPLE_PART" ) ) {
+            return false;
+        }
+        if( vpinfo.has_flag( "DIFFICULT_PART" ) ) {
+            return !pc.has_proficiency( proficiency_prof_aircraft_mechanic ) &&
+                   get_option<bool>( "PROF_HELI_MOD" );
+        } else { // Presumably the part modifies the strucutre of the aircraft so much that realistically it'd be much more difficult.
+            return !get_option<bool>( "COMPLEX_HELI_MOD" ) ||
+                   ( !pc.has_proficiency( proficiency_prof_aircraft_mechanic ) &&
+                     get_option<bool>( "PROF_HELI_MOD" ) );
+        }
     } else {
         return false;
     }
@@ -4222,13 +4231,11 @@ bool vehicle::would_install_prevent_flyable( const vpart_info &vpinfo, const Cha
 bool vehicle::would_repair_prevent_flyable( const vehicle_part &vp, const Character &pc ) const
 {
     if( flyable && !rotors.empty() ) {
-        if( vp.info().has_flag( "SIMPLE_PART" ) ||
-            vp.info().has_flag( "AIRCRAFT_REPAIRABLE_NOPROF" ) ) {
-            vpart_position vppos = vpart_position( const_cast<vehicle &>( *this ),
-                                                   index_of_part( const_cast<vehicle_part *>( &vp ) ) );
-            return !vppos.is_inside();
+        if( vp.info().has_flag( "SIMPLE_PART" ) || vp.info().has_flag( "AIRCRAFT_REPAIRABLE_NOPROF" ) ) {
+            return false;
         } else {
-            return !pc.has_proficiency( proficiency_prof_aircraft_mechanic );
+            return !pc.has_proficiency( proficiency_prof_aircraft_mechanic ) &&
+                   !get_option<bool>( "PROF_HELI_REPAIR" );
         }
     } else {
         return false;
@@ -4237,8 +4244,18 @@ bool vehicle::would_repair_prevent_flyable( const vehicle_part &vp, const Charac
 
 bool vehicle::would_removal_prevent_flyable( const vehicle_part &vp, const Character &pc ) const
 {
-    if( flyable && !rotors.empty() && !vp.info().has_flag( "SIMPLE_PART" ) ) {
-        return !pc.has_proficiency( proficiency_prof_aircraft_mechanic );
+    if( flyable && !rotors.empty() ) {
+        if( vp.info().has_flag( "SIMPLE_PART" ) ) {
+            return false;
+        }
+        if( vp.info().has_flag( "DIFFICULT_PART" ) ) {
+            return !pc.has_proficiency( proficiency_prof_aircraft_mechanic ) &&
+                   get_option<bool>( "PROF_HELI_MOD" );
+        } else { // Presumably the part modifies the strucutre of the aircraft so much that realistically it'd be much more difficult.
+            return !get_option<bool>( "COMPLEX_HELI_MOD" ) ||
+                   ( !pc.has_proficiency( proficiency_prof_aircraft_mechanic ) &&
+                     get_option<bool>( "PROF_HELI_MOD" ) );
+        }
     } else {
         return false;
     }

@@ -34,7 +34,7 @@
     "damage_reduction": { "all": 2, "bash": 5 },
     "description": "A place to sit, or sleep if you're desperate.",
     "durability": 300,
-    "flags": [ "SEAT", "BOARDABLE", "CARGO", "BELTABLE" ],
+    "flags": [ "SEAT", "BOARDABLE", "CARGO", "BELTABLE", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "floor_bedding_warmth": 200,
     "item": "seat",
     "location": "center",
@@ -74,7 +74,7 @@
     "damage_reduction": { "all": 3, "bash": 5 },
     "description": "A place to sit, and the backrest reclines to make it an uncomfortable bed.",
     "durability": 100,
-    "flags": [ "BED", "SEAT", "BOARDABLE", "BELTABLE", "CARGO" ],
+    "flags": [ "BED", "SEAT", "BOARDABLE", "BELTABLE", "CARGO", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "floor_bedding_warmth": 350,
     "item": "seat",
     "location": "center",
@@ -114,7 +114,7 @@
     "damage_reduction": { "all": 3, "bash": 5 },
     "description": "A benchlike seat.  Mostly found in the second row, also known as the back or rear seat.",
     "durability": 300,
-    "flags": [ "BED", "SEAT", "BOARDABLE", "BELTABLE", "CARGO" ],
+    "flags": [ "BED", "SEAT", "BOARDABLE", "BELTABLE", "CARGO", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "floor_bedding_warmth": 500,
     "item": "seat",
     "location": "center",
@@ -171,7 +171,7 @@
         "using": [ [ "repair_welding_standard", 1 ], [ "sewing_standard", 4 ] ]
       }
     },
-    "flags": [ "SEAT", "BOARDABLE", "NONBELTABLE" ],
+    "flags": [ "SEAT", "BOARDABLE", "NONBELTABLE", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "breaks_into": [ { "item": "leather", "prob": 50 }, { "item": "scrap", "count": [ 1, 2 ] } ]
   },
   {
@@ -200,7 +200,7 @@
         "using": [ [ "repair_welding_standard", 1 ], [ "sewing_standard", 3 ] ]
       }
     },
-    "flags": [ "SEAT", "BOARDABLE", "NONBELTABLE" ],
+    "flags": [ "SEAT", "BOARDABLE", "NONBELTABLE", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "breaks_into": [ { "item": "cotton_patchwork", "count": [ 1, 6 ] } ]
   },
   {
@@ -215,7 +215,7 @@
     "damage_reduction": { "all": 3, "bash": 5 },
     "description": "A steel bench with ankle and wrist restraints built in.  It looks very uncomfortable.",
     "durability": 450,
-    "flags": [ "SEAT", "BOARDABLE", "BELTABLE" ],
+    "flags": [ "SEAT", "BOARDABLE", "BELTABLE", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "item": "steel_plate",
     "location": "center",
     "looks_like": "seat",

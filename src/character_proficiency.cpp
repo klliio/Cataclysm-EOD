@@ -1,5 +1,6 @@
 #include "cached_options.h"
 #include "character.h"
+#include "options.h"
 #include "proficiency.h"
 
 bool Character::has_proficiency( const proficiency_id &prof ) const
@@ -59,8 +60,9 @@ bool Character::practice_proficiency( const proficiency_id &prof, const time_dur
 {
     // Proficiencies can ignore focus using the `ignore_focus` JSON property
     const bool ignore_focus = prof->ignore_focus();
-    const time_duration &focused_amount = ignore_focus ? amount : time_duration::from_seconds(
-            adjust_for_focus( to_seconds<float>( amount ) ) );
+    const time_duration mod_amount = amount * get_option<float>( "PROF_LEARN_MOD" );
+    const time_duration &focused_amount = ignore_focus ? mod_amount : time_duration::from_seconds(
+            adjust_for_focus( to_seconds<float>( mod_amount ) ) );
 
     const float pct_before = _proficiencies->pct_practiced( prof );
     const bool learned = _proficiencies->practice( prof, focused_amount, max );

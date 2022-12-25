@@ -7,6 +7,7 @@
 #include "cata_utility.h"
 #include "character.h"
 #include "json.h"
+#include "options.h"
 #include "stomach.h"
 #include "units.h"
 #include "vitamin.h"
@@ -154,7 +155,8 @@ void stomach_contents::deserialize( const JsonObject &jo )
 
 units::volume stomach_contents::capacity( const Character &owner ) const
 {
-    return max_volume * owner.mutation_value( "stomach_size_multiplier" );
+    return max_volume * owner.mutation_value( "stomach_size_multiplier" ) *
+           get_option<float>( "STOMACH_CAPACITY" );
 }
 
 units::volume stomach_contents::stomach_remaining( const Character &owner ) const

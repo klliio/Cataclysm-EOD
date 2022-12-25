@@ -22,7 +22,7 @@
       "removal": { "skills": [ [ "mechanics", 1 ] ], "time": "5 m", "qualities": [ { "id": "WRENCH", "level": 1 } ] },
       "repair": { "skills": [ [ "mechanics", 1 ] ], "time": "5 m", "using": [ [ "repair_welding_standard", 1 ] ] }
     },
-    "flags": [ "FLUIDTANK" ],
+    "flags": [ "FLUIDTANK", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "damage_reduction": { "all": 26, "stab": 8 }
   },
   {
@@ -47,7 +47,7 @@
       "removal": { "skills": [ [ "mechanics", 1 ] ], "time": "10 m", "qualities": [ { "id": "WRENCH", "level": 1 } ] },
       "repair": { "skills": [ [ "mechanics", 1 ] ], "time": "10 m", "using": [ [ "soldering_standard", 5 ] ] }
     },
-    "flags": [ "FLUIDTANK" ],
+    "flags": [ "FLUIDTANK", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "damage_reduction": { "all": 9, "stab": 0 }
   },
   {
@@ -76,7 +76,7 @@
       "removal": { "skills": [ [ "mechanics", 1 ] ], "time": "22 m", "qualities": [ { "id": "WRENCH", "level": 2 } ] },
       "repair": { "skills": [ [ "mechanics", 1 ] ], "time": "22 m", "using": [ [ "repair_welding_standard", 1 ] ] }
     },
-    "flags": [ "FLUIDTANK" ],
+    "flags": [ "FLUIDTANK", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "damage_reduction": { "all": 28, "stab": 10 }
   },
   {
@@ -105,7 +105,7 @@
       "removal": { "skills": [ [ "mechanics", 1 ] ], "time": "45 m", "qualities": [ { "id": "WRENCH", "level": 2 } ] },
       "repair": { "skills": [ [ "mechanics", 1 ] ], "time": "45 m", "using": [ [ "repair_welding_standard", 2 ] ] }
     },
-    "flags": [ "FLUIDTANK" ],
+    "flags": [ "FLUIDTANK", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "damage_reduction": { "all": 28, "stab": 12 }
   },
   {
@@ -135,7 +135,7 @@
       "removal": { "skills": [ [ "mechanics", 1 ] ], "time": "45 m", "qualities": [ { "id": "WRENCH", "level": 2 } ] },
       "repair": { "skills": [ [ "mechanics", 1 ] ], "time": "45 m", "using": [ [ "repair_welding_standard", 2 ] ] }
     },
-    "flags": [ "FLUIDTANK", "FRIDGE", "ENABLED_DRAINS_EPOWER" ],
+    "flags": [ "FLUIDTANK", "FRIDGE", "ENABLED_DRAINS_EPOWER", "DIFFICULT_PART" ],
     "damage_reduction": { "all": 28, "stab": 12 }
   },
   {
@@ -147,7 +147,7 @@
     "copy-from": "fridgetank",
     "description": "A 60L heated tank.  When turned on, it will prevent the contents from freezing.",
     "epower": -60,
-    "flags": [ "FLUIDTANK", "HEATED_TANK", "ENABLED_DRAINS_EPOWER" ]
+    "flags": [ "FLUIDTANK", "HEATED_TANK", "ENABLED_DRAINS_EPOWER", "DIFFICULT_PART" ]
   },
   {
     "id": "external_tank_small",
@@ -219,7 +219,7 @@
       "removal": { "skills": [ [ "mechanics", 2 ] ], "time": "30 m", "using": [ [ "vehicle_nail_removal", 1 ] ] },
       "repair": { "skills": [ [ "mechanics", 2 ] ], "time": "60 m", "using": [ [ "adhesive", 2 ] ] }
     },
-    "flags": [ "FLUIDTANK" ],
+    "flags": [ "FLUIDTANK", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "damage_reduction": { "all": 18, "stab": 12 }
   },
   {
@@ -244,7 +244,7 @@
       "removal": { "skills": [ [ "mechanics", 2 ] ], "time": "30 m", "using": [ [ "vehicle_weld_removal", 1 ] ] },
       "repair": { "skills": [ [ "mechanics", 2 ] ], "time": "60 m", "using": [ [ "repair_welding_standard", 3 ] ] }
     },
-    "flags": [ "FLUIDTANK" ],
+    "flags": [ "FLUIDTANK", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "damage_reduction": { "all": 30, "stab": 12 }
   },
   {
@@ -258,7 +258,7 @@
       { "item": "steel_chunk", "count": [ 2, 4 ] },
       { "item": "scrap", "count": [ 2, 10 ] }
     ],
-    "flags": [ "FLUIDTANK", "OPAQUE", "OBSTACLE", "AIRCRAFT_REPAIRABLE_NOPROF" ],
+    "flags": [ "FLUIDTANK", "OPAQUE", "OBSTACLE", "AIRCRAFT_REPAIRABLE_NOPROF", "DIFFICULT_PART" ],
     "damage_reduction": { "all": 30, "stab": 12 }
   },
   {
@@ -285,6 +285,7 @@
       "removal": { "skills": [ [ "mechanics", 2 ] ], "time": "30 m", "using": [ [ "vehicle_weld_removal", 1 ] ] },
       "repair": { "skills": [ [ "mechanics", 2 ] ], "time": "60 m", "using": [ [ "repair_welding_standard", 2 ] ] }
     },
+    "flags": [ "AIRCRAFT_REPAIRABLE_NOPROF", "DIFFICULT_PART" ],
     "damage_reduction": { "all": 24, "stab": 18 }
   },
   {
@@ -315,7 +316,7 @@
       "removal": { "skills": [ [ "mechanics", 1 ] ], "time": "45 m", "qualities": [ { "id": "WRENCH", "level": 2 } ] },
       "repair": { "skills": [ [ "mechanics", 1 ] ], "time": "45 m", "using": [ [ "repair_welding_standard", 2 ] ] }
     },
-    "flags": [ "GASTANK" ],
+    "flags": [ "GASTANK", "AIRCRAFT_REPAIRABLE_NOPROF", "DIFFICULT_PART" ],
     "damage_reduction": { "all": 28, "stab": 12 }
   },
   {
@@ -345,7 +346,7 @@
       "removal": { "skills": [ [ "mechanics", 1 ] ], "time": "45 m", "qualities": [ { "id": "WRENCH", "level": 2 } ] },
       "repair": { "skills": [ [ "mechanics", 1 ] ], "time": "45 m", "using": [ [ "repair_welding_standard", 2 ] ] }
     },
-    "flags": [ "FLUIDTANK" ],
+    "flags": [ "FLUIDTANK", "AIRCRAFT_REPAIRABLE_NOPROF", "DIFFICULT_PART" ],
     "damage_reduction": { "all": 28, "stab": 12 }
   },
   {
@@ -375,7 +376,7 @@
       "removal": { "skills": [ [ "mechanics", 1 ] ], "time": "45 m", "qualities": [ { "id": "WRENCH", "level": 2 } ] },
       "repair": { "skills": [ [ "mechanics", 1 ] ], "time": "45 m", "using": [ [ "repair_welding_standard", 2 ] ] }
     },
-    "flags": [ "GASTANK" ],
+    "flags": [ "GASTANK", "AIRCRAFT_REPAIRABLE_NOPROF", "DIFFICULT_PART" ],
     "damage_reduction": { "all": 28, "stab": 12 }
   },
   {
