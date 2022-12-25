@@ -94,6 +94,7 @@
       ]
     },
     "responses": [
+      { "text": "Nice to meet you, Aleesha.  What's up?", "topic": "TALK_REFUGEE_Aleesha_2" },
       { "text": "Nice to meet you, kid.  What's up?", "topic": "TALK_REFUGEE_Aleesha_1_firstmeet" },
       { "text": "Hi Aleesha, nice to meet you.  I gotta go though.", "topic": "TALK_DONE" }
     ]
@@ -129,7 +130,7 @@
     },
     "responses": [
       { "text": "Sorry, I didn't mean anything by it.  What's up?", "topic": "TALK_REFUGEE_Aleesha_2" },
-      { "text": "Sorry, I didn't mean anything by it.  I'll be on my way.", "topic": "TALK_DONE" }
+      { "text": "I'll be on my way.", "topic": "TALK_DONE" }
     ]
   },
   {

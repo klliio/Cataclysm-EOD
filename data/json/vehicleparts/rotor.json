@@ -8,7 +8,7 @@
     "color": "light_blue",
     "broken_symbol": "O",
     "broken_color": "light_gray",
-    "flags": [ "ROTOR", "NO_INSTALL_PLAYER", "NO_REPAIR", "SMASH_REMOVE" ],
+    "flags": [ "ROTOR", "ROTOR_INSTALL", "NO_REPAIR" ],
     "description": "A set of aerofoil helicopter rotors, when spun at high speed, they generate thrust via lift."
   },
   {
@@ -22,7 +22,14 @@
     "durability": 450,
     "description": "A set of four military-grade helicopter rotor blades, used to provide lift by rotation.",
     "damage_modifier": 80,
-    "requirements": { "removal": { "skills": [ [ "mechanics", 3 ] ], "time": "1 h", "using": "vehicle_weld_removal" } },
+    "requirements": {
+      "install": { "skills": [ [ "mechanics", 10 ] ], "time": "8 h", "using": [ [ "welding_standard", 20 ], [ "vehicle_wrench_2", 1 ] ] },
+      "removal": {
+        "skills": [ [ "mechanics", 3 ] ],
+        "time": "1 h",
+        "using": [ [ "vehicle_weld_removal", 1 ], [ "vehicle_wrench_2", 1 ] ]
+      }
+    },
     "breaks_into": [ { "item": "scrap", "count": [ 15, 30 ] }, { "item": "steel_chunk", "count": [ 8, 16 ] } ],
     "damage_reduction": { "all": 66 }
   },
@@ -37,7 +44,14 @@
     "durability": 100,
     "description": "A set of four military-grade helicopter rotor blades, used to provide lift by rotation.",
     "damage_modifier": 80,
-    "requirements": { "removal": { "skills": [ [ "mechanics", 3 ] ], "time": "1 h", "using": "vehicle_weld_removal" } },
+    "requirements": {
+      "install": { "skills": [ [ "mechanics", 10 ] ], "time": "4 h", "using": [ [ "welding_standard", 20 ], [ "vehicle_wrench_2", 1 ] ] },
+      "removal": {
+        "skills": [ [ "mechanics", 3 ] ],
+        "time": "1 h",
+        "using": [ [ "vehicle_weld_removal", 1 ], [ "vehicle_wrench_2", 1 ] ]
+      }
+    },
     "breaks_into": [ { "item": "scrap", "count": [ 8, 15 ] }, { "item": "steel_chunk", "count": [ 2, 8 ] } ],
     "damage_reduction": { "all": 22 }
   },

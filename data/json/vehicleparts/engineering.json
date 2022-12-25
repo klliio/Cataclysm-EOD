@@ -37,7 +37,7 @@
     "name": { "str": "internal boom crane" },
     "location": "center",
     "delete": { "flags": [ "PROTRUSION" ] },
-    "extend": { "flags": [ "OBSTACLE" ] }
+    "extend": { "flags": [ "OBSTACLE", "DIFFICULT_PART" ] }
   },
   {
     "id": "crane_small",
@@ -60,7 +60,7 @@
       "removal": { "skills": [ [ "mechanics", 2 ] ], "time": "30 m", "using": [ [ "vehicle_wrench_2", 1 ] ] },
       "repair": { "skills": [ [ "mechanics", 3 ] ], "time": "60 m", "using": [ [ "repair_welding_standard", 2 ] ] }
     },
-    "flags": [ "PROTRUSION" ],
+    "flags": [ "PROTRUSION", "DIFFICULT_PART" ],
     "pseudo_tools": [ { "id": "crane_pseudo_item" } ],
     "damage_reduction": { "all": 42 }
   },
@@ -85,7 +85,7 @@
       "removal": { "skills": [ [ "mechanics", 2 ] ], "time": "30 m", "using": [ [ "vehicle_wrench_2", 1 ] ] },
       "repair": { "skills": [ [ "mechanics", 3 ] ], "time": "60 m", "using": [ [ "repair_welding_standard", 1 ] ] }
     },
-    "flags": [ "PROTRUSION" ],
+    "flags": [ "PROTRUSION", "DIFFICULT_PART" ],
     "damage_reduction": { "all": 40 }
   },
   {
@@ -174,7 +174,7 @@
       "removal": { "skills": [ [ "mechanics", 2 ] ], "time": "30 m", "using": [ [ "vehicle_weld_removal", 1 ] ] },
       "repair": { "skills": [ [ "mechanics", 3 ] ], "time": "60 m", "using": [ [ "repair_welding_standard", 2 ] ] }
     },
-    "flags": [ "PROTRUSION", "SELF_JACK" ],
+    "flags": [ "PROTRUSION", "SELF_JACK", "DIFFICULT_PART" ],
     "damage_reduction": { "all": 36 }
   },
   {
@@ -196,7 +196,7 @@
       "removal": { "skills": [ [ "mechanics", 2 ] ], "time": "30 m", "using": [ [ "vehicle_weld_removal", 1 ] ] },
       "repair": { "skills": [ [ "mechanics", 3 ] ], "time": "60 m", "using": [ [ "repair_welding_standard", 1 ] ] }
     },
-    "flags": [ "SELF_JACK" ],
+    "flags": [ "SELF_JACK", "DIFFICULT_PART" ],
     "damage_reduction": { "all": 5 }
   }
 ]

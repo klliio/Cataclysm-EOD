@@ -51,6 +51,7 @@
 #include "monster.h"
 #include "npc.h"
 #include "optional.h"
+#include "options.h"
 #include "output.h"
 #include "overmapbuffer.h"
 #include "pimpl.h"
@@ -776,12 +777,22 @@ bool veh_interact::update_part_requirements()
     if( is_drive_conflict() ) {
         return false;
     }
+    avatar &player_character = get_avatar();
     if( veh->has_part( "NO_MODIFY_VEHICLE" ) && !sel_vpart_info->has_flag( "SIMPLE_PART" ) ) {
         msg = _( "This vehicle cannot be modified in this way.\n" );
         return false;
     } else if( sel_vpart_info->has_flag( "NO_INSTALL_PLAYER" ) ) {
         msg = _( "This part cannot be installed.\n" );
         return false;
+    } else if( sel_vpart_info->has_flag( "ROTOR_INSTALL" ) ) {
+        if( !get_option<bool>( "COMPLEX_HELI_MOD" ) ) {
+            msg = _( "This part cannot be installed.\n" );
+            return false;
+        } else if( !player_character.has_proficiency( proficiency_prof_aircraft_mechanic ) &&
+                   get_option<bool>( "PROF_HELI_MOD" ) ) {
+            msg = _( "You need Airframe and Powerplant Mechanic proficiency to install this part.\n" );
+            return false;
+        }
     }
 
     if( sel_vpart_info->has_flag( "FUNNEL" ) ) {
@@ -834,7 +845,6 @@ bool veh_interact::update_part_requirements()
 
     const requirement_data reqs = sel_vpart_info->install_requirements();
 
-    avatar &player_character = get_avatar();
     std::string nmsg;
     bool ok = format_reqs( nmsg, reqs, sel_vpart_info->install_skills,
                            sel_vpart_info->install_time( player_character ) );
@@ -1032,6 +1042,11 @@ void veh_interact::do_install()
                 !query_yn( _( "Installing this part will make the vehicle unfoldable. "
                               " Continue?" ) ) ) {
                 return;
+            }
+            if( sel_vpart_info->has_flag( "ROTOR" ) &&
+                !veh->would_install_prevent_flyable( *sel_vpart_info, player_character ) ) {
+                // We're trying to build a flying vehicle, and we indeed can make it fly.  Checks for whether the character knows how to do it happen before this block runs, potentially allowing rotor variants that are trivial to install.
+                veh->set_flyable( true );
             }
             auto &shapes = vpart_shapes[ sel_vpart_info->name() + sel_vpart_info->base_item.str() ];
             // Don't include appliances in variant list

@@ -527,6 +527,9 @@ void vehicle::thrust( int thd, int z )
         }
         //make noise and consume fuel
         noise_and_smoke( load + alternator_load );
+        if( is_rotorcraft() && is_flying_in_air() ) {
+            load *= get_option<float>( "HELI_FUEL_CONSUMPTION" );
+        }
         consume_fuel( load + alternator_load, false );
         if( z != 0 && is_rotorcraft() ) {
             requested_z_change = z;

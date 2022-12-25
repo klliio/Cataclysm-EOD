@@ -238,7 +238,7 @@
         "qualities": [ { "id": "CUT", "level": 1 } ]
       }
     },
-    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_MEDIUM" ],
+    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_MEDIUM", "SIMPLE_PART" ],
     "damage_reduction": { "bash": 20 }
   },
   {
@@ -283,7 +283,7 @@
         "qualities": [ { "id": "CUT", "level": 1 } ]
       }
     },
-    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_HEAVY" ],
+    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_HEAVY", "SIMPLE_PART" ],
     "damage_reduction": { "all": 60, "cut": 30, "stab": 16 }
   },
   {
@@ -315,7 +315,7 @@
         "qualities": [ { "id": "CUT", "level": 1 } ]
       }
     },
-    "flags": [ "WHEEL", "NEEDS_JACKING", "STABLE", "STEERABLE", "NEEDS_WHEEL_MOUNT_LIGHT" ],
+    "flags": [ "WHEEL", "NEEDS_JACKING", "STABLE", "STEERABLE", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
     "damage_reduction": { "bash": 10 }
   },
   {
@@ -350,7 +350,7 @@
         "qualities": [ { "id": "CUT", "level": 1 } ]
       }
     },
-    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_LIGHT" ],
+    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
     "damage_reduction": { "bash": 6 }
   },
   {
@@ -476,7 +476,7 @@
         "qualities": [ { "id": "CUT", "level": 1 } ]
       }
     },
-    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_LIGHT" ],
+    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
     "damage_reduction": { "bash": 10 }
   },
   {
@@ -542,7 +542,7 @@
         "qualities": [ { "id": "CUT", "level": 1 } ]
       }
     },
-    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_WHEEL_MOUNT_LIGHT" ]
+    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ]
   },
   {
     "copy-from": "wheel_small_abstract",
@@ -617,7 +617,7 @@
         "qualities": [ { "id": "CUT", "level": 1 } ]
       }
     },
-    "flags": [ "WHEEL", "NEEDS_JACKING", "STABLE", "STEERABLE", "NEEDS_WHEEL_MOUNT_LIGHT" ],
+    "flags": [ "WHEEL", "NEEDS_JACKING", "STABLE", "STEERABLE", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
     "damage_reduction": { "bash": 8 }
   },
   {
@@ -653,7 +653,7 @@
         "qualities": [ { "id": "CUT", "level": 1 } ]
       }
     },
-    "flags": [ "WHEEL", "NEEDS_JACKING", "STABLE", "STEERABLE", "NEEDS_WHEEL_MOUNT_LIGHT" ],
+    "flags": [ "WHEEL", "NEEDS_JACKING", "STABLE", "STEERABLE", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
     "damage_reduction": { "bash": 6 }
   },
   {
@@ -688,7 +688,7 @@
         "qualities": [ { "id": "CUT", "level": 1 } ]
       }
     },
-    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_MEDIUM" ],
+    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_MEDIUM", "SIMPLE_PART" ],
     "damage_reduction": { "bash": 25 }
   },
   {
@@ -724,7 +724,7 @@
     "rolling_resistance": 2.15,
     "wheel_type": "rigid",
     "contact_area": 60,
-    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_LIGHT" ],
+    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
     "damage_reduction": { "all": 14 }
   },
   {

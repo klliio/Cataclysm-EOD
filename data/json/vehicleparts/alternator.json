@@ -8,7 +8,7 @@
     "broken_color": "red",
     "categories": [ "energy" ],
     "description": "An alternator.",
-    "flags": [ "ALTERNATOR" ]
+    "flags": [ "ALTERNATOR", "DIFFICULT_PART" ]
   },
   {
     "id": "alternator_bicycle",

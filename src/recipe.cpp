@@ -510,6 +510,8 @@ void recipe::finalize()
             rpof.fail_multiplier = rpof.id->default_fail_multiplier();
         }
 
+        rpof.fail_multiplier = ( ( rpof.fail_multiplier - 1 ) * get_option<float>( "PROF_FAIL_MOD" ) ) + 1;
+
         if( rpof.fail_multiplier < 1.0f && rpof.id->default_fail_multiplier() < 1.0f ) {
             debugmsg( "proficiency %s provides a fail bonus for not being known in recipe %s  Fail multiplier: %s Default multiplier: %s",
                       rpof.id.str(), ident_.str(), rpof.fail_multiplier, rpof.id->default_fail_multiplier() );
