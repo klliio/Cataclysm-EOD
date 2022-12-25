@@ -2839,7 +2839,7 @@ void options_manager::add_options_world_default()
 
     add( "HELI_FUEL_CONSUMPTION", "world_default",
          to_translation( "Helicopter fuel consumption multiplier" ),
-         to_translation( "Multiplies the amount of fuel consumed by helicopters while flying.  0.5 is half as much, 2 is twice as much.  0 disables proficiency learning.  Higher value makes helicopters cost more fuel to use." ),
+         to_translation( "Multiplies the amount of fuel consumed by helicopters while flying.  0.5 is half as much, 2 is twice as much.  Higher value makes helicopters cost more fuel to use." ),
          0.01f, 100.00f, 1.00f, 0.01f
        );
 
