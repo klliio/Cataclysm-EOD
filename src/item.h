@@ -2121,7 +2121,7 @@ class item : public visitable
          * Whether this is a power armor item. Not necessarily the main armor, it could be a helmet
          * or similar.
          */
-        bool is_power_armor() const;
+        bool is_power_armor( bool activatable_only = true ) const;
         /**
          * If this is an armor item, return its armor data. You should probably not use this function,
          * use the various functions above (like @ref get_storage) to access armor data directly.

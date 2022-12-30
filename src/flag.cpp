@@ -241,6 +241,7 @@ const flag_id flag_POCKETS( "POCKETS" );
 const flag_id flag_POLEARM( "POLEARM" );
 const flag_id flag_POWERARMOR_BASE( "POWERARMOR_BASE" );
 const flag_id flag_POWERARMOR_COMPONENT( "POWERARMOR_COMPONENT" );
+const flag_id flag_POWERARMOR_NOACTIVE( "POWERARMOR_NOACTIVE" );
 const flag_id flag_POWERED( "POWERED" );
 const flag_id flag_PREDATOR_FUN( "PREDATOR_FUN" );
 const flag_id flag_PRIMITIVE_RANGED_WEAPON( "PRIMITIVE_RANGED_WEAPON" );
