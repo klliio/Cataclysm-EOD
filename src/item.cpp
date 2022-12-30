@@ -4177,7 +4177,7 @@ void item::armor_fit_info( std::vector<iteminfo> &info, const iteminfo_query *pa
                            _( "* This item can be worn on <info>either side</info> of "
                               "the body." ) );
     }
-    if( is_power_armor() && parts->test( iteminfo_parts::DESCRIPTION_FLAGS_POWERARMOR ) ) {
+    if( is_power_armor( false ) && parts->test( iteminfo_parts::DESCRIPTION_FLAGS_POWERARMOR ) ) {
         info.emplace_back( "DESCRIPTION",
                            _( "* This gear is a part of power armor." ) );
         if( parts->test( iteminfo_parts::DESCRIPTION_FLAGS_POWERARMOR_RADIATIONHINT ) ) {
@@ -7712,9 +7712,15 @@ int item::get_base_env_resist_w_filter() const
     return t->avg_env_resist_w_filter();
 }
 
-bool item::is_power_armor() const
+bool item::is_power_armor( bool activatable_only ) const
 {
-    return has_flag( flag_POWERARMOR_COMPONENT ) || has_flag( flag_POWERARMOR_BASE );
+    // activatable_only defines whether we only count something as power armor if it needs to be converted to an active item, for where the code care about power draw rather than wearability.
+    if( activatable_only ) {
+        return ( has_flag( flag_POWERARMOR_COMPONENT ) || has_flag( flag_POWERARMOR_BASE ) ) &&
+               !has_flag( flag_POWERARMOR_NOACTIVE );
+    } else {
+        return has_flag( flag_POWERARMOR_COMPONENT ) || has_flag( flag_POWERARMOR_BASE );
+    }
 }
 
 int item::get_avg_encumber( const Character &p, encumber_flags flags ) const

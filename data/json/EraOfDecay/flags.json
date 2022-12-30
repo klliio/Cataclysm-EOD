@@ -18,5 +18,10 @@
     "id": "THREATENING",
     "type": "json_flag",
     "info": "This gear, if worn, makes you a high-priority target in combat."
+  },
+  {
+    "id": "POWERARMOR_NOACTIVE",
+    "type": "json_flag",
+    "info": "This gear is an add-on for power armor, and is not affected by power armor being powered or not."
   }
 ]

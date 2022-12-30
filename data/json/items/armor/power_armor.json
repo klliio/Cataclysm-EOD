@@ -185,7 +185,15 @@
       }
     ],
     "material_thickness": 10,
-    "flags": [ "WATER_FRIENDLY", "STURDY", "BELTED", "ONE_PER_LAYER", "DURABLE_MELEE", "POWERARMOR_COMPONENT" ],
+    "flags": [
+      "WATER_FRIENDLY",
+      "STURDY",
+      "BELTED",
+      "ONE_PER_LAYER",
+      "DURABLE_MELEE",
+      "POWERARMOR_COMPONENT",
+      "POWERARMOR_NOACTIVE"
+    ],
     "armor": [ { "coverage": 50, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ]
   },
   {
@@ -217,7 +225,16 @@
       { "pocket_type": "MAGAZINE", "rigid": true, "watertight": true, "ammo_restriction": { "diesel": 10000 } }
     ],
     "material_thickness": 10,
-    "flags": [ "WATER_FRIENDLY", "STURDY", "BELTED", "IS_UPS", "ONE_PER_LAYER", "DURABLE_MELEE", "POWERARMOR_COMPONENT" ],
+    "flags": [
+      "WATER_FRIENDLY",
+      "STURDY",
+      "BELTED",
+      "IS_UPS",
+      "ONE_PER_LAYER",
+      "DURABLE_MELEE",
+      "POWERARMOR_COMPONENT",
+      "POWERARMOR_NOACTIVE"
+    ],
     "armor": [ { "coverage": 50, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ]
   },
   {
