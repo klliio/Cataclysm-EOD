@@ -156,6 +156,7 @@ static const efftype_id effect_antibiotic_visible( "antibiotic_visible" );
 static const efftype_id effect_antifungal( "antifungal" );
 static const efftype_id effect_asthma( "asthma" );
 static const efftype_id effect_beartrap( "beartrap" );
+static const efftype_id effect_bite( "bite" );
 static const efftype_id effect_bleed( "bleed" );
 static const efftype_id effect_blind( "blind" );
 static const efftype_id effect_blood_spiders( "blood_spiders" );
@@ -336,6 +337,8 @@ static const mutation_category_id mutation_category_MYCUS( "MYCUS" );
 
 static const proficiency_id proficiency_prof_lockpicking( "prof_lockpicking" );
 static const proficiency_id proficiency_prof_lockpicking_expert( "prof_lockpicking_expert" );
+static const proficiency_id proficiency_prof_wound_care( "prof_wound_care" );
+static const proficiency_id proficiency_prof_wound_care_expert( "prof_wound_care_expert" );
 
 static const quality_id qual_AXE( "AXE" );
 static const quality_id qual_DIG( "DIG" );
@@ -2436,6 +2439,145 @@ cata::optional<int> iuse::pack_item( Character *p, item *it, bool t, const tripo
         it->convert( itype_id( oname ) ).active = false;
     }
     return 0;
+}
+
+static cata::optional<int> cauterize_elec( Character &p, item &it )
+{
+    if( it.ammo_remaining() == 0 ) {
+        p.add_msg_if_player( m_info, _( "You need the tool to be charged to cauterize wounds." ) );
+        return cata::nullopt;
+    }
+    if( !p.has_effect( effect_bleed ) ) {
+        if( p.enjoys_pain() ) {
+            if( p.query_yn( _( "Cauterize yourself for fun?" ) ) ) {
+                return cauterize_actor::cauterize_effect( p, it, true ) ? 1 : 0;
+            }
+        } else {
+            p.add_msg_if_player( m_info,
+                                 _( "You aren't bleeding; there is no need to cauterize yourself." ) );
+            return cata::nullopt;
+        }
+    } else {
+        return cauterize_actor::cauterize_effect( p, it, true ) ? 1 : 0;
+    }
+    return cata::nullopt;
+}
+
+static cata::optional<int> suture_act( Character &p, item &it )
+{
+    if( p.is_mounted() ) {
+        p.add_msg_if_player( m_info, _( "You can't suture wounds while mounted." ) );
+        return cata::nullopt;
+    }
+    if( !it.ammo_sufficient( &p ) ) {
+        p.add_msg_if_player( m_info, _( "The %s is out of charges." ), it.tname() );
+        return cata::nullopt;
+    }
+    if( !p.has_effect( effect_bleed ) ) {
+        p.add_msg_if_player( m_info,
+                             _( "You aren't bleeding; there's no need to suture yourself." ) );
+        return cata::nullopt;
+    }
+
+    static heal_actor dummy;
+    dummy.bleed = 25;
+
+    bodypart_id hpart = dummy.use_healing_item( p, p, it, true );
+    if( hpart != bodypart_id( "bp_null" ) ) {
+        // Check if that body part indeed is bleeding. Masochists can't suture an intact body part either even if they like the pain.
+        // TODO: should check for this right when the player is trying to choose a body part.
+        if( !p.has_effect( effect_bleed, hpart ) ) {
+            p.add_msg_if_player( m_info,
+                                 _( "This body part isn't bleeding and doesn't need to be stitched." ) );
+            return cata::nullopt;
+        }
+
+        p.add_msg_if_player( m_neutral, _( "You stitch up yourself." ) );
+        // 2x more effective than wound dressing and not limited by the strength of bleeding.
+
+        effect &wound = p.get_effect( effect_bleed, hpart );
+        time_duration dur = wound.get_duration() - ( dummy.get_stopbleed_level( p ) *
+                            wound.get_int_dur_factor() * 2 );
+        wound.set_duration( std::max( 0_turns, dur ) );
+        if( wound.get_duration() <= 0_turns ) {
+            p.add_msg_if_player( m_good, _( "You stop the bleeding." ) );
+        } else {
+            p.add_msg_if_player( m_good, _( "You reduce the bleeding, but it's not stopped yet." ) );
+        }
+
+        // Low chance to cause or worsen an infection intended; you aren't exactly using sterile tools here.
+        if( one_in( 150 ) ) {
+            if( p.has_effect( effect_bite, hpart ) ) {
+                p.add_msg_if_player( m_bad, _( "Non-sterile thread and needle have worsened the infection." ) );
+            } else {
+                p.add_msg_if_player( m_bad, _( "Non-sterile thread and needle have caused an infection." ) );
+            }
+            p.add_effect( effect_bite, 260_minutes, hpart, true );
+        }
+
+        if( !p.has_trait( trait_NOPAIN ) ) {
+            p.mod_pain( 5 );
+            p.add_msg_if_player( m_bad, _( "This is painful." ) );
+        }
+
+        p.use_charges( itype_fire, 4 );
+
+        p.practice_proficiency( proficiency_prof_wound_care, 1_minutes );
+        p.practice_proficiency( proficiency_prof_wound_care_expert, 1_minutes );
+
+        p.moves = 0;
+        return 1;
+    }
+
+    return cata::nullopt;
+}
+
+cata::optional<int> iuse::suture( Character *p, item *it, bool, const tripoint & )
+{
+    return suture_act( *p, *it );
+}
+
+static cata::optional<int> mangle_act( Character &p, item &it )
+{
+    if( p.is_mounted() ) {
+        p.add_msg_if_player( m_info, _( "You can't mangle yourself while mounted." ) );
+        return cata::nullopt;
+    }
+    if( !p.enjoys_pain() ) {
+        p.add_msg_if_player( m_info, _( "You refuse to mangle yourself for no reason." ) );
+        return cata::nullopt;
+    }
+
+    static const heal_actor dummy;
+
+    bodypart_id hpart = dummy.use_healing_item( p, p, it, true );
+    if( hpart != bodypart_id( "bp_null" ) ) {
+        if( p.get_part_hp_cur( hpart ) <= 1 ) {
+            // TODO: This can result in character dying if a vital part (such as head or torso) is chosen.
+            // Need to check for whether the part is vital and at low HP, and prevent cauterizing if so.
+            if( !query_yn(
+                    _( "This body part is too damaged and would break if mangled further.  Proceed anyway?" ) ) ) {
+                return cata::nullopt;
+            }
+        }
+
+        p.add_msg_if_player( m_neutral, _( "You mangle yourself." ) );
+        p.apply_damage( nullptr, hpart, 1 );
+        if( !p.has_trait( trait_NOPAIN ) ) {
+            p.mod_pain( 10 );
+            p.add_msg_if_player( m_bad, _( "This is painful." ) );
+        }
+
+        p.moves = 0;
+        return cata::nullopt;
+    }
+
+    return cata::nullopt;
+}
+
+cata::optional<int> iuse::mangle( Character *p, item *it, bool, const tripoint & )
+{
+    return mangle_act( *p, *it );
 }
 
 cata::optional<int> iuse::water_purifier( Character *p, item *it, bool, const tripoint & )
@@ -5300,7 +5442,11 @@ cata::optional<int> iuse::heat_food( Character *p, item *it, bool, const tripoin
 cata::optional<int> iuse::hotplate( Character *p, item *it, bool, const tripoint & )
 {
     if( p->is_mounted() ) {
-        p->add_msg_if_player( m_info, _( "You can't do that while mounted." ) );
+        p->add_msg_if_player( m_info, _( "You can't use that while mounted." ) );
+        return cata::nullopt;
+    }
+    if( p->is_underwater() ) {
+        p->add_msg_if_player( m_info, _( "You can't use that underwater." ) );
         return cata::nullopt;
     }
     if( !it->ammo_sufficient( p ) ) {
@@ -5308,8 +5454,20 @@ cata::optional<int> iuse::hotplate( Character *p, item *it, bool, const tripoint
         return cata::nullopt;
     }
 
-    if( heat_item( *p ) ) {
-        return 1;
+    int choice = 0;
+    if( p->has_effect( effect_bleed ) || p->enjoys_pain() ) {
+        //Might want to cauterize
+        choice = uilist( _( "Using hotplate:" ), {
+            _( "Heat item" ), _( "Cauterize yourself" )
+        } );
+    }
+
+    if( choice == 0 ) {
+        if( heat_item( *p ) ) {
+            return 1;
+        }
+    } else if( choice == 1 ) {
+        return cauterize_elec( *p, *it );
     }
     return cata::nullopt;
 }
