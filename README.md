@@ -12,6 +12,29 @@ Cataclysm: Era Of Decay is a turn-based survival game set in a post-apocalyptic 
 
 **Source** - The source can be downloaded as a [.zip archive](https://github.com/AtomicFox556/Cataclysm-EOD/archive/master.zip), or cloned from our [GitHub repo](https://github.com/AtomicFox556/Cataclysm-EOD/).
 
+<a href="https://repology.org/project/cataclysm-dda/versions">
+    <img src="https://repology.org/badge/vertical-allrepos/cataclysm-dda.svg" alt="Packaging Status" align="right">
+</a>
+
+[![General build matrix](https://github.com/CleverRaven/Cataclysm-DDA/actions/workflows/matrix.yml/badge.svg)](https://github.com/CleverRaven/Cataclysm-DDA/actions/workflows/matrix.yml)
+[![Commit Activity](https://img.shields.io/github/commit-activity/m/AtomicFox556/Cataclysm-EOD)](https://github.com/AtomicFox556/Cataclysm-EOD/graphs/contributors)
+[![Lines of Code](https://tokei.rs/b1/github/AtomicFox556/Cataclysm-EOD?category=code)](https://github.com/XAMPPRocky/tokei)
+[![TODOs](https://badgen.net/https/api.tickgit.com/badgen/github.com/AtomicFox556/Cataclysm-EOD)](https://www.tickgit.com/browse?repo=github.com/AtomicFox556/Cataclysm-EOD)
+
+### Packaging status
+
+#### Arch Linux
+
+Not available yet.
+
+#### Fedora
+
+Not available yet.
+
+#### Debian / Ubuntu
+
+Not available yet.
+
 ## Compile
 
 Please read [COMPILING.md](doc/COMPILING/COMPILING.md) - it covers general information and more specific recipes for Linux, OS X, Windows and BSD. See [COMPILER_SUPPORT.md](doc/COMPILING/COMPILER_SUPPORT.md) for details on which compilers we support. And you can always dig for more information in [doc/](https://github.com/AtomicFox556/Cataclysm-EOD/tree/master/doc).
