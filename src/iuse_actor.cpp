@@ -140,6 +140,7 @@ static const skill_id skill_traps( "traps" );
 static const trait_id trait_DEBUG_BIONICS( "DEBUG_BIONICS" );
 static const trait_id trait_ILLITERATE( "ILLITERATE" );
 static const trait_id trait_LIGHTWEIGHT( "LIGHTWEIGHT" );
+static const trait_id trait_NOPAIN( "NOPAIN" );
 static const trait_id trait_PYROMANIA( "PYROMANIA" );
 static const trait_id trait_TOLERANCE( "TOLERANCE" );
 
@@ -1794,6 +1795,135 @@ cata::optional<int> inscribe_actor::use( Character &p, item &it, bool t, const t
     }
 
     return cata::nullopt;
+}
+
+void cauterize_actor::load( const JsonObject &obj )
+{
+    assign( obj, "cost", cost );
+    assign( obj, "flame", flame );
+}
+
+std::unique_ptr<iuse_actor> cauterize_actor::clone() const
+{
+    return std::make_unique<cauterize_actor>( *this );
+}
+
+bool cauterize_actor::cauterize_effect( Character &p, item &it, bool force )
+{
+    // TODO: Make this less hacky
+    static heal_actor dummy;
+    dummy.bleed = 25;
+    bodypart_id hpart = dummy.use_healing_item( p, p, it, force );
+    if( hpart != bodypart_id( "bp_null" ) ) {
+        // Check if that body part indeed is worth cauterizing; non-masochists won't want to hurt themselves for no reason.
+        // TODO: should check for this right when the player is trying to choose a body part.
+        if( !p.has_effect( effect_bleed, hpart ) && !p.enjoys_pain() ) {
+            p.add_msg_if_player( m_info,
+                                 _( "This body part isn't bleeding and doesn't need to be cauterized." ) );
+            return false;
+        }
+
+        if( p.get_part_hp_cur( hpart ) <= 5 ) {
+            // TODO: This can result in character dying if a vital part (such as head or torso) is chosen.
+            // Need to check for whether the part is vital and at low HP, and prevent cauterizing if so.
+            if( !query_yn(
+                    _( "This body part is too damaged and would break if cauterized.  Proceed anyway?" ) ) ) {
+                return false;
+            }
+        }
+        p.add_msg_if_player( m_neutral, _( "You cauterize yourself." ) );
+        if( p.has_effect( effect_bleed, hpart ) ) {
+            // Half as effective as wound dressing, but not limited by the strength of bleeding.
+            effect &wound = p.get_effect( effect_bleed, hpart );
+            time_duration dur = wound.get_duration() - ( dummy.get_stopbleed_level( p ) *
+                                wound.get_int_dur_factor() * 0.5f );
+            wound.set_duration( std::max( 0_turns, dur ) );
+            if( wound.get_duration() <= 0_turns ) {
+                p.add_msg_if_player( m_good, _( "You stop the bleeding." ) );
+            } else {
+                p.add_msg_if_player( m_good, _( "You reduce the bleeding, but it's not stopped yet." ) );
+            }
+        }
+        // High chance to cause or worsen an infection intended; this should truly be a last-resort option to stop bleeding.
+        if( one_in( 10 ) ) {
+            if( p.has_effect( effect_bite, hpart ) ) {
+                p.add_msg_if_player( m_bad, _( "Burnt tissue has worsened the infection." ) );
+            } else {
+                p.add_msg_if_player( m_bad, _( "Burnt tissue has caused an infection." ) );
+            }
+            p.add_effect( effect_bite, 260_minutes, hpart, true );
+        }
+
+        p.apply_damage( nullptr, hpart, 5 );
+        if( !p.has_trait( trait_NOPAIN ) ) {
+            p.mod_pain( 50 );
+            p.add_msg_if_player( m_bad, _( "This hurts like hell!" ) );
+        }
+
+        p.practice_proficiency( proficiency_prof_wound_care, 1_minutes );
+        p.practice_proficiency( proficiency_prof_wound_care_expert, 1_minutes );
+
+        p.moves = 0;
+        return true;
+    }
+
+    return false;
+}
+
+cata::optional<int> cauterize_actor::use( Character &p, item &it, bool t, const tripoint & ) const
+{
+    if( t ) {
+        return cata::nullopt;
+    }
+    bool did_cauterize = false;
+
+    if( p.has_effect( effect_bleed ) ) {
+        did_cauterize = cauterize_effect( p, it, false );
+    } else if( p.enjoys_pain() ) {
+        if( query_yn( _( "Cauterize yourself for fun?" ) ) ) {
+            did_cauterize = cauterize_effect( p, it, true );
+        }
+    }
+
+    if( !did_cauterize ) {
+        return cata::nullopt;
+    }
+
+    if( flame ) {
+        p.use_charges( itype_fire, 4 );
+        return 0;
+    } else {
+        return cost >= 0 ? cost : it.ammo_required();
+    }
+}
+
+ret_val<void> cauterize_actor::can_use( const Character &p, const item &it, bool,
+                                        const tripoint & ) const
+{
+    if( p.is_underwater() ) {
+        return ret_val<void>::make_failure( _( "You can't cauterize wounds underwater." ) );
+    }
+    if( p.is_mounted() ) {
+        return ret_val<void>::make_failure( _( "You can't cauterize wounds while mounted." ) );
+    }
+    if( flame ) {
+        if( !p.has_charges( itype_fire, 4 ) ) {
+            return ret_val<void>::make_failure(
+                       _( "You need a source of flame (4 charges worth) to cauterize wounds." ) );
+        }
+    } else {
+        if( !it.ammo_sufficient( &p ) ) {
+            return ret_val<void>::make_failure( _( "You need %d charges to cauterize wounds." ),
+                                                it.ammo_required() );
+        }
+    }
+
+    if( !p.has_effect( effect_bleed ) && !p.enjoys_pain() ) {
+        return ret_val<void>::make_failure(
+                   _( "You aren't bleeding, there's no need to cauterize yourself." ) );
+    }
+
+    return ret_val<void>::make_success();
 }
 
 void fireweapon_off_actor::load( const JsonObject &obj )

@@ -690,6 +690,8 @@ class Character : public Creature, public visitable
         int  clairvoyance() const;
         /** Returns true if the player has some form of impaired sight */
         bool sight_impaired() const;
+        /** Returns true if the player would get morale bonus for being in more pain */
+        bool enjoys_pain() const;
         /** Returns true if the player or their vehicle has an alarm clock */
         bool has_alarm_clock() const;
         /** Returns true if the player or their vehicle has a watch */

@@ -430,6 +430,7 @@ static const trait_id trait_LEG_TENT_BRACE( "LEG_TENT_BRACE" );
 static const trait_id trait_LIGHTSTEP( "LIGHTSTEP" );
 static const trait_id trait_LOVES_BOOKS( "LOVES_BOOKS" );
 static const trait_id trait_MASOCHIST( "MASOCHIST" );
+static const trait_id trait_MASOCHIST_MED( "MASOCHIST_MED" );
 static const trait_id trait_MORE_PAIN( "MORE_PAIN" );
 static const trait_id trait_MORE_PAIN2( "MORE_PAIN2" );
 static const trait_id trait_MORE_PAIN3( "MORE_PAIN3" );
@@ -1204,6 +1205,12 @@ bool Character::sight_impaired() const
              !has_effect( effect_contacts ) &&
              !has_flag( json_flag_ENHANCED_VISION ) ) ||
            has_trait( trait_PER_SLIME ) || is_blind();
+}
+
+bool Character::enjoys_pain() const
+{
+    return ( ( has_trait( trait_MASOCHIST ) && get_perceived_pain() < 20 ) ||
+             has_trait( trait_MASOCHIST_MED ) || has_trait( trait_CENOBITE ) ) && !has_trait( trait_NOPAIN );
 }
 
 bool Character::has_alarm_clock() const
