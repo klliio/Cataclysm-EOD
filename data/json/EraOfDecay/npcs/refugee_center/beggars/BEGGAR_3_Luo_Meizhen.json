@@ -11,7 +11,7 @@
   {
     "type": "talk_topic",
     "id": "TALK_REFUGEE_BEGGAR_3_RACISM3",
-    "dynamic_line": "Oh please no, you don't know the whole situation.  I'm just being mad about this happening, it's really hard not to be mad about this, I hope you understand me.  I know that some people falsely blame others for such things and that I may sound like one of them, but believe me, this is not the case here!  If you don't believe me, go ask...  what's her name...  Uyen, a paramedic woman.  She's Asian as well and had to deal with her too, but managed to get in despite that, so she may tell you more.",
+    "dynamic_line": "Oh please no, you don't know the whole situation.  I'm just being mad about this happening, it's really hard not to be mad about this, I hope you understand me.  I know that some people falsely blame others for such things and that I may sound like one of them, but believe me, this is not the case here!  If you don't believe me, go ask…  what's her name…  Uyen, a paramedic woman.  She's Asian as well and had to deal with her too, but managed to get in despite that, so she may tell you more.",
     "responses": [
       {
         "condition": { "not": { "u_has_var": "luo_recruited", "type": "general", "context": "recruit", "value": "yes" } },
