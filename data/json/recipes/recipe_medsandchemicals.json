@@ -235,6 +235,7 @@
     "type": "recipe",
     "activity_level": "LIGHT_EXERCISE",
     "result": "insecticide",
+    "//": "This recipe produces DDT.",
     "category": "CC_CHEM",
     "subcategory": "CSC_CHEM_CHEMICALS",
     "skill_used": "chemistry",
@@ -243,16 +244,8 @@
     "batch_time_factors": [ 80, 1 ],
     "book_learn": [ [ "textbook_chemistry", 4 ], [ "adv_chemistry", 4 ], [ "recipe_labchem", 4 ] ],
     "qualities": [ { "id": "CHEM", "level": 2 } ],
-    "tools": [
-      [ [ "surface_heat", 50, "LIST" ] ],
-      [ [ "chem_sulphuric_acid", -1 ] ],
-      [ [ "chem_muriatic_acid", -1 ] ],
-      [ [ "chem_antimony_trichloride", -1 ] ],
-      [ [ "chem_ferric_chloride", -1 ] ],
-      [ [ "silver_small", -1 ] ],
-      [ [ "crucible", -1 ], [ "crucible_clay", -1 ] ]
-    ],
-    "components": [ [ [ "chem_ethanol", 46 ] ], [ [ "gas_chlorine", 100 ] ], [ [ "chem_benzene", 90 ] ] ]
+    "tools": [ [ [ "surface_heat", 50, "LIST" ] ], [ [ "chem_sulphuric_acid", -1 ] ] ],
+    "components": [ [ [ "chem_chloral", 105 ] ], [ [ "chem_chlorobenzene", 204 ] ] ]
   },
   {
     "type": "recipe",
@@ -329,46 +322,26 @@
     "type": "recipe",
     "activity_level": "NO_EXERCISE",
     "result": "diazepam",
+    "//": "Amount produced and amount of ingredients needed is a guess and may need adjusting.",
     "category": "CC_CHEM",
     "subcategory": "CSC_CHEM_DRUGS",
     "skill_used": "chemistry",
     "difficulty": 9,
     "skills_required": [ "firstaid", 5 ],
-    "time": "12 h",
+    "time": "4 h",
     "batch_time_factors": [ 80, 1 ],
     "book_learn": [ [ "textbook_chemistry", 7 ], [ "adv_chemistry", 7 ], [ "atomic_survival", 6 ], [ "recipe_labchem", 6 ] ],
     "charges": 200,
-    "qualities": [
-      { "id": "CHEM", "level": 2 },
-      { "id": "FINE_DISTILL", "level": 1 },
-      { "id": "ANALYSIS", "level": 1 },
-      { "id": "SAW_M", "level": 1 },
-      { "id": "HAMMER", "level": 1 },
-      { "id": "CONTAIN", "level": 1 }
-    ],
-    "tools": [
-      [ [ "surface_heat", 200, "LIST" ] ],
-      [ [ "electrolysis_kit", 50 ] ],
-      [ [ "ketene_lamp", 50 ] ],
-      [ [ "crucible", -1 ], [ "crucible_clay", -1 ] ],
-      [ [ "chem_ferric_chloride", -1 ] ]
-    ],
+    "qualities": [ { "id": "CHEM", "level": 2 }, { "id": "FINE_DISTILL", "level": 1 }, { "id": "ANALYSIS", "level": 1 } ],
+    "tools": [ [ [ "surface_heat", 100, "LIST" ] ], [ [ "chem_aluminum_chloride", -1 ], [ "chem_ferric_chloride", -1 ] ] ],
     "components": [
-      [ [ "chem_toluene", 105 ] ],
-      [ [ "chem_benzene", 90 ] ],
-      [ [ "water_clean", 1 ] ],
-      [ [ "gas_chlorine", 300 ] ],
-      [ [ "chem_sodium", 33 ] ],
-      [ [ "chem_nitric_acid", 1 ] ],
-      [ [ "chem_muriatic_acid", 1 ] ],
-      [ [ "chem_sulphuric_acid", 2 ] ],
-      [ [ "chem_acetone", 1 ] ],
-      [ [ "chem_methanol", 32 ] ],
-      [ [ "lye_powder", 15 ] ],
-      [ [ "chem_sulphur", 100 ] ],
-      [ [ "scrap", 2 ] ],
-      [ [ "chem_nickel_powder", 7 ] ],
-      [ [ "chem_aluminium_powder", 16 ] ]
+      [ [ "chem_benzoyl_chloride", 117 ] ],
+      [ [ "chem_4chloroaniline", 90 ] ],
+      [ [ "chem_hydroxylamine", 28 ] ],
+      [ [ "chem_chloroacetyl_chloride", 80 ] ],
+      [ [ "lye_powder", 19 ] ],
+      [ [ "chem_skeletal_nickel", 38 ] ],
+      [ [ "chem_dimethyl_sulfate", 95 ] ]
     ]
   },
   {
@@ -513,17 +486,18 @@
     "type": "recipe",
     "activity_level": "LIGHT_EXERCISE",
     "result": "lye_powder",
+    "charges": 19,
     "id_suffix": "from_lye",
     "category": "CC_CHEM",
     "subcategory": "CSC_CHEM_CHEMICALS",
     "skill_used": "chemistry",
     "difficulty": 2,
-    "time": "1 h 30 m",
+    "time": "15 m",
     "autolearn": true,
     "batch_time_factors": [ 80, 4 ],
     "qualities": [ { "id": "BOIL", "level": 1 } ],
-    "tools": [ [ [ "water_boiling_heat", 120, "LIST" ] ] ],
-    "components": [ [ [ "lye", 6 ] ] ]
+    "tools": [ [ [ "water_boiling_heat", 20, "LIST" ] ] ],
+    "components": [ [ [ "lye", 1 ] ] ]
   },
   {
     "type": "recipe",
@@ -538,8 +512,8 @@
     "autolearn": true,
     "batch_time_factors": [ 90, 4 ],
     "//": "reversal of the recipe above",
-    "components": [ [ [ "water", 3 ], [ "water_clean", 3 ] ], [ [ "lye_powder", 100 ] ] ],
-    "charges": 3
+    "components": [ [ [ "water", 1 ], [ "water_clean", 1 ] ], [ [ "lye_powder", 19 ] ] ],
+    "charges": 1
   },
   {
     "type": "recipe",
@@ -576,7 +550,10 @@
     "flags": [ "BLIND_HARD", "ALLOW_ROTTEN" ],
     "qualities": [ { "id": "BOIL", "level": 1 } ],
     "tools": [ [ [ "surface_heat", 10, "LIST" ] ] ],
-    "components": [ [ [ "water", 2 ], [ "water_clean", 2 ] ], [ [ "feces_bird", 5 ], [ "feces_cow", 2 ], [ "feces_manure", 3 ] ] ]
+    "components": [
+      [ [ "water", 2 ], [ "water_clean", 2 ] ],
+      [ [ "feces_bird", 5 ], [ "feces_roach", 5 ], [ "feces_cow", 2 ], [ "feces_manure", 3 ] ]
+    ]
   },
   {
     "type": "recipe",
@@ -592,10 +569,11 @@
     "autolearn": true,
     "book_learn": [ [ "adv_chemistry", 2 ], [ "textbook_chemistry", 2 ], [ "recipe_labchem", 3 ], [ "atomic_survival", 2 ] ],
     "qualities": [ { "id": "CONTAIN", "level": 1 } ],
+    "tools": [ [ [ "surface_heat", 10, "LIST" ] ] ],
     "components": [
       [ [ "water", 2 ], [ "water_clean", 2 ] ],
-      [ [ "meal_bone", 1 ], [ "meal_bone_tainted", 2 ] ],
-      [ [ "chem_saltpetre", 125 ], [ "ash", 125 ], [ "corpse_ash", 125 ], [ "chem_potassium_chloride", 125 ] ],
+      [ [ "meal_bone", 1 ], [ "corpse_ash", 125 ], [ "feces_dog", 1 ] ],
+      [ [ "chem_saltpetre", 125 ], [ "ash", 125 ], [ "chem_potassium_chloride", 125 ] ],
       [
         [ "ammonia_hydroxide", 125 ],
         [ "chem_thiourea", 125 ],
@@ -606,8 +584,10 @@
         [ "chem_saltpetre", 125 ],
         [ "chem_sodium_nitrate", 125 ],
         [ "meal_chitin_piece", 1 ],
+        [ "insect_dust", 2 ],
         [ "feather", 50 ],
-        [ "down_feather", 50 ]
+        [ "down_feather", 50 ],
+        [ "edible_blood", 1, "LIST" ]
       ]
     ]
   },

@@ -15,9 +15,9 @@
     "tools": [ [ [ "surface_heat", 5, "LIST" ] ], [ [ "pastaextruder", -1 ] ] ],
     "components": [
       [ [ "chem_nitrocellulose", 500 ] ],
-      [ [ "chem_ethanol", 5 ], [ "denat_alcohol", 5 ] ],
+      [ [ "chem_ethanol", 50 ], [ "denat_alcohol", 50 ] ],
       [ [ "ether", 5 ] ],
-      [ [ "chem_diphenylamine", 8 ] ],
+      [ [ "chem_diphenylamine", 8 ], [ "chem_petroleumjelly", 8 ], [ "chem_aniline", 8 ] ],
       [ [ "water_clean", 1 ] ],
       [ [ "chem_camphor", 8 ] ],
       [ [ "rosin", 15 ] ]
@@ -39,15 +39,11 @@
     "tools": [ [ [ "surface_heat", 50, "LIST" ] ], [ [ "pastaextruder", -1 ] ] ],
     "components": [
       [ [ "chem_nitrocellulose", 250 ] ],
-      [ [ "chem_ethanol", 5 ], [ "denat_alcohol", 5 ] ],
-      [ [ "ether", 5 ] ],
+      [ [ "chem_ethanol", 50 ], [ "denat_alcohol", 50 ] ],
+      [ [ "ether", 50 ] ],
       [ [ "chem_diphenylamine", 8 ], [ "chem_petroleumjelly", 8 ], [ "chem_aniline", 8 ] ],
-      [ [ "water_clean", 24 ] ],
-      [ [ "chem_camphor", 40 ] ],
-      [ [ "chem_sulphuric_acid", 2 ] ],
-      [ [ "chem_nitric_acid", 1 ] ],
-      [ [ "chem_washing_soda", 5 ], [ "chem_baking_soda", 5 ] ],
-      [ [ "chem_glycerol", 2 ] ]
+      [ [ "water_clean", 1 ] ],
+      [ [ "chem_nitroglycerin", 142 ] ]
     ]
   },
   {
@@ -66,14 +62,11 @@
     "tools": [ [ [ "surface_heat", 50, "LIST" ] ], [ [ "pastaextruder", -1 ] ] ],
     "components": [
       [ [ "chem_nitrocellulose", 250 ] ],
-      [ [ "chem_acetone", 1 ] ],
+      [ [ "chem_acetone", 50 ] ],
       [ [ "chem_diphenylamine", 8 ], [ "chem_petroleumjelly", 8 ], [ "chem_aniline", 8 ] ],
-      [ [ "water_clean", 24 ] ],
+      [ [ "water_clean", 1 ] ],
       [ [ "chem_camphor", 40 ] ],
-      [ [ "chem_sulphuric_acid", 2 ] ],
-      [ [ "chem_nitric_acid", 1 ] ],
-      [ [ "chem_washing_soda", 5 ], [ "chem_baking_soda", 5 ] ],
-      [ [ "chem_glycerol", 2 ] ]
+      [ [ "chem_nitroglycerin", 142 ] ]
     ]
   }
 ]

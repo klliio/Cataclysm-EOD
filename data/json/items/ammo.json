@@ -797,19 +797,15 @@
   {
     "type": "AMMO",
     "id": "lye_powder",
-    "category": "chems",
+    "copy-from": "reagent_powder",
+    "name": { "str_sp": "sodium hydroxide" },
+    "description": "White odorless corrosive pellets.  It is used in many industries: in the manufacture of pulp and paper, textiles, drinking water, soaps and detergents, and as a drain cleaner.  Also known as caustic soda.",
+    "//molar_mass": "39.9971 g/mol",
+    "//units_per_mol": "19",
+    "//weight_per_mol": "40.47 g",
     "price": 3000,
     "price_postapoc": 500,
-    "name": { "str_sp": "lye powder" },
-    "symbol": "=",
-    "color": "white",
-    "description": "Pellets of caustic soda, also known as sodium hydroxide.",
-    "container": "bottle_plastic_small",
-    "material": [ "powder_nonflam" ],
-    "volume": "250 ml",
-    "weight": "2662 mg",
-    "ammo_type": "components",
-    "count": 200
+    "weight": "2130 mg"
   },
   {
     "type": "AMMO",
