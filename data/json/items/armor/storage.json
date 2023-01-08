@@ -1047,14 +1047,14 @@
   {
     "id": "jerrypack",
     "type": "ARMOR",
-    "name": { "str": "jerrypack" },
-    "description": "A jerrycan modified to be worn in a similar manner to a backpack.",
-    "weight": "1763 g",
-    "volume": "10500 ml",
-    "price": 1450,
-    "price_postapoc": 250,
-    "to_hit": -1,
-    "material": [ "plastic", "cotton" ],
+    "name": { "str": "plastic jerrypack" },
+    "description": "A plastic jerrycan with two straps attached, for wearing it on back.",
+    "weight": "2019 g",
+    "volume": "11220 ml",
+    "price": 2000,
+    "price_postapoc": 80,
+    "to_hit": -2,
+    "material": [ "plastic" ],
     "symbol": "[",
     "looks_like": "backpack",
     "color": "green",
@@ -1063,14 +1063,14 @@
     "pocket_data": [
       {
         "max_contains_volume": "10 L",
-        "max_contains_weight": "10 kg",
-        "max_item_volume": "65 ml",
+        "max_contains_weight": "15 kg",
+        "max_item_volume": "32 ml",
         "watertight": true,
         "rigid": true
       }
     ],
     "flags": [ "OVERSIZE", "BELTED", "WATER_FRIENDLY" ],
-    "armor": [ { "encumbrance": 30, "coverage": 80, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ]
+    "armor": [ { "encumbrance": 18, "coverage": 60, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ]
   },
   {
     "id": "leather_pouch",
