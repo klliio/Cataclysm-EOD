@@ -325,8 +325,8 @@
     "symbol": "[",
     "looks_like": "hat_cotton",
     "color": "yellow",
-    "warmth": 8,
-    "material_thickness": 0.3,
+    "warmth": 10,
+    "material_thickness": 0.2,
     "environmental_protection": 2,
     "flags": [ "WATERPROOF", "OUTER", "SOFT" ],
     "armor": [ { "encumbrance_modifiers": [ "NONE" ], "coverage": 100, "covers": [ "head" ] } ]

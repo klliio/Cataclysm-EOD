@@ -889,13 +889,11 @@
     "category": "CC_ARMOR",
     "subcategory": "CSC_ARMOR_STORAGE",
     "skill_used": "fabrication",
-    "difficulty": 2,
     "time": "1 m 30 s",
     "autolearn": true,
     "reversible": true,
-    "using": [ [ "adhesive", 3 ] ],
-    "qualities": [ { "id": "HAMMER", "level": 3 } ],
-    "components": [ [ [ "strap_small", 3, "LIST" ] ], [ [ "jerrycan", 1 ] ] ]
+    "components": [ [ [ "jerrycan", 1 ] ], [ [ "rope_natural_short", 2, "LIST" ] ] ],
+    "flags": [ "BLIND_HARD" ]
   },
   {
     "result": "boxpack",
@@ -909,7 +907,7 @@
     "autolearn": true,
     "qualities": [ { "id": "HAMMER", "level": 2 }, { "id": "SAW_W", "level": 2 } ],
     "proficiencies": [ { "proficiency": "prof_carpentry_basic" } ],
-    "components": [ [ [ "2x4", 3 ] ], [ [ "wood_panel", 1 ] ], [ [ "nail", 20 ] ], [ [ "rope_natural", 1, "LIST" ] ] ]
+    "components": [ [ [ "2x4", 3 ] ], [ [ "wood_panel", 1 ] ], [ [ "nail", 20 ] ], [ [ "rope_natural_short", 2, "LIST" ] ] ]
   },
   {
     "result": "leather_belt",

@@ -1518,7 +1518,7 @@
     "id": "clay_hydria",
     "type": "GENERIC",
     "category": "container",
-    "name": { "str": "clay hydria" },
+    "name": { "str": "clay hydria", "str_pl": "clay hydriai" },
     "looks_like": "bowl_clay",
     "description": "A 15-liter clay pot with three handles for carrying and for pouring.",
     "weight": "1955 g",
