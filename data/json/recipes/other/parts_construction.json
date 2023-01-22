@@ -558,6 +558,7 @@
     "autolearn": true,
     "batch_time_factors": [ 75, 4 ],
     "using": [ [ "earthenware_firing", 60 ] ],
+    "tools": [ [ [ "frame_wood", -1 ], [ "frame_wood_light", -1 ], [ "wooden_brick_mold", -1 ] ] ],
     "components": [ [ [ "clay_lump", 1 ] ], [ [ "water", 1 ], [ "water_clean", 1 ] ] ]
   },
   {
@@ -571,11 +572,12 @@
     "time": "40 m",
     "autolearn": true,
     "batch_time_factors": [ 70, 4 ],
-    "using": [ [ "earthenware_firing", 60 ] ],
+    "using": [ [ "stoneware_firing", 60 ] ],
+    "tools": [ [ [ "frame_wood", -1 ], [ "frame_wood_light", -1 ], [ "wooden_brick_mold", -1 ] ] ],
     "components": [
       [ [ "clay_lump", 1 ] ],
       [ [ "material_sand", 5 ] ],
-      [ [ "rock", 1 ], [ "pebble", 10 ] ],
+      [ [ "material_gravel", 20 ] ],
       [ [ "water", 1 ], [ "water_clean", 1 ] ]
     ]
   },
@@ -591,7 +593,7 @@
     "time": "10 m",
     "autolearn": true,
     "qualities": [ { "id": "CUT", "level": 2 }, { "id": "CONTAIN", "level": 1 } ],
-    "tools": [ [ [ "frame_wood", -1 ], [ "frame_wood_light", -1 ] ] ],
+    "tools": [ [ [ "frame_wood", -1 ], [ "frame_wood_light", -1 ], [ "wooden_brick_mold", -1 ] ] ],
     "batch_time_factors": [ 75, 4 ],
     "components": [
       [ [ "water", 1 ], [ "water_clean", 1 ] ],

@@ -13,5 +13,10 @@
     "type": "tool_quality",
     "id": "EYE_PROTECTION",
     "name": { "str": "eye protection" }
+  },
+  {
+    "type": "tool_quality",
+    "id": "AIR_BLOW",
+    "name": { "str": "air blowing" }
   }
 ]

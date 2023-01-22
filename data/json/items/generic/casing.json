@@ -421,8 +421,8 @@
     "copy-from": "casing",
     "looks_like": "9mm_casing",
     "type": "GENERIC",
-    "name": { "str": ".357 magnum casing" },
-    "description": "An empty casing from a .357 magnum round.",
+    "name": { "str": ".357 Magnum casing" },
+    "description": "An empty casing from a .357 Magnum round.",
     "weight": "3 g",
     "volume": "5ml"
   },

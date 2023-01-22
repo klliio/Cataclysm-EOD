@@ -256,7 +256,15 @@
     "material": [ "clay" ],
     "symbol": ")",
     "color": "brown",
-    "pocket_data": [ { "max_contains_volume": "750 ml", "max_contains_weight": "2 kg", "watertight": true, "rigid": true } ],
+    "pocket_data": [
+      {
+        "max_contains_volume": "750 ml",
+        "max_contains_weight": "2 kg",
+        "watertight": true,
+        "rigid": true,
+        "open_container": true
+      }
+    ],
     "qualities": [ [ "BOIL", 1 ] ]
   },
   {
@@ -976,7 +984,15 @@
     "material": [ "steel" ],
     "symbol": ")",
     "color": "dark_gray",
-    "pocket_data": [ { "max_contains_volume": "500 ml", "max_contains_weight": "2 kg", "watertight": true, "rigid": true } ],
+    "pocket_data": [
+      {
+        "max_contains_volume": "500 ml",
+        "max_contains_weight": "2 kg",
+        "watertight": true,
+        "rigid": true,
+        "open_container": true
+      }
+    ],
     "qualities": [ [ "BOIL", 1 ] ]
   },
   {

@@ -74,6 +74,7 @@
     "type": "item_group",
     "//": "Common household tools that are small enough to fit in a bag",
     "items": [
+      [ "bellows", 5 ],
       [ "hacksaw", 50 ],
       [ "hammer", 80 ],
       [ "pliers", 60 ],
