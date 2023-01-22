@@ -3364,13 +3364,22 @@
     "type": "GENERIC",
     "category": "other",
     "name": { "str": "clay flower pot" },
-    "description": "A nice looking clay pot used for planting.",
+    "description": "A nice looking clay pot used for planting.  It's unable to properly contain liquids due to drainage holes on the bottom.",
     "weight": "480 g",
     "volume": "2500 ml",
     "price": 600,
     "price_postapoc": 10,
     "bashing": 1,
     "material": [ "clay" ],
+    "pocket_data": [
+      {
+        "pocket_type": "CONTAINER",
+        "rigid": true,
+        "open_container": true,
+        "max_contains_volume": "2250 ml",
+        "max_contains_weight": "8 kg"
+      }
+    ],
     "symbol": ")",
     "color": "brown"
   },
@@ -3379,13 +3388,22 @@
     "type": "GENERIC",
     "category": "other",
     "name": { "str": "plastic flower pot" },
-    "description": "A cheap plastic pot used for planting.",
+    "description": "A cheap plastic pot used for planting.  It's unable to properly contain liquids due to drainage holes on the bottom.",
     "weight": "190 g",
     "volume": "2500 ml",
     "price": 300,
     "price_postapoc": 10,
     "bashing": 1,
     "material": [ "plastic" ],
+    "pocket_data": [
+      {
+        "pocket_type": "CONTAINER",
+        "rigid": true,
+        "open_container": true,
+        "max_contains_volume": "2250 ml",
+        "max_contains_weight": "8 kg"
+      }
+    ],
     "symbol": ")",
     "color": "green"
   },

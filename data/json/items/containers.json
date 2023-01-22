@@ -553,7 +553,7 @@
     "category": "container",
     "name": { "str": "clay bowl" },
     "looks_like": "bowl_plastic",
-    "description": "A clay bowl with a waterproofed hide lid.  Can be used as a container or as a tool.  Holds 250 ml of liquid.",
+    "description": "A clay bowl without a lid.  Can be used as a container or as a tool.  Holds 250 ml of liquid.",
     "weight": "60 g",
     "volume": "295 ml",
     "price": 100,
@@ -567,6 +567,7 @@
         "pocket_type": "CONTAINER",
         "watertight": true,
         "rigid": true,
+        "open_container": true,
         "max_contains_volume": "250 ml",
         "max_contains_weight": "3 kg"
       }

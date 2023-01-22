@@ -366,19 +366,14 @@
     "category": "CC_WEAPON",
     "subcategory": "CSC_WEAPON_BASHING",
     "skill_used": "fabrication",
-    "skills_required": [ "bashing", 1 ],
-    "proficiencies": [
-      { "proficiency": "prof_metalworking" },
-      { "proficiency": "prof_blacksmithing" },
-      { "proficiency": "prof_toolsmithing" }
-    ],
+    "proficiencies": [ { "proficiency": "prof_metalworking" }, { "proficiency": "prof_redsmithing" } ],
     "difficulty": 3,
     "time": "1 h",
     "autolearn": false,
     "book_learn": [ [ "recipe_melee", 2 ] ],
     "using": [ [ "blacksmithing_standard", 4 ] ],
     "tools": [ [ [ "drift", -1 ] ] ],
-    "components": [ [ [ "copper", 100 ] ], [ [ "chem_zinc_powder", 500 ] ] ]
+    "components": [ [ [ "brass_chunk", 38 ] ] ]
   },
   {
     "result": "xl_knuckle_brass",
@@ -387,7 +382,7 @@
     "time": "1 h",
     "using": [ [ "blacksmithing_standard", 4 ] ],
     "tools": [ [ [ "drift", -1 ] ] ],
-    "components": [ [ [ "copper", 150 ] ], [ [ "chem_zinc_powder", 600 ] ] ]
+    "components": [ [ [ "brass_chunk", 57 ] ] ]
   },
   {
     "result": "xs_knuckle_brass",
@@ -396,7 +391,7 @@
     "time": "1 h",
     "using": [ [ "blacksmithing_standard", 4 ] ],
     "tools": [ [ [ "drift", -1 ] ] ],
-    "components": [ [ [ "copper", 80 ] ], [ [ "chem_zinc_powder", 400 ] ] ]
+    "components": [ [ [ "brass_chunk", 29 ] ] ]
   },
   {
     "type": "recipe",

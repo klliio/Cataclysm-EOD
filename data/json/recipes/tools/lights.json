@@ -319,8 +319,8 @@
     "difficulty": 2,
     "time": "30 m",
     "autolearn": true,
-    "using": [ [ "earthenware_firing", 70 ] ],
-    "proficiencies": [ { "proficiency": "prof_pottery" } ],
+    "using": [ [ "glazing", 1 ], [ "earthenware_firing", 70 ] ],
+    "proficiencies": [ { "proficiency": "prof_pottery" }, { "proficiency": "prof_pottery_glazing" } ],
     "components": [
       [ [ "water", 1 ], [ "water_clean", 1 ] ],
       [ [ "clay_lump", 3 ] ],

@@ -29,5 +29,27 @@
         { "item": "cable", "charges": [ 4, 8 ] }
       ]
     }
+  },
+  {
+    "type": "furniture",
+    "id": "f_bloomery",
+    "name": "brick bloomery",
+    "symbol": "#",
+    "description": "A small primitive brick furnace outfitted with tuyere, intended for smelting iron from its oxides.  Could also be used to contain a fire, but smoke will be an issue.",
+    "bgcolor": "light_red",
+    "move_cost_mod": 2,
+    "coverage": 50,
+    "required_str": -1,
+    "crafting_pseudo_item": "bloomery",
+    "flags": [ "TRANSPARENT", "CONTAINER", "FIRE_CONTAINER", "PLACE_ITEM", "EASY_DECONSTRUCT", "MINEABLE" ],
+    "deconstruct": { "items": [ { "item": "fire_brick", "count": 12 } ] },
+    "examine_action": "fireplace",
+    "bash": {
+      "str_min": 18,
+      "str_max": 50,
+      "sound": "crash!",
+      "sound_fail": "whump!",
+      "items": [ { "item": "fire_brick", "count": [ 6, 12 ] } ]
+    }
   }
 ]
