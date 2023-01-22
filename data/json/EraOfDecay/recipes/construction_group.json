@@ -13,5 +13,20 @@
     "type": "construction_group",
     "id": "place_chloroprene_machine",
     "name": "Place Chloroprene Machine"
+  },
+  {
+    "type": "construction_group",
+    "id": "extract_bog_iron",
+    "name": "Extract Bog Iron"
+  },
+  {
+    "type": "construction_group",
+    "id": "extract_sand_black",
+    "name": "Extract Black Sand"
+  },
+  {
+    "type": "construction_group",
+    "id": "build_bloomery",
+    "name": "Build Bloomery"
   }
 ]

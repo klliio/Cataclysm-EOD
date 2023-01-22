@@ -48,7 +48,7 @@
     "id": "clay_urn",
     "type": "TOOL",
     "name": { "str": "clay urn" },
-    "description": "A clay container for storing cremated ashes.",
+    "description": "A clay container with a watertight lid.  Similar containers are used for storing cremated ashes.",
     "weight": "1600 g",
     "volume": "4280 ml",
     "price": 5000,

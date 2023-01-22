@@ -45,14 +45,7 @@
     "looks_like": "jerrypack",
     "color": "green",
     "material_thickness": 2,
-    "pocket_data": [
-      {
-        "max_contains_volume": "15 L",
-        "max_contains_weight": "25 kg",
-        "watertight": true,
-        "rigid": true
-      }
-    ],
+    "pocket_data": [ { "max_contains_volume": "15 L", "max_contains_weight": "25 kg", "watertight": true, "rigid": true } ],
     "qualities": [ [ "BOIL", 2 ], [ "CONTAIN", 1 ] ],
     "flags": [ "OVERSIZE", "BELTED", "WATER_FRIENDLY", "FRAGILE" ],
     "armor": [ { "encumbrance": 24, "coverage": 70, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ]

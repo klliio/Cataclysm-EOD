@@ -348,6 +348,7 @@
     "id": "supplies_reagents_lab",
     "//": "General laboratory reagents and expendibles.  This list contains most conceivable chemicals in the game.  More specific lists for each type of lab would be reasonable eventually.",
     "items": [
+      { "group": "ores", "prob": 1 },
       { "item": "chem_benzotrichloride", "prob": 3 },
       { "item": "chem_white_phosphorus", "prob": 3 },
       { "item": "chem_phosphorus_trichloride", "prob": 3 },
