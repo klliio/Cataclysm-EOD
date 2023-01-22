@@ -1577,7 +1577,6 @@ bool Character::consume_effects( item &food )
     return true;
 }
 
-
 bool Character::can_estimate_rot() const
 {
     return get_skill_level( skill_cooking ) >= 3 || get_skill_level( skill_survival ) >= 4;
@@ -1738,12 +1737,13 @@ static bool consume_med( item &target, Character &you )
         you.modify_radiation( comest );
         you.modify_addiction( comest );
         you.modify_morale( target );
+        activate_consume_eocs( you, target );
     } else {
         // Take by mouth
-        you.consume_effects( target );
+        if( !you.consume_effects( target ) ) {
+            activate_consume_eocs( you, target );
+        }
     }
-
-    activate_consume_eocs( you, target );
 
     target.mod_charges( -amount_used );
     return true;
