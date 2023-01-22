@@ -2848,6 +2848,10 @@ void options_manager::add_options_world_default()
 void options_manager::add_options_debug()
 {
 
+    const auto add_empty_line = [&]() {
+        world_default_page_.items_.emplace_back();
+    };
+
     add( "FOV_3D", "debug", to_translation( "Experimental 3D field of vision" ),
          to_translation( "If true and the world is in Z-level mode, the vision will extend beyond current Z-level.  If false, vision is limited to current Z-level.  Currently very bugged!" ),
          false
