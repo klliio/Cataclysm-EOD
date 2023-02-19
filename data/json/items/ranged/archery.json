@@ -324,25 +324,11 @@
     "bashing": 2,
     "ammo_type": "arrow",
     "damage": { "damage_type": "stab", "constant_damage_multiplier": 0.1 },
+    "explode_in_fire": true,
+    "explosion": { "power": 360, "distance_factor": 0.4 },
     "dispersion": 285,
     "loudness": 0,
-    "effects": [ "COOKOFF", "EXPLOSIVE_SMALL" ]
-  },
-  {
-    "type": "GENERIC",
-    "id": "exploding_arrow_warhead",
-    "category": "spare_parts",
-    "symbol": "=",
-    "color": "green",
-    "name": { "str": "explosive arrowhead" },
-    "description": "This simple IED is designed to be attached to an arrow and detonate on impact.",
-    "price": 2000,
-    "price_postapoc": 250,
-    "material": [ "steel" ],
-    "weight": "562 g",
-    "volume": "90 ml",
-    "bashing": 10,
-    "to_hit": -1
+    "effects": [ "EXPLOSIVE_SMALL" ]
   },
   {
     "type": "AMMO",

@@ -45,5 +45,46 @@
     "result": "poppysyrup",
     "type": "recipe",
     "obsolete": true
+  },
+  {
+    "result": "military_explosive_bomb",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "military_explosive_bomb_act",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "military_explosive_half_barrel_bomb",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "military_explosive_half_barrel_bomb_act",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "military_explosive_full_barrel_bomb",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "military_explosive_full_barrel_bomb_act",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "pipebomb",
+    "id_suffix": "volatile",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "exploding_arrow_warhead",
+    "type": "recipe",
+    "obsolete": true
   }
 ]

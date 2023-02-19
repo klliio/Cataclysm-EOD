@@ -37,7 +37,7 @@
         [ "chem_methanol", 125 ],
         [ "methed_alcohol", 125 ],
         [ "denat_alcohol", 125 ],
-        [ "chem_acetone", 1 ],
+        [ "chem_acetone", 125 ],
         [ "chem_chloroform", 125 ],
         [ "ether", 125 ],
         [ "chem_DMSO", 125 ],

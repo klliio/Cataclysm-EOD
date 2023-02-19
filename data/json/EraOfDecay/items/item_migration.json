@@ -33,5 +33,45 @@
     "id": "poppysyrup",
     "type": "MIGRATION",
     "replace": "opium"
+  },
+  {
+    "id": "military_explosive_bomb",
+    "type": "MIGRATION",
+    "replace": "homemade_bomb"
+  },
+  {
+    "id": "military_explosive_bomb_act",
+    "type": "MIGRATION",
+    "replace": "homemade_bomb_act"
+  },
+  {
+    "id": "military_explosive_half_barrel_bomb",
+    "type": "MIGRATION",
+    "replace": "half_barrel_bomb"
+  },
+  {
+    "id": "military_explosive_half_barrel_bomb_act",
+    "type": "MIGRATION",
+    "replace": "half_barrel_bomb_act"
+  },
+  {
+    "id": "military_explosive_full_barrel_bomb",
+    "type": "MIGRATION",
+    "replace": "full_barrel_bomb"
+  },
+  {
+    "id": "military_explosive_full_barrel_bomb_act",
+    "type": "MIGRATION",
+    "replace": "full_barrel_bomb_act"
+  },
+  {
+    "id": "military_explosive_full_barrel_bomb_act",
+    "type": "MIGRATION",
+    "replace": "full_barrel_bomb_act"
+  },
+  {
+    "id": "exploding_arrow_warhead",
+    "type": "MIGRATION",
+    "replace": "arrow_exploding"
   }
 ]
