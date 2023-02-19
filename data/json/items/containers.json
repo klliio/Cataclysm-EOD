@@ -926,20 +926,28 @@
   {
     "id": "box_compact_wood",
     "type": "GENERIC",
-    "name": { "str": "tiny wooden box", "str_pl": "tiny wooden boxes" },
+    "name": { "str": "small wooden box", "str_pl": "small wooden boxes" },
     "copy-from": "box_small_wood",
     "description": "A small wooden box with cap and small handles.",
-    "weight": "200 g",
+    "weight": "1200 g",
     "volume": "6000 ml",
-    "longest_side": "22 cm",
-    "pocket_data": [ { "pocket_type": "CONTAINER", "rigid": true, "max_contains_volume": "4000 ml", "max_contains_weight": "80 kg" } ]
+    "longest_side": "28 cm",
+    "pocket_data": [
+      {
+        "pocket_type": "CONTAINER",
+        "rigid": true,
+        "max_contains_volume": "4000 ml",
+        "max_contains_weight": "80 kg",
+        "max_item_length": "28 cm"
+      }
+    ]
   },
   {
     "id": "box_small_wood",
     "type": "GENERIC",
     "category": "container",
-    "name": { "str": "small wooden box", "str_pl": "small wooden boxes" },
-    "description": "A small wooden box.  Beautifully made, perhaps it could hold something precious.",
+    "name": { "str": "tiny wooden box", "str_pl": "tiny wooden boxes" },
+    "description": "A tiny wooden box.  Beautifully made, perhaps it could hold something precious.",
     "weight": "650 g",
     "volume": "3200 ml",
     "longest_side": "22 cm",

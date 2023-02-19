@@ -216,7 +216,7 @@
     "time": "9 h",
     "batch_time_factors": [ 95, 2 ],
     "autolearn": true,
-    "tools": [ [ [ "bloomery", -1 ] ], [ [ "firestarter_tool", 1, "LIST" ] ] ],
+    "tools": [ [ [ "bloomery", -1 ] ], [ [ "firestarter_tool", 1, "LIST" ] ], [ [ "forging_standard", 1, "LIST" ] ] ],
     "qualities": [ { "id": "HAMMER", "level": 2 }, { "id": "CONTAIN", "level": 1 }, { "id": "AIR_BLOW", "level": 1 } ],
     "components": [
       [ [ "bog_ore", 1 ] ],
@@ -238,7 +238,7 @@
     "time": "9 h",
     "batch_time_factors": [ 95, 2 ],
     "autolearn": true,
-    "tools": [ [ [ "bloomery", -1 ] ], [ [ "firestarter_tool", 1, "LIST" ] ] ],
+    "tools": [ [ [ "bloomery", -1 ] ], [ [ "firestarter_tool", 1, "LIST" ] ], [ [ "forging_standard", 1, "LIST" ] ] ],
     "qualities": [ { "id": "HAMMER", "level": 2 }, { "id": "CONTAIN", "level": 1 }, { "id": "AIR_BLOW", "level": 1 } ],
     "components": [
       [ [ "chunk_hematite", 1 ], [ "material_sand_black", 20 ] ],
@@ -491,5 +491,60 @@
       ]
     ],
     "flags": [ "BLIND_HARD" ]
+  },
+  {
+    "type": "recipe",
+    "activity_level": "MODERATE_EXERCISE",
+    "result": "blasting_cap",
+    "category": "CC_OTHER",
+    "subcategory": "CSC_OTHER_MATERIALS",
+    "skill_used": "fabrication",
+    "difficulty": 4,
+    "time": "5 m",
+    "charges": 7,
+    "autolearn": true,
+    "qualities": [ { "id": "SAW_M", "level": 1 } ],
+    "components": [
+      [
+        [ "cu_pipe", 1 ],
+        [ "22_casing", 7 ],
+        [ "32_casing", 7 ],
+        [ "46mm_casing", 7 ],
+        [ "57mm_casing", 7 ],
+        [ "40_casing", 7 ],
+        [ "38_casing", 7 ],
+        [ "9mm_casing", 7 ],
+        [ "380_casing", 7 ],
+        [ "10mm_casing", 7 ],
+        [ "9x18mm_casing", 7 ],
+        [ "357mag_casing", 7 ],
+        [ "357sig_casing", 7 ],
+        [ "38super_casing", 7 ],
+        [ "44_casing", 7 ],
+        [ "45_casing", 7 ],
+        [ "545_casing", 7 ],
+        [ "460_casing", 7 ],
+        [ "4570_casing", 7 ],
+        [ "45colt_casing", 7 ],
+        [ "762_25_casing", 7 ],
+        [ "223_casing", 7 ],
+        [ "308_casing", 7 ],
+        [ "762_casing", 7 ],
+        [ "300blk_casing", 7 ],
+        [ "762_51_casing", 7 ],
+        [ "30carbine_casing", 7 ],
+        [ "454_casing", 7 ],
+        [ "500_casing", 7 ],
+        [ "300_casing", 7 ],
+        [ "3006_casing", 7 ],
+        [ "762R_casing", 7 ],
+        [ "270win_casing", 7 ],
+        [ "50_casing", 7 ],
+        [ "700nx_casing", 7 ]
+      ],
+      [ [ "chem_black_powder", 13 ] ],
+      [ [ "chem_hmtd", 7 ], [ "chem_apex", 4 ], [ "chem_mercury_fulminate", 10 ], [ "chem_lead_azide", 10 ] ],
+      [ [ "stable_explosive", 1, "LIST" ] ]
+    ]
   }
 ]

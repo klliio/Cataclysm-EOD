@@ -1013,13 +1013,28 @@
     "category": "CC_CHEM",
     "subcategory": "CSC_CHEM_CHEMICALS",
     "skill_used": "chemistry",
-    "difficulty": 5,
-    "charges": 100,
-    "time": "5 m",
-    "book_learn": [ [ "textbook_anarch", 6 ], [ "recipe_labchem", 5 ], [ "textbook_chemistry", 7 ] ],
+    "difficulty": 2,
+    "charges": 50,
+    "time": "20 s",
+    "book_learn": [ [ "textbook_anarch", 3 ], [ "recipe_labchem", 2 ], [ "textbook_chemistry", 4 ] ],
     "qualities": [ { "id": "CONTAIN", "level": 1 } ],
-    "using": [ [ "fuel_liquid", 6 ] ],
-    "components": [ [ [ "chem_ammonium_nitrate", 94 ], [ "chem_ammonium_nitrate_pellets", 94 ] ] ]
+    "components": [
+      [ [ "chem_ammonium_nitrate", 47 ], [ "chem_ammonium_nitrate_pellets", 47 ] ],
+      [
+        [ "diesel", 3 ],
+        [ "biodiesel", 3 ],
+        [ "gasoline", 3 ],
+        [ "avgas", 3 ],
+        [ "lamp_oil", 3 ],
+        [ "jp8", 3 ],
+        [ "motor_oil", 3 ],
+        [ "crude_lamp_oil", 3 ],
+        [ "chem_turpentine", 3 ],
+        [ "chem_benzene", 3 ],
+        [ "chem_toluene", 3 ],
+        [ "flamethrower_fuel", 3 ]
+      ]
+    ]
   },
   {
     "type": "recipe",

@@ -3537,13 +3537,14 @@
   {
     "id": "nested_sling_ready_explosives",
     "type": "nested_category",
-    "activity_level": "fake",
+    "activity_level": "NO_EXERCISE",
     "category": "CC_WEAPON",
     "subcategory": "CSC_WEAPON_EXPLOSIVE",
     "name": "sling-ready explosives",
     "description": "Recipes related to modifying explosives to be usable in a staff sling.",
     "skill_used": "fabrication",
     "nested_category_data": [
+      "sling-ready_flashbang",
       "sling-ready_molotov",
       "sling-ready_grenade",
       "sling-ready_homemade_grenade",
@@ -3897,13 +3898,20 @@
   {
     "id": "nested_ammo_flamethrower",
     "type": "nested_category",
-    "activity_level": "fake",
+    "activity_level": "LIGHT_EXERCISE",
     "category": "CC_AMMO",
     "subcategory": "CSC_AMMO_OTHER",
     "name": "flamethrower fuels",
-    "description": "Recipes related to creating flammable liquids suitable for loading into a flamethrower.",
+    "description": "Recipes related to creating flammable liquids suitable for loading into a flamethrower or making Molotov cocktails.",
     "skill_used": "chemistry",
-    "nested_category_data": [ "napalm", "gelled_gasoline", "flamethrower_fuel" ],
+    "nested_category_data": [
+      "napalm",
+      "gelled_gasoline",
+      "flamethrower_fuel",
+      "flamethrower_fuel_mix_1",
+      "flamethrower_fuel_mix_2",
+      "flamethrower_fuel_mix_3"
+    ],
     "difficulty": 2
   },
   {

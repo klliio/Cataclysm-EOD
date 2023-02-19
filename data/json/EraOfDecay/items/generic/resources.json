@@ -1084,5 +1084,36 @@
     "volume": "1 L",
     "weight": "7800 g",
     "bashing": 3
+  },
+  {
+    "type": "AMMO",
+    "id": "chem_amatol",
+    "copy-from": "reagent_powder",
+    "name": { "str_sp": "amatol" },
+    "description": "A mixture of TNT and ammonium nitrate, for use in explosive devices.",
+    "//": "Stats assume 50% ammonium nitrate and 50% TNT by weight.",
+    "//REF": "0.91",
+    "material": [ "powder" ],
+    "price": 7500,
+    "price_postapoc": 2500,
+    "color": "yellow",
+    "explode_in_fire": true,
+    "explosion": { "power": 1, "shrapnel": 0 },
+    "weight": "1690 mg"
+  },
+  {
+    "type": "AMMO",
+    "id": "chem_ammonal",
+    "copy-from": "reagent_powder",
+    "name": { "str_sp": "ammonal" },
+    "description": "A mixture of aluminum powder and ammonium nitrate, for use in explosive devices.",
+    "//": "Stats assume 95% ammonium nitrate and 5% aluminum powder.",
+    "//REF": "0.9",
+    "material": [ "powder" ],
+    "price": 7500,
+    "price_postapoc": 2500,
+    "explode_in_fire": true,
+    "explosion": { "power": 1, "shrapnel": 0 },
+    "weight": "1774 mg"
   }
 ]

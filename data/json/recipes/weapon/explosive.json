@@ -2,18 +2,14 @@
   {
     "result": "acidbomb",
     "type": "recipe",
-    "activity_level": "fake",
+    "activity_level": "LIGHT_EXERCISE",
     "category": "CC_WEAPON",
     "subcategory": "CSC_WEAPON_EXPLOSIVE",
     "skill_used": "fabrication",
     "time": "1 m",
     "reversible": true,
     "autolearn": true,
-    "components": [
-      [ [ "jar_glass_sealed", 1 ], [ "clay_canister", 2 ], [ "flask_glass", 2 ] ],
-      [ [ "any_strong_acid", 2, "LIST" ] ],
-      [ [ "cordage_short", 1, "LIST" ] ]
-    ]
+    "components": [ [ [ "bottle_glass", 1 ] ], [ [ "any_strong_acid", 750, "LIST" ] ] ]
   },
   {
     "result": "dynamite",
@@ -26,13 +22,13 @@
     "time": "10 m",
     "book_learn": [ [ "textbook_anarch", 3 ], [ "adv_chemistry", 2 ], [ "textbook_chemistry", 2 ] ],
     "qualities": [ { "id": "CONTAIN", "level": 1 } ],
-    "//": "Recipe will also need a blasting cap once it becomes a thing.",
     "components": [
       [ [ "paper", 5 ], [ "rolling_paper", 32 ], [ "bag_plastic", 1 ], [ "plastic_sheet_small", 1 ] ],
+      [ [ "blasting_cap", 1 ] ],
       [ [ "chem_nitroglycerin", 142 ] ],
       [ [ "water_clean", 1 ] ],
       [ [ "material_sand", 120 ], [ "splinter", 6 ] ],
-      [ [ "fuse", 1 ] ]
+      [ [ "fuse", 4 ] ]
     ]
   },
   {
@@ -102,6 +98,7 @@
     "reversible": true,
     "book_learn": [ [ "recipe_labchem", 5 ], [ "textbook_anarch", 7 ] ],
     "qualities": [ { "id": "SCREW", "level": 1 } ],
+    "//TODO": "Rework this recipe later.",
     "using": [ [ "small_grenade_case", 1 ] ],
     "components": [
       [ [ "pilot_light", 1 ] ],
@@ -124,6 +121,7 @@
     "autolearn": true,
     "book_learn": [ [ "textbook_gaswarfare", 3 ] ],
     "qualities": [ { "id": "SCREW", "level": 1 } ],
+    "//TODO": "Rework this recipe later.",
     "using": [ [ "small_gas_canister_case", 1 ] ],
     "components": [
       [ [ "bleach", 2 ], [ "oxy_powder", 200 ] ],
@@ -143,6 +141,7 @@
     "time": "8 m",
     "autolearn": true,
     "book_learn": [ [ "textbook_gaswarfare", 3 ] ],
+    "//TODO": "Rework this recipe later.",
     "qualities": [ { "id": "SCREW", "level": 1 } ],
     "components": [
       [ [ "bleach", 2 ], [ "oxy_powder", 200 ] ],
@@ -164,6 +163,7 @@
     "time": "8 m",
     "autolearn": true,
     "book_learn": [ [ "textbook_gaswarfare", 3 ] ],
+    "//TODO": "Rework this recipe later.",
     "qualities": [ { "id": "SCREW", "level": 1 } ],
     "components": [
       [ [ "bleach", 2 ], [ "oxy_powder", 200 ] ],
@@ -176,15 +176,15 @@
   {
     "result": "molotov",
     "type": "recipe",
-    "activity_level": "fake",
+    "activity_level": "LIGHT_EXERCISE",
     "category": "CC_WEAPON",
     "subcategory": "CSC_WEAPON_EXPLOSIVE",
     "skill_used": "fabrication",
     "time": "30 s",
     "reversible": true,
     "autolearn": true,
-    "using": [ [ "accelerant_liquid", 500 ] ],
-    "components": [ [ [ "cotton_patchwork", 1 ] ], [ [ "bottle_glass", 1 ], [ "flask_glass", 2 ], [ "clay_canister", 2 ] ] ]
+    "components": [ [ [ "cotton_patchwork", 1 ], [ "cotton_ball", 1 ] ], [ [ "bottle_glass", 1 ] ], [ [ "flamethrower_fuel", 750 ] ] ],
+    "flags": [ "BLIND_HARD" ]
   },
   {
     "result": "dynamite_bomb",
@@ -193,14 +193,12 @@
     "category": "CC_WEAPON",
     "subcategory": "CSC_WEAPON_EXPLOSIVE",
     "skill_used": "fabrication",
-    "skills_required": [ "mechanics", 2 ],
     "difficulty": 3,
     "time": "12 m",
     "reversible": true,
     "autolearn": true,
-    "qualities": [ { "id": "SAW_M", "level": 1 }, { "id": "GLARE", "level": 1 } ],
-    "tools": [ [ [ "welder", 20 ], [ "welder_crude", 30 ], [ "toolset", 30 ], [ "soldering_iron", 30 ] ] ],
-    "components": [ [ [ "metal_tank_little", 1 ] ], [ [ "nail", 200 ], [ "scrap", 16 ] ], [ [ "fuse", 1 ] ], [ [ "dynamite", 1 ] ] ]
+    "qualities": [ { "id": "SAW_M", "level": 1 } ],
+    "components": [ [ [ "metal_tank_little", 1 ] ], [ [ "nail", 200 ], [ "scrap", 16 ] ], [ [ "dynamite", 1 ] ] ]
   },
   {
     "result": "smokebomb",
@@ -220,6 +218,7 @@
     ],
     "time": "7 m 30 s",
     "qualities": [ { "id": "SCREW", "level": 1 } ],
+    "//TODO": "Rework this recipe later.",
     "using": [ [ "small_gas_canister_case", 1 ] ],
     "components": [
       [ [ "water", 1 ], [ "water_clean", 1 ], [ "salt_water", 1 ], [ "saline", 5 ] ],
@@ -241,7 +240,7 @@
     "autolearn": false,
     "book_learn": [ [ "manual_launcher", 4 ], [ "textbook_anarch", 5 ] ],
     "qualities": [ { "id": "SAW_M", "level": 1 } ],
-    "using": [ [ "military_explosive", 46 ], [ "explosives_casting_standard", 1 ], [ "small_grenade_case", 1 ] ],
+    "using": [ [ "military_explosive", 15 ], [ "small_grenade_case", 1 ] ],
     "components": [
       [ [ "delay_fuze", 1 ] ],
       [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ],
@@ -261,7 +260,7 @@
     "autolearn": false,
     "book_learn": [ [ "manual_launcher", 4 ], [ "textbook_anarch", 5 ] ],
     "qualities": [ { "id": "SAW_M", "level": 1 } ],
-    "using": [ [ "military_explosive", 92 ], [ "explosives_casting_standard", 1 ] ],
+    "using": [ [ "stable_explosive", 30 ] ],
     "components": [
       [ [ "delay_fuze", 1 ] ],
       [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ],
@@ -281,65 +280,9 @@
     "time": "15 m",
     "reversible": true,
     "book_learn": [ [ "manual_launcher", 4 ], [ "textbook_anarch", 5 ] ],
-    "using": [ [ "military_explosive", 92 ], [ "explosives_casting_standard", 1 ] ],
+    "using": [ [ "stable_explosive", 30 ] ],
     "qualities": [ { "id": "SAW_M", "level": 1 } ],
-    "components": [ [ [ "pipe", 1 ] ], [ [ "delay_fuze", 1 ] ] ]
-  },
-  {
-    "result": "military_explosive_bomb",
-    "type": "recipe",
-    "activity_level": "LIGHT_EXERCISE",
-    "category": "CC_WEAPON",
-    "subcategory": "CSC_WEAPON_EXPLOSIVE",
-    "skill_used": "fabrication",
-    "difficulty": 5,
-    "time": "15 m",
-    "reversible": true,
-    "book_learn": [ [ "manual_launcher", 4 ], [ "textbook_anarch", 5 ] ],
-    "using": [ [ "military_explosive", 697 ], [ "explosives_casting_standard", 1 ] ],
-    "qualities": [ { "id": "SAW_M", "level": 1 } ],
-    "components": [
-      [ [ "delay_fuze", 1 ] ],
-      [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ],
-      [ [ "jug_plastic", 1 ] ],
-      [ [ "nail", 750 ], [ "scrap", 30 ] ]
-    ]
-  },
-  {
-    "result": "military_explosive_half_barrel_bomb",
-    "type": "recipe",
-    "activity_level": "fake",
-    "category": "CC_WEAPON",
-    "subcategory": "CSC_WEAPON_EXPLOSIVE",
-    "skill_used": "fabrication",
-    "difficulty": 5,
-    "time": "2 h",
-    "reversible": true,
-    "book_learn": [ [ "manual_launcher", 7 ], [ "textbook_anarch", 8 ] ],
-    "using": [ [ "explosives_casting_standard", 5 ], [ "military_explosive", 10000 ] ],
-    "components": [
-      [ [ "delay_fuze", 1 ] ],
-      [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ],
-      [ [ "keg_steel", 1 ] ]
-    ]
-  },
-  {
-    "result": "military_explosive_full_barrel_bomb",
-    "type": "recipe",
-    "activity_level": "fake",
-    "category": "CC_WEAPON",
-    "subcategory": "CSC_WEAPON_EXPLOSIVE",
-    "skill_used": "fabrication",
-    "difficulty": 5,
-    "time": "2 h",
-    "reversible": true,
-    "book_learn": [ [ "manual_launcher", 7 ], [ "textbook_anarch", 8 ] ],
-    "using": [ [ "explosives_casting_standard", 10 ], [ "military_explosive", 20000 ] ],
-    "components": [
-      [ [ "delay_fuze", 1 ] ],
-      [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ],
-      [ [ "30gal_drum", 1 ] ]
-    ]
+    "components": [ [ [ "pipe", 1 ] ], [ [ "delay_fuze", 1 ] ], [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ] ]
   },
   {
     "result": "small_homemade_grenade",
@@ -356,8 +299,9 @@
     "qualities": [ { "id": "SAW_M", "level": 1 } ],
     "components": [
       [ [ "small_grenade_case", 1, "LIST" ] ],
-      [ [ "stable_explosive", 15, "LIST" ], [ "volatile_explosive", 15, "LIST" ] ],
+      [ [ "stable_explosive", 15, "LIST" ] ],
       [ [ "fuse", 1 ] ],
+      [ [ "blasting_cap", 1 ] ],
       [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ],
       [ [ "nail", 50 ], [ "scrap", 2 ] ]
     ]
@@ -377,8 +321,9 @@
     "qualities": [ { "id": "SAW_M", "level": 1 } ],
     "components": [
       [ [ "can_medium", 1 ] ],
-      [ [ "stable_explosive", 30, "LIST" ], [ "volatile_explosive", 30, "LIST" ] ],
+      [ [ "stable_explosive", 30, "LIST" ] ],
       [ [ "fuse", 1 ] ],
+      [ [ "blasting_cap", 1 ] ],
       [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ],
       [ [ "nail", 100 ], [ "scrap", 4 ] ]
     ]
@@ -395,24 +340,13 @@
     "//": "You cut the tube to make the bomb.",
     "autolearn": true,
     "qualities": [ { "id": "SAW_M", "level": 1 } ],
-    "using": [ [ "stable_explosive", 29 ], [ "volatile_explosive", 1 ] ],
-    "components": [ [ [ "pipe", 1 ] ], [ [ "fuse", 1 ] ] ]
-  },
-  {
-    "result": "pipebomb",
-    "id_suffix": "volatile",
-    "type": "recipe",
-    "activity_level": "LIGHT_EXERCISE",
-    "category": "CC_WEAPON",
-    "subcategory": "CSC_WEAPON_EXPLOSIVE",
-    "skill_used": "fabrication",
-    "difficulty": 1,
-    "time": "15 m",
-    "autolearn": true,
-    "qualities": [ { "id": "SAW_M", "level": 1 } ],
-    "using": [ [ "volatile_explosive", 30 ] ],
-    "//": "As someone explained to me in the discord server, you could only realistically use only volatile explosives to make a bomb if the case is hard, which is the reason why I'm allowing it on pipebombs and grenades, but not in bombs which use gallon jugs. Additionally, the biggest reason why you wouldn't make a large bomb with only volatile explosives is that the high volume concentration would make it extremely likely that minimal friction might detonate the entire system, which is the reason why I'm allowing it on smaller explosives, but not on the largest like the barrel bombs.",
-    "components": [ [ [ "pipe", 1 ] ], [ [ "fuse", 1 ] ] ]
+    "using": [ [ "stable_explosive", 30 ] ],
+    "components": [
+      [ [ "pipe", 1 ] ],
+      [ [ "fuse", 1 ] ],
+      [ [ "blasting_cap", 1 ] ],
+      [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ]
+    ]
   },
   {
     "result": "homemade_bomb",
@@ -426,10 +360,10 @@
     "reversible": true,
     "autolearn": true,
     "book_learn": [ [ "manual_launcher", 4 ], [ "textbook_anarch", 5 ] ],
-    "using": [ [ "stable_explosive", 226 ], [ "volatile_explosive", 6 ] ],
-    "qualities": [ { "id": "SAW_M", "level": 1 } ],
+    "using": [ [ "stable_explosive", 232 ] ],
     "components": [
-      [ [ "fuse", 1 ] ],
+      [ [ "fuse", 4 ] ],
+      [ [ "blasting_cap", 1 ] ],
       [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ],
       [ [ "jug_plastic", 1 ] ],
       [ [ "nail", 750 ], [ "scrap", 30 ] ]
@@ -447,14 +381,18 @@
     "reversible": true,
     "autolearn": true,
     "book_learn": [ [ "manual_launcher", 4 ], [ "textbook_anarch", 5 ] ],
-    "using": [ [ "stable_explosive", 253 ], [ "volatile_explosive", 6 ] ],
-    "qualities": [ { "id": "SAW_M", "level": 1 } ],
-    "components": [ [ [ "fuse", 1 ] ], [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ], [ [ "jug_plastic", 1 ] ] ]
+    "using": [ [ "stable_explosive", 259 ] ],
+    "components": [
+      [ [ "fuse", 4 ] ],
+      [ [ "blasting_cap", 1 ] ],
+      [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ],
+      [ [ "jug_plastic", 1 ] ]
+    ]
   },
   {
     "result": "half_barrel_bomb",
     "type": "recipe",
-    "activity_level": "fake",
+    "activity_level": "LIGHT_EXERCISE",
     "category": "CC_WEAPON",
     "subcategory": "CSC_WEAPON_EXPLOSIVE",
     "skill_used": "fabrication",
@@ -462,13 +400,18 @@
     "time": "30 m",
     "reversible": true,
     "book_learn": [ [ "manual_launcher", 7 ], [ "textbook_anarch", 8 ] ],
-    "using": [ [ "volatile_explosive", 86 ], [ "stable_explosive", 3354 ] ],
-    "components": [ [ [ "fuse", 1 ] ], [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ], [ [ "keg_steel", 1 ] ] ]
+    "using": [ [ "stable_explosive", 3440 ] ],
+    "components": [
+      [ [ "fuse", 20 ] ],
+      [ [ "blasting_cap", 1 ] ],
+      [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ],
+      [ [ "keg_steel", 1 ] ]
+    ]
   },
   {
     "result": "full_barrel_bomb",
     "type": "recipe",
-    "activity_level": "fake",
+    "activity_level": "LIGHT_EXERCISE",
     "category": "CC_WEAPON",
     "subcategory": "CSC_WEAPON_EXPLOSIVE",
     "skill_used": "fabrication",
@@ -476,7 +419,12 @@
     "time": "1 h",
     "reversible": true,
     "book_learn": [ [ "manual_launcher", 7 ], [ "textbook_anarch", 8 ] ],
-    "using": [ [ "volatile_explosive", 173 ], [ "stable_explosive", 6747 ] ],
-    "components": [ [ [ "fuse", 1 ] ], [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ], [ [ "30gal_drum", 1 ] ] ]
+    "using": [ [ "stable_explosive", 6920 ] ],
+    "components": [
+      [ [ "fuse", 20 ] ],
+      [ [ "blasting_cap", 1 ] ],
+      [ [ "superglue", 1 ], [ "duct_tape", 75 ], [ "cordage", 1, "LIST" ] ],
+      [ [ "30gal_drum", 1 ] ]
+    ]
   }
 ]

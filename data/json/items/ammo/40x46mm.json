@@ -38,6 +38,8 @@
     "name": { "str_sp": "40x46mm M433 HEDP" },
     "description": "A low velocity 40x46mm high explosive dual-purpose grenade.  It can penetrate 2 inches of steel armor, and the fragmentation of the projectile body also makes it suitable for use against infantry.",
     "damage": { "damage_type": "bullet", "amount": 200, "armor_penetration": 30 },
+    "explode_in_fire": true,
+    "explosion": { "power": 42, "shrapnel": { "casing_mass": 198, "fragment_mass": 0.08 } },
     "casing": "40x46mm_m118_casing",
     "extend": { "effects": [ "EXPLOSIVE_m433" ] }
   },

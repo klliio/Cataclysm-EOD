@@ -289,10 +289,12 @@
     "bashing": 1,
     "ammo_type": "bolt",
     "damage": { "damage_type": "stab", "constant_damage_multiplier": 0.1 },
+    "explode_in_fire": true,
+    "explosion": { "power": 360, "distance_factor": 0.4 },
     "range": 0,
     "dispersion": 285,
     "loudness": 0,
-    "effects": [ "COOKOFF", "EXPLOSIVE_SMALL" ]
+    "effects": [ "EXPLOSIVE_SMALL" ]
   },
   {
     "id": "bullet_crossbow",

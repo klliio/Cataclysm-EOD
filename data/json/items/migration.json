@@ -1517,12 +1517,12 @@
   {
     "id": "tool_small_bootleg_fragmentation_device",
     "type": "MIGRATION",
-    "replace": "military_explosive_bomb"
+    "replace": "homemade_bomb"
   },
   {
     "id": "tool_bootleg_barrel_bomb",
     "type": "MIGRATION",
-    "replace": "military_explosive_full_barrel_bomb"
+    "replace": "full_barrel_bomb"
   },
   {
     "id": "can_bomb",
