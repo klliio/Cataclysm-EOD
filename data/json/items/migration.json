@@ -1918,12 +1918,12 @@
   {
     "id": "bootleg_grenade_act",
     "type": "MIGRATION",
-    "replace": "military_explosive_small_grenade_act"
+    "replace": "small_homemade_grenade_act"
   },
   {
     "id": "tool_bootleg_barrel_bomb_act",
     "type": "MIGRATION",
-    "replace": "military_explosive_full_barrel_bomb_act"
+    "replace": "full_barrel_bomb_act"
   },
   {
     "id": "primitive_demolition_charge_act",
@@ -1943,7 +1943,7 @@
   {
     "id": "tool_small_bootleg_fragmentation_device_act",
     "type": "MIGRATION",
-    "replace": "military_explosive_bomb_act"
+    "replace": "homemade_bomb_act"
   },
   {
     "id": "improvised_demolition_charge_act",
