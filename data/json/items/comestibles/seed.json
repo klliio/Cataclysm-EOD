@@ -909,14 +909,5 @@
     "name": { "str_sp": "bell pepper seeds" },
     "description": "Some bell pepper seeds.",
     "seed_data": { "plant_name": "bell pepper", "fruit": "bell_pepper", "byproducts": [ "withered" ], "grow": "70 days" }
-  },
-  {
-    "type": "COMESTIBLE",
-    "id": "seed_panties",
-    "copy-from": "seed",
-    "price": 50,
-    "name": { "str_sp": "panties seeds" },
-    "description": "Some panties seeds.",
-    "seed_data": { "plant_name": "panties", "fruit": "panties", "byproducts": [ "withered" ], "grow": "91 days" }
   }
 ]
