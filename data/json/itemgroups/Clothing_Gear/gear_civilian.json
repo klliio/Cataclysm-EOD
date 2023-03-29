@@ -6,6 +6,7 @@
     "magazine": 100,
     "//": "Small common items carried in a person's pockets, purse, etc. Wallets at roughly 50%.",
     "items": [
+      { "item": "iron_supplement", "prob": 10, "charges": [ 1, 20 ] },
       { "group": "wallets", "prob": 1600 },
       { "item": "cell_phone", "prob": 26, "charges": [ 0, 300 ] },
       { "item": "smart_phone", "prob": 204, "charges-min": 0 },

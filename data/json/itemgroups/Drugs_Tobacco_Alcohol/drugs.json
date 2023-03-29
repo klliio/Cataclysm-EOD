@@ -77,13 +77,13 @@
     "type": "item_group",
     "//": "Rare and/or valuable drugs excluding painkillers",
     "items": [
+      [ "modafinil", 100 ],
       [ "adderall", 100 ],
       [ "antibiotics", 100 ],
       [ "strong_antibiotic", 45 ],
       [ "antifungal", 100 ],
       [ "antiparasitic", 100 ],
       [ "diazepam", 100 ],
-      [ "modafinil", 100 ],
       [ "calcium_tablet", 100 ],
       [ "inj_iron", 100 ],
       [ "prozac", 100 ],
@@ -141,6 +141,7 @@
     "type": "item_group",
     "id": "softdrugs",
     "items": [
+      { "item": "iron_supplement", "prob": 5, "charges": [ 1, 20 ] },
       { "item": "bandages", "prob": 30, "charges": [ 1, 3 ] },
       { "item": "adhesive_bandages", "prob": 30, "count": [ 1, 20 ] },
       { "item": "cotton_ball", "prob": 50, "charges": [ 1, 10 ] },

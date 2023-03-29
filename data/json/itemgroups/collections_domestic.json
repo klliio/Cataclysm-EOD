@@ -247,6 +247,7 @@
     "type": "item_group",
     "subtype": "distribution",
     "items": [
+      { "item": "iron_supplement", "prob": 2, "charges": [ 1, 20 ] },
       [ "alarmclock", 60 ],
       [ "glasses_reading", 50 ],
       [ "glasses_eye", 30 ],
