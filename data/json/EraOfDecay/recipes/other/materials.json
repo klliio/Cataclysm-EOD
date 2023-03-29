@@ -562,7 +562,11 @@
     "book_learn": [ [ "adv_chemistry", 4 ], [ "textbook_chemistry", 5 ], [ "recipe_labchem", 4 ] ],
     "qualities": [ { "id": "CHEM", "level": 1 } ],
     "tools": [ [ [ "high_pressure_reactor", 50 ] ] ],
-    "components": [ [ [ "chem_formaldehyde", 225 ] ], [ [ "chem_phenol", 166 ] ], [ [ "lye_powder", 1 ], [ "chem_potassium_hydroxide", 1 ] ] ]
+    "components": [
+      [ [ "chem_formaldehyde", 225 ] ],
+      [ [ "chem_phenol", 166 ] ],
+      [ [ "lye_powder", 1 ], [ "chem_potassium_hydroxide", 1 ] ]
+    ]
   },
   {
     "type": "recipe",
