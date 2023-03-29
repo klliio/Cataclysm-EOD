@@ -55,6 +55,7 @@
         [ "gunpowder_artillery", 90 ],
         [ "gunpowder_rifle", 70 ],
         [ "chem_hmtd", 14 ],
+        [ "chem_silver_acetylide", 14 ],
         [ "chem_apex", 7 ],
         [ "chem_mercury_fulminate", 21 ],
         [ "chem_lead_azide", 21 ]
@@ -68,6 +69,7 @@
     "components": [
       [
         [ "chem_anfo", 11 ],
+        [ "chem_tacn", 11 ],
         [ "chem_rdx", 4 ],
         [ "chem_compositionb", 8 ],
         [ "chem_tnt", 6 ],

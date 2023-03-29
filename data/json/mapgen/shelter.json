@@ -27,6 +27,7 @@
       [ "mirror", 4 ],
       [ "wearable_light", 2 ],
       [ "calcium_tablet", 1 ],
+      [ "vitc_supplement", 1 ],
       [ "vitamins", 1 ],
       { "item": "protein_bar_evac", "count": [ 0, 3 ] }
     ]

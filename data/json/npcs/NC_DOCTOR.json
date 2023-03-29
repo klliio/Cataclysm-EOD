@@ -89,6 +89,7 @@
       { "item": "contacts", "prob": 10 },
       { "item": "vitamins", "prob": 75 },
       { "item": "calcium_tablet", "prob": 75 },
+      { "item": "vitc_supplement", "prob": 75 },
       { "item": "aspirin", "prob": 85 },
       { "item": "caffeine", "prob": 25 },
       { "item": "pills_sleep", "prob": 15 },

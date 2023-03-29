@@ -237,5 +237,41 @@
     "autolearn": true,
     "qualities": [ { "id": "CONTAIN", "level": 1 } ],
     "components": [ [ [ "chem_chloral", 105 ] ], [ [ "water_clean", 1 ] ] ]
+  },
+  {
+    "type": "recipe",
+    "activity_level": "NO_EXERCISE",
+    "result": "med_lithium_carbonate",
+    "charges": 7,
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_DRUGS",
+    "skill_used": "chemistry",
+    "time": "1 s",
+    "autolearn": true,
+    "components": [ [ [ "chem_lithium_carbonate", 1 ] ] ]
+  },
+  {
+    "type": "recipe",
+    "activity_level": "NO_EXERCISE",
+    "result": "iron_supplement",
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_DRUGS",
+    "skill_used": "chemistry",
+    "time": "1 s",
+    "charges": 47,
+    "autolearn": true,
+    "components": [ [ [ "chem_ferrous_sulfate_heptahydrate", 1 ] ] ]
+  },
+  {
+    "type": "recipe",
+    "activity_level": "NO_EXERCISE",
+    "result": "calcium_tablet",
+    "category": "CC_CHEM",
+    "subcategory": "CSC_CHEM_DRUGS",
+    "skill_used": "chemistry",
+    "time": "1 s",
+    "charges": 7,
+    "autolearn": true,
+    "components": [ [ [ "material_limestone", 1 ] ] ]
   }
 ]

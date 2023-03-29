@@ -731,6 +731,20 @@
             "charges-min": 1,
             "charges-max": 40,
             "container-item": "bottle_plastic_small"
+          },
+          {
+            "item": "vitc_supplement",
+            "prob": 10,
+            "charges-min": 1,
+            "charges-max": 40,
+            "container-item": "bottle_plastic_small"
+          },
+          {
+            "item": "iron_supplement",
+            "prob": 10,
+            "charges-min": 1,
+            "charges-max": 40,
+            "container-item": "bottle_plastic_small"
           }
         ],
         "prob": 80

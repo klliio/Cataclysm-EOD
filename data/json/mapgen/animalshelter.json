@@ -14,6 +14,7 @@
       { "item": "saline", "prob": 20 },
       { "item": "vitamins", "prob": 15 },
       { "item": "calcium_tablet", "prob": 15 },
+      { "item": "vitc_supplement", "prob": 2 },
       { "item": "nyquil", "prob": 5 },
       { "item": "disinfectant", "prob": 15 },
       { "item": "elec_hairtrimmer", "prob": 15 },

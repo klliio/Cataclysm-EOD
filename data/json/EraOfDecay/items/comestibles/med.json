@@ -133,12 +133,12 @@
     }
   },
   {
-    "id": "chem_lithium_carbonate",
+    "id": "med_lithium_carbonate",
     "type": "COMESTIBLE",
     "comestible_type": "MED",
     "name": { "str_sp": "lithium carbonate" },
     "description": "Odorless white powder which can be used as a treatment for mood disorders such as bipolar disorder.  Unlike the alternatives, it has significant but usually subtle negative adverse effects.",
-    "weight": "1 g",
+    "weight": "300 mg",
     "volume": "250 ml",
     "healthy": -3,
     "price": 9000,
@@ -149,6 +149,7 @@
     "color": "light_green",
     "container": "bottle_plastic_pill_prescription",
     "flags": [ "EDIBLE_FROZEN" ],
+    "//": "Should act as a mood stabilizer instead, to counter Mood Swings trait, once that is implemented.",
     "use_action": [ "PROZAC" ]
   },
   {
@@ -219,5 +220,23 @@
       "description": "Can be used to treat insomnia.",
       "effect_on_conditions": [ "EOC_SLEEP" ]
     }
+  },
+  {
+    "id": "iron_supplement",
+    "type": "COMESTIBLE",
+    "comestible_type": "MED",
+    "name": { "str": "iron supplement tablet" },
+    "description": "Dietary supplement tablets that contain iron in bioavailable form, which is used to treat and prevent anemia caused by iron deficiency.",
+    "weight": "40 mg",
+    "volume": "1 ml",
+    "price": 300,
+    "price_postapoc": 750,
+    "//": "Vitamin content assumes 20% iron content (by weight) and 8.7 mg of iron as RDA value.",
+    "symbol": "!",
+    "color": "yellow",
+    "container": "bottle_plastic_pill_supplement",
+    "looks_like": "calcium_tablet",
+    "flags": [ "EDIBLE_FROZEN" ],
+    "use_action": { "type": "consume_drug", "activation_message": "You take your %s.", "vitamins": [ [ "iron", 90 ] ] }
   }
 ]
