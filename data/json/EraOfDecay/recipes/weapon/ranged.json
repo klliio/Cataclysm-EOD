@@ -38,7 +38,7 @@
     "time": "30 m",
     "reversible": true,
     "autolearn": true,
-    "proficiencies": [ { "proficiency": "prof_fibers", "fail_multiplier": 1 } ],
+    "proficiencies": [ { "proficiency": "prof_fibers" } ],
     "components": [ [ [ "cordage", 5, "LIST" ] ] ]
   }
 ]

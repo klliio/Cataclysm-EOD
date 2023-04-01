@@ -165,7 +165,7 @@ int npc_trading::adjusted_price( item const *it, int amount, Character const &bu
     npc const *faction_party = buyer.is_npc() ? buyer.as_npc() : seller.as_npc();
     faction_price_rule const *const fpr = faction_party->get_price_rules( *it );
 
-    double price = it->price_no_contents( true, fpr != nullptr ? fpr->price : cata::nullopt );
+    double price = it->price_no_contents( true, fpr != nullptr ? fpr->price : std::nullopt );
     if( fpr != nullptr ) {
         price *= fpr->premium;
         if( seller.is_npc() ) {
@@ -343,7 +343,7 @@ bool npc_trading::npc_can_fit_items( npc const &np, trade_selector::select_t con
 {
     std::vector<item> avail_pockets = np.worn.available_pockets();
 
-    if( avail_pockets.empty() ) {
+    if( !to_trade.empty() && avail_pockets.empty() ) {
         return false;
     }
     for( trade_selector::entry_t const &it : to_trade ) {
