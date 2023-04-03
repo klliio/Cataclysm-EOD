@@ -5724,7 +5724,7 @@ std::string Character::extended_description() const
         // <bad>This is me, <player_name>.</bad>
         ss += string_format( _( "This is you - %s." ), get_name() );
     } else {
-        ss += string_format( _( "This is %s." ), get_name() );
+        ss += string_format( _( "This is %s, %s" ), name, male ? _( "male" ) : _( "female" ) );
     }
 
     ss += "\n--\n";
@@ -9596,6 +9596,8 @@ std::vector<std::string> Character::short_description_parts() const
 {
     std::vector<std::string> result;
 
+    std::string sex = male ? _( "male" ) : _( "female" );
+    result.push_back( name +  ", "  + sex );
     if( is_armed() ) {
         result.push_back( _( "Wielding: " ) + weapon.tname() );
     }
