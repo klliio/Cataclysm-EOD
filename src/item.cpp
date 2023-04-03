@@ -978,9 +978,9 @@ std::optional<side> item::covers_overlaps( const item &rhs ) const
 
     bool layer_overlap = false;
     // TODO: Handle armor with variable layer depending on body part.
-    for( unsigned int i : it1 ) {
-        for( unsigned int j : it2 ) {
-            if( it1[i] == it2[j] ) {
+    for( layer_level i : it1 ) {
+        for( layer_level j : it2 ) {
+            if( i == j ) {
                 layer_overlap = true;
                 break;
             }

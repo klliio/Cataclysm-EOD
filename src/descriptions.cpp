@@ -129,6 +129,7 @@ void game::extended_description( const tripoint &p )
                 if( !u.sees( p ) ) {
                     desc = _( "You can't see the terrain here." );
                 } else {
+                    const ter_id tid = m.ter( p );
                     if( display_mod_source ) {
                         const std::string mod_src = enumerate_as_string( tid->src.begin(),
                         tid->src.end(), []( const std::pair<ter_str_id, mod_id> &source ) {
