@@ -1412,6 +1412,13 @@ void options_manager::add_options_general()
         this->add_empty_line( "general" );
     };
 
+    add( "PROMPT_ON_CHARACTER_DEATH", "general", to_translation( "Prompt on character death" ),
+         to_translation( "If false, when your character dies, it's unavoidable: savefile is automatically deleted and character is put into the graveyard.  If true, on character death you will be prompted to cancel savefile deletion and return to main menu instead." ),
+         false
+       );
+
+    add_empty_line();
+
     add( "DEF_CHAR_NAME", "general", to_translation( "Default character name" ),
          to_translation( "Set a default character name that will be used instead of a random name on character creation." ),
          "", 30
@@ -1690,7 +1697,7 @@ void options_manager::add_options_interface()
     add( "USE_CELSIUS", "interface", to_translation( "Temperature units" ),
          to_translation( "Switch between Fahrenheit, Celsius, and Kelvin." ),
     { { "fahrenheit", to_translation( "Fahrenheit" ) }, { "celsius", to_translation( "Celsius" ) }, { "kelvin", to_translation( "Kelvin" ) } },
-    "fahrenheit"
+    "celsius"
        );
 
     add( "USE_METRIC_SPEEDS", "interface", to_translation( "Speed units" ),
@@ -1724,7 +1731,7 @@ void options_manager::add_options_interface()
         //~ 24h time, e.g.  23:59
         { "24h", to_translation( "24h" ) }
     },
-    "12h" );
+    "24h" );
 
     add_empty_line();
 
@@ -1974,6 +1981,11 @@ void options_manager::add_options_interface()
     add( "AIM_WIDTH", "interface", to_translation( "Full screen Advanced Inventory Manager" ),
          to_translation( "If true, Advanced Inventory Manager menu will fit full screen, otherwise it will leave sidebar visible." ),
          false
+       );
+
+    add( "MOD_SOURCE", "interface", to_translation( "Display source of content" ),
+         to_translation( "Displays what content pack a piece of furniture, terrain, item, or monster comes from or is affected by." ),
+         true
        );
 
     add_empty_line();
@@ -4221,6 +4233,7 @@ static void update_options_cache()
     fov_3d_z_range = ::get_option<int>( "FOV_3D_Z_RANGE" );
     keycode_mode = ::get_option<std::string>( "SDL_KEYBOARD_MODE" ) == "keycode";
     use_pinyin_search = ::get_option<bool>( "USE_PINYIN_SEARCH" );
+    display_mod_source = ::get_option<bool>( "MOD_SOURCE" );
 }
 
 bool options_manager::save() const

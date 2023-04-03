@@ -978,9 +978,9 @@ std::optional<side> item::covers_overlaps( const item &rhs ) const
 
     bool layer_overlap = false;
     // TODO: Handle armor with variable layer depending on body part.
-    for( unsigned int i : it1 ) {
-        for( unsigned int j : it2 ) {
-            if( it1[i] == it2[j] ) {
+    for( layer_level i : it1 ) {
+        for( layer_level j : it2 ) {
+            if( i == j ) {
                 layer_overlap = true;
                 break;
             }
@@ -2138,7 +2138,7 @@ double item::average_dps( const Character &guy ) const
 void item::basic_info( std::vector<iteminfo> &info, const iteminfo_query *parts, int batch,
                        bool /* debug */ ) const
 {
-    if( parts->test( iteminfo_parts::BASE_MOD_SRC ) ) {
+    if( display_mod_source && parts->test( iteminfo_parts::BASE_MOD_SRC ) ) {
         info.emplace_back( "BASE", string_format( _( "Origin: %s" ), enumerate_as_string( type->src,
         []( const std::pair<itype_id, mod_id> &source ) {
             return string_format( "'%s'", source.second->name() );

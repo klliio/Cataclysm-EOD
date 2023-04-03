@@ -1,5 +1,6 @@
 #include "cached_options.h"
 
+bool display_mod_source;
 bool fov_3d;
 int fov_3d_z_range;
 bool keycode_mode;
