@@ -1,7 +1,6 @@
 name: "Experimental Release"
 concurrency: release
 on:
-  workflow_dispatch:
   push:
     branches:
       - master
@@ -30,7 +29,6 @@ jobs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
       timestamp: ${{ steps.get-timestamp.outputs.time }}
       release_already_exists: ${{ steps.tag_check.outputs.exists }}
-      matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
       - name: Get build timestamp
         id: get-timestamp
@@ -80,13 +78,13 @@ jobs:
           body_path: ./CHANGELOG.md
           draft: false
           prerelease: true
-      - name: Generate matrix list
-        id: matrix
-        if: ${{ steps.tag_check.outputs.exists == 'false' }}
-        run: |
-          pip3 install ruamel.yaml
-          python3 -c "
-          matrix = '''
+  builds:
+    needs: release
+    if: ${{ needs.release.outputs.release_already_exists == 'false' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
           - name: Windows Tiles x64 MSVC
             artifact: windows-tiles-x64-msvc
             arch: x64
@@ -181,19 +179,6 @@ jobs:
             artifact: android-bundle
             ext: aab
             content: application/aap
-          '''
-          from ruamel.yaml import YAML; yaml = YAML()
-          matrix = yaml.load(matrix)
-          if not '${{ secrets.KEYSTORE }}': matrix = [i for i in matrix if i.get('android', 'none') == 'none']
-          import json; print('matrix='+json.dumps(matrix))
-          " >> $GITHUB_OUTPUT
-  builds:
-    needs: release
-    if: ${{ needs.release.outputs.matrix }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include: ${{ fromJson(needs.release.outputs.matrix) }}
     name: ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
     env:
@@ -280,14 +265,14 @@ jobs:
         if: runner.os == 'Linux' && matrix.mxe == 'none' && matrix.android == 'none'
         run: |
           make -j$((`nproc`+0)) TILES=${{ matrix.tiles }} SOUND=${{ matrix.tiles }} RELEASE=1 LOCALIZE=1 LANGUAGES=all BACKTRACE=0 PCH=0 bindist
-          mv cataclysmeod-0.F.tar.gz eod-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.tar.gz
+          mv cataclysmdda-0.F.tar.gz cdda-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.tar.gz
       - name: Build C:EOD (windows mxe)
         if: matrix.mxe != 'none'
         env:
           PLATFORM: /opt/mxe/usr/bin/${{ matrix.mxe }}-w64-mingw32.static.gcc12-
         run: |
           make -j$((`nproc`+0)) CROSS="${PLATFORM}" TILES=1 SOUND=1 RELEASE=1 LOCALIZE=1 LANGUAGES=all BACKTRACE=1 PCH=0 bindist
-          mv cataclysmeod-0.F.zip eod-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.zip
+          mv cataclysmdda-0.F.zip cdda-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.zip
       - name: Build C:EOD (windows msvc)
         if: runner.os == 'Windows'
         env:
@@ -298,12 +283,12 @@ jobs:
         run: |
           msbuild -m -p:Configuration=Release -p:Platform=${{ matrix.arch }} "-target:Cataclysm-vcpkg-static;JsonFormatter-vcpkg-static" msvc-full-features\Cataclysm-vcpkg-static.sln
           .\build-scripts\windist.ps1
-          mv cataclysmeod-0.F.zip eod-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.zip
+          mv cataclysmdda-0.F.zip cdda-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.zip
       - name: Build C:EOD (osx)
         if: runner.os == 'macOS'
         run: |
           make -j3 TILES=${{ matrix.tiles }} SOUND=${{ matrix.tiles }} RELEASE=1 LOCALIZE=1 LANGUAGES=all BACKTRACE=0 PCH=0 USE_HOME_DIR=1 FRAMEWORK=1 UNIVERSAL_BINARY=1 dmgdist
-          mv Cataclysm.dmg eod-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.dmg
+          mv Cataclysm.dmg cdda-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.dmg
       - name: Set up JDK 8 (android)
         if: runner.os == 'Linux' && matrix.android != 'none' && matrix.mxe == 'none'
         uses: actions/setup-java@v2
@@ -328,15 +313,15 @@ jobs:
           if [ ${{ matrix.android }} = arm64 ]
           then
                ./gradlew -Pj=$((`nproc`+0)) -Pabi_arm_32=false assembleExperimentalRelease
-               mv ./app/build/outputs/apk/experimental/release/*.apk ../eod-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.apk
+               mv ./app/build/outputs/apk/experimental/release/*.apk ../cdda-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.apk
           elif [ ${{ matrix.android }} = arm32 ]
           then
                ./gradlew -Pj=$((`nproc`+0)) -Pabi_arm_64=false assembleExperimentalRelease
-               mv ./app/build/outputs/apk/experimental/release/*.apk ../eod-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.apk 
+               mv ./app/build/outputs/apk/experimental/release/*.apk ../cdda-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.apk 
           elif [ ${{ matrix.android }} = bundle ]
           then
                ./gradlew -Pj=$((`nproc`+0)) bundleExperimentalRelease
-               mv ./app/build/outputs/bundle/experimentalRelease/*.aab ../eod-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.aab     
+               mv ./app/build/outputs/bundle/experimentalRelease/*.aab ../cdda-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.aab     
           fi
       - name: Upload release asset
         id: upload-release-asset 
@@ -345,8 +330,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release.outputs.upload_url }} 
-          asset_path: eod-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.${{ matrix.ext }}
-          asset_name: eod-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.${{ matrix.ext }}
+          asset_path: cdda-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.${{ matrix.ext }}
+          asset_name: cdda-${{ matrix.artifact }}-${{ needs.release.outputs.timestamp }}.${{ matrix.ext }}
           asset_content_type: ${{ matrix.content }}
       - name: Trigger GitHub pages rebuild
         if: github.repository == 'CleverRaven/Cataclysm-DDA'
