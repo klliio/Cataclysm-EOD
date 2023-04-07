@@ -1671,7 +1671,7 @@
     "id": "iodine_crystal",
     "copy-from": "reagent_powder",
     "name": { "str_sp": "iodine crystals" },
-    "description": "A handful of resublimed crystals of the element iodine. They can be used as an antiseptic, and are also used to produce methamphetamine.",
+    "description": "A handful of resublimed crystals of the element iodine.  They can be used as an antiseptic, and are also used to produce methamphetamine.",
     "material": [ "powder" ],
     "color": "dark_gray",
     "container": "box_small",

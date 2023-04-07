@@ -3147,7 +3147,7 @@
     "description": "This is a medium tank of propane, commonly used for barbeques.",
     "//": "5 gallon tank, filled to 80% for safety.  About 15lbs while empty.  https://learnmetrics.com/propane-tank-sizes",
     "weight": "6720 g",
-    "volume": "23250 L",
+    "volume": "23250 ml",
     "longest_side": "50 cm",
     "price": 2000,
     "price_postapoc": 500,
