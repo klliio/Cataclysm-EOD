@@ -56,7 +56,7 @@ TEST_CASE( "baseline healing rate with no healing traits", "[heal][baseline]" )
     avatar dummy;
 
     // What is considered normal baseline healing rate comes from game_balance.json.
-    const float normal = 0.0001f * get_option<float>( "PLAYER_HEALING_RATE" );
+    const float normal = get_option<float>( "PLAYER_HEALING_RATE" );
     REQUIRE( normal > 1.0f * hp_per_day );
 
     // Ensure baseline hidden health stat

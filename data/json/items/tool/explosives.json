@@ -1025,7 +1025,7 @@
     "type": "TOOL",
     "name": { "str": "large makeshift grenade" },
     "looks_like": "grenade",
-    "description": "A throwable improvised explosive device outfitted with a mechanical delayed fuze from a real grenade, with extra size and weight to increase power at the cost of throwing range.   To use it, wield it and then activate it to pull the pin and prime it.  You'll then have 5 seconds to throw it before it explodes, scattering shrapnel.",
+    "description": "A throwable improvised explosive device outfitted with a mechanical delayed fuze from a real grenade, with extra size and weight to increase power at the cost of throwing range.  To use it, wield it and then activate it to pull the pin and prime it.  You'll then have 5 seconds to throw it before it explodes, scattering shrapnel.",
     "weight": "1200 g",
     "volume": "540 ml",
     "price": 3000,
