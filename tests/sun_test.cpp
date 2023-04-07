@@ -284,25 +284,25 @@ TEST_CASE( "sunrise and sunset", "[sun][sunrise][sunset][equinox][solstice]" )
 
     SECTION( "spring equinox is day 1 of spring" ) {
         // Actual sunrise and sunset on March 21st 2001 are 0545 and 1757
-        CHECK( "Year 1, Spring, day 1 5:57:58" == to_string( sunrise( spring ) ) );
+        CHECK( "Year 1, Spring, day 1 05:57:58" == to_string( sunrise( spring ) ) );
         CHECK( "Year 1, Spring, day 1 18:16:07" == to_string( sunset( spring ) ) );
     }
 
     SECTION( "summer solstice is day 1 of summer" ) {
         // Actual sunrise and sunset on June 21st 2001 are 0407 and 1924
-        CHECK( "Year 1, Summer, day 1 4:22:20" == to_string( sunrise( summer ) ) );
+        CHECK( "Year 1, Summer, day 1 04:22:20" == to_string( sunrise( summer ) ) );
         CHECK( "Year 1, Summer, day 1 19:41:38" == to_string( sunset( summer ) ) );
     }
 
     SECTION( "autumn equinox is day 1 of autumn" ) {
         // Actual sunrise and sunset on September 22nd 2001 are 0531 and 1741
-        CHECK( "Year 1, Autumn, day 1 5:45:33" == to_string( sunrise( autumn ) ) );
+        CHECK( "Year 1, Autumn, day 1 05:45:33" == to_string( sunrise( autumn ) ) );
         CHECK( "Year 1, Autumn, day 1 17:59:37" == to_string( sunset( autumn ) ) );
     }
 
     SECTION( "winter solstice is day 1 of winter" ) {
         // Actual sunrise and sunset on December 21st 2001 are 0710 and 1614
-        CHECK( "Year 1, Winter, day 1 7:25:07" == to_string( sunrise( winter ) ) );
+        CHECK( "Year 1, Winter, day 1 07:25:07" == to_string( sunrise( winter ) ) );
         CHECK( "Year 1, Winter, day 1 16:31:46" == to_string( sunset( winter ) ) );
     }
 

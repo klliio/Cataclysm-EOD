@@ -5902,8 +5902,8 @@ float Character::healing_rate( float at_rest_quality ) const
 {
     float const rest = clamp( at_rest_quality, 0.0f, 1.0f );
     // TODO: Cache
-    float const base_heal_rate = is_avatar() ? get_option<float>( "PLAYER_HEALING_RATE" )
-                                 : get_option<float>( "NPC_HEALING_RATE" );
+    float const base_heal_rate = ( is_avatar() ? get_option<float>( "PLAYER_HEALING_RATE" )
+                                   : get_option<float>( "NPC_HEALING_RATE" ) ) * 0.0001f;
     float const heal_rate =
         base_heal_rate * mutation_value( "healing_multiplier" );
     float const awake_rate = ( 1.0f - rest ) * heal_rate * mutation_value( "healing_awake" );
