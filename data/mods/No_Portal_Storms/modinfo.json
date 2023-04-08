@@ -1,7 +1,7 @@
 [
   {
     "type": "MOD_INFO",
-    "id": "no_portal_storms_mod",
+    "id": "no_portal_storms",
     "name": "Disable portal storms",
     "authors": [ "Night-Pryanik" ],
     "description": "Completely disables portal storms.  Note that this is a temporary solution until portal storms could be fine-tuned via options.",
