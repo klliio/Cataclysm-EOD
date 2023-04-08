@@ -105,6 +105,7 @@ enum class debug_menu_index : int {
     last
 };
 
+void wishbionics( Character *you );
 void wisheffect( Character &p );
 void wishitem( Character *you = nullptr );
 void wishitem( Character *you, const tripoint & );
