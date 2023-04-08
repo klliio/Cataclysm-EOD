@@ -14,6 +14,8 @@
 #include "creature_tracker.h"
 #include "harvest.h"
 #include "input.h"
+#include "item_group.h"
+#include "itype.h"
 #include "map.h"
 #include "mapdata.h"
 #include "mod_manager.h"
@@ -230,6 +232,18 @@ std::string map_data_common_t::extended_description() const
         }
 
         ss << std::endl;
+    }
+
+    if( deconstruct.can_do ) {
+        const auto items = item_group::every_possible_item_from( deconstruct.drop_group );
+        if( items.size() > 0 ) {
+            ss << std::endl << _( "Deconstruction may yield the following items:" ) << std::endl;
+            for( const itype *it : items ) {
+                ss << "<good>" << item::nname( it->get_id() ) << "</good>" << std::endl;
+            }
+        } else {
+            ss << _( "Deconstruction wouldn't yield anything useful." ) << std::endl;
+        }
     }
 
     return replace_colors( ss.str() );
