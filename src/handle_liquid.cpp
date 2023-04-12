@@ -194,30 +194,22 @@ static bool get_liquid_target( item &liquid, const item *const source, const int
 
     map &here = get_map();
     const std::string liquid_name = liquid.display_name( liquid.charges );
-    std::string phasestring;
-    if( liquid.made_of_from_type( phase_id::GAS ) ) {
-        phasestring = "gas";
-    } else {
-        phasestring = "liquid";
-    }
-
-    char *phase = const_cast<char *>( phasestring.c_str() );
 
     if( source_pos != nullptr ) {
         // %1$s: liquid name, %2$s: terrain name
-        menu.text = string_format( pgettext( phase, "What to do with the %1$s from %2$s?" ), liquid_name,
+        menu.text = string_format( pgettext( "liquid", "What to do with the %1$s from %2$s?" ), liquid_name,
                                    here.name( *source_pos ) );
     } else if( source_veh != nullptr ) {
         // %1$s: liquid name, %2$s: vehicle name
-        menu.text = string_format( pgettext( phase, "What to do with the %1$s from %2$s?" ), liquid_name,
+        menu.text = string_format( pgettext( "liquid", "What to do with the %1$s from %2$s?" ), liquid_name,
                                    source_veh->disp_name() );
     } else if( source_mon != nullptr ) {
         // %1$s: liquid name, %2$s: monster name
-        menu.text = string_format( pgettext( phase, "What to do with the %1$s from the %2$s?" ),
+        menu.text = string_format( pgettext( "liquid", "What to do with the %1$s from the %2$s?" ),
                                    liquid_name, source_mon->get_name() );
     } else {
         // %s: liquid name
-        menu.text = string_format( pgettext( phase, "What to do with the %s?" ), liquid_name );
+        menu.text = string_format( pgettext( "liquid", "What to do with the %s?" ), liquid_name );
     }
     std::vector<std::function<void()>> actions;
     if( player_character.can_consume_as_is( liquid ) && !source_mon && ( source_veh || source_pos ) ) {
