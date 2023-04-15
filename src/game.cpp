@@ -10562,12 +10562,10 @@ point game::place_player( const tripoint &dest_loc, bool quick )
     }
 
     // List items here
-    if( !quick && !m.has_flag( ter_furn_flag::TFLAG_SEALED, u.pos() ) ) {
+    if( !quick && !m.has_flag( ter_furn_flag::TFLAG_SEALED, u.pos() ) && get_option<bool>( "LOG_ITEMS_ON_THE_GROUND" ) ) {
         if( get_option<bool>( "NO_AUTO_PICKUP_ZONES_LIST_ITEMS" ) ||
             !check_zone( zone_type_NO_AUTO_PICKUP, u.pos() ) ) {
-            if( u.is_blind() && !m.i_at( u.pos() ).empty() ) {
-                add_msg( _( "There's something here, but you can't see what it is." ) );
-            } else if( m.has_items( u.pos() ) ) {
+            if( m.has_items( u.pos() ) ) {
                 std::vector<std::string> names;
                 std::vector<size_t> counts;
                 std::vector<item> items;
@@ -10620,21 +10618,19 @@ point game::place_player( const tripoint &dest_loc, bool quick )
                     }
                 }
 
-                if( get_option<bool>( "LOG_ITEMS_ON_THE_GROUND" ) ) {
-                    if( names.size() == 1 ) {
-                        add_msg( _( "You see here %s." ), names[0] );
-                    } else if( names.size() == 2 ) {
-                        add_msg( _( "You see here %s and %s." ), names[0], names[1] );
-                    } else if( names.size() == 3 ) {
-                        add_msg( _( "You see here %s, %s, and %s." ), names[0], names[1], names[2] );
-                    } else if( and_the_rest < 7 ) {
-                        add_msg( n_gettext( "You see here %s, %s and %d more item.",
-                                            "You see here %s, %s and %d more items.",
-                                            and_the_rest ),
-                                 names[0], names[1], and_the_rest );
-                    } else {
-                        add_msg( _( "You see here %s and many more items." ), names[0] );
-                    }
+                if( names.size() == 1 ) {
+                    add_msg( u.is_blind() ? _( "You notice %s here." ) : _( "You see %s here." ), names[0] );
+                } else if( names.size() == 2 ) {
+                    add_msg( u.is_blind() ? _( "You notice %s and %s here." ) : _( "You see %s and %s here." ), names[0], names[1] );
+                } else if( names.size() == 3 ) {
+                    add_msg( u.is_blind() ? _( "You notice %s, %s, and %s here." ) : _( "You see %s, %s, and %s here." ), names[0], names[1], names[2] );
+                } else if( and_the_rest < 9 ) {
+                    add_msg( n_gettext( u.is_blind() ? "You notice %s, %s and %d other item here." : "You see %s, %s and %d other item here.",
+                                        u.is_blind() ? "You notice %s, %s and %d other items here." : "You see %s, %s and %d other items here.",
+                                        and_the_rest ),
+                             names[0], names[1], and_the_rest );
+                } else {
+                    add_msg( u.is_blind() ? _( "You notice %s, %s and more than 8 other items here." ) : _( "You see %s, %s and more than 8 other items here." ), names[0], names[1] );
                 }
             }
         }
