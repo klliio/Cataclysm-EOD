@@ -10562,7 +10562,8 @@ point game::place_player( const tripoint &dest_loc, bool quick )
     }
 
     // List items here
-    if( !quick && !m.has_flag( ter_furn_flag::TFLAG_SEALED, u.pos() ) && get_option<bool>( "LOG_ITEMS_ON_THE_GROUND" ) ) {
+    if( !quick && !m.has_flag( ter_furn_flag::TFLAG_SEALED, u.pos() ) &&
+        get_option<bool>( "LOG_ITEMS_ON_THE_GROUND" ) ) {
         if( get_option<bool>( "NO_AUTO_PICKUP_ZONES_LIST_ITEMS" ) ||
             !check_zone( zone_type_NO_AUTO_PICKUP, u.pos() ) ) {
             if( m.has_items( u.pos() ) ) {
@@ -10621,16 +10622,21 @@ point game::place_player( const tripoint &dest_loc, bool quick )
                 if( names.size() == 1 ) {
                     add_msg( u.is_blind() ? _( "You notice %s here." ) : _( "You see %s here." ), names[0] );
                 } else if( names.size() == 2 ) {
-                    add_msg( u.is_blind() ? _( "You notice %s and %s here." ) : _( "You see %s and %s here." ), names[0], names[1] );
+                    add_msg( u.is_blind() ? _( "You notice %s and %s here." ) : _( "You see %s and %s here." ),
+                             names[0], names[1] );
                 } else if( names.size() == 3 ) {
-                    add_msg( u.is_blind() ? _( "You notice %s, %s, and %s here." ) : _( "You see %s, %s, and %s here." ), names[0], names[1], names[2] );
+                    add_msg( u.is_blind() ? _( "You notice %s, %s, and %s here." ) :
+                             _( "You see %s, %s, and %s here." ), names[0], names[1], names[2] );
                 } else if( and_the_rest < 9 ) {
-                    add_msg( n_gettext( u.is_blind() ? "You notice %s, %s and %d other item here." : "You see %s, %s and %d other item here.",
-                                        u.is_blind() ? "You notice %s, %s and %d other items here." : "You see %s, %s and %d other items here.",
+                    add_msg( n_gettext( u.is_blind() ? "You notice %s, %s and %d other item here." :
+                                        "You see %s, %s and %d other item here.",
+                                        u.is_blind() ? "You notice %s, %s and %d other items here." :
+                                        "You see %s, %s and %d other items here.",
                                         and_the_rest ),
                              names[0], names[1], and_the_rest );
                 } else {
-                    add_msg( u.is_blind() ? _( "You notice %s, %s and more than 8 other items here." ) : _( "You see %s, %s and more than 8 other items here." ), names[0], names[1] );
+                    add_msg( u.is_blind() ? _( "You notice %s, %s and more than 8 other items here." ) :
+                             _( "You see %s, %s and more than 8 other items here." ), names[0], names[1] );
                 }
             }
         }
