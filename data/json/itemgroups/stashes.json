@@ -359,7 +359,7 @@
     "//": "this list is for toys that children may have wanted to take with themselves while preparing to run away for whatever reason.",
     "items": [
       { "item": "talking_doll", "prob": 50 },
-      { "item": "teddy_bear", "prob": 50 },
+      { "item": "teddy_bear", "prob": 52 },
       { "item": "toy_figurine", "prob": 45 },
       { "item": "toy_figurine_large", "prob": 35 },
       { "item": "bath_toy", "prob": 30 },
@@ -370,7 +370,6 @@
       { "group": "toy_makerspace_kit", "prob": 10 },
       { "group": "toy_robot_kit", "prob": 10 },
       { "group": "toy_engine_kit", "prob": 10 },
-      { "item": "shark_plushie", "prob": 2 },
       { "item": "air_launcher", "prob": 2 }
     ]
   },
