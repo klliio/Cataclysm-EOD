@@ -4,7 +4,6 @@
 
 #include <cstddef>
 #include <functional>
-#include <optional>
 #include <iosfwd>
 #include <string> // IWYU pragma: keep
 
@@ -28,7 +27,6 @@ enum class debug_menu_index : int {
     LONG_TELEPORT,
     REVEAL_MAP,
     SPAWN_NPC,
-    SPAWN_OM_NPC,
     SPAWN_MON,
     GAME_STATE,
     KILL_AREA,
@@ -109,7 +107,7 @@ void wishbionics( Character *you );
 void wisheffect( Character &p );
 void wishitem( Character *you = nullptr );
 void wishitem( Character *you, const tripoint & );
-void wishmonster( const std::optional<tripoint> &p );
+void wishmonster( const cata::optional<tripoint> &p );
 void wishmutate( Character *you );
 void wishskill( Character *you, bool change_theory = false );
 void wishproficiency( Character *you );

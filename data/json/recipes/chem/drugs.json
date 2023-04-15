@@ -9,13 +9,8 @@
     "difficulty": 6,
     "time": "1 h",
     "batch_time_factors": [ 99, 2 ],
-    "book_learn": [ [ "adv_chemistry", 7 ], [ "recipe_labchem", 7 ] ],
+    "book_learn": [ [ "adv_chemistry", 5 ], [ "recipe_labchem", 5 ] ],
     "charges": 1940,
-    "proficiencies": [
-      { "proficiency": "prof_intro_chemistry" },
-      { "proficiency": "prof_inorganic_chemistry" },
-      { "proficiency": "prof_pharmaceutical" }
-    ],
     "qualities": [ { "id": "CHEM", "level": 2 }, { "id": "SEPARATE", "level": 1 }, { "id": "ANALYSIS", "level": 1 } ],
     "tools": [ [ [ "surface_heat", 20, "LIST" ] ] ],
     "components": [ [ [ "chem_xanthine", 96 ] ], [ [ "chem_dimethyl_sulfate", 95 ] ] ]
@@ -52,12 +47,6 @@
     "book_learn": [ [ "recipe_labchem", 6 ] ],
     "batch_time_factors": [ 30, 5 ],
     "qualities": [ { "id": "CHEM", "level": 2 }, { "id": "SEPARATE", "level": 1 } ],
-    "proficiencies": [
-      { "proficiency": "prof_intro_chemistry" },
-      { "proficiency": "prof_inorganic_chemistry" },
-      { "proficiency": "prof_organic_chemistry" },
-      { "proficiency": "prof_pharmaceutical" }
-    ],
     "components": [
       [ [ "dayquil", 15 ] ],
       [ [ "iodine_crystal", 15 ] ],

@@ -9,7 +9,6 @@
 #include <map>
 #include <memory>
 #include <new>
-#include <optional>
 #include <queue>
 #include <set>
 #include <string>
@@ -52,6 +51,7 @@
 #include "monster.h"
 #include "mtype.h"
 #include "npc.h"
+#include "optional.h"
 #include "overmapbuffer.h"
 #include "point.h"
 #include "rng.h"
@@ -747,7 +747,7 @@ static void field_processor_monster_spawn( const tripoint &p, field_entry &cur,
                 if( !mgr.name ) {
                     continue;
                 }
-                if( const std::optional<tripoint> spawn_point =
+                if( const cata::optional<tripoint> spawn_point =
                         random_point( points_in_radius( p, int_level.monster_spawn_radius ),
                 [&pd]( const tripoint & n ) {
                 return pd.here.passable( n );

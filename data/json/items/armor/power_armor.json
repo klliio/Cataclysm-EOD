@@ -142,8 +142,7 @@
           "has": "WORN",
           "condition": "ALWAYS",
           "values": [ { "value": "CLIMATE_CONTROL_HEAT", "add": 50 }, { "value": "CLIMATE_CONTROL_CHILL", "add": 50 } ]
-        },
-        { "id": "ench_climate_control_all" }
+        }
       ]
     },
     "extend": { "flags": [ "USE_UPS", "TRADER_AVOID", "BIO_INTERFACE" ] },
@@ -308,8 +307,7 @@
           "has": "WORN",
           "condition": "ALWAYS",
           "values": [ { "value": "CLIMATE_CONTROL_HEAT", "add": 50 }, { "value": "CLIMATE_CONTROL_CHILL", "add": 50 } ]
-        },
-        { "id": "ench_climate_control_all" }
+        }
       ]
     },
     "extend": { "flags": [ "USE_UPS", "TRADER_AVOID", "BIO_INTERFACE" ] },
@@ -648,8 +646,7 @@
           "has": "WORN",
           "condition": "ALWAYS",
           "values": [ { "value": "CLIMATE_CONTROL_HEAT", "add": 50 }, { "value": "CLIMATE_CONTROL_CHILL", "add": 50 } ]
-        },
-        { "id": "ench_climate_control_all" }
+        }
       ]
     },
     "extend": { "flags": [ "USE_UPS", "TRADER_AVOID", "BIO_INTERFACE" ] },

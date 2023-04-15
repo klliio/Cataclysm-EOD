@@ -52,7 +52,7 @@ class talker
         virtual monster *get_monster() {
             return nullptr;
         }
-        virtual const monster *get_monster() const {
+        virtual monster *get_monster() const {
             return nullptr;
         }
         virtual Creature *get_creature() {
@@ -442,9 +442,6 @@ class talker
             return 0;
         }
         virtual int get_stored_kcal() const {
-            return 0;
-        }
-        virtual int get_healthy_kcal() const {
             return 0;
         }
         virtual int get_stim() const {
