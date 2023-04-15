@@ -46,35 +46,35 @@
     "variants": [
       {
         "id": "tbrush1",
-        "name": { "str": "disposable toothbrush" },
+        "name": { "str": "disposable toothbrush", "str_pl": "disposable toothbrushes" },
         "description": "This one has a cheap, blocky handle and is likely meant to be disposable.",
         "weight": 20,
         "append": true
       },
       {
         "id": "tbrush2",
-        "name": { "str": "expensive toothbrush" },
+        "name": { "str": "expensive toothbrush", "str_pl": "expensive toothbrushes" },
         "description": "This one is a combination toothbrush and gum massager with an ergonomic silicone grip.  Luxurious!",
         "weight": 20,
         "append": true
       },
       {
         "id": "tbrush3",
-        "name": { "str": "white and blue toothbrush" },
+        "name": { "str": "white and blue toothbrush", "str_pl": "white and blue toothbrushes" },
         "description": "This one has blue and white pattern on the handle.",
         "weight": 20,
         "append": true
       },
       {
         "id": "tbrush4",
-        "name": { "str": "pony child toothbrush" },
+        "name": { "str": "pony child toothbrush", "str_pl": "pony child toothbrushes" },
         "description": "This one is designed for children, and has a wide-eyed cartoon pony on the handle.",
         "weight": 20,
         "append": true
       },
       {
         "id": "tbrush5",
-        "name": { "str": "racecar child toothbrush" },
+        "name": { "str": "racecar child toothbrush", "str_pl": "racecar child toothbrushes" },
         "description": "This one is designed for children, and has a grinning red racecar on the handle.",
         "weight": 20,
         "append": true
@@ -254,28 +254,28 @@
     "variants": [
       {
         "id": "hbrush1",
-        "name": { "str": "hairbrush" },
+        "name": { "str": "hairbrush", "str_pl": "hairbrushes" },
         "description": "This one has round safety tips on the bristles.",
         "weight": 20,
         "append": true
       },
       {
         "id": "hbrush2",
-        "name": { "str": "old-fashioned hairbrush" },
+        "name": { "str": "old-fashioned hairbrush", "str_pl": "old-fashioned hairbrushes" },
         "description": "This one looks old-fashioned, with a faux-wood handle.",
         "weight": 20,
         "append": true
       },
       {
         "id": "hbrush3",
-        "name": { "str": "chrome hairbrush" },
+        "name": { "str": "chrome hairbrush", "str_pl": "chrome hairbrushes" },
         "description": "This one has a shiny chrome design.",
         "weight": 20,
         "append": true
       },
       {
         "id": "hbrush4",
-        "name": { "str": "whale child hairbrush" },
+        "name": { "str": "whale child hairbrush", "str_pl": "whale child hairbrushes" },
         "description": "This one is designed for children, and has a cartoon whale on the handle.",
         "weight": 20,
         "append": true
