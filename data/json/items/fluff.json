@@ -147,7 +147,7 @@
     "id": "pictionary",
     "type": "GENERIC",
     "category": "other",
-    "name": { "str": "word-guessing game set"},
+    "name": { "str": "word-guessing game set" },
     "description": "A set to play a board game where one player draws an image, and the others attempt to guess what it is.",
     "weight": "350 g",
     "volume": "500 ml",
