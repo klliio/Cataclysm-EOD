@@ -89,6 +89,7 @@
     "symbol": "[",
     "looks_like": "depowered_armor",
     "color": "light_gray",
+    "relic_data": { "passive_effects": [ { "id": "ench_climate_control_all" } ] },
     "pocket_data": [
       {
         "pocket_type": "CONTAINER",
@@ -254,6 +255,7 @@
     "symbol": "[",
     "looks_like": "power_armor_basic",
     "color": "dark_gray",
+    "relic_data": { "passive_effects": [ { "id": "ench_climate_control_all" } ] },
     "pocket_data": [
       {
         "pocket_type": "CONTAINER",
@@ -593,6 +595,7 @@
     "symbol": "[",
     "looks_like": "depowered_armor",
     "color": "dark_gray",
+    "relic_data": { "passive_effects": [ { "id": "ench_climate_control_all" } ] },
     "pocket_data": [
       {
         "pocket_type": "CONTAINER",

@@ -82,10 +82,9 @@
     ]
   },
   {
-    "id": "toothbrush_dirty",
-    "name": { "str": "dirty toothbrush", "str_pl": "dirty toothbrushes" },
+    "id": "tampon",
+    "name": { "str": "tampon" },
     "type": "GENERIC",
-<<<<<<< HEAD
     "description": "A small cotton tampon with a plastic applicator.  Useless for some, an invaluable commodity for others.  Unfortunately, not as useful as a bandage as you'd think.",
     "symbol": ",",
     "color": "white",
@@ -243,12 +242,6 @@
         "max_contains_weight": "50 g"
       }
     ]
-=======
-    "description": "Someone has been using this plastic toothbrush to clean grease or muck.  It is now irrevocably dirty.",
-    "symbol": "/",
-    "flags": [ "FILTHY" ],
-    "copy-from": "base_toiletries"
->>>>>>> parent of a3b9fb3cd3 (Merge DDA changes up to 30.03)
   },
   {
     "id": "hairbrush",

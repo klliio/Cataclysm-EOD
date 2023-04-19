@@ -1,5 +1,6 @@
 [
   {
+    "//": "roughly 35grams of acetylene per cubic foot at STP. Volume given is when compressed - B tank has 9.17 L tank and holds 40 cubic feet.",
     "id": "oxyacetylene",
     "type": "AMMO",
     "name": { "str_sp": "oxyacetylene" },
@@ -11,8 +12,8 @@
     "material": [ "hydrocarbons" ],
     "symbol": "=",
     "color": "red",
-    "count": 100,
-    "stack_size": 100,
+    "count": 35,
+    "stack_size": 35,
     "ammo_type": "weldgas",
     "phase": "gas",
     "effects": [ "COOKOFF" ],

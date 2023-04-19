@@ -7,6 +7,7 @@
 #include <functional>
 #include <map>
 #include <memory>
+#include <optional>
 #include <stack>
 #include <string>
 #include <tuple>
@@ -46,11 +47,8 @@
 #include "morale_types.h"
 #include "mtype.h"
 #include "npc.h"
-<<<<<<< HEAD
 #include "options.h"
-=======
 #include "optional.h"
->>>>>>> parent of a3b9fb3cd3 (Merge DDA changes up to 30.03)
 #include "output.h"
 #include "point.h"
 #include "projectile.h"
@@ -147,14 +145,11 @@ Creature::Creature()
 }
 
 Creature::Creature( const Creature & ) = default;
-Creature::Creature( Creature && ) noexcept( map_is_noexcept ) = default;
+Creature::Creature( Creature && ) noexcept( map_is_noexcept &&list_is_noexcept ) = default;
 Creature &Creature::operator=( const Creature & ) = default;
 Creature &Creature::operator=( Creature && ) noexcept = default;
 
 Creature::~Creature() = default;
-
-std::queue<scheduled_effect> Creature::scheduled_effects = std::queue<scheduled_effect> {};
-std::queue<terminating_effect> Creature::terminating_effects = std::queue<terminating_effect> {};
 
 tripoint Creature::pos() const
 {
@@ -241,6 +236,7 @@ void Creature::reset_bonuses()
 
 void Creature::process_turn()
 {
+    decrement_summon_timer();
     if( is_dead_state() ) {
         return;
     }
@@ -257,6 +253,18 @@ void Creature::process_turn()
     if( !has_effect( effect_ridden ) ) {
         moves += get_speed();
     }
+}
+
+bool Creature::cant_do_underwater( bool msg ) const
+{
+    if( is_underwater() ) {
+        if( msg ) {
+            add_msg_player_or_npc( m_info, _( "You can't do that while underwater." ),
+                                   _( "<npcname> can't do that while underwater." ) );
+        }
+        return true;
+    }
+    return false;
 }
 
 bool Creature::is_underwater() const
@@ -503,11 +511,11 @@ Creature *Creature::auto_find_hostile_target( int range, int &boo_hoo, int area 
     boo_hoo = 0;         // how many targets were passed due to IFF. Tragically.
     bool self_area_iff = false; // Need to check if the target is near the vehicle we're a part of
     bool area_iff = false;      // Need to check distance from target to player
-    bool angle_iff = true;      // Need to check if player is in a cone between us and target
+    bool angle_iff = sees( player_character ); // Need to check if player is in cone to target
     int pldist = rl_dist( pos(), player_pos );
     map &here = get_map();
     vehicle *in_veh = is_fake() ? veh_pointer_or_null( here.veh_at( pos() ) ) : nullptr;
-    if( pldist < iff_dist && sees( player_character ) ) {
+    if( pldist < iff_dist && angle_iff ) {
         area_iff = area > 0;
         // Player inside vehicle won't be hit by shots from the roof,
         // so we can fire "through" them just fine.
@@ -856,9 +864,11 @@ void projectile::apply_effects_damage( Creature &target, Creature *source,
         }
     }
 
-    if( dealt_dam.bp_hit == bodypart_id( "head" ) && proj_effects.count( "BLINDS_EYES" ) ) {
+    if( dealt_dam.bp_hit->has_type( body_part_type::type::head ) &&
+        proj_effects.count( "BLINDS_EYES" ) ) {
         // TODO: Change this to require bp_eyes
-        target.add_env_effect( effect_blind, bodypart_id( "eyes" ), 5, rng( 3_turns, 10_turns ) );
+        target.add_env_effect( effect_blind,
+                               target.get_random_body_part_of_type( body_part_type::type::sensor ), 5, rng( 3_turns, 10_turns ) );
     }
 
     if( proj_effects.count( "APPLY_SAP" ) ) {
@@ -1251,14 +1261,11 @@ void Creature::deal_damage_handle_type( const effect_source &source, const damag
         case damage_type::CUT:
         case damage_type::STAB:
         case damage_type::BULLET:
-            // these are bleed inducing damage types
-            make_bleed( source, bp, 1_minutes * rng( 1, adjusted_damage ) );
-
         default:
             break;
     }
 
-    on_damage_of_type( adjusted_damage, du.type, bp );
+    on_damage_of_type( source, adjusted_damage, du.type, bp );
 
     damage += adjusted_damage;
     pain += roll_remainder( adjusted_damage / div );
@@ -1374,6 +1381,12 @@ void Creature::add_effect( const effect_source &source, const efftype_id &eff_id
     if( type.get_main_parts() ) {
         bp = bp->main_part;
     }
+
+    // Filter out bodypart immunity
+    for( json_character_flag flag : eff_id->immune_bp_flags )
+        if( bp->has_flag( flag ) ) {
+            return;
+        }
 
     bool found = false;
     // Check if we already have it
@@ -1638,6 +1651,19 @@ std::vector<effect> Creature::get_effects() const
     return effs;
 }
 
+std::vector<effect> Creature::get_effects_from_bp( const bodypart_id &bp ) const
+{
+    std::vector<effect> effs;
+    for( auto &elem : *effects ) {
+        for( const std::pair<const bodypart_id, effect> &_it : elem.second ) {
+            if( _it.first == bp ) {
+                effs.push_back( _it.second );
+            }
+        }
+    }
+    return effs;
+}
+
 effect &Creature::get_effect( const efftype_id &eff_id, const bodypart_id &bp )
 {
     return const_cast<effect &>( const_cast<const Creature *>( this )->get_effect( eff_id, bp ) );
@@ -1826,22 +1852,51 @@ void Creature::set_killer( Creature *const killer )
     }
 }
 
+void Creature::clear_killer()
+{
+    killer = nullptr;
+}
+
+void Creature::set_summon_time( const time_duration &length )
+{
+    lifespan_end = calendar::turn + length;
+}
+
+void Creature::decrement_summon_timer()
+{
+    if( !lifespan_end ) {
+        return;
+    }
+    if( lifespan_end.value() <= calendar::turn ) {
+        die( nullptr );
+    }
+}
+
 int Creature::get_num_blocks() const
 {
     return num_blocks + num_blocks_bonus;
 }
+
 int Creature::get_num_dodges() const
 {
     return num_dodges + num_dodges_bonus;
 }
+
 int Creature::get_num_blocks_bonus() const
 {
     return num_blocks_bonus;
 }
+
 int Creature::get_num_dodges_bonus() const
 {
     return num_dodges_bonus;
 }
+
+int Creature::get_num_blocks_base() const
+{
+    return num_blocks;
+}
+
 int Creature::get_num_dodges_base() const
 {
     return num_dodges;
@@ -2429,6 +2484,11 @@ std::vector<bodypart_id> Creature::get_all_body_parts_of_type(
     return bodyparts;
 }
 
+bodypart_id Creature::get_random_body_part_of_type( body_part_type::type part_type ) const
+{
+    return random_entry( get_all_body_parts_of_type( part_type ) );
+}
+
 std::vector<bodypart_id> Creature::get_all_body_parts_with_flag( const json_character_flag &flag )
 const
 {
@@ -2595,6 +2655,12 @@ void Creature::set_num_blocks_bonus( int nblocks )
 {
     num_blocks_bonus = nblocks;
 }
+
+void Creature::mod_num_blocks_bonus( int nblocks )
+{
+    num_blocks_bonus += nblocks;
+}
+
 void Creature::mod_num_dodges_bonus( int ndodges )
 {
     num_dodges_bonus += ndodges;
@@ -2985,26 +3051,26 @@ tripoint_abs_omt Creature::global_omt_location() const
 std::unique_ptr<talker> get_talker_for( Creature &me )
 {
     if( me.is_monster() ) {
-        return std::make_unique<talker_monster>( static_cast<monster *>( &me ) );
+        return std::make_unique<talker_monster>( me.as_monster() );
     } else if( me.is_npc() ) {
-        return std::make_unique<talker_npc>( static_cast<npc *>( &me ) );
+        return std::make_unique<talker_npc>( me.as_npc() );
     } else if( me.is_avatar() ) {
-        return std::make_unique<talker_avatar>( static_cast<avatar *>( &me ) );
+        return std::make_unique<talker_avatar>( me.as_avatar() );
     } else {
         debugmsg( "Invalid creature type %s.", me.get_name() );
-        standard_npc default_npc( "Default" );
-        return get_talker_for( default_npc );
+        return std::make_unique<talker>();
     }
 }
 
 std::unique_ptr<talker> get_talker_for( const Creature &me )
 {
     if( !me.is_monster() ) {
-        return std::make_unique<talker_character_const>( static_cast<const Character *>( &me ) );
+        return std::make_unique<talker_character_const>( me.as_character() );
+    } else if( me.is_monster() ) {
+        return std::make_unique<talker_monster_const>( me.as_monster() );
     } else {
         debugmsg( "Invalid creature type %s.", me.get_name() );
-        standard_npc default_npc( "Default" );
-        return get_talker_for( default_npc );
+        return std::make_unique<talker>();
     }
 }
 
@@ -3012,17 +3078,15 @@ std::unique_ptr<talker> get_talker_for( Creature *me )
 {
     if( !me ) {
         debugmsg( "Null creature type." );
-        standard_npc default_npc( "Default" );
-        return get_talker_for( default_npc );
+        return std::make_unique<talker>();
     } else if( me->is_monster() ) {
-        return std::make_unique<talker_monster>( static_cast<monster *>( me ) );
+        return std::make_unique<talker_monster>( me->as_monster() );
     } else if( me->is_npc() ) {
-        return std::make_unique<talker_npc>( static_cast<npc *>( me ) );
+        return std::make_unique<talker_npc>( me->as_npc() );
     } else if( me->is_avatar() ) {
-        return std::make_unique<talker_avatar>( static_cast<avatar *>( me ) );
+        return std::make_unique<talker_avatar>( me->as_avatar() );
     } else {
         debugmsg( "Invalid creature type %s.", me->get_name() );
-        standard_npc default_npc( "Default" );
-        return get_talker_for( default_npc );
+        return std::make_unique<talker>();
     }
 }

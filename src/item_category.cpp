@@ -56,11 +56,7 @@ void item_category::load( const JsonObject &jo, const std::string & )
     mandatory( jo, was_loaded, "name", name_ );
     mandatory( jo, was_loaded, "sort_rank", sort_rank_ );
     optional( jo, was_loaded, "priority_zones", zone_priority_ );
-<<<<<<< HEAD
     optional( jo, was_loaded, "zone", zone_, std::nullopt );
-=======
-    optional( jo, was_loaded, "zone", zone_, cata::nullopt );
->>>>>>> parent of a3b9fb3cd3 (Merge DDA changes up to 30.03)
 }
 
 bool item_category::operator<( const item_category &rhs ) const
@@ -94,12 +90,12 @@ item_category_id item_category::get_id() const
     return id;
 }
 
-cata::optional<zone_type_id> item_category::zone() const
+std::optional<zone_type_id> item_category::zone() const
 {
     return zone_;
 }
 
-cata::optional<zone_type_id> item_category::priority_zone( const item &it ) const
+std::optional<zone_type_id> item_category::priority_zone( const item &it ) const
 {
     for( const zone_priority_data &zone_dat : zone_priority_ ) {
         if( zone_dat.filthy ) {
@@ -114,10 +110,15 @@ cata::optional<zone_type_id> item_category::priority_zone( const item &it ) cons
             return zone_dat.id;
         }
     }
-    return cata::nullopt;
+    return std::nullopt;
 }
 
 int item_category::sort_rank() const
 {
     return sort_rank_;
+}
+
+float item_category::get_spawn_rate() const
+{
+    return spawn_rate;
 }

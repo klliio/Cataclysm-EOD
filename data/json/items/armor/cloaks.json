@@ -454,7 +454,6 @@
     ]
   },
   {
-<<<<<<< HEAD
     "id": "national_flag",
     "name": { "str": "national flag" },
     "type": "ARMOR",
@@ -831,8 +830,6 @@
     ]
   },
   {
-=======
->>>>>>> parent of a3b9fb3cd3 (Merge DDA changes up to 30.03)
     "id": "state_flag",
     "copy-from": "sheet",
     "repairs_like": "sheet",
