@@ -2,7 +2,6 @@
  */
 
 // IWYU pragma: no_include <sys/signal.h>
-#include <clocale>
 #include <algorithm>
 #include <array>
 #include <clocale>
@@ -607,10 +606,7 @@ int main( int argc, const char *argv[] )
     ordered_static_globals();
     init_crash_handlers();
     reset_floating_point_mode();
-    // This line was commented out because it won't compile for me at least (MSYS2 MINGW64, Win7) and I don't know how to fix it. -- Atomic Fox
-    // Error: 'flatbuffers::ClassicLocale' has not been declared.
-    // Original PR: https://github.com/CleverRaven/Cataclysm-DDA/pull/62325
-    // flatbuffers::ClassicLocale::Get();
+    flatbuffers::ClassicLocale::Get();
 
 #if defined(_WIN32) and defined(TILES)
     const HANDLE std_output { GetStdHandle( STD_OUTPUT_HANDLE ) }, std_error { GetStdHandle( STD_ERROR_HANDLE ) };

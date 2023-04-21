@@ -109,7 +109,7 @@ std::vector<item_pricing> npc_trading::init_selling( npc &np )
 {
     std::vector<item_pricing> result;
     const std::vector<item *> inv_all = np.items_with( []( const item & it ) {
-        return !it.made_of( phase_id::LIQUID );
+        return !it.made_of( phase_id::LIQUID ) && !it.made_of( phase_id::GAS );
     } );
     for( item *i : inv_all ) {
         item &it = *i;

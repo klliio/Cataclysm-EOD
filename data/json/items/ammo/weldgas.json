@@ -5,7 +5,7 @@
     "type": "AMMO",
     "name": { "str_sp": "oxyacetylene" },
     "description": "A highly explosive fuel mixture composed of equal parts oxygen and acetylene gas.",
-    "weight": "3750 mg",
+    "weight": "1500 mg",
     "volume": "100 ml",
     "price": 2400,
     "price_postapoc": 500,

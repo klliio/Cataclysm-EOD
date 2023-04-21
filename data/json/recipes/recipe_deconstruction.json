@@ -93,7 +93,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "copper", 5 ] ] ]
+    "components": [ [ [ "copper", 9 ] ] ]
   },
   {
     "result": "copper_necklace",
@@ -101,7 +101,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "copper", 4 ] ] ]
+    "components": [ [ [ "copper", 6 ] ] ]
   },
   {
     "result": "copper_pan",
@@ -135,7 +135,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 3 ] ] ]
+    "components": [ [ [ "silver_small", 2 ] ] ]
   },
   {
     "result": "cufflinks_intricate",
@@ -143,7 +143,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "gold_small", 2 ] ] ]
+    "components": [ [ [ "silver_small", 1 ] ], [ [ "gold_small", 1 ] ] ]
   },
   {
     "result": "ear_spool",
@@ -154,20 +154,12 @@
     "components": [ [ [ "plastic_chunk", 1 ] ] ]
   },
   {
-    "result": "gold_hairpin",
-    "type": "uncraft",
-    "activity_level": "LIGHT_EXERCISE",
-    "time": "6 s",
-    "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 3 ] ] ]
-  },
-  {
     "result": "gold_locket",
     "type": "uncraft",
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ] ]
+    "components": [ [ [ "gold_small", 10 ] ] ]
   },
   {
     "result": "gold_medal",
@@ -175,7 +167,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 3 ] ] ]
+    "components": [ [ [ "gold_small", 10 ] ] ]
   },
   {
     "result": "gold_necklace",
@@ -183,7 +175,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 3 ] ] ]
+    "components": [ [ [ "gold_small", 10 ] ] ]
   },
   {
     "result": "silver_watch",
@@ -207,7 +199,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 3 ] ], [ [ "diamond", 1 ] ] ]
+    "components": [ [ [ "gold_small", 2 ] ], [ [ "diamond", 1 ] ] ]
   },
   {
     "result": "ring_purity",
@@ -215,7 +207,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 3 ] ] ]
+    "components": [ [ [ "silver_small", 1 ] ] ]
   },
   {
     "result": "ring_signet",
@@ -223,7 +215,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "silver_small", 2 ] ] ]
+    "components": [ [ [ "gold_small", 1 ] ], [ [ "silver_small", 1 ] ] ]
   },
   {
     "result": "ring_wedding",
@@ -231,15 +223,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "diamond", 2 ] ] ]
-  },
-  {
-    "result": "silver_hairpin",
-    "type": "uncraft",
-    "activity_level": "LIGHT_EXERCISE",
-    "time": "6 s",
-    "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 3 ] ] ]
+    "components": [ [ [ "gold_small", 3 ] ], [ [ "diamond", 2 ] ] ]
   },
   {
     "result": "silver_medal",
@@ -247,7 +231,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 3 ] ] ]
+    "components": [ [ [ "silver_small", 10 ] ] ]
   },
   {
     "result": "silver_ring",
@@ -255,7 +239,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 3 ] ] ]
+    "components": [ [ [ "silver_small", 2 ] ] ]
   },
   {
     "result": "garnet_silver_ring",
@@ -263,7 +247,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "garnet", 1 ] ] ]
+    "components": [ [ [ "garnet", 1 ] ] ]
   },
   {
     "result": "amethyst_silver_ring",
@@ -271,7 +255,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "amethyst", 1 ] ] ]
+    "components": [ [ [ "amethyst", 1 ] ] ]
   },
   {
     "result": "aquamarine_silver_ring",
@@ -279,7 +263,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "aquamarine", 1 ] ] ]
+    "components": [ [ [ "aquamarine", 1 ] ] ]
   },
   {
     "result": "emerald_silver_ring",
@@ -287,7 +271,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "emerald", 1 ] ] ]
+    "components": [ [ [ "emerald", 1 ] ] ]
   },
   {
     "result": "alexandrite_silver_ring",
@@ -295,7 +279,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "alexandrite", 1 ] ] ]
+    "components": [ [ [ "alexandrite", 1 ] ] ]
   },
   {
     "result": "ruby_silver_ring",
@@ -303,7 +287,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "ruby", 1 ] ] ]
+    "components": [ [ [ "ruby", 1 ] ] ]
   },
   {
     "result": "peridot_silver_ring",
@@ -311,7 +295,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "peridot", 1 ] ] ]
+    "components": [ [ [ "peridot", 1 ] ] ]
   },
   {
     "result": "sapphire_silver_ring",
@@ -319,7 +303,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "sapphire", 1 ] ] ]
+    "components": [ [ [ "sapphire", 1 ] ] ]
   },
   {
     "result": "tourmaline_silver_ring",
@@ -327,7 +311,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "tourmaline", 1 ] ] ]
+    "components": [ [ [ "tourmaline", 1 ] ] ]
   },
   {
     "result": "citrine_silver_ring",
@@ -335,7 +319,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "citrine", 1 ] ] ]
+    "components": [ [ [ "citrine", 1 ] ] ]
   },
   {
     "result": "blue_topaz_silver_ring",
@@ -343,7 +327,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "blue_topaz", 1 ] ] ]
+    "components": [ [ [ "blue_topaz", 1 ] ] ]
   },
   {
     "result": "opal_silver_ring",
@@ -351,7 +335,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "opal", 1 ] ] ]
+    "components": [ [ [ "opal", 1 ] ] ]
   },
   {
     "result": "pearl_silver_ring",
@@ -359,7 +343,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "pearl", 1 ] ] ]
+    "components": [ [ [ "pearl", 1 ] ] ]
   },
   {
     "result": "onyx_silver_ring",
@@ -367,7 +351,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "onyx", 1 ] ] ]
+    "components": [ [ [ "onyx", 1 ] ] ]
   },
   {
     "result": "diamond_silver_ring",
@@ -375,7 +359,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 2 ] ], [ [ "diamond", 1 ] ] ]
+    "components": [ [ [ "diamond", 1 ] ] ]
   },
   {
     "type": "uncraft",
@@ -514,20 +498,12 @@
     "components": [ [ [ "scrap_aluminum", 4 ] ], [ [ "clockworks", 2 ] ] ]
   },
   {
-    "result": "badge_cybercop",
-    "type": "uncraft",
-    "activity_level": "LIGHT_EXERCISE",
-    "time": "12 s",
-    "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 20 ] ] ]
-  },
-  {
     "result": "badge_deputy",
     "type": "uncraft",
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 20 ] ] ]
+    "components": [ [ [ "silver_small", 12 ] ] ]
   },
   {
     "result": "badge_detective",
@@ -543,7 +519,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 20 ] ] ]
+    "components": [ [ [ "silver_small", 12 ] ] ]
   },
   {
     "result": "badge_swat",
@@ -551,31 +527,31 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 20 ] ] ]
+    "components": [ [ [ "silver_small", 12 ] ] ]
   },
   {
     "result": "battery_car",
     "type": "uncraft",
-    "activity_level": "LIGHT_EXERCISE",
+    "activity_level": "MODERATE_EXERCISE",
     "time": "5 m",
-    "qualities": [ { "id": "CUT", "level": 2 } ],
-    "components": [ [ [ "chem_sulphuric_acid", 13 ] ], [ [ "lead", 2247 ] ], [ [ "plastic_chunk", 3 ] ] ]
+    "qualities": [ { "id": "CUT", "level": 1 }, { "id": "HAMMER", "level": 2 } ],
+    "components": [ [ [ "chem_sulphuric_acid", 13 ] ], [ [ "lead", 2280 ] ], [ [ "plastic_chunk", 3 ] ] ]
   },
   {
     "result": "battery_motorbike",
     "type": "uncraft",
-    "activity_level": "LIGHT_EXERCISE",
+    "activity_level": "MODERATE_EXERCISE",
     "time": "5 m",
-    "qualities": [ { "id": "CUT", "level": 2 } ],
-    "components": [ [ [ "chem_sulphuric_acid", 3 ] ], [ [ "lead", 499 ] ], [ [ "plastic_chunk", 2 ] ] ]
+    "qualities": [ { "id": "CUT", "level": 1 }, { "id": "HAMMER", "level": 2 } ],
+    "components": [ [ [ "chem_sulphuric_acid", 3 ] ], [ [ "lead", 342 ] ], [ [ "plastic_chunk", 2 ] ] ]
   },
   {
     "result": "battery_motorbike_small",
     "type": "uncraft",
-    "activity_level": "LIGHT_EXERCISE",
+    "activity_level": "MODERATE_EXERCISE",
     "time": "5 m",
-    "qualities": [ { "id": "CUT", "level": 2 } ],
-    "components": [ [ [ "chem_sulphuric_acid", 1 ] ], [ [ "lead", 187 ] ], [ [ "plastic_chunk", 1 ] ] ]
+    "qualities": [ { "id": "CUT", "level": 1 }, { "id": "HAMMER", "level": 2 } ],
+    "components": [ [ [ "chem_sulphuric_acid", 1 ] ], [ [ "lead", 171 ] ], [ [ "plastic_chunk", 1 ] ] ]
   },
   {
     "result": "bindle",
@@ -999,7 +975,7 @@
     "components": [
       [ [ "power_supply", 4 ] ],
       [ [ "plut_cell", 1 ] ],
-      [ [ "motor", 2 ] ],
+      [ [ "motor_small", 2 ] ],
       [ [ "tazer", 1 ] ],
       [ [ "e_scrap", 3 ] ],
       [ [ "steel_chunk", 12 ] ]
@@ -1682,7 +1658,7 @@
       [ [ "plut_cell", 2 ] ],
       [ [ "steel_armor", 2 ] ],
       [ [ "sheet_metal_small", 6 ] ],
-      [ [ "motor", 1 ] ],
+      [ [ "motor_small", 1 ] ],
       [ [ "cable", 2 ] ],
       [ [ "solder_wire", 20 ] ]
     ]
@@ -1731,7 +1707,7 @@
       [ [ "mil_plate", 2 ] ],
       [ [ "hard_steel_armor", 10 ] ],
       [ [ "sheet_metal_small", 40 ] ],
-      [ [ "motor", 1 ] ],
+      [ [ "motor_small", 1 ] ],
       [ [ "cable", 10 ] ],
       [ [ "omnicamera", 1 ] ],
       [ [ "betavoltaic", 20 ] ],
@@ -1778,7 +1754,7 @@
       [ [ "mil_plate", 2 ] ],
       [ [ "hard_steel_armor", 6 ] ],
       [ [ "sheet_metal_small", 40 ] ],
-      [ [ "motor", 1 ] ],
+      [ [ "motor_small", 1 ] ],
       [ [ "cable", 25 ] ],
       [ [ "omnicamera", 1 ] ],
       [ [ "betavoltaic", 40 ] ],
@@ -2013,7 +1989,7 @@
     "using": [ [ "soldering_standard", 5 ] ],
     "qualities": [ { "id": "SCREW", "level": 1 }, { "id": "SAW_M", "level": 1 } ],
     "components": [
-      [ [ "motor_small", 24 ] ],
+      [ [ "motor_tiny", 8 ] ],
       [ [ "power_supply", 8 ] ],
       [ [ "cable", 16 ] ],
       [ [ "scrap", 6 ] ],
@@ -2029,7 +2005,7 @@
     "time": "6 h 40 m",
     "using": [ [ "soldering_standard", 5 ] ],
     "qualities": [ { "id": "SCREW_FINE", "level": 1 }, { "id": "SAW_M", "level": 1 } ],
-    "components": [ [ [ "motor_tiny", 24 ] ], [ [ "power_supply", 8 ] ], [ [ "cable", 16 ] ], [ [ "scrap", 14 ] ] ]
+    "components": [ [ [ "motor_micro", 16 ] ], [ [ "power_supply", 8 ] ], [ [ "cable", 16 ] ], [ [ "scrap", 14 ] ] ]
   },
   {
     "result": "reverse_jointed_legs",
@@ -2040,7 +2016,7 @@
     "time": "6 h 40 m",
     "using": [ [ "soldering_standard", 5 ] ],
     "qualities": [ { "id": "SCREW", "level": 1 }, { "id": "SAW_M", "level": 1 } ],
-    "components": [ [ [ "motor_small", 6 ] ], [ [ "power_supply", 6 ] ], [ [ "cable", 12 ] ], [ [ "steel_chunk", 6 ] ] ]
+    "components": [ [ [ "motor_tiny", 6 ] ], [ [ "power_supply", 6 ] ], [ [ "cable", 12 ] ], [ [ "steel_chunk", 6 ] ] ]
   },
   {
     "result": "omni_wheel",
@@ -2052,7 +2028,7 @@
     "using": [ [ "soldering_standard", 5 ] ],
     "qualities": [ { "id": "SCREW", "level": 1 }, { "id": "SAW_M", "level": 1 } ],
     "components": [
-      [ [ "motor_small", 3 ] ],
+      [ [ "motor_tiny", 3 ] ],
       [ [ "power_supply", 3 ] ],
       [ [ "cable", 6 ] ],
       [ [ "plastic_chunk", 6 ] ],
@@ -2086,8 +2062,8 @@
     "using": [ [ "soldering_standard", 5 ] ],
     "qualities": [ { "id": "SCREW", "level": 1 }, { "id": "SAW_M", "level": 1 }, { "id": "SCREW_FINE", "level": 1 } ],
     "components": [
-      [ [ "motor_tiny", 4 ] ],
-      [ [ "motor_micro", 10 ] ],
+      [ [ "motor_tiny", 3 ] ],
+      [ [ "motor_micro", 12 ] ],
       [ [ "power_supply", 6 ] ],
       [ [ "cable", 12 ] ],
       [ [ "steel_chunk", 4 ] ],
@@ -2105,8 +2081,8 @@
     "using": [ [ "soldering_standard", 5 ] ],
     "qualities": [ { "id": "SCREW", "level": 1 }, { "id": "SAW_M", "level": 1 }, { "id": "SCREW_FINE", "level": 1 } ],
     "components": [
-      [ [ "motor_tiny", 4 ] ],
-      [ [ "motor_micro", 10 ] ],
+      [ [ "motor_tiny", 3 ] ],
+      [ [ "motor_micro", 12 ] ],
       [ [ "power_supply", 6 ] ],
       [ [ "cable", 12 ] ],
       [ [ "steel_chunk", 2 ] ],
@@ -2275,7 +2251,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ] ]
+    "components": [ [ [ "silver_small", 2 ] ] ]
   },
   {
     "result": "copper_bracelet",
@@ -2283,7 +2259,7 @@
     "time": "30 s",
     "activity_level": "MODERATE_EXERCISE",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "copper", 8 ] ] ]
+    "components": [ [ [ "copper", 9 ] ] ]
   },
   {
     "result": "copper_ear",
@@ -2327,7 +2303,7 @@
     "activity_level": "MODERATE_EXERCISE",
     "time": "2 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "scrap_copper", 1 ] ], [ [ "copper", 11 ] ] ]
+    "components": [ [ [ "scrap_copper", 1 ] ], [ [ "copper", 19 ] ] ]
   },
   {
     "result": "diamond_dental_grill",
@@ -2343,7 +2319,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "garnet", 1 ] ] ]
+    "components": [ [ [ "gold_small", 2 ] ], [ [ "garnet", 1 ] ] ]
   },
   {
     "result": "amethyst_dental_grill",
@@ -2351,7 +2327,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "amethyst", 1 ] ] ]
+    "components": [ [ [ "gold_small", 2 ] ], [ [ "amethyst", 1 ] ] ]
   },
   {
     "result": "aquamarine_dental_grill",
@@ -2359,7 +2335,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "aquamarine", 1 ] ] ]
+    "components": [ [ [ "gold_small", 2 ] ], [ [ "aquamarine", 1 ] ] ]
   },
   {
     "result": "emerald_dental_grill",
@@ -2367,7 +2343,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "emerald", 1 ] ] ]
+    "components": [ [ [ "gold_small", 2 ] ], [ [ "emerald", 1 ] ] ]
   },
   {
     "result": "alexandrite_dental_grill",
@@ -2375,7 +2351,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "alexandrite", 1 ] ] ]
+    "components": [ [ [ "gold_small", 2 ] ], [ [ "alexandrite", 1 ] ] ]
   },
   {
     "result": "ruby_dental_grill",
@@ -2383,7 +2359,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "ruby", 1 ] ] ]
+    "components": [ [ [ "gold_small", 2 ] ], [ [ "ruby", 1 ] ] ]
   },
   {
     "result": "peridot_dental_grill",
@@ -2391,7 +2367,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "peridot", 1 ] ] ]
+    "components": [ [ [ "gold_small", 2 ] ], [ [ "peridot", 1 ] ] ]
   },
   {
     "result": "sapphire_dental_grill",
@@ -2399,7 +2375,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "sapphire", 1 ] ] ]
+    "components": [ [ [ "gold_small", 2 ] ], [ [ "sapphire", 1 ] ] ]
   },
   {
     "result": "tourmaline_dental_grill",
@@ -2407,7 +2383,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "tourmaline", 1 ] ] ]
+    "components": [ [ [ "gold_small", 2 ] ], [ [ "tourmaline", 1 ] ] ]
   },
   {
     "result": "citrine_dental_grill",
@@ -2415,7 +2391,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "citrine", 1 ] ] ]
+    "components": [ [ [ "gold_small", 2 ] ], [ [ "citrine", 1 ] ] ]
   },
   {
     "result": "blue_topaz_dental_grill",
@@ -2423,7 +2399,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "blue_topaz", 1 ] ] ]
+    "components": [ [ [ "gold_small", 2 ] ], [ [ "blue_topaz", 1 ] ] ]
   },
   {
     "result": "diamond_ring",
@@ -2775,7 +2751,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "garnet", 4 ] ] ]
+    "components": [ [ [ "garnet", 1 ] ] ]
   },
   {
     "result": "amethyst_gold_bracelet",
@@ -2783,7 +2759,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "amethyst", 4 ] ] ]
+    "components": [ [ [ "amethyst", 1 ] ] ]
   },
   {
     "result": "aquamarine_gold_bracelet",
@@ -2791,7 +2767,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "aquamarine", 4 ] ] ]
+    "components": [ [ [ "aquamarine", 1 ] ] ]
   },
   {
     "result": "emerald_gold_bracelet",
@@ -2799,7 +2775,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "emerald", 4 ] ] ]
+    "components": [ [ [ "emerald", 1 ] ] ]
   },
   {
     "result": "alexandrite_gold_bracelet",
@@ -2807,7 +2783,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "alexandrite", 4 ] ] ]
+    "components": [ [ [ "alexandrite", 1 ] ] ]
   },
   {
     "result": "ruby_gold_bracelet",
@@ -2815,7 +2791,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "ruby", 4 ] ] ]
+    "components": [ [ [ "ruby", 1 ] ] ]
   },
   {
     "result": "peridot_gold_bracelet",
@@ -2823,7 +2799,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "peridot", 4 ] ] ]
+    "components": [ [ [ "peridot", 1 ] ] ]
   },
   {
     "result": "sapphire_gold_bracelet",
@@ -2831,7 +2807,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "sapphire", 4 ] ] ]
+    "components": [ [ [ "sapphire", 1 ] ] ]
   },
   {
     "result": "tourmaline_gold_bracelet",
@@ -2839,7 +2815,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "tourmaline", 4 ] ] ]
+    "components": [ [ [ "tourmaline", 1 ] ] ]
   },
   {
     "result": "citrine_gold_bracelet",
@@ -2847,7 +2823,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "citrine", 4 ] ] ]
+    "components": [ [ [ "citrine", 1 ] ] ]
   },
   {
     "result": "blue_topaz_gold_bracelet",
@@ -2855,7 +2831,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "blue_topaz", 4 ] ] ]
+    "components": [ [ [ "blue_topaz", 1 ] ] ]
   },
   {
     "result": "opal_gold_bracelet",
@@ -2863,7 +2839,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "opal", 4 ] ] ]
+    "components": [ [ [ "opal", 1 ] ] ]
   },
   {
     "result": "pearl_gold_bracelet",
@@ -2871,7 +2847,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "pearl", 4 ] ] ]
+    "components": [ [ [ "pearl", 1 ] ] ]
   },
   {
     "result": "onyx_gold_bracelet",
@@ -2879,7 +2855,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "onyx", 4 ] ] ]
+    "components": [ [ [ "onyx", 1 ] ] ]
   },
   {
     "result": "diamond_gold_bracelet",
@@ -2887,7 +2863,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 8 ] ], [ [ "diamond", 4 ] ] ]
+    "components": [ [ [ "diamond", 1 ] ] ]
   },
   {
     "result": "gold_dental_grill",
@@ -2903,7 +2879,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "12 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ] ]
+    "components": [ [ [ "gold_small", 3 ] ] ]
   },
   {
     "result": "garnet_gold_earring",
@@ -2911,7 +2887,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "garnet", 2 ] ] ]
+    "components": [ [ [ "garnet", 1 ] ] ]
   },
   {
     "result": "amethyst_gold_earring",
@@ -2919,7 +2895,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "amethyst", 2 ] ] ]
+    "components": [ [ [ "amethyst", 1 ] ] ]
   },
   {
     "result": "aquamarine_gold_earring",
@@ -2927,7 +2903,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "aquamarine", 2 ] ] ]
+    "components": [ [ [ "aquamarine", 1 ] ] ]
   },
   {
     "result": "emerald_gold_earring",
@@ -2935,7 +2911,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "emerald", 2 ] ] ]
+    "components": [ [ [ "emerald", 1 ] ] ]
   },
   {
     "result": "alexandrite_gold_earring",
@@ -2943,7 +2919,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "alexandrite", 2 ] ] ]
+    "components": [ [ [ "alexandrite", 1 ] ] ]
   },
   {
     "result": "ruby_gold_earring",
@@ -2951,7 +2927,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "ruby", 2 ] ] ]
+    "components": [ [ [ "ruby", 1 ] ] ]
   },
   {
     "result": "peridot_gold_earring",
@@ -2959,7 +2935,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "peridot", 2 ] ] ]
+    "components": [ [ [ "peridot", 1 ] ] ]
   },
   {
     "result": "sapphire_gold_earring",
@@ -2967,7 +2943,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "sapphire", 2 ] ] ]
+    "components": [ [ [ "sapphire", 1 ] ] ]
   },
   {
     "result": "tourmaline_gold_earring",
@@ -2975,7 +2951,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "tourmaline", 2 ] ] ]
+    "components": [ [ [ "tourmaline", 1 ] ] ]
   },
   {
     "result": "citrine_gold_earring",
@@ -2983,7 +2959,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "citrine", 2 ] ] ]
+    "components": [ [ [ "citrine", 1 ] ] ]
   },
   {
     "result": "blue_topaz_gold_earring",
@@ -2991,7 +2967,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "blue_topaz", 2 ] ] ]
+    "components": [ [ [ "blue_topaz", 1 ] ] ]
   },
   {
     "result": "opal_gold_earring",
@@ -2999,7 +2975,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "opal", 2 ] ] ]
+    "components": [ [ [ "opal", 1 ] ] ]
   },
   {
     "result": "pearl_gold_earring",
@@ -3007,7 +2983,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "pearl", 2 ] ] ]
+    "components": [ [ [ "pearl", 1 ] ] ]
   },
   {
     "result": "onyx_gold_earring",
@@ -3015,7 +2991,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "onyx", 2 ] ] ]
+    "components": [ [ [ "onyx", 1 ] ] ]
   },
   {
     "result": "diamond_gold_earring",
@@ -3023,7 +2999,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ], [ [ "diamond", 2 ] ] ]
+    "components": [ [ [ "diamond", 1 ] ] ]
   },
   {
     "result": "gold_watch",
@@ -3060,7 +3036,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 4 ] ] ]
+    "components": [ [ [ "gold_small", 10 ] ] ]
   },
   {
     "result": "horn_big",
@@ -3254,7 +3230,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 10 ] ] ]
+    "components": [ [ [ "silver_small", 6 ] ] ]
   },
   {
     "result": "makeshift_crowbar",
@@ -3420,7 +3396,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 10 ] ] ]
+    "components": [ [ [ "silver_small", 6 ] ] ]
   },
   {
     "result": "newest_newspaper",
@@ -3478,7 +3454,7 @@
     "activity_level": "MODERATE_EXERCISE",
     "time": "5 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "scrap_copper", 1 ] ], [ [ "copper", 9 ] ] ]
+    "components": [ [ [ "scrap_copper", 1 ] ], [ [ "copper", 10 ] ] ]
   },
   {
     "result": "potato_masher",
@@ -3554,7 +3530,7 @@
     "time": "6 m",
     "using": [ [ "soldering_standard", 10 ] ],
     "qualities": [ { "id": "SCREW", "level": 1 } ],
-    "components": [ [ [ "plastic_chunk", 8 ] ], [ [ "motor_small", 1 ] ], [ [ "scrap", 4 ] ] ]
+    "components": [ [ [ "plastic_chunk", 8 ] ], [ [ "motor_tiny", 1 ] ], [ [ "scrap", 4 ] ] ]
   },
   {
     "result": "pot_copper",
@@ -3624,7 +3600,6 @@
     "components": [
       [ [ "antenna", 1 ] ],
       [ [ "cable", 8 ] ],
-      [ [ "motor_tiny", 1 ] ],
       [ [ "motor_micro", 2 ] ],
       [ [ "amplifier", 2 ] ],
       [ [ "plastic_chunk", 8 ] ],
@@ -3683,14 +3658,6 @@
     "components": [ [ [ "gold_small", 2 ] ] ]
   },
   {
-    "result": "gold_ring",
-    "type": "uncraft",
-    "activity_level": "LIGHT_EXERCISE",
-    "time": "30 s",
-    "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ] ]
-  },
-  {
     "result": "garnet_gold_ring",
     "type": "uncraft",
     "activity_level": "LIGHT_EXERCISE",
@@ -3704,7 +3671,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "amethyst", 1 ] ] ]
+    "components": [ [ [ "amethyst", 1 ] ] ]
   },
   {
     "result": "aquamarine_gold_ring",
@@ -3712,7 +3679,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "aquamarine", 1 ] ] ]
+    "components": [ [ [ "aquamarine", 1 ] ] ]
   },
   {
     "result": "emerald_gold_ring",
@@ -3720,7 +3687,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "emerald", 1 ] ] ]
+    "components": [ [ [ "emerald", 1 ] ] ]
   },
   {
     "result": "alexandrite_gold_ring",
@@ -3728,7 +3695,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "alexandrite", 1 ] ] ]
+    "components": [ [ [ "alexandrite", 1 ] ] ]
   },
   {
     "result": "ruby_gold_ring",
@@ -3736,7 +3703,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "ruby", 1 ] ] ]
+    "components": [ [ [ "ruby", 1 ] ] ]
   },
   {
     "result": "peridot_gold_ring",
@@ -3744,7 +3711,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "peridot", 1 ] ] ]
+    "components": [ [ [ "peridot", 1 ] ] ]
   },
   {
     "result": "sapphire_gold_ring",
@@ -3752,7 +3719,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "sapphire", 1 ] ] ]
+    "components": [ [ [ "sapphire", 1 ] ] ]
   },
   {
     "result": "tourmaline_gold_ring",
@@ -3760,7 +3727,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "tourmaline", 1 ] ] ]
+    "components": [ [ [ "tourmaline", 1 ] ] ]
   },
   {
     "result": "citrine_gold_ring",
@@ -3768,7 +3735,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "citrine", 1 ] ] ]
+    "components": [ [ [ "citrine", 1 ] ] ]
   },
   {
     "result": "blue_topaz_gold_ring",
@@ -3776,7 +3743,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "blue_topaz", 1 ] ] ]
+    "components": [ [ [ "blue_topaz", 1 ] ] ]
   },
   {
     "result": "opal_gold_ring",
@@ -3784,7 +3751,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "opal", 1 ] ] ]
+    "components": [ [ [ "opal", 1 ] ] ]
   },
   {
     "result": "pearl_gold_ring",
@@ -3792,7 +3759,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "pearl", 1 ] ] ]
+    "components": [ [ [ "pearl", 1 ] ] ]
   },
   {
     "result": "onyx_gold_ring",
@@ -3800,7 +3767,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "gold_small", 2 ] ], [ [ "onyx", 1 ] ] ]
+    "components": [ [ [ "onyx", 1 ] ] ]
   },
   {
     "result": "roadmap",
@@ -3863,7 +3830,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 }, { "id": "SCREW", "level": 1 } ],
-    "components": [ [ [ "gold_small", 5 ] ], [ [ "silver_small", 12 ] ], [ [ "clockworks", 1 ] ] ]
+    "components": [ [ [ "gold_small", 5 ] ], [ [ "silver_small", 7 ] ], [ [ "clockworks", 1 ] ] ]
   },
   {
     "result": "silver_bracelet",
@@ -3871,7 +3838,7 @@
     "time": "30 s",
     "activity_level": "LIGHT_EXERCISE",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 10 ] ] ]
+    "components": [ [ [ "silver_small", 6 ] ] ]
   },
   {
     "result": "garnet_silver_bracelet",
@@ -3879,7 +3846,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "garnet", 4 ] ] ]
+    "components": [ [ [ "garnet", 1 ] ] ]
   },
   {
     "result": "amethyst_silver_bracelet",
@@ -3887,7 +3854,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "amethyst", 4 ] ] ]
+    "components": [ [ [ "amethyst", 1 ] ] ]
   },
   {
     "result": "aquamarine_silver_bracelet",
@@ -3895,7 +3862,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "aquamarine", 4 ] ] ]
+    "components": [ [ [ "aquamarine", 1 ] ] ]
   },
   {
     "result": "emerald_silver_bracelet",
@@ -3903,7 +3870,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "emerald", 4 ] ] ]
+    "components": [ [ [ "emerald", 1 ] ] ]
   },
   {
     "result": "alexandrite_silver_bracelet",
@@ -3911,7 +3878,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "alexandrite", 4 ] ] ]
+    "components": [ [ [ "alexandrite", 1 ] ] ]
   },
   {
     "result": "ruby_silver_bracelet",
@@ -3919,7 +3886,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "ruby", 4 ] ] ]
+    "components": [ [ [ "ruby", 1 ] ] ]
   },
   {
     "result": "peridot_silver_bracelet",
@@ -3927,7 +3894,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "peridot", 4 ] ] ]
+    "components": [ [ [ "peridot", 1 ] ] ]
   },
   {
     "result": "sapphire_silver_bracelet",
@@ -3935,7 +3902,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "sapphire", 4 ] ] ]
+    "components": [ [ [ "sapphire", 1 ] ] ]
   },
   {
     "result": "tourmaline_silver_bracelet",
@@ -3943,7 +3910,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "tourmaline", 4 ] ] ]
+    "components": [ [ [ "tourmaline", 1 ] ] ]
   },
   {
     "result": "citrine_silver_bracelet",
@@ -3951,7 +3918,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "citrine", 4 ] ] ]
+    "components": [ [ [ "citrine", 1 ] ] ]
   },
   {
     "result": "blue_topaz_silver_bracelet",
@@ -3959,7 +3926,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "blue_topaz", 4 ] ] ]
+    "components": [ [ [ "blue_topaz", 1 ] ] ]
   },
   {
     "result": "opal_silver_bracelet",
@@ -3967,7 +3934,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "opal", 4 ] ] ]
+    "components": [ [ [ "opal", 1 ] ] ]
   },
   {
     "result": "pearl_silver_bracelet",
@@ -3975,7 +3942,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "pearl", 4 ] ] ]
+    "components": [ [ [ "pearl", 1 ] ] ]
   },
   {
     "result": "onyx_silver_bracelet",
@@ -3983,7 +3950,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "onyx", 4 ] ] ]
+    "components": [ [ [ "onyx", 1 ] ] ]
   },
   {
     "result": "diamond_silver_bracelet",
@@ -3991,7 +3958,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ], [ [ "diamond", 4 ] ] ]
+    "components": [ [ [ "diamond", 1 ] ] ]
   },
   {
     "result": "silver_ear",
@@ -3999,7 +3966,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 3 ] ] ]
+    "components": [ [ [ "silver_small", 2 ] ] ]
   },
   {
     "result": "garnet_silver_earring",
@@ -4007,7 +3974,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "garnet", 2 ] ] ]
+    "components": [ [ [ "garnet", 1 ] ] ]
   },
   {
     "result": "amethyst_silver_earring",
@@ -4015,7 +3982,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "amethyst", 2 ] ] ]
+    "components": [ [ [ "amethyst", 1 ] ] ]
   },
   {
     "result": "aquamarine_silver_earring",
@@ -4023,7 +3990,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "aquamarine", 2 ] ] ]
+    "components": [ [ [ "aquamarine", 1 ] ] ]
   },
   {
     "result": "emerald_silver_earring",
@@ -4031,7 +3998,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "emerald", 2 ] ] ]
+    "components": [ [ [ "emerald", 1 ] ] ]
   },
   {
     "result": "alexandrite_silver_earring",
@@ -4039,7 +4006,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "alexandrite", 2 ] ] ]
+    "components": [ [ [ "alexandrite", 1 ] ] ]
   },
   {
     "result": "ruby_silver_earring",
@@ -4047,7 +4014,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "ruby", 2 ] ] ]
+    "components": [ [ [ "ruby", 1 ] ] ]
   },
   {
     "result": "peridot_silver_earring",
@@ -4055,7 +4022,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "peridot", 2 ] ] ]
+    "components": [ [ [ "peridot", 1 ] ] ]
   },
   {
     "result": "sapphire_silver_earring",
@@ -4063,7 +4030,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "sapphire", 2 ] ] ]
+    "components": [ [ [ "sapphire", 1 ] ] ]
   },
   {
     "result": "tourmaline_silver_earring",
@@ -4071,7 +4038,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "tourmaline", 2 ] ] ]
+    "components": [ [ [ "tourmaline", 1 ] ] ]
   },
   {
     "result": "citrine_silver_earring",
@@ -4079,7 +4046,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "citrine", 2 ] ] ]
+    "components": [ [ [ "citrine", 1 ] ] ]
   },
   {
     "result": "blue_topaz_silver_earring",
@@ -4087,7 +4054,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "blue_topaz", 2 ] ] ]
+    "components": [ [ [ "blue_topaz", 1 ] ] ]
   },
   {
     "result": "opal_silver_earring",
@@ -4095,7 +4062,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "opal", 2 ] ] ]
+    "components": [ [ [ "opal", 1 ] ] ]
   },
   {
     "result": "pearl_silver_earring",
@@ -4103,7 +4070,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "pearl", 2 ] ] ]
+    "components": [ [ [ "pearl", 1 ] ] ]
   },
   {
     "result": "onyx_silver_earring",
@@ -4111,7 +4078,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "onyx", 2 ] ] ]
+    "components": [ [ [ "onyx", 1 ] ] ]
   },
   {
     "result": "diamond_silver_earring",
@@ -4119,7 +4086,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ], [ [ "diamond", 2 ] ] ]
+    "components": [ [ [ "diamond", 1 ] ] ]
   },
   {
     "result": "sm_extinguisher",
@@ -4137,7 +4104,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m 30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 20 ] ] ]
+    "components": [ [ [ "silver_small", 2 ] ] ]
   },
   {
     "result": "smoxygen_tank",
@@ -4430,7 +4397,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 4 ] ] ]
+    "components": [ [ [ "silver_small", 2 ] ] ]
   },
   {
     "result": "toaster",
@@ -4662,7 +4629,7 @@
     "time": "15 m",
     "using": [ [ "soldering_standard", 20 ] ],
     "qualities": [ { "id": "SCREW", "level": 1, "amount": 1 }, { "id": "HAMMER", "level": 3, "amount": 1 } ],
-    "components": [ [ [ "scrap", 4 ] ], [ [ "cable", 2 ] ], [ [ "pot", 1 ] ], [ [ "e_scrap", 1 ] ], [ [ "motor_micro", 1 ] ] ]
+    "components": [ [ [ "scrap", 4 ] ], [ [ "cable", 2 ] ], [ [ "pot", 1 ] ], [ [ "e_scrap", 1 ] ], [ [ "motor_tiny", 1 ] ] ]
   },
   {
     "result": "box_small",
@@ -4707,7 +4674,7 @@
       [ [ "cable", 8 ] ],
       [ [ "hose", 1 ] ],
       [ [ "cu_pipe", 3 ] ],
-      [ [ "motor_small", 1 ] ],
+      [ [ "motor_tiny", 1 ] ],
       [ [ "e_scrap", 4 ] ],
       [ [ "element", 4 ] ],
       [ [ "power_supply", 4 ] ],
@@ -4732,7 +4699,7 @@
       [ [ "cable", 15 ] ],
       [ [ "hose", 2 ] ],
       [ [ "pipe_fittings", 6 ] ],
-      [ [ "motor_small", 1 ] ],
+      [ [ "motor_tiny", 1 ] ],
       [ [ "cu_pipe", 5 ] ]
     ]
   },
@@ -4771,7 +4738,7 @@
       [ [ "sheet_metal", 6 ] ],
       [ [ "cable", 15 ] ],
       [ [ "hose", 2 ] ],
-      [ [ "motor_small", 1 ] ],
+      [ [ "motor_tiny", 1 ] ],
       [ [ "pipe_fittings", 6 ] ],
       [ [ "cu_pipe", 5 ] ]
     ]
@@ -4835,7 +4802,7 @@
       [ [ "sheet_metal", 2 ] ],
       [ [ "cable", 10 ] ],
       [ [ "hose", 4 ] ],
-      [ [ "motor_small", 1 ] ],
+      [ [ "motor_tiny", 1 ] ],
       [ [ "pipe_fittings", 2 ] ],
       [ [ "solder_wire", 10 ] ],
       [ [ "cu_pipe", 4 ] ]
@@ -4972,7 +4939,7 @@
       [ [ "sheet_metal_small", 4 ] ],
       [ [ "cable", 10 ] ],
       [ [ "hose", 5 ] ],
-      [ [ "motor", 1 ] ],
+      [ [ "motor_small", 1 ] ],
       [ [ "metal_tank", 1 ] ],
       [ [ "plastic_chunk", 5 ] ],
       [ [ "pipe_fittings", 4 ] ],
@@ -5028,7 +4995,7 @@
       [ [ "sheet_metal", 6 ] ],
       [ [ "cable", 15 ] ],
       [ [ "hose", 2 ] ],
-      [ [ "motor_small", 1 ] ],
+      [ [ "motor_tiny", 1 ] ],
       [ [ "cu_pipe", 5 ] ]
     ]
   },
@@ -5258,7 +5225,7 @@
       [ [ "sheet_metal_small", 2 ] ],
       [ [ "steel_chunk", 4 ] ],
       [ [ "cable", 2 ] ],
-      [ [ "motor_small", 1 ] ],
+      [ [ "motor_micro", 1 ] ],
       [ [ "plastic_chunk", 6 ] ],
       [ [ "solder_wire", 10 ] ]
     ]
@@ -5389,20 +5356,12 @@
     ]
   },
   {
-    "result": "platinum_hairpin",
-    "type": "uncraft",
-    "activity_level": "LIGHT_EXERCISE",
-    "time": "6 s",
-    "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 3 ] ] ]
-  },
-  {
     "result": "platinum_locket",
     "type": "uncraft",
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ] ]
+    "components": [ [ [ "platinum_small", 13 ] ] ]
   },
   {
     "result": "platinum_necklace",
@@ -5410,7 +5369,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 3 ] ] ]
+    "components": [ [ [ "platinum_small", 9 ] ] ]
   },
   {
     "result": "platinum_bracelet",
@@ -5418,7 +5377,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "36 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 8 ] ] ]
+    "components": [ [ [ "platinum_small", 10 ] ] ]
   },
   {
     "result": "garnet_platinum_bracelet",
@@ -5546,7 +5505,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ] ]
+    "components": [ [ [ "platinum_small", 3 ] ] ]
   },
   {
     "result": "platinum_ear",
@@ -5562,7 +5521,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "garnet", 2 ] ] ]
+    "components": [ [ [ "garnet", 1 ] ] ]
   },
   {
     "result": "amethyst_platinum_earring",
@@ -5570,7 +5529,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "amethyst", 2 ] ] ]
+    "components": [ [ [ "amethyst", 1 ] ] ]
   },
   {
     "result": "aquamarine_platinum_earring",
@@ -5578,7 +5537,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "aquamarine", 2 ] ] ]
+    "components": [ [ [ "aquamarine", 1 ] ] ]
   },
   {
     "result": "emerald_platinum_earring",
@@ -5586,7 +5545,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "emerald", 2 ] ] ]
+    "components": [ [ [ "emerald", 1 ] ] ]
   },
   {
     "result": "alexandrite_platinum_earring",
@@ -5594,7 +5553,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "alexandrite", 2 ] ] ]
+    "components": [ [ [ "alexandrite", 1 ] ] ]
   },
   {
     "result": "ruby_platinum_earring",
@@ -5602,7 +5561,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "ruby", 2 ] ] ]
+    "components": [ [ [ "ruby", 1 ] ] ]
   },
   {
     "result": "peridot_platinum_earring",
@@ -5610,7 +5569,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "peridot", 2 ] ] ]
+    "components": [ [ [ "peridot", 1 ] ] ]
   },
   {
     "result": "sapphire_platinum_earring",
@@ -5618,7 +5577,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "sapphire", 2 ] ] ]
+    "components": [ [ [ "sapphire", 1 ] ] ]
   },
   {
     "result": "tourmaline_platinum_earring",
@@ -5626,7 +5585,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "tourmaline", 2 ] ] ]
+    "components": [ [ [ "tourmaline", 1 ] ] ]
   },
   {
     "result": "citrine_platinum_earring",
@@ -5634,7 +5593,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "citrine", 2 ] ] ]
+    "components": [ [ [ "citrine", 1 ] ] ]
   },
   {
     "result": "blue_topaz_platinum_earring",
@@ -5642,7 +5601,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "blue_topaz", 2 ] ] ]
+    "components": [ [ [ "blue_topaz", 1 ] ] ]
   },
   {
     "result": "opal_platinum_earring",
@@ -5650,7 +5609,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "opal", 2 ] ] ]
+    "components": [ [ [ "opal", 1 ] ] ]
   },
   {
     "result": "pearl_platinum_earring",
@@ -5658,7 +5617,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "pearl", 2 ] ] ]
+    "components": [ [ [ "pearl", 1 ] ] ]
   },
   {
     "result": "onyx_platinum_earring",
@@ -5666,7 +5625,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "onyx", 2 ] ] ]
+    "components": [ [ [ "onyx", 1 ] ] ]
   },
   {
     "result": "diamond_platinum_earring",
@@ -5674,7 +5633,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 4 ] ], [ [ "diamond", 2 ] ] ]
+    "components": [ [ [ "diamond", 1 ] ] ]
   },
   {
     "result": "platinum_watch",
@@ -5690,7 +5649,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "30 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ] ]
+    "components": [ [ [ "platinum_small", 3 ] ] ]
   },
   {
     "result": "garnet_platinum_ring",
@@ -5698,7 +5657,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "garnet", 1 ] ] ]
+    "components": [ [ [ "garnet", 1 ] ] ]
   },
   {
     "result": "amethyst_platinum_ring",
@@ -5706,7 +5665,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "amethyst", 1 ] ] ]
+    "components": [ [ [ "amethyst", 1 ] ] ]
   },
   {
     "result": "aquamarine_platinum_ring",
@@ -5714,7 +5673,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "aquamarine", 1 ] ] ]
+    "components": [ [ [ "aquamarine", 1 ] ] ]
   },
   {
     "result": "emerald_platinum_ring",
@@ -5722,7 +5681,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "emerald", 1 ] ] ]
+    "components": [ [ [ "emerald", 1 ] ] ]
   },
   {
     "result": "alexandrite_platinum_ring",
@@ -5730,7 +5689,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "alexandrite", 1 ] ] ]
+    "components": [ [ [ "alexandrite", 1 ] ] ]
   },
   {
     "result": "ruby_platinum_ring",
@@ -5738,7 +5697,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "ruby", 1 ] ] ]
+    "components": [ [ [ "ruby", 1 ] ] ]
   },
   {
     "result": "peridot_platinum_ring",
@@ -5746,7 +5705,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "peridot", 1 ] ] ]
+    "components": [ [ [ "peridot", 1 ] ] ]
   },
   {
     "result": "sapphire_platinum_ring",
@@ -5754,7 +5713,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "sapphire", 1 ] ] ]
+    "components": [ [ [ "sapphire", 1 ] ] ]
   },
   {
     "result": "tourmaline_platinum_ring",
@@ -5762,7 +5721,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "tourmaline", 1 ] ] ]
+    "components": [ [ [ "tourmaline", 1 ] ] ]
   },
   {
     "result": "citrine_platinum_ring",
@@ -5770,7 +5729,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "citrine", 1 ] ] ]
+    "components": [ [ [ "citrine", 1 ] ] ]
   },
   {
     "result": "blue_topaz_platinum_ring",
@@ -5778,7 +5737,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "blue_topaz", 1 ] ] ]
+    "components": [ [ [ "blue_topaz", 1 ] ] ]
   },
   {
     "result": "opal_platinum_ring",
@@ -5786,7 +5745,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "opal", 1 ] ] ]
+    "components": [ [ [ "opal", 1 ] ] ]
   },
   {
     "result": "pearl_platinum_ring",
@@ -5794,7 +5753,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "pearl", 1 ] ] ]
+    "components": [ [ [ "pearl", 1 ] ] ]
   },
   {
     "result": "onyx_platinum_ring",
@@ -5802,7 +5761,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "onyx", 1 ] ] ]
+    "components": [ [ [ "onyx", 1 ] ] ]
   },
   {
     "result": "diamond_platinum_ring",
@@ -5810,7 +5769,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "1 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "platinum_small", 2 ] ], [ [ "diamond", 1 ] ] ]
+    "components": [ [ [ "diamond", 1 ] ] ]
   },
   {
     "result": "razor_shaving",
@@ -6018,7 +5977,7 @@
     "activity_level": "MODERATE_EXERCISE",
     "time": "2 s",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 10 ] ] ],
+    "components": [ [ [ "silver_small", 6 ] ] ],
     "flags": [ "UNCRAFT_BY_CHARGE" ]
   },
   {
@@ -6231,7 +6190,7 @@
     "activity_level": "LIGHT_EXERCISE",
     "time": "2 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "silver_small", 8 ] ] ]
+    "components": [ [ [ "silver_small", 4 ] ] ]
   },
   {
     "result": "leather_tarp",
@@ -7550,7 +7509,7 @@
     "activity_level": "MODERATE_EXERCISE",
     "time": "2 m",
     "qualities": [ { "id": "HAMMER", "level": 1 } ],
-    "components": [ [ [ "copper", 31 ] ] ]
+    "components": [ [ [ "copper", 49 ] ] ]
   },
   {
     "result": "wrench_large",

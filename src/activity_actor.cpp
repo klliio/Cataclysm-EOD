@@ -246,11 +246,9 @@ aim_activity_actor aim_activity_actor::use_wielded()
     return aim_activity_actor();
 }
 
-aim_activity_actor aim_activity_actor::use_bionic( const item &fake_gun,
-        const units::energy &cost_per_shot )
+aim_activity_actor aim_activity_actor::use_bionic( const item &fake_gun )
 {
     aim_activity_actor act = aim_activity_actor();
-    act.bp_cost_per_shot = cost_per_shot;
     act.fake_weapon = fake_gun;
     return act;
 }
@@ -338,14 +336,8 @@ void aim_activity_actor::finish( player_activity &act, Character &who )
         return;
     }
 
-    // Fire!
     gun_mode gun = weapon->gun_current_mode();
-    int shots_fired = who.fire_gun( fin_trajectory.back(), gun.qty, *gun );
-
-    // TODO: bionic power cost of firing should be derived from a value of the relevant weapon.
-    if( shots_fired && ( bp_cost_per_shot > 0_J ) ) {
-        who.mod_power_level( -bp_cost_per_shot * shots_fired );
-    }
+    who.fire_gun( fin_trajectory.back(), gun.qty, *gun );
 
     if( weapon && weapon->gun_current_mode()->has_flag( flag_RELOAD_AND_SHOOT ) ) {
         // RAS weapons are currently bugged, this is a workaround so bug impact
@@ -363,7 +355,6 @@ void aim_activity_actor::finish( player_activity &act, Character &who )
     aim_activity_actor aim_actor;
     aim_actor.abort_if_no_targets = true;
     aim_actor.fake_weapon = this->fake_weapon;
-    aim_actor.bp_cost_per_shot = this->bp_cost_per_shot;
     aim_actor.initial_view_offset = this->initial_view_offset;
 
     // if invalid target or it's dead - reset it so a new one is acquired
@@ -385,7 +376,6 @@ void aim_activity_actor::serialize( JsonOut &jsout ) const
     jsout.start_object();
 
     jsout.member( "fake_weapon", fake_weapon );
-    jsout.member( "bp_cost_per_shot", bp_cost_per_shot );
     jsout.member( "fin_trajectory", fin_trajectory );
     jsout.member( "first_turn", first_turn );
     jsout.member( "action", action );
@@ -408,7 +398,6 @@ std::unique_ptr<activity_actor> aim_activity_actor::deserialize( JsonValue &jsin
     JsonObject data = jsin.get_object();
 
     data.read( "fake_weapon", actor.fake_weapon );
-    data.read( "bp_cost_per_shot", actor.bp_cost_per_shot );
     data.read( "fin_trajectory", actor.fin_trajectory );
     data.read( "first_turn", actor.first_turn );
     data.read( "action", actor.action );
@@ -2355,8 +2344,7 @@ void lockpick_activity_actor::finish( player_activity &act, Character &who )
 
 std::optional<tripoint> lockpick_activity_actor::select_location( avatar &you )
 {
-    if( you.is_mounted() ) {
-        you.add_msg_if_player( m_info, _( "You cannot do that while mounted." ) );
+    if( you.cant_do_mounted() ) {
         return std::nullopt;
     }
 
@@ -6489,7 +6477,6 @@ void unload_loot_activity_actor::do_turn( player_activity &act, Character &you )
                             continue;
                         }
                         you.gunmod_remove( *it->first, *mod );
-                        move_item( you, *mod, 1, src_loc, src_loc, this_veh, this_part );
                         if( you.moves <= 0 ) {
                             return;
                         }
@@ -6643,12 +6630,10 @@ std::unique_ptr<activity_actor> vehicle_folding_activity_actor::deserialize( Jso
 
 bool vehicle_unfolding_activity_actor::unfold_vehicle( Character &p, bool check_only ) const
 {
-    if( p.is_underwater() ) {
-        p.add_msg_if_player( m_info, _( "You can't do that while underwater." ) );
+    if( p.cant_do_underwater() ) {
         return false;
     }
-    if( p.is_mounted() ) {
-        p.add_msg_if_player( m_info, _( "You can't do that while mounted." ) );
+    if( p.cant_do_mounted() ) {
         return false;
     }
     map &here = get_map();
@@ -6775,7 +6760,8 @@ void wash_activity_actor::start( player_activity &act, Character & )
 void wash_activity_actor::finish( player_activity &act, Character &p )
 {
     const auto is_liquid_crafting_component = []( const item & it ) {
-        return is_crafting_component( it ) && ( !it.count_by_charges() || it.made_of( phase_id::LIQUID ) );
+        return is_crafting_component( it ) && ( !it.count_by_charges() || it.made_of( phase_id::LIQUID ) ||
+                                                it.made_of( phase_id::GAS ) );
     };
     const inventory &crafting_inv = p.crafting_inventory();
     if( !crafting_inv.has_charges( itype_water, requirements.water, is_liquid_crafting_component ) &&

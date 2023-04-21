@@ -4,11 +4,10 @@
     "id": "chem_potassium_alum",
     "copy-from": "reagent_powder",
     "name": { "str_sp": "potassium alum" },
-    "description": "Small water-soluble white crystals with watery metallic odor, historically used for many different purposes.  Also known as potash alum and potassium aluminum sulfate; often called simply alum, as it's the most important member of the generic class of compounds called alums.",
+    "description": "A handful of small water-soluble white crystals with watery metallic odor, historically used for many different purposes.  Also known as potash alum and potassium aluminum sulfate; often called simply alum, as it's the most important member of the generic class of compounds called alums.",
     "//": "Useless and unobtainable at the moment.  TODO: either add uses or remove if none are found.",
     "price": 2500,
     "price_postapoc": 100,
-    "container": "bottle_plastic_small",
     "weight": "1725 mg"
   },
   {
@@ -16,11 +15,10 @@
     "id": "dye_powder",
     "copy-from": "reagent_powder",
     "name": { "str_sp": "cloth dye powder" },
-    "description": "This is a powdered colorful cloth dye, which can be used to dye many fabrics if combined with water and some mordant.",
+    "description": "A handful of powdered colorful cloth dye, which can be used to dye many fabrics if combined with water and some mordant.",
     "//": "Useless and unobtainable at the moment.  TODO: either add uses or remove if none are found.",
     "price": 2500,
     "price_postapoc": 50,
-    "container": "bottle_plastic_small",
     "weight": "1540 mg"
   },
   {
@@ -28,7 +26,7 @@
     "id": "chem_calcium_chloride",
     "copy-from": "reagent_powder",
     "name": { "str_sp": "calcium chloride" },
-    "description": "A handful of white, odorless, strongly hygroscopic powder with an extremely salty taste.  Often used as a de-icing agent or as dessicant.",
+    "description": "A handful of white, odorless, strongly hygroscopic powder with an extremely salty taste.  Often used as a de-icing agent or as desiccant.",
     "container": "bag_canvas",
     "weight": "2150 mg"
   },

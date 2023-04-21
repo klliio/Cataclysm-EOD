@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <utility>
 
+#include "ammo.h"
 #include "cata_utility.h"
 #include "character.h"
 #include "debug.h"
@@ -90,11 +91,21 @@ std::string itype::get_item_type_string() const
 std::string itype::nname( unsigned int quantity ) const
 {
     // Always use singular form for liquids.
-    // (Maybe gases too?  There are no gases at the moment)
-    if( phase == phase_id::LIQUID ) {
+    if( phase == phase_id::LIQUID || phase == phase_id::GAS ) {
         quantity = 1;
     }
     return name.translated( quantity );
+}
+
+int itype::damage_level( int damage ) const
+{
+    if( damage == 0 ) {
+        return 0;
+    }
+    if( count_by_charges() ) {
+        return 5;
+    }
+    return std::clamp( 1 + 4 * damage / damage_max(), 0, 5 );
 }
 
 bool itype::has_any_quality( const std::string &quality ) const
@@ -403,3 +414,13 @@ std::tuple<encumbrance_modifier_type, int> armor_portion_data::convert_descripto
 }
 
 std::map<itype_id, std::set<itype_id>> islot_magazine::compatible_guns;
+
+const itype_id &itype::tool_slot_first_ammo() const
+{
+    if( tool ) {
+        for( const ammotype &at : tool->ammo_id ) {
+            return at->default_ammotype();
+        }
+    }
+    return itype_id::NULL_ID();
+}

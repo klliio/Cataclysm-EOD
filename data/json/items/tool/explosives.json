@@ -39,8 +39,7 @@
     "material": [ "plastic" ],
     "symbol": ";",
     "color": "light_gray",
-    "use_action": [ "C4" ],
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ALLOWS_REMOTE_USE" ]
+    "use_action": [ "C4" ]
   },
   {
     "id": "c4armed",
@@ -314,7 +313,7 @@
     "id": "firecracker_pack_act",
     "type": "TOOL",
     "name": { "str": "lit firecracker pack" },
-    "description": "A pack of 25 firecrackers that has been lit; the fuse is hissing.  Throw them quickly before they start to explode.",
+    "description": "A pack of 25 firecrackers that has been lit; the fuse is hissing.  Throw them quickly before the start to explode.",
     "weight": "75 g",
     "volume": "250 ml",
     "price": 0,
@@ -1173,7 +1172,7 @@
     "use_action": {
       "need_wielding": true,
       "target": "homemade_grenade_act",
-      "msg": "You light the fuse on the improvised grenade.  Throw it before it blows up in your face!",
+      "msg": "You light the fuse on the improvised grenade.  Throw it before it blows in your face!",
       "target_charges": 5,
       "active": true,
       "need_fire": 1,
@@ -1327,6 +1326,7 @@
     "symbol": "*",
     "color": "red",
     "use_action": {
+      "need_wielding": true,
       "target": "homemade_demolition_charge_act",
       "msg": "You light the fuse on your %s.",
       "target_charges": 20,

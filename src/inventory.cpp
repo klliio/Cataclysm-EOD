@@ -207,7 +207,7 @@ inventory &inventory::operator+= ( const item &rhs )
 inventory &inventory::operator+= ( const item_stack &rhs )
 {
     for( const item &p : rhs ) {
-        if( !p.made_of( phase_id::LIQUID ) ) {
+        if( !p.made_of( phase_id::LIQUID ) && !p.made_of( phase_id::GAS ) ) {
             add_item( p, true );
         }
     }
@@ -549,6 +549,11 @@ void inventory::form_from_map( map &m, std::vector<tripoint> pts, const Characte
                         update_liq_container_count( i.typeId(), count );
                     }
                     add_item( i, false, assign_invlet );
+                } else if( !i.made_of( phase_id::GAS ) ) {
+                    if( i.empty_container() && i.is_airtight_container() ) {
+                        const int count = i.count_by_charges() ? i.charges : 1;
+                        update_liq_container_count( i.typeId(), count );
+                    }
                 }
             }
         }
@@ -568,7 +573,7 @@ void inventory::form_from_map( map &m, std::vector<tripoint> pts, const Characte
         if( m.furn( p )->has_examine( iexamine::keg ) ) {
             map_stack liq_contained = m.i_at( p );
             for( item &i : liq_contained ) {
-                if( i.made_of( phase_id::LIQUID ) ) {
+                if( i.made_of( phase_id::LIQUID ) || i.made_of( phase_id::GAS ) ) {
                     add_item( i );
                 }
             }
@@ -847,7 +852,8 @@ void inventory::rust_iron_items()
                 //                       ^season length   ^14/5*0.75/pi (from volume of sphere)
                 //Freshwater without oxygen rusts slower than air
                 here.water_from( player_character.pos() ).typeId() == itype_salt_water ) {
-                elem_stack_iter.inc_damage( damage_type::ACID ); // rusting never completely destroys an item
+                // rusting never completely destroys an item, so no need to handle return value
+                elem_stack_iter.inc_damage();
                 add_msg( m_bad, _( "Your %s is damaged by rust." ), elem_stack_iter.tname() );
             }
         }

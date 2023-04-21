@@ -1122,6 +1122,41 @@ bool map::deregister_vehicle_zone( zone_data &zone ) const
     return false;
 }
 
+std::set<tripoint_bub_ms> map::get_moving_vehicle_targets( const Creature &z, int max_range )
+{
+    const tripoint_bub_ms zpos( z.pos() );
+    std::set<tripoint_bub_ms> priority;
+    std::set<tripoint_bub_ms> visible;
+    for( wrapped_vehicle &v : get_vehicles() ) {
+        if( !v.v->is_moving() ) {
+            continue;
+        }
+        if( !fov_3d && v.pos.z != zpos.z() ) {
+            continue;
+        }
+        if( rl_dist( zpos, tripoint_bub_ms( v.pos ) ) > max_range + 40 ) {
+            continue; // coarse distance filter, 40 = ~24 * sqrt(2) - rough max diameter of a vehicle
+        }
+        for( const vpart_reference &vpr : v.v->get_all_parts() ) {
+            const tripoint_bub_ms vppos = static_cast<tripoint_bub_ms>( vpr.pos() );
+            if( rl_dist( zpos, vppos ) > max_range ) {
+                continue;
+            }
+            if( !z.sees( vppos ) ) {
+                continue;
+            }
+            if( vpr.has_feature( VPFLAG_CONTROLS ) ||
+                vpr.has_feature( VPFLAG_ENGINE ) ||
+                vpr.has_feature( VPFLAG_WHEEL ) ) {
+                priority.emplace( vppos );
+            } else {
+                visible.emplace( vppos );
+            }
+        }
+    }
+    return !priority.empty() ? priority : visible;
+}
+
 // 3D vehicle functions
 
 VehicleList map::get_vehicles( const tripoint &start, const tripoint &end )
@@ -3537,7 +3572,7 @@ void map::smash_items( const tripoint &p, const int power, const std::string &ca
     std::vector<item> contents;
     map_stack items = i_at( p );
     for( auto i = items.begin(); i != items.end(); ) {
-        if( i->made_of( phase_id::LIQUID ) ) {
+        if( i->made_of( phase_id::LIQUID ) || i->made_of( phase_id::GAS ) ) {
             i++;
             continue;
         }
@@ -3586,10 +3621,9 @@ void map::smash_items( const tripoint &p, const int power, const std::string &ca
             }
         } else {
             const field_type_id type_blood = i->is_corpse() ? i->get_mtype()->bloodType() : fd_null;
-            while( ( damage_chance > material_factor ||
-                     x_in_y( damage_chance, material_factor ) ) &&
-                   i->damage() < i->max_damage() ) {
-                i->inc_damage( damage_type::BASH );
+            while( ( damage_chance > material_factor || x_in_y( damage_chance, material_factor ) ) &&
+                   ( i->damage() < i->max_damage() ) ) {
+                i->inc_damage();
                 add_splash( type_blood, p, 1, damage_chance );
                 damage_chance -= material_factor;
                 item_was_damaged = true;
@@ -4769,7 +4803,7 @@ void map::spawn_item( const tripoint &p, const itype_id &type_id, const unsigned
         //let's fail silently if we specify charges for an item that doesn't support it
         new_item.charges = charges;
     }
-    new_item = new_item.in_its_container();
+    new_item = new_item.in_its_container( new_item.count() );
     new_item.set_owner( faction_id( faction ) ); // Set faction to the container as well
     if( ( new_item.made_of( phase_id::LIQUID ) && has_flag( ter_furn_flag::TFLAG_SWIMMABLE, p ) ) ||
         has_flag( ter_furn_flag::TFLAG_DESTROY_ITEM, p ) ) {
@@ -4940,7 +4974,6 @@ float map::item_category_spawn_rate( const item &itm )
 {
     const std::string &cat = itm.get_category_of_contents().id.c_str();
     const float spawn_rate = get_option<float>( "SPAWN_RATE_" + cat );
-
     return spawn_rate > 1.0f ? roll_remainder( spawn_rate ) : spawn_rate;
 }
 
@@ -5234,7 +5267,7 @@ static void process_vehicle_items( vehicle &cur_veh, int part )
                 }
                 // TODO: BATTERIES this should be rewritten when vehicle power and items both use energy quantities
                 if( n.ammo_capacity( ammo_battery ) > n.ammo_remaining() ||
-                    ( n.type->battery && n.type->battery->max_capacity > n.energy_remaining() ) ) {
+                    ( n.type->battery && n.type->battery->max_capacity > n.energy_remaining( nullptr ) ) ) {
                     int power = recharge_part.info().bonus;
                     while( power >= 1000 || x_in_y( power, 1000 ) ) {
                         const int missing = cur_veh.discharge_battery( 1 );
@@ -5619,7 +5652,8 @@ static void use_charges_from_furn( const furn_t &f, const itype_id &type, int &q
         auto current_item = item_list.begin();
         for( ; current_item != item_list.end(); ++current_item ) {
             // looking for a liquid that matches
-            if( filter( *current_item ) && current_item->made_of( phase_id::LIQUID ) &&
+            if( filter( *current_item ) && ( current_item->made_of( phase_id::LIQUID ) ||
+                                             current_item->made_of( phase_id::GAS ) ) &&
                 type == current_item->typeId() ) {
                 ret.push_back( *current_item );
                 if( current_item->charges - quantity > 0 ) {

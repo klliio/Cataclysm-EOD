@@ -175,7 +175,7 @@ void recipe::load( const JsonObject &jo, const std::string &src )
     if( jo.has_member( "result_eocs" ) ) {
         result_eocs.clear();
         for( JsonValue jv : jo.get_array( "result_eocs" ) ) {
-            result_eocs.push_back( effect_on_conditions::load_inline_eoc( jv, "" ) );
+            result_eocs.push_back( effect_on_conditions::load_inline_eoc( jv, src ) );
         }
     }
     if( abstract ) {
@@ -636,7 +636,7 @@ void recipe::finalize()
             rpof.time_multiplier = rpof.id->default_time_multiplier();
         }
 
-        rpof.time_multiplier = rpof.time_multiplier * get_option<float>( "PROF_TIME_MOD" );
+        rpof.time_multiplier = ( ( rpof.time_multiplier - 1 ) * get_option<float>( "PROF_TIME_MOD" ) ) + 1;
 
         if( !rpof._skill_penalty_assigned ) {
             rpof.skill_penalty = rpof.id->default_skill_penalty();

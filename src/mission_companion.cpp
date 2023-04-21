@@ -876,8 +876,10 @@ bool talk_function::display_and_choose_opts(
     ctxt.register_action( "DOWN", to_translation( "Move cursor down" ) );
     ctxt.register_action( "NEXT_TAB" );
     ctxt.register_action( "PREV_TAB" );
-    ctxt.register_action( "PAGE_UP" );
-    ctxt.register_action( "PAGE_DOWN" );
+    ctxt.register_action( "PAGE_UP", to_translation( "Fast scroll up" ) );
+    ctxt.register_action( "PAGE_DOWN", to_translation( "Fast scroll down" ) );
+    ctxt.register_action( "SCROLL_MISSION_INFO_UP" );
+    ctxt.register_action( "SCROLL_MISSION_INFO_DOWN" );
     ctxt.register_action( "CONFIRM" );
     ctxt.register_action( "QUIT" );
     ctxt.register_action( "HELP_KEYBINDINGS" );
@@ -1063,15 +1065,22 @@ bool talk_function::display_and_choose_opts(
         mission_key.cur_key = cur_key_list[sel];
         ui_manager::redraw();
         const std::string action = ctxt.handle_input();
+        const int recmax = static_cast<int>( cur_key_list.size() );
+        const int scroll_rate = recmax > 20 ? 10 : 3;
         if( action == "UP" || action == "SCROLL_UP" || action == "DOWN" || action == "SCROLL_DOWN" ) {
             sel = increment_and_wrap( sel, action == "DOWN" || action == "SCROLL_DOWN", cur_key_list.size() );
             info_offset = 0;
-        } else if( action == "PAGE_UP" ) {
+        } else if( action == "SCROLL_MISSION_INFO_UP" ) {
             if( info_offset > 0 ) {
                 info_offset--;
             }
-        } else if( action == "PAGE_DOWN" ) {
+        } else if( action == "SCROLL_MISSION_INFO_DOWN" ) {
             info_offset++;
+        } else if( action == "PAGE_UP" || action == "PAGE_DOWN" ) {
+            sel = increment_and_wrap( sel, action == "PAGE_UP" ? -scroll_rate : scroll_rate,
+                                      cur_key_list.size() );
+            info_offset = 0;
+
         } else if( action == "NEXT_TAB" && role_id == role_id_faction_camp ) {
             sel = 0;
             info_offset = 0;
@@ -2796,7 +2805,7 @@ std::set<item> talk_function::loot_building( const tripoint_abs_omt &site,
         //Hoover up tasty items!
         map_stack items = bay.i_at( p );
         for( map_stack::iterator it = items.begin(); it != items.end(); ) {
-            if( !it->made_of( phase_id::LIQUID ) &&
+            if( !it->made_of( phase_id::LIQUID ) && !it->made_of( phase_id::GAS ) &&
                 ( ( ( it->is_food() || it->is_food_container() ) && !one_in( 8 ) ) ||
                   ( it->price( true ) > 1000 && !one_in( 4 ) ) || one_in( 5 ) ) ) {
                 return_items.insert( *it );

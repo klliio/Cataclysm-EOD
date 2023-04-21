@@ -383,6 +383,7 @@ void uistatedata::serialize( JsonOut &json ) const
     json.member( "distraction_thirst", distraction_thirst );
     json.member( "distraction_temperature", distraction_temperature );
     json.member( "distraction_mutation", distraction_mutation );
+    json.member( "numpad_navigation", numpad_navigation );
 
     json.member( "input_history" );
     json.start_object();
@@ -450,6 +451,7 @@ void uistatedata::deserialize( const JsonObject &jo )
     jo.read( "distraction_thirst", distraction_thirst );
     jo.read( "distraction_temperature", distraction_temperature );
     jo.read( "distraction_mutation", distraction_mutation );
+    jo.read( "numpad_navigation", numpad_navigation );
 
     if( !jo.read( "vmenu_show_items", vmenu_show_items ) ) {
         // This is an old save: 1 means view items, 2 means view monsters,
@@ -814,6 +816,13 @@ bool inventory_holster_preset::is_shown( const item_location &contained ) const
     if( contained->made_of( phase_id::LIQUID ) && !holster->is_watertight_container() ) {
         return false;
     }
+    if( !is_container( contained ) && contained->made_of( phase_id::GAS ) ) {
+        // spilt gas cannot be picked up
+        return false;
+    }
+    if( contained->made_of( phase_id::GAS ) && !holster->is_airtight_container() ) {
+        return false;
+    }
     item item_copy( *contained );
     item_copy.charges = 1;
     item_location parent = contained.has_parent() ? contained.parent_item() : item_location();
@@ -912,6 +921,20 @@ void inventory_column::move_selection_page( scroll_direction dir )
 
         index = next_index;
     } while( page_of( next_highlightable_index( index, dir ) ) == page_index() );
+
+    highlight( index, dir );
+}
+
+void inventory_column::scroll_selection_page( scroll_direction dir )
+{
+    size_t index = highlighted_index;
+
+    while( page_of( index = next_highlightable_index( index, dir ) ) == page_index() ) {
+
+        if( index == highlighted_index && page_of( index ) == page_index() ) {
+            break; // If flipped and still on the same page - no need to flip
+        }
+    }
 
     highlight( index, dir );
 }
@@ -1193,7 +1216,6 @@ void inventory_column::set_collapsed( inventory_entry &entry, const bool collaps
 
 void inventory_column::on_input( const inventory_input &input )
 {
-
     if( !empty() && active ) {
         if( input.action == "DOWN" ) {
             move_selection( scroll_direction::FORWARD );
@@ -1203,6 +1225,10 @@ void inventory_column::on_input( const inventory_input &input )
             move_selection_page( scroll_direction::FORWARD );
         } else if( input.action == "PAGE_UP" ) {
             move_selection_page( scroll_direction::BACKWARD );
+        } else if( input.action == "SCROLL_DOWN" ) {
+            scroll_selection_page( scroll_direction::FORWARD );
+        } else if( input.action == "SCROLL_UP" ) {
+            scroll_selection_page( scroll_direction::BACKWARD );
         } else if( input.action == "HOME" ) {
             highlight( 0, scroll_direction::FORWARD );
         } else if( input.action == "END" ) {
@@ -1232,9 +1258,9 @@ void inventory_column::on_change( const inventory_entry &/* entry */ )
 inventory_entry *inventory_column::add_entry( const inventory_entry &entry )
 {
     entries_t &dest = entry.is_hidden( hide_entries_override ) ? entries_hidden : entries;
-    if( std::find( dest.begin(), dest.end(), entry ) != dest.end() ) {
+    if( auto it = std::find( dest.begin(), dest.end(), entry ); it != dest.end() ) {
         debugmsg( "Tried to add a duplicate entry." );
-        return nullptr;
+        return &*it;
     }
     paging_is_valid = false;
     if( entry.is_item() ) {
@@ -1736,7 +1762,10 @@ size_t inventory_column::visible_cells() const
 
 selection_column::selection_column( const std::string &id, const std::string &name ) :
     inventory_column( selection_preset ),
-    selected_cat( id, no_translation( name ), 0 ) {}
+    selected_cat( id, no_translation( name ), 0 )
+{
+    hide_entries_override = { false };
+}
 
 selection_column::~selection_column() = default;
 
@@ -1888,6 +1917,60 @@ bool inventory_selector::add_entry_rec( inventory_column &entry_column,
 
     return vis_contents;
 }
+
+bool inventory_selector::drag_drop_item( item *sourceItem, item *destItem )
+{
+    if( sourceItem == destItem ) {
+        return false;
+    }
+    auto pockets = destItem->get_all_contained_pockets();
+    if( pockets.empty() ) {
+        popup( _( "Destination has no pockets." ) );
+        return false;
+    }
+    int base_move_cost = 0;
+    auto parentContainers = u.parents( *sourceItem );
+    for( item *parent : parentContainers ) {
+        base_move_cost += parent->obtain_cost( *sourceItem );
+    }
+    std::vector<item_pocket *> containable_pockets;
+    uilist action_menu;
+    action_menu.text = _( "Select pocket" );
+    int index = 0;
+    bool any_containable = false;
+    for( item_pocket *pocket : pockets ) {
+        std::string pocket_text = string_format( _( "%s - %s/%s | %d moves" ),
+                                  pocket->get_description().translated(), vol_to_info( "", "", pocket->contains_volume() ).sValue,
+                                  vol_to_info( "", "", pocket->max_contains_volume() ).sValue, pocket->moves() + base_move_cost );
+        action_menu.addentry( index++, true, std::optional<input_event>(), pocket_text );
+        ret_val<item_pocket::contain_code> contain = pocket->can_contain( *sourceItem );
+        if( contain.success() ) {
+            any_containable = true;
+        } else {
+            action_menu.entries.back().enabled = false;
+        }
+    }
+    if( !any_containable ) {
+        popup( string_format( _( "%s contains no pockets that can contain item." ),
+                              destItem->tname( 1, false, 0, false, false, false ) ) );
+        return false;
+    }
+    action_menu.query();
+    if( action_menu.ret >= 0 && static_cast<size_t>( action_menu.ret ) < pockets.size() ) {
+        ret_val<item_pocket::contain_code> contain = pockets[action_menu.ret]->can_contain( *sourceItem );
+        if( contain.success() ) {
+            // storage should mimick character inserting
+            u.store( pockets[action_menu.ret], *sourceItem, true, base_move_cost );
+            return true;
+        } else {
+            popup( _( "Cannot put item in pocket: %s" ), contain.str() );
+            return false;
+        }
+    }
+
+    return false;
+}
+
 
 bool inventory_selector::add_contained_items( item_location &container )
 {
@@ -2300,7 +2383,9 @@ size_t inventory_selector::get_layout_height() const
 
 size_t inventory_selector::get_header_height() const
 {
-    return display_stats || !hint.empty() ? 3 : 1;
+    return display_stats || !hint.empty()
+           ? std::max<size_t>( 3, 2 + std::count( hint.begin(), hint.end(), '\n' ) )
+           : 1;
 }
 
 size_t inventory_selector::get_header_min_width() const
@@ -2339,13 +2424,17 @@ void inventory_selector::draw_header( const catacurses::window &w ) const
     fold_and_print( w, point( border + 1, border + 1 ), getmaxx( w ) - 2 * ( border + 1 ), c_dark_gray,
                     hint );
 
-    mvwhline( w, point( border, border + get_header_height() ), LINE_OXOX, getmaxx( w ) - 2 * border );
+    int const bottom = border + get_header_height();
+    mvwhline( w, point( border, bottom ), LINE_OXOX, getmaxx( w ) - 2 * border );
 
     if( display_stats ) {
         size_t y = border;
         for( const std::string &elem : get_stats() ) {
             right_print( w, y++, border + 1, c_dark_gray, elem );
         }
+    }
+    if( uistate.numpad_navigation ) {
+        right_print( w, bottom, border + 1, c_dark_gray, _( "Numpad ON" ) );
     }
 }
 
@@ -2487,11 +2576,20 @@ void inventory_selector::refresh_window()
     wnoutrefresh( w_inv );
 }
 
-std::pair< bool, std::string > inventory_selector::query_string( const std::string &val )
+std::pair< bool, std::string > inventory_selector::query_string( const std::string &val,
+        bool end_with_toggle )
 {
     spopup = std::make_unique<string_input_popup>();
     spopup->max_length( 256 )
     .text( val );
+    if( end_with_toggle ) {
+        for( input_event const &iev : inp_mngr.get_input_for_action( "TOGGLE_ENTRY", "INVENTORY" ) ) {
+            spopup->add_callback( iev.get_first_input(), [this]() {
+                spopup->confirm();
+                return true;
+            } );
+        }
+    };
 
     shared_ptr_fast<ui_adaptor> current_ui = ui.lock();
     if( current_ui ) {
@@ -2521,9 +2619,10 @@ void inventory_selector::query_set_filter()
     }
 }
 
-int inventory_selector::query_count()
+int inventory_selector::query_count( char init, bool end_with_toggle )
 {
-    std::pair< bool, std::string > query = query_string( "" );
+    std::string sinit = init != 0 ? std::string( 1, init ) : std::string();
+    std::pair< bool, std::string > query = query_string( sinit, end_with_toggle );
     int ret = -1;
     if( query.first ) {
         try {
@@ -2662,8 +2761,12 @@ inventory_selector::inventory_selector( Character &u, const inventory_selector_p
     item_name_cache_users++;
     tp_start =
         std::chrono::time_point_cast<std::chrono::milliseconds>( std::chrono::steady_clock::now() );
+    ctxt.register_action( "COORDINATE" );
+    ctxt.register_action( "MOUSE_MOVE" );
     ctxt.register_action( "DOWN", to_translation( "Next item" ) );
     ctxt.register_action( "UP", to_translation( "Previous item" ) );
+    ctxt.register_action( "SCROLL_UP", to_translation( "Move cursor up" ) );
+    ctxt.register_action( "SCROLL_DOWN", to_translation( "Move cursor down" ) );
     ctxt.register_action( "PAGE_DOWN", to_translation( "Page down" ) );
     ctxt.register_action( "PAGE_UP", to_translation( "Page up" ) );
     ctxt.register_action( "NEXT_COLUMN", to_translation( "Next column" ) );
@@ -2674,9 +2777,11 @@ inventory_selector::inventory_selector( Character &u, const inventory_selector_p
     ctxt.register_action( "TOGGLE_FAVORITE", to_translation( "Toggle favorite" ) );
     ctxt.register_action( "HOME", to_translation( "Home" ) );
     ctxt.register_action( "END", to_translation( "End" ) );
+    ctxt.register_action( "CLICK_AND_DRAG" );
     ctxt.register_action( "SELECT" );
     ctxt.register_action( "HELP_KEYBINDINGS" );
     ctxt.register_action( "VIEW_CATEGORY_MODE" );
+    ctxt.register_action( "TOGGLE_NUMPAD_NAVIGATION" );
     ctxt.register_action( "ANY_INPUT" ); // For invlets
     ctxt.register_action( "INVENTORY_FILTER" );
     ctxt.register_action( "RESET_FILTER" );
@@ -2732,7 +2837,8 @@ inventory_input inventory_selector::process_input( const std::string &action, in
 {
     inventory_input res{ action, ch, nullptr };
 
-    if( res.action == "SELECT" ) {
+    if( res.action == "SELECT" || res.action == "COORDINATE" || res.action == "MOUSE_MOVE" ||
+        res.action == "CLICK_AND_DRAG" ) {
         std::optional<point> o_p = ctxt.get_coordinates_text( w_inv );
         if( o_p ) {
             point p = o_p.value();
@@ -2740,6 +2846,15 @@ inventory_input inventory_selector::process_input( const std::string &action, in
                 res.entry = find_entry_by_coordinate( p );
                 if( res.entry != nullptr && res.entry->is_selectable() ) {
                     return res;
+                }
+                if( res.entry == nullptr && res.action == "SELECT" ) {
+                    p.x++;
+                    res.entry = find_entry_by_coordinate( p );
+                    // if the user has clicked the coordinate just to the left of a pocket, they are clicking the pocket's expander icon
+                    if( res.entry != nullptr && res.entry->is_selectable() && res.entry->chevron ) {
+                        res.action = "SHOW_HIDE_CONTENTS";
+                        return res;
+                    }
                 }
             }
         }
@@ -2765,6 +2880,11 @@ void inventory_column::cycle_hide_override()
     }
 }
 
+void selection_column::cycle_hide_override()
+{
+    // never hide entries
+}
+
 void inventory_selector::on_input( const inventory_input &input )
 {
     if( input.action == "CATEGORY_SELECTION" ) {
@@ -2775,6 +2895,8 @@ void inventory_selector::on_input( const inventory_input &input )
         toggle_active_column( scroll_direction::FORWARD );
     } else if( input.action == "VIEW_CATEGORY_MODE" ) {
         toggle_categorize_contained();
+    } else if( input.action == "TOGGLE_NUMPAD_NAVIGATION" ) {
+        uistate.numpad_navigation = !uistate.numpad_navigation;
     } else if( input.action == "EXAMINE_CONTENTS" ) {
         const inventory_entry &selected = get_active_column().get_highlighted();
         if( selected ) {
@@ -3059,15 +3181,46 @@ item_location inventory_pick_selector::execute()
 {
     shared_ptr_fast<ui_adaptor> ui = create_or_get_ui_adaptor();
     debug_print_timer( tp_start );
+    item_location startDragItem;
+    bool dragActive = false;
     while( true ) {
         ui_manager::redraw();
         const inventory_input input = get_input();
 
         if( input.entry != nullptr ) {
-            if( highlight( input.entry->any_item() ) ) {
-                ui_manager::redraw();
+            if( drag_enabled && input.action == "CLICK_AND_DRAG" ) {
+                if( input.entry->is_item() ) {
+                    dragActive = true;
+                    startDragItem = input.entry->locations.front();
+                }
+            } else if( input.action == "MOUSE_MOVE" ) {
+                if( !dragActive && highlight( input.entry->any_item() ) ) {
+                    ui_manager::redraw();
+                }
+            } else if( input.action == "SELECT" ) {
+                dragActive = false;
+                item_location startDragItemCpy = startDragItem;
+                startDragItem = item_location();
+                item_location endDragItem;
+                if( input.entry->is_item() ) {
+                    endDragItem = input.entry->locations.front();
+                    if( startDragItemCpy && endDragItem && startDragItemCpy != endDragItem ) {
+                        if( drag_drop_item( startDragItemCpy.get_item(), endDragItem.get_item() ) ) {
+                            clear_items();
+                            add_character_items( u );
+                        }
+                    } else {
+                        return input.entry->any_item();
+                    }
+                }
+            } else if( input.action == "ANY_INPUT" ) {
+                return input.entry->any_item();
+            } else {
+                if( !dragActive && highlight( input.entry->any_item() ) ) {
+                    ui_manager::redraw();
+                }
+                on_input( input );
             }
-            return input.entry->any_item();
         } else if( input.action == "ORGANIZE_MENU" ) {
             u.worn.organize_items_menu();
             return item_location();
@@ -3367,8 +3520,12 @@ std::pair<const item *, const item *> inventory_compare_selector::execute()
 
         if( input.entry != nullptr ) {
             highlight( input.entry->any_item() );
-            toggle_entry( input.entry );
-            just_selected = input.entry;
+            if( input.action == "SELECT" || input.action == "ANY_INPUT" ) {
+                toggle_entry( input.entry );
+                just_selected = input.entry;
+            } else if( input.action != "MOUSE_MOVE" ) {
+                inventory_selector::on_input( input );
+            }
         } else if( input.action == "TOGGLE_ENTRY" ) {
             const auto selection( get_active_column().get_all_selected() );
 
@@ -3521,23 +3678,24 @@ void inventory_multiselector::toggle_categorize_contained()
 
 void inventory_multiselector::on_input( const inventory_input &input )
 {
-    bool const noMarkCountBound = ctxt.keys_bound_to( "MARK_WITH_COUNT" ).empty();
-
     if( input.entry != nullptr ) { // Single Item from mouse
         highlight( input.entry->any_item() );
-        toggle_entries( count );
-    } else if( input.action == "TOGGLE_NON_FAVORITE" ) {
+        if( input.action == "SELECT" || input.action == "ANY_INPUT" ) {
+            toggle_entries( count );
+        }
+    }
+    if( input.action == "TOGGLE_NON_FAVORITE" ) {
         toggle_entries( count, toggle_mode::NON_FAVORITE_NON_WORN );
-    } else if( input.action ==
-               "MARK_WITH_COUNT" ) { // Set count and mark selected with specific key
+    } else if( input.action == "MARK_WITH_COUNT" ) { // Set count and mark selected with specific key
         int query_result = query_count();
         if( query_result >= 0 ) {
             toggle_entries( query_result, toggle_mode::SELECTED );
         }
-    } else if( noMarkCountBound && input.ch >= '0' && input.ch <= '9' ) {
-        count = std::min( count, INT_MAX / 10 - 10 );
-        count *= 10;
-        count += input.ch - '0';
+    } else if( !uistate.numpad_navigation && input.ch >= '0' && input.ch <= '9' ) {
+        int query_result = query_count( input.ch, true );
+        if( query_result >= 0 ) {
+            toggle_entries( query_result, toggle_mode::SELECTED );
+        }
     } else if( input.action == "TOGGLE_ENTRY" ) { // Mark selected
         toggle_entries( count, toggle_mode::SELECTED );
     } else if( input.action == "INCREASE_COUNT" || input.action == "DECREASE_COUNT" ) {
@@ -3726,10 +3884,16 @@ pickup_selector::pickup_selector( Character &p, const inventory_selector_preset 
 #endif
 
     set_hint( string_format(
-                  _( "To pick x items, type a number before selecting.\nPress %s to examine, %s to wield, %s to wear." ),
-                  ctxt.get_desc( "EXAMINE" ),
-                  ctxt.get_desc( "WIELD" ),
-                  ctxt.get_desc( "WEAR" ) ) );
+                  _( "%s wield %s wear\n%s expand %s all\n%s examine %s/%s/%s quantity (or type number then %s)" ),
+                  colorize( ctxt.get_desc( "WIELD" ), c_yellow ),
+                  colorize( ctxt.get_desc( "WEAR" ), c_yellow ),
+                  colorize( ctxt.get_desc( "SHOW_HIDE_CONTENTS" ), c_yellow ),
+                  colorize( ctxt.get_desc( "SHOW_HIDE_CONTENTS_ALL" ), c_yellow ),
+                  colorize( ctxt.get_desc( "EXAMINE" ), c_yellow ),
+                  colorize( ctxt.get_desc( "MARK_WITH_COUNT" ), c_yellow ),
+                  colorize( ctxt.get_desc( "INCREASE_COUNT" ), c_yellow ),
+                  colorize( ctxt.get_desc( "DECREASE_COUNT" ), c_yellow ),
+                  colorize( ctxt.get_desc( "TOGGLE_ENTRY" ), c_yellow ) ) );
 }
 
 void pickup_selector::apply_selection( std::vector<drop_location> selection )
@@ -3965,14 +4129,16 @@ int inventory_examiner::execute()
             if( highlight( input.entry->any_item() ) ) {
                 ui_manager::redraw();
             }
-            return cleanup();
+            if( input.action == "SELECT" ) {
+                return cleanup();
+            }
         }
 
         if( input.action == "QUIT" || input.action == "CONFIRM" ) {
             return cleanup();
-        } else if( input.action == "PAGE_UP" ) {
+        } else if( input.action == "PAGE_UP" || input.action == "SCROLL_UP" ) {
             examine_window_scroll -= scroll_item_info_lines;
-        } else if( input.action == "PAGE_DOWN" ) {
+        } else if( input.action == "PAGE_DOWN" || input.action == "SCROLL_DOWN" ) {
             examine_window_scroll += scroll_item_info_lines;
         } else {
             ui->invalidate_ui(); //The player is probably doing something that requires updating the base window

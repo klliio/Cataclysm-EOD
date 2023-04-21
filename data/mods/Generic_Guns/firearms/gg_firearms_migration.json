@@ -200,7 +200,6 @@
   },
   {
     "id": [
-      "m1917lewis",
       "m1918",
       "acr_300blk",
       "hk417_13",
@@ -211,6 +210,7 @@
       "m16_auto_rifle",
       "m231pfw",
       "scar_h",
+      "m1917lewis",
       "scar_l",
       "sig_mcx_rattler_sbr",
       "rm51_assault_rifle",
@@ -380,5 +380,20 @@
     "id": [ "m26_mass_standalone" ],
     "type": "MIGRATION",
     "replace": "small_shotgun"
+  },
+  {
+    "id": [ "feral_militia_gun" ],
+    "type": "MIGRATION",
+    "replace": "feral_rifle"
+  },
+  {
+    "id": [ "feral_jackboot_gun" ],
+    "type": "MIGRATION",
+    "replace": "feral_shotgun"
+  },
+  {
+    "id": [ "feral_m9" ],
+    "type": "MIGRATION",
+    "replace": "feral_pistol"
   }
 ]

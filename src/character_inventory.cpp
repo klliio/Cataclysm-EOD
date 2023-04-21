@@ -301,7 +301,7 @@ bool Character::i_add_or_drop( item &it, int qty, const item *avoid,
                                const item *original_inventory_item )
 {
     bool retval = true;
-    bool drop = it.made_of( phase_id::LIQUID );
+    bool drop = it.made_of( phase_id::LIQUID ) || it.made_of( phase_id::GAS );
     bool add = it.is_gun() || !it.is_irremovable();
     inv->assign_empty_invlet( it, *this );
     map &here = get_map();
@@ -510,7 +510,7 @@ void Character::drop_invalid_inventory()
     bool dropped_liquid = false;
     for( const std::list<item> *stack : inv->const_slice() ) {
         const item &it = stack->front();
-        if( it.made_of( phase_id::LIQUID ) ) {
+        if( it.made_of( phase_id::LIQUID ) || it.made_of( phase_id::GAS ) ) {
             dropped_liquid = true;
             get_map().add_item_or_charges( pos(), it );
             // must be last

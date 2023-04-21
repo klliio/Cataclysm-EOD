@@ -1996,6 +1996,9 @@ std::list<item> Character::consume_items( map &m, const comp_selection<item_comp
             }
         }
     }
+    for( item &it : ret ) {
+        it.spill_contents( *this );
+    }
     empty_buckets( *this );
     return ret;
 }
@@ -2678,7 +2681,7 @@ void Character::complete_disassemble( item_location &target, const recipe &dis )
             if( dis_item.count_by_charges() ) {
                 compcount *= activity.position;
             }
-            const bool is_liquid = newit.made_of( phase_id::LIQUID );
+            const bool is_liquid = newit.made_of( phase_id::LIQUID ) || newit.made_of( phase_id::GAS );
             // Compress liquids and counted-by-charges items into one item,
             // they are added together on the map anyway and handle_liquid
             // should only be called once to put it all into a container at once.
@@ -2719,7 +2722,7 @@ void Character::complete_disassemble( item_location &target, const recipe &dis )
     }
 
     // Item damage_level (0-4) reduces chance of success (0.8^lvl =~ 100%, 80%, 64%, 51%, 41%)
-    const float component_success_chance = std::min( std::pow( 0.8, dis_item.damage_level() ), 1.0 );
+    const float component_success_chance = std::pow( 0.8, dis_item.damage_level() );
 
     // Recovered component items to be dropped
     std::list<item> drop_items;

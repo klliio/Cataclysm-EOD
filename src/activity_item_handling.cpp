@@ -215,7 +215,7 @@ static void put_into_vehicle( Character &c, item_drop_reason reason, const std::
             continue;
         }
 
-        if( it.made_of( phase_id::LIQUID ) ) {
+        if( it.made_of( phase_id::LIQUID ) || it.made_of( phase_id::GAS ) ) {
             here.add_item_or_charges( c.pos(), it );
             it.charges = 0;
         }
@@ -3340,7 +3340,7 @@ bool try_fuel_fire( player_activity &act, Character &you, const bool starting_fi
         it.simulate_burn( fd );
         // Unconstrained fires grow below -50_minutes age
         if( !contained && fire_age < -40_minutes && fd.fuel_produced > 1.0f &&
-            !it.made_of( phase_id::LIQUID ) ) {
+            !it.made_of( phase_id::LIQUID ) && !it.made_of( phase_id::GAS ) ) {
             // Too much - we don't want a firestorm!
             // Move item back to refueling pile
             // Note: move_item() handles messages (they're the generic "you drop x")
@@ -3358,7 +3358,7 @@ bool try_fuel_fire( player_activity &act, Character &you, const bool starting_fi
     // We need to move fuel from stash to fire
     map_stack potential_fuel = here.i_at( *refuel_spot );
     for( item &it : potential_fuel ) {
-        if( it.made_of( phase_id::LIQUID ) ) {
+        if( it.made_of( phase_id::LIQUID ) || it.made_of( phase_id::GAS ) ) {
             continue;
         }
 

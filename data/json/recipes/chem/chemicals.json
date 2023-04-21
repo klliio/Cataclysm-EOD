@@ -331,7 +331,7 @@
       [ [ "chem_sodium", 142 ] ],
       [ [ "ammonia_liquid", 1 ] ],
       [ [ "chem_ammonium_nitrate", 238 ] ],
-      [ [ "lead", 103 ] ],
+      [ [ "lead", 62 ] ],
       [ [ "chem_nitric_acid", 1 ] ]
     ]
   },
@@ -346,12 +346,12 @@
     "difficulty": 5,
     "time": "15 m",
     "autolearn": true,
-    "tools": [ [ [ "ammonia_machine_reactor", 3105 ] ], [ [ "ammonia_machine_pipework", 345 ] ] ],
     "proficiencies": [
       { "proficiency": "prof_intro_chemistry" },
       { "proficiency": "prof_intro_chem_synth" },
       { "proficiency": "prof_inorganic_chemistry" }
     ],
+    "tools": [ [ [ "ammonia_machine_reactor", 3105 ] ], [ [ "ammonia_machine_pipework", 345 ] ] ],
     "components": [ [ [ "gas_hydrogen", 1512 ] ], [ [ "gas_nitrogen", 483 ] ] ]
   }
 ]
