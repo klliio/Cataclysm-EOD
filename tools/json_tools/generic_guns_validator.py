@@ -11,6 +11,7 @@ GG_DIR = os.path.normpath(os.path.join(
 # We might want to also warn about grenades and rockets, but leaving them
 # whitelisted for now.
 AMMO_TYPE_WHITELIST = {
+    'butane',
     '40x46mm',  # Grenade
     'atgm',  # Rocket
     'barb',
