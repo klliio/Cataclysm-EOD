@@ -247,6 +247,7 @@ extern const flag_id flag_PLACE_RANDOMLY;
 extern const flag_id flag_POCKETS;
 extern const flag_id flag_POLEARM;
 extern const flag_id flag_POWERARMOR_BASE;
+extern const flag_id flag_POWERARMOR_COMPATIBLE;
 extern const flag_id flag_POWERARMOR_COMPONENT;
 extern const flag_id flag_POWERARMOR_NOACTIVE;
 extern const flag_id flag_POWERED;

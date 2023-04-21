@@ -708,11 +708,7 @@
     "book_learn": [ [ "cookbook", 6 ], [ "manual_canning", 4 ] ],
     "container": "jar_glass_sealed",
     "charges": 8,
-    "components": [
-      [ [ "water_clean", 1 ] ],
-      [ [ "jar_glass_sealed", 1 ] ],
-      [ [ "liver", 8 ], [ "human_liver", 8 ], [ "demihuman_liver", 8 ] ]
-    ]
+    "components": [ [ [ "water_clean", 1 ] ], [ [ "jar_glass_sealed", 1 ] ], [ [ "meat_liver_raw", 8, "LIST" ] ] ]
   },
   {
     "type": "recipe",
@@ -731,11 +727,7 @@
     "book_learn": [ [ "cookbook", 6 ], [ "manual_canning", 4 ] ],
     "container": "jar_3l_glass_sealed",
     "charges": 48,
-    "components": [
-      [ [ "water_clean", 6 ] ],
-      [ [ "jar_3l_glass_sealed", 1 ] ],
-      [ [ "liver", 48 ], [ "human_liver", 48 ], [ "demihuman_liver", 48 ] ]
-    ]
+    "components": [ [ [ "water_clean", 6 ] ], [ [ "jar_3l_glass_sealed", 1 ] ], [ [ "meat_liver_raw", 48, "LIST" ] ] ]
   },
   {
     "type": "recipe",
@@ -2758,7 +2750,7 @@
     "container": "canister_empty",
     "contained": true,
     "tools": [ [ [ "surface_heat", 5, "LIST" ] ] ],
-    "components": [ [ [ "water_clean", 1 ] ], [ [ "liver", 4 ], [ "human_liver", 4 ], [ "demihuman_liver", 4 ] ] ],
+    "components": [ [ [ "water_clean", 1 ] ], [ [ "meat_liver_raw", 4, "LIST" ] ] ],
     "book_learn": [ [ "cookbook", 6 ], [ "manual_canning", 4 ] ],
     "charges": 4,
     "//1": "tincan canning is measured in 0.25 liter quantities, so 2u of canning_metal.",
@@ -2777,7 +2769,7 @@
     "batch_time_factors": [ 83, 5 ],
     "container": "can_medium",
     "contained": true,
-    "components": [ [ [ "water_clean", 1 ] ], [ [ "liver", 8 ], [ "human_liver", 8 ], [ "demihuman_liver", 8 ] ] ],
+    "components": [ [ [ "water_clean", 1 ] ], [ [ "meat_liver_raw", 8, "LIST" ] ] ],
     "book_learn": [ [ "cookbook", 6 ], [ "manual_canning", 4 ] ],
     "charges": 8,
     "using": [ [ "canning_metal", 2, "LIST" ], [ "tincan_medium", 1 ] ],
@@ -2797,7 +2789,7 @@
     "batch_time_factors": [ 83, 5 ],
     "container": "can_food_big",
     "contained": true,
-    "components": [ [ [ "water_clean", 6 ] ], [ [ "liver", 48 ], [ "human_liver", 48 ], [ "demihuman_liver", 48 ] ] ],
+    "components": [ [ [ "water_clean", 6 ] ], [ [ "meat_liver_raw", 48, "LIST" ] ] ],
     "book_learn": [ [ "cookbook", 6 ], [ "manual_canning", 4 ] ],
     "charges": 48,
     "using": [ [ "canning_metal", 12, "LIST" ], [ "tincan_large", 1 ] ],

@@ -550,7 +550,7 @@
   {
     "id": "butane_tank",
     "type": "MAGAZINE",
-    "//": "based on a 24lb N-butane tank such as https://www.usalab.com/24lb-n-butane-tank/.  That much butane occupies about 19 liters.  Roughly analogous to 5 gal propane tanks.",
+    "//": "based on a 24lb N-butane tank such as https://www.usalab.com/24lb-n-butane-tank/.  That much butane occupies about 19 liters.  Roughly analogous to 5 gal propane tanks.  Reloading butane tools with it currently doesn't work as intended; butane should first be unloaded into a gas tank, and then it can be loaded into the tool.",
     "name": { "str": "butane tank" },
     "description": "A tank of compressed butane.  Aside from its practicality as fuel, it can also be used to extract essential oils from organic material.",
     "weight": "7500 g",
@@ -563,7 +563,7 @@
     "material": [ "steel", "plastic" ],
     "symbol": ";",
     "color": "dark_gray",
-    "charges_per_use": 1,
+    "ammo_type": [ "butane" ],
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE",
@@ -574,7 +574,6 @@
       }
     ],
     "looks_like": "oxygen_tank",
-    "flags": [  ],
     "explosion": {
       "power": 90100,
       "distance_factor": 0.5,

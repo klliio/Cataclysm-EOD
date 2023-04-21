@@ -417,7 +417,7 @@
   {
     "id": "meat_liver",
     "type": "requirement",
-    "components": [ [ [ "liver", 1 ], [ "human_liver", 1 ], [ "demihuman_liver", 1 ], [ "canned_liver", 1 ], [ "mutant_liver", 1 ] ] ]
+    "components": [ [ [ "meat_liver_raw", 1, "LIST" ], [ "canned_liver", 1 ] ] ]
   },
   {
     "id": "meat_kidney",

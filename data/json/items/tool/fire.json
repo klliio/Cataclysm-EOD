@@ -300,7 +300,14 @@
     "ammo": [ "butane" ],
     "charges_per_use": 1,
     "pocket_data": [
-      { "pocket_type": "MAGAZINE", "rigid": true, "watertight": true, "airtight": true, "ammo_restriction": { "butane": 50 } }
+      {
+        "pocket_type": "MAGAZINE",
+        "rigid": true,
+        "watertight": true,
+        "airtight": true,
+        "ammo_restriction": { "butane": 50 },
+        "allowed_speedloaders": [ "butane_can" ]
+      }
     ],
     "use_action": { "type": "firestarter", "moves": 50, "moves_slow": 500 },
     "flags": [ "FIRESTARTER" ]

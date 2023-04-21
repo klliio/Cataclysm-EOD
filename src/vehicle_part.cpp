@@ -432,7 +432,8 @@ void vehicle_part::process_contents( map &here, const tripoint &pos, const bool 
 
 bool vehicle_part::fill_with( item &liquid, int qty )
 {
-    if( ( is_tank() && !liquid.made_of( phase_id::LIQUID ) ) || !can_reload( liquid ) ) {
+    if( ( is_tank() && !( liquid.made_of( phase_id::LIQUID ) || liquid.made_of( phase_id::GAS ) ) ) ||
+        !can_reload( liquid ) ) {
         return false;
     }
 

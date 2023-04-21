@@ -214,8 +214,7 @@ static bool pick_one_up( item_location &loc, int quantity, bool &got_water, bool
                 got_frozen_liquid = true;
             }
         }
-    } else if( newit.made_of_from_type( phase_id::LIQUID ) ||
-               newit.made_of_from_type( phase_id::GAS ) ) {
+    } else if( newit.made_of_from_type( phase_id::LIQUID ) ) {
         got_water = true;
     } else if( newit.made_of_from_type( phase_id::GAS ) ) {
         got_gas = true;

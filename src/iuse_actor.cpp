@@ -1923,10 +1923,10 @@ bool cauterize_actor::cauterize_effect( Character &p, item &it, bool force )
     return false;
 }
 
-cata::optional<int> cauterize_actor::use( Character &p, item &it, bool t, const tripoint & ) const
+std::optional<int> cauterize_actor::use( Character &p, item &it, bool t, const tripoint & ) const
 {
     if( t ) {
-        return cata::nullopt;
+        return std::nullopt;
     }
     bool did_cauterize = false;
 
@@ -1939,7 +1939,7 @@ cata::optional<int> cauterize_actor::use( Character &p, item &it, bool t, const 
     }
 
     if( !did_cauterize ) {
-        return cata::nullopt;
+        return std::nullopt;
     }
 
     if( flame ) {

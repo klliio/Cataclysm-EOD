@@ -651,7 +651,8 @@ class item_location::impl::item_in_container : public item_location::impl
                 // it's liable to end up back in the same pocket, where shenanigans ensue
                 return item_location( container, target() );
             }
-            if( target()->made_of( phase_id::LIQUID ) && container->num_item_stacks() == 1 ) {
+            if( ( target()->made_of( phase_id::LIQUID ) || target()->made_of( phase_id::GAS ) ) &&
+                container->num_item_stacks() == 1 ) {
                 item_location inv =
                     ch.i_add( *container, should_stack, nullptr, &*container, false );
                 if( inv == item_location::nowhere ) {

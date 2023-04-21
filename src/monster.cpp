@@ -2495,7 +2495,8 @@ void monster::process_turn()
             for( const tripoint &zap : here.points_in_radius( pos(), 1 ) ) {
                 const map_stack items = here.i_at( zap );
                 for( const item &item : items ) {
-                    if( item.made_of( phase_id::LIQUID ) && item.flammable() ) { // start a fire!
+                    if( ( item.made_of( phase_id::LIQUID ) || item.made_of( phase_id::GAS ) ) &&
+                        item.flammable() ) { // start a fire!
                         here.add_field( zap, fd_fire, 2, 1_minutes );
                         sounds::sound( pos(), 30, sounds::sound_t::combat,  _( "fwoosh!" ), false, "fire", "ignition" );
                         break;

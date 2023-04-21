@@ -91,8 +91,7 @@ std::string itype::get_item_type_string() const
 std::string itype::nname( unsigned int quantity ) const
 {
     // Always use singular form for liquids.
-    // (Maybe gases too?  There are no gases at the moment)
-    if( phase == phase_id::LIQUID ) {
+    if( phase == phase_id::LIQUID || phase == phase_id::GAS ) {
         quantity = 1;
     }
     return name.translated( quantity );

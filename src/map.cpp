@@ -3572,7 +3572,7 @@ void map::smash_items( const tripoint &p, const int power, const std::string &ca
     std::vector<item> contents;
     map_stack items = i_at( p );
     for( auto i = items.begin(); i != items.end(); ) {
-        if( i->made_of( phase_id::LIQUID ) ) {
+        if( i->made_of( phase_id::LIQUID ) || i->made_of( phase_id::GAS ) ) {
             i++;
             continue;
         }
@@ -4972,7 +4972,7 @@ item &map::add_item_or_charges( const tripoint_bub_ms &pos, item obj, bool overf
 
 float map::item_category_spawn_rate( const item &itm )
 {
-    const item_category_id &cat = itm.get_category_of_contents().id;
+    const std::string &cat = itm.get_category_of_contents().id.c_str();
     const float spawn_rate = get_option<float>( "SPAWN_RATE_" + cat );
     return spawn_rate > 1.0f ? roll_remainder( spawn_rate ) : spawn_rate;
 }
@@ -5652,7 +5652,8 @@ static void use_charges_from_furn( const furn_t &f, const itype_id &type, int &q
         auto current_item = item_list.begin();
         for( ; current_item != item_list.end(); ++current_item ) {
             // looking for a liquid that matches
-            if( filter( *current_item ) && current_item->made_of( phase_id::LIQUID ) &&
+            if( filter( *current_item ) && ( current_item->made_of( phase_id::LIQUID ) ||
+                                             current_item->made_of( phase_id::GAS ) ) &&
                 type == current_item->typeId() ) {
                 ret.push_back( *current_item );
                 if( current_item->charges - quantity > 0 ) {

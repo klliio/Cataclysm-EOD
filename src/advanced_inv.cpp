@@ -1865,7 +1865,7 @@ bool advanced_inventory::move_content( item &src_container, item &dest_container
 
     item &src_contents = src_container.legacy_front();
 
-    if( !src_contents.made_of( phase_id::LIQUID ) ) {
+    if( !src_contents.made_of( phase_id::LIQUID ) && !src_contents.made_of( phase_id::GAS ) ) {
         popup( _( "You can unload only liquids into the target container." ) );
         return false;
     }
@@ -1910,8 +1910,7 @@ bool advanced_inventory::query_charges( aim_location destarea, const advanced_in
     amount = input_amount;
 
     // Includes moving from/to inventory and around on the map.
-    if( ( it.made_of_from_type( phase_id::LIQUID ) || it.made_of_from_type( phase_id::GAS ) ) &&
-        !it.is_frozen_liquid() ) {
+    if( it.made_of_from_type( phase_id::LIQUID ) && !it.is_frozen_liquid() ) {
         popup( _( "Spilt liquids cannot be picked back up.  Try mopping them up instead." ) );
         return false;
     }

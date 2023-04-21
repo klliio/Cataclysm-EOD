@@ -960,7 +960,7 @@ std::optional<side> item::covers_overlaps( const item &rhs ) const
     }
 
     if( !layer_overlap ) {
-        return cata::nullopt;
+        return std::nullopt;
     }
 
     body_part_set this_covers;
@@ -6496,7 +6496,7 @@ std::string item::tname( unsigned int quantity, bool with_prefix, unsigned int t
     if( with_contents_full && !contents.empty() && contents_only_one_type() ) {
         const item &contents_item = contents.first_item();
         const unsigned contents_count =
-            ( ( contents_item.made_of( phase_id::LIQUID ) ||
+            ( ( contents_item.made_of( phase_id::LIQUID ) || contents_item.made_of( phase_id::GAS ) ||
                 contents_item.is_food() || contents_item.count_by_charges() ) &&
               contents_item.charges > 1 )
             ? contents_item.charges
@@ -6904,7 +6904,7 @@ int item::price_no_contents( bool practical, std::optional<int> price_override )
         price -= price * static_cast< double >( damage_level() ) / 5;
     }
 
-    if( count_by_charges() || made_of( phase_id::LIQUID ) ) {
+    if( count_by_charges() || made_of( phase_id::LIQUID ) || made_of( phase_id::GAS ) ) {
         // price from json data is for default-sized stack
         price *= charges / static_cast< double >( type->stack_size );
 
@@ -7222,7 +7222,7 @@ units::volume item::volume( bool integral, bool ignore_contents, int charges_in_
         ret = type->volume;
     }
 
-    if( count_by_charges() || made_of( phase_id::LIQUID ) ) {
+    if( count_by_charges() || made_of( phase_id::LIQUID ) || made_of( phase_id::GAS ) ) {
         units::quantity<int64_t, units::volume_in_milliliter_tag> num = ret * static_cast<int64_t>
                 ( charges_in_vol );
         if( type->stack_size <= 0 ) {
@@ -11106,12 +11106,14 @@ void item::reload_option::qty( int val )
 {
     bool ammo_in_container = ammo->is_ammo_container();
     bool ammo_in_liquid_container = ammo->is_watertight_container();
+    bool ammo_in_gas_container = ammo->is_airtight_container();
     item &ammo_obj = ( ammo_in_container || ammo_in_liquid_container ) ?
                      // this is probably not the right way to do this. there is no guarantee whatsoever that ammo_obj will be an ammo
                      *ammo->contents.all_items_top( item_pocket::pocket_type::CONTAINER ).front() : *ammo;
 
     if( ( ammo_in_container && !ammo_obj.is_ammo() ) ||
-        ( ammo_in_liquid_container && !ammo_obj.made_of( phase_id::LIQUID ) ) ) {
+        ( ammo_in_liquid_container && !ammo_obj.made_of( phase_id::LIQUID ) ) || ( ammo_in_gas_container &&
+                !ammo_obj.made_of( phase_id::GAS ) ) ) {
         debugmsg( "Invalid reload option: %s", ammo_obj.tname() );
         return;
     }
@@ -13026,6 +13028,14 @@ bool item::leak( map &here, Character *carrier, const tripoint &pos, item_pocket
             return true;
         }
         return true;
+    } else if( this->made_of( phase_id::GAS ) ) {
+        if( pocke ) {
+            if( pocke->airtight() ) {
+                return false;
+            }
+            return true;
+        }
+        return true;
     }
     return false;
 }
@@ -13377,7 +13387,8 @@ bool item::is_reloadable() const
             if( pocket->full( false ) || !pocket->watertight() ) {
                 continue;
             }
-            if( pocket->empty() || pocket->front().made_of( phase_id::LIQUID ) ) {
+            if( pocket->empty() || pocket->front().made_of( phase_id::LIQUID ) ||
+                pocket->front().made_of( phase_id::GAS ) ) {
                 return true;
             }
         }

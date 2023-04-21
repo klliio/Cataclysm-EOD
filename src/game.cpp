@@ -5529,7 +5529,7 @@ bool game::forced_door_closing( const tripoint &p, const ter_id &door_type, int 
     }
     if( bash_dmg == 0 ) {
         for( item &elem : m.i_at( point( x, y ) ) ) {
-            if( elem.made_of( phase_id::LIQUID ) ) {
+            if( elem.made_of( phase_id::LIQUID ) || elem.made_of( phase_id::GAS ) ) {
                 // Liquids are OK, will be destroyed later
                 continue;
             }
@@ -5546,7 +5546,7 @@ bool game::forced_door_closing( const tripoint &p, const ter_id &door_type, int 
     if( m.has_flag( ter_furn_flag::TFLAG_NOITEM, point( x, y ) ) ) {
         map_stack items = m.i_at( point( x, y ) );
         for( map_stack::iterator it = items.begin(); it != items.end(); ) {
-            if( it->made_of( phase_id::LIQUID ) ) {
+            if( it->made_of( phase_id::LIQUID ) || it->made_of( phase_id::GAS ) ) {
                 it = items.erase( it );
                 continue;
             }
@@ -10929,7 +10929,8 @@ int game::grabbed_furn_move_time( const tripoint &dp )
 
     const bool only_liquid_items = std::all_of( m.i_at( fdest ).begin(), m.i_at( fdest ).end(),
     [&]( item & liquid_item ) {
-        return liquid_item.made_of_from_type( phase_id::LIQUID );
+        return liquid_item.made_of_from_type( phase_id::LIQUID ) ||
+               liquid_item.made_of_from_type( phase_id::GAS );
     } );
 
     const bool dst_item_ok = !m.has_flag( ter_furn_flag::TFLAG_NOITEM, fdest ) &&
@@ -11019,7 +11020,8 @@ bool game::grabbed_furn_move( const tripoint &dp )
 
     const bool only_liquid_items = std::all_of( m.i_at( fdest ).begin(), m.i_at( fdest ).end(),
     [&]( item & liquid_item ) {
-        return liquid_item.made_of_from_type( phase_id::LIQUID );
+        return liquid_item.made_of_from_type( phase_id::LIQUID ) ||
+               liquid_item.made_of_from_type( phase_id::GAS );
     } );
 
     const bool dst_item_ok = !m.has_flag( ter_furn_flag::TFLAG_NOITEM, fdest ) &&

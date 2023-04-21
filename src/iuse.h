@@ -149,6 +149,7 @@ std::optional<int> electricstorage( Character *, item *, bool, const tripoint & 
 std::optional<int> ebooksave( Character *, item *, bool, const tripoint & );
 std::optional<int> ebookread( Character *, item *, bool, const tripoint & );
 std::optional<int> makemound( Character *, item *, bool, const tripoint & );
+std::optional<int> mangle( Character *, item *, bool, const tripoint & );
 std::optional<int> manage_exosuit( Character *, item *, bool, const tripoint & );
 std::optional<int> melatonin_tablet( Character *, item *, bool, const tripoint & );
 std::optional<int> mininuke( Character *, item *, bool, const tripoint & );
@@ -188,6 +189,7 @@ std::optional<int> solarpack_off( Character *, item *, bool, const tripoint & );
 std::optional<int> spray_can( Character *, item *, bool, const tripoint & );
 std::optional<int> stimpack( Character *, item *, bool, const tripoint & );
 std::optional<int> strong_antibiotic( Character *, item *, bool, const tripoint & );
+std::optional<int> suture( Character *, item *, bool, const tripoint & );
 std::optional<int> talking_doll( Character *, item *, bool, const tripoint & );
 std::optional<int> tazer( Character *, item *, bool, const tripoint & );
 std::optional<int> tazer2( Character *, item *, bool, const tripoint & );

@@ -430,6 +430,7 @@ static const trait_id trait_LEG_TENT_BRACE( "LEG_TENT_BRACE" );
 static const trait_id trait_LIGHTSTEP( "LIGHTSTEP" );
 static const trait_id trait_LOVES_BOOKS( "LOVES_BOOKS" );
 static const trait_id trait_MASOCHIST( "MASOCHIST" );
+static const trait_id trait_MASOCHIST_MED( "MASOCHIST_MED" );
 static const trait_id trait_MUTE( "MUTE" );
 static const trait_id trait_M_IMMUNE( "M_IMMUNE" );
 static const trait_id trait_M_SKIN3( "M_SKIN3" );
@@ -439,6 +440,7 @@ static const trait_id trait_NIGHTVISION3( "NIGHTVISION3" );
 static const trait_id trait_NOMAD( "NOMAD" );
 static const trait_id trait_NOMAD2( "NOMAD2" );
 static const trait_id trait_NOMAD3( "NOMAD3" );
+static const trait_id trait_NOPAIN( "NOPAIN" );
 static const trait_id trait_PACIFIST( "PACIFIST" );
 static const trait_id trait_PADDED_FEET( "PADDED_FEET" );
 static const trait_id trait_PARAIMMUNE( "PARAIMMUNE" );
@@ -7309,6 +7311,9 @@ ret_val<void> Character::can_wield( const item &it ) const
     if( it.made_of( phase_id::LIQUID ) ) {
         return ret_val<void>::make_failure( _( "Can't wield spilt liquids." ) );
     }
+    if( it.made_of( phase_id::GAS ) ) {
+        return ret_val<void>::make_failure( _( "Can't wield gases." ) );
+    }
     if( it.is_frozen_liquid() && !it.has_flag( flag_SHREDDED ) ) {
         return ret_val<void>::make_failure( _( "Can't wield unbroken frozen liquids." ) );
     }
@@ -11500,7 +11505,7 @@ void Character::leak_items()
         if( weapon.leak( get_map(), this, pos() ) ) {
             weapon.spill_contents( pos() );
         }
-    } else if( weapon.made_of( phase_id::LIQUID ) ) {
+    } else if( weapon.made_of( phase_id::LIQUID ) || weapon.made_of( phase_id::GAS ) ) {
         if( weapon.leak( get_map(), this, pos() ) ) {
             get_map().add_item_or_charges( pos(), weapon );
             removed_items.emplace_back( *this, &weapon );
@@ -11509,7 +11514,8 @@ void Character::leak_items()
     }
 
     for( item_location it : top_items_loc() ) {
-        if( !it || ( !it->is_container() && !it->made_of( phase_id::LIQUID ) ) ) {
+        if( !it || ( !it->is_container() && !it->made_of( phase_id::LIQUID ) &&
+                     !it->made_of( phase_id::GAS ) ) ) {
             continue;
         }
         if( it->leak( get_map(), this, pos() ) ) {

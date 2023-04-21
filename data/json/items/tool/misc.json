@@ -47,8 +47,8 @@
   {
     "type": "MAGAZINE",
     "id": "butane_can",
-    "//": "8 oz canister of butane - 227g butane",
-    "name": { "str": "can of butane", "str_pl": "cans of butane" },
+    "//": "8 oz canister of butane - 227g butane.  Reloading butane tools with it currently doesn't work as intended; butane should first be unloaded into a gas tank, and then it can be loaded into the tool.",
+    "name": { "str": "butane can" },
     "description": "A non-refillable can of butane with an adapter for refilling lighters.  It could be useful as a fuel, but also as a solvent or chemical reagent.",
     "symbol": "!",
     "color": "dark_gray",
@@ -57,8 +57,16 @@
     "volume": "500 ml",
     "price": 1500,
     "price_postapoc": 250,
-    "charges_per_use": 1,
-    "pocket_data": [ { "pocket_type": "MAGAZINE", "watertight": true, "rigid": true, "ammo_restriction": { "butane": 400 } } ],
+    "ammo_type": [ "butane" ],
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE",
+        "watertight": true,
+        "airtight": true,
+        "rigid": true,
+        "ammo_restriction": { "butane": 400 }
+      }
+    ],
     "material": [ "aluminum" ],
     "flags": [ "NO_RELOAD", "GAS_TANK" ],
     "explosion": {

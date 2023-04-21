@@ -29,7 +29,6 @@
 #include "mapgen_functions.h"
 #include "npc.h"
 #include "options.h"
-#include "optional.h"
 #include "output.h"
 #include "proficiency.h"
 #include "recipe_dictionary.h"
@@ -639,16 +638,16 @@ void recipe::finalize()
 
         rpof.time_multiplier = ( ( rpof.time_multiplier - 1 ) * get_option<float>( "PROF_TIME_MOD" ) ) + 1;
 
-        if( rpof.fail_multiplier == 0.0f ) {
-            rpof.fail_multiplier = rpof.id->default_fail_multiplier();
+        if( !rpof._skill_penalty_assigned ) {
+            rpof.skill_penalty = rpof.id->default_skill_penalty();
         }
 
-        rpof.fail_multiplier = ( ( rpof.fail_multiplier - 1 ) * get_option<float>( "PROF_FAIL_MOD" ) ) + 1;
-
-        if( rpof.fail_multiplier < 1.0f && rpof.id->default_fail_multiplier() < 1.0f ) {
-            debugmsg( "proficiency %s provides a fail bonus for not being known in recipe %s  Fail multiplier: %s Default multiplier: %s",
-                      rpof.id.str(), ident_.str(), rpof.fail_multiplier, rpof.id->default_fail_multiplier() );
+        if( rpof.skill_penalty < 0.f && rpof.id->default_skill_penalty() < 0.f ) {
+            debugmsg( "proficiency %s provides a skill bonus for not being known in recipe %s skill penalty: %g default multiplier: %g",
+                      rpof.id.str(), ident_.str(), rpof.skill_penalty, rpof.id->default_skill_penalty() );
         }
+
+        rpof.skill_penalty = rpof.skill_penalty * get_option<float>( "PROF_FAIL_MOD" );
 
         // Now that we've done the error checking, log that a proficiency with this id is used
         if( rpof.required ) {

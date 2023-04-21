@@ -959,7 +959,7 @@ static bool butchery_drops_harvest( item *corpse_item, const mtype &mt, Characte
                 you.add_msg_if_player( m_bad, _( "You fail to harvest: %s" ), drop->nname( 1 ) );
                 continue;
             }
-            if( drop->phase == phase_id::LIQUID ) {
+            if( drop->phase == phase_id::LIQUID || drop->phase == phase_id::GAS ) {
                 item obj( drop, calendar::turn, roll );
                 if( obj.has_temperature() ) {
                     obj.set_item_temperature( corpse_item->temperature );

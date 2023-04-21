@@ -384,6 +384,7 @@ static const trait_id trait_MARLOSS_AVOID( "MARLOSS_AVOID" );
 static const trait_id trait_MARLOSS_BLUE( "MARLOSS_BLUE" );
 static const trait_id trait_MARLOSS_YELLOW( "MARLOSS_YELLOW" );
 static const trait_id trait_M_DEPENDENT( "M_DEPENDENT" );
+static const trait_id trait_NOPAIN( "NOPAIN" );
 static const trait_id trait_PSYCHOPATH( "PSYCHOPATH" );
 static const trait_id trait_PYROMANIA( "PYROMANIA" );
 static const trait_id trait_SPIRITUAL( "SPIRITUAL" );
@@ -558,7 +559,7 @@ std::optional<int> iuse::alcohol_strong( Character *p, item *it, bool, const tri
     return alcohol( *p, *it, 2 );
 }
 
-cata::optional<int> iuse::laudanum( Character *p, item *it, bool, const tripoint & )
+std::optional<int> iuse::laudanum( Character *p, item *it, bool, const tripoint & )
 {
     p->add_effect( effect_took_flumed, 10_hours );
     p->add_effect( effect_pkill2, 18_minutes );
@@ -2430,11 +2431,11 @@ std::optional<int> iuse::pack_item( Character *p, item *it, bool t, const tripoi
     return 0;
 }
 
-static cata::optional<int> cauterize_elec( Character &p, item &it )
+static std::optional<int> cauterize_elec( Character &p, item &it )
 {
     if( it.ammo_remaining() == 0 ) {
         p.add_msg_if_player( m_info, _( "You need the tool to be charged to cauterize wounds." ) );
-        return cata::nullopt;
+        return std::nullopt;
     }
     if( !p.has_effect( effect_bleed ) ) {
         if( p.enjoys_pain() ) {
@@ -2444,28 +2445,28 @@ static cata::optional<int> cauterize_elec( Character &p, item &it )
         } else {
             p.add_msg_if_player( m_info,
                                  _( "You aren't bleeding; there is no need to cauterize yourself." ) );
-            return cata::nullopt;
+            return std::nullopt;
         }
     } else {
         return cauterize_actor::cauterize_effect( p, it, true ) ? 1 : 0;
     }
-    return cata::nullopt;
+    return std::nullopt;
 }
 
-static cata::optional<int> suture_act( Character &p, item &it )
+static std::optional<int> suture_act( Character &p, item &it )
 {
     if( p.is_mounted() ) {
         p.add_msg_if_player( m_info, _( "You can't suture wounds while mounted." ) );
-        return cata::nullopt;
+        return std::nullopt;
     }
     if( !it.ammo_sufficient( &p ) ) {
         p.add_msg_if_player( m_info, _( "The %s is out of charges." ), it.tname() );
-        return cata::nullopt;
+        return std::nullopt;
     }
     if( !p.has_effect( effect_bleed ) ) {
         p.add_msg_if_player( m_info,
                              _( "You aren't bleeding; there's no need to suture yourself." ) );
-        return cata::nullopt;
+        return std::nullopt;
     }
 
     static heal_actor dummy;
@@ -2478,7 +2479,7 @@ static cata::optional<int> suture_act( Character &p, item &it )
         if( !p.has_effect( effect_bleed, hpart ) ) {
             p.add_msg_if_player( m_info,
                                  _( "This body part isn't bleeding and doesn't need to be stitched." ) );
-            return cata::nullopt;
+            return std::nullopt;
         }
 
         p.add_msg_if_player( m_neutral, _( "You stitch up yourself." ) );
@@ -2518,23 +2519,23 @@ static cata::optional<int> suture_act( Character &p, item &it )
         return 1;
     }
 
-    return cata::nullopt;
+    return std::nullopt;
 }
 
-cata::optional<int> iuse::suture( Character *p, item *it, bool, const tripoint & )
+std::optional<int> iuse::suture( Character *p, item *it, bool, const tripoint & )
 {
     return suture_act( *p, *it );
 }
 
-static cata::optional<int> mangle_act( Character &p, item &it )
+static std::optional<int> mangle_act( Character &p, item &it )
 {
     if( p.is_mounted() ) {
         p.add_msg_if_player( m_info, _( "You can't mangle yourself while mounted." ) );
-        return cata::nullopt;
+        return std::nullopt;
     }
     if( !p.enjoys_pain() ) {
         p.add_msg_if_player( m_info, _( "You refuse to mangle yourself for no reason." ) );
-        return cata::nullopt;
+        return std::nullopt;
     }
 
     static const heal_actor dummy;
@@ -2546,7 +2547,7 @@ static cata::optional<int> mangle_act( Character &p, item &it )
             // Need to check for whether the part is vital and at low HP, and prevent cauterizing if so.
             if( !query_yn(
                     _( "This body part is too damaged and would break if mangled further.  Proceed anyway?" ) ) ) {
-                return cata::nullopt;
+                return std::nullopt;
             }
         }
 
@@ -2558,13 +2559,13 @@ static cata::optional<int> mangle_act( Character &p, item &it )
         }
 
         p.moves = 0;
-        return cata::nullopt;
+        return std::nullopt;
     }
 
-    return cata::nullopt;
+    return std::nullopt;
 }
 
-cata::optional<int> iuse::mangle( Character *p, item *it, bool, const tripoint & )
+std::optional<int> iuse::mangle( Character *p, item *it, bool, const tripoint & )
 {
     return mangle_act( *p, *it );
 }
@@ -5348,20 +5349,20 @@ std::optional<int> iuse::heatpack( Character *p, item *it, bool, const tripoint 
     return 0;
 }
 
-cata::optional<int> iuse::cooler( Character *p, item *it, bool, const tripoint & )
+std::optional<int> iuse::cooler( Character *p, item *it, bool, const tripoint & )
 {
     if( p->is_mounted() ) {
         p->add_msg_if_player( m_info, _( "You can't do that while mounted." ) );
-        return cata::nullopt;
+        return std::nullopt;
     }
     if( !it->ammo_sufficient( p ) ) {
         p->add_msg_if_player( m_info, _( "The %s's batteries are dead." ), it->tname() );
-        return cata::nullopt;
+        return std::nullopt;
     }
     if( cool_item( *p ) ) {
         return 1;
     }
-    return cata::nullopt;
+    return std::nullopt;
 }
 
 std::optional<int> iuse::heat_food( Character *p, item *it, bool, const tripoint & )
@@ -5387,7 +5388,8 @@ std::optional<int> iuse::hotplate( Character *p, item *it, bool, const tripoint 
 {
     if( p->is_underwater() ) {
         p->add_msg_if_player( m_info, _( "You can't use that underwater." ) );
-        return cata::nullopt;
+        return std::nullopt;
+    }
     if( p->cant_do_mounted() ) {
         return std::nullopt;
     }
@@ -8361,7 +8363,7 @@ std::optional<int> iuse::multicooker( Character *p, item *it, bool t, const trip
             }
             const std::string dish_name = dish.tname( dish.charges, false );
             const bool is_delicious = dish.has_flag( flag_HOT ) && dish.has_flag( flag_EATEN_HOT );
-            if( dish.made_of( phase_id::LIQUID ) ) {
+            if( dish.made_of( phase_id::LIQUID ) || dish.made_of( phase_id::GAS ) ) {
                 if( !p->check_eligible_containers_for_crafting( *recipe_id( it->get_var( "RECIPE" ) ), 1 ) ) {
                     p->add_msg_if_player( m_info, _( "You don't have a suitable container to store your %s." ),
                                           dish_name );

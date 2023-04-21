@@ -1,7 +1,7 @@
 [
   {
     "id": "casserole_clay",
-    "looks-like": "casserole",
+    "looks_like": "casserole",
     "name": { "str": "clay casserole pot" },
     "description": "A crude clay pot made for both cooking and serving, particularly one-pot dinners.",
     "type": "GENERIC",

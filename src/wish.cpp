@@ -835,8 +835,8 @@ class wish_item_callback: public uilist_callback
             chosen_snippet_id = { -1, "" };
             renew_snippet = true;
             const itype &selected_itype = *standard_itype_ids[menu->selected];
-            // Make liquids "contained" by default (toggled with CONTAINER action)
-            incontainer = selected_itype.phase == phase_id::LIQUID;
+            // Make liquids and gases "contained" by default (toggled with CONTAINER action)
+            incontainer = ( selected_itype.phase == phase_id::LIQUID || selected_itype.phase == phase_id::GAS );
             // Clear instance flags when switching items
             flags.clear();
             // Grab default flags for the itype (added with the FLAG action)

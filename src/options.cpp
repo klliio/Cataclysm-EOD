@@ -3137,7 +3137,7 @@ void options_manager::add_options_debug()
 {
 
     const auto add_empty_line = [&]() {
-        world_default_page_.items_.emplace_back();
+        this->add_empty_line( "world_default" );
     };
 
     add( "FOV_3D", "debug", to_translation( "Experimental 3D field of vision" ),

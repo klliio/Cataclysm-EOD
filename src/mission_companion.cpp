@@ -2805,7 +2805,7 @@ std::set<item> talk_function::loot_building( const tripoint_abs_omt &site,
         //Hoover up tasty items!
         map_stack items = bay.i_at( p );
         for( map_stack::iterator it = items.begin(); it != items.end(); ) {
-            if( !it->made_of( phase_id::LIQUID ) &&
+            if( !it->made_of( phase_id::LIQUID ) && !it->made_of( phase_id::GAS ) &&
                 ( ( ( it->is_food() || it->is_food_container() ) && !one_in( 8 ) ) ||
                   ( it->price( true ) > 1000 && !one_in( 4 ) ) || one_in( 5 ) ) ) {
                 return_items.insert( *it );

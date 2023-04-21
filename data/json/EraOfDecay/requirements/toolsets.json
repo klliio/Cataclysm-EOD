@@ -40,5 +40,11 @@
         [ "oxy_torch", 1 ]
       ]
     ]
+  },
+  {
+    "id": "rubber_cutting",
+    "type": "requirement",
+    "//": "Tools to cut rubber for tire repairs.  Implemented like that because Cataclysm doesn't seem to allow using qualities directly for vehicle part repair.",
+    "qualities": [ { "id": "CUT", "level": 1 } ]
   }
 ]

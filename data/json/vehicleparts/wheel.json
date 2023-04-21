@@ -234,8 +234,7 @@
       "repair": {
         "skills": [ [ "mechanics", 4 ] ],
         "time": "15 m",
-        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ] ],
-        "qualities": [ { "id": "CUT", "level": 1 } ]
+        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ], [ "rubber_cutting", 1 ] ]
       }
     },
     "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_MEDIUM", "SIMPLE_PART" ],
@@ -279,8 +278,7 @@
       "repair": {
         "skills": [ [ "mechanics", 5 ] ],
         "time": "20 m",
-        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ] ],
-        "qualities": [ { "id": "CUT", "level": 1 } ]
+        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ], [ "rubber_cutting", 1 ] ]
       }
     },
     "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_HEAVY", "SIMPLE_PART" ],
@@ -311,8 +309,7 @@
       "repair": {
         "skills": [ [ "mechanics", 2 ] ],
         "time": "15 m",
-        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ] ],
-        "qualities": [ { "id": "CUT", "level": 1 } ]
+        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ], [ "rubber_cutting", 1 ] ]
       }
     },
     "flags": [ "WHEEL", "NEEDS_JACKING", "STABLE", "STEERABLE", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
@@ -346,8 +343,7 @@
       "repair": {
         "skills": [ [ "mechanics", 2 ] ],
         "time": "15 m",
-        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ] ],
-        "qualities": [ { "id": "CUT", "level": 1 } ]
+        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ], [ "rubber_cutting", 1 ] ]
       }
     },
     "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
@@ -472,8 +468,7 @@
       "repair": {
         "skills": [ [ "mechanics", 2 ] ],
         "time": "15 m",
-        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ] ],
-        "qualities": [ { "id": "CUT", "level": 1 } ]
+        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ], [ "rubber_cutting", 1 ] ]
       }
     },
     "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
@@ -538,8 +533,7 @@
       "repair": {
         "skills": [ [ "mechanics", 2 ] ],
         "time": "15 m",
-        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ] ],
-        "qualities": [ { "id": "CUT", "level": 1 } ]
+        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ], [ "rubber_cutting", 1 ] ]
       }
     },
     "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ]
@@ -613,8 +607,7 @@
       "repair": {
         "skills": [ [ "mechanics", 2 ] ],
         "time": "15 m",
-        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ] ],
-        "qualities": [ { "id": "CUT", "level": 1 } ]
+        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ], [ "rubber_cutting", 1 ] ]
       }
     },
     "flags": [ "WHEEL", "NEEDS_JACKING", "STABLE", "STEERABLE", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
@@ -649,8 +642,7 @@
       "repair": {
         "skills": [ [ "mechanics", 2 ] ],
         "time": "15 m",
-        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ] ],
-        "qualities": [ { "id": "CUT", "level": 1 } ]
+        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ], [ "rubber_cutting", 1 ] ]
       }
     },
     "flags": [ "WHEEL", "NEEDS_JACKING", "STABLE", "STEERABLE", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
@@ -684,8 +676,7 @@
       "repair": {
         "skills": [ [ "mechanics", 4 ] ],
         "time": "15 m",
-        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ] ],
-        "qualities": [ { "id": "CUT", "level": 1 } ]
+        "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ], [ "rubber_cutting", 1 ] ]
       }
     },
     "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_MEDIUM", "SIMPLE_PART" ],

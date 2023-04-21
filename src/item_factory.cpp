@@ -2011,8 +2011,8 @@ void Item_factory::check_definitions() const
         if( type->stack_size <= 0 ) {
             if( type->count_by_charges() ) {
                 msg += string_format( "invalid stack_size %d on type using charges\n", type->stack_size );
-            } else if( type->phase == phase_id::LIQUID ) {
-                msg += string_format( "invalid stack_size %d on liquid type\n", type->stack_size );
+            } else if( type->phase == phase_id::LIQUID || type->phase == phase_id::GAS ) {
+                msg += string_format( "invalid stack_size %d on liquid/gas type\n", type->stack_size );
             }
         }
         if( type->price < 0_cent ) {

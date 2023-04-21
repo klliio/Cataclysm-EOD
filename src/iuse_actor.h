@@ -542,7 +542,7 @@ class cauterize_actor : public iuse_actor
 
         ~cauterize_actor() override = default;
         void load( const JsonObject &obj ) override;
-        cata::optional<int> use( Character &, item &, bool, const tripoint & ) const override;
+        std::optional<int> use( Character &, item &, bool, const tripoint & ) const override;
         ret_val<void> can_use( const Character &, const item &, bool, const tripoint & ) const override;
         std::unique_ptr<iuse_actor> clone() const override;
 };

@@ -241,6 +241,7 @@ const flag_id flag_PLACE_RANDOMLY( "PLACE_RANDOMLY" );
 const flag_id flag_POCKETS( "POCKETS" );
 const flag_id flag_POLEARM( "POLEARM" );
 const flag_id flag_POWERARMOR_BASE( "POWERARMOR_BASE" );
+const flag_id flag_POWERARMOR_COMPATIBLE( "POWERARMOR_COMPATIBLE" );
 const flag_id flag_POWERARMOR_COMPONENT( "POWERARMOR_COMPONENT" );
 const flag_id flag_POWERARMOR_NOACTIVE( "POWERARMOR_NOACTIVE" );
 const flag_id flag_POWERED( "POWERED" );

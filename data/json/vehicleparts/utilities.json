@@ -159,7 +159,7 @@
     "type": "vehicle_part"
   },
   {
-    "abstract": "veh_forge_abstract",
+    "id": "veh_forge",
     "breaks_into": [
       { "count": [ 4, 5 ], "item": "steel_lump" },
       { "count": [ 4, 6 ], "item": "steel_chunk" },

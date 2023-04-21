@@ -1094,6 +1094,32 @@ const
 
 ret_val<void> outfit::power_armor_conflicts( const item &clothing ) const
 {
+    // Immediately allow wearing gear that is always compatible with power armor
+    if( !clothing.has_flag( flag_POWERARMOR_COMPATIBLE ) && !clothing.has_flag( flag_INTEGRATED ) &&
+        !clothing.has_flag( flag_AURA ) ) {
+        if( clothing.is_power_armor( false ) ) { // if trying to wear power armor
+            for( const item &elem : worn ) {
+                // Allow power armor with compatible parts and integrated (Subdermal CBM and mutant skin armor)
+                if( !elem.has_flag( flag_POWERARMOR_COMPATIBLE ) && !elem.has_flag( flag_INTEGRATED ) &&
+                    !elem.has_flag( flag_AURA ) ) {
+                    if( elem.covers_overlaps( clothing ) ) {
+                        return ret_val<void>::make_failure( _( "Your %s is incompatible with worn gear." ),
+                                                            clothing.tname() );
+                    }
+                }
+            }
+        } else { // if trying to wear anything but power armor
+            for( const item &elem : worn ) {
+                if( elem.is_power_armor( false ) ) {
+                    if( elem.covers_overlaps( clothing ) ) {
+                        return ret_val<void>::make_failure( _( "Your %s is incompatible with worn power armor." ),
+                                                            clothing.tname() );
+                    }
+                }
+            }
+        }
+    }
+
     if( clothing.has_flag( flag_POWERARMOR_COMPONENT ) && !worn_with_flag( flag_POWERARMOR_BASE ) ) {
         return ret_val<void>::make_failure( _( "You can't wear %s without power armor." ),
                                             clothing.tname() );

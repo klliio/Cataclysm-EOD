@@ -489,7 +489,7 @@
   },
   {
     "type": "AMMO",
-    "id": "chem_zinc",
+    "id": "chem_zinc_oxide",
     "copy-from": "reagent_powder",
     "name": { "str_sp": "zinc oxide" },
     "description": "A handful of zinc oxide.  It can be reduced into zinc, or used for some other reactions of its own.",
@@ -1744,7 +1744,6 @@
     "type": "COMESTIBLE",
     "id": "blood_acid_insect",
     "copy-from": "formic_acid",
-    "category": "chems",
     "price_postapoc": 0,
     "name": { "str_sp": "virulent acidic blood" },
     "symbol": "~",

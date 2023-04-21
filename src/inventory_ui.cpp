@@ -816,6 +816,13 @@ bool inventory_holster_preset::is_shown( const item_location &contained ) const
     if( contained->made_of( phase_id::LIQUID ) && !holster->is_watertight_container() ) {
         return false;
     }
+    if( !is_container( contained ) && contained->made_of( phase_id::GAS ) ) {
+        // spilt gas cannot be picked up
+        return false;
+    }
+    if( contained->made_of( phase_id::GAS ) && !holster->is_airtight_container() ) {
+        return false;
+    }
     item item_copy( *contained );
     item_copy.charges = 1;
     item_location parent = contained.has_parent() ? contained.parent_item() : item_location();

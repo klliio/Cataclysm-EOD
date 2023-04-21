@@ -758,7 +758,7 @@ void item_pocket::handle_liquid_or_spill( Character &guy, const item *avoid )
     }
 
     for( auto iter = contents.begin(); iter != contents.end(); ) {
-        if( iter->made_of( phase_id::LIQUID ) ) {
+        if( iter->made_of( phase_id::LIQUID ) || iter->made_of( phase_id::GAS ) ) {
             while( iter->charges > 0 && liquid_handler::handle_liquid( *iter, avoid, 1 ) ) {
                 // query until completely handled or explicitly canceled
             }
@@ -1425,10 +1425,19 @@ ret_val<item_pocket::contain_code> item_pocket::can_contain( const item &it ) co
             return ret_val<item_pocket::contain_code>::make_failure(
                        contain_code::ERR_LIQUID, _( "can't mix liquid with contained item" ) );
         }
+    } else if( it.made_of( phase_id::GAS ) ) {
+        if( size() != 0 && !contents.front().can_combine( it ) && data->airtight ) {
+            return ret_val<item_pocket::contain_code>::make_failure(
+                       contain_code::ERR_LIQUID, _( "can't mix gas with contained item" ) );
+        }
     } else if( size() == 1 && !it.is_frozen_liquid() &&
                contents.front().made_of( phase_id::LIQUID ) && data->watertight ) {
         return ret_val<item_pocket::contain_code>::make_failure(
                    contain_code::ERR_LIQUID, _( "can't put non liquid into pocket with liquid" ) );
+    } else if( size() == 1 &&
+               contents.front().made_of( phase_id::GAS ) && data->airtight ) {
+        return ret_val<item_pocket::contain_code>::make_failure(
+                   contain_code::ERR_LIQUID, _( "can't put non gas into pocket with gas" ) );
     }
 
     if( it.is_frozen_liquid() ) {
@@ -1579,6 +1588,12 @@ bool item_pocket::can_reload_with( const item &ammo, const bool now ) const
                 }
                 if( loaded->made_of( phase_id::LIQUID ) || ammo.made_of( phase_id::LIQUID ) ) {
                     bool cant_combine = !loaded->made_of( phase_id::LIQUID ) || !ammo.made_of( phase_id::LIQUID ) ||
+                                        loaded->type != ammo.type;
+                    if( cant_combine ) {
+                        return false;
+                    }
+                } else if( loaded->made_of( phase_id::GAS ) || ammo.made_of( phase_id::GAS ) ) {
+                    bool cant_combine = !loaded->made_of( phase_id::GAS ) || !ammo.made_of( phase_id::GAS ) ||
                                         loaded->type != ammo.type;
                     if( cant_combine ) {
                         return false;

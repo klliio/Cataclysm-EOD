@@ -2,7 +2,6 @@
   {
     "type": "test_data",
     "known_bad": [
-<<<<<<< HEAD
       "chunk_nickeline",
       "chunk_gold",
       "bog_ore",
@@ -15,10 +14,8 @@
       "broken_lab_security_drone_GM",
       "chunk_cinnabar",
       "chunk_bismite",
-=======
       "cobalt_60",
       "bread",
->>>>>>> parent of a3b9fb3cd3 (Merge DDA changes up to 30.03)
       "blood",
       "curry_meat",
       "speargun",

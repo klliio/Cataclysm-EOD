@@ -323,7 +323,7 @@
       [ [ "chem_chloroprene", 250 ] ],
       [ [ "soapy_water", 1 ] ],
       [ [ "chem_potassium_persulfate", 25 ] ],
-      [ [ "chem_zinc", 25 ], [ "chem_thiourea", 25 ] ]
+      [ [ "chem_zinc_oxide", 25 ], [ "chem_thiourea", 25 ] ]
     ]
   },
   {

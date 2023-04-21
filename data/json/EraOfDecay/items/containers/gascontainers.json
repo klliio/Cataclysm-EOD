@@ -1,7 +1,7 @@
 [
   {
     "id": "pressure_tank_makeshift",
-    "type": "TOOL",
+    "type": "GENERIC",
     "name": { "str": "makeshift gas tank" },
     "description": "This is a makeshift gas tank designed to hold pressurized gasses, crudely welded together from metal.  It can contain much less gas for the same volume than its better-quality counterparts.",
     "weight": "2268 g",
@@ -27,7 +27,7 @@
   },
   {
     "id": "pressure_tank_makeshift_small",
-    "type": "TOOL",
+    "type": "GENERIC",
     "name": { "str": "makeshift small gas tank" },
     "description": "This is a makeshift small gas tank designed to hold pressurized gasses, crudely welded together from metal.  It can contain much less gas for the same volume than its better-quality counterparts.",
     "weight": "756 g",

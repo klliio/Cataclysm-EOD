@@ -1659,7 +1659,8 @@ drop_locations game_menus::inv::unload_container( avatar &you )
     for( drop_location &droplc : insert_menu.execute() ) {
         for( item *it : droplc.first->all_items_top( item_pocket::pocket_type::CONTAINER, true ) ) {
             // no liquids and no items marked as favorite
-            if( ( !it->made_of( phase_id::LIQUID ) || ( it->made_of( phase_id::LIQUID ) &&
+            if( ( !( it->made_of( phase_id::LIQUID ) || it->made_of( phase_id::GAS ) ) ||
+                  ( it->made_of( phase_id::LIQUID ) &&
                     it->is_frozen_liquid() ) ) && !it->is_favorite ) {
                 dropped.emplace_back( item_location( droplc.first, it ), it->count() );
             }

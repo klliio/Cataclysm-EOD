@@ -1399,7 +1399,7 @@ static void spawn_items( Character &guy, std::vector<item> &results,
         set_temp_rot( newit, relative_rot, should_heat );
 
         newit.set_owner( guy.get_faction()->id );
-        if( newit.made_of( phase_id::LIQUID ) ) {
+        if( newit.made_of( phase_id::LIQUID ) || newit.made_of( phase_id::GAS ) ) {
             liquid_handler::handle_all_liquid( newit, PICKUP_RANGE );
         } else if( !loc && allow_wield && !guy.has_wield_conflicts( newit ) &&
                    guy.can_wield( newit ).success() ) {
@@ -2681,7 +2681,7 @@ void Character::complete_disassemble( item_location &target, const recipe &dis )
             if( dis_item.count_by_charges() ) {
                 compcount *= activity.position;
             }
-            const bool is_liquid = newit.made_of( phase_id::LIQUID );
+            const bool is_liquid = newit.made_of( phase_id::LIQUID ) || newit.made_of( phase_id::GAS );
             // Compress liquids and counted-by-charges items into one item,
             // they are added together on the map anyway and handle_liquid
             // should only be called once to put it all into a container at once.

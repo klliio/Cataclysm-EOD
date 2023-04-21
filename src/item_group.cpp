@@ -197,7 +197,7 @@ item Single_item_creator::create_single( const time_point &birthday, RecursionLi
         int qty = tmp.charges;
         if( modifier ) {
             qty = rng( modifier->charges.first, modifier->charges.second );
-        } else if( tmp.made_of_from_type( phase_id::LIQUID ) ) {
+        } else if( tmp.made_of_from_type( phase_id::LIQUID ) || tmp.made_of_from_type( phase_id::GAS ) ) {
             qty = item::INFINITE_CHARGES;
         }
         // TODO: change the spawn lists to contain proper references to containers
@@ -434,6 +434,7 @@ void Item_modifier::modify( item &new_item, const std::string &context ) const
     }
 
     if( max_capacity == -1 && !cont.is_null() && ( new_item.made_of( phase_id::LIQUID ) ||
+            new_item.made_of( phase_id::GAS ) ||
             ( !new_item.is_tool() && !new_item.is_gun() && !new_item.is_magazine() ) ) ) {
         if( new_item.type->weight == 0_gram ) {
             max_capacity = new_item.charges_per_volume( cont.get_total_capacity() );
@@ -464,12 +465,14 @@ void Item_modifier::modify( item &new_item, const std::string &context ) const
 
         ch = charges_min == charges_max ? charges_min : rng( charges_min,
                 charges_max );
-    } else if( !cont.is_null() && new_item.made_of( phase_id::LIQUID ) ) {
+    } else if( !cont.is_null() && ( new_item.made_of( phase_id::LIQUID ) ||
+                                    new_item.made_of( phase_id::GAS ) ) ) {
         new_item.charges = std::max( 1, max_capacity );
     }
 
     if( ch != -1 ) {
-        if( new_item.count_by_charges() || new_item.made_of( phase_id::LIQUID ) ) {
+        if( new_item.count_by_charges() || new_item.made_of( phase_id::LIQUID ) ||
+            new_item.made_of( phase_id::GAS ) ) {
             // food, ammo
             // count_by_charges requires that charges is at least 1. It makes no sense to
             // spawn a "water (0)" item.

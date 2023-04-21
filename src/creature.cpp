@@ -48,7 +48,6 @@
 #include "mtype.h"
 #include "npc.h"
 #include "options.h"
-#include "optional.h"
 #include "output.h"
 #include "point.h"
 #include "projectile.h"

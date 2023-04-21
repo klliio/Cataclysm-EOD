@@ -896,6 +896,12 @@
     "type": "json_flag"
   },
   {
+    "id": "POWERARMOR_COMPATIBLE",
+    "type": "json_flag",
+    "//": "Allows power armor to be worn with compatible armors like ear plugs and mouthpieces.",
+    "info": "This item can be worn simultaneously with power armor."
+  },
+  {
     "id": "ZERO_WEIGHT",
     "type": "json_flag"
   },

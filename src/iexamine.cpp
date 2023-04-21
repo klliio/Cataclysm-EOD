@@ -478,7 +478,7 @@ void iexamine::gaspump( Character &you, const tripoint &examp )
 
     map_stack items = here.i_at( examp );
     for( auto item_it = items.begin(); item_it != items.end(); ++item_it ) {
-        if( item_it->made_of( phase_id::LIQUID ) ) {
+        if( item_it->made_of( phase_id::LIQUID ) || item_it->made_of( phase_id::GAS ) ) {
             /// @note \EFFECT_DEX decreases chance of spilling gas from a pump
             if( one_in( 10 + you.get_dex() ) ) {
                 add_msg( m_bad, _( "You accidentally spill the %s." ), item_it->type_name() );
@@ -3391,7 +3391,8 @@ void iexamine::fvat_empty( Character &you, const tripoint &examp )
         selectmenu.text = _( "Select an action" );
         selectmenu.addentry( ADD_BREW, ( you.charges_of( brew_type ) > 0 ), MENU_AUTOASSIGN,
                              _( "Add more %s to the vat" ), brew_nname );
-        selectmenu.addentry( REMOVE_BREW, brew.made_of( phase_id::LIQUID ), MENU_AUTOASSIGN,
+        selectmenu.addentry( REMOVE_BREW, ( brew.made_of( phase_id::LIQUID ) ||
+                                            brew.made_of( phase_id::GAS ) ), MENU_AUTOASSIGN,
                              _( "Remove %s from the vat" ), brew.tname() );
         selectmenu.addentry( START_FERMENT, true, MENU_AUTOASSIGN, _( "Start fermenting cycle" ) );
         selectmenu.query();
@@ -3457,7 +3458,7 @@ void iexamine::fvat_full( Character &you, const tripoint &examp )
     }
 
     for( item &it : items_here ) {
-        if( !it.made_of_from_type( phase_id::LIQUID ) && !it.made_of_from_type( phase_id::LIQUID ) ) {
+        if( !it.made_of_from_type( phase_id::LIQUID ) && !it.made_of_from_type( phase_id::GAS ) ) {
             add_msg( _( "You remove %s from the vat." ), it.tname() );
             here.add_item_or_charges( you.pos(), it );
             here.i_rem( examp, &it );
@@ -3543,7 +3544,8 @@ static void displace_items_except_one_liquid( const tripoint &examp )
     bool liquid_present = false;
     map_stack items = here.i_at( examp );
     for( map_stack::iterator it = items.begin(); it != items.end(); ) {
-        if( !it->made_of_from_type( phase_id::LIQUID ) || liquid_present ) {
+        if( !( it->made_of_from_type( phase_id::LIQUID ) || it->made_of_from_type( phase_id::GAS ) ) ||
+            liquid_present ) {
             // This isn't a liquid or there was already another kind of liquid inside,
             // so this has to be moved.
             // This will add items to a space near the vat, because it's flagged as NOITEM.
@@ -4149,7 +4151,7 @@ void iexamine::finite_water_source( Character &, const tripoint &examp )
 {
     map_stack items = get_map().i_at( examp );
     for( auto item_it = items.begin(); item_it != items.end(); ++item_it ) {
-        if( item_it->made_of( phase_id::LIQUID ) ) {
+        if( item_it->made_of( phase_id::LIQUID ) || item_it->made_of( phase_id::GAS ) ) {
             liquid_handler::handle_liquid_from_ground( item_it, examp );
             break;
         }
@@ -4475,7 +4477,7 @@ std::optional<tripoint> iexamine::getNearFilledGasTank( const tripoint &center, 
             tank_loc.emplace( tmp );
         }
         for( item &k : here.i_at( tmp ) ) {
-            if( k.made_of( phase_id::LIQUID ) ) {
+            if( k.made_of( phase_id::LIQUID ) || k.made_of( phase_id::GAS ) ) {
                 distance = new_distance;
                 tank_loc.emplace( tmp );
                 fuel_units = k.charges;
@@ -4575,7 +4577,7 @@ bool iexamine::toPumpFuel( const tripoint &src, const tripoint &dst, int units )
     map &here = get_map();
     map_stack items = here.i_at( src );
     for( auto item_it = items.begin(); item_it != items.end(); ++item_it ) {
-        if( item_it->made_of( phase_id::LIQUID ) ) {
+        if( item_it->made_of( phase_id::LIQUID ) || item_it->made_of( phase_id::GAS ) ) {
             if( item_it->charges < units ) {
                 return false;
             }
@@ -4602,7 +4604,7 @@ static int fromPumpFuel( const tripoint &dst, const tripoint &src )
     map &here = get_map();
     map_stack items = here.i_at( src );
     for( auto item_it = items.begin(); item_it != items.end(); ++item_it ) {
-        if( item_it->made_of( phase_id::LIQUID ) ) {
+        if( item_it->made_of( phase_id::LIQUID ) || item_it->made_of( phase_id::GAS ) ) {
             // how much do we have in the pump?
             const int amount = item_it->charges;
             item liq_d( item_it->type, calendar::turn, amount );
