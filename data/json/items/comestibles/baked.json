@@ -14,7 +14,7 @@
     "price": 50,
     "price_postapoc": 5,
     "material": [ "fruit" ],
-    "volume": "35 ml",
+    "volume": "720 ml",
     "stack_size": 24,
     "fun": 3,
     "vitamins": [ [ "vitC", 3 ], [ "calcium", 2 ] ]
@@ -33,7 +33,7 @@
     "price": 50,
     "price_postapoc": 5,
     "material": [ "nut" ],
-    "volume": "35 ml",
+    "volume": "720 ml",
     "stack_size": 24,
     "fun": 3,
     "vitamins": [ [ "vitC", 2 ], [ "calcium", 3 ] ]

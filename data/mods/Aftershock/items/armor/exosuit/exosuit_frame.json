@@ -7,7 +7,6 @@
     "weight": "45 kg",
     "volume": "140 L",
     "material": [ "titanium" ],
-    "power_armor": true,
     "symbol": "T",
     "looks_like": "power_armor_basic",
     "color": "light_gray",
