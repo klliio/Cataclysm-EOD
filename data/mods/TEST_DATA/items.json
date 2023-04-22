@@ -2593,7 +2593,6 @@
       }
     ],
     "warmth": 90,
-    "power_armor": true,
     "material_thickness": 14,
     "environmental_protection": 16,
     "use_action": { "type": "transform", "msg": "The %s engages.", "target": "test_power_armor_on", "active": true },
@@ -3320,7 +3319,6 @@
     "description": "This is a standard exosuit frame.  Designed to be modular, it can accept a variety of power supplies, defensive and offensive systems, and utility tools.  Slots exist for the torso, back, arms, and legs.",
     "weight": "45 kg",
     "volume": "140 L",
-    "power_armor": true,
     "symbol": "T",
     "looks_like": "power_armor_basic",
     "color": "light_gray",

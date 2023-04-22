@@ -165,7 +165,7 @@
     "price": 23,
     "price_postapoc": 100,
     "material": [ "wheat" ],
-    "volume": "462 ml",
+    "volume": "480 ml",
     "charges": 6,
     "flags": [ "EATEN_HOT", "EDIBLE_FROZEN" ],
     "vitamins": [ [ "calcium", 5 ], [ "iron", 12 ] ]
