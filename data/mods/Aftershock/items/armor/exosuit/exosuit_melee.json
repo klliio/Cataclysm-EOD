@@ -121,7 +121,6 @@
     "material": [ "qt_steel" ],
     "symbol": "[",
     "color": "light_gray",
-    "power_armor": true,
     "flags": [ "WATER_FRIENDLY", "DURABLE_MELEE", "OVERSIZE", "OUTER", "EXO_MEDIUM_GADGET" ],
     "armor": [
       {

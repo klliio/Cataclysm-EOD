@@ -11106,14 +11106,12 @@ void item::reload_option::qty( int val )
 {
     bool ammo_in_container = ammo->is_ammo_container();
     bool ammo_in_liquid_container = ammo->is_watertight_container();
-    bool ammo_in_gas_container = ammo->is_airtight_container();
     item &ammo_obj = ( ammo_in_container || ammo_in_liquid_container ) ?
                      // this is probably not the right way to do this. there is no guarantee whatsoever that ammo_obj will be an ammo
                      *ammo->contents.all_items_top( item_pocket::pocket_type::CONTAINER ).front() : *ammo;
 
     if( ( ammo_in_container && !ammo_obj.is_ammo() ) ||
-        ( ammo_in_liquid_container && !ammo_obj.made_of( phase_id::LIQUID ) ) || ( ammo_in_gas_container &&
-                !ammo_obj.made_of( phase_id::GAS ) ) ) {
+        ( ammo_in_liquid_container && !ammo_obj.made_of( phase_id::LIQUID ) ) ) {
         debugmsg( "Invalid reload option: %s", ammo_obj.tname() );
         return;
     }
