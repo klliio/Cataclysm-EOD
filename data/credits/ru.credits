@@ -2,7 +2,7 @@
 # Следующая строка для сравнения
 ##############################################################################
 <color_white>Автор идеи:</color>   <color_white>Руководитель проекта:</color>
-<color_yellow>Whales</color>(<color_dark_gray>отошел от разработки</color>)   <color_yellow>KevinGranade</color>
+<color_yellow>Whales</color>(<color_dark_gray>отошел от разработки</color>)   <color_yellow>AtomicFox556</color>
 
 <color_white>Главные разработчики:</color>
 <color_yellow>I-am-Erk</color> - Ultica, лор, генератор идей.
@@ -29,9 +29,9 @@
 <color_yellow>Fris0uman</color>, <color_yellow>Golfavel</color>, <color_yellow>vetall812</color>, <color_yellow>Dandy-boy</color>, и многим другим.
 
 <color_white>Полный список участников разработки доступен здесь:</color>
-<color_cyan>https://github.com/CleverRaven/Cataclysm-DDA/contributors</color>
+<color_cyan>https://github.com/AtomicFox556/Cataclysm-EOD/contributors</color>
 
-<color_light_cyan>Cataclysm</color>: <color_light_blue>Dark Days Ahead</color> выпускается по лицензии <color_white>CC-BY-SA 3.0</color>:
+<color_light_cyan>Cataclysm</color>: <color_light_blue>Era Of Decay</color> выпускается по лицензии <color_white>CC-BY-SA 3.0</color>:
 <color_cyan>https://creativecommons.org/licenses/by-sa/3.0/</color>
 
 ******************************************************************************
@@ -53,9 +53,9 @@
 <color_yellow>acepleiades</color>, <color_yellow>barsoosayque</color>, <color_yellow>Fris0uman</color>, <color_yellow>int-ua</color>, и многим другим.
 
 <color_white>Полный список участников разработки доступен здесь:</color>
-<color_cyan>https://github.com/CleverRaven/Cataclysm-DDA/contributors</color>
+<color_cyan>https://github.com/AtomicFox556/Cataclysm-EOD/contributors</color>
 
-<color_light_cyan>Cataclysm</color>: <color_light_blue>Dark Days Ahead</color> выпускается по лицензии <color_white>CC-BY-SA 3.0</color>:
+<color_light_cyan>Cataclysm</color>: <color_light_blue>Era Of Decay</color> выпускается по лицензии <color_white>CC-BY-SA 3.0</color>:
 <color_cyan>https://creativecommons.org/licenses/by-sa/3.0/</color>
 
 ******************************************************************************
@@ -78,7 +78,7 @@
 <color_yellow>ZhilkinSerg</color> - за тестирование.
 
 Полный список участников разработки доступен в хранилище Git:
-<color_cyan>https://github.com/CleverRaven/Cataclysm-DDA</color>
+<color_cyan>https://github.com/AtomicFox556/Cataclysm-EOD</color>
 
 ******************************************************************************
 
