@@ -2,7 +2,7 @@
 # Die folgende Zeile dient als Referenz
 ##############################################################################
 <color_white>Ursprünglicher Autor:</color>    <color_white>Projektmanager:</color>
-<color_yellow>Whales</color> (<color_dark_gray>im Ruhestand</color>)    <color_yellow>KevinGranade</color>
+<color_yellow>Whales</color> (<color_dark_gray>im Ruhestand</color>)    <color_yellow>AtomicFox556</color>
 
 <color_white>Aktuelle Hauptentwickler:</color>
 <color_yellow>I-am-Erk</color> - Ultica, lore writing, ideas guy.
@@ -29,9 +29,9 @@
 <color_yellow>Fris0uman</color>, <color_yellow>Golfavel</color>, <color_yellow>vetall812</color>, <color_yellow>Dandy-boy</color>, and many more.
 
 <color_white>Eine vollständige Liste der Mitwirkenden finden Du unter:</color>
-<color_cyan>https://github.com/CleverRaven/Cataclysm-DDA/contributors</color>
+<color_cyan>https://github.com/AtomicFox556/Cataclysm-EOD/contributors</color>
 
-<color_light_cyan>Cataclysm</color>: <color_light_blue>Dark Days Ahead</color> wird unter <color_white>CC-BY-SA 3.0</color> veröffentlicht:
+<color_light_cyan>Cataclysm</color>: <color_light_blue>Era Of Decay</color> wird unter <color_white>CC-BY-SA 3.0</color> veröffentlicht:
 <color_cyan>https://creativecommons.org/licenses/by-sa/3.0/</color>
 
 ******************************************************************************
@@ -53,9 +53,9 @@
 <color_yellow>acepleiades</color>, <color_yellow>barsoosayque</color>, <color_yellow>Fris0uman</color>, <color_yellow>int-ua</color> und viele weitere.
 
 <color_white>Eine vollständige Liste der Mitwirkenden finden Du unter:</color>
-<color_cyan>https://github.com/CleverRaven/Cataclysm-DDA/contributors</color>
+<color_cyan>https://github.com/AtomicFox556/Cataclysm-EOD/contributors</color>
 
-<color_light_cyan>Cataclysm</color>: <color_light_blue>Dark Days Ahead</color> wird unter <color_white>CC-BY-SA 3.0</color> veröffentlicht:
+<color_light_cyan>Cataclysm</color>: <color_light_blue>Era Of Decay</color> wird unter <color_white>CC-BY-SA 3.0</color> veröffentlicht:
 <color_cyan>https://creativecommons.org/licenses/by-sa/3.0/</color>
 
 ******************************************************************************
@@ -78,7 +78,7 @@
 <color_yellow>ZhilkinSerg</color> - Fürs Mergetesting.
 
 <color_white>For a full list of contributors please see the Git repo:</color>
-<color_cyan>https://github.com/CleverRaven/Cataclysm-DDA</color>
+<color_cyan>https://github.com/AtomicFox556/Cataclysm-EOD</color>
 
 ******************************************************************************
 

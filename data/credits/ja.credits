@@ -2,7 +2,7 @@
 # 次の行は参照用です
 ##############################################################################
 <color_white>オリジナルの作者:</color>    <color_white>プロジェクト管理者:</color>
-<color_yellow>Whales</color> (<color_dark_gray>引退</color>)    <color_yellow>KevinGranade</color>
+<color_yellow>Whales</color> (<color_dark_gray>引退</color>)    <color_yellow>AtomicFox55</color>
 
 <color_white>現在の主要な開発者:</color>
 <color_yellow>I-am-Erk</color> - Ultica、物語設定、企画立案
@@ -29,9 +29,9 @@
 <color_yellow>Fris0uman</color>、<color_yellow>Golfavel</color>、<color_yellow>vetall812</color>、<color_yellow>Dandy-boy</color>、その他たくさんの方々
 
 <color_white>全貢献者リスト:</color>
-<color_cyan>https://github.com/CleverRaven/Cataclysm-DDA/contributors</color>
+<color_cyan>https://github.com/AtomicFox556/Cataclysm-EOD/contributors</color>
 
-<color_light_cyan>Cataclysm</color>: <color_light_blue>Dark Days Ahead</color>は<color_white>CC-BY-SA 3.0</color>の下にリリースされています:
+<color_light_cyan>Cataclysm</color>: <color_light_blue>Era Of Decay</color>は<color_white>CC-BY-SA 3.0</color>の下にリリースされています:
 <color_cyan>https://creativecommons.org/licenses/by-sa/3.0/</color>
 
 ******************************************************************************
@@ -53,9 +53,9 @@
 <color_yellow>acepleiades</color>、<color_yellow>barsoosayque</color>、<color_yellow>Fris0uman</color>、<color_yellow>int-ua</color>、その他たくさんの方々
 
 <color_white>全貢献者リスト:</color>
-<color_cyan>https://github.com/CleverRaven/Cataclysm-DDA/contributors</color>
+<color_cyan>https://github.com/AtomicFox556/Cataclysm-EOD/contributors</color>
 
-<color_light_cyan>Cataclysm</color>: <color_light_blue>Dark Days Ahead</color>は<color_white>CC-BY-SA 3.0</color>の下にリリースされています:
+<color_light_cyan>Cataclysm</color>: <color_light_blue>Era Of Decay</color>は<color_white>CC-BY-SA 3.0</color>の下にリリースされています:
 <color_cyan>https://creativecommons.org/licenses/by-sa/3.0/</color>
 
 ******************************************************************************
@@ -78,7 +78,7 @@
 <color_yellow>ZhilkinSerg</color> - マージテスト
 
 <color_white>全貢献者リストはGitリポジトリをご参照ください:</color>
-<color_cyan>https://github.com/CleverRaven/Cataclysm-DDA</color>
+<color_cyan>https://github.com/AtomicFox556/Cataclysm-EOD</color>
 
 ******************************************************************************
 
