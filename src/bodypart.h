@@ -208,6 +208,7 @@ struct body_part_type {
         /** Sub-location of the body part used for encumberance, coverage and determining protection
          */
         std::vector<sub_bodypart_str_id> sub_parts;
+        sub_bodypart_str_id bearing_sub_part;
 
         std::map<units::mass, int> encumbrance_per_weight;
 

@@ -1,0 +1,12 @@
+[
+  {
+    "id": "morale_perm_barefoot",
+    "type": "morale_type",
+    "text": "Barefoot"
+  },
+  {
+    "id": "morale_perm_naked",
+    "type": "morale_type",
+    "text": "Naked"
+  }
+]

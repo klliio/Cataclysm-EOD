@@ -3047,6 +3047,8 @@ class Character : public Creature, public visitable
         nutrients compute_effective_nutrients( const item & ) const;
         /** Returns true if the character is wearing something on the entered body part. Ignores INTEGRATED */
         bool wearing_something_on( const bodypart_id &bp ) const;
+        /** Returns true if the character is wearing something on the entered sub body part. Ignores INTEGRATED */
+        bool wearing_something_on( const sub_bodypart_id &bp ) const;
         /** Returns true if the character is wearing something on the entered body part. Ignores INTEGRATED and OVERSIZE */
         bool wearing_fitting_on( const bodypart_id &bp ) const;
         /** Same as footwear factor, but for arms */
@@ -3056,6 +3058,8 @@ class Character : public Creature, public visitable
         int shoe_type_count( const itype_id &it ) const;
         /** Returns true if the player is wearing something on their feet that is not SKINTIGHT */
         bool is_wearing_shoes( const side &check_side = side::BOTH ) const;
+
+        int amount_of_limbs_with_shoes( const side &check_side = side::BOTH ) const;
 
         /** Returns true if the player is not wearing anything that covers the soles of their feet,
             ignoring INTEGRATED */
@@ -3083,6 +3087,14 @@ class Character : public Creature, public visitable
         void apply_persistent_morale();
         // the morale penalty for hoarders
         void hoarder_morale_penalty();
+        // the morale penalty for nomads
+        void nomad_morale_penalty();
+        // the morale penalty for barefoot characters
+        void foodperson_morale_penalty();
+        // the morale penalty for Foodperson
+        void barefoot_morale_penalty();
+        // apply the morale penalty for naked characters
+        void naked_morale_penalty();
         /** Used to apply morale modifications from food and medication **/
         void modify_morale( item &food, int nutr = 0 );
         // Modified by traits, &c

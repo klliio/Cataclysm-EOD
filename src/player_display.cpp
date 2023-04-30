@@ -1142,20 +1142,31 @@ static void skip_skill_headers( const std::vector<HeaderSkill> &skillslist, unsi
 static void on_customize_character( Character &you )
 {
     uilist cmenu;
-    cmenu.title = _( "Customize Character" );
-    cmenu.addentry( 1, true, 'y', _( "Change gender" ) );
+    cmenu.title = _( "Customize character" );
+    cmenu.addentry( 1, true, 'y', _( "Change profession" ) );
     cmenu.addentry( 2, true, 'n', _( "Change name" ) );
 
     cmenu.query();
     if( cmenu.ret == 1 ) {
-        you.male = !you.male;
-        popup( _( "Gender set to %s." ), you.male ? _( "Male" ) : _( "Female" ) );
+        std::string filterstring = you.custom_profession;
+        string_input_popup popup;
+        popup
+        .title( _( "New profession (leave empty to reset):" ) )
+        .width( 25 )
+        .edit( filterstring );
+        if( popup.confirmed() ) {
+            if( filterstring.empty() ) {
+                you.custom_profession.clear();
+            } else {
+                you.custom_profession = filterstring;
+            }
+        }
     } else if( cmenu.ret == 2 ) {
         std::string filterstring = you.play_name.value_or( std::string() );
         string_input_popup popup;
         popup
-        .title( _( "New name ( leave empty to reset ):" ) )
-        .width( 85 )
+        .title( _( "New name (leave empty to reset):" ) )
+        .width( 25 )
         .edit( filterstring );
         if( popup.confirmed() ) {
             if( filterstring.empty() ) {
@@ -1399,37 +1410,6 @@ static bool handle_player_display_action( Character &you, unsigned int &line,
     } else if( action == "VIEW_BODYSTAT" ) {
         display_bodygraph( you );
     } else if( customize_character && action == "SWITCH_GENDER" ) {
-        uilist cmenu;
-        cmenu.title = _( "Customize Character" );
-        cmenu.addentry( 1, true, 'y', _( "Change profession" ) );
-        cmenu.addentry( 2, true, 'n', _( "Change name" ) );
-
-        cmenu.query();
-        if( cmenu.ret == 1 ) {
-            string_input_popup popup;
-            popup.title( _( "Profession Name: " ) )
-            .width( 25 )
-            .text( "" )
-            .max_length( 25 )
-            .query();
-
-            you.custom_profession = popup.text();
-            ui_tip.invalidate_ui();
-        } else if( cmenu.ret == 2 ) {
-            std::string filterstring = you.play_name.value_or( std::string() );
-            string_input_popup popup;
-            popup
-            .title( _( "New name ( leave empty to reset ):" ) )
-            .width( 85 )
-            .edit( filterstring );
-            if( popup.confirmed() ) {
-                if( filterstring.empty() ) {
-                    you.play_name.reset();
-                } else {
-                    you.play_name = filterstring;
-                }
-            }
-        }
         on_customize_character( you );
     } else if( action == "SCROLL_INFOBOX_UP" ) {
         if( info_line > 0 ) {

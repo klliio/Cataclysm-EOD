@@ -69,6 +69,7 @@ class outfit
         bool is_wearing_on_bp( const itype_id &clothing, const bodypart_id &bp ) const;
         bool covered_with_flag( const flag_id &f, const body_part_set &parts ) const;
         bool wearing_something_on( const bodypart_id &bp ) const;
+        bool wearing_something_on( const sub_bodypart_id &bp ) const;
         bool wearing_fitting_on( const bodypart_id &bp ) const;
         bool worn_with_flag( const flag_id &f, const bodypart_id &bp ) const;
         bool worn_with_flag( const flag_id &f ) const;
@@ -77,7 +78,7 @@ class outfit
         // will someone get shocked by zapback
         bool hands_conductive() const;
         bool can_pickVolume( const item &it, bool ignore_pkt_settings = true ) const;
-        side is_wearing_shoes( const bodypart_id &bp ) const;
+        bool is_wearing_shoes( const bodypart_id &bp ) const;
         bool is_barefoot() const;
         item item_worn_with_flag( const flag_id &f, const bodypart_id &bp ) const;
         item item_worn_with_flag( const flag_id &f ) const;

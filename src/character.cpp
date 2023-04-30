@@ -9331,15 +9331,15 @@ std::vector<run_cost_effect> Character::run_cost_effects( float &movecost ) cons
         }
     };
 
+    if( is_mounted() ) {
+        return effects;
+    }
+
     const bool flatground = movecost < 105;
     map &here = get_map();
     // The "FLAT" tag includes soft surfaces, so not a good fit.
     const bool on_road = flatground && here.has_flag( ter_furn_flag::TFLAG_ROAD, pos() );
     const bool on_fungus = here.has_flag_ter_or_furn( ter_furn_flag::TFLAG_FUNGUS, pos() );
-
-    if( is_mounted() ) {
-        return effects;
-    }
 
     if( movecost > 105 ) {
         run_cost_effect_mul( mutation_value( "movecost_obstacle_modifier" ),
@@ -9399,11 +9399,9 @@ std::vector<run_cost_effect> Character::run_cost_effects( float &movecost ) cons
         } else {
             run_cost_effect_mul( 1.5f, _( "Inline Skates" ) );
         }
-    }
-
-    // Quad skates might be more stable than inlines,
-    // but that also translates into a slower speed when on good surfaces.
-    if( worn_with_flag( flag_ROLLER_QUAD ) ) {
+    } else if( worn_with_flag( flag_ROLLER_QUAD ) ) {
+        // Quad skates might be more stable than inlines,
+        // but that also translates into a slower speed when on good surfaces.
         if( on_road ) {
             if( is_running() ) {
                 run_cost_effect_mul( 0.7f, _( "Roller Skates" ) );
@@ -9413,11 +9411,9 @@ std::vector<run_cost_effect> Character::run_cost_effects( float &movecost ) cons
         } else {
             run_cost_effect_mul( 1.3f, _( "Roller Skates" ) );
         }
-    }
-
-    // Skates with only one wheel (roller shoes) are fairly less stable
-    // and fairly slower as well
-    if( worn_with_flag( flag_ROLLER_ONE ) ) {
+    } else if( worn_with_flag( flag_ROLLER_ONE ) ) {
+        // Skates with only one wheel (roller shoes) are fairly less stable
+        // and fairly slower as well
         if( on_road ) {
             if( is_running() ) {
                 run_cost_effect_mul( 0.85f, _( "Heelys" ) );
@@ -9429,29 +9425,23 @@ std::vector<run_cost_effect> Character::run_cost_effects( float &movecost ) cons
         }
     }
 
-    // ROOTS3 does slow you down as your roots are probing around for nutrients,
-    // whether you want them to or not.  ROOTS1 is just too squiggly without shoes
-    // to give you some stability.  Plants are a bit of a slow-mover.  Deal.
-    const bool mutfeet = has_flag( json_flag_TOUGH_FEET ) || worn_with_flag( flag_TOUGH_FEET );
-    bool no_left_shoe = false;
-    bool no_right_shoe = false;
-    if( !is_wearing_shoes( side::LEFT ) && !mutfeet ) {
-        no_left_shoe = true;
-    }
-    if( !is_wearing_shoes( side::RIGHT ) && !mutfeet ) {
-        no_right_shoe = true;
-    }
-    if( no_left_shoe && no_right_shoe ) {
-        run_cost_effect_add( 16, _( "No Shoes" ) );
-    } else if( no_left_shoe ) {
-        run_cost_effect_add( 8, _( "No Left Shoe" ) );
-    } else if( no_right_shoe ) {
-        run_cost_effect_add( 8, _( "No Right Shoe" ) );
-    }
-
-    if( ( has_trait( trait_ROOTS3 ) || has_trait( trait_CHLOROMORPH ) ) &&
-        here.has_flag( ter_furn_flag::TFLAG_DIGGABLE, pos() ) && is_barefoot() ) {
-        run_cost_effect_add( 10, _( "Roots" ) );
+    if( !in_vehicle ) {
+        if( !is_prone() && here.has_flag_ter_or_furn( ter_furn_flag::TFLAG_BAREFOOT_BAD, pos() ) &&
+            !has_flag( json_flag_TOUGH_FEET ) && !worn_with_flag( flag_TOUGH_FEET ) ) {
+            if( !is_wearing_shoes( side::LEFT ) ) {
+                run_cost_effect_add( 8, _( "No Left Shoe" ) );
+            }
+            if( !is_wearing_shoes( side::RIGHT ) ) {
+                run_cost_effect_add( 8, _( "No Right Shoe" ) );
+            }
+        }
+        // ROOTS3 does slow you down as your roots are probing around for nutrients,
+        // whether you want them to or not.  ROOTS1 is just too squiggly without shoes
+        // to give you some stability.  Plants are a bit of a slow-mover.  Deal.
+        if( ( has_trait( trait_ROOTS3 ) || has_trait( trait_CHLOROMORPH ) ) &&
+            here.has_flag( ter_furn_flag::TFLAG_DIGGABLE, pos() ) && is_barefoot() ) {
+            run_cost_effect_add( 10, _( "Roots" ) );
+        }
     }
 
     run_cost_effect_add( enchantment_cache->get_value_add( enchant_vals::mod::MOVE_COST ),
@@ -9469,7 +9459,7 @@ std::vector<run_cost_effect> Character::run_cost_effects( float &movecost ) cons
                          is_prone() ? _( "Prone" ) : _( "Walking" )
                        );
 
-    if( !is_mounted() && !is_prone() && has_effect( effect_downed ) ) {
+    if( !is_prone() && has_effect( effect_downed ) ) {
         run_cost_effect_mul( get_modifier( character_modifier_crawl_speed_movecost_mod ) * 2.5,
                              _( "Downed" ) );
     }
