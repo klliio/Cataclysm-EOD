@@ -1,0 +1,11 @@
+[
+  {
+    "type": "mutation",
+    "id": "NUDIST",
+    "name": { "str": "Nudist" },
+    "points": 1,
+    "description": "You enjoy being naked.  Morale penalty for not wearing clothing is replaced with a morale bonus for you.",
+    "starting_trait": true,
+    "valid": false
+  }
+]

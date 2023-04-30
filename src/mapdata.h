@@ -192,6 +192,7 @@ struct plant_data {
  * Order does not matter.
  */
 enum class ter_furn_flag : int {
+    TFLAG_BAREFOOT_BAD,
     TFLAG_TRANSPARENT,
     TFLAG_FLAMMABLE,
     TFLAG_REDUCE_SCENT,

@@ -104,7 +104,7 @@
     "color": "green",
     "move_cost": 8,
     "coverage": 40,
-    "flags": [ "TRANSPARENT", "FLAMMABLE_ASH" ],
+    "flags": [ "TRANSPARENT", "FLAMMABLE_ASH", "BAREFOOT_BAD" ],
     "bash": { "str_min": 4, "str_max": 60, "sound": "crunch.", "sound_fail": "poof!", "ter_set": "t_null" }
   },
   {

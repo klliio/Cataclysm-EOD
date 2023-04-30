@@ -826,6 +826,7 @@ reference at least one body part or sub body part.
 | `effects_on_hit`       | (_optional_) Array of effects that can apply whenever the limb is damaged.  For details see below.
 | `unarmed_damage`       | (_optional_) An array of objects, each detailing the amount of unarmed damage the bodypart contributes to unarmed attacks and their armor penetration. The unarmed damages of each limb are summed and added to the base unarmed damage. Should be used for limbs the character is expected to *always* attack with, for special attacks use a dedicated technique.
 | `armor`                | (_optional_) An object containing damage resistance values. Ex: `"armor": { "bash": 2, "cut": 1 }`. See [Part Resistance](#part-resistance) for details.
+| `bearing_sub_part`     | (_optional_) ID of a sub body part which would bear most of the weight if character tried to use it for movement (e.g. soles for feet, knees for legs, elbows for arms)
 
 ```json
 {

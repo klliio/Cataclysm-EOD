@@ -143,6 +143,7 @@ std::string enum_to_string<ter_furn_flag>( ter_furn_flag data )
     // see mapdata.h for commentary
     switch( data ) {
         // *INDENT-OFF*
+        case ter_furn_flag::TFLAG_BAREFOOT_BAD: return "BAREFOOT_BAD";
         case ter_furn_flag::TFLAG_TRANSPARENT: return "TRANSPARENT";
         case ter_furn_flag::TFLAG_FLAMMABLE: return "FLAMMABLE";
         case ter_furn_flag::TFLAG_REDUCE_SCENT: return "REDUCE_SCENT";

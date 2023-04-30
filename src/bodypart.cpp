@@ -453,6 +453,8 @@ void body_part_type::load( const JsonObject &jo, const std::string & )
 
     optional( jo, was_loaded, "sub_parts", sub_parts );
 
+    optional( jo, was_loaded, "bearing_sub_part", bearing_sub_part );
+
     if( jo.has_array( "encumbrance_per_weight" ) ) {
         const JsonArray &jarr = jo.get_array( "encumbrance_per_weight" );
         for( const JsonObject jval : jarr ) {
