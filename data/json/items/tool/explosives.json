@@ -11,7 +11,6 @@
     "price": 5000,
     "price_postapoc": 500,
     "to_hit": -1,
-    "bashing": 4,
     "material": [ "glass" ],
     "symbol": "*",
     "color": "yellow",
@@ -22,7 +21,8 @@
     "damage": { "damage_type": "bash", "amount": 4 },
     "range": 11,
     "dispersion": 14,
-    "effects": [ "NEVER_MISFIRES", "NON_FOULING", "ACIDBOMB" ]
+    "effects": [ "NEVER_MISFIRES", "NON_FOULING", "ACIDBOMB" ],
+    "melee_damage": { "bash": 4 }
   },
   {
     "id": "c4",
@@ -79,7 +79,6 @@
     "price": 6000,
     "price_postapoc": 1000,
     "to_hit": -3,
-    "bashing": 4,
     "material": [ "paper", "powder" ],
     "symbol": "*",
     "color": "red",
@@ -93,7 +92,8 @@
       "menu_text": "Light fuse",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ACT_IN_FIRE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ACT_IN_FIRE" ],
+    "melee_damage": { "bash": 4 }
   },
   {
     "id": "dynamite_act",
@@ -107,7 +107,6 @@
     "price": 0,
     "price_postapoc": 0,
     "to_hit": -3,
-    "bashing": 4,
     "material": [ "paper", "powder" ],
     "symbol": "*",
     "color": "red",
@@ -121,7 +120,8 @@
       "no_deactivate_msg": "Your %s can't be deactivated; throw or drop it to get rid of it.",
       "explosion": { "power": 938 }
     },
-    "flags": [ "TRADER_AVOID", "BOMB" ]
+    "flags": [ "TRADER_AVOID", "BOMB" ],
+    "melee_damage": { "bash": 4 }
   },
   {
     "id": "dynamite_bomb",
@@ -135,7 +135,6 @@
     "price": 6000,
     "price_postapoc": 1500,
     "to_hit": -3,
-    "bashing": 4,
     "material": [ "steel" ],
     "symbol": "*",
     "color": "red",
@@ -149,7 +148,8 @@
       "menu_text": "Light fuse",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ACT_IN_FIRE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ACT_IN_FIRE" ],
+    "melee_damage": { "bash": 4 }
   },
   {
     "id": "dynamite_bomb_act",
@@ -163,7 +163,6 @@
     "price": 0,
     "price_postapoc": 0,
     "to_hit": -3,
-    "bashing": 4,
     "material": [ "steel" ],
     "symbol": "*",
     "color": "red",
@@ -177,7 +176,8 @@
       "no_deactivate_msg": "Your %s can't be deactivated; drop it to get rid of it.",
       "explosion": { "power": 938, "shrapnel": { "casing_mass": 1597, "fragment_mass": 0.5 } }
     },
-    "flags": [ "TRADER_AVOID", "BOMB" ]
+    "flags": [ "TRADER_AVOID", "BOMB" ],
+    "melee_damage": { "bash": 4 }
   },
   {
     "id": "EMPbomb",
@@ -190,7 +190,6 @@
     "price": 60000,
     "price_postapoc": 3000,
     "to_hit": -1,
-    "bashing": 12,
     "material": [ "steel", "copper" ],
     "symbol": "*",
     "explode_in_fire": true,
@@ -205,7 +204,8 @@
       "menu_text": "Arm bomb",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE" ],
+    "melee_damage": { "bash": 12 }
   },
   {
     "id": "EMPbomb_act",
@@ -218,7 +218,6 @@
     "price": 0,
     "price_postapoc": 0,
     "to_hit": -1,
-    "bashing": 12,
     "material": [ "steel", "copper" ],
     "symbol": "*",
     "explode_in_fire": true,
@@ -237,7 +236,8 @@
       "explosion": { "power": 600, "shrapnel": { "casing_mass": 3214, "fragment_mass": 0.5 } },
       "no_deactivate_msg": "Your %s can't be deactivated; drop it to get rid of it."
     },
-    "flags": [ "TRADER_AVOID", "BOMB" ]
+    "flags": [ "TRADER_AVOID", "BOMB" ],
+    "melee_damage": { "bash": 12 }
   },
   {
     "id": "firecracker",
@@ -262,7 +262,8 @@
       "menu_text": "Light fuse",
       "type": "transform"
     },
-    "flags": [ "ACT_IN_FIRE" ]
+    "flags": [ "ACT_IN_FIRE" ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "firecracker_act",
@@ -288,7 +289,8 @@
       "no_deactivate_msg": "Your %s can't be deactivated; throw it to get rid of it.",
       "explosion": { "power": 15 }
     },
-    "flags": [ "TRADER_AVOID" ]
+    "flags": [ "TRADER_AVOID" ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "firecracker_pack",
@@ -300,14 +302,14 @@
     "price": 100,
     "price_postapoc": 100,
     "to_hit": -3,
-    "bashing": 1,
     "material": [ "paper" ],
     "symbol": "*",
     "color": "red",
     "initial_charges": 25,
     "max_charges": 25,
     "charges_per_use": 1,
-    "use_action": [ "FIRECRACKER_PACK" ]
+    "use_action": [ "FIRECRACKER_PACK" ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "firecracker_pack_act",
@@ -338,7 +340,6 @@
     "price": 2000,
     "price_postapoc": 250,
     "to_hit": -1,
-    "bashing": 5,
     "material": [ "steel" ],
     "symbol": "*",
     "color": "dark_gray",
@@ -351,7 +352,8 @@
       "menu_text": "Pull pin",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE", "ACT_IN_FIRE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE", "ACT_IN_FIRE" ],
+    "melee_damage": { "bash": 5 }
   },
   {
     "id": "flashbang_act",
@@ -459,7 +461,6 @@
     "price": 4500,
     "price_postapoc": 1000,
     "to_hit": -1,
-    "bashing": 6,
     "material": [ "steel" ],
     "symbol": "*",
     "color": "green",
@@ -472,7 +473,8 @@
       "menu_text": "Pull pin",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE", "ACT_IN_FIRE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE", "ACT_IN_FIRE" ],
+    "melee_damage": { "bash": 6 },
   },
   {
     "id": "grenade_act",
@@ -502,7 +504,8 @@
       "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it.",
       "explosion": { "power": 240, "shrapnel": { "casing_mass": 217, "fragment_mass": 0.08 } }
     },
-    "flags": [ "BOMB", "GRENADE", "TRADER_AVOID", "DANGEROUS" ]
+    "flags": [ "BOMB", "GRENADE", "TRADER_AVOID", "DANGEROUS" ],
+    "melee_damage": { "bash": 6 },
   },
   {
     "id": "grenade_emp",
@@ -516,7 +519,6 @@
     "//": "Something this useful doesn't come cheap after the apocalypse",
     "price_postapoc": 4000,
     "to_hit": -1,
-    "bashing": 5,
     "material": [ "steel", "plastic" ],
     "symbol": "*",
     "looks_like": "EMPbomb",
@@ -530,7 +532,8 @@
       "menu_text": "Arm",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE" ],
+    "melee_damage": { "bash": 5 }
   },
   {
     "id": "grenade_emp_act",
@@ -543,7 +546,6 @@
     "price": 0,
     "price_postapoc": 0,
     "to_hit": -1,
-    "bashing": 5,
     "material": [ "steel", "plastic" ],
     "symbol": "*",
     "color": "cyan",
@@ -561,7 +563,8 @@
       "sound_msg": "Tick.",
       "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it."
     },
-    "flags": [ "TRADER_AVOID" ]
+    "flags": [ "TRADER_AVOID" ],
+    "melee_damage": { "bash": 5 }
   },
   {
     "id": "grenade_inc",
@@ -575,7 +578,6 @@
     "price": 2000,
     "price_postapoc": 1500,
     "to_hit": -1,
-    "bashing": 6,
     "material": [ "plastic" ],
     "symbol": "*",
     "color": "light_red",
@@ -588,7 +590,8 @@
       "menu_text": "Pull pin",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ACT_IN_FIRE", "GRENADE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ACT_IN_FIRE", "GRENADE" ],
+    "melee_damage": { "bash": 6 }
   },
   {
     "id": "grenade_inc_act",
@@ -602,7 +605,6 @@
     "price": 0,
     "price_postapoc": 0,
     "to_hit": -1,
-    "bashing": 6,
     "material": [ "plastic" ],
     "symbol": "*",
     "color": "light_red",
@@ -611,7 +613,8 @@
     "turns_per_charge": 1,
     "revert_to": "canister_empty",
     "use_action": [ "GRENADE_INC_ACT" ],
-    "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ]
+    "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ],
+    "melee_damage": { "bash": 6 }
   },
   {
     "abstract": "grenade_canister",
@@ -717,7 +720,6 @@
     "longest_side": "63 cm",
     "price": 200000,
     "price_postapoc": 4000,
-    "bashing": 6,
     "material": [ "aluminum" ],
     "explode_in_fire": true,
     "explosion": { "power": 400, "shrapnel": { "casing_mass": 680, "fragment_mass": 0.15 } },
@@ -731,7 +733,8 @@
       "menu_text": "Unpack",
       "need_wielding": true,
       "type": "transform"
-    }
+    },
+    "melee_damage": { "bash": 6 }
   },
   {
     "id": "mininuke",
@@ -746,13 +749,13 @@
     "price": 180000,
     "price_postapoc": 10000,
     "to_hit": -2,
-    "bashing": 8,
     "//2": "Mininuke probably should be disabled by fire rather than detonated, but it makes even less sense for it to burn into 100% safe scrap metal either, so currently it's unharmed by fire.",
     "material": [ "steel" ],
     "symbol": "*",
     "color": "light_green",
     "use_action": [ "MININUKE" ],
-    "flags": [ "LEAK_DAM", "RADIOACTIVE", "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB" ]
+    "flags": [ "LEAK_DAM", "RADIOACTIVE", "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB" ],
+    "melee_damage": { "bash": 8 }
   },
   {
     "id": "mininuke_act",
@@ -767,7 +770,6 @@
     "price": 0,
     "price_postapoc": 0,
     "to_hit": -2,
-    "bashing": 8,
     "material": [ "steel" ],
     "symbol": "*",
     "color": "light_green",
@@ -784,7 +786,8 @@
       "no_deactivate_msg": "Your %s can't be deactivated, drop it to get rid of it.",
       "explosion": { "power": 9000000 }
     },
-    "flags": [ "LEAK_DAM", "RADIOACTIVE", "TRADER_AVOID", "BOMB" ]
+    "flags": [ "LEAK_DAM", "RADIOACTIVE", "TRADER_AVOID", "BOMB" ],
+    "melee_damage": { "bash": 8 }
   },
   {
     "id": "molotov",
@@ -799,7 +802,6 @@
     "price": 500,
     "price_postapoc": 500,
     "to_hit": 1,
-    "bashing": 2,
     "material": [ "glass" ],
     "symbol": "*",
     "color": "light_gray",
@@ -816,7 +818,8 @@
       "menu_text": "Light rag",
       "type": "transform"
     },
-    "flags": [ "NPC_ACTIVATE" ]
+    "flags": [ "NPC_ACTIVATE" ],
+    "melee_damage": { "bash": 2 }
   },
   {
     "id": "molotov_lit",
@@ -838,7 +841,8 @@
     "max_charges": 1,
     "turns_per_charge": 1,
     "use_action": [ "MOLOTOV_LIT" ],
-    "flags": [ "LIGHT_15", "TRADER_AVOID", "NPC_THROW_NOW", "WATER_EXTINGUISH" ]
+    "flags": [ "LIGHT_15", "TRADER_AVOID", "NPC_THROW_NOW", "WATER_EXTINGUISH" ],
+    "melee_damage": { "bash": 2 }
   },
   {
     "id": "scrambler",
@@ -852,7 +856,6 @@
     "//": "Something this useful doesn't come cheap after the apocalypse",
     "price_postapoc": 5000,
     "to_hit": -1,
-    "bashing": 5,
     "material": [ "steel", "plastic" ],
     "symbol": "*",
     "color": "yellow",
@@ -865,7 +868,8 @@
       "menu_text": "Arm",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE" ],
+    "melee_damage": { "bash": 5 }
   },
   {
     "id": "scrambler_act",
@@ -878,7 +882,6 @@
     "price": 0,
     "price_postapoc": 0,
     "to_hit": -1,
-    "bashing": 5,
     "material": [ "steel", "plastic" ],
     "symbol": "*",
     "color": "yellow",
@@ -894,7 +897,8 @@
       "sound_msg": "Tick.",
       "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it."
     },
-    "flags": [ "TRADER_AVOID" ]
+    "flags": [ "TRADER_AVOID" ],
+    "melee_damage": { "bash": 5 }
   },
   {
     "id": "smokebomb",
@@ -938,7 +942,6 @@
     "price": 100,
     "price_postapoc": 100,
     "to_hit": -2,
-    "bashing": 1,
     "material": [ "powder" ],
     "symbol": "*",
     "color": "green",
@@ -951,7 +954,8 @@
       "menu_text": "Light",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE", "ACT_IN_FIRE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE", "ACT_IN_FIRE" ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "tool_rocket_candy_act",
@@ -964,14 +968,14 @@
     "price": 0,
     "price_postapoc": 0,
     "to_hit": -2,
-    "bashing": 1,
     "material": [ "powder" ],
     "symbol": "*",
     "color": "green",
     "emits": [ "emit_smoke_plume" ],
     "countdown_interval": 20,
     "countdown_action": { "type": "transform", "target": "null" },
-    "flags": [ "BOMB", "DANGEROUS", "TRADER_AVOID", "DANGEROUS" ]
+    "flags": [ "BOMB", "DANGEROUS", "TRADER_AVOID", "DANGEROUS" ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "military_explosive_small_grenade",
@@ -1077,7 +1081,6 @@
     "price": 3000,
     "price_postapoc": 3000,
     "to_hit": 1,
-    "bashing": 5,
     "material": [ "steel" ],
     "symbol": "*",
     "color": "light_gray",
@@ -1090,7 +1093,8 @@
       "menu_text": "Pull pin",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "NPC_ACTIVATE", "ACT_IN_FIRE", "GRENADE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "NPC_ACTIVATE", "ACT_IN_FIRE", "GRENADE" ],
+    "melee_damage": { "bash": 5 }
   },
   {
     "id": "military_explosive_pipebomb_act",
@@ -1214,7 +1218,6 @@
     "volume": "500 ml",
     "price": 1500,
     "to_hit": 1,
-    "bashing": 5,
     "material": [ "steel" ],
     "symbol": "*",
     "color": "light_gray",
@@ -1228,7 +1231,8 @@
       "menu_text": "Light fuse",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "NPC_ACTIVATE", "ACT_IN_FIRE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "NPC_ACTIVATE", "ACT_IN_FIRE" ],
+    "melee_damage": { "bash": 5 }
   },
   {
     "id": "pipebomb_act",
@@ -1241,7 +1245,6 @@
     "volume": "500 ml",
     "price": 0,
     "to_hit": 1,
-    "bashing": 5,
     "material": [ "steel" ],
     "symbol": "*",
     "color": "light_gray",
@@ -1257,7 +1260,8 @@
       "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it.",
       "explosion": { "power": 300, "shrapnel": { "casing_mass": 410, "fragment_mass": 0.5 } }
     },
-    "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ]
+    "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ],
+    "melee_damage": { "bash": 5 }
   },
   {
     "id": "homemade_bomb",
@@ -1321,7 +1325,6 @@
     "volume": "3900 ml",
     "price": 0,
     "to_hit": -3,
-    "bashing": 4,
     "material": [ "plastic" ],
     "symbol": "*",
     "color": "red",
@@ -1335,7 +1338,8 @@
       "menu_text": "Light fuse",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ACT_IN_FIRE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ACT_IN_FIRE" ],
+    "melee_damage": { "bash": 4 }
   },
   {
     "id": "homemade_demolition_charge_act",
@@ -1348,7 +1352,6 @@
     "price": 0,
     "price_postapoc": 0,
     "to_hit": -3,
-    "bashing": 4,
     "material": [ "plastic" ],
     "symbol": "*",
     "color": "red",
@@ -1364,7 +1367,8 @@
       "no_deactivate_msg": "Your %s can't be deactivated, drop it to get rid of it.",
       "explosion": { "power": 2590 }
     },
-    "flags": [ "TRADER_AVOID" ]
+    "flags": [ "TRADER_AVOID" ],
+    "melee_damage": { "bash": 4 }
   },
   {
     "id": "half_barrel_bomb",
@@ -1376,7 +1380,6 @@
     "volume": "52500 ml",
     "price": 100000,
     "to_hit": -5,
-    "bashing": 20,
     "material": [ "steel" ],
     "symbol": "(",
     "color": "red",
@@ -1389,7 +1392,8 @@
       "menu_text": "Light fuse",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ALLOWS_REMOTE_USE", "ACT_IN_FIRE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ALLOWS_REMOTE_USE", "ACT_IN_FIRE" ],
+    "melee_damage": { "bash": 20 }
   },
   {
     "id": "half_barrel_bomb_act",
@@ -1401,7 +1405,6 @@
     "volume": "52500 ml",
     "price": 0,
     "to_hit": -5,
-    "bashing": 20,
     "material": [ "steel" ],
     "symbol": "(",
     "color": "light_red",
@@ -1415,7 +1418,8 @@
       "no_deactivate_msg": "Your %s can't be deactivated, drop it to get rid of it.",
       "explosion": { "power": 34400, "shrapnel": { "casing_mass": 12600, "fragment_mass": 600 } }
     },
-    "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ]
+    "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ],
+    "melee_damage": { "bash": 20 }
   },
   {
     "id": "full_barrel_bomb",
@@ -1427,7 +1431,6 @@
     "volume": "105 L",
     "price": 90000,
     "to_hit": -5,
-    "bashing": 20,
     "material": [ "steel" ],
     "symbol": "(",
     "color": "red",
@@ -1440,7 +1443,8 @@
       "menu_text": "Light fuse",
       "type": "transform"
     },
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ALLOWS_REMOTE_USE", "ACT_IN_FIRE" ]
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ALLOWS_REMOTE_USE", "ACT_IN_FIRE" ],
+    "melee_damage": { "bash": 20 }
   },
   {
     "id": "full_barrel_bomb_act",
@@ -1452,7 +1456,6 @@
     "volume": "105 L",
     "price": 0,
     "to_hit": -5,
-    "bashing": 20,
     "material": [ "steel" ],
     "symbol": "(",
     "color": "light_red",
@@ -1466,6 +1469,7 @@
       "no_deactivate_msg": "You've already activated the bomb - clear the area immediately!",
       "explosion": { "power": 69200, "shrapnel": { "casing_mass": 12000, "fragment_mass": 600 } }
     },
-    "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ]
+    "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ],
+    "melee_damage": { "bash": 20 }
   }
 ]

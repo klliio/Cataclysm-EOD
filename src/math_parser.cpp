@@ -5,6 +5,7 @@
 #include <cerrno>
 #include <cstddef>
 #include <cstdlib>
+#include <locale>
 #include <memory>
 #include <optional>
 #include <stack>
@@ -210,6 +211,10 @@ class math_exp::math_exp_impl
             if( str.empty() ) {
                 return false;
             }
+            std::locale const &oldloc = std::locale::global( std::locale::classic() );
+            on_out_of_scope reset_loc( [&oldloc]() {
+                std::locale::global( oldloc );
+            } );
             try {
                 _parse( str, assignment );
             } catch( std::invalid_argument const &ex ) {
@@ -234,7 +239,8 @@ class math_exp::math_exp_impl
                 [&d, val]( var const & v ) {
                     write_var_value( v.varinfo.type, v.varinfo.name,
                                      d.actor( v.varinfo.type == var_type::npc ),
-                                     std::to_string( val ) );
+                                     // NOLINTNEXTLINE(cata-translate-string-literal)
+                                     string_format( "%g", val ) );
                 },
                 []( auto &/* v */ ) {
                     debugmsg( "Assignment called on eval tree" );

@@ -11,7 +11,6 @@
     "price": 70000,
     "price_postapoc": 15000,
     "to_hit": 1,
-    "bashing": 7,
     "material": [ "qt_steel", "hyperweave_off", "kevlar_rigid" ],
     "symbol": "[",
     "looks_like": "power_armor_basic",
@@ -37,7 +36,8 @@
         "coverage": 100,
         "covers": [ "torso", "arm_l", "arm_r", "hand_l", "hand_r", "leg_l", "leg_r", "foot_l", "foot_r" ]
       }
-    ]
+    ],
+    "melee_damage": { "bash": 7 }
   },
   {
     "id": "depowered_helmet",
@@ -50,7 +50,6 @@
     "price": 30000,
     "price_postapoc": 5000,
     "to_hit": 1,
-    "bashing": 1,
     "material": [ "qt_steel", "hyperweave_off", "kevlar_rigid" ],
     "symbol": "[",
     "looks_like": "power_armor_helmet_basic",
@@ -72,6 +71,7 @@
         "flag_restriction": [ "HELMET_BACK_POUCH" ]
       }
     ]
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "power_armor_basic",
@@ -84,7 +84,6 @@
     "price": 7000000,
     "price_postapoc": 30000,
     "to_hit": 1,
-    "bashing": 7,
     "material": [ "qt_steel", "hyperweave_off", "kevlar_rigid" ],
     "symbol": "[",
     "looks_like": "depowered_armor",
@@ -127,7 +126,8 @@
         "coverage": 100,
         "covers": [ "torso", "arm_l", "arm_r", "hand_l", "hand_r", "leg_l", "leg_r", "foot_l", "foot_r" ]
       }
-    ]
+    ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "power_armor_basic_on",
@@ -170,7 +170,6 @@
     "price": 1000000,
     "price_postapoc": 10000,
     "to_hit": 1,
-    "bashing": 1,
     "material": [ "steel" ],
     "symbol": "[",
     "looks_like": "backpack_tactical_large",
@@ -195,7 +194,8 @@
       "POWERARMOR_COMPONENT",
       "POWERARMOR_NOACTIVE"
     ],
-    "armor": [ { "coverage": 50, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ]
+    "armor": [ { "coverage": 50, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "power_armor_generator",
@@ -208,7 +208,6 @@
     "price": 1000000,
     "price_postapoc": 10000,
     "to_hit": 1,
-    "bashing": 1,
     "material": [ "steel" ],
     "symbol": "[",
     "looks_like": "backpack_tactical_large",
@@ -236,7 +235,8 @@
       "POWERARMOR_COMPONENT",
       "POWERARMOR_NOACTIVE"
     ],
-    "armor": [ { "coverage": 50, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ]
+    "armor": [ { "coverage": 50, "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_back" ] } ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "power_armor_heavy",
@@ -250,7 +250,6 @@
     "price": 11500000,
     "price_postapoc": 40000,
     "to_hit": 1,
-    "bashing": 7,
     "material": [ "qt_steel", "hyperweave_off", "kevlar_rigid" ],
     "symbol": "[",
     "looks_like": "power_armor_basic",
@@ -293,7 +292,8 @@
         "coverage": 100,
         "covers": [ "torso", "arm_l", "arm_r", "hand_l", "hand_r", "leg_l", "leg_r", "foot_l", "foot_r" ]
       }
-    ]
+    ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "power_armor_heavy_on",
@@ -336,7 +336,6 @@
     "price": 2500000,
     "price_postapoc": 7500,
     "to_hit": 1,
-    "bashing": 1,
     "material": [ "qt_steel", "hyperweave_off", "kevlar_rigid" ],
     "symbol": "[",
     "looks_like": "depowered_helmet",
@@ -379,7 +378,8 @@
         "description": "Pocket for a counterweight pouch.",
         "flag_restriction": [ "HELMET_BACK_POUCH" ]
       }
-    ]
+    ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "power_armor_helmet_basic_on",
@@ -421,7 +421,6 @@
     "price": 3750000,
     "price_postapoc": 10000,
     "to_hit": 1,
-    "bashing": 1,
     "material": [ "qt_steel", "hyperweave_off", "kevlar_rigid" ],
     "symbol": "[",
     "looks_like": "power_armor_helmet_basic",
@@ -464,7 +463,8 @@
         "description": "Pocket for a counterweight pouch.",
         "flag_restriction": [ "HELMET_BACK_POUCH" ]
       }
-    ]
+    ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "power_armor_helmet_heavy_on",
@@ -506,7 +506,6 @@
     "price": 3750000,
     "price_postapoc": 10000,
     "to_hit": 1,
-    "bashing": 1,
     "material": [ "qt_steel", "kevlar", "kevlar_rigid" ],
     "symbol": "[",
     "looks_like": "power_armor_helmet_basic",
@@ -549,6 +548,7 @@
         "flag_restriction": [ "HELMET_BACK_POUCH" ]
       }
     ]
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "power_armor_helmet_light_on",
@@ -590,7 +590,6 @@
     "price": 11500000,
     "price_postapoc": 40000,
     "to_hit": 1,
-    "bashing": 7,
     "material": [ "qt_steel", "kevlar", "kevlar_rigid" ],
     "symbol": "[",
     "looks_like": "depowered_armor",
@@ -633,7 +632,8 @@
         "coverage": 100,
         "covers": [ "torso", "arm_l", "arm_r", "hand_l", "hand_r", "leg_l", "leg_r", "foot_l", "foot_r" ]
       }
-    ]
+    ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "power_armor_light_on",

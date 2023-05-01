@@ -9,6 +9,7 @@
 #include "game.h"
 #include "inventory.h"
 #include "itype.h"
+#include "make_static.h"
 #include "melee.h"
 #include "memorial_logger.h"
 #include "messages.h"
@@ -1618,36 +1619,25 @@ item &outfit::front()
 
 static void item_armor_enchantment_adjust( Character &guy, damage_unit &du, item &armor )
 {
-    switch( du.type ) {
-        case damage_type::ACID:
-            du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_ACID );
-            break;
-        case damage_type::BASH:
-            du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_BASH );
-            break;
-        case damage_type::BIOLOGICAL:
-            du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_BIO );
-            break;
-        case damage_type::COLD:
-            du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_COLD );
-            break;
-        case damage_type::CUT:
-            du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_CUT );
-            break;
-        case damage_type::ELECTRIC:
-            du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_ELEC );
-            break;
-        case damage_type::HEAT:
-            du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_HEAT );
-            break;
-        case damage_type::STAB:
-            du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_STAB );
-            break;
-        case damage_type::BULLET:
-            du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_BULLET );
-            break;
-        default:
-            return;
+    // FIXME: hardcoded damage types -> enchantments
+    if( du.type == STATIC( damage_type_id( "acid" ) ) ) {
+        du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_ACID );
+    } else if( du.type == STATIC( damage_type_id( "bash" ) ) ) {
+        du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_BASH );
+    } else if( du.type == STATIC( damage_type_id( "biological" ) ) ) {
+        du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_BIO );
+    } else if( du.type == STATIC( damage_type_id( "cold" ) ) ) {
+        du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_COLD );
+    } else if( du.type == STATIC( damage_type_id( "cut" ) ) ) {
+        du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_CUT );
+    } else if( du.type == STATIC( damage_type_id( "electric" ) ) ) {
+        du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_ELEC );
+    } else if( du.type == STATIC( damage_type_id( "heat" ) ) ) {
+        du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_HEAT );
+    } else if( du.type == STATIC( damage_type_id( "stab" ) ) ) {
+        du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_STAB );
+    } else if( du.type == STATIC( damage_type_id( "bullet" ) ) ) {
+        du.amount = armor.calculate_by_enchantment( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_BULLET );
     }
     du.amount = std::max( 0.0f, du.amount );
 }
@@ -1685,7 +1675,8 @@ void outfit::absorb_damage( Character &guy, damage_unit &elem, bodypart_id bp,
         item_armor_enchantment_adjust( guy, elem, armor );
         // Heat damage can set armor on fire
         // Even though it doesn't cause direct physical damage to it
-        if( outermost && elem.type == damage_type::HEAT && elem.amount >= 1.0f ) {
+        // FIXME: Hardcoded damage type
+        if( outermost && elem.type == STATIC( damage_type_id( "heat" ) ) && elem.amount >= 1.0f ) {
             // TODO: Different fire intensity values based on damage
             fire_data frd{ 2 };
             destroy = !armor.has_flag( flag_INTEGRATED ) && armor.burn( frd );
@@ -1734,13 +1725,13 @@ void outfit::absorb_damage( Character &guy, damage_unit &elem, bodypart_id bp,
     }
 }
 
-float outfit::damage_resist( const damage_type dmg_type, const bodypart_id &bp,
+float outfit::damage_resist( const damage_type_id &dt, const bodypart_id &bp,
                              const bool to_self ) const
 {
     float ret = 0.0f;
     for( const item &i : worn ) {
         if( i.covers( bp ) ) {
-            ret += i.resist( dmg_type, to_self, bp );
+            ret += i.resist( dt, to_self, bp );
         }
     }
     return ret;
@@ -2278,24 +2269,18 @@ void outfit::add_stash( Character &guy, const item &newit, int &remaining_charge
             if( pocke == nullptr ) {
                 continue;
             }
-            if( pocke->rigid() ) {
-                // Rigid container allow to fill unconditionally till volume limit
-                // because do not depend on the capacity of the parent's pocket.
-                filled_count = pocke->fill_with( newit, guy, remaining_charges, false, false );
-            } else {
-                int max_contain_value = pocke->remaining_capacity_for_item( newit );
-                const item_location parent_data = pocket_data_ptr.parent;
+            int max_contain_value = pocke->remaining_capacity_for_item( newit );
+            const item_location parent_data = pocket_data_ptr.parent;
 
-                if( parent_data.has_parent() ) {
-                    if( parent_data.parents_can_contain_recursive( &temp_it ) ) {
-                        max_contain_value = parent_data.max_charges_by_parent_recursive( temp_it );
-                    } else {
-                        max_contain_value = 0;
-                    }
+            if( parent_data.has_parent() ) {
+                if( parent_data.parents_can_contain_recursive( &temp_it ) ) {
+                    max_contain_value = parent_data.max_charges_by_parent_recursive( temp_it );
+                } else {
+                    max_contain_value = 0;
                 }
-                const int charges = std::min( max_contain_value, remaining_charges ) ;
-                filled_count = pocke->fill_with( newit, guy, charges, false, false );
             }
+            const int charges = std::min( max_contain_value, remaining_charges ) ;
+            filled_count = pocke->fill_with( newit, guy, charges, false, false );
             num_contained += filled_count;
             remaining_charges -= filled_count;
         }

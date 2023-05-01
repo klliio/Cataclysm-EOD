@@ -762,11 +762,12 @@ class vehicle
 
         // direct damage to part (armor protection and internals are not counted)
         // returns damage bypassed
-        int damage_direct( map &here, int p, int dmg, damage_type type = damage_type::PURE );
+        int damage_direct( map &here, int p, int dmg,
+                           const damage_type_id &type = damage_type_id( "pure" ) );
         // Removes the part, breaks it into pieces and possibly removes parts attached to it
         int break_off( map &here, int p, int dmg );
         // Returns if it did actually explode
-        bool explode_fuel( int p, damage_type type );
+        bool explode_fuel( int p, const damage_type_id &type );
         //damages vehicle controls and security system
         void smash_security_system();
         // get vpart powerinfo for part number, accounting for variable-sized parts and hps.
@@ -1357,7 +1358,7 @@ class vehicle
         // reactors is only drawn when batteries are empty.
         units::power max_reactor_epower() const;
         // Active power from reactors that is actually being drained by batteries.
-        units::power active_reactor_epower( bool connected_vehicles ) const;
+        units::power active_reactor_epower() const;
         // Produce and consume electrical power, with excess power stored or
         // taken from batteries.
         void power_parts();
@@ -1595,8 +1596,7 @@ class vehicle
          * @param thrusting must be true when called from vehicle::thrust and vehicle is thrusting
          * @param k_traction_cache cached value of vehicle::k_traction, if empty, will be computed
          */
-        void smart_controller_handle_turn( bool thrusting = false,
-                                           const std::optional<float> &k_traction_cache = std::nullopt );
+        void smart_controller_handle_turn( const std::optional<float> &k_traction_cache = std::nullopt );
 
         bool has_available_electric_engine();
         void disable_smart_controller_if_needed();
@@ -1726,10 +1726,11 @@ class vehicle
         // must exceed certain threshold to be subtracted from hp
         // (a lot light collisions will not destroy parts)
         // Returns damage bypassed
-        int damage( map &here, int p, int dmg, damage_type type = damage_type::BASH, bool aimed = true );
+        int damage( map &here, int p, int dmg, const damage_type_id &type = damage_type_id( "bash" ),
+                    bool aimed = true );
 
         // damage all parts (like shake from strong collision), range from dmg1 to dmg2
-        void damage_all( int dmg1, int dmg2, damage_type type, const point &impact );
+        void damage_all( int dmg1, int dmg2, const damage_type_id &type, const point &impact );
 
         //Shifts the coordinates of all parts and moves the vehicle in the opposite direction.
         void shift_parts( map &here, const point &delta );
@@ -2130,7 +2131,7 @@ class vehicle
          * alpha is 0.5:  avg_velocity = avg_velocity + 0.5(velocity - avg_velocity) = 0.5 avg_velocity + 0.5 velocity
          */
         int avg_velocity = 0;
-        // velocity vehicle's cruise control trying to achieve
+        // velocity the vehicle is trying to achieve
         int cruise_velocity = 0;
         // Only used for collisions, vehicle falls instantly
         int vertical_velocity = 0;
@@ -2198,9 +2199,6 @@ class vehicle
         bool is_following = false;
         bool is_patrolling = false;
         bool all_wheels_on_one_axis = false; // NOLINT(cata-serialize)
-        // TODO: change these to a bitset + enum?
-        // cruise control on/off
-        bool cruise_on = true;
         // at least one engine is on, of any type
         bool engine_on = false;
         // vehicle tracking on/off

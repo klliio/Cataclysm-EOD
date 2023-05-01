@@ -278,6 +278,16 @@ void suffer::mutation_power( Character &you, const trait_id &mut_id )
                 you.mod_fatigue( mut_id->cost );
             }
         }
+
+        // if you haven't deactivated then run the EOC
+        for( const effect_on_condition_id &eoc : mut_id->processed_eocs ) {
+            dialogue d( get_talker_for( you ), nullptr );
+            if( eoc->type == eoc_type::ACTIVATION ) {
+                eoc->activate( d );
+            } else {
+                debugmsg( "Must use an activation eoc for a mutation process.  If you don't want the effect_on_condition to happen on its own (without the mutation being activated), remove the recurrence min and max.  Otherwise, create a non-recurring effect_on_condition for this mutation with its condition and effects, then have a recurring one queue it." );
+            }
+        }
     }
 }
 
@@ -1781,11 +1791,11 @@ void suffer::from_artifact_resonance( Character &you, int amt )
                 you.mod_pain( 5 );
             } else if( rng_outcome == 2 ) {
                 you.add_msg_if_player( m_bad,
-                                       _( "Your vision suddenly becomes blurry and hard to decipher." ) );
-                you.add_effect( effect_hallu, 5_minutes );
+                                       _( "Your vision becomes blurry and you suddenly feel like you're falling." ) );
+                you.add_effect( effect_visuals, 5_minutes );
             } else if( rng_outcome == 3 ) {
                 you.add_msg_if_player( m_bad, _( "You suddenly feel very queasy." ) );
-                you.add_effect( effect_nausea, 1_minutes );
+                you.add_effect( effect_nausea, 5_minutes );
             }
         }
     }
