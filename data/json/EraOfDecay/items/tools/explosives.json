@@ -11,7 +11,6 @@
     "price": 0,
     "price_postapoc": 0,
     "to_hit": -1,
-    "bashing": 2,
     "material": [ "clay" ],
     "symbol": "*",
     "color": "light_gray",
@@ -19,6 +18,7 @@
     "max_charges": 1,
     "turns_per_charge": 1,
     "use_action": [ "MOLOTOV_LIT" ],
-    "flags": [ "LIGHT_15", "TRADER_AVOID", "NPC_THROW_NOW", "WATER_EXTINGUISH" ]
+    "flags": [ "LIGHT_15", "TRADER_AVOID", "NPC_THROW_NOW", "WATER_EXTINGUISH" ],
+    "melee_damage": { "bash": 2 }
   }
 ]

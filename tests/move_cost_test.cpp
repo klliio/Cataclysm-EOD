@@ -74,7 +74,8 @@ TEST_CASE( "footwear may affect movement cost", "[move_cost][shoes]" )
     SECTION( "without shoes" ) {
         ava.worn.clear();
         REQUIRE_FALSE( ava.is_wearing_shoes() );
-        // Having no shoes adds +8 per foot to base run cost
+        here.ter_set( ava.pos(), t_grass_long );
+        // Having no shoes adds +8 per foot to base run cost on some terrain
         CHECK( ava.run_cost( 100 ) == 116 );
     }
 
@@ -172,9 +173,9 @@ TEST_CASE( "mutations may affect movement cost", "[move_cost][mutation]" )
             ava.wear_item( item( "sneakers" ) );
             CHECK( ava.run_cost( 100 ) == Approx( base_cost ) );
         }
-        THEN( "being barefoot gives a +16 movement cost penalty" ) {
+        THEN( "being barefoot gives no movement cost penalty" ) {
             ava.worn.clear();
-            CHECK( ava.run_cost( 100 ) == Approx( base_cost + 16 ) );
+            CHECK( ava.run_cost( 100 ) == Approx( base_cost ) );
         }
     }
 

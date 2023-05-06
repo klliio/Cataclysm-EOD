@@ -12,7 +12,6 @@
     "volume": "2 L",
     "price": "450 USD",
     "price_postapoc": "5 USD",
-    "bashing": 5,
     "material": [ "paper" ],
     "symbol": "?",
     "looks_like": "SICP",
@@ -22,6 +21,7 @@
     "max_level": 10,
     "intelligence": 12,
     "time": "50 m",
-    "fun": -2
+    "fun": -2,
+    "melee_damage": { "bash": 5 }
   }
 ]

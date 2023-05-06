@@ -12,7 +12,6 @@
     "price": 1040000,
     "price_postapoc": 5000,
     "to_hit": -3,
-    "bashing": 12,
     "material": [ "steel", "aluminum" ],
     "ammo": [ "40x46mm" ],
     "dispersion": 270,
@@ -31,6 +30,7 @@
       [ "stock mount", 1 ],
       [ "underbarrel mount", 1 ]
     ],
-    "pocket_data": [ { "pocket_type": "MAGAZINE", "rigid": true, "ammo_restriction": { "40x46mm": 12 } } ]
+    "pocket_data": [ { "pocket_type": "MAGAZINE", "rigid": true, "ammo_restriction": { "40x46mm": 12 } } ],
+    "melee_damage": { "bash": 12 }
   }
 ]

@@ -56,8 +56,7 @@ static void verify_default_cardio_options()
 static int running_steps( Character &they, const ter_id &terrain = t_pavement )
 {
     map &here = get_map();
-    // Please take off your shoes when entering, and no NPCs allowed
-    REQUIRE_FALSE( they.is_wearing_shoes() );
+    // No NPCs allowed.
     REQUIRE_FALSE( they.is_npc() );
     // You put your left foot in, you put your right foot in
     const tripoint left = they.pos();
@@ -149,7 +148,7 @@ TEST_CASE( "base cardio", "[cardio][base]" )
 
     // Ensure no initial effects that would affect cardio
     REQUIRE( they.get_lifestyle() == 0 );
-    REQUIRE( they.get_skill_level( skill_swimming ) == 0 );
+    REQUIRE( static_cast<int>( they.get_skill_level( skill_swimming ) ) == 0 );
     // Ensure starting cardio are what we expect
     REQUIRE( they.get_cardiofit() == 1000 );
 
@@ -157,7 +156,8 @@ TEST_CASE( "base cardio", "[cardio][base]" )
         // pre-Cardio, could run 96 steps
         // post-Cardio, can run 84 steps in-game, test case reached 87
         // correctly counting moves/steps instead of turns, test case reaches 83
-        check_trait_cardio_stamina_run( they, "", base_cardio, base_stamina, 83 );
+        /// The numbers above are before barefoot speed penalty on most surfaces got removed.
+        check_trait_cardio_stamina_run( they, "", base_cardio, base_stamina, 95 );
     }
 }
 
@@ -186,21 +186,21 @@ TEST_CASE( "cardio is and isn't affected by certain traits", "[cardio][traits]" 
 
     // Ensure no initial effects that would affect cardio
     REQUIRE( they.get_lifestyle() == 0 );
-    REQUIRE( they.get_skill_level( skill_swimming ) == 0 );
+    REQUIRE( static_cast<int>( they.get_skill_level( skill_swimming ) ) == 0 );
     // Ensure starting cardio are what we expect
     REQUIRE( they.get_cardiofit() == 1000 );
 
     SECTION( "Base character with no traits" ) {
         // pre-Cardio, could run 96 steps
-        check_trait_cardio_stamina_run( they, "", base_cardio, base_stamina, 81 );
+        check_trait_cardio_stamina_run( they, "", base_cardio, base_stamina, 95 );
     }
 
     // Body Size has no effect on running distance.
     SECTION( "Traits affecting body size" ) {
-        check_trait_cardio_stamina_run( they, "SMALL2", base_cardio, base_stamina, 81 );
-        check_trait_cardio_stamina_run( they, "SMALL", base_cardio, base_stamina, 81 );
-        check_trait_cardio_stamina_run( they, "LARGE", base_cardio, base_stamina, 81 );
-        check_trait_cardio_stamina_run( they, "HUGE", base_cardio, base_stamina, 81 );
+        check_trait_cardio_stamina_run( they, "SMALL2", base_cardio, base_stamina, 95 );
+        check_trait_cardio_stamina_run( they, "SMALL", base_cardio, base_stamina, 95 );
+        check_trait_cardio_stamina_run( they, "LARGE", base_cardio, base_stamina, 95 );
+        check_trait_cardio_stamina_run( they, "HUGE", base_cardio, base_stamina, 95 );
     }
 
     SECTION( "Traits with cardio_multiplier" ) {
@@ -208,34 +208,34 @@ TEST_CASE( "cardio is and isn't affected by certain traits", "[cardio][traits]" 
         // maximum stamina. Now that cardio fitness is actually implemented, these traits
         // directly affect total cardio fitness, and thus maximum stamina (and running distance).
         // Languorous
-        check_trait_cardio_stamina_run( they, "BADCARDIO", 0.7 * base_cardio, 7000, 66 );
+        check_trait_cardio_stamina_run( they, "BADCARDIO", 0.7 * base_cardio, 7000, 75 );
         // Indefatigable
-        check_trait_cardio_stamina_run( they, "GOODCARDIO", 1.3 * base_cardio, 10000, 103 );
+        check_trait_cardio_stamina_run( they, "GOODCARDIO", 1.3 * base_cardio, 10000, 117 );
         // Hyperactive
-        check_trait_cardio_stamina_run( they, "GOODCARDIO2", 1.6 * base_cardio, 11500, 121 );
+        check_trait_cardio_stamina_run( they, "GOODCARDIO2", 1.6 * base_cardio, 11500, 141 );
     }
 
     SECTION( "Traits with metabolism_modifier AND stamina_regen_modifier" ) {
         // Fast Metabolism
-        check_trait_cardio_stamina_run( they, "HUNGER", base_cardio, base_stamina, 83 );
+        check_trait_cardio_stamina_run( they, "HUNGER", base_cardio, base_stamina, 95 );
         // Very Fast Metabolism
-        check_trait_cardio_stamina_run( they, "HUNGER2", base_cardio, base_stamina, 85 );
+        check_trait_cardio_stamina_run( they, "HUNGER2", base_cardio, base_stamina, 99 );
         // Extreme Metabolism
-        check_trait_cardio_stamina_run( they, "HUNGER3", base_cardio, base_stamina, 88 );
+        check_trait_cardio_stamina_run( they, "HUNGER3", base_cardio, base_stamina, 102 );
     }
 
     SECTION( "Traits with ONLY stamina_regen_modifier" ) {
-        check_trait_cardio_stamina_run( they, "PERSISTENCE_HUNTER", base_cardio, base_stamina, 83 );
-        check_trait_cardio_stamina_run( they, "PERSISTENCE_HUNTER2", base_cardio, base_stamina, 84 );
+        check_trait_cardio_stamina_run( they, "PERSISTENCE_HUNTER", base_cardio, base_stamina, 96 );
+        check_trait_cardio_stamina_run( they, "PERSISTENCE_HUNTER2", base_cardio, base_stamina, 97 );
     }
 
     SECTION( "Traits with ONLY metabolism_modifier" ) {
-        check_trait_cardio_stamina_run( they, "COLDBLOOD", base_cardio, base_stamina, 81 );
-        check_trait_cardio_stamina_run( they, "COLDBLOOD2", base_cardio, base_stamina, 81 );
-        check_trait_cardio_stamina_run( they, "COLDBLOOD3", base_cardio, base_stamina, 81 );
-        check_trait_cardio_stamina_run( they, "COLDBLOOD4", base_cardio, base_stamina, 81 );
-        check_trait_cardio_stamina_run( they, "LIGHTEATER", base_cardio, base_stamina, 81 );
-        check_trait_cardio_stamina_run( they, "MET_RAT", base_cardio, base_stamina, 81 );
+        check_trait_cardio_stamina_run( they, "COLDBLOOD", base_cardio, base_stamina, 97 );
+        check_trait_cardio_stamina_run( they, "COLDBLOOD2", base_cardio, base_stamina, 98 );
+        check_trait_cardio_stamina_run( they, "COLDBLOOD3", base_cardio, base_stamina, 100 );
+        check_trait_cardio_stamina_run( they, "COLDBLOOD4", base_cardio, base_stamina, 100 );
+        check_trait_cardio_stamina_run( they, "LIGHTEATER", base_cardio, base_stamina, 95 );
+        check_trait_cardio_stamina_run( they, "MET_RAT", base_cardio, base_stamina, 95 );
     }
 }
 

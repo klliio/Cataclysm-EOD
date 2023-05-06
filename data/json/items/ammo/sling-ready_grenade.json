@@ -10,7 +10,6 @@
     "price": 500,
     "price_postapoc": 500,
     "to_hit": -1,
-    "bashing": 5,
     "material": [ "clay" ],
     "symbol": "*",
     "color": "light_gray",
@@ -32,7 +31,8 @@
     "//2": "Firestarting tool is currently not needed to fire this from a staff sling; this should be fixed.",
     "range": 11,
     "dispersion": 14,
-    "effects": [ "NEVER_MISFIRES", "NON_FOULING", "FLAME" ]
+    "effects": [ "NEVER_MISFIRES", "NON_FOULING", "FLAME" ],
+    "melee_damage": { "bash": 5 }
   },
   {
     "type": "AMMO",
@@ -45,7 +45,6 @@
     "price": 4500,
     "price_postapoc": 1000,
     "to_hit": -1,
-    "bashing": 6,
     "material": [ "steel" ],
     "symbol": "*",
     "color": "green",
@@ -65,7 +64,8 @@
     "//2": "Currently this item explodes instantly upon hit if used with a staff sling; it's supposed to drop an active grenade with normal explosion delay, however.",
     "range": 25,
     "dispersion": 14,
-    "effects": [ "NEVER_MISFIRES", "NON_FOULING", "EXPLOSIVE_GRENADE" ]
+    "effects": [ "NEVER_MISFIRES", "NON_FOULING", "EXPLOSIVE_GRENADE" ],
+    "melee_damage": { "bash": 6 }
   },
   {
     "id": "sling-ready_small_homemade_grenade",

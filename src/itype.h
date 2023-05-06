@@ -135,11 +135,8 @@ struct islot_comestible {
         /** Time until becomes rotten at standard temperature, or zero if never spoils */
         time_duration spoils = 0_turns;
 
-        /** addiction potential */
-        int addict = 0;
-
-        /** effects of addiction */
-        addiction_id add = addiction_id::NULL_ID();
+        /** list of addictions and their potential */
+        std::map<addiction_id, int> addictions;
 
         /** stimulant effect */
         int stim = 0;
@@ -199,6 +196,9 @@ struct islot_comestible {
     private:
         /** effect on morale when consuming */
         int fun = 0;
+
+        /** addiction potential to use when an addiction was given without one */
+        int default_addict_potential = 0;
 };
 
 struct islot_brewable {
@@ -1173,7 +1173,7 @@ struct itype {
         std::map<quality_id, int> charged_qualities;
 
         // True if this has given quality or charged_quality (regardless of current charge).
-        bool has_any_quality( const std::string &quality ) const;
+        bool has_any_quality( std::string_view quality ) const;
 
         // Properties are assigned to the type (belong to the item definition)
         std::map<std::string, std::string> properties;
@@ -1315,7 +1315,7 @@ struct itype {
 
     public:
         /** Damage output in melee for zero or more damage types */
-        std::array<int, static_cast<int>( damage_type::NUM )> melee;
+        std::map<damage_type_id, float> melee;
 
         bool default_container_sealed = true;
 
@@ -1329,6 +1329,12 @@ struct itype {
         bool was_loaded = false;
 
     private:
+        // load-only, for applying proportional melee values at load time
+        std::map<damage_type_id, float> melee_proportional;
+
+        // load-only, for applying relative melee values at load time
+        std::map<damage_type_id, float> melee_relative;
+
         /** Can item be combined with other identical items? */
         bool stackable_ = false;
 
@@ -1336,7 +1342,7 @@ struct itype {
         static constexpr int damage_scale = 1000; /** Damage scale compared to the old float damage value */
 
         itype() {
-            melee.fill( 0 );
+            melee.clear();
         }
 
         int damage_max() const {
@@ -1419,8 +1425,8 @@ struct itype {
         bool is_basic_component() const;
 };
 
-void load_charge_removal_blacklist( const JsonObject &jo, const std::string &src );
-void load_charge_migration_blacklist( const JsonObject &jo, const std::string &src );
-void load_temperature_removal_blacklist( const JsonObject &jo, const std::string &src );
+void load_charge_removal_blacklist( const JsonObject &jo, std::string_view src );
+void load_charge_migration_blacklist( const JsonObject &jo, std::string_view src );
+void load_temperature_removal_blacklist( const JsonObject &jo, std::string_view src );
 
 #endif // CATA_SRC_ITYPE_H

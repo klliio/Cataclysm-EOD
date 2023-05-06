@@ -3,6 +3,8 @@ aberrance
 aboveground
 abso
 acausal
+acceleratron
+acceleratrons
 accessorized
 acclimatization
 accoustrement
@@ -60,6 +62,7 @@ alexandrites
 algum
 alienis
 alient
+alinagerimi
 alkahest
 alkalis
 alkyl
@@ -142,6 +145,7 @@ aquilops
 aramid
 arapaima
 arborescent
+arebinya
 args
 armeniaca
 armet
@@ -169,6 +173,7 @@ asymmetrically
 ategory
 aterial
 athame
+athames
 atmmonoid
 atomically
 atompot
@@ -270,6 +275,7 @@ bifocal
 biggun
 bigpack
 bileworm
+bilonyali
 bimetal
 binocs
 bioactive
@@ -446,6 +452,7 @@ cattail
 cattails
 causer
 caustically
+cavitation
 cbm
 cdc
 cdda
@@ -641,6 +648,8 @@ cusses
 customizable
 customization
 cutlasses
+cutthroater
+cutthroaters
 cuvette
 cuvettes
 cuy
@@ -684,6 +693,7 @@ decelerates
 deceptived
 defatted
 deforming
+dehina
 dehydrator
 dehydrators
 deines
@@ -731,6 +741,7 @@ diffracting
 diggable
 digitizes
 dilophosaurus
+dimensionalism
 dimensionally
 dimestore
 diminute
@@ -777,6 +788,7 @@ doesnt
 doffing
 dogbane
 doggo
+doglike 
 domestica
 dongle
 doomseer
@@ -1298,6 +1310,8 @@ homebrewing
 homemaking
 homewrecker
 homovorus
+homunculi
+homunculus
 honeygold
 honker
 hoose
@@ -1344,6 +1358,7 @@ hypochlorite
 hypno
 hypochlorite
 hypogaea
+ibalalehu
 ichor
 idkont
 ifoundramsesthecat
@@ -1378,6 +1393,7 @@ infirma
 influencers
 inhalant
 inhalative
+inidatseda
 injest
 inlays
 innawood
@@ -1420,6 +1436,7 @@ issi
 issuer
 itchiness
 itemname
+iwedalehu
 j
 jabberwock
 jabberwocks
@@ -1498,6 +1515,7 @@ kops
 kord
 kosmoceratops
 krabgek
+krar
 kreck
 krick
 kriegsmesser
@@ -1678,6 +1696,7 @@ mesenterium
 meshwork
 messily
 messin
+metahi
 metallics
 metalloid
 metalsmithing
@@ -1748,6 +1767,7 @@ moder
 modifier
 modifiers
 modularity
+modulations
 mohawks
 moisturized
 moldspring
@@ -1800,6 +1820,7 @@ mutagenicity
 mutagens
 mutatur
 mutus
+muzika
 muzzleloaders
 mycoid
 mycus
@@ -1842,6 +1863,7 @@ necrowolf
 nectivore
 needin
 needlelike
+negeri
 neonate
 neotenic
 neotheropod
@@ -1960,6 +1982,7 @@ overclock
 overclocks
 overdosage
 overdrinking
+overengineered 
 overexertion
 overgrowth
 overmap
@@ -2197,6 +2220,8 @@ puckish
 puffball
 pufts
 puker
+puller
+pullers
 pulping
 pulsate
 pulsates
@@ -2754,6 +2779,7 @@ technomancer
 technomancy
 techo
 tegmental
+tegwazhi
 teil
 telepad
 telepads
@@ -2795,6 +2821,7 @@ thumbholes
 thumbless
 thunderball
 thyreophoran
+tifeligalehi
 tileset
 tillable
 tillage
@@ -2993,6 +3020,7 @@ vacuoles
 vajra
 valencian
 vambraces
+vancian
 vantablack
 varanid
 vars
@@ -3138,6 +3166,7 @@ yarker
 yarkin
 yateveo
 yd
+yelemi
 yellowjacket
 yme
 ynn

@@ -390,6 +390,11 @@ TEST_CASE( "The various type of triggers work", "[mutations]" )
         dummy.toggle_trait( trait_TEST_TRIGGER );
 
         WHEN( "character is happy" ) {
+            // Make sure that negatve morale from being naked or barefoot won't affect this
+            dummy.wear_item ( item( "sneakers" ) );
+            REQUIRE( dummy.is_wearing_shoes() );
+            dummy.wear_item ( item( "boxer_shorts" ) );
+            dummy.wear_item ( item( "tshirt" ) );
             dummy.add_morale( morale_perm_debug, 21 );
             dummy.apply_persistent_morale();
             dummy.process_turn();
