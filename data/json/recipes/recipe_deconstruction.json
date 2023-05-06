@@ -4221,15 +4221,6 @@
     ]
   },
   {
-    "result": "tank_top",
-    "type": "uncraft",
-    "activity_level": "NO_EXERCISE",
-    "skill_used": "tailor",
-    "time": "1 m",
-    "components": [ [ [ "cotton_patchwork", 4 ] ] ],
-    "flags": [ "BLIND_HARD" ]
-  },
-  {
     "result": "household_water_heater",
     "type": "uncraft",
     "activity_level": "LIGHT_EXERCISE",
@@ -4467,26 +4458,6 @@
     "flags": [ "BLIND_HARD" ]
   },
   {
-    "result": "sweatshirt",
-    "type": "uncraft",
-    "activity_level": "NO_EXERCISE",
-    "skill_used": "tailor",
-    "time": "1 m",
-    "qualities": [ { "id": "CUT", "level": 2 } ],
-    "components": [ [ [ "sheet_cotton_patchwork", 3 ] ] ],
-    "flags": [ "BLIND_HARD" ]
-  },
-  {
-    "result": "hoodie",
-    "type": "uncraft",
-    "activity_level": "NO_EXERCISE",
-    "skill_used": "tailor",
-    "time": "1 m",
-    "qualities": [ { "id": "CUT", "level": 2 } ],
-    "components": [ [ [ "sheet_cotton_patchwork", 3 ] ] ],
-    "flags": [ "BLIND_HARD" ]
-  },
-  {
     "result": "longshirt",
     "type": "uncraft",
     "activity_level": "NO_EXERCISE",
@@ -4524,16 +4495,6 @@
     "time": "1 m",
     "qualities": [ { "id": "CUT", "level": 2 } ],
     "components": [ [ [ "sheet_cotton_patchwork", 4 ] ] ],
-    "flags": [ "BLIND_HARD" ]
-  },
-  {
-    "result": "undershirt",
-    "type": "uncraft",
-    "activity_level": "NO_EXERCISE",
-    "skill_used": "tailor",
-    "time": "1 m",
-    "qualities": [ { "id": "CUT", "level": 2 } ],
-    "components": [ [ [ "sheet_cotton_patchwork", 2 ] ] ],
     "flags": [ "BLIND_HARD" ]
   },
   {
@@ -5277,7 +5238,7 @@
     "time": "5 m",
     "difficulty": 1,
     "qualities": [ { "id": "CUT", "level": 2 } ],
-    "components": [ [ [ "sheet_cotton_patchwork", 8 ] ], [ [ "element", 5 ] ], [ [ "cable", 5 ] ] ]
+    "components": [ [ [ "sheet_cotton", 8 ] ], [ [ "element", 5 ] ], [ [ "cable", 5 ] ] ]
   },
   {
     "result": "wearable_light",
@@ -6382,14 +6343,6 @@
     "flags": [ "BLIND_HARD" ]
   },
   {
-    "result": "pants_leather",
-    "type": "uncraft",
-    "activity_level": "LIGHT_EXERCISE",
-    "time": "24 s",
-    "components": [ [ [ "leather", 12 ] ] ],
-    "qualities": [ { "id": "CUT", "level": 1 } ]
-  },
-  {
     "result": "heavy_punching_bag_sack",
     "type": "uncraft",
     "activity_level": "LIGHT_EXERCISE",
@@ -7397,7 +7350,7 @@
     "activity_level": "BRISK_EXERCISE",
     "time": "1 h",
     "tools": [ [ [ "angle_grinder", 50 ] ] ],
-    "components": [ [ [ "steel_lump", 130 ] ] ]
+    "components": [ [ [ "steel_lump", 109 ] ] ]
   },
   {
     "result": "30gal_drum_aluminum",
@@ -7651,7 +7604,7 @@
     "result": "bag_canvas",
     "type": "uncraft",
     "activity_level": "LIGHT_EXERCISE",
-    "time": "10 m",
+    "time": "2 m",
     "qualities": [ { "id": "FABRIC_CUT", "level": 1 } ],
     "components": [ [ [ "sheet_canvas", 3 ] ], [ [ "thread_canvas", 40 ] ] ]
   }

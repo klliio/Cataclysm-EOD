@@ -81,7 +81,7 @@
     "category": "spare_parts",
     "price": 200,
     "price_postapoc": 10,
-    "name": { "str_sp": "cement" },
+    "name": { "str_sp": "cement powder" },
     "symbol": "=",
     "color": "dark_gray",
     "description": "Portland is most likely long gone, but its memory persists in cement.  This ubiquitous binder can be used for all kinds of advanced masonry.  Just add water.",
@@ -1629,8 +1629,8 @@
     "description": "The concentrated paralytic agent, originally from a triffid.  Given your experience with its effects (chiefly gathered while sourcing this batch) and their striking similarity to earthly flora, you figure it's related to curarines.  Might come in handy in crafting more useful things.",
     "//": "Not sure about density and freezing point; assuming 1 g/cm3 and 0 C respectively.",
     "container": "test_tube",
-    "price": 0,
-    "price_postapoc": 0
+    "price": "20 USD",
+    "price_postapoc": "2 USD"
   },
   {
     "type": "AMMO",
@@ -1682,7 +1682,7 @@
     "weight": "4933 mg"
   },
   {
-    "type": "AMMO",
+    "type": "COMESTIBLE",
     "id": "liquid_soap",
     "name": { "str_sp": "liquid soap" },
     "category": "chems",
@@ -1697,9 +1697,9 @@
     "price_postapoc": 0,
     "volume": "250 ml",
     "phase": "liquid",
-    "ammo_type": "components",
     "flags": [ "DETERGENT" ],
-    "count": 5
+    "comestible_type": "INVALID",
+    "charges": 5
   },
   {
     "id": "pine_resin",

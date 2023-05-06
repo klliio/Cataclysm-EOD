@@ -201,6 +201,7 @@ static const json_character_flag json_flag_CANNIBAL( "CANNIBAL" );
 static const json_character_flag json_flag_PAIN_IMMUNE( "PAIN_IMMUNE" );
 static const json_character_flag json_flag_PSYCHOPATH( "PSYCHOPATH" );
 static const json_character_flag json_flag_SAPIOVORE( "SAPIOVORE" );
+static const json_character_flag json_flag_SILENT_SPELL( "SILENT_SPELL" );
 
 static const mongroup_id GROUP_FISH( "GROUP_FISH" );
 
@@ -3609,7 +3610,7 @@ void activity_handlers::spellcasting_finish( player_activity *act, Character *yo
                 return;
             }
 
-            if( spell_being_cast.has_flag( spell_flag::VERBAL ) ) {
+            if( spell_being_cast.has_flag( spell_flag::VERBAL ) && !you->has_flag( json_flag_SILENT_SPELL ) ) {
                 sounds::sound( you->pos(), you->get_shout_volume() / 2, sounds::sound_t::speech,
                                _( "cast a spell" ),
                                false );
