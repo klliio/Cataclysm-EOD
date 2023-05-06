@@ -162,6 +162,7 @@ static const json_character_flag json_flag_BIONIC_POWER_SOURCE( "BIONIC_POWER_SO
 static const json_character_flag json_flag_BIONIC_TOGGLED( "BIONIC_TOGGLED" );
 static const json_character_flag json_flag_BIONIC_WEAPON( "BIONIC_WEAPON" );
 static const json_character_flag json_flag_ENHANCED_VISION( "ENHANCED_VISION" );
+static const json_character_flag json_flag_INFECTION_IMMUNE( "INFECTION_IMMUNE" );
 static const json_character_flag json_flag_PAIN_IMMUNE( "PAIN_IMMUNE" );
 
 static const material_id fuel_type_metabolism( "metabolism" );
@@ -2304,7 +2305,7 @@ bool Character::uninstall_bionic( const bionic &bio, monster &installer, Charact
     return false;
 }
 
-ret_val<void> Character::is_installable( const item *it, const bool by_autodoc ) const
+ret_val<void> Character::is_installable( const item *it ) const
 {
     const itype *itemtype = it->type;
     const bionic_id &bid = itemtype->bionic->id;
@@ -2314,35 +2315,26 @@ ret_val<void> Character::is_installable( const item *it, const bool by_autodoc )
     };
 
     if( it->has_flag( flag_FILTHY ) ) {
-        // NOLINTNEXTLINE(cata-text-style): single space after the period for symmetry
-        const std::string msg = by_autodoc ? _( "/!\\ CBM is highly contaminated. /!\\" ) :
-                                _( "CBM is filthy." );
-        return ret_val<void>::make_failure( msg );
-    } else if( it->has_flag( flag_NO_STERILE ) ) {
-        const std::string msg = by_autodoc ?
-                                // NOLINTNEXTLINE(cata-text-style): single space after the period for symmetry
-                                _( "/!\\ CBM is not sterile. /!\\ Please use autoclave to sterilize." ) :
-                                _( "CBM is not sterile." );
-        return ret_val<void>::make_failure( msg );
+        return ret_val<void>::make_failure( _( "This bionic needs to be cleaned before installation." ) );
+    } else if( it->has_flag( flag_NO_STERILE ) && !has_flag( json_flag_INFECTION_IMMUNE ) ) {
+        return ret_val<void>::make_failure( _( "This bionic needs to be sterilized in an autoclave before installation." )  );
     } else if( it->has_fault( fault_bionic_salvaged ) ) {
-        return ret_val<void>::make_failure( _( "CBM already deployed.  Please reset to factory state." ) );
+        return ret_val<void>::make_failure( _( "This bionic needs to be reset to factory state before installation." ) );
     } else if( has_bionic( bid ) && !bid->dupes_allowed ) {
-        return ret_val<void>::make_failure( _( "CBM is already installed." ) );
-    } else if( !can_install_cbm_on_bp( get_occupied_bodyparts( bid ) ) ) {
-        return ret_val<void>::make_failure( _( "CBM not compatible with patient's body." ) );
-    } else if( std::any_of( bid->mutation_conflicts.begin(), bid->mutation_conflicts.end(),
+        return ret_val<void>::make_failure( _( "The patient already has this bionic installed." ) );
+    } else if( !can_install_cbm_on_bp( get_occupied_bodyparts( bid ) ) || std::any_of( bid->mutation_conflicts.begin(), bid->mutation_conflicts.end(),
                             has_trait_lambda ) ) {
-        return ret_val<void>::make_failure( _( "CBM not compatible with patient's body." ) );
+        return ret_val<void>::make_failure( _( "This bionic is not compatible with the patient's body." ) );
     } else if( bid->upgraded_bionic &&
                !has_bionic( bid->upgraded_bionic ) &&
                it->is_upgrade() ) {
-        return ret_val<void>::make_failure( _( "No base version installed." ) );
+        return ret_val<void>::make_failure( _( "The patient doesn't have any bionic installed that could be upgraded with this bionic." ) );
     } else if( std::any_of( bid->available_upgrades.begin(),
                             bid->available_upgrades.end(),
     [this]( const bionic_id & b ) {
     return has_bionic( b );
     } ) ) {
-        return ret_val<void>::make_failure( _( "Superior version installed." ) );
+        return ret_val<void>::make_failure( _( "The patient already has a superior version of this bionic installed." ) );
     } else if( is_npc() && !bid->has_flag( json_flag_BIONIC_NPC_USABLE ) ) {
         return ret_val<void>::make_failure( _( "CBM not compatible with patient." ) );
     }
