@@ -703,7 +703,8 @@ bool melee_actor::call( monster &z ) const
     } else {
         sfx::play_variant_sound( "mon_bite", "bite_miss", sfx::get_heard_volume( z.pos() ),
                                  sfx::get_heard_angle( z.pos() ) );
-        target->add_msg_player_or_npc( msg_type, no_dmg_msg_u, get_option<bool>( "LOG_MONSTER_ATTACK_MONSTER" ) ? no_dmg_msg_npc : to_translation( "" ), mon_name,
+        target->add_msg_player_or_npc( msg_type, no_dmg_msg_u,
+                                       get_option<bool>( "LOG_MONSTER_ATTACK_MONSTER" ) ? no_dmg_msg_npc : to_translation( "" ), mon_name,
                                        body_part_name_accusative( bp_id ) );
         if( !effects_require_dmg ) {
             for( const mon_effect_data &eff : effects ) {
@@ -719,7 +720,8 @@ bool melee_actor::call( monster &z ) const
     if( throw_strength > 0 ) {
         if( g->fling_creature( target, coord_to_angle( z.pos(), target->pos() ),
                                throw_strength ) ) {
-            target->add_msg_player_or_npc( msg_type, throw_msg_u, get_option<bool>( "LOG_MONSTER_ATTACK_MONSTER" ) ? throw_msg_npc : to_translation( "" ), mon_name );
+            target->add_msg_player_or_npc( msg_type, throw_msg_u,
+                                           get_option<bool>( "LOG_MONSTER_ATTACK_MONSTER" ) ? throw_msg_npc : to_translation( "" ), mon_name );
 
             // Items strapped to you may fall off as you hit the ground
             // when you break out of a grab you have a chance to lose some things from your pockets
