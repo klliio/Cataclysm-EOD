@@ -674,7 +674,6 @@
     "price": 13400,
     "price_postapoc": 500,
     "to_hit": -4,
-    "bashing": 10,
     "material": [ "steel" ],
     "symbol": "#",
     "color": "light_gray",

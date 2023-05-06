@@ -70,7 +70,7 @@
         "description": "Pocket for a counterweight pouch.",
         "flag_restriction": [ "HELMET_BACK_POUCH" ]
       }
-    ]
+    ],
     "melee_damage": { "bash": 1 }
   },
   {
@@ -547,7 +547,7 @@
         "description": "Pocket for a counterweight pouch.",
         "flag_restriction": [ "HELMET_BACK_POUCH" ]
       }
-    ]
+    ],
     "melee_damage": { "bash": 1 }
   },
   {

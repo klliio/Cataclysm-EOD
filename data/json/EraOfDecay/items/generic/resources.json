@@ -923,12 +923,12 @@
     "category": "spare_parts",
     "description": "A form of impure iron deposit that develops in bogs or swamps; looks like a brown rock.  Contains less iron than magnetite or hematite, but could still be refined into steel with a bloomery.",
     "price": 0,
-    "bashing": 7,
     "price_postapoc": 0,
     "material": [ "soil", "stone" ],
     "weight": "1 kg",
     "volume": "250 ml",
-    "to_hit": -1
+    "to_hit": -1,
+    "melee_damage": { "bash": 7 }
   },
   {
     "type": "AMMO",
@@ -969,7 +969,7 @@
     "material": "copper",
     "volume": "1 L",
     "weight": "8960 g",
-    "bashing": 2
+    "melee_damage": { "bash": 2 }
   },
   {
     "type": "GENERIC",
@@ -983,7 +983,7 @@
     "material": "silver",
     "volume": "1 L",
     "weight": "10490 g",
-    "bashing": 3
+    "melee_damage": { "bash": 3 }
   },
   {
     "type": "GENERIC",
@@ -997,7 +997,7 @@
     "material": "gold",
     "volume": "1 L",
     "weight": "19320 g",
-    "bashing": 4
+    "melee_damage": { "bash": 4 }
   },
   {
     "type": "GENERIC",
@@ -1011,7 +1011,7 @@
     "material": "platinum",
     "volume": "1 L",
     "weight": "21450 g",
-    "bashing": 4
+    "melee_damage": { "bash": 4 }
   },
   {
     "type": "GENERIC",
@@ -1025,7 +1025,7 @@
     "material": "aluminum",
     "volume": "1 L",
     "weight": "2700 g",
-    "bashing": 1
+    "melee_damage": { "bash": 1 }
   },
   {
     "type": "GENERIC",
@@ -1039,7 +1039,7 @@
     "material": "stone",
     "volume": "1 L",
     "weight": "6260 g",
-    "bashing": 2
+    "melee_damage": { "bash": 2 }
   },
   {
     "type": "GENERIC",
@@ -1053,7 +1053,7 @@
     "material": "stone",
     "volume": "1 L",
     "weight": "7600 g",
-    "bashing": 3
+    "melee_damage": { "bash": 3 }
   },
   {
     "type": "GENERIC",
@@ -1067,7 +1067,7 @@
     "material": "stone",
     "volume": "1 L",
     "weight": "8900 g",
-    "bashing": 3
+    "melee_damage": { "bash": 3 }
   },
   {
     "type": "GENERIC",
@@ -1081,7 +1081,7 @@
     "material": "stone",
     "volume": "1 L",
     "weight": "8100 g",
-    "bashing": 3
+    "melee_damage": { "bash": 3 }
   },
   {
     "type": "GENERIC",
@@ -1095,7 +1095,7 @@
     "material": "stone",
     "volume": "1 L",
     "weight": "7800 g",
-    "bashing": 3
+    "melee_damage": { "bash": 3 }
   },
   {
     "type": "AMMO",

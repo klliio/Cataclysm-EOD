@@ -18,7 +18,6 @@
     "weight": "820 g",
     "volume": "2100 ml",
     "longest_side": "23 cm",
-    "bashing": 4,
     "pocket_data": [
       {
         "max_contains_volume": "2 L",
@@ -27,6 +26,7 @@
         "open_container": true,
         "rigid": true
       }
-    ]
+    ],
+    "melee_damage": { "bash": 4 }
   }
 ]

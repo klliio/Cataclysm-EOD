@@ -10,7 +10,6 @@
     "price": 8000,
     "price_postapoc": 1200,
     "to_hit": -4,
-    "bashing": 20,
     "material": [ "steel" ],
     "symbol": ";",
     "color": "light_gray",
@@ -18,7 +17,8 @@
     "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK" ],
     "pocket_data": [
       { "pocket_type": "MAGAZINE_WELL", "item_restriction": [ "battery_car", "storage_battery", "large_storage_battery" ] }
-    ]
+    ],
+    "melee_damage": { "bash": 20 }
   },
   {
     "id": "electric_arc_apparatus",
@@ -51,11 +51,11 @@
     "price": 4000,
     "price_postapoc": 130,
     "to_hit": -1,
-    "bashing": 5,
     "material": [ "glass" ],
     "symbol": ";",
     "color": "light_cyan",
-    "qualities": [ [ "CHEM", 2 ], [ "BOIL", 1 ], [ "CONTAIN", 1 ] ]
+    "qualities": [ [ "CHEM", 2 ], [ "BOIL", 1 ], [ "CONTAIN", 1 ] ],
+    "melee_damage": { "bash": 5 }
   },
   {
     "id": "chemflask_kit",
@@ -71,11 +71,11 @@
     "price": 8000,
     "price_postapoc": 500,
     "to_hit": -1,
-    "bashing": 5,
     "material": [ "glass" ],
     "symbol": ";",
     "color": "light_cyan",
-    "qualities": [ [ "CHEM", 2 ], [ "BOIL", 1 ], [ "CONTAIN", 1 ] ]
+    "qualities": [ [ "CHEM", 2 ], [ "BOIL", 1 ], [ "CONTAIN", 1 ] ],
+    "melee_damage": { "bash": 5 }
   },
   {
     "id": "glasstubing_kit",
@@ -90,11 +90,11 @@
     "price": 6000,
     "price_postapoc": 100,
     "to_hit": -1,
-    "bashing": 1,
     "material": [ "glass" ],
     "symbol": ";",
     "color": "light_cyan",
-    "qualities": [ [ "CHEM_GAS", 3 ] ]
+    "qualities": [ [ "CHEM_GAS", 3 ] ],
+    "melee_damage": { "bash": 1 }
   },
   {
     "id": "stir_bar",
@@ -124,7 +124,6 @@
     "price": 25000,
     "price_postapoc": 1000,
     "to_hit": -1,
-    "bashing": 4,
     "material": [ "aluminum", "plastic" ],
     "symbol": ";",
     "color": "green",
@@ -139,7 +138,8 @@
         "flag_restriction": [ "BATTERY_MEDIUM" ],
         "default_magazine": "medium_battery_cell"
       }
-    ]
+    ],
+    "melee_damage": { "bash": 4 }
   },
   {
     "id": "cooler_portable_kit",
@@ -153,7 +153,6 @@
     "price": 25000,
     "price_postapoc": 1000,
     "to_hit": -1,
-    "bashing": 4,
     "material": [ "aluminum", "plastic", "glass" ],
     "symbol": ";",
     "color": "green",
@@ -168,7 +167,8 @@
         "flag_restriction": [ "BATTERY_MEDIUM" ],
         "default_magazine": "medium_battery_cell"
       }
-    ]
+    ],
+    "melee_damage": { "bash": 4 }
   },
   {
     "id": "magnetic_stirrer",
@@ -182,7 +182,6 @@
     "price": 25000,
     "price_postapoc": 1000,
     "to_hit": -1,
-    "bashing": 4,
     "material": [ "aluminum", "plastic" ],
     "symbol": ";",
     "color": "green",
@@ -198,7 +197,8 @@
         "flag_restriction": [ "BATTERY_MEDIUM" ],
         "default_magazine": "medium_battery_cell"
       }
-    ]
+    ],
+    "melee_damage": { "bash": 4 }
   },
   {
     "id": "high_pressure_reactor",
@@ -212,7 +212,6 @@
     "price": 2400000,
     "price_postapoc": 1000,
     "to_hit": -4,
-    "bashing": 20,
     "material": [ "steel" ],
     "symbol": ";",
     "color": "green",
@@ -228,7 +227,8 @@
         "default_magazine": "medium_battery_cell"
       }
     ],
-    "qualities": [ [ "CHEM", 1 ], [ "BOIL", 2 ], [ "CONTAIN", 1 ] ]
+    "qualities": [ [ "CHEM", 1 ], [ "BOIL", 2 ], [ "CONTAIN", 1 ] ],
+    "melee_damage": { "bash": 20 }
   },
   {
     "id": "vacuum_chamber",
@@ -243,11 +243,11 @@
     "price": 25000,
     "price_postapoc": 1000,
     "to_hit": -2,
-    "bashing": 8,
     "material": [ "steel" ],
     "symbol": ";",
     "color": "green",
-    "qualities": [ [ "CHEM", 1 ], [ "BOIL", 2 ], [ "CONTAIN", 1 ] ]
+    "qualities": [ [ "CHEM", 1 ], [ "BOIL", 2 ], [ "CONTAIN", 1 ] ],
+    "melee_damage": { "bash": 8 }
   },
   {
     "id": "uv_lamp",
@@ -287,7 +287,6 @@
     "price": 2400000,
     "price_postapoc": 1000,
     "to_hit": -4,
-    "bashing": 20,
     "material": [ "steel" ],
     "symbol": ";",
     "color": "green",
@@ -300,7 +299,8 @@
         "flag_restriction": [ "BATTERY_MEDIUM" ],
         "default_magazine": "medium_battery_cell"
       }
-    ]
+    ],
+    "melee_damage": { "bash": 20 }
   },
   {
     "id": "chloroprene_machine",
@@ -313,7 +313,6 @@
     "price": 2400000,
     "price_postapoc": 1000,
     "to_hit": -4,
-    "bashing": 20,
     "material": [ "steel" ],
     "symbol": ";",
     "color": "green",
@@ -326,6 +325,7 @@
         "flag_restriction": [ "BATTERY_MEDIUM" ],
         "default_magazine": "medium_battery_cell"
       }
-    ]
+    ],
+    "melee_damage": { "bash": 20 }
   }
 ]

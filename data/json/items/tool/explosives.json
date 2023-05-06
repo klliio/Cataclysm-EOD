@@ -474,7 +474,7 @@
       "type": "transform"
     },
     "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE", "ACT_IN_FIRE" ],
-    "melee_damage": { "bash": 6 },
+    "melee_damage": { "bash": 6 }
   },
   {
     "id": "grenade_act",
@@ -488,7 +488,6 @@
     "price": 0,
     "price_postapoc": 0,
     "to_hit": -1,
-    "bashing": 6,
     "material": [ "steel" ],
     "symbol": "*",
     "color": "green",
@@ -505,7 +504,7 @@
       "explosion": { "power": 240, "shrapnel": { "casing_mass": 217, "fragment_mass": 0.08 } }
     },
     "flags": [ "BOMB", "GRENADE", "TRADER_AVOID", "DANGEROUS" ],
-    "melee_damage": { "bash": 6 },
+    "melee_damage": { "bash": 6 }
   },
   {
     "id": "grenade_emp",
@@ -833,7 +832,6 @@
     "price": 0,
     "price_postapoc": 0,
     "to_hit": 1,
-    "bashing": 2,
     "material": [ "glass" ],
     "symbol": "*",
     "color": "light_gray",
@@ -1125,7 +1123,6 @@
     "weight": "460 g",
     "volume": "270 ml",
     "price": 750,
-    "bashing": 2,
     "material": [ "steel" ],
     "symbol": "*",
     "color": "green",

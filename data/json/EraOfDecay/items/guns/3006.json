@@ -12,7 +12,6 @@
     "price": 1000000,
     "price_postapoc": 7500,
     "to_hit": -1,
-    "bashing": 13,
     "material": [ "steel", "aluminum" ],
     "symbol": "(",
     "color": "dark_gray",
@@ -38,7 +37,8 @@
       [ "stock mount", 1 ],
       [ "stock accessory", 2 ]
     ],
-    "pocket_data": [ { "pocket_type": "MAGAZINE_WELL", "item_restriction": [ "lewismag_47rd", "lewismag_97rd" ] } ]
+    "pocket_data": [ { "pocket_type": "MAGAZINE_WELL", "item_restriction": [ "lewismag_47rd", "lewismag_97rd" ] } ],
+    "melee_damage": { "bash": 13 }
   },
   {
     "id": "m1919a4",
@@ -53,7 +53,6 @@
     "price": 1000000,
     "price_postapoc": 7500,
     "to_hit": -1,
-    "bashing": 13,
     "material": [ "steel" ],
     "symbol": "(",
     "color": "dark_gray",
@@ -76,7 +75,8 @@
       [ "sights mount", 1 ],
       [ "sling", 1 ]
     ],
-    "pocket_data": [ { "pocket_type": "MAGAZINE_WELL", "item_restriction": [ "belt3006", "50clothbelt3006", "250clothbelt3006" ] } ]
+    "pocket_data": [ { "pocket_type": "MAGAZINE_WELL", "item_restriction": [ "belt3006", "50clothbelt3006", "250clothbelt3006" ] } ],
+    "melee_damage": { "bash": 13 }
   },
   {
     "id": "m1919handheld",

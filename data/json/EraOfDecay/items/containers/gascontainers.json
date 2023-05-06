@@ -9,7 +9,6 @@
     "price": 1000,
     "price_postapoc": 500,
     "to_hit": -4,
-    "bashing": 10,
     "material": [ "steel" ],
     "symbol": ";",
     "color": "light_gray",
@@ -23,7 +22,8 @@
         "max_contains_weight": "5 kg",
         "watertight": true
       }
-    ]
+    ],
+    "melee_damage": { "bash": 10 }
   },
   {
     "id": "pressure_tank_makeshift_small",
@@ -35,7 +35,6 @@
     "price": 1000,
     "price_postapoc": 500,
     "to_hit": -4,
-    "bashing": 4,
     "material": [ "steel" ],
     "symbol": ";",
     "color": "light_gray",
@@ -49,6 +48,7 @@
         "max_contains_weight": "5 kg",
         "watertight": true
       }
-    ]
+    ],
+    "melee_damage": { "bash": 4 }
   }
 ]
