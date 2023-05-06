@@ -1129,6 +1129,8 @@ std::set<tripoint_bub_ms> map::get_moving_vehicle_targets( const Creature &z, in
     const tripoint_bub_ms zpos( z.pos() );
     std::set<tripoint_bub_ms> priority;
     std::set<tripoint_bub_ms> visible;
+    // TODO: Get an actual driver of the vehicle; currently only the player may drive, and so is always considered the driver.
+    Character &driver = get_player_character();
     for( wrapped_vehicle &v : get_vehicles() ) {
         if( !v.v->is_moving() ) {
             continue;
@@ -1138,6 +1140,15 @@ std::set<tripoint_bub_ms> map::get_moving_vehicle_targets( const Creature &z, in
         }
         if( rl_dist( zpos, tripoint_bub_ms( v.pos ) ) > max_range + 40 ) {
             continue; // coarse distance filter, 40 = ~24 * sqrt(2) - rough max diameter of a vehicle
+        }
+        // Non-hostile monsters will ignore moving vehicles if they can see the driver
+        /// This enables an exploit to allow ramming non-hostile monsters with a vehicle without being attacked,
+        /// but this can be written off as most monsters intentionally being rather dumb;
+        /// certainly better than being shot by a neutral turret for riding very close by on a wheelchair or bicycle.
+        // TODO: Allow excluding specific vehicles as "known friendly" even if driver isn't visible.
+        if( z.sees( driver ) &&
+            z.attitude_to( driver ) != Creature::Attitude::HOSTILE ) {
+            continue;
         }
         for( const vpart_reference &vpr : v.v->get_all_parts() ) {
             const tripoint_bub_ms vppos = static_cast<tripoint_bub_ms>( vpr.pos() );
