@@ -69,7 +69,7 @@
     "id": "antibiotics",
     "type": "COMESTIBLE",
     "comestible_type": "MED",
-    "name": { "str_sp": "amoxicillin" },
+    "name": { "str_sp": "amoxicillin antibiotic" },
     "description": "Antibacterial medication designed to prevent or stop the spread of infection.  It's the safest way to cure any infections you might have.  One dose lasts twelve hours.",
     "weight": "611 mg",
     "volume": "250 ml",
@@ -126,7 +126,7 @@
     "id": "aspirin",
     "type": "COMESTIBLE",
     "comestible_type": "MED",
-    "name": { "str": "aspirin" },
+    "name": { "str": "aspirin painkiller" },
     "description": "Acetylsalicylic acid, a mild anti-inflammatory.  Take to relieve pain and swelling.",
     "weight": "1 g",
     "volume": "250 ml",
@@ -320,7 +320,7 @@
     "id": "codeine",
     "type": "COMESTIBLE",
     "comestible_type": "MED",
-    "name": { "str_sp": "codeine" },
+    "name": { "str_sp": "codeine painkiller" },
     "description": "A mild opiate used in the suppression of pain, cough, and other ailments.  While relatively weak for a narcotic, it is still addictive, with a potential for overdose.",
     "weight": "1 g",
     "volume": "250 ml",
@@ -494,7 +494,7 @@
     "id": "diazepam",
     "type": "COMESTIBLE",
     "comestible_type": "MED",
-    "name": { "str_sp": "diazepam" },
+    "name": { "str_sp": "diazepam anticonvulsant" },
     "description": "A strong benzodiazepine drug used to treat muscle spasms, anxiety, seizures, and panic attacks.",
     "weight": "1 g",
     "volume": "250 ml",
@@ -987,7 +987,7 @@
     "id": "oxycodone",
     "type": "COMESTIBLE",
     "comestible_type": "MED",
-    "name": { "str": "oxycodone" },
+    "name": { "str": "oxycodone painkiller" },
     "description": "A strong semi-synthetic narcotic used in the treatment of intense pain.  Highly addictive.",
     "weight": "1 g",
     "volume": "250 ml",
@@ -1065,7 +1065,7 @@
     "id": "prozac",
     "type": "COMESTIBLE",
     "comestible_type": "MED",
-    "name": { "str_sp": "fluoxetine" },
+    "name": { "str_sp": "fluoxetine antidepressant" },
     "description": "A common and popular antidepressant.  It will elevate mood, and can profoundly alter the effects of other drugs.  It is only rarely habit-forming, though adverse reactions are not uncommon.",
     "weight": "1 g",
     "volume": "250 ml",
@@ -1147,7 +1147,7 @@
     "id": "thorazine",
     "type": "COMESTIBLE",
     "comestible_type": "MED",
-    "name": { "str_sp": "chlorpromazine" },
+    "name": { "str_sp": "chlorpromazine antipsychotic" },
     "description": "Anti-psychotic medication.  Used to stabilize brain chemistry, it can arrest hallucinations and other symptoms of psychosis.  Carries a sedative effect.",
     "weight": "1 g",
     "volume": "250 ml",
@@ -1334,8 +1334,8 @@
     "id": "homeopathic_pills",
     "type": "COMESTIBLE",
     "comestible_type": "MED",
-    "name": { "str": "homeopathic pill" },
-    "description": "A homeopathic pill, prepared through the repeated dilution of an active ingredient with water.  The label purports that these pills are able to maintain general wellness.",
+    "name": { "str_sp": "homeopathic pills" },
+    "description": "Some pills prepared through the repeated dilution of some substance, often to such an extent that not even a single molecule of the original substance can be expected to remain in them.  You can consume them, but it'd have no effect.",
     "weight": "1 g",
     "volume": "100 ml",
     "price": 1000,
@@ -1347,33 +1347,7 @@
     "color": "white",
     "container": "bottle_plastic_pill_supplement",
     "flags": [ "EDIBLE_FROZEN" ],
-    "use_action": { "type": "consume_drug", "activation_message": "You swallow the %s.  You wait in anticipation of its effects." },
-    "snippet_category": [
-      {
-        "id": "pill1",
-        "text": "An Oscillococcinum homeopathic pill, prepared through the dilution of one part duck offal with 10^400 parts water.  The label purports that these pills are able to treat flu-like symptoms and maintain general wellness."
-      },
-      {
-        "id": "pill2",
-        "text": "An Arsenicum album homeopathic pill, prepared through the dilution of one part arsenic trioxide with 10^24 parts water.  Purported to treat anxiety, various digestive disorders, and arsenic poisoning."
-      },
-      {
-        "id": "pill3",
-        "text": "An Allium cepa homeopathic pill, prepared through the dilution of one part onion with 10^30 parts water.  The label states that these pills can ameliorate symptoms of asthma, gastrointestinal disorders, and bronchitis.  You briefly wonder if it can cure fungal infections."
-      },
-      {
-        "id": "pill4",
-        "text": "An Arum tryphillum homeopathic pill, prepared through the dilution of the jack-in-the-pulpit plant with 10^30 parts water.  The label claims that the pills are able to treat voice loss."
-      },
-      {
-        "id": "pill5",
-        "text": "An Aesculus hippocastanum homeopathic pill, prepared through the dilution of horse chestnut with 10^30 parts water.  These pills are meant to treat dysentery and hemorrhoids."
-      },
-      {
-        "id": "pill6",
-        "text": "A Lachesis mutus pill, prepared through the dilution of the venom of the bushmaster snake with 10^1000 parts water.  These pills are claimed to be an effective treatment for sore throat."
-      }
-    ]
+    "use_action": { "type": "consume_drug", "activation_message": "You take the %s." }
   },
   {
     "id": "inj_iron",
@@ -1432,7 +1406,7 @@
     "id": "xanax",
     "type": "COMESTIBLE",
     "comestible_type": "MED",
-    "name": { "str_sp": "alprazolam" },
+    "name": { "str_sp": "alprazolam anxiolytic" },
     "description": "An anti-anxiety agent with a powerful sedative effect.  May cause dissociation and loss of memory.  It is dangerously addictive, and withdrawal from regular use should be gradual.",
     "weight": "1 g",
     "volume": "250 ml",
