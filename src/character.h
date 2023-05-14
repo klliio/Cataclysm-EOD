@@ -3067,6 +3067,8 @@ class Character : public Creature, public visitable
         void barefoot_morale_penalty();
         // apply the morale penalty for naked characters
         void naked_morale_penalty();
+        // the morale penalty for nyctophobic character
+        void in_dark_morale_penalty();
         /** Used to apply morale modifications from food and medication **/
         void modify_morale( item &food, int nutr = 0 );
         // Modified by traits, &c

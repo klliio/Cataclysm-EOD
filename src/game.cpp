@@ -10005,7 +10005,8 @@ bool game::prompt_dangerous_tile( const tripoint &dest_loc ) const
 
     if( !harmful_stuff.empty() &&
         !query_yn( m.get_field( dest_loc,
-                                fd_smoke ) ? // TODO: potentially take into account other fields that could be negated if you can hold breath.
+                                fd_smoke )
+                   ? // TODO: potentially take into account other fields that could be negated if you can hold breath.
                    _( "Hold your breath and step into %s?" ) :
                    _( "Really step into %s?" ), enumerate_as_string( harmful_stuff ) ) ) {
         return false;
@@ -10130,17 +10131,17 @@ bool game::walk_move( const tripoint &dest_loc, const bool via_ramp, const bool 
         }
     }
 
-    const float dest_light_level = get_map().ambient_light_at( dest_loc );
-
-    // Allow players with nyctophobia to move freely through cloudy and dark tiles
-    const float nyctophobia_threshold = LIGHT_AMBIENT_LIT - 3.0f;
-
-    // Forbid players from moving through very dark tiles, unless they are running or took xanax
-    if( u.has_flag( json_flag_NYCTOPHOBIA ) && !u.has_effect( effect_took_xanax ) && !u.is_running() &&
-        dest_light_level < nyctophobia_threshold ) {
-        add_msg( m_bad,
-                 _( "It's so dark and scary in there!  You can't force yourself to walk into this tile.  Switch to running movement mode to move there." ) );
-        return false;
+    if( u.has_flag( json_flag_NYCTOPHOBIA ) && !u.has_effect( effect_took_xanax ) && !u.is_blind() ) {
+        const float nyctophobia_threshold = LIGHT_AMBIENT_LIT - 3.0f;
+        const bool darkness_there = m.ambient_light_at( dest_loc ) < nyctophobia_threshold;
+        if( darkness_there ) {
+            const bool darkness_here = m.ambient_light_at( u.pos() ) < nyctophobia_threshold;
+            if( !darkness_here ) {
+                if( !query_yn( _( "It's dark and scary in there!  Move there anyway?" ) ) ) {
+                    return false;
+                }
+            }
+        }
     }
 
     if( u.is_mounted() ) {

@@ -20,6 +20,7 @@ static const trait_id trait_NOMAD2( "NOMAD2" );
 static const trait_id trait_NOMAD3( "NOMAD3" );
 static const trait_id trait_PROF_FOODP( "PROF_FOODP" );
 
+static const json_character_flag json_flag_NYCTOPHOBIA( "NYCTOPHOBIA" );
 static const json_character_flag json_flag_TOUGH_FEET( "TOUGH_FEET" );
 
 static const sub_bodypart_str_id sub_body_part_torso_upper( "torso_upper" );
@@ -81,6 +82,10 @@ void Character::apply_persistent_morale()
         }
 
         naked_morale_penalty();
+
+        if( has_flag( json_flag_NYCTOPHOBIA ) ) {
+            in_dark_morale_penalty();
+        }
     }
 }
 
@@ -155,7 +160,7 @@ void Character::barefoot_morale_penalty()
     if( !is_wearing_shoes( side::RIGHT ) ) {
         pen += 2;
     }
-    map &here = get_map();
+    const map &here = get_map();
     // No specific logic here; generally people just find it much less acceptable to walk barefoot outoors than indoors.
     if( !in_vehicle && here.is_outside( pos() ) ) {
         pen *= 3;
@@ -182,6 +187,19 @@ void Character::naked_morale_penalty()
         add_morale( MORALE_PERM_NAKED, -pen, -pen, 1_minutes, 1_minutes, true );
     } else {
         rem_morale( MORALE_PERM_NAKED );
+    }
+}
+
+void Character::in_dark_morale_penalty()
+{
+    const float nyctophobia_threshold = LIGHT_AMBIENT_LIT - 3.0f;
+    const bool in_darkness = get_map().ambient_light_at( pos() ) < nyctophobia_threshold;
+    // Blindness counts as being in dark as well; can never know for sure if it's dark around, but you'll likely expect the worst in this case.
+    if( in_darkness || is_blind() ) {
+        add_morale( MORALE_PERM_DARKNESS, -150, -150, 1_minutes, 1_minutes,
+                    true ); // Yes this hits hard; shouldn't enter darkness if you're afraid of the dark. The good news is that it does disappear quickly if you enter light again.
+    } else {
+        rem_morale( MORALE_PERM_DARKNESS );
     }
 }
 

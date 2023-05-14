@@ -85,6 +85,7 @@ static const efftype_id effect_deaf( "deaf" );
 static const efftype_id effect_disabled( "disabled" );
 static const efftype_id effect_downed( "downed" );
 static const efftype_id effect_drunk( "drunk" );
+static const efftype_id effect_fearparalyze( "fearparalyze" );
 static const efftype_id effect_formication( "formication" );
 static const efftype_id effect_hallu( "hallu" );
 static const efftype_id effect_incorporeal( "incorporeal" );
@@ -409,7 +410,9 @@ void suffer::while_awake( Character &you, const int current_stim )
         }
     }
 
-    if( you.has_flag( json_flag_NYCTOPHOBIA ) && !you.has_effect( effect_took_xanax ) ) {
+    if( you.has_flag( json_flag_NYCTOPHOBIA ) && !you.has_effect( effect_took_xanax ) &&
+        !you.has_effect( effect_sleep ) ) {
+        // Sleeping prevents nyctophobia; can never know if it's dark around or not.
         suffer::from_nyctophobia( you );
     }
 
@@ -1700,25 +1703,41 @@ void suffer::from_nyctophobia( Character &you )
     const float nyctophobia_threshold = LIGHT_AMBIENT_LIT - 3.0f;
 
     const bool in_darkness = get_map().ambient_light_at( you.pos() ) < nyctophobia_threshold;
-    if( in_darkness ) {
-        if( one_in( 80 ) && !you.has_effect( effect_shakes ) ) {
-            you.add_msg_if_player( m_bad,
-                                   _( "Your fear of the dark is so intense that your hands start shaking uncontrollably." ) );
-            you.add_effect( effect_shakes, rng( 1_minutes, 3_minutes ) );
+    if( in_darkness || you.is_blind() ) {
+        if( one_in( 2 ) && one_turn_in( 30_seconds ) ) {
+            you.sound_hallu();
+        }
 
-            return;
+        if( one_in( 80 ) && !you.is_on_ground() ) {
+            you.add_msg_if_player( m_bad,
+                                   _( "Your legs tremble due to your fear of the dark, and you fall to the ground." ) );
+            you.add_effect( effect_downed, rng( 1_minutes, 2_minutes ) );
         }
 
         if( one_in( 80 ) ) {
             you.add_msg_if_player( m_bad,
-                                   _( "Your fear of the dark is so intense that you start breathing rapidly, and you feel like your heart is ready to jump out of your chest." ) );
-            you.mod_stamina( -500 * rng( 1, 3 ) );
-
-            return;
+                                   _( "You scream in terror as you lose control over your fear of the dark." ) );
+            you.shout();
         }
 
-        if( one_turn_in( 5_minutes ) ) {
-            you.add_msg_if_player( m_bad, _( "You feel a twinge of panic as darkness engulfs you." ) );
+        if( one_in( 80 ) && !you.has_effect( effect_shakes ) ) {
+            you.add_msg_if_player( m_bad,
+                                   _( "Your hands start shaking uncontrollably due to your fear of the dark." ) );
+            you.add_effect( effect_shakes, rng( 1_minutes, 3_minutes ) );
+
+        }
+
+        if( one_in( 80 ) ) {
+            you.add_msg_if_player( m_bad,
+                                   _( "You start breathing rapidly due to your fear of the dark, and you feel like your heart is ready to jump out of your chest." ) );
+            you.mod_stamina( -500 * rng( 1, 3 ) );
+
+        }
+
+        if( one_in( 80 ) && !you.has_effect( effect_fearparalyze ) ) {
+            you.add_msg_if_player( m_bad, _( "Your fear of the dark paralyzes you for a few seconds." ) );
+            you.add_effect( effect_fearparalyze, 5_turns );
+            you.mod_moves( -4 * you.get_speed() );
         }
 
     }

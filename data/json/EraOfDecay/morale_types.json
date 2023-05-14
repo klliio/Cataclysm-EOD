@@ -8,5 +8,10 @@
     "id": "morale_perm_naked",
     "type": "morale_type",
     "text": "Naked"
+  },
+  {
+    "id": "morale_perm_darkness",
+    "type": "morale_type",
+    "text": "In Dark"
   }
 ]
