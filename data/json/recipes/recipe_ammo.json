@@ -916,7 +916,8 @@
         [ "willowbark", 1 ],
         [ "straw_pile", 1 ]
       ]
-    ]
+    ],
+    "flags": [ "BLIND_HARD", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -930,7 +931,8 @@
     "time": "1 m",
     "autolearn": true,
     "qualities": [ { "id": "CUT", "level": 1 } ],
-    "components": [ [ [ "splinter", 2 ], [ "withered", 2 ], [ "cattail_stalk", 1 ] ] ]
+    "components": [ [ [ "splinter", 2 ], [ "withered", 2 ], [ "cattail_stalk", 1 ] ] ],
+    "flags": [ "BLIND_HARD", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -953,6 +955,7 @@
         [ "wrapper", 5 ],
         [ "straw_pile", 1 ]
       ]
-    ]
+    ],
+    "flags": [ "BLIND_HARD", "NEVER_FAIL" ]
   }
 ]

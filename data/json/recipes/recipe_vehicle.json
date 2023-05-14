@@ -51,7 +51,8 @@
     "time": "15 m",
     "autolearn": true,
     "qualities": [ { "id": "PRESSURIZATION", "level": 1 } ],
-    "components": [ [ [ "deflated_wheel", 1 ] ] ]
+    "components": [ [ [ "deflated_wheel", 1 ] ] ],
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -62,7 +63,8 @@
     "time": "15 m",
     "autolearn": true,
     "qualities": [ { "id": "PRESSURIZATION", "level": 1 } ],
-    "components": [ [ [ "deflated_wheel_slick", 1 ] ] ]
+    "components": [ [ [ "deflated_wheel_slick", 1 ] ] ],
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -73,7 +75,8 @@
     "time": "10 m",
     "autolearn": true,
     "qualities": [ { "id": "PRESSURIZATION", "level": 1 } ],
-    "components": [ [ [ "deflated_wheel_motorbike", 1 ] ] ]
+    "components": [ [ [ "deflated_wheel_motorbike", 1 ] ] ],
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -84,7 +87,8 @@
     "time": "10 m",
     "autolearn": true,
     "qualities": [ { "id": "PRESSURIZATION", "level": 1 } ],
-    "components": [ [ [ "deflated_wheel_motorbike_or", 1 ] ] ]
+    "components": [ [ [ "deflated_wheel_motorbike_or", 1 ] ] ],
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -95,7 +99,8 @@
     "time": "20 m",
     "autolearn": true,
     "qualities": [ { "id": "PRESSURIZATION", "level": 1 } ],
-    "components": [ [ [ "deflated_wheel_wide", 1 ] ] ]
+    "components": [ [ [ "deflated_wheel_wide", 1 ] ] ],
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -106,7 +111,8 @@
     "time": "20 m",
     "autolearn": true,
     "qualities": [ { "id": "PRESSURIZATION", "level": 1 } ],
-    "components": [ [ [ "deflated_wheel_wide_or", 1 ] ] ]
+    "components": [ [ [ "deflated_wheel_wide_or", 1 ] ] ],
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -117,7 +123,8 @@
     "time": "5 m",
     "autolearn": true,
     "qualities": [ { "id": "PRESSURIZATION", "level": 1 } ],
-    "components": [ [ [ "deflated_wheel_bicycle", 1 ] ] ]
+    "components": [ [ [ "deflated_wheel_bicycle", 1 ] ] ],
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -128,7 +135,8 @@
     "time": "5 m",
     "autolearn": true,
     "qualities": [ { "id": "PRESSURIZATION", "level": 1 } ],
-    "components": [ [ [ "deflated_wheel_bicycle_or", 1 ] ] ]
+    "components": [ [ [ "deflated_wheel_bicycle_or", 1 ] ] ],
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -140,7 +148,8 @@
     "autolearn": true,
     "reversible": true,
     "tools": [ [ [ "fake_tire_changer", -1 ] ] ],
-    "components": [ [ [ "tire_medium", 1 ] ], [ [ "wheel_rim_medium", 1 ] ] ]
+    "components": [ [ [ "tire_medium", 1 ] ], [ [ "wheel_rim_medium", 1 ] ] ],
+    "flags": [ "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -152,7 +161,8 @@
     "autolearn": true,
     "reversible": true,
     "tools": [ [ [ "fake_tire_changer", -1 ] ] ],
-    "components": [ [ [ "tire_medium_slick", 1 ] ], [ [ "wheel_rim_medium", 1 ] ] ]
+    "components": [ [ [ "tire_medium_slick", 1 ] ], [ [ "wheel_rim_medium", 1 ] ] ],
+    "flags": [ "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -164,7 +174,8 @@
     "autolearn": true,
     "reversible": true,
     "tools": [ [ [ "fake_tire_changer", -1 ] ] ],
-    "components": [ [ [ "tire_motorbike", 1 ] ], [ [ "wheel_rim_motorbike", 1 ] ] ]
+    "components": [ [ [ "tire_motorbike", 1 ] ], [ [ "wheel_rim_motorbike", 1 ] ] ],
+    "flags": [ "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -176,7 +187,8 @@
     "autolearn": true,
     "reversible": true,
     "tools": [ [ [ "fake_tire_changer", -1 ] ] ],
-    "components": [ [ [ "tire_motorbike_or", 1 ] ], [ [ "wheel_rim_motorbike", 1 ] ] ]
+    "components": [ [ [ "tire_motorbike_or", 1 ] ], [ [ "wheel_rim_motorbike", 1 ] ] ],
+    "flags": [ "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -188,7 +200,8 @@
     "autolearn": true,
     "reversible": true,
     "tools": [ [ [ "fake_tire_changer", -1 ] ] ],
-    "components": [ [ [ "tire_wide", 1 ] ], [ [ "wheel_rim_wide", 1 ] ] ]
+    "components": [ [ [ "tire_wide", 1 ] ], [ [ "wheel_rim_wide", 1 ] ] ],
+    "flags": [ "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -200,7 +213,8 @@
     "autolearn": true,
     "reversible": true,
     "tools": [ [ [ "fake_tire_changer", -1 ] ] ],
-    "components": [ [ [ "tire_wide_or", 1 ] ], [ [ "wheel_rim_wide", 1 ] ] ]
+    "components": [ [ [ "tire_wide_or", 1 ] ], [ [ "wheel_rim_wide", 1 ] ] ],
+    "flags": [ "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -212,7 +226,8 @@
     "autolearn": true,
     "reversible": true,
     "qualities": [ { "id": "PRY", "level": 1 } ],
-    "components": [ [ [ "tire_bicycle", 1 ] ], [ [ "wheel_rim_bicycle", 1 ] ] ]
+    "components": [ [ [ "tire_bicycle", 1 ] ], [ [ "wheel_rim_bicycle", 1 ] ] ],
+    "flags": [ "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -224,7 +239,8 @@
     "autolearn": true,
     "reversible": true,
     "qualities": [ { "id": "PRY", "level": 1 } ],
-    "components": [ [ [ "tire_bicycle_or", 1 ] ], [ [ "wheel_rim_bicycle", 1 ] ] ]
+    "components": [ [ [ "tire_bicycle_or", 1 ] ], [ [ "wheel_rim_bicycle", 1 ] ] ],
+    "flags": [ "NEVER_FAIL" ]
   },
   {
     "result": "reins_tackle",
@@ -610,7 +626,8 @@
     "components": [
       [ [ "wheel_wide_or", 1 ], [ "wheel_wide", 1 ], [ "wheel", 1 ], [ "wheel_slick", 1 ], [ "wheel_armor", 1 ] ],
       [ [ "spare_tire_carrier", 1 ] ]
-    ]
+    ],
+    "flags": [ "NEVER_FAIL" ]
   },
   {
     "type": "recipe",

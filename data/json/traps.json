@@ -267,7 +267,7 @@
     "avoidance": 4,
     "difficulty": 0,
     "action": "tripwire",
-    "drops": [ "string_36" ]
+    "drops": [ "tripwire" ]
   },
   {
     "type": "trap",
@@ -282,7 +282,7 @@
     "avoidance": 4,
     "difficulty": 5,
     "action": "crossbow",
-    "drops": [ "string_36", "crossbow", "bolt_steel" ],
+    "drops": [ "crossbow_trap" ],
     "vehicle_data": {
       "chance": 30,
       "damage": 300,
@@ -291,14 +291,14 @@
       "sound_type": "fire_gun",
       "sound_variant": "crossbow",
       "remove_trap": true,
-      "spawn_items": [ "crossbow", "string_6", { "id": "bolt_steel", "chance": 0.9 } ]
+      "spawn_items": [ "crossbow", "string_36", "string_6", { "id": "bolt_steel", "chance": 0.9 } ]
     }
   },
   {
     "type": "trap",
     "id": "tr_shotgun_2",
     "trigger_weight": "200 g",
-    "name": "shotgun trap",
+    "name": "double shotgun trap",
     "color": "red",
     "memorial_male": { "ctxt": "memorial_male", "str": "Triggered a shotgun trap." },
     "memorial_female": { "ctxt": "memorial_female", "str": "Triggered a shotgun trap." },
@@ -307,7 +307,7 @@
     "avoidance": 5,
     "difficulty": 6,
     "action": "shotgun",
-    "drops": [ "string_36", "slamfire_shotgun_d", { "item": "shot_00", "quantity": 2, "charges": 1 } ],
+    "drops": [ "shotgun_trap" ],
     "vehicle_data": {
       "chance": 70,
       "damage": 300,
@@ -322,7 +322,7 @@
     "type": "trap",
     "id": "tr_shotgun_2_1",
     "trigger_weight": "200 g",
-    "name": "shotgun trap",
+    "name": "single-shot double shotgun trap",
     "color": "red",
     "memorial_male": { "ctxt": "memorial_male", "str": "Triggered a shotgun trap." },
     "memorial_female": { "ctxt": "memorial_female", "str": "Triggered a shotgun trap." },
@@ -331,7 +331,13 @@
     "avoidance": 5,
     "difficulty": 6,
     "action": "shotgun",
-    "drops": [ "string_36", "slamfire_shotgun_d", { "item": "shot_00", "quantity": 1, "charges": 1 } ],
+    "drops": [
+      "string_36",
+      "string_6",
+      "slamfire_shotgun_d",
+      { "item": "shot_00", "quantity": 1, "charges": 1 },
+      { "item": "shot_hull", "quantity": 1, "charges": 1 }
+    ],
     "vehicle_data": {
       "chance": 70,
       "damage": 300,
@@ -340,7 +346,7 @@
       "sound_type": "fire_gun",
       "sound_variant": "shotgun_d",
       "remove_trap": true,
-      "spawn_items": [ "slamfire_shotgun_d", "string_6" ]
+      "spawn_items": [ "slamfire_shotgun_d", "string_36", "string_6", "shot_hull", "shot_hull" ]
     }
   },
   {
@@ -356,7 +362,7 @@
     "avoidance": 5,
     "difficulty": 6,
     "action": "shotgun",
-    "drops": [ "string_36", "slamfire_shotgun", { "item": "shot_00", "quantity": 1, "charges": 1 } ],
+    "drops": [ "shotgun_trap_single" ],
     "vehicle_data": {
       "chance": 70,
       "damage": 300,
@@ -365,7 +371,7 @@
       "sound_type": "fire_gun",
       "sound_variant": "shotgun_s",
       "remove_trap": true,
-      "spawn_items": [ "four_winds_shotgun", "string_6" ]
+      "spawn_items": [ "slamfire_shotgun", "string_36", "string_6", "shot_hull" ]
     }
   },
   {

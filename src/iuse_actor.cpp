@@ -4282,20 +4282,23 @@ ret_val<void> install_bionic_actor::can_use( const Character &p, const item &it,
         } else  if( it.has_flag( flag_FILTHY ) ) {
             return ret_val<void>::make_failure( _( "This bionic needs to be cleaned before installation." ) );
         } else if( it.has_flag( flag_NO_STERILE ) && !p.has_flag( json_flag_INFECTION_IMMUNE ) ) {
-            return ret_val<void>::make_failure( _( "This bionic needs to be sterilized in an autoclave before installation." ) );
+            return ret_val<void>::make_failure(
+                       _( "This bionic needs to be sterilized in an autoclave before installation." ) );
         } else if( it.has_fault( fault_bionic_salvaged ) ) {
             return ret_val<void>::make_failure(
                        _( "This bionic needs to be reset to factory state before installation." ) );
         } else if( units::energy( std::numeric_limits<int>::max(), units::energy::unit_type{} ) -
                    p.get_max_power_level() < bid->capacity ) {
-            return ret_val<void>::make_failure( _( "You have already reached maximum bionic power capacity." ) );
+            return ret_val<void>::make_failure(
+                       _( "You have already reached maximum bionic power capacity." ) );
         }
     }
 
     if( p.has_bionic( bid ) && !bid->dupes_allowed ) {
         return ret_val<void>::make_failure( _( "You already have this bionic installed." ) );
     } else if( bid->upgraded_bionic && !p.has_bionic( bid->upgraded_bionic ) ) {
-        return ret_val<void>::make_failure( _( "You don't have any bionic installed that you could upgrade with this bionic." ) );
+        return ret_val<void>::make_failure(
+                   _( "You don't have any bionic installed that you could upgrade with this bionic." ) );
     } else {
         const bool downgrade =
             std::any_of( bid->available_upgrades.begin(), bid->available_upgrades.end(),
@@ -4304,7 +4307,8 @@ ret_val<void> install_bionic_actor::can_use( const Character &p, const item &it,
         } );
 
         if( downgrade ) {
-            return ret_val<void>::make_failure( _( "You already have a superior version of this bionic installed." ) );
+            return ret_val<void>::make_failure(
+                       _( "You already have a superior version of this bionic installed." ) );
         }
     }
 

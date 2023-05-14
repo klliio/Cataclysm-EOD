@@ -478,6 +478,7 @@ bool trapfunc::crossbow( const tripoint &p, Creature *c, item * )
     here.remove_trap( p );
     here.spawn_item( p, "crossbow" );
     here.spawn_item( p, "string_36" );
+    here.spawn_item( p, "string_6" );
     if( add_bolt ) {
         here.spawn_item( p, "bolt_steel", 1, 1 );
     }
@@ -488,7 +489,7 @@ bool trapfunc::shotgun( const tripoint &p, Creature *c, item * )
 {
     map &here = get_map();
     sounds::sound( p, 60, sounds::sound_t::combat, _( "Kerblam!" ), false, "fire_gun",
-                   here.tr_at( p ) == tr_shotgun_1 ? "shotgun_s" : "shotgun_d" );
+                   here.tr_at( p ) == tr_shotgun_1 ? "slamfire_shotgun" : "slamfire_shotgun_d" );
     int shots = 1;
     if( c != nullptr ) {
         if( c->has_effect( effect_ridden ) ) {
@@ -580,8 +581,10 @@ bool trapfunc::shotgun( const tripoint &p, Creature *c, item * )
         c->check_dead_state();
     }
 
-    here.spawn_item( p, here.tr_at( p ) == tr_shotgun_1 ? "shotgun_s" : "shotgun_d" );
+    here.spawn_item( p, here.tr_at( p ) == tr_shotgun_1 ? "slamfire_shotgun" : "slamfire_shotgun_d" );
     here.spawn_item( p, "string_36" );
+    here.spawn_item( p, "string_6" );
+    // TODO: spawn one or two empty shotgun hulls as well
     here.remove_trap( p );
     return true;
 }

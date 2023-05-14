@@ -174,7 +174,7 @@
     "material": [ "plastic" ],
     "symbol": ")",
     "color": "light_gray",
-    "flags": [ "COLLAPSE_CONTENTS" ]
+    "flags": [ "COLLAPSE_CONTENTS", "SOFT" ]
   },
   {
     "id": "bag_garbage",
@@ -191,7 +191,8 @@
     "pocket_data": [ { "pocket_type": "CONTAINER", "max_contains_volume": "110 L", "max_contains_weight": "10 kg", "moves": 400 } ],
     "material": [ "plastic" ],
     "symbol": ")",
-    "color": "black"
+    "color": "black",
+    "flags": [ "SOFT" ]
   },
   {
     "id": "nylon_bag",
@@ -278,7 +279,7 @@
     ],
     "symbol": ")",
     "color": "light_gray",
-    "flags": [ "COLLAPSE_CONTENTS" ]
+    "flags": [ "COLLAPSE_CONTENTS", "SOFT" ]
   },
   {
     "id": "bag_zipper_gallon",
@@ -310,7 +311,6 @@
     "description": "A human-sized rectangular bag made of strong plastic, with a zipper in the middle.  Intended to hold a dead body.",
     "weight": "1500 g",
     "volume": "1 L",
-    "longest_side": "40 cm",
     "price": 0,
     "price_postapoc": 10,
     "to_hit": -5,
@@ -325,7 +325,8 @@
         "moves": 400
       }
     ],
-    "color": "dark_gray"
+    "color": "dark_gray",
+    "flags": [ "SOFT" ]
   },
   {
     "id": "heavy_punching_bag_sack",
@@ -336,7 +337,6 @@
     "description": "A five-foot-long cylindrical leather sack, a foot in diameter, with attachment points at the top.  With some bags of sand, some chains, and a bunch of blankets, you could hang it from the ceiling as a heavy punching bag.",
     "weight": "2400g",
     "volume": "2260 ml",
-    "longest_side": "150 cm",
     "price": 0,
     "price_postapoc": 10,
     "to_hit": -5,
@@ -377,7 +377,7 @@
         "moves": 400
       }
     ],
-    "flags": [ "COLLAPSE_CONTENTS" ]
+    "flags": [ "COLLAPSE_CONTENTS", "SOFT" ]
   },
   {
     "id": "bottle_glass",
@@ -1263,7 +1263,7 @@
         }
       ]
     },
-    "flags": [ "BELTED", "COLLAPSE_CONTENTS" ],
+    "flags": [ "BELTED", "COLLAPSE_CONTENTS", "SOFT" ],
     "melee_damage": { "bash": 1 }
   },
   {
@@ -1402,7 +1402,7 @@
         "sealed_data": { "spoil_multiplier": 0.5 }
       }
     ],
-    "flags": [ "COLLAPSE_CONTENTS" ]
+    "flags": [ "COLLAPSE_CONTENTS", "SOFT" ]
   },
   {
     "id": "can_food",
@@ -2539,7 +2539,8 @@
         "max_item_length": "26 cm"
       }
     ],
-    "properties": [ [ "burst_when_filled", "75" ] ]
+    "properties": [ [ "burst_when_filled", "75" ] ],
+    "flags": [ "SOFT" ]
   },
   {
     "id": "balloon",
@@ -2860,7 +2861,7 @@
       }
     ],
     "material": [ "plastic", "aluminum" ],
-    "flags": [ "COLLAPSE_CONTENTS" ],
+    "flags": [ "COLLAPSE_CONTENTS", "SOFT" ],
     "symbol": ")",
     "color": "light_gray"
   },
@@ -2888,7 +2889,8 @@
         "max_contains_volume": "250 ml",
         "max_contains_weight": "1 kg"
       }
-    ]
+    ],
+    "flags": [ "SOFT" ]
   },
   {
     "id": "ipok",
@@ -2915,7 +2917,7 @@
       }
     ],
     "material": [ "plastic" ],
-    "flags": [ "COLLAPSE_CONTENTS" ],
+    "flags": [ "COLLAPSE_CONTENTS", "SOFT" ],
     "symbol": ")",
     "color": "light_gray"
   },
@@ -3331,8 +3333,7 @@
         "max_contains_weight": "2500 g"
       }
     ],
-    "qualities": [ [ "CONTAIN", 1 ] ],
-    "flags": [ "COLLAPSE_CONTENTS" ],
+    "flags": [ "COLLAPSE_CONTENTS", "SOFT" ],
     "melee_damage": { "bash": 1 }
   },
   {
@@ -3360,8 +3361,7 @@
         "max_contains_weight": "500 g"
       }
     ],
-    "qualities": [ [ "CONTAIN", 1 ] ],
-    "flags": [ "COLLAPSE_CONTENTS" ],
+    "flags": [ "COLLAPSE_CONTENTS", "SOFT" ],
     "melee_damage": { "bash": 1 }
   },
   {

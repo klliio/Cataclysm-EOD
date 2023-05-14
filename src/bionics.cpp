@@ -2317,24 +2317,29 @@ ret_val<void> Character::is_installable( const item *it ) const
     if( it->has_flag( flag_FILTHY ) ) {
         return ret_val<void>::make_failure( _( "This bionic needs to be cleaned before installation." ) );
     } else if( it->has_flag( flag_NO_STERILE ) && !has_flag( json_flag_INFECTION_IMMUNE ) ) {
-        return ret_val<void>::make_failure( _( "This bionic needs to be sterilized in an autoclave before installation." )  );
+        return ret_val<void>::make_failure(
+                   _( "This bionic needs to be sterilized in an autoclave before installation." ) );
     } else if( it->has_fault( fault_bionic_salvaged ) ) {
-        return ret_val<void>::make_failure( _( "This bionic needs to be reset to factory state before installation." ) );
+        return ret_val<void>::make_failure(
+                   _( "This bionic needs to be reset to factory state before installation." ) );
     } else if( has_bionic( bid ) && !bid->dupes_allowed ) {
         return ret_val<void>::make_failure( _( "The patient already has this bionic installed." ) );
-    } else if( !can_install_cbm_on_bp( get_occupied_bodyparts( bid ) ) || std::any_of( bid->mutation_conflicts.begin(), bid->mutation_conflicts.end(),
+    } else if( !can_install_cbm_on_bp( get_occupied_bodyparts( bid ) ) ||
+               std::any_of( bid->mutation_conflicts.begin(), bid->mutation_conflicts.end(),
                             has_trait_lambda ) ) {
         return ret_val<void>::make_failure( _( "This bionic is not compatible with the patient's body." ) );
     } else if( bid->upgraded_bionic &&
                !has_bionic( bid->upgraded_bionic ) &&
                it->is_upgrade() ) {
-        return ret_val<void>::make_failure( _( "The patient doesn't have any bionic installed that could be upgraded with this bionic." ) );
+        return ret_val<void>::make_failure(
+                   _( "The patient doesn't have any bionic installed that could be upgraded with this bionic." ) );
     } else if( std::any_of( bid->available_upgrades.begin(),
                             bid->available_upgrades.end(),
     [this]( const bionic_id & b ) {
     return has_bionic( b );
     } ) ) {
-        return ret_val<void>::make_failure( _( "The patient already has a superior version of this bionic installed." ) );
+        return ret_val<void>::make_failure(
+                   _( "The patient already has a superior version of this bionic installed." ) );
     } else if( is_npc() && !bid->has_flag( json_flag_BIONIC_NPC_USABLE ) ) {
         return ret_val<void>::make_failure( _( "CBM not compatible with patient." ) );
     }

@@ -37,13 +37,15 @@
     "description": "A kit containing all the specialized knives you need to debone, skin, and prepare cuts of meat from an animal.",
     "copy-from": "base_kitchen_knife",
     "looks_like": "knife_butcher",
-    "weight": "1170 g",
-    "volume": "800 ml",
-    "longest_side": "40 cm",
+    "weight": "1110 g",
+    "volume": "1500 ml",
+    "longest_side": "35 cm",
     "//": "butcher knives and carving knives are between 30-40cm.",
     "price": 8000,
     "price_postapoc": 150,
-    "qualities": [ [ "CUT", 2 ], [ "CUT_FINE", 1 ], [ "BUTCHER", 37 ] ]
+    "qualities": [ [ "CUT", 2 ], [ "CUT_FINE", 1 ], [ "BUTCHER", 37 ] ],
+    "to_hit": { "grip": "weapon", "length": "short", "surface": "line", "balance": "neutral" },
+    "melee_damage": { "bash": 6, "cut": 16 }
   },
   {
     "id": "butter_churn",

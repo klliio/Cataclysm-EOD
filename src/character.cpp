@@ -651,13 +651,14 @@ int Character::get_oxygen_max() const
 bool Character::can_recover_oxygen() const
 {
     if( get_limb_score( limb_score_breathing ) <= 0.5f || has_effect_with_flag( json_flag_GRAB ) ) {
-		return false;
-	}
+        return false;
+    }
     if( is_underwater() ) {
-		return has_flag( json_flag_GILLS );
-	} else {
-		return !get_map().get_field( pos(), fd_smoke ); // TODO: potentially take into account other suffocating fields.
-	}
+        return has_flag( json_flag_GILLS );
+    } else {
+        return !get_map().get_field( pos(),
+                                     fd_smoke ); // TODO: potentially take into account other suffocating fields.
+    }
 }
 
 void Character::randomize_heartrate()
@@ -5455,7 +5456,8 @@ bool Character::is_immune_effect( const efftype_id &eff ) const
     } else if( eff == effect_corroding ) {
         return is_immune_damage( damage_acid ) || has_trait( trait_SLIMY ) ||
                has_trait( trait_VISCOUS );
-    } else if( eff == effect_smoke ) { // TODO: potentially take into account other fields that could be negated if you can hold breath.
+    } else if( eff ==
+               effect_smoke ) { // TODO: potentially take into account other fields that could be negated if you can hold breath.
         return oxygen > 5;
     }
     for( const json_character_flag &flag : eff->immune_flags ) {

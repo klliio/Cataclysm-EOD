@@ -135,6 +135,7 @@
     "//weight_per_mol": "100.307 g",
     "price": 50,
     "price_postapoc": 10,
+    "container": "null",
     "weight": "2711 mg"
   },
   {

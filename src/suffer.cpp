@@ -1846,9 +1846,10 @@ void Character::suffer()
 
     if( underwater ) {
         suffer::while_underwater( *this );
-    } else if ( get_map().get_field( pos(), fd_smoke ) ) { // TODO: factor in other conditions when someone may be holding breath
-		suffer::while_holding_breath( *this );
-	}
+    } else if( get_map().get_field( pos(),
+                                    fd_smoke ) ) {  // TODO: factor in other conditions when someone may be holding breath
+        suffer::while_holding_breath( *this );
+    }
 
     suffer::from_addictions( *this );
 

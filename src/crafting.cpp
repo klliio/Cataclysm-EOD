@@ -108,6 +108,7 @@ static const trait_id trait_DEBUG_HS( "DEBUG_HS" );
 static const std::string flag_BLIND_EASY( "BLIND_EASY" );
 static const std::string flag_BLIND_HARD( "BLIND_HARD" );
 static const std::string flag_FULL_MAGAZINE( "FULL_MAGAZINE" );
+static const std::string flag_NEVER_FAIL( "NEVER_FAIL" );
 static const std::string flag_NO_RESIZE( "NO_RESIZE" );
 
 class basecamp;
@@ -1156,6 +1157,9 @@ Character::craft_roll_data Character::recipe_failure_roll_data( const recipe &ma
 
 float Character::crafting_success_roll( const recipe &making ) const
 {
+    if( making.has_flag( flag_NEVER_FAIL ) ) {
+        return 1.f;
+    }
     craft_roll_data data = recipe_success_roll_data( making );
     float craft_roll = std::max( normal_roll( data.center, data.stddev ), 0.0 );
 
@@ -1211,6 +1215,9 @@ static float normal_roll_chance( float center, float stddev, float difficulty )
 
 float Character::recipe_success_chance( const recipe &making ) const
 {
+    if( making.has_flag( flag_NEVER_FAIL ) ) {
+        return 1.f;
+    }
     // We calculate the failure chance of a recipe by performing a normal roll with a given
     // standard deviation and center, then subtracting a "final difficulty" score from that.
     // If that result is above 1, there is no chance of failure.
@@ -1221,6 +1228,9 @@ float Character::recipe_success_chance( const recipe &making ) const
 
 float Character::item_destruction_chance( const recipe &making ) const
 {
+    if( making.has_flag( flag_NEVER_FAIL ) ) {
+        return 0.f;
+    }
     // If a normal roll with these parameters rolls over 1, we will not have a catastrophic failure
     // If we roll under one, we will
     craft_roll_data data = recipe_failure_roll_data( making );

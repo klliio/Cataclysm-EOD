@@ -262,13 +262,13 @@
   {
     "type": "mutation",
     "id": "HUMAN_ACCLIMATIZATION",
-    "name": { "str": "Human ACCLIMATIZATION" },
+    "name": { "str": "Human Cold Acclimatization" },
     "points": 0,
     "player_display": false,
     "dummy": true,
     "category": [ "HUMAN" ],
-    "cancels": [ "RESISTCHILL", "STRONGER_RESISTCHILL", "RESISTWARM", "STRONGER_RESISTWARM" ],
-    "description": "Your temperature tolerance is more or less normal for a human."
+    "cancels": [ "RESISTCHILL", "STRONGER_RESISTCHILL" ],
+    "description": "Your cold tolerance is more or less normal for a human."
   },
   {
     "type": "mutation",
@@ -8716,7 +8716,7 @@
     "description": "You fare better than most in warmer climates and are less bothered by hotter temperatures.  Note that while you'll sweat a little less in close proximity to a fire as a result, burns will still hurt just as much.",
     "starting_trait": true,
     "changes_to": [ "STRONGER_RESISTWARM" ],
-    "types": [ "ACCLIMATIZATION" ],
+    "types": [ "ACCLIMATIZATION_HEAT" ],
     "category": [ "FISH", "CEPHALOPOD", "GASTROPOD", "LIZARD", "BATRACHIAN", "PLANT" ],
     "enchantments": [ { "condition": "ALWAYS", "values": [ { "value": "CLIMATE_CONTROL_CHILL", "add": 10 } ] } ]
   },
@@ -8728,7 +8728,7 @@
     "valid": true,
     "description": "You are now even less bothered by the heat and it is harder for you to overheat or even sweat.  When you do though, it'll hit just as hard as it did before.",
     "prereqs": [ "RESISTWARM" ],
-    "types": [ "ACCLIMATIZATION" ],
+    "types": [ "ACCLIMATIZATION_HEAT" ],
     "category": [ "FISH", "CEPHALOPOD", "GASTROPOD", "LIZARD", "BATRACHIAN", "PLANT" ],
     "threshreq": [ "THRESH_FISH", "THRESH_CEPHALOPOD", "THRESH_GASTROPOD", "THRESH_LIZARD", "THRESH_BATRACHIAN", "THRESH_PLANT" ],
     "enchantments": [ { "condition": "ALWAYS", "values": [ { "value": "CLIMATE_CONTROL_CHILL", "add": 25 } ] } ]
