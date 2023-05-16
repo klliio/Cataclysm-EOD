@@ -90,6 +90,7 @@ extern const morale_type MORALE_MOODSWING;
 extern const morale_type MORALE_BOOK;
 extern const morale_type MORALE_COMFY;
 extern const morale_type MORALE_SCREAM;
+extern const morale_type MORALE_PERM_DARKNESS;
 extern const morale_type MORALE_PERM_MASOCHIST;
 extern const morale_type MORALE_PERM_NAKED;
 extern const morale_type MORALE_PERM_NOFACE;

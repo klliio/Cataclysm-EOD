@@ -2742,8 +2742,8 @@
       "str_max": 400,
       "sound": "wham!",
       "sound_fail": "whump!",
-      "ter_set": "t_dirt",
-      "ter_set_bashed_from_above": "t_dirt",
+      "ter_set": "t_dirt_underground",
+      "ter_set_bashed_from_above": "t_dirtfloor_no_roof",
       "items": [ { "group": "digging_soil_loam_50L", "count": 20 } ]
     }
   },

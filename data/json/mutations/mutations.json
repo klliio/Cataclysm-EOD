@@ -262,13 +262,13 @@
   {
     "type": "mutation",
     "id": "HUMAN_ACCLIMATIZATION",
-    "name": { "str": "Human ACCLIMATIZATION" },
+    "name": { "str": "Human Cold Acclimatization" },
     "points": 0,
     "player_display": false,
     "dummy": true,
     "category": [ "HUMAN" ],
-    "cancels": [ "RESISTCHILL", "STRONGER_RESISTCHILL", "RESISTWARM", "STRONGER_RESISTWARM" ],
-    "description": "Your temperature tolerance is more or less normal for a human."
+    "cancels": [ "RESISTCHILL", "STRONGER_RESISTCHILL" ],
+    "description": "Your cold tolerance is more or less normal for a human."
   },
   {
     "type": "mutation",
@@ -3564,7 +3564,7 @@
     "id": "INFIMMUNE",
     "name": { "str": "Infection Immune" },
     "points": 3,
-    "description": "Your bloodstream has developed antibiotic properties.  Your wounds will never become infected.",
+    "description": "Your bloodstream has developed antibiotic properties.  Your wounds will never become infected, and your body can handle the installation of clean, but not sterile bionics.",
     "prereqs": [ "DISRESISTANT", "DISIMMUNE" ],
     "prereqs2": [ "INFRESIST" ],
     "category": [ "MEDICAL" ],
@@ -8668,7 +8668,7 @@
     "id": "NYCTOPHOBIA",
     "name": { "str": "Nyctophobia" },
     "points": -3,
-    "description": "You are terribly afraid of the dark.  You refuse to enter very dark areas.  If you somehow still happen to stay in dark areas, you suffer from various detrimental mental and physical effects.",
+    "description": "You are terribly afraid of the dark.  While being in dark areas, you will suffer from various detrimental mental and physical effects.",
     "valid": false,
     "purifiable": false,
     "starting_trait": true,
@@ -8716,7 +8716,7 @@
     "description": "You fare better than most in warmer climates and are less bothered by hotter temperatures.  Note that while you'll sweat a little less in close proximity to a fire as a result, burns will still hurt just as much.",
     "starting_trait": true,
     "changes_to": [ "STRONGER_RESISTWARM" ],
-    "types": [ "ACCLIMATIZATION" ],
+    "types": [ "ACCLIMATIZATION_HEAT" ],
     "category": [ "FISH", "CEPHALOPOD", "GASTROPOD", "LIZARD", "BATRACHIAN", "PLANT" ],
     "enchantments": [ { "condition": "ALWAYS", "values": [ { "value": "CLIMATE_CONTROL_CHILL", "add": 10 } ] } ]
   },
@@ -8728,7 +8728,7 @@
     "valid": true,
     "description": "You are now even less bothered by the heat and it is harder for you to overheat or even sweat.  When you do though, it'll hit just as hard as it did before.",
     "prereqs": [ "RESISTWARM" ],
-    "types": [ "ACCLIMATIZATION" ],
+    "types": [ "ACCLIMATIZATION_HEAT" ],
     "category": [ "FISH", "CEPHALOPOD", "GASTROPOD", "LIZARD", "BATRACHIAN", "PLANT" ],
     "threshreq": [ "THRESH_FISH", "THRESH_CEPHALOPOD", "THRESH_GASTROPOD", "THRESH_LIZARD", "THRESH_BATRACHIAN", "THRESH_PLANT" ],
     "enchantments": [ { "condition": "ALWAYS", "values": [ { "value": "CLIMATE_CONTROL_CHILL", "add": 25 } ] } ]

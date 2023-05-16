@@ -131,6 +131,8 @@ static const itype_id itype_fire( "fire" );
 static const itype_id itype_stock_none( "stock_none" );
 static const itype_id itype_syringe( "syringe" );
 
+static const json_character_flag json_flag_INFECTION_IMMUNE( "INFECTION_IMMUNE" );
+
 static const proficiency_id proficiency_prof_traps( "prof_traps" );
 static const proficiency_id proficiency_prof_trapsetting( "prof_trapsetting" );
 static const proficiency_id proficiency_prof_wound_care( "prof_wound_care" );
@@ -4270,30 +4272,33 @@ ret_val<void> install_bionic_actor::can_use( const Character &p, const item &it,
     if( !it.is_bionic() ) {
         return ret_val<void>::make_failure();
     }
-    const bionic_id &bid = it.type->bionic->id;
     if( p.is_mounted() ) {
         return ret_val<void>::make_failure( _( "You can't install bionics while mounted." ) );
     }
+    const bionic_id &bid = it.type->bionic->id;
     if( !p.has_trait( trait_DEBUG_BIONICS ) ) {
         if( bid->installation_requirement.is_empty() ) {
-            return ret_val<void>::make_failure( _( "You can't self-install this CBM." ) );
+            return ret_val<void>::make_failure( _( "This bionic can't be self-installed." ) );
         } else  if( it.has_flag( flag_FILTHY ) ) {
-            return ret_val<void>::make_failure( _( "You can't install a filthy CBM!" ) );
-        } else if( it.has_flag( flag_NO_STERILE ) ) {
-            return ret_val<void>::make_failure( _( "This CBM is not sterile, you can't install it." ) );
+            return ret_val<void>::make_failure( _( "This bionic needs to be cleaned before installation." ) );
+        } else if( it.has_flag( flag_NO_STERILE ) && !p.has_flag( json_flag_INFECTION_IMMUNE ) ) {
+            return ret_val<void>::make_failure(
+                       _( "This bionic needs to be sterilized in an autoclave before installation." ) );
         } else if( it.has_fault( fault_bionic_salvaged ) ) {
             return ret_val<void>::make_failure(
-                       _( "This CBM is already deployed.  You need to reset it to factory state." ) );
+                       _( "This bionic needs to be reset to factory state before installation." ) );
         } else if( units::energy( std::numeric_limits<int>::max(), units::energy::unit_type{} ) -
                    p.get_max_power_level() < bid->capacity ) {
-            return ret_val<void>::make_failure( _( "Max power capacity already reached" ) );
+            return ret_val<void>::make_failure(
+                       _( "You have already reached maximum bionic power capacity." ) );
         }
     }
 
     if( p.has_bionic( bid ) && !bid->dupes_allowed ) {
-        return ret_val<void>::make_failure( _( "You have already installed this bionic." ) );
+        return ret_val<void>::make_failure( _( "You already have this bionic installed." ) );
     } else if( bid->upgraded_bionic && !p.has_bionic( bid->upgraded_bionic ) ) {
-        return ret_val<void>::make_failure( _( "There is nothing to upgrade." ) );
+        return ret_val<void>::make_failure(
+                   _( "You don't have any bionic installed that you could upgrade with this bionic." ) );
     } else {
         const bool downgrade =
             std::any_of( bid->available_upgrades.begin(), bid->available_upgrades.end(),
@@ -4302,7 +4307,8 @@ ret_val<void> install_bionic_actor::can_use( const Character &p, const item &it,
         } );
 
         if( downgrade ) {
-            return ret_val<void>::make_failure( _( "You have a superior version installed." ) );
+            return ret_val<void>::make_failure(
+                       _( "You already have a superior version of this bionic installed." ) );
         }
     }
 

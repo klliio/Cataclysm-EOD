@@ -5916,7 +5916,7 @@ nc_color item::color_in_inventory( const Character *const ch ) const
     } else if( is_relic() && !has_flag( flag_MUNDANE ) ) {
         ret = c_pink;
     } else if( is_bionic() ) {
-        if( player_character.is_installable( this, false ).success() &&
+        if( player_character.is_installable( this ).success() &&
             ( !player_character.has_bionic( type->bionic->id ) || type->bionic->id->dupes_allowed ) ) {
             ret = player_character.bionic_installation_issues( type->bionic->id ).empty() ? c_green : c_red;
         } else if( !has_flag( flag_NO_STERILE ) ) {
@@ -8215,7 +8215,7 @@ bool item::can_revive() const
            damage() < max_damage() &&
            !( has_flag( flag_FIELD_DRESS ) || has_flag( flag_FIELD_DRESS_FAILED ) ||
               has_flag( flag_QUARTERED ) ||
-              has_flag( flag_SKINNED ) || has_flag( flag_PULPED ) );
+              has_flag( flag_SKINNED ) || has_flag( flag_PULPED ) ) && get_option<bool>( "CORPSES_REVIVE" );
 }
 
 bool item::ready_to_revive( map &here, const tripoint &pos ) const
@@ -12506,7 +12506,7 @@ void item::process_relic( Character *carrier, const tripoint &pos )
 bool item::process_corpse( map &here, Character *carrier, const tripoint &pos )
 {
     // some corpses rez over time
-    if( corpse == nullptr || damage() >= max_damage() ) {
+    if( corpse == nullptr || damage() >= max_damage() || !ready_to_revive( here, pos ) ) {
         return false;
     }
 
@@ -12516,9 +12516,6 @@ bool item::process_corpse( map &here, Character *carrier, const tripoint &pos )
         set_var( "zombie_form", mon_human->zombify_into.c_str() );
     }
 
-    if( !ready_to_revive( here, pos ) ) {
-        return false;
-    }
     if( rng( 0, volume() / units::legacy_volume_factor ) > burnt && g->revive_corpse( pos, *this ) ) {
         if( carrier == nullptr ) {
             if( corpse->in_species( species_ROBOT ) ) {

@@ -45,6 +45,7 @@
 #include "mutation.h"
 #include "npc.h"
 #include "output.h"
+#include "options.h"
 #include "pimpl.h"
 #include "point.h"
 #include "projectile.h"
@@ -1240,7 +1241,7 @@ int spell::xp() const
 void spell::gain_exp( const Character &guy, int nxp )
 {
     int oldLevel = get_level();
-    experience += nxp;
+    experience += static_cast<int>( nxp * get_option<float>( "SPELL_TRAINING_SPEED" ) );
     if( guy.is_avatar() && oldLevel != get_level() ) {
         get_event_bus().send<event_type::player_levels_spell>( guy.getID(), id(), get_level() );
     }
@@ -1960,7 +1961,7 @@ int known_magic::max_mana( const Character &guy ) const
     const float int_bonus = ( ( 0.2f + guy.get_int() * 0.1f ) - 1.0f ) * mana_base;
     const int bionic_penalty = std::round( std::max( 0.0f,
                                            units::to_kilojoule( guy.get_power_level() ) *
-                                           guy.mutation_value( "bionic_mana_penalty" ) ) );
+                                           guy.mutation_value( "bionic_mana_penalty" ) * get_option<float>( "BIONIC_POWER_MANA_PENALTY" ) ) );
     const float unaugmented_mana = std::max( 0.0f,
                                    ( ( mana_base + int_bonus ) * guy.mutation_value( "mana_multiplier" ) ) +
                                    guy.mutation_value( "mana_modifier" ) - bionic_penalty );

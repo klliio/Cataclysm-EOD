@@ -224,6 +224,8 @@ static const efftype_id effect_bouldering( "bouldering" );
 static const efftype_id effect_contacts( "contacts" );
 static const efftype_id effect_docile( "docile" );
 static const efftype_id effect_downed( "downed" );
+static const efftype_id effect_fake_common_cold( "fake_common_cold" );
+static const efftype_id effect_fake_flu( "fake_flu" );
 static const efftype_id effect_laserlocked( "laserlocked" );
 static const efftype_id effect_no_sight( "no_sight" );
 static const efftype_id effect_onfire( "onfire" );
@@ -10004,7 +10006,11 @@ bool game::prompt_dangerous_tile( const tripoint &dest_loc ) const
     std::vector<std::string> harmful_stuff = get_dangerous_tile( dest_loc );
 
     if( !harmful_stuff.empty() &&
-        !query_yn( _( "Really step into %s?" ), enumerate_as_string( harmful_stuff ) ) ) {
+        !query_yn( m.get_field( dest_loc,
+                                fd_smoke )
+                   ? // TODO: potentially take into account other fields that could be negated if you can hold breath.
+                   _( "Hold your breath and step into %s?" ) :
+                   _( "Really step into %s?" ), enumerate_as_string( harmful_stuff ) ) ) {
         return false;
     }
     if( !harmful_stuff.empty() && u.is_mounted() && m.tr_at( dest_loc ) == tr_ledge ) {
@@ -10127,17 +10133,17 @@ bool game::walk_move( const tripoint &dest_loc, const bool via_ramp, const bool 
         }
     }
 
-    const float dest_light_level = get_map().ambient_light_at( dest_loc );
-
-    // Allow players with nyctophobia to move freely through cloudy and dark tiles
-    const float nyctophobia_threshold = LIGHT_AMBIENT_LIT - 3.0f;
-
-    // Forbid players from moving through very dark tiles, unless they are running or took xanax
-    if( u.has_flag( json_flag_NYCTOPHOBIA ) && !u.has_effect( effect_took_xanax ) && !u.is_running() &&
-        dest_light_level < nyctophobia_threshold ) {
-        add_msg( m_bad,
-                 _( "It's so dark and scary in there!  You can't force yourself to walk into this tile.  Switch to running movement mode to move there." ) );
-        return false;
+    if( u.has_flag( json_flag_NYCTOPHOBIA ) && !u.has_effect( effect_took_xanax ) && !u.is_blind() ) {
+        const float nyctophobia_threshold = LIGHT_AMBIENT_LIT - 3.0f;
+        const bool darkness_there = m.ambient_light_at( dest_loc ) < nyctophobia_threshold;
+        if( darkness_there ) {
+            const bool darkness_here = m.ambient_light_at( u.pos() ) < nyctophobia_threshold;
+            if( !darkness_here ) {
+                if( !query_yn( _( "It's dark and scary in there!  Move there anyway?" ) ) ) {
+                    return false;
+                }
+            }
+        }
     }
 
     if( u.is_mounted() ) {
@@ -11594,6 +11600,9 @@ void game::vertical_move( int movez, bool force, bool peeking )
     }
 
     if( !force && movez == -1 && !here.has_flag( ter_furn_flag::TFLAG_GOES_DOWN, u.pos() ) &&
+        !here.has_flag( ter_furn_flag::TFLAG_DEEP_WATER, u.pos() ) &&
+        !here.has_flag( ter_furn_flag::TFLAG_WATER_CUBE, u.pos() ) &&
+        // Temporary fix for being unable to dive underwater in vanilla DDA; there's probably a better way to handle all this mess but I'm being lazy at the moment.
         !u.is_underwater() ) {
         if( wall_cling && !here.has_floor_or_support( u.pos() ) ) {
             climbing = true;
@@ -12341,6 +12350,14 @@ void game::perhaps_add_random_npc( bool ignore_spawn_timers_and_rates )
     shared_ptr_fast<npc> tmp = make_shared_fast<npc>();
     tmp->normalize();
     tmp->randomize();
+    if( one_in( 100 ) ) {
+        // Same chances and duration of flu vs. cold as for the player.
+        if( one_in( 6 ) ) {
+            tmp->add_effect( effect_fake_flu, rng( 3_days, 10_days ) );
+        } else {
+            tmp->add_effect( effect_fake_common_cold, rng( 1_days, 14_days ) );
+        }
+    }
     std::string new_fac_id = "solo_";
     new_fac_id += tmp->name;
     // create a new "lone wolf" faction for this one NPC

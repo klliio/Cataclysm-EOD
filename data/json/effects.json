@@ -2725,6 +2725,7 @@
     "apply_message": "You feel a cold coming on…",
     "rating": "bad",
     "resist_effects": [ "took_flumed" ],
+    "immune_flags": [ "NO_DISEASE" ],
     "miss_messages": [ [ "You're too stuffed up to fight effectively.", 1 ] ],
     "base_mods": {
       "thirst_tick": [ 1800 ],
@@ -2751,6 +2752,8 @@
     "apply_message": "You feel a flu coming on…",
     "rating": "bad",
     "resist_effects": [ "took_flumed" ],
+    "immune_flags": [ "NO_DISEASE" ],
+    "miss_messages": [ [ "You're too stuffed up to fight effectively.", 1 ] ],
     "base_mods": {
       "thirst_tick": [ 1800 ],
       "thirst_min": [ 1 ],
@@ -2765,16 +2768,16 @@
       "cough_chance": [ 300, 0 ],
       "vomit_chance": [ 3600, 7200 ]
     },
-    "blood_analysis_description": "Viral Infection"
+    "blood_analysis_description": "Influenza Infection"
   },
   {
     "type": "effect_type",
     "id": "flushot",
-    "name": [ "Vaccinated" ],
-    "desc": [ "You have been vaccinated for the flu recently." ],
+    "name": [ "Flu Antibodies" ],
+    "desc": [ "Flu antibodies in your bloodstream prevent you from catching flu." ],
     "blocks_effects": [ "flu" ],
     "rating": "good",
-    "blood_analysis_description": "Antivirals",
+    "blood_analysis_description": "Influenza Antibodies",
     "max_duration": 14515200,
     "dur_add_perc": 50
   },

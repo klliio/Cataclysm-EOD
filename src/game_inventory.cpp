@@ -2339,7 +2339,7 @@ class bionic_install_preset: public inventory_selector_preset
 
         std::string get_denial( const item_location &loc ) const override {
 
-            const ret_val<void> installable = pa.is_installable( loc.get_item(), true );
+            const ret_val<void> installable = pa.is_installable( loc.get_item() );
             if( installable.success() && !you.has_enough_anesth( *loc.get_item()->type, pa ) ) {
                 const int weight = units::to_kilogram( pa.bodyweight() ) / 10;
                 const int duration = loc.get_item()->type->bionic->difficulty * 2;
@@ -2434,7 +2434,7 @@ class bionic_install_surgeon_preset : public inventory_selector_preset
                     return you.replace_with_npc_name( refusal.str() );
                 }
             }
-            const ret_val<void> installable = pa.is_installable( loc.get_item(), false );
+            const ret_val<void> installable = pa.is_installable( loc.get_item() );
             return installable.str();
         }
 

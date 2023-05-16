@@ -220,15 +220,10 @@
     "subcategory": "CSC_OTHER_TOOLS",
     "skill_used": "fabrication",
     "reversible": true,
-    "time": "30 s",
+    "time": "1 s",
     "autolearn": true,
-    "components": [
-      [ [ "knife_butcher", 1 ] ],
-      [ [ "knife_carving", 1 ] ],
-      [ [ "knife_meat_cleaver", 1 ] ],
-      [ [ "leather", 2 ], [ "cotton_patchwork", 2 ] ],
-      [ [ "cordage_short", 2, "LIST" ] ]
-    ]
+    "components": [ [ [ "knife_butcher", 1 ] ], [ [ "knife_carving", 1 ] ], [ [ "knife_meat_cleaver", 1 ] ] ],
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",

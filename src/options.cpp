@@ -2946,6 +2946,17 @@ void options_manager::add_options_world_default()
          0, 50, 5
        );
 
+    add( "SPELL_TRAINING_SPEED", "world_default", to_translation( "Spell training speed" ),
+         to_translation( "Scales experience gained from learning and using spells.  0.5 is half as fast as default, 2.0 is twice as fast, 0.0 disables experience gain for spells training." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "BIONIC_POWER_MANA_PENALTY", "world_default",
+         to_translation( "Max mana penalty from bionic power" ),
+         to_translation( "Scales mana penalty from character having bionic power.  0.5 is halved penalty, 2.0 is doubled penalty, 0.0 disables the effect of bionic power on max mana." ),
+         0.00f, 100.00f, 0.00f, 0.01f
+       );
+
     add_empty_line();
 
     add( "VITAMIN_RATE", "world_default", to_translation( "Vitamin consumption rate multiplier" ),
@@ -3110,6 +3121,11 @@ void options_manager::add_options_world_default()
 
     add_empty_line();
 
+    add( "PROF_HELI_FLY", "world_default", to_translation( "Need proficiency to fly aircraft" ),
+         to_translation( "If true, helicopter piloting proficiency is necessary to fly aircraft.  If false, any character can fly aircraft." ),
+         true
+       );
+
     add( "PROF_HELI_REPAIR", "world_default", to_translation( "Need proficiency to repair aircraft" ),
          to_translation( "If true, aircraft repair proficiency is necessary to repair aircraft without compromising flyability.  If false, any character can repair aircraft just like any other vehicle." ),
          true
@@ -3129,6 +3145,11 @@ void options_manager::add_options_world_default()
          to_translation( "Helicopter fuel consumption multiplier" ),
          to_translation( "Multiplies the amount of fuel consumed by helicopters while flying.  0.5 is half as much, 2 is twice as much.  Higher value makes helicopters cost more fuel to use." ),
          0.01f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "CORPSES_REVIVE", "world_default", to_translation( "Corpses revive as zombies" ),
+         to_translation( "If true, certain corpses (both zombie and non-zombie) can revive as zombies after some time spent dead.  If false, corpses will never revive." ),
+         true
        );
 
 }

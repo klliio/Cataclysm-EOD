@@ -10,7 +10,7 @@
     "reversible": true,
     "autolearn": true,
     "components": [ [ [ "cotton_patchwork", 1 ] ], [ [ "claybomb_hull", 1 ] ], [ [ "flamethrower_fuel", 750 ] ] ],
-    "flags": [ "BLIND_HARD" ]
+    "flags": [ "BLIND_HARD", "NEVER_FAIL" ]
   },
   {
     "result": "sling-ready_grenade",
@@ -23,7 +23,7 @@
     "reversible": true,
     "autolearn": true,
     "components": [ [ [ "grenade", 1 ] ] ],
-    "flags": [ "BLIND_EASY" ]
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "result": "sling-ready_small_homemade_grenade",
@@ -36,7 +36,7 @@
     "reversible": true,
     "autolearn": true,
     "components": [ [ [ "small_homemade_grenade", 1 ] ] ],
-    "flags": [ "BLIND_EASY" ]
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "result": "sling-ready_homemade_grenade",
@@ -49,7 +49,7 @@
     "reversible": true,
     "autolearn": true,
     "components": [ [ [ "homemade_grenade", 1 ] ] ],
-    "flags": [ "BLIND_EASY" ]
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "result": "sling-ready_small_homemade_grenade_2",
@@ -62,7 +62,7 @@
     "reversible": true,
     "autolearn": true,
     "components": [ [ [ "military_explosive_small_grenade", 1 ] ] ],
-    "flags": [ "BLIND_EASY" ]
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   },
   {
     "result": "sling-ready_homemade_grenade_2",
@@ -75,6 +75,6 @@
     "reversible": true,
     "autolearn": true,
     "components": [ [ [ "military_explosive_grenade", 1 ] ] ],
-    "flags": [ "BLIND_EASY" ]
+    "flags": [ "BLIND_EASY", "NEVER_FAIL" ]
   }
 ]

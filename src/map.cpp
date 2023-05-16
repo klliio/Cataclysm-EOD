@@ -115,6 +115,8 @@ static const diseasetype_id disease_bad_food( "bad_food" );
 
 static const efftype_id effect_boomered( "boomered" );
 static const efftype_id effect_crushed( "crushed" );
+static const efftype_id effect_fake_common_cold( "fake_common_cold" );
+static const efftype_id effect_fake_flu( "fake_flu" );
 static const efftype_id effect_pet( "pet" );
 
 static const field_type_str_id field_fd_clairvoyant( "fd_clairvoyant" );
@@ -137,6 +139,8 @@ static const oter_str_id oter_deep_rock( "deep_rock" );
 static const oter_str_id oter_empty_rock( "empty_rock" );
 static const oter_str_id oter_open_air( "open_air" );
 static const oter_str_id oter_solid_earth( "solid_earth" );
+
+static const species_id species_HUMAN( "HUMAN" );
 
 static const ter_str_id ter_t_dirt( "t_dirt" );
 static const ter_str_id ter_t_soil( "t_soil" );
@@ -1129,6 +1133,8 @@ std::set<tripoint_bub_ms> map::get_moving_vehicle_targets( const Creature &z, in
     const tripoint_bub_ms zpos( z.pos() );
     std::set<tripoint_bub_ms> priority;
     std::set<tripoint_bub_ms> visible;
+    // TODO: Get an actual driver of the vehicle; currently only the player may drive, and so is always considered the driver.
+    Character &driver = get_player_character();
     for( wrapped_vehicle &v : get_vehicles() ) {
         if( !v.v->is_moving() ) {
             continue;
@@ -1138,6 +1144,15 @@ std::set<tripoint_bub_ms> map::get_moving_vehicle_targets( const Creature &z, in
         }
         if( rl_dist( zpos, tripoint_bub_ms( v.pos ) ) > max_range + 40 ) {
             continue; // coarse distance filter, 40 = ~24 * sqrt(2) - rough max diameter of a vehicle
+        }
+        // Non-hostile monsters will ignore moving vehicles if they can see the driver
+        /// This enables an exploit to allow ramming non-hostile monsters with a vehicle without being attacked,
+        /// but this can be written off as most monsters intentionally being rather dumb;
+        /// certainly better than being shot by a neutral turret for riding very close by on a wheelchair or bicycle.
+        // TODO: Allow excluding specific vehicles as "known friendly" even if driver isn't visible.
+        if( z.sees( driver ) &&
+            z.attitude_to( driver ) != Creature::Attitude::HOSTILE ) {
+            continue;
         }
         for( const vpart_reference &vpr : v.v->get_all_parts() ) {
             const tripoint_bub_ms vppos = static_cast<tripoint_bub_ms>( vpr.pos() );
@@ -8373,6 +8388,18 @@ void map::spawn_monsters_submap( const tripoint &gp, bool ignore_sight, bool spa
 
         for( int j = 0; j < i.count; j++ ) {
             monster tmp( i.type );
+
+            if( tmp.type->in_species( species_HUMAN ) ) {
+                if( one_in( 100 ) ) {
+                    // Same chances and duration of flu vs. cold as for the player.
+                    if( one_in( 6 ) ) {
+                        tmp.add_effect( effect_fake_flu, rng( 3_days, 10_days ) );
+                    } else {
+                        tmp.add_effect( effect_fake_common_cold, rng( 1_days, 14_days ) );
+                    }
+                }
+            }
+
             if( i.mission_id > 0 ) {
                 tmp.mission_ids = { i.mission_id };
                 mission *found_mission = mission::find( i.mission_id );
