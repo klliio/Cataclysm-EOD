@@ -489,7 +489,7 @@ static void pldrive( const tripoint &p )
     }
     if( p.z != 0 ) {
         if( !player_character.has_proficiency( proficiency_prof_helicopter_pilot ) &&
-            !player_character.has_active_bionic( bio_heli ) ) {
+            !player_character.has_active_bionic( bio_heli ) && get_option<bool>( "PROF_HELI_FLY" ) ) {
             player_character.add_msg_if_player( m_info, _( "You have no idea how to make the vehicle fly." ) );
             return;
         }
