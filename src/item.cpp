@@ -3552,8 +3552,9 @@ void item::armor_protection_info( std::vector<iteminfo> &info, const iteminfo_qu
         }
 
         bool display_median = percent_best < 50 && percent_worst < 50;
+        const bool always_detailed = get_option<bool>( "DETAILED_ARMOR_PROTECTION" );
 
-        if( display_median ) {
+        if( display_median || always_detailed ) {
             info.emplace_back( "DESCRIPTION",
                                string_format( "<bold>%s</bold>: <bad>%d%%</bad>, <color_c_yellow>Median</color>, <good>%d%%</good>",
                                               _( "Protection" ), percent_worst, percent_best ) );
@@ -3567,13 +3568,13 @@ void item::armor_protection_info( std::vector<iteminfo> &info, const iteminfo_qu
 
         for( const damage_info_order &dio : damage_info_order::get_all(
                  damage_info_order::info_type::PROT ) ) {
-            if( best_res.resist_vals.count( dio.dmg_type ) <= 0 ||
-                best_res.type_resist( dio.dmg_type ) < 1.0f ) {
+            if( ( best_res.resist_vals.count( dio.dmg_type ) <= 0 ||
+                best_res.type_resist( dio.dmg_type ) < 1.0f ) && !always_detailed ) {
                 continue;
             }
             bool skipped_detailed = false;
             if( dio.info_display == damage_info_order::info_disp::DETAILED ) {
-                if( display_median ) {
+                if( display_median || always_detailed ) {
                     info.emplace_back( bp_cat,
                                        string_format( "%s%s:  <bad>%.2f</bad>, <color_c_yellow>%.2f</color>, <good>%.2f</good>", space,
                                                       uppercase_first_letter( dio.dmg_type->name.translated() ), worst_res.type_resist( dio.dmg_type ),
@@ -3597,7 +3598,7 @@ void item::armor_protection_info( std::vector<iteminfo> &info, const iteminfo_qu
                 printed_any = true;
             }
         }
-        if( get_base_env_resist( *this ) >= 1 ) {
+        if( get_base_env_resist( *this ) >= 1 || always_detailed ) {
             info.emplace_back( bp_cat, string_format( "%s%s", space, _( "Environmental: " ) ),
                                get_base_env_resist( *this ) );
             printed_any = true;

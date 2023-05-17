@@ -2082,6 +2082,11 @@ void options_manager::add_options_interface()
     "right"
        );
 
+    add( "DETAILED_ARMOR_PROTECTION", "interface", to_translation( "Show detailed armor protection" ),
+         to_translation( "If true, always show detailed protection for all wearable items, even if it's otherwise noted as negligible." ),
+         false
+       );
+
     add_empty_line();
 
     add( "ENABLE_JOYSTICK", "interface", to_translation( "Enable joystick" ),

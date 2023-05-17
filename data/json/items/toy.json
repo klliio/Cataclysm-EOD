@@ -953,6 +953,7 @@
         "description": "This one resembles a maid.",
         "weight": 1,
         "append": true
+      },
       {
         "id": "toy_figure_female",
         "name": { "str": "plastic female doll" },
