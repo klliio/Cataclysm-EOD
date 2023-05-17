@@ -12,7 +12,7 @@
     "price_postapoc": 100,
     "symbol": ",",
     "color": "light_gray",
-    "flags": [ "SLEEP_AID" ],
+    "flags": [ "SLEEP_AID", "NO_SALVAGE" ],
     "variant_type": "generic",
     "variants": [
       {
@@ -726,7 +726,7 @@
       {
         "id": "toy_figure_small_unicorn",
         "name": { "str": "plastic unicorn figurine" },
-        "description": "This one resembles an unicorn.",
+        "description": "This one resembles a blue unicorn which is in a sitting position, covering both eyes with the front hooves.",
         "weight": 1,
         "append": true
       },
@@ -951,6 +951,55 @@
         "id": "toy_figure_small_maid",
         "name": { "str": "plastic maid figurine" },
         "description": "This one resembles a maid.",
+        "weight": 1,
+        "append": true
+      },
+      {
+        "id": "toy_figure_female",
+        "name": { "str": "plastic female doll" },
+        "description": "This one is a feminine-looking doll, which can be dressed up and accessorized with a wide variety of doll clothing, and is intended for children to play with.",
+        "weight": 1,
+        "append": true
+      },
+      {
+        "id": "toy_figure_krueger",
+        "name": { "str": "plastic nightmare figurine" },
+        "description": "This one represents a man with nightmarish, scarred face.  He wears a hat and has three long blades extending from a glove on the back of his hand.",
+        "weight": 1,
+        "append": true
+      },
+      {
+        "id": "toy_figure_swampman",
+        "name": { "str": "plastic swamp monster figurine" },
+        "description": "This one resembles a scaly green swamp monster emerging from some fetid lagoon.",
+        "weight": 1,
+        "append": true
+      },
+      {
+        "id": "toy_figure_reaper",
+        "name": { "str": "plastic reaper figurine" },
+        "description": "This one resembles a berobed skeleton wielding a scythe, widely recognized as the mythological representation of death, the Grim Reaper.",
+        "weight": 1,
+        "append": true
+      },
+      {
+        "id": "toy_figure_mermaid",
+        "name": { "str": "plastic mermaid figurine" },
+        "description": "This one resembles a redheaded mermaid sitting on a rock.  The face isn't drawn very well and doesn't express much emotion at all.",
+        "weight": 1,
+        "append": true
+      },
+      {
+        "id": "toy_figure_avocado",
+        "name": { "str": "plastic avocado figurine" },
+        "description": "This one resembles an anthropomorphic avocado, holding a salt shaker and a spoon.",
+        "weight": 1,
+        "append": true
+      },
+      {
+        "id": "toy_figure_superhero",
+        "name": { "str": "plastic superhero figurine" },
+        "description": "This one resembles a superhero.  Its limbs can be adjusted for different poses.",
         "weight": 1,
         "append": true
       }

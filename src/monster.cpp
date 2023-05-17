@@ -2097,8 +2097,6 @@ bool monster::move_effects( bool )
     if( has_effect( effect_lightsnare ) ) {
         if( x_in_y( type->melee_dice * type->melee_sides, 12 ) ) {
             remove_effect( effect_lightsnare );
-            here.spawn_item( pos(), "string_36" );
-            here.spawn_item( pos(), "snare_trigger" );
             if( u_see_me ) {
                 add_msg( _( "The %s escapes the light snare!" ), name() );
             }
@@ -2655,15 +2653,12 @@ void monster::die( Creature *nkiller )
         move_special_item_to_inv( storage_item );
         move_special_item_to_inv( tied_item );
 
-        if( has_effect( effect_lightsnare ) ) {
-            add_item( item( "string_36", calendar::turn_zero ) );
-            add_item( item( "snare_trigger", calendar::turn_zero ) );
-        }
         if( has_effect( effect_heavysnare ) ) {
             add_item( item( "rope_6", calendar::turn_zero ) );
             add_item( item( "snare_trigger", calendar::turn_zero ) );
         }
     }
+
 
     if( death_drops && !no_extra_death_drops ) {
         drop_items_on_death( corpse.get_item() );
@@ -2937,22 +2932,24 @@ void monster::process_one_effect( effect &it, bool is_new )
             apply_damage( it.get_source().resolve_creature(), bodypart_id( "torso" ), 1 );
         }
     } else if( id == effect_fake_common_cold ) {
+        const tripoint &mon_pos = pos();
         if( calendar::once_every( time_duration::from_seconds( rng( 30, 300 ) ) ) ) {
-            sounds::sound( pos(), 4, sounds::sound_t::speech, _( "a hacking cough." ), false, "misc", "cough" );
+            sounds::sound( mon_pos, 4, sounds::sound_t::speech, _( "a hacking cough." ), false, "misc", "cough" );
         }
 
         avatar &you = get_avatar(); // No NPCs for now.
-        if( rl_dist( it.get_source().resolve_creature()->pos(), you.pos() ) <= 1 ) {
+        if( rl_dist( mon_pos, you.pos() ) <= 1 ) {
             you.get_sick( false );
         }
     } else if( id == effect_fake_flu ) {
         // Need to define the two separately because it's theoretically (and realistically) possible to have both flu and cold at once, both for players and mosters.
+        const tripoint &mon_pos = pos();
         if( calendar::once_every( time_duration::from_seconds( rng( 30, 300 ) ) ) ) {
-            sounds::sound( pos(), 4, sounds::sound_t::speech, _( "a hacking cough." ), false, "misc", "cough" );
+            sounds::sound( mon_pos, 4, sounds::sound_t::speech, _( "a hacking cough." ), false, "misc", "cough" );
         }
 
         avatar &you = get_avatar(); // No NPCs for now.
-        if( rl_dist( it.get_source().resolve_creature()->pos(), you.pos() ) <= 1 ) {
+        if( rl_dist( mon_pos, you.pos() ) <= 1 ) {
             you.get_sick( true );
         }
     }

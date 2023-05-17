@@ -2470,6 +2470,8 @@ scrrrash
 scruffs
 scutcher
 scutellosaurus
+scute
+scutes
 scuttles
 sealable
 seater

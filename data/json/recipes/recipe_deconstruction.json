@@ -1659,8 +1659,7 @@
       [ [ "steel_armor", 2 ] ],
       [ [ "sheet_metal_small", 6 ] ],
       [ [ "motor_small", 1 ] ],
-      [ [ "cable", 2 ] ],
-      [ [ "solder_wire", 20 ] ]
+      [ [ "cable", 2 ] ]
     ]
   },
   {
@@ -1710,8 +1709,7 @@
       [ [ "motor_small", 1 ] ],
       [ [ "cable", 10 ] ],
       [ [ "omnicamera", 1 ] ],
-      [ [ "betavoltaic", 20 ] ],
-      [ [ "solder_wire", 20 ] ]
+      [ [ "betavoltaic", 20 ] ]
     ]
   },
   {
@@ -1757,8 +1755,7 @@
       [ [ "motor_small", 1 ] ],
       [ [ "cable", 25 ] ],
       [ [ "omnicamera", 1 ] ],
-      [ [ "betavoltaic", 40 ] ],
-      [ [ "solder_wire", 20 ] ]
+      [ [ "betavoltaic", 40 ] ]
     ]
   },
   {
@@ -1798,8 +1795,7 @@
       [ [ "quad_rotors", 2 ] ],
       [ [ "omnicamera", 1 ] ],
       [ [ "betavoltaic", 5 ] ],
-      [ [ "plastic_sheet", 8 ] ],
-      [ [ "solder_wire", 3 ] ]
+      [ [ "plastic_sheet", 8 ] ]
     ]
   },
   {
@@ -1824,8 +1820,7 @@
       [ [ "plut_cell", 1 ] ],
       [ [ "broken_manhack", 4 ] ],
       [ [ "omnicamera", 1 ] ],
-      [ [ "storage_battery", 1 ] ],
-      [ [ "solder_wire", 20 ] ]
+      [ [ "storage_battery", 1 ] ]
     ]
   },
   {
@@ -1836,7 +1831,7 @@
     "difficulty": 5,
     "time": "1 h",
     "using": [ [ "soldering_standard", 20 ] ],
-    "components": [ [ [ "processor", 4 ] ], [ [ "power_supply", 1 ] ], [ [ "e_scrap", 6 ] ], [ [ "solder_wire", 1 ] ] ]
+    "components": [ [ [ "processor", 4 ] ], [ [ "power_supply", 1 ] ], [ [ "e_scrap", 6 ] ] ]
   },
   {
     "result": "identification_module",
@@ -1846,7 +1841,7 @@
     "difficulty": 5,
     "time": "1 h",
     "using": [ [ "soldering_standard", 20 ] ],
-    "components": [ [ [ "processor", 4 ] ], [ [ "power_supply", 1 ] ], [ [ "e_scrap", 6 ] ], [ [ "solder_wire", 1 ] ] ]
+    "components": [ [ [ "processor", 4 ] ], [ [ "power_supply", 1 ] ], [ [ "e_scrap", 6 ] ] ]
   },
   {
     "result": "iron_pot",
@@ -1866,7 +1861,7 @@
     "difficulty": 5,
     "time": "1 h",
     "using": [ [ "soldering_standard", 20 ] ],
-    "components": [ [ [ "processor", 4 ] ], [ [ "power_supply", 1 ] ], [ [ "e_scrap", 6 ] ], [ [ "solder_wire", 1 ] ] ]
+    "components": [ [ [ "processor", 4 ] ], [ [ "power_supply", 1 ] ], [ [ "e_scrap", 6 ] ] ]
   },
   {
     "result": "memory_module",
@@ -1876,7 +1871,7 @@
     "difficulty": 5,
     "time": "1 h",
     "using": [ [ "soldering_standard", 20 ] ],
-    "components": [ [ [ "processor", 4 ] ], [ [ "RAM", 10 ] ], [ [ "power_supply", 1 ] ], [ [ "e_scrap", 6 ] ], [ [ "solder_wire", 1 ] ] ]
+    "components": [ [ [ "processor", 4 ] ], [ [ "RAM", 10 ] ], [ [ "power_supply", 1 ] ], [ [ "e_scrap", 6 ] ] ]
   },
   {
     "result": "sensor_module",
@@ -1886,14 +1881,7 @@
     "difficulty": 5,
     "time": "1 h",
     "using": [ [ "soldering_standard", 20 ] ],
-    "components": [
-      [ [ "processor", 4 ] ],
-      [ [ "lens", 2 ] ],
-      [ [ "lens_small", 2 ] ],
-      [ [ "power_supply", 1 ] ],
-      [ [ "e_scrap", 6 ] ],
-      [ [ "solder_wire", 1 ] ]
-    ]
+    "components": [ [ [ "processor", 4 ] ], [ [ "lens", 2 ] ], [ [ "lens_small", 2 ] ], [ [ "power_supply", 1 ] ], [ [ "e_scrap", 6 ] ] ]
   },
   {
     "result": "self_monitoring_module",
@@ -1903,13 +1891,7 @@
     "difficulty": 5,
     "time": "1 h",
     "using": [ [ "soldering_standard", 20 ] ],
-    "components": [
-      [ [ "processor", 4 ] ],
-      [ [ "power_supply", 1 ] ],
-      [ [ "cable", 4 ] ],
-      [ [ "e_scrap", 6 ] ],
-      [ [ "solder_wire", 1 ] ]
-    ]
+    "components": [ [ [ "processor", 4 ] ], [ [ "power_supply", 1 ] ], [ [ "cable", 4 ] ], [ [ "e_scrap", 6 ] ] ]
   },
   {
     "result": "ai_module",
@@ -1919,14 +1901,7 @@
     "difficulty": 5,
     "time": "2 h",
     "using": [ [ "soldering_standard", 20 ] ],
-    "components": [
-      [ [ "processor", 10 ] ],
-      [ [ "RAM", 2 ] ],
-      [ [ "power_supply", 1 ] ],
-      [ [ "cable", 4 ] ],
-      [ [ "e_scrap", 6 ] ],
-      [ [ "solder_wire", 1 ] ]
-    ]
+    "components": [ [ [ "processor", 10 ] ], [ [ "RAM", 2 ] ], [ [ "power_supply", 1 ] ], [ [ "cable", 4 ] ], [ [ "e_scrap", 6 ] ] ]
   },
   {
     "result": "ai_module_basic",
@@ -1936,14 +1911,7 @@
     "difficulty": 5,
     "time": "1 h",
     "using": [ [ "soldering_standard", 20 ] ],
-    "components": [
-      [ [ "processor", 5 ] ],
-      [ [ "RAM", 1 ] ],
-      [ [ "power_supply", 1 ] ],
-      [ [ "cable", 2 ] ],
-      [ [ "e_scrap", 3 ] ],
-      [ [ "solder_wire", 1 ] ]
-    ]
+    "components": [ [ [ "processor", 5 ] ], [ [ "RAM", 1 ] ], [ [ "power_supply", 1 ] ], [ [ "cable", 2 ] ], [ [ "e_scrap", 3 ] ] ]
   },
   {
     "result": "ai_module_advanced",
@@ -1953,14 +1921,7 @@
     "difficulty": 5,
     "time": "2 h 30 m",
     "using": [ [ "soldering_standard", 20 ] ],
-    "components": [
-      [ [ "processor", 15 ] ],
-      [ [ "RAM", 6 ] ],
-      [ [ "power_supply", 2 ] ],
-      [ [ "cable", 4 ] ],
-      [ [ "e_scrap", 6 ] ],
-      [ [ "solder_wire", 1 ] ]
-    ]
+    "components": [ [ [ "processor", 15 ] ], [ [ "RAM", 6 ] ], [ [ "power_supply", 2 ] ], [ [ "cable", 4 ] ], [ [ "e_scrap", 6 ] ] ]
   },
   {
     "result": "gun_module",
@@ -2127,14 +2088,6 @@
     "components": [ [ [ "scrap", 5 ] ], [ [ "processor", 1 ] ], [ [ "plastic_chunk", 10 ] ], [ [ "e_scrap", 8 ] ], [ [ "lens", 2 ] ] ]
   },
   {
-    "result": "candlestick",
-    "type": "uncraft",
-    "activity_level": "LIGHT_EXERCISE",
-    "time": "5 m",
-    "qualities": [ { "id": "HAMMER", "level": 1 }, { "id": "SCREW", "level": 1 } ],
-    "components": [ [ [ "gold_small", 300 ] ] ]
-  },
-  {
     "result": "cannabis",
     "type": "uncraft",
     "activity_level": "LIGHT_EXERCISE",
@@ -2169,7 +2122,7 @@
       [ [ "scrap_aluminum", 1 ] ],
       [ [ "light_plus_battery_cell", 1 ] ],
       [ [ "small_lcd_screen", 1 ] ],
-      [ [ "mobile_memory_card", 1 ] ],
+      [ [ "memory_card", 1 ] ],
       [ [ "processor", 1 ] ]
     ]
   },
@@ -4516,14 +4469,6 @@
     "flags": [ "BLIND_EASY" ]
   },
   {
-    "result": "usb_drive",
-    "type": "uncraft",
-    "activity_level": "LIGHT_EXERCISE",
-    "time": "1 m 30 s",
-    "qualities": [ { "id": "SCREW", "level": 1 } ],
-    "components": [ [ [ "RAM", 1 ] ] ]
-  },
-  {
     "result": "vac_sealer",
     "type": "uncraft",
     "activity_level": "LIGHT_EXERCISE",
@@ -4765,7 +4710,6 @@
       [ [ "hose", 4 ] ],
       [ [ "motor_tiny", 1 ] ],
       [ [ "pipe_fittings", 2 ] ],
-      [ [ "solder_wire", 10 ] ],
       [ [ "cu_pipe", 4 ] ]
     ]
   },
@@ -4903,8 +4847,7 @@
       [ [ "motor_small", 1 ] ],
       [ [ "metal_tank", 1 ] ],
       [ [ "plastic_chunk", 5 ] ],
-      [ [ "pipe_fittings", 4 ] ],
-      [ [ "solder_wire", 15 ] ]
+      [ [ "pipe_fittings", 4 ] ]
     ]
   },
   {
@@ -5029,7 +4972,7 @@
     "skill_used": "fabrication",
     "difficulty": 1,
     "time": "3 m",
-    "qualities": [ { "id": "SAW_M", "level": 1 } ],
+    "qualities": [ { "id": "SAW_M", "level": 2 } ],
     "components": [ [ [ "steel_chunk", 1 ] ], [ [ "sheet_metal_small", 9 ] ], [ [ "scrap", 3 ] ] ]
   },
   {
@@ -5039,8 +4982,8 @@
     "skill_used": "fabrication",
     "difficulty": 1,
     "time": "5 m",
-    "qualities": [ { "id": "SAW_M", "level": 1 } ],
-    "components": [ [ [ "scrap", 17 ] ] ]
+    "qualities": [ { "id": "SAW_M", "level": 2 } ],
+    "components": [ [ [ "scrap", 20 ] ] ]
   },
   {
     "result": "pot_canning",
@@ -5049,7 +4992,7 @@
     "skill_used": "fabrication",
     "difficulty": 1,
     "time": "5 m",
-    "qualities": [ { "id": "SAW_M", "level": 1 } ],
+    "qualities": [ { "id": "SAW_M", "level": 2 } ],
     "components": [ [ [ "sheet_metal_small", 20 ], [ "steel_chunk", 2 ] ] ]
   },
   {
@@ -5084,8 +5027,7 @@
       [ [ "plastic_chunk", 6 ] ],
       [ [ "small_lcd_screen", 1 ] ],
       [ [ "light_detector", 1 ] ],
-      [ [ "glass_prism", 1 ] ],
-      [ [ "solder_wire", 10 ] ]
+      [ [ "glass_prism", 1 ] ]
     ]
   },
   {
@@ -5100,7 +5042,6 @@
       [ [ "steel_lump", 1 ] ],
       [ [ "cable", 1 ] ],
       [ [ "hotplate", 1 ] ],
-      [ [ "solder_wire", 6 ] ],
       [ [ "lens_small", 1 ] ]
     ]
   },
@@ -5116,8 +5057,7 @@
       [ [ "steel_lump", 1 ] ],
       [ [ "cable", 1 ] ],
       [ [ "motor_tiny", 1 ] ],
-      [ [ "plastic_chunk", 2 ] ],
-      [ [ "solder_wire", 10 ] ]
+      [ [ "plastic_chunk", 2 ] ]
     ]
   },
   {
@@ -5187,8 +5127,7 @@
       [ [ "steel_chunk", 4 ] ],
       [ [ "cable", 2 ] ],
       [ [ "motor_micro", 1 ] ],
-      [ [ "plastic_chunk", 6 ] ],
-      [ [ "solder_wire", 10 ] ]
+      [ [ "plastic_chunk", 6 ] ]
     ]
   },
   {
@@ -5199,13 +5138,7 @@
     "time": "40 m",
     "qualities": [ { "id": "SCREW", "level": 1 } ],
     "using": [ [ "soldering_standard", 10 ] ],
-    "components": [
-      [ [ "power_supply", 4 ] ],
-      [ [ "amplifier", 4 ] ],
-      [ [ "cable", 6 ] ],
-      [ [ "plastic_chunk", 10 ] ],
-      [ [ "solder_wire", 5 ] ]
-    ]
+    "components": [ [ [ "power_supply", 4 ] ], [ [ "amplifier", 4 ] ], [ [ "cable", 6 ] ], [ [ "plastic_chunk", 10 ] ] ]
   },
   {
     "result": "medium_storage_battery",
@@ -5311,7 +5244,6 @@
       [ [ "plastic_chunk", 4 ] ],
       [ [ "scrap", 2 ] ],
       [ [ "splinter", 1 ] ],
-      [ [ "solder_wire", 5 ] ],
       [ [ "e_scrap", 3 ] ],
       [ [ "RAM", 1 ] ]
     ]

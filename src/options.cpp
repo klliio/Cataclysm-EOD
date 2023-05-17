@@ -2082,6 +2082,11 @@ void options_manager::add_options_interface()
     "right"
        );
 
+    add( "DETAILED_ARMOR_PROTECTION", "interface", to_translation( "Show detailed armor protection" ),
+         to_translation( "If true, always show detailed protection for all wearable items, even if it's otherwise noted as negligible." ),
+         false
+       );
+
     add_empty_line();
 
     add( "ENABLE_JOYSTICK", "interface", to_translation( "Enable joystick" ),
@@ -4196,7 +4201,7 @@ std::string options_manager::show( bool ingame, const bool world_options_only, b
 
     if( lang_changed ) {
         update_global_locale();
-        set_language();
+        set_language_from_options();
     }
     calendar::set_eternal_season( ::get_option<bool>( "ETERNAL_SEASON" ) );
     calendar::set_season_length( ::get_option<int>( "SEASON_LENGTH" ) );
