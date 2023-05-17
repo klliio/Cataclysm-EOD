@@ -899,12 +899,11 @@ TEST_CASE( "widgets showing movement cost", "[widget][move_cost]" )
 
     SECTION( "without shoes" ) {
         REQUIRE_FALSE( ava.is_wearing_shoes() );
-        // Having no shoes adds +8 per foot to base run cost
-        REQUIRE( ava.run_cost( 100 ) == 116 );
-        CHECK( cost_num_w.layout( ava ) == "MOVE COST: 116" );
+        // Having no shoes doesn't affect move cost (but has other effects)
+        REQUIRE( ava.run_cost( 100 ) == 100 );
+        CHECK( cost_num_w.layout( ava ) == "MOVE COST: 100" );
     }
     SECTION( "wearing sneakers" ) {
-        // Sneakers eliminate the no-shoes penalty
         ava.wear_item( item( "sneakers" ) );
         REQUIRE( ava.is_wearing_shoes() );
         REQUIRE( ava.run_cost( 100 ) == 100 );
