@@ -251,6 +251,11 @@
     "description": "A handle brush with bristles, used in hair care.",
     "symbol": "/",
     "copy-from": "base_toiletries",
+    "weight": "91 g",
+    "volume": "400 ml",
+    "longest_side": "24 cm",
+    "price": "6 USD",
+    "to_hit": { "grip": "solid", "length": "short", "surface": "any", "balance": "neutral" },
     "variant_type": "generic",
     "variants": [
       {
@@ -281,7 +286,8 @@
         "weight": 20,
         "append": true
       }
-    ]
+    ],
+    "//": "Based on https://www.amazon.com/Revlon-Detangle-Smooth-Black-Cushion/dp/B01LPO5JVE/ref=sr_1_6?crid=1TWQO2LQX4P03&keywords=hair%2Bbrush&qid=1683483834&sprefix=hair%2Bbrush%2Caps%2C287&sr=8-6&th=1"
   },
   {
     "id": "curler_hair",

@@ -839,6 +839,30 @@ int item::damage_level() const
     return type->damage_level( damage_ );
 }
 
+float item::damage_adjusted_melee_weapon_damage( float value ) const
+{
+    if( type->count_by_charges() ) {
+        return value; // count by charges items don't have partial damage
+    }
+    return value * ( 1.0f - 0.1f * std::max( 0, damage_level() - 1 ) );
+}
+
+float item::damage_adjusted_gun_damage( float value ) const
+{
+    if( type->count_by_charges() ) {
+        return value; // count by charges items don't have partial damage
+    }
+    return value - 2 * std::max( 0, damage_level() - 1 );
+}
+
+float item::damage_adjusted_armor_resist( float value ) const
+{
+    if( type->count_by_charges() ) {
+        return value; // count by charges items don't have partial damage
+    }
+    return value * ( 1.0f - std::max( 0, damage_level() - 1 ) * 0.125f );
+}
+
 void item::set_damage( int qty )
 {
     damage_ = std::clamp( qty, degradation_, max_damage() );
@@ -847,7 +871,7 @@ void item::set_damage( int qty )
 void item::set_degradation( int qty )
 {
     degradation_ = std::clamp( qty, 0, max_damage() );
-    damage_ = std::clamp( damage_, degradation_, max_damage() );
+    set_damage( damage_ );
 }
 
 item item::split( int qty )
@@ -2879,16 +2903,22 @@ void item::gun_info( const item *mod, std::vector<iteminfo> &info, const iteminf
             }
         }
 
-        if( damage_level() > 0 ) {
-            int dmg_penalty = damage_level() * -2;
-            info.emplace_back( "GUN", "damaged_weapon_penalty", "",
-                               iteminfo::no_newline | iteminfo::no_name, dmg_penalty );
+        const int gun_damage = loaded_mod->gun_damage( true ).total_damage();
+        if( damage() > 0 ) {
+            item intact_mod( *loaded_mod );
+            intact_mod.set_degradation( 0 );
+            intact_mod.set_damage( 0 );
+            const int intact_damage = intact_mod.gun_damage( true ).total_damage();
+            if( intact_damage != gun_damage ) {
+                const int dmg_penalty = gun_damage - intact_damage;
+                info.emplace_back( "GUN", "damaged_weapon_penalty", "",
+                                   iteminfo::no_newline | iteminfo::no_name, dmg_penalty );
+            }
         }
 
         if( parts->test( iteminfo_parts::GUN_DAMAGE_TOTAL ) ) {
             info.emplace_back( "GUN", "sum_of_damage", _( " = <num>" ),
-                               iteminfo::no_newline | iteminfo::no_name,
-                               loaded_mod->gun_damage( true ).total_damage() );
+                               iteminfo::no_newline | iteminfo::no_name, gun_damage );
         }
     }
     info.back().bNewLine = true;
@@ -3238,7 +3268,7 @@ void item::gunmod_info( std::vector<iteminfo> &info, const iteminfo_query *parts
             info.emplace_back( "GUNMOD", _( "Field of view: <good>No limit</good>" ) );
         } else {
             info.emplace_back( "GUNMOD", _( "Field of view: " ), "",
-                               iteminfo::lower_is_better, mod.field_of_view );
+                               iteminfo::no_flags, mod.field_of_view );
         }
     }
     if( mod.field_of_view > 0 && parts->test( iteminfo_parts::GUNMOD_AIM_SPEED_MODIFIER ) ) {
@@ -5532,8 +5562,8 @@ void item::final_info( std::vector<iteminfo> &info, const iteminfo_query *parts,
                                        ? string_format( "<good>%s</good>", e->nname( 1 ) )
                                        : e->nname( 1 ) );
         }
-        info.emplace_back( "DESCRIPTION",
-                           _( "<bold>Can be stored in</bold>: " ) + enumerate_lcsorted_with_limit( holsters_str ) );
+        info.emplace_back( "DESCRIPTION", _( "<bold>Can be stored in</bold>: " ) +
+                           enumerate_lcsorted_with_limit( holsters_str, 30 ) );
         info.back().sName += ".";
     }
 
@@ -5621,7 +5651,7 @@ void item::final_info( std::vector<iteminfo> &info, const iteminfo_query *parts,
                 const std::string name = r->result_name( /* decorated = */ true );
                 crafts.emplace_back( can_make ? name : string_format( "<dark>%s</dark>", name ) );
             }
-            const std::string recipes = enumerate_lcsorted_with_limit( crafts, 12 );
+            const std::string recipes = enumerate_lcsorted_with_limit( crafts, 15 );
             info.emplace_back( " DESCRIPTION", string_format( _( "You could use it to craft: %s" ), recipes ) );
         }
     }
@@ -5673,10 +5703,7 @@ void item::final_info( std::vector<iteminfo> &info, const iteminfo_query *parts,
                 return;
             }
 
-            // Sort according to the user's locale
-            std::sort( result_parts.begin(), result_parts.end(), localized_compare );
-
-            const std::string installable_parts = enumerate_lcsorted_with_limit( result_parts, 12 );
+            const std::string installable_parts = enumerate_lcsorted_with_limit( result_parts, 15 );
 
             insert_separation_line( info );
             info.emplace_back( " DESCRIPTION", string_format( install_where, installable_parts ) );
@@ -6820,8 +6847,8 @@ int item::price_no_contents( bool practical, std::optional<int> price_override )
     int price = price_override ? *price_override
                 : units::to_cent( practical ? type->price_post : type->price );
     if( damage() > 0 ) {
-        // maximal damage level is 4, maximal reduction is 80% of the value.
-        price -= price * static_cast< double >( damage_level() ) / 5;
+        // maximal damage level is 5, maximal reduction is 80% of the value.
+        price -= price * static_cast<double>( std::max( 0, damage_level() - 1 ) ) / 5;
     }
 
     if( count_by_charges() || made_of( phase_id::LIQUID ) || made_of( phase_id::GAS ) ) {
@@ -6950,6 +6977,12 @@ units::mass item::weight( bool include_contents, bool integral ) const
     return ret;
 }
 
+static units::length sawn_off_reduction( const itype *type )
+{
+    int barrel_percentage = type->gun->barrel_volume / ( type->volume / 100 );
+    return ( type->longest_side / 100 ) * barrel_percentage;
+}
+
 units::length item::length() const
 {
     if( made_of( phase_id::LIQUID ) || made_of( phase_id::GAS ) || ( is_soft() &&
@@ -6966,9 +6999,7 @@ units::length item::length() const
 
         //TODO: Unhardcode this now that integral_longest_side can be used
         if( gunmod_find( itype_barrel_small ) ) {
-            int barrel_percentage = type->gun->barrel_volume / ( type->volume / 100 );
-            units::length reduce_by = ( type->longest_side / 100 ) * barrel_percentage;
-            length_adjusted = type->longest_side - reduce_by;
+            length_adjusted = type->longest_side - sawn_off_reduction( type );
         }
 
         std::vector<const item *> mods = gunmods();
@@ -7016,12 +7047,18 @@ units::length item::barrel_length() const
     if( is_gun() ) {
         units::length l = type->gun->barrel_length;
         for( const item *mod : mods() ) {
-            if( mod->type->gunmod->location.str() == "barrel" ) {
-                if( mod->type->integral_longest_side > 0_mm ) {
-                    l = mod->type->integral_longest_side;
-                }
+            // if a gun has a barrel length specifying mod then use that length for sure
+            if( mod->type->gunmod->barrel_length > 0_mm ) {
+                l = mod->type->gunmod->barrel_length;
+                // if we find an explicit barrel mod then use that and quit the loop
+                break;
             }
         }
+        // if we've sawn off the barrel reduce the damage
+        if( gunmod_find( itype_barrel_small ) ) {
+            l = l - sawn_off_reduction( type );
+        }
+
         return l;
     } else {
         return 0_mm;
@@ -7210,7 +7247,7 @@ int item::damage_melee( const damage_type_id &dt ) const
     if( type->melee.count( dt ) > 0 ) {
         res = type->melee.at( dt );
     }
-    res -= res * damage_level() * 0.1;
+    res = damage_adjusted_melee_weapon_damage( res );
 
     // apply type specific flags
     // FIXME: Hardcoded damage types
@@ -8387,7 +8424,7 @@ float item::_resist( const damage_type_id &dmg_type, bool to_self, int resist_va
     float resist = 0.0f;
     float mod = get_clothing_mod_val_for_damage_type( dmg_type );
 
-    const float damage_scale = 1.0f - damage_level() * 0.125f;
+    const float damage_scale = damage_adjusted_armor_resist( 1.0f );
 
     if( !bp_null ) {
         // If we have armour portion materials for this body part, use that instead
@@ -9783,9 +9820,9 @@ bool item::spill_open_pockets( Character &guy, const item *avoid )
     return contents.spill_open_pockets( guy, avoid );
 }
 
-void item::overflow( const tripoint &pos )
+void item::overflow( const tripoint &pos, const item_location &loc )
 {
-    contents.overflow( pos );
+    contents.overflow( pos, loc );
 }
 
 book_proficiency_bonuses item::get_book_proficiency_bonuses() const
@@ -10076,14 +10113,13 @@ damage_instance item::gun_damage( bool with_ammo, bool shot ) const
         }
     }
 
-    int item_damage = damage_level();
-    if( item_damage > 0 ) {
+    if( damage() > 0 ) {
         // TODO: This isn't a good solution for multi-damage guns/ammos
         for( damage_unit &du : ret ) {
             if( du.amount <= 1.0 ) {
                 continue;
             }
-            du.amount = std::max<float>( 1.0f, du.amount - item_damage * 2 );
+            du.amount = std::max<float>( 1.0f, damage_adjusted_gun_damage( du.amount ) );
         }
     }
 
@@ -10106,14 +10142,13 @@ damage_instance item::gun_damage( itype_id ammo ) const
     ret.add( ammo->ammo->damage.di_considering_length( bl ) );
 
 
-    int item_damage = damage_level();
-    if( item_damage > 0 ) {
+    if( damage() > 0 ) {
         // TODO: This isn't a good solution for multi-damage guns/ammos
         for( damage_unit &du : ret ) {
             if( du.amount <= 1.0 ) {
                 continue;
             }
-            du.amount = std::max<float>( 1.0f, du.amount - item_damage * 2 );
+            du.amount = std::max<float>( 1.0f, damage_adjusted_gun_damage( du.amount ) );
         }
     }
 
