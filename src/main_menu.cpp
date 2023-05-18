@@ -612,13 +612,8 @@ bool main_menu::opening_screen()
 
     // Make [Load Game] the default cursor position if there's game save available
     if( !world_generator->get_all_worlds().empty() ) {
-        std::vector<std::string> worlds = world_generator->all_worldnames();
-        last_world_pos = world_generator->get_world_index( world_generator->last_world_name );
-        if( last_world_pos >= worlds.size() ) {
-            last_world_pos = 0;
-        }
         sel1 = getopt( main_menu_opts::LOADCHAR );
-        sel2 = last_world_pos;
+        sel2 = world_generator->get_world_index( world_generator->last_world_name );
     }
 
     background_pane background;
@@ -646,6 +641,9 @@ bool main_menu::opening_screen()
 
     while( !start ) {
         ui_manager::redraw();
+        // Refresh in case player created new world or deleted old world
+        // Since this is an index for a mutable array, it should always be regenerated instead of modified.
+        const size_t last_world_pos = world_generator->get_world_index( world_generator->last_world_name );
         std::string action = ctxt.handle_input();
         input_event sInput = ctxt.get_raw_input();
 
@@ -1114,10 +1112,6 @@ void main_menu::world_tab( const std::string &worldname )
     // Create world
     if( sel2 == 0 ) {
         WORLD *world = world_generator->make_new_world();
-        // NOLINTNEXTLINE(cata-use-localized-sorting)
-        if( world != nullptr && world->world_name < world_generator->all_worldnames()[last_world_pos] ) {
-            last_world_pos++;
-        }
         return;
     }
 
@@ -1139,10 +1133,6 @@ void main_menu::world_tab( const std::string &worldname )
 
     auto clear_world = [this, &worldname]( bool do_delete ) {
         world_generator->delete_world( worldname, do_delete );
-        // NOLINTNEXTLINE(cata-use-localized-sorting)
-        if( last_world_pos > 0 && worldname <= world_generator->all_worldnames()[last_world_pos] ) {
-            last_world_pos--;
-        }
         savegames.clear();
         MAPBUFFER.clear();
         overmap_buffer.clear();
