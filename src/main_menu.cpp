@@ -1111,7 +1111,7 @@ void main_menu::world_tab( const std::string &worldname )
 {
     // Create world
     if( sel2 == 0 ) {
-        WORLD *world = world_generator->make_new_world();
+        world_generator->make_new_world();
         return;
     }
 
