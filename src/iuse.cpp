@@ -385,7 +385,7 @@ static const trait_id trait_MARLOSS_YELLOW( "MARLOSS_YELLOW" );
 static const trait_id trait_M_DEPENDENT( "M_DEPENDENT" );
 static const trait_id trait_NOPAIN( "NOPAIN" );
 static const trait_id trait_PSYCHOPATH( "PSYCHOPATH" );
-static const trait_id trait_PYROMANIA( "PYROMANIA" );
+static const trait_id trait_PYROMANIA_GOOD( "PYROMANIA_GOOD" );
 static const trait_id trait_SPIRITUAL( "SPIRITUAL" );
 static const trait_id trait_THRESH_MARLOSS( "THRESH_MARLOSS" );
 static const trait_id trait_THRESH_MYCUS( "THRESH_MYCUS" );
@@ -3854,9 +3854,9 @@ std::optional<int> iuse::grenade_inc_act( Character *p, item *it, bool t, const 
             here.add_field( dest, fd_incendiary, 3 );
         }
 
-        if( p->has_trait( trait_PYROMANIA ) ) {
+        p->rem_morale( MORALE_PYROMANIA_NOFIRE );
+        if( p->has_trait( trait_PYROMANIA_GOOD ) ) {
             p->add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
-            p->rem_morale( MORALE_PYROMANIA_NOFIRE );
             p->add_msg_if_player( m_good, _( "Fire…  Good…" ) );
         }
     }
@@ -3876,9 +3876,9 @@ std::optional<int> iuse::molotov_lit( Character *p, item *it, bool t, const trip
                 const int intensity = 1 + one_in( 3 ) + one_in( 5 );
                 here.add_field( pt, fd_fire, intensity );
             }
-            if( p->has_trait( trait_PYROMANIA ) ) {
+            p->rem_morale( MORALE_PYROMANIA_NOFIRE );
+            if( p->has_trait( trait_PYROMANIA_GOOD ) ) {
                 p->add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
-                p->rem_morale( MORALE_PYROMANIA_NOFIRE );
                 p->add_msg_if_player( m_good, _( "Fire…  Good…" ) );
             }
             return 1;

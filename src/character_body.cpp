@@ -75,7 +75,7 @@ static const trait_id trait_FUR( "FUR" );
 static const trait_id trait_LIGHTFUR( "LIGHTFUR" );
 static const trait_id trait_LUPINE_FUR( "LUPINE_FUR" );
 static const trait_id trait_M_DEPENDENT( "M_DEPENDENT" );
-static const trait_id trait_PYROMANIA( "PYROMANIA" );
+static const trait_id trait_PYROMANIA_GOOD( "PYROMANIA_GOOD" );
 static const trait_id trait_SLIMY( "SLIMY" );
 static const trait_id trait_URSINE_FUR( "URSINE_FUR" );
 
@@ -558,7 +558,7 @@ void Character::update_bodytemp()
         blister_count += h_radiation - 111 > 0 ?
                          std::max( static_cast<int>( std::sqrt( h_radiation - 111 ) ), 0 ) : 0;
 
-        const bool pyromania = has_trait( trait_PYROMANIA );
+        const bool pyromania = has_trait( trait_PYROMANIA_GOOD );
         // BLISTERS : Skin gets blisters from intense heat exposure.
         // Fire protection protects from blisters.
         // Heatsinks give near-immunity.
@@ -570,15 +570,17 @@ void Character::update_bodytemp()
         }
         if( blister_count - fire_armor_per_bp[bp] > 0 ) {
             add_effect( effect_blisters, 1_turns, bp );
+            rem_morale( MORALE_PYROMANIA_NOFIRE );
             if( pyromania ) {
                 add_morale( MORALE_PYROMANIA_NEARFIRE, 10, 10, 1_hours,
                             30_minutes ); // Proximity that's close enough to harm us gives us a bit of a thrill
-                rem_morale( MORALE_PYROMANIA_NOFIRE );
             }
-        } else if( pyromania && best_fire >= 1 ) { // Only give us fire bonus if there's actually fire
-            add_morale( MORALE_PYROMANIA_NEARFIRE, 5, 5, 30_minutes,
-                        15_minutes ); // Gain a much smaller mood boost even if it doesn't hurt us
+        } else if( best_fire >= 1 ) { // Only give us fire bonus if there's actually fire
             rem_morale( MORALE_PYROMANIA_NOFIRE );
+            if( pyromania ) {
+                add_morale( MORALE_PYROMANIA_NEARFIRE, 5, 5, 30_minutes,
+                            15_minutes ); // Gain a much smaller mood boost even if it doesn't hurt us
+            }
         }
 
         mod_part_temp_conv( bp, sunlight_warmth );

@@ -28,6 +28,7 @@ static const ter_str_id ter_t_foamcrete_floor( "t_foamcrete_floor" );
 static const ter_str_id ter_t_foamcrete_wall( "t_foamcrete_wall" );
 
 static const trait_id trait_PYROMANIA( "PYROMANIA" );
+static const trait_id trait_PYROMANIA_GOOD( "PYROMANIA_GOOD" );
 
 projectile::projectile() :
     critical_multiplier( 2.0 ), drop( nullptr ), custom_explosion( nullptr )
@@ -156,15 +157,19 @@ void apply_ammo_effects( const Creature *source, const tripoint &p,
                     if( check_sees && check_passable ) {
                         here.add_field( pt, ae.aoe_field_type, rng( ae.aoe_intensity_min, ae.aoe_intensity_max ) );
 
-                        if( player_character.has_trait( trait_PYROMANIA ) &&
-                            !player_character.has_morale( MORALE_PYROMANIA_STARTFIRE ) ) {
+                        if( player_character.has_trait( trait_PYROMANIA_GOOD ) ||
+                            player_character.has_trait( trait_PYROMANIA ) ) {
                             for( const auto &fd : here.field_at( pt ) ) {
                                 if( fd.first->has_fire ) {
-                                    player_character.add_msg_if_player( m_good,
-                                                                        _( "You feel a surge of euphoria as flames burst out!" ) );
-                                    player_character.add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
                                     player_character.rem_morale( MORALE_PYROMANIA_NOFIRE );
-                                    break;
+                                    if( player_character.has_trait( trait_PYROMANIA_GOOD ) ) {
+                                        if( !player_character.has_morale( MORALE_PYROMANIA_STARTFIRE ) ) {
+                                            player_character.add_msg_if_player( m_good,
+                                                                                _( "You feel a surge of euphoria as flames burst out!" ) );
+                                        }
+                                        player_character.add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
+                                        break;
+                                    }
                                 }
                             }
                         }

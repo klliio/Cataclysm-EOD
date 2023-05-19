@@ -18,5 +18,13 @@
     "category": [ "HUMAN" ],
     "cancels": [ "RESISTWARM", "STRONGER_RESISTWARM" ],
     "description": "Your heat tolerance is more or less normal for a human."
+  },
+  {
+    "type": "mutation",
+    "id": "PYROMANIA_GOOD",
+    "name": { "str": "Likes Fire" },
+    "points": 1,
+    "description": "You enjoy lighting fires and standing near them, and gain a morale bonus for doing so.",
+    "starting_trait": true
   }
 ]

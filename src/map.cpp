@@ -141,6 +141,7 @@ static const oter_str_id oter_open_air( "open_air" );
 static const oter_str_id oter_solid_earth( "solid_earth" );
 
 static const species_id species_HUMAN( "HUMAN" );
+static const species_id species_ZOMBIE( "ZOMBIE" );
 
 static const ter_str_id ter_t_dirt( "t_dirt" );
 static const ter_str_id ter_t_soil( "t_soil" );
@@ -4235,7 +4236,7 @@ void map::shoot( const tripoint &p, projectile &proj, const bool hit_items )
     float dam = initial_damage;
 
     const auto &ammo_effects = proj.proj_effects;
-    const bool incendiary = ammo_effects.count( "INCENDIARY" );
+    const bool incendiary = ammo_effects.count( "INCENDIARY" ) || ammo_effects.count( "IGNITE" );
     const bool laser = ammo_effects.count( "LASER" );
 
     if( const optional_vpart_position vp = veh_at( p ) ) {
@@ -8389,7 +8390,8 @@ void map::spawn_monsters_submap( const tripoint &gp, bool ignore_sight, bool spa
         for( int j = 0; j < i.count; j++ ) {
             monster tmp( i.type );
 
-            if( tmp.type->in_species( species_HUMAN ) ) {
+            if( tmp.type->in_species( species_HUMAN ) && !tmp.type->in_species( species_ZOMBIE ) ) {
+                // Include non-undead humans for this check (i.e. ferals would be included). Cold and flu wouldn't survive on zombies.
                 if( one_in( 100 ) ) {
                     // Same chances and duration of flu vs. cold as for the player.
                     if( one_in( 6 ) ) {

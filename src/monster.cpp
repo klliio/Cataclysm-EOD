@@ -2934,7 +2934,8 @@ void monster::process_one_effect( effect &it, bool is_new )
     } else if( id == effect_fake_common_cold ) {
         const tripoint &mon_pos = pos();
         if( calendar::once_every( time_duration::from_seconds( rng( 30, 300 ) ) ) ) {
-            sounds::sound( mon_pos, 4, sounds::sound_t::speech, _( "a hacking cough." ), false, "misc", "cough" );
+            sounds::sound( mon_pos, 4, sounds::sound_t::speech, _( "a hacking cough." ), false, "misc",
+                           "cough" );
         }
 
         avatar &you = get_avatar(); // No NPCs for now.
@@ -2945,7 +2946,8 @@ void monster::process_one_effect( effect &it, bool is_new )
         // Need to define the two separately because it's theoretically (and realistically) possible to have both flu and cold at once, both for players and mosters.
         const tripoint &mon_pos = pos();
         if( calendar::once_every( time_duration::from_seconds( rng( 30, 300 ) ) ) ) {
-            sounds::sound( mon_pos, 4, sounds::sound_t::speech, _( "a hacking cough." ), false, "misc", "cough" );
+            sounds::sound( mon_pos, 4, sounds::sound_t::speech, _( "a hacking cough." ), false, "misc",
+                           "cough" );
         }
 
         avatar &you = get_avatar(); // No NPCs for now.
