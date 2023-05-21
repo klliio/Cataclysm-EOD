@@ -23,5 +23,10 @@
     "id": "POWERARMOR_NOACTIVE",
     "type": "json_flag",
     "info": "This gear is an add-on for power armor, and is not affected by power armor being powered or not."
+  },
+  {
+    "id": "HOLY_SYMBOL",
+    "type": "json_flag",
+    "info": "This gear improves morale of spiritual people if worn."
   }
 ]

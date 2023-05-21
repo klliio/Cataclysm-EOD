@@ -3262,7 +3262,7 @@
     "description": "You were a serial killer, ready to walk the green mile, but in a twist of fate you're one of the few still alive.  True death comes only from your hands, so you're in for a job.",
     "points": 2,
     "skills": [ { "level": 1, "name": "melee" } ],
-    "traits": [ "KILLER" ],
+    "traits": [ "PSYCHOPATH", "KILLER", "KILLER_GOOD" ],
     "items": {
       "both": [ "striped_shirt", "striped_pants", "sneakers", "socks", "glass_shiv" ],
       "male": [ "briefs" ],

@@ -25,6 +25,19 @@
     "name": { "str": "Likes Fire" },
     "points": 1,
     "description": "You enjoy lighting fires and standing near them, and gain a morale bonus for doing so.",
-    "starting_trait": true
+    "starting_trait": true,
+    "valid": false
+  },
+  {
+    "type": "mutation",
+    "id": "KILLER_GOOD",
+    "name": { "str": "Killer" },
+    "points": 2,
+    "description": "You derive enjoyment from killing things.  Putting end to life seem to spark some dark satisfaction and thrill, and you gain a morale bonus for doing so.",
+    "social_modifiers": { "intimidate": 10 },
+    "cancels": [ "PACIFIST" ],
+    "flags": [ "CANNIBAL" ],
+    "starting_trait": true,
+    "valid": false
   }
 ]

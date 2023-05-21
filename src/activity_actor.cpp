@@ -5010,7 +5010,7 @@ void meditate_activity_actor::start( player_activity &act, Character & )
 void meditate_activity_actor::finish( player_activity &act, Character &who )
 {
     who.add_msg_if_player( m_good, _( "You pause to engage in spiritual contemplation." ) );
-    who.add_morale( MORALE_FEELING_GOOD, 5, 10 );
+    who.add_morale( MORALE_SPIRITUAL, 5, 10 );
     act.set_to_null();
 }
 

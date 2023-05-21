@@ -107,6 +107,7 @@ extern const morale_type MORALE_PERM_RADIOPHILE;
 extern const morale_type MORALE_GAME_FOUND_KITTEN;
 extern const morale_type MORALE_HAIRCUT;
 extern const morale_type MORALE_SHAVE;
+extern const morale_type MORALE_SPIRITUAL;
 extern const morale_type MORALE_CHAT;
 extern const morale_type MORALE_VOMITED;
 extern const morale_type MORALE_PLAY_WITH_PET;

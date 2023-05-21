@@ -1459,7 +1459,7 @@ void spell_effect::guilt( const spell &sp, Creature &caster, const tripoint &tar
         guilt_thresholds[25] = _( "You feel remorse for killing %s." );
 
         Character &guy = *guilt_target;
-        if( guy.has_trait( trait_PSYCHOPATH ) || guy.has_trait( trait_KILLER ) ||
+        if( guy.has_trait( trait_PSYCHOPATH ) ||
             guy.has_flag( json_flag_PRED3 ) || guy.has_flag( json_flag_PRED4 ) ) {
             // specially immune.
             return;

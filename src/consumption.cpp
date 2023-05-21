@@ -1221,20 +1221,14 @@ void Character::modify_morale( item &food, const int nutr )
         food.get_comestible()->comesttype != comesttype_DRINK ) {
         map &here = get_map();
         if( here.has_nearby_chair( pos(), 1 ) && here.has_nearby_table( pos_bub(), 1 ) ) {
-            if( has_trait( trait_TABLEMANNERS ) ) {
-                rem_morale( MORALE_ATE_WITHOUT_TABLE );
-                if( !food.rotten() ) {
+			if( !food.rotten() ) {
                     add_morale( MORALE_ATE_WITH_TABLE, 3, 3, 3_hours, 2_hours, true );
+                    add_msg_if_player( m_good, _( "You use nearby furniture to sit and eat at." ) );
                 }
-            } else if( !food.rotten() ) {
-                add_morale( MORALE_ATE_WITH_TABLE, 1, 1, 3_hours, 2_hours, true );
-            }
-        } else {
-            if( has_trait( trait_TABLEMANNERS ) ) {
-                rem_morale( MORALE_ATE_WITH_TABLE );
-                add_morale( MORALE_ATE_WITHOUT_TABLE, -2, -4, 3_hours, 2_hours, true );
-            }
-        }
+		} else if( has_trait( trait_TABLEMANNERS ) ) {
+			add_morale( MORALE_ATE_WITHOUT_TABLE, -2, -4, 3_hours, 2_hours, true );
+            add_msg_if_player( m_bad, _( "Having to eat without proper furniture annoys you." ) );
+		}
     }
 
     if( food.has_flag( flag_HIDDEN_HALLU ) ) {

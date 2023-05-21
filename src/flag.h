@@ -157,6 +157,7 @@ extern const flag_id flag_HEAT_IMMUNE;
 extern const flag_id flag_HIDDEN_HALLU;
 extern const flag_id json_flag_HIDDEN_ITEM;
 extern const flag_id flag_HIDDEN_POISON;
+extern const flag_id flag_HOLY_SYMBOL;
 extern const flag_id flag_HOOD;
 extern const flag_id flag_HOT;
 extern const flag_id flag_HURT_WHEN_WIELDED;

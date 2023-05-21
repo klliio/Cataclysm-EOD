@@ -149,6 +149,7 @@ static const trait_id trait_CANNIBAL( "CANNIBAL" );
 static const trait_id trait_DEBUG_MIND_CONTROL( "DEBUG_MIND_CONTROL" );
 static const trait_id trait_HALLUCINATION( "HALLUCINATION" );
 static const trait_id trait_ILLITERATE( "ILLITERATE" );
+static const trait_id trait_KILLER_GOOD( "KILLER_GOOD" );
 static const trait_id trait_MUTE( "MUTE" );
 static const trait_id trait_NO_BASH( "NO_BASH" );
 static const trait_id trait_PROF_DICEMASTER( "PROF_DICEMASTER" );
@@ -3008,17 +3009,27 @@ void npc::die( Creature *nkiller )
     }
 
     Character &player_character = get_player_character();
-    if( killer == &player_character && ( !guaranteed_hostile() || hit_by_player ) ) {
-        bool cannibal = player_character.has_trait( trait_CANNIBAL );
-        bool psycho = player_character.has_trait( trait_PSYCHOPATH );
-        if( player_character.has_trait( trait_SAPIOVORE ) || psycho ) {
-            // No morale effect
-        } else if( cannibal ) {
-            player_character.add_morale( MORALE_KILLED_INNOCENT, -5, 0, 2_days, 3_hours );
-        } else {
-            player_character.add_morale( MORALE_KILLED_INNOCENT, -100, 0, 2_days, 3_hours );
-        }
+	// Remove no-kill morale
+	bool player_killed_innocent = false;
+    const bool psycho = player_character.has_trait( trait_PSYCHOPATH );
+    if( killer == &player_character ) {
+        player_character.rem_morale( MORALE_KILLER_NEED_TO_KILL );
+		if( ( !guaranteed_hostile() || hit_by_player ) ) {
+			player_killed_innocent = true;
+            const bool cannibal = player_character.has_trait( trait_CANNIBAL );
+            if( player_character.has_trait( trait_SAPIOVORE ) || psycho ) {
+                // No morale effect
+            } else if( cannibal ) {
+                player_character.add_morale( MORALE_KILLED_INNOCENT, -5, 0, 2_days, 3_hours );
+            } else {
+                player_character.add_morale( MORALE_KILLED_INNOCENT, -100, 0, 2_days, 3_hours );
+            }
+		}
     }
+	
+	if( player_character.has_trait( trait_KILLER_GOOD ) && ( !player_killed_innocent || psycho ) ) {
+        player_character.add_morale( MORALE_KILLER_HAS_KILLED, 5, 10, 6_hours, 4_hours );
+	}
 
     place_corpse();
 }

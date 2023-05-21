@@ -19,6 +19,7 @@ static const trait_id trait_NOMAD( "NOMAD" );
 static const trait_id trait_NOMAD2( "NOMAD2" );
 static const trait_id trait_NOMAD3( "NOMAD3" );
 static const trait_id trait_PROF_FOODP( "PROF_FOODP" );
+static const trait_id trait_SPIRITUAL( "SPIRITUAL" );
 
 static const json_character_flag json_flag_NYCTOPHOBIA( "NYCTOPHOBIA" );
 static const json_character_flag json_flag_TOUGH_FEET( "TOUGH_FEET" );
@@ -85,6 +86,10 @@ void Character::apply_persistent_morale()
 
         if( has_flag( json_flag_NYCTOPHOBIA ) ) {
             in_dark_morale_penalty();
+        }
+
+        if( has_trait( trait_SPIRITUAL ) ) {
+            spiritual_morale_bonus();
         }
     }
 }
@@ -200,6 +205,15 @@ void Character::in_dark_morale_penalty()
                     true ); // Yes this hits hard; shouldn't enter darkness if you're afraid of the dark. The good news is that it does disappear quickly if you enter light again.
     } else {
         rem_morale( MORALE_PERM_DARKNESS );
+    }
+}
+
+void Character::spiritual_morale_bonus()
+{
+    if( worn_with_flag( flag_HOLY_SYMBOL ) ) {
+        add_morale( MORALE_SPIRITUAL, 10, 10, 1_minutes, 1_minutes, true );
+    } else {
+        rem_morale( MORALE_SPIRITUAL );
     }
 }
 
