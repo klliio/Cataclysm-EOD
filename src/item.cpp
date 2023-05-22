@@ -3569,7 +3569,7 @@ void item::armor_protection_info( std::vector<iteminfo> &info, const iteminfo_qu
         for( const damage_info_order &dio : damage_info_order::get_all(
                  damage_info_order::info_type::PROT ) ) {
             if( ( best_res.resist_vals.count( dio.dmg_type ) <= 0 ||
-                best_res.type_resist( dio.dmg_type ) < 1.0f ) && !always_detailed ) {
+                  best_res.type_resist( dio.dmg_type ) < 1.0f ) && !always_detailed ) {
                 continue;
             }
             bool skipped_detailed = false;

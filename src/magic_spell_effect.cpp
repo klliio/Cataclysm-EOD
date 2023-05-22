@@ -88,7 +88,7 @@ static const species_id species_SLIME( "SLIME" );
 static const trait_id trait_KILLER( "KILLER" );
 static const trait_id trait_PACIFIST( "PACIFIST" );
 static const trait_id trait_PSYCHOPATH( "PSYCHOPATH" );
-static const trait_id trait_PYROMANIA( "PYROMANIA" );
+static const trait_id trait_PYROMANIA_GOOD( "PYROMANIA_GOOD" );
 
 namespace spell_detail
 {
@@ -518,12 +518,13 @@ static void damage_targets( const spell &sp, Creature &caster,
             here.add_field( target, fd_fire, 1, 10_minutes );
 
             Character &player_character = get_player_character();
-            if( player_character.has_trait( trait_PYROMANIA ) &&
-                !player_character.has_morale( MORALE_PYROMANIA_STARTFIRE ) ) {
-                player_character.add_msg_if_player( m_good,
-                                                    _( "You feel a surge of euphoria as flames burst out!" ) );
+            player_character.rem_morale( MORALE_PYROMANIA_NOFIRE );
+            if( player_character.has_trait( trait_PYROMANIA_GOOD ) ) {
+                if( !player_character.has_morale( MORALE_PYROMANIA_STARTFIRE ) ) {
+                    player_character.add_msg_if_player( m_good,
+                                                        _( "You feel a surge of euphoria as flames burst out!" ) );
+                }
                 player_character.add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
-                player_character.rem_morale( MORALE_PYROMANIA_NOFIRE );
             }
         }
         Creature *const cr = creatures.creature_at<Creature>( target );
@@ -1458,7 +1459,7 @@ void spell_effect::guilt( const spell &sp, Creature &caster, const tripoint &tar
         guilt_thresholds[25] = _( "You feel remorse for killing %s." );
 
         Character &guy = *guilt_target;
-        if( guy.has_trait( trait_PSYCHOPATH ) || guy.has_trait( trait_KILLER ) ||
+        if( guy.has_trait( trait_PSYCHOPATH ) ||
             guy.has_flag( json_flag_PRED3 ) || guy.has_flag( json_flag_PRED4 ) ) {
             // specially immune.
             return;

@@ -110,7 +110,7 @@ static const material_id material_wool( "wool" );
 static const species_id species_ROBOT( "ROBOT" );
 
 static const trait_id trait_GLASSJAW( "GLASSJAW" );
-static const trait_id trait_PYROMANIA( "PYROMANIA" );
+static const trait_id trait_PYROMANIA_GOOD( "PYROMANIA_GOOD" );
 
 const std::map<std::string, creature_size> Creature::size_map = {
     {"TINY",   creature_size::tiny},
@@ -823,6 +823,7 @@ void projectile::apply_effects_damage( Creature &target, Creature *source,
     }
 
     Character &player_character = get_player_character();
+    bool set_on_fire = false;
     if( proj_effects.count( "INCENDIARY" ) ) {
         if( target.made_of( material_veggy ) || target.made_of_any( Creature::cmat_flammable ) ) {
             target.add_effect( effect_source( source ), effect_onfire, rng( 2_turns, 6_turns ),
@@ -831,27 +832,27 @@ void projectile::apply_effects_damage( Creature &target, Creature *source,
             target.add_effect( effect_source( source ), effect_onfire, rng( 1_turns, 4_turns ),
                                dealt_dam.bp_hit );
         }
-        if( player_character.has_trait( trait_PYROMANIA ) &&
-            !player_character.has_morale( MORALE_PYROMANIA_STARTFIRE ) &&
-            player_character.sees( target ) ) {
-            player_character.add_msg_if_player( m_good,
-                                                _( "You feel a surge of euphoria as flame engulfs %s!" ), target.get_name() );
-            player_character.add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
-            player_character.rem_morale( MORALE_PYROMANIA_NOFIRE );
-        }
+        set_on_fire = true;
     } else if( proj_effects.count( "IGNITE" ) ) {
         if( target.made_of( material_veggy ) || target.made_of_any( Creature::cmat_flammable ) ) {
             target.add_effect( effect_source( source ), effect_onfire, 6_turns, dealt_dam.bp_hit );
         } else if( target.made_of_any( Creature::cmat_flesh ) ) {
             target.add_effect( effect_source( source ), effect_onfire, 10_turns, dealt_dam.bp_hit );
         }
-        if( player_character.has_trait( trait_PYROMANIA ) &&
-            !player_character.has_morale( MORALE_PYROMANIA_STARTFIRE ) &&
-            player_character.sees( target ) ) {
-            player_character.add_msg_if_player( m_good,
-                                                _( "You feel a surge of euphoria as flame engulfs %s!" ), target.get_name() );
-            player_character.add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
+        set_on_fire = true;
+    }
+
+    if( set_on_fire ) {
+        if( player_character.sees( target ) ) {
             player_character.rem_morale( MORALE_PYROMANIA_NOFIRE );
+            if( player_character.has_trait( trait_PYROMANIA_GOOD ) ) {
+                if( !player_character.has_morale( MORALE_PYROMANIA_STARTFIRE ) ) {
+                    // Check whether morale is already present to avoid spam if lighting a lot of monsters of fire. Bonus itself always applies, however.
+                    player_character.add_msg_if_player( m_good,
+                                                        _( "You feel a surge of euphoria as flame engulfs %s!" ), target.get_name() );
+                }
+            }
+            player_character.add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
         }
     }
 
@@ -1227,12 +1228,16 @@ void Creature::deal_damage_handle_type( const effect_source &source, const damag
             add_effect( source, effect_onfire, rng( 1_turns, 3_turns ), bp );
 
             Character &player_character = get_player_character();
-            if( player_character.has_trait( trait_PYROMANIA ) &&
-                !player_character.has_morale( MORALE_PYROMANIA_STARTFIRE ) && player_character.sees( *this ) ) {
-                player_character.add_msg_if_player( m_good,
-                                                    _( "You feel a surge of euphoria as flame engulfs %s!" ), this->get_name() );
-                player_character.add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
+            if( player_character.sees( *this ) ) {
                 player_character.rem_morale( MORALE_PYROMANIA_NOFIRE );
+                if( player_character.has_trait( trait_PYROMANIA_GOOD ) ) {
+                    if( !player_character.has_morale( MORALE_PYROMANIA_STARTFIRE ) ) {
+                        // Check whether morale is already present to avoid spam if lighting a lot of monsters of fire. Bonus itself always applies, however.
+                        player_character.add_msg_if_player( m_good,
+                                                            _( "You feel a surge of euphoria as flame engulfs %s!" ), this->get_name() );
+                    }
+                    player_character.add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
+                }
             }
         }
     } else if( du.type == damage_electric ) {

@@ -3,6 +3,7 @@
     "type": "vehicle_group",
     "id": "city_vehicles",
     "vehicles": [
+      [ "car_roadwarrior", 2 ],
       [ "car", 2000 ],
       [ "car_diesel", 1000 ],
       [ "car_anmlcmpt", 250 ],
@@ -381,10 +382,11 @@
     "type": "vehicle_group",
     "id": "farm_vehicles",
     "vehicles": [
+      [ "helicopter_gyro", 100 ],
       [ "tractor_plow", 1000 ],
       [ "tractor_seed", 1000 ],
       [ "tractor_reaper", 1000 ],
-      [ "oldtractor", 100 ],
+      [ "oldtractor", 250 ],
       [ "autotractor", 1000 ],
       [ "excavator", 500 ],
       [ "wheelbarrow", 100 ]
@@ -428,7 +430,7 @@
     "id": "bandit_vehicles",
     "type": "vehicle_group",
     "//": "Vehicles used by Hell's Raiders for scouting and assaults",
-    "vehicles": [ [ "pickup_technical", 150 ], [ "quad_bike", 150 ], [ "motorcycle", 300 ] ]
+    "vehicles": [ [ "pickup_technical", 150 ], [ "quad_bike", 150 ], [ "motorcycle", 300 ], [ "motorcycle_methcart", 50 ] ]
   },
   {
     "type": "vehicle_group",

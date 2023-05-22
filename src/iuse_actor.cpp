@@ -150,7 +150,7 @@ static const trait_id trait_DEBUG_BIONICS( "DEBUG_BIONICS" );
 static const trait_id trait_ILLITERATE( "ILLITERATE" );
 static const trait_id trait_LIGHTWEIGHT( "LIGHTWEIGHT" );
 static const trait_id trait_NOPAIN( "NOPAIN" );
-static const trait_id trait_PYROMANIA( "PYROMANIA" );
+static const trait_id trait_PYROMANIA_GOOD( "PYROMANIA_GOOD" );
 static const trait_id trait_TOLERANCE( "TOLERANCE" );
 
 static const trap_str_id tr_firewood_source( "tr_firewood_source" );
@@ -289,14 +289,11 @@ std::optional<int> iuse_transform::use( Character &p, item &it, bool t, const tr
         p.moves -= moves;
     }
 
-    if( possess && need_fire && p.has_trait( trait_PYROMANIA ) ) {
-        if( one_in( 2 ) ) {
-            p.add_msg_if_player( m_mixed,
-                                 _( "You light a fire, but it isn't enough.  You need to light more." ) );
-        } else {
+    if( possess && need_fire ) {
+        p.rem_morale( MORALE_PYROMANIA_NOFIRE );
+        if( p.has_trait( trait_PYROMANIA_GOOD ) ) {
             p.add_msg_if_player( m_good, _( "You happily light a fire." ) );
             p.add_morale( MORALE_PYROMANIA_STARTFIRE, 5, 10, 3_hours, 2_hours );
-            p.rem_morale( MORALE_PYROMANIA_NOFIRE );
         }
     }
 
@@ -1272,17 +1269,12 @@ bool firestarter_actor::prep_firestarter_use( const Character &p, tripoint_bub_m
 void firestarter_actor::resolve_firestarter_use( Character &p, const tripoint_bub_ms &pos )
 {
     if( get_map().add_field( pos, fd_fire, 1, 10_minutes ) ) {
-        if( !p.has_trait( trait_PYROMANIA ) ) {
-            p.add_msg_if_player( _( "You successfully light a fire." ) );
+        p.rem_morale( MORALE_PYROMANIA_NOFIRE );
+        if( p.has_trait( trait_PYROMANIA_GOOD ) ) {
+            p.add_msg_if_player( m_good, _( "You happily light a fire." ) );
+            p.add_morale( MORALE_PYROMANIA_STARTFIRE, 5, 10, 6_hours, 4_hours );
         } else {
-            if( one_in( 4 ) ) {
-                p.add_msg_if_player( m_mixed,
-                                     _( "You light a fire, but it isn't enough.  You need to light more." ) );
-            } else {
-                p.add_msg_if_player( m_good, _( "You happily light a fire." ) );
-                p.add_morale( MORALE_PYROMANIA_STARTFIRE, 5, 10, 6_hours, 4_hours );
-                p.rem_morale( MORALE_PYROMANIA_NOFIRE );
-            }
+            p.add_msg_if_player( _( "You successfully light a fire." ) );
         }
     }
 }

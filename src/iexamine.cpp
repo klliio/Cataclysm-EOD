@@ -239,7 +239,7 @@ static const trait_id trait_M_DEPENDENT( "M_DEPENDENT" );
 static const trait_id trait_M_FERTILE( "M_FERTILE" );
 static const trait_id trait_M_SPORES( "M_SPORES" );
 static const trait_id trait_PROBOSCIS( "PROBOSCIS" );
-static const trait_id trait_PYROMANIA( "PYROMANIA" );
+static const trait_id trait_PYROMANIA_GOOD( "PYROMANIA_GOOD" );
 static const trait_id trait_SHELL2( "SHELL2" );
 static const trait_id trait_SHELL3( "SHELL3" );
 static const trait_id trait_THRESH_MARLOSS( "THRESH_MARLOSS" );
@@ -2867,9 +2867,9 @@ void iexamine::kiln_empty( Character &you, const tripoint &examp )
     result.charges = char_charges;
     here.add_item( examp, result );
 
-    if( you.has_trait( trait_PYROMANIA ) ) {
+    you.rem_morale( MORALE_PYROMANIA_NOFIRE );
+    if( you.has_trait( trait_PYROMANIA_GOOD ) ) {
         you.add_morale( MORALE_PYROMANIA_STARTFIRE, 5, 10, 3_hours, 2_hours );
-        you.rem_morale( MORALE_PYROMANIA_NOFIRE );
         you.add_msg_if_player( m_good, _( "You happily light a fire in the charcoal kiln." ) );
     } else {
         add_msg( _( "You fire the charcoal kiln." ) );
@@ -5664,9 +5664,9 @@ static void smoker_activate( Character &you, const tripoint &examp )
     result.activate();
     here.add_item( examp, result );
 
-    if( you.has_trait( trait_PYROMANIA ) ) {
+    you.rem_morale( MORALE_PYROMANIA_NOFIRE );
+    if( you.has_trait( trait_PYROMANIA_GOOD ) ) {
         you.add_morale( MORALE_PYROMANIA_STARTFIRE, 5, 10, 3_hours, 2_hours );
-        you.rem_morale( MORALE_PYROMANIA_NOFIRE );
         you.add_msg_if_player( m_good,
                                _( "You happily light a small fire under the rack and it starts to smoke." ) );
     } else {

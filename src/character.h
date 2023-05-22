@@ -3068,6 +3068,8 @@ class Character : public Creature, public visitable
         void naked_morale_penalty();
         // the morale penalty for nyctophobic character
         void in_dark_morale_penalty();
+        // morale bonus from wearing holy symbol for spiritual characters
+        void spiritual_morale_bonus();
         /** Used to apply morale modifications from food and medication **/
         void modify_morale( item &food, int nutr = 0 );
         // Modified by traits, &c

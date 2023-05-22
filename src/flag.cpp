@@ -148,6 +148,7 @@ const flag_id flag_HARD( "HARD" );
 const flag_id flag_HEAT_IMMUNE( "HEAT_IMMUNE" );
 const flag_id flag_HIDDEN_HALLU( "HIDDEN_HALLU" );
 const flag_id flag_HIDDEN_POISON( "HIDDEN_POISON" );
+const flag_id flag_HOLY_SYMBOL( "HOLY_SYMBOL" );
 const flag_id flag_HOOD( "HOOD" );
 const flag_id flag_HOT( "HOT" );
 const flag_id flag_HURT_WHEN_WIELDED( "HURT_WHEN_WIELDED" );

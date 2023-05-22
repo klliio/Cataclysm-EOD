@@ -137,7 +137,7 @@ static const skill_id skill_swimming( "swimming" );
 static const skill_id skill_throw( "throw" );
 
 static const trait_id trait_BRAWLER( "BRAWLER" );
-static const trait_id trait_PYROMANIA( "PYROMANIA" );
+static const trait_id trait_PYROMANIA_GOOD( "PYROMANIA_GOOD" );
 
 static const trap_str_id tr_practice_target( "tr_practice_target" );
 
@@ -914,20 +914,18 @@ int Character::fire_gun( const tripoint &target, int shots, item &gun )
                   ( qty * ( 1.0 - absorb ) );
 
         const itype_id current_ammo = gun.ammo_current();
-
-        if( has_trait( trait_PYROMANIA ) && !has_morale( MORALE_PYROMANIA_STARTFIRE ) ) {
-            const std::set<ammotype> &at = gun.ammo_types();
-            if( at.count( ammo_flammable ) ) {
-                add_msg_if_player( m_good, _( "You feel a surge of euphoria as flames roar out of the %s!" ),
-                                   gun.tname() );
+        const auto &curammo_effects = gun.ammo_effects();
+        // TODO: Check if firing a gun actually started a fire
+        if( curammo_effects.count( "FLAME" ) || curammo_effects.count( "PYROPHORIC" ) ||
+            curammo_effects.count( "INCENDIARY" ) || curammo_effects.count( "NAPALM" ) ||
+            curammo_effects.count( "IGNITE" ) ) {
+            rem_morale( MORALE_PYROMANIA_NOFIRE );
+            if( has_trait( trait_PYROMANIA_GOOD ) ) {
+                if( !has_morale( MORALE_PYROMANIA_STARTFIRE ) ) {
+                    add_msg_if_player( m_good, _( "You feel a surge of euphoria as you fire the %s!" ),
+                                       gun.tname() );
+                }
                 add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
-                rem_morale( MORALE_PYROMANIA_NOFIRE );
-            } else if( at.count( ammo_66mm ) || at.count( ammo_120mm ) || at.count( ammo_84x246mm ) ||
-                       at.count( ammo_m235 ) || at.count( ammo_atgm ) || at.count( ammo_RPG_7 ) ||
-                       at.count( ammo_homebrew_rocket ) ) {
-                add_msg_if_player( m_good, _( "You feel a surge of euphoria as flames burst out!" ) );
-                add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
-                rem_morale( MORALE_PYROMANIA_NOFIRE );
             }
         }
 
