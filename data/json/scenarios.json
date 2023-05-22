@@ -517,7 +517,16 @@
     "flags": [ "LONE_START" ],
     "custom_initial_date": { "season": "winter" },
     "add_professions": true,
-    "professions": [ "sheltered_survivor", "sheltered_militia", "winter_scavenger", "winter_army" ],
+    "professions": [
+      "sheltered_survivor",
+      "sheltered_militia",
+      "winter_scavenger",
+      "winter_army",
+      "hardened_survivor",
+      "road_warrior",
+      "waste_ranger",
+      "player_bandit"
+    ],
     "requirement": "achievement_survive_91_days"
   },
   {
@@ -542,7 +551,16 @@
     "flags": [ "LONE_START" ],
     "custom_initial_date": { "season": "summer", "year": 2 },
     "add_professions": true,
-    "professions": [ "sheltered_survivor", "sheltered_militia", "winter_scavenger", "winter_army" ],
+    "professions": [
+      "sheltered_survivor",
+      "sheltered_militia",
+      "winter_scavenger",
+      "winter_army",
+      "hardened_survivor",
+      "road_warrior",
+      "waste_ranger",
+      "player_bandit"
+    ],
     "requirement": "achievement_survive_91_days"
   },
   {

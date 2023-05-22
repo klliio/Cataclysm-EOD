@@ -611,7 +611,7 @@
     "id": "sheltered_survivor",
     "name": "Sheltered Survivor",
     "requirement": "achievement_survive_28_days",
-    "description": "At the start of the Cataclysm, you hunkered down in a bomb shelter.  You've spent the past months eating canned food, reading books, and tinkering.  Now it is winter - time to face the world above.",
+    "description": "Just as the first troubles started, you hunkered down in a shelter.  You've spent the past months eating canned food, reading books, and tinkering.  Now it is time to face the new world.",
     "points": 4,
     "proficiencies": [ "prof_fibers", "prof_knitting", "prof_carving" ],
     "skills": [
@@ -635,15 +635,14 @@
       },
       "male": [ "boxer_shorts" ],
       "female": [ "bra", "panties" ]
-    },
-    "flags": [ "SCEN_ONLY" ]
+    }
   },
   {
     "type": "profession",
     "id": "sheltered_militia",
     "name": "Sheltered Militia",
     "requirement": "achievement_survive_28_days",
-    "description": "At the start of the Cataclysm, you hunkered down in a bomb shelter with your collection of guns.  You've spent the past months eating canned food and practicing your aim.  Now it is winter - time to face the world above.",
+    "description": "Just as the first troubles started, you hunkered down in a shelter with your collection of guns.  You've spent the past months eating canned food and practicing your aim.  Now it is time to face the new world.",
     "points": 4,
     "proficiencies": [ "prof_gunsmithing_basic", "prof_gunsmithing_improv" ],
     "skills": [ { "level": 2, "name": "gun" }, { "level": 1, "name": "rifle" }, { "level": 1, "name": "pistol" } ],
@@ -674,8 +673,7 @@
       },
       "male": [ "boxer_shorts" ],
       "female": [ "sports_bra", "boy_shorts" ]
-    },
-    "flags": [ "SCEN_ONLY" ]
+    }
   },
   {
     "type": "profession",
@@ -1050,7 +1048,7 @@
   {
     "type": "profession",
     "id": "marine",
-    "name": { "male": "Marine Infantryman", "female": "Marine Infantrywoman" },
+    "name": "Marine Infantry",
     "requirement": "achievement_reach_military_bunker",
     "description": "You are one of the few and the proud: a member of the US Marine Corps.  Now that military command has collapsed in on itself as far as you can tell, you suppose that it falls to you to carry the memory of the Corps forward into the future.  Semper fi.",
     "points": 6,
@@ -1101,8 +1099,7 @@
       },
       "male": [ "boxer_shorts" ],
       "female": [ "sports_bra", "boxer_shorts" ]
-    },
-    "flags": [ "SCEN_ONLY" ]
+    }
   },
   {
     "type": "profession",
@@ -1145,15 +1142,14 @@
       },
       "male": [ "boxer_shorts" ],
       "female": [ "sports_bra", "boxer_shorts" ]
-    },
-    "flags": [ "SCEN_ONLY" ]
+    }
   },
   {
     "type": "profession",
     "id": "diver_navy",
     "name": "Navy Diver",
     "requirement": "achievement_reach_aircraft_carrier",
-    "description": "You were a member of a Naval Special Warfare diving group, a skilled soldier adept at underwater infiltration and marine combat.  You were suiting up for a practice dive when the aircraft carrier you were stationed on was somehow flung from the Yellow Sea to who knows where.  You seem to be the only one who survived with your sanity intact, but it's not safe to stay here.  At least you're already dressed to abandon ship.",
+    "description": "You were a member of a Naval Special Warfare diving group, a skilled soldier adept at underwater infiltration and marine combat.  You were suiting up for a practice dive when the aircraft carrier you were stationed on was somehow flung from the Yellow Sea to who knows where.  You seem to be the only one who survived with your sanity intact.",
     "points": 3,
     "proficiencies": [ "prof_spotting", "prof_gunsmithing_basic" ],
     "skills": [
@@ -1186,8 +1182,7 @@
       },
       "male": [ "rashguard", "wetsuit_shorts" ],
       "female": [ "bikini_top", "wetsuit_shorts" ]
-    },
-    "flags": [ "SCEN_ONLY" ]
+    }
   },
   {
     "type": "profession",
@@ -1531,8 +1526,7 @@
       },
       "male": [ "boxer_shorts" ],
       "female": [ "sports_bra", "boxer_shorts" ]
-    },
-    "flags": [ "SCEN_ONLY" ]
+    }
   },
   {
     "type": "profession",
@@ -3301,8 +3295,7 @@
       "both": [ "striped_shirt", "striped_pants", "sneakers", "socks", "rock_sock" ],
       "male": [ "briefs" ],
       "female": [ "bra", "panties" ]
-    },
-    "flags": [ "SCEN_ONLY" ]
+    }
   },
   {
     "type": "profession",
@@ -3318,8 +3311,7 @@
       },
       "male": [ "briefs" ],
       "female": [ "bra", "panties" ]
-    },
-    "flags": [ "SCEN_ONLY" ]
+    }
   },
   {
     "type": "profession",
@@ -3335,8 +3327,7 @@
       },
       "male": [ "briefs" ],
       "female": [ "bra", "panties" ]
-    },
-    "flags": [ "SCEN_ONLY" ]
+    }
   },
   {
     "type": "profession",
@@ -3346,13 +3337,12 @@
     "points": 4,
     "skills": [ { "level": 1, "name": "speech" }, { "level": 1, "name": "survival" } ],
     "traits": [ "ANIMALEMPATH" ],
-    "pets": [ { "name": "mon_black_rat", "amount": 13 } ],
+    "pets": [ { "name": "mon_lab_rat", "amount": 13 } ],
     "items": {
       "both": [ "striped_shirt", "striped_pants", "sneakers", "socks", "fried_seeds" ],
       "male": [ "briefs" ],
       "female": [ "bra", "panties" ]
-    },
-    "flags": [ "SCEN_ONLY" ]
+    }
   },
   {
     "type": "profession",
@@ -3737,7 +3727,7 @@
     "id": "winter_scavenger",
     "name": "Hardened Scavenger",
     "requirement": "achievement_survive_91_days",
-    "description": "One of the lucky few who escaped the Cataclysm, you made a life for yourself amidst the ruins of civilization.  Whether through force, guile, or luck, you've obtained the best gear you could find.",
+    "description": "One of the lucky few who escaped the Cataclysm, you have quickly made a life for yourself amidst the ruins of civilization.  Whether through force, guile, or luck, you've obtained the best gear you could find.",
     "points": 8,
     "proficiencies": [ "prof_fibers", "prof_fibers_rope", "prof_knitting", "prof_closures" ],
     "skills": [
@@ -3769,8 +3759,7 @@
       },
       "male": [ "boxer_shorts" ],
       "female": [ "sports_bra", "panties" ]
-    },
-    "flags": [ "SCEN_ONLY" ]
+    }
   },
   {
     "type": "profession",
@@ -3816,8 +3805,7 @@
       },
       "male": [ "boxer_shorts" ],
       "female": [ "sports_bra", "panties" ]
-    },
-    "flags": [ "SCEN_ONLY" ]
+    }
   },
   {
     "type": "profession",
@@ -4973,7 +4961,6 @@
       "male": [ "boxer_shorts" ],
       "female": [ "sports_bra", "boy_shorts" ]
     },
-    "flags": [ "SCEN_ONLY" ],
     "missions": [ "MISSION_HELICOPTER_PILOT" ]
   },
   {

@@ -358,6 +358,7 @@
     "subtype": "distribution",
     "//": "this list is for toys that children may have wanted to take with themselves while preparing to run away for whatever reason.",
     "items": [
+      { "item": "katana_plastic", "prob": 20 },
       { "item": "talking_doll", "prob": 50 },
       { "item": "teddy_bear", "prob": 52 },
       { "item": "toy_figurine", "prob": 45 },

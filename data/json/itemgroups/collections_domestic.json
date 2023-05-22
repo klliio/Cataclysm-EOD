@@ -1016,6 +1016,7 @@
     "magazine": 100,
     "subtype": "distribution",
     "entries": [
+      { "item": "katana_plastic", "prob": 2 },
       { "item": "oxygen_mask", "prob": 3 },
       { "item": "awl_steel", "prob": 5 },
       { "item": "loom_frame", "prob": 1 },

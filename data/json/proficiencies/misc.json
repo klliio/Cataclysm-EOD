@@ -136,6 +136,8 @@
     "category": "prof_mechanic",
     "name": { "str": "Airframe and Powerplant Mechanic" },
     "description": "You're capable of properly repairing aircraft without compromising its flying capabilities.",
+    "default_time_multiplier": 3,
+    "default_skill_penalty": 0.5,
     "can_learn": false
   },
   {

@@ -917,7 +917,8 @@ int Character::fire_gun( const tripoint &target, int shots, item &gun )
         const auto &curammo_effects = gun.ammo_effects();
         // TODO: Check if firing a gun actually started a fire
         if( curammo_effects.count( "FLAME" ) || curammo_effects.count( "PYROPHORIC" ) ||
-            curammo_effects.count( "INCENDIARY" ) || curammo_effects.count( "NAPALM" ) || curammo_effects.count( "IGNITE" ) ) {
+            curammo_effects.count( "INCENDIARY" ) || curammo_effects.count( "NAPALM" ) ||
+            curammo_effects.count( "IGNITE" ) ) {
             rem_morale( MORALE_PYROMANIA_NOFIRE );
             if( has_trait( trait_PYROMANIA_GOOD ) ) {
                 if( !has_morale( MORALE_PYROMANIA_STARTFIRE ) ) {

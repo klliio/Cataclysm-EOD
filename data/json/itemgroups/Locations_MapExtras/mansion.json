@@ -665,6 +665,7 @@
     "magazine": 100,
     "subtype": "distribution",
     "items": [
+      { "item": "katana_plastic", "prob": 10 },
       [ "bat_nerf", 70 ],
       { "item": "marble", "prob": 50, "charges": [ 1, 20 ] },
       [ "talking_doll", 50 ],

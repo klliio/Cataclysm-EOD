@@ -28,5 +28,15 @@
     "type": "construction_group",
     "id": "build_bloomery",
     "name": "Build Bloomery"
+  },
+  {
+    "type": "construction_group",
+    "id": "place_heavy_lathe",
+    "name": "Place Heavy Lathe"
+  },
+  {
+    "type": "construction_group",
+    "id": "place_milling_machine",
+    "name": "Place Milling Machine"
   }
 ]

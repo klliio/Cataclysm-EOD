@@ -105,6 +105,7 @@
     "ammo": 75,
     "magazine": 100,
     "items": [
+      { "item": "katana_plastic", "prob": 10 },
       [ "bat_nerf", 100 ],
       { "item": "portable_game", "prob": 60, "charges": 100 },
       [ "bat", 60 ],

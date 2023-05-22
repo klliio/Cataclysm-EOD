@@ -14,7 +14,7 @@
         "................................................",
         "#%%%%#%%%%#%%%%#%%#%%%%#%%%%#%%%%#%%%%#%%%%#....",
         "##::###::###::##::#######oo###oo###oo###oo##^%%#",
-        "#!{!v#rrrP#Prrr#HHHN#jk#U~~UUU~~U#~55~d~88~##o##",
+        "#!{!v#rrrP#Prrr#HHHN#jk#U~~UUU~~U#~55~d~08~##o##",
         "#!}}!:  h    h :!!!H#;;#U~~~~~~~U#~~~~d~~~~#ppp#",
         "#!!!!:         :NN!H#M;#U~~~~~~~U#dd&dd~~~~:;q;o",
         "#L!!!:r  hrh   )    ##+##ddddd&d##~~~~~~K~~:;;;#",
@@ -79,7 +79,7 @@
         "#rh          +     #Y;j#Q~Q#~~~~~~~~~5##+# #B r#",
         "###+##P  #######   +;;k#Q~Q#~52~~~~~~2#;;# # hr#",
         "#P  B#P  #mnlkn#   #####Q~Q#~~~~~4K~~~#jk# #  P#",
-        "orh u#   +;;;;;+   +;;k#Q~Q#~52~~~~~~8####+##o##",
+        "orh u#   +;;;;;+   +;;k#Q~Q#~52~~~~~~0####+##o##",
         "#r  u#t  #qpq;Y#   #Y;j#Q~Q#~~~~~~~~~8#^sssss...",
         "###o###+####o########o###o####o####o###.sssss..."
       ],
@@ -123,6 +123,7 @@
         "3": "t_thconc_floor",
         "4": "t_thconc_floor",
         "9": "t_thconc_floor",
+        "0": "t_thconc_floor",
         "`": "t_metal_floor",
         ":": "t_wall_glass",
         ")": "t_door_glass_c",
@@ -175,6 +176,7 @@
         "3": "f_air_compressor",
         "4": "f_drill_press",
         "9": "f_heavy_lathe",
+        "0": "f_milling_machine",
         "K": "f_beverly_shear",
         "C": "f_crate_c"
       },

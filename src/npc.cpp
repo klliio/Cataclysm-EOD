@@ -3009,13 +3009,13 @@ void npc::die( Creature *nkiller )
     }
 
     Character &player_character = get_player_character();
-	// Remove no-kill morale
-	bool player_killed_innocent = false;
+    // Remove no-kill morale
+    bool player_killed_innocent = false;
     const bool psycho = player_character.has_trait( trait_PSYCHOPATH );
     if( killer == &player_character ) {
         player_character.rem_morale( MORALE_KILLER_NEED_TO_KILL );
-		if( ( !guaranteed_hostile() || hit_by_player ) ) {
-			player_killed_innocent = true;
+        if( ( !guaranteed_hostile() || hit_by_player ) ) {
+            player_killed_innocent = true;
             const bool cannibal = player_character.has_trait( trait_CANNIBAL );
             if( player_character.has_trait( trait_SAPIOVORE ) || psycho ) {
                 // No morale effect
@@ -3024,12 +3024,12 @@ void npc::die( Creature *nkiller )
             } else {
                 player_character.add_morale( MORALE_KILLED_INNOCENT, -100, 0, 2_days, 3_hours );
             }
-		}
+        }
     }
-	
-	if( player_character.has_trait( trait_KILLER_GOOD ) && ( !player_killed_innocent || psycho ) ) {
+
+    if( player_character.has_trait( trait_KILLER_GOOD ) && ( !player_killed_innocent || psycho ) ) {
         player_character.add_morale( MORALE_KILLER_HAS_KILLED, 5, 10, 6_hours, 4_hours );
-	}
+    }
 
     place_corpse();
 }
