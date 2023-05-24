@@ -72,5 +72,19 @@
     "symbol": ",",
     "color": "light_gray",
     "ammo_type": "components"
+  },
+  {
+    "type": "GENERIC",
+    "id": "guige",
+    "category": "spare_parts",
+    "name": { "str": "guige" },
+    "description": "A long leather strap, used to hang a shield on the shoulder or neck when not in use.  Useless without a shield.",
+    "volume": "500 ml",
+    "weight": "454 g",
+    "price": "5 USD",
+    "price_postapoc": "1 USD",
+    "color": "brown",
+    "symbol": ",",
+    "material": [ "leather" ]
   }
 ]

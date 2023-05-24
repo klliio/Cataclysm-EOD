@@ -711,6 +711,8 @@ class Character : public Creature, public visitable
         int get_spell_resist() const override;
         /** Handles the uncanny dodge bionic and effects, returns true if the player successfully dodges */
         bool uncanny_dodge() override;
+        /** Checks for chance that a ranged attack will hit other armor along the way */
+        bool block_ranged_hit( Creature *source, bodypart_id &bp_hit, damage_instance &dam ) override;
         float get_hit_base() const override;
 
         /** Returns the player's sight range */
@@ -967,7 +969,7 @@ class Character : public Creature, public visitable
         /** Checks for valid block abilities and reduces damage accordingly. Returns true if the player blocks */
         bool block_hit( Creature *source, bodypart_id &bp_hit, damage_instance &dam ) override;
         /** Returns the best item for blocking with */
-        item_location best_shield();
+        item_location best_shield( bool ranged = false );
         /** Calculates melee weapon wear-and-tear through use, returns true if item is destroyed. */
         bool handle_melee_wear( item_location shield, float wear_multiplier = 1.0f );
         /** Returns a random valid technique */

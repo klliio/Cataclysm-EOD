@@ -1698,6 +1698,11 @@ bool monster::block_hit( Creature *, bodypart_id &, damage_instance & )
     return false;
 }
 
+bool monster::block_ranged_hit( Creature *, bodypart_id &, damage_instance & )
+{
+    return false;
+}
+
 const weakpoint *monster::absorb_hit( const weakpoint_attack &attack, const bodypart_id &,
                                       damage_instance &dam )
 {

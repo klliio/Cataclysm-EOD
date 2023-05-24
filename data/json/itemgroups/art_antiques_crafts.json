@@ -53,6 +53,10 @@
     "id": "medieval",
     "subtype": "distribution",
     "entries": [
+      { "item": "shield_wooden", "prob": 3 },
+      { "item": "shield_wooden_large", "prob": 3 },
+      { "item": "shield_banded", "prob": 3 },
+      { "item": "shield_banded_large", "prob": 3 },
       { "item": "katana_inferior", "prob": 2 },
       { "item": "cestus", "prob": 2 },
       { "item": "mace", "prob": 20 },

@@ -2709,6 +2709,7 @@
     "type": "item_group",
     "id": "mil_armor",
     "items": [
+      [ "shield_ballistic", 3 ],
       [ "pants_army", 10 ],
       [ "jacket_army_modern", 5 ],
       [ "jacket_army_modern", 5 ],
@@ -2750,6 +2751,7 @@
     "type": "item_group",
     "id": "mil_accessories",
     "items": [
+      [ "shield_ballistic", 2 ],
       { "item": "mask_gas", "prob": 10, "charges": [ 0, 100 ] },
       [ "duffelbag", 15 ],
       { "item": "goggles_nv", "prob": 1, "charges": [ 0, 100 ] },
@@ -3202,6 +3204,10 @@
     "type": "item_group",
     "id": "survivorzed_extra",
     "items": [
+      [ "shield_wooden", 1 ],
+      [ "shield_wooden_large", 1 ],
+      [ "shield_riot", 3 ],
+      [ "shield_ballistic", 2 ],
       [ "daypack", 4 ],
       [ "mask_lsurvivor", 10 ],
       [ "mask_survivor", 8 ],
@@ -3295,6 +3301,8 @@
     "type": "item_group",
     "id": "museum_armor",
     "items": [
+      { "item": "shield_wooden", "prob": 10, "damage": [ 2, 4 ] },
+      { "item": "shield_wooden_large", "prob": 5, "damage": [ 2, 4 ] },
       { "item": "armor_junk_plate", "prob": 60, "damage": [ 2, 4 ] },
       { "item": "gloves_plate", "prob": 60, "damage": [ 2, 4 ] },
       { "item": "boots_plate", "prob": 60, "damage": [ 2, 4 ] },

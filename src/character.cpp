@@ -347,6 +347,9 @@ static const limb_score_id limb_score_reaction( "reaction" );
 static const limb_score_id limb_score_vision( "vision" );
 
 static const matec_id tec_none( "tec_none" );
+static const matec_id WBLOCK_1( "WBLOCK_1" );
+static const matec_id WBLOCK_2( "WBLOCK_2" );
+static const matec_id WBLOCK_3( "WBLOCK_3" );
 
 static const material_id material_budget_steel( "budget_steel" );
 static const material_id material_ch_steel( "ch_steel" );
@@ -480,6 +483,9 @@ static const trait_id trait_WEB_WEAVER( "WEB_WEAVER" );
 
 static const vitamin_id vitamin_calcium( "calcium" );
 static const vitamin_id vitamin_iron( "iron" );
+
+static const sub_bodypart_str_id sub_body_part_arm_lower_l( "arm_lower_l" );
+static const sub_bodypart_str_id sub_body_part_arm_lower_r( "arm_lower_r" );
 
 static const std::set<material_id> ferric = { material_iron, material_steel, material_budget_steel, material_ch_steel, material_hc_steel, material_lc_steel, material_mc_steel, material_qt_steel };
 
@@ -1704,6 +1710,97 @@ float Character::stability_roll() const
     /** @EFFECT_MELEE improves player stability roll */
     return ( get_melee() + get_str() ) * ( ( get_limb_score( limb_score_balance ) * 3 + get_limb_score(
             limb_score_reaction ) ) / 4.0f );
+}
+
+bool Character::block_ranged_hit( Creature *source, bodypart_id &bp_hit, damage_instance &dam )
+{
+    // TODO: Handle potentially having multiple shields.
+    item_location shield = best_shield( true );
+
+    // Bail out early just in case, if blocking with bare hands.
+    if( !shield ) {
+        return false;
+    }
+
+    int shield_level = 0;
+    if( shield->has_technique( WBLOCK_3 ) ) {
+        shield_level += 3;
+    } else if( shield->has_technique( WBLOCK_2 ) ) {
+        shield_level += 2;
+    } else if( shield->has_technique( WBLOCK_1 ) ) {
+        shield_level += 1;
+    }
+
+    const bool leg_hit = bp_hit->has_type( body_part_type::type::leg );
+    const bool foot_hit = bp_hit->has_type( body_part_type::type::foot );
+    int block_chance = 0;
+    if( !foot_hit && shield_level > 0 ) {
+        // TODO: Take into account skills and stats for block chance
+        if( leg_hit ) {
+            block_chance += 25 * shield_level;
+        } else {
+            block_chance += 60 + ( 10 * shield_level );
+        }
+    }
+
+    add_msg( m_debug, _( "block_ranged_hit success rate: %i%%" ), block_chance );
+
+    // Now roll coverage to determine if we intercept the shot.
+    if( rng( 1, 100 ) > block_chance ) {
+        add_msg( m_debug, _( "block_ranged_hit attempt failed" ) );
+        return false;
+    }
+
+    int damage_before_block = 0;
+    for( damage_unit &elem : dam.damage_units ) {
+        damage_before_block += elem.amount * elem.damage_multiplier;
+    }
+
+    const bool shot_by_hallucination = source->is_hallucination();
+    int damage_after_block = 0;
+
+    // Get name before handling shield damage, to avoid displaying "none" in place of shield name if the shield is destroyed.
+    const std::string thing_blocked_with = shield->tname();
+
+    // TODO: Allow shields to define sub body parts used to block with them in JSON.
+    if( shield->covers( sub_body_part_arm_lower_l ) && bp_hit != body_part_arm_l ) {
+        for( damage_unit &elem : dam.damage_units ) {
+            shield->mitigate_damage( elem, sub_body_part_arm_lower_l, -1 );
+            damage_after_block += elem.amount * elem.damage_multiplier;
+            if( !shot_by_hallucination ) {
+                shield->damage_armor_durability( elem, body_part_arm_l );
+            }
+        }
+    } else if( shield->covers( sub_body_part_arm_lower_r ) && bp_hit != body_part_arm_r ) {
+        for( damage_unit &elem : dam.damage_units ) {
+            shield->mitigate_damage( elem, sub_body_part_arm_lower_r, -1 );
+            damage_after_block += elem.amount * elem.damage_multiplier;
+            if( !shot_by_hallucination ) {
+                shield->damage_armor_durability( elem, body_part_arm_r );
+            }
+        }
+    }
+
+    const int blocked_damage = damage_before_block - damage_after_block;
+
+    if( damage_after_block <= 0 ) {
+        add_msg_player_or_npc(
+            _( "The shot is stopped by your %s, which absorbs %i damage." ),
+            _( "The shot is stopped by <npcname>'s %s, which absorbs %i damage." ),
+            thing_blocked_with, blocked_damage );
+    } else if( blocked_damage > 0 ) {
+        add_msg_player_or_npc(
+            _( "The shot penetrates your %s, which absorbs %i damage." ),
+            _( "The shot penetrates <npcname>'s %s, which absorbs %i damage." ),
+            thing_blocked_with, blocked_damage );
+    } else {
+        add_msg_player_or_npc(
+            _( "The shot passes unhindered through your %s." ),
+            _( "The shot passes unhindered through <npcname>'s %s." ),
+            thing_blocked_with );
+    }
+
+    return true;
 }
 
 bool Character::is_dead_state() const

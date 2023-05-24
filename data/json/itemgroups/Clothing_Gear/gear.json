@@ -4,6 +4,8 @@
     "id": "swat_gear",
     "subtype": "distribution",
     "items": [
+      [ "shield_riot", 20 ],
+      [ "shield_ballistic", 5 ],
       { "group": "cop_gear", "prob": 100 },
       [ "40x46mm_m433", 5 ],
       [ "40x46mm_m651", 10 ],

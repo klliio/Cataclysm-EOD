@@ -209,6 +209,7 @@
     "type": "item_group",
     "id": "pawn",
     "items": [
+      [ "shield_riot", 5 ],
       { "group": "mags_pawnshop", "prob": 300 },
       [ "mag_fieldrepair", 50 ],
       { "item": "oxylamp", "prob": 50, "charges-min": 0 },
