@@ -85,7 +85,7 @@ class outfit
         item *item_worn_with_id( const itype_id &i );
         std::optional<const item *> item_worn_with_inv_let( char invlet ) const;
         // get the best blocking value with the flag that allows worn.
-        item *best_shield();
+        item *best_shield( bool ranged = false );
         // find the best clothing weapon when unarmed modifies
         item *current_unarmed_weapon( const std::string &attack_vector );
         item_location first_item_covering_bp( Character &guy, bodypart_id bp );

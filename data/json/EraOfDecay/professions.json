@@ -216,7 +216,7 @@
           "puller",
           "press",
           "ref_lighter",
-          "legpouch_large"
+          "tool_pouch"
         ],
         "entries": [
           { "item": "knife_trench", "container-item": "sheath" },
@@ -282,7 +282,7 @@
           { "item": "quiver", "contents-group": "quiver_player_bandit" },
           { "item": "makeshift_knife", "container-item": "bootsheath" },
           { "item": "bwirebat", "custom-flags": [ "auto_wield" ] },
-          { "item": "light_battery_cell", "charges": 100, "container-item": "heavy_flashlight" }
+          { "group": "charged_flashlight" }
         ]
       },
       "male": [ "boxer_shorts" ],

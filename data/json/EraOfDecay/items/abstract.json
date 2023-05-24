@@ -49,5 +49,31 @@
     "color": "light_gray",
     "stack_size": 1,
     "flags": [ "INEDIBLE" ]
+  },
+  {
+    "abstract": "shield_abstract",
+    "type": "ARMOR",
+    "name": { "str": "base shield" },
+    "symbol": "[",
+    "color": "brown",
+    "sided": true,
+    "to_hit": { "grip": "weapon", "length": "short", "surface": "any", "balance": "uneven" },
+    "flags": [ "OVERSIZE", "BELTED", "RESTRICT_HANDS", "BLOCK_WHILE_WORN", "BLOCK_RANGED_ATTACKS", "PADDED", "WATER_FRIENDLY" ]
+  },
+  {
+    "abstract": "shield_medium_abstract",
+    "copy-from": "shield_abstract",
+    "type": "ARMOR",
+    "name": { "str": "base medium shield" },
+    "longest_side": "80 cm",
+    "techniques": [ "WBLOCK_2" ]
+  },
+  {
+    "abstract": "shield_large_abstract",
+    "copy-from": "shield_abstract",
+    "type": "ARMOR",
+    "name": { "str": "base large shield" },
+    "longest_side": "120 cm",
+    "techniques": [ "WBLOCK_3" ]
   }
 ]

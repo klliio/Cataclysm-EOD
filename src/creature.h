@@ -414,6 +414,10 @@ class Creature : public viewer
         virtual bool block_hit( Creature *source, bodypart_id &bp_hit,
                                 damage_instance &dam ) = 0;
 
+        // handles interaction of shields and ranged attacks. mutates &dam
+        virtual bool block_ranged_hit( Creature *source, bodypart_id &bp_hit,
+                                       damage_instance &dam ) = 0;
+
         // handles armor absorption (including clothing damage etc)
         // of damage instance. returns name of weakpoint hit, if any. mutates &dam.
         virtual const weakpoint *absorb_hit( const weakpoint_attack &attack, const bodypart_id &bp,

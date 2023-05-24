@@ -28,5 +28,10 @@
     "id": "HOLY_SYMBOL",
     "type": "json_flag",
     "info": "This gear improves morale of spiritual people if worn."
+  },
+  {
+    "id": "BLOCK_RANGED_ATTACKS",
+    "type": "json_flag",
+    "info": "This gear allows blocking ranged attacks while worn."
   }
 ]

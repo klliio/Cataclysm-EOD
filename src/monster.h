@@ -344,6 +344,7 @@ class monster : public Creature
         float weakpoint_skill() const;
 
         bool block_hit( Creature *source, bodypart_id &bp_hit, damage_instance &d ) override;
+        bool block_ranged_hit( Creature *source, bodypart_id &bp_hit, damage_instance &d ) override;
         bool melee_attack( Creature &target );
         bool melee_attack( Creature &target, float accuracy );
         void melee_attack( Creature &p, bool ) = delete;

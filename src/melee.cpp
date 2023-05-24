@@ -1972,14 +1972,17 @@ int melee::blocking_ability( const item &shield )
     return block_bonus;
 }
 
-item_location Character::best_shield()
+item_location Character::best_shield( bool ranged )
 {
+    int best_value = 0;
     // Note: wielded weapon, not one used for attacks
-    int best_value = melee::blocking_ability( weapon );
+    if( !ranged || weapon.has_flag( flag_BLOCK_RANGED_ATTACKS ) ) {
+        best_value = melee::blocking_ability( weapon );
+    }
     // "BLOCK_WHILE_WORN" without a blocking tech need to be worn for the bonus
     best_value = best_value == 2 ? 0 : best_value;
     item_location best = best_value > 0 ? get_wielded_item() : item_location();
-    item *best_worn = worn.best_shield();
+    item *best_worn = worn.best_shield( ranged );
     if( best_worn && melee::blocking_ability( *best_worn ) >= best_value ) {
         best = item_location( *this, best_worn );
     }
