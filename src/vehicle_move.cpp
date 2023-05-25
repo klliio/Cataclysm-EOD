@@ -1376,19 +1376,37 @@ bool vehicle::check_heli_ascend( Character &p ) const
         return false;
     }
     if( sm_pos.z + 1 >= OVERMAP_HEIGHT ) {
+        p.add_msg_if_player( m_bad, _( "It would be unsafe to try to ascend further." ) );
         return false; // don't allow trying to ascend to max zlevel
     }
     map &here = get_map();
     creature_tracker &creatures = get_creature_tracker();
     for( const tripoint &pt : get_points( true ) ) {
         tripoint above( pt.xy(), pt.z + 1 );
-        const optional_vpart_position ovp = here.veh_at( above );
-        if( here.has_flag_ter_or_furn( ter_furn_flag::TFLAG_INDOORS, pt ) ||
-            here.impassable_ter_furn( above ) ||
-            ovp ||
-            creatures.creature_at( above ) ) {
-            p.add_msg_if_player( m_bad,
-                                 _( "It would be unsafe to try and ascend when there are obstacles above you." ) );
+        std::string blocker_string = "BUGS";
+        bool found_obstacle = false;
+        if( !here.has_flag_ter( ter_furn_flag::TFLAG_NO_FLOOR, above ) ) { // Check for ceiling
+            blocker_string = _( "ceiling" );
+            found_obstacle = true;
+        } else if( here.impassable_ter_furn( above ) ) {  // Check for terrain and furniture
+            blocker_string = here.ter( above )->movecost == 0 ? here.tername( above ) : here.furnname( above );
+            found_obstacle = true;
+        } else if( here.veh_at( above ).has_value() ) {  // Check for other vehicles
+            blocker_string = here.veh_at( above )->vehicle().disp_name();
+            found_obstacle = true;
+        } else if( creatures.creature_at( above ) ) {  // Check for creatures
+            blocker_string = creatures.creature_at( above )->disp_name();
+            found_obstacle = true;
+        }
+        if( found_obstacle ) {
+            const direction obstacle_direction = direction_from( ( pt - p.pos() ).xy() );
+            if( obstacle_direction == direction::CENTER ) {
+                p.add_msg_if_player( m_bad, _( "Your ascent is blocked by %s directly above you." ),
+                                     blocker_string );
+            } else {
+                p.add_msg_if_player( m_bad, _( "Your ascent is blocked by %s to your %s." ), blocker_string,
+                                     direction_name( obstacle_direction ) );
+            }
             return false;
         }
     }

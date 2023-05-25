@@ -205,7 +205,8 @@
     "volume": "250 ml",
     "phase": "liquid",
     "charges": 16,
-    "fun": -4,
+    "calories": 2,
+    "fun": -10,
     "flags": [ "NO_AUTO_CONSUME" ],
     "freezing_point": -2
   },

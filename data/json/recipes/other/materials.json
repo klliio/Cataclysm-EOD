@@ -160,6 +160,7 @@
     "tools": [ [ [ "surface_heat", 4, "LIST" ] ] ],
     "components": [
       [
+        [ "plectrum", 50 ],
         [ "stopcock", 11 ],
         [ "button_plastic", 25 ],
         [ "bottle_folding", 4 ],

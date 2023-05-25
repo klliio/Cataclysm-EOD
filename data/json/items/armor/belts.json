@@ -153,6 +153,7 @@
   },
   {
     "id": "obi_gi",
+    "repairs_like": "scarf",
     "type": "ARMOR",
     "name": { "str": "obi" },
     "description": "A broad, black obi gi.",

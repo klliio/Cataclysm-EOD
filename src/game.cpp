@@ -11109,6 +11109,13 @@ bool game::grabbed_furn_move( const tripoint &dp )
     str_req += furniture_contents_weight / 4_kilogram;
     int str = u.get_arm_str();
 
+    if( str < str_req - 3 ) {
+        // Early exit to not have character pointlessly strain themselves if they'll never be able to move the furniture.
+        add_msg( m_info, _( "You need at least %d strength to move the %s." ), str_req - 3,
+                 furntype.name() );
+        return true;
+    }
+
     if( !canmove ) {
         // TODO: What is something?
         add_msg( _( "The %s collides with something." ), furntype.name() );

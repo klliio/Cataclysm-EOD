@@ -139,7 +139,7 @@
       "str_max": 30,
       "sound": "rrrrip!",
       "sound_fail": "whump.",
-      "items": [ { "item": "cotton_patchwork", "count": [ 40, 55 ] } ]
+      "items": [ { "item": "cotton_patchwork", "count": [ 40, 55 ] }, { "item": "scrap", "count": [ 10, 20 ] } ]
     }
   },
   {

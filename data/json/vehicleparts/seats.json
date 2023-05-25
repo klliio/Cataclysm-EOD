@@ -191,13 +191,9 @@
     "folded_volume": "2500 ml",
     "location": "anywhere",
     "requirements": {
-      "install": { "skills": [ [ "mechanics", 2 ] ], "time": "200 s", "using": [ [ "vehicle_wrench_2", 1 ] ] },
-      "removal": { "skills": [ [ "mechanics", 2 ] ], "time": "200 s", "using": [ [ "vehicle_wrench_2", 1 ] ] },
-      "repair": {
-        "skills": [ [ "mechanics", 3 ] ],
-        "time": "20 s",
-        "using": [ [ "repair_welding_standard", 1 ], [ "sewing_standard", 3 ] ]
-      }
+      "install": { "skills": [ [ "mechanics", 0 ] ], "time": "30 m", "using": [ [ "vehicle_nail_install", 1 ] ] },
+      "removal": { "skills": [ [ "mechanics", 0 ] ], "time": "15 m", "using": [ [ "vehicle_nail_removal", 1 ] ] },
+      "repair": { "skills": [ [ "tailor", 1 ] ], "time": "30 m", "using": [ [ "sewing_standard", 50 ], [ "fabric_standard", 1 ] ] }
     },
     "flags": [ "SEAT", "BOARDABLE", "NONBELTABLE", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "breaks_into": [ { "item": "cotton_patchwork", "count": [ 1, 6 ] } ]

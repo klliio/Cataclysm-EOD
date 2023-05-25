@@ -1545,6 +1545,9 @@ bool Character::check_mount_is_spooked()
                 }
                 chance = std::max( 1.0, chance );
                 if( x_in_y( chance, 100.0 ) ) {
+                    add_msg_player_or_npc( m_bad, _( "%s got spooked by %s and threw you to the ground!" ),
+                                           _( "%s got spooked by %s and threw <npcname> to the ground!" ),
+                                           mounted_creature->disp_name( false, true ), critter.disp_name() );
                     forced_dismount();
                     return true;
                 }

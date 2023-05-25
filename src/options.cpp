@@ -1767,7 +1767,7 @@ void options_manager::add_options_interface()
         { { "metric", to_translation( "Metric" ) }, { "imperial", to_translation( "Imperial" ) } },
         ( SystemLocale::UseMetricSystem().value_or( false ) ? "metric" : "imperial" ) );
 
-    add( "24_HOUR", page_id, to_translation( "Time format" ),
+        add( "24_HOUR", page_id, to_translation( "Time format" ),
              to_translation( "12h: AM/PM, e.g. 7:31 AM - Military: 24h Military, e.g. 0731 - 24h: Normal 24h, e.g. 7:31" ),
              //~ 12h time, e.g.  11:59pm
         {   { "12h", to_translation( "12h" ) },
@@ -1777,7 +1777,7 @@ void options_manager::add_options_interface()
             { "24h", to_translation( "24h" ) }
         },
         "24h" );
-	} );
+    } );
 
     add_empty_line();
 
@@ -2693,15 +2693,15 @@ void options_manager::add_options_world_default()
              0, 8, 4
            );
 
-    add( "SPAWN_DENSITY", page_id, to_translation( "Monster density multiplier" ),
-         to_translation( "Multiplies amount of monsters (such as zombies and robots) spawned.  Wildlife (including zombified and mutated) is unaffected.  0.5 means half as much monsters, 2 means twice as much numbers.  A higher number means more monsters spawned at the start, making the game harder." ),
-         0.00f, 50.00f, 1.00f, 0.01f
-       );
+        add( "SPAWN_DENSITY", page_id, to_translation( "Monster density multiplier" ),
+             to_translation( "Multiplies amount of monsters (such as zombies and robots) spawned.  Wildlife (including zombified and mutated) is unaffected.  0.5 means half as much monsters, 2 means twice as much numbers.  A higher number means more monsters spawned at the start, making the game harder." ),
+             0.00f, 50.00f, 1.00f, 0.01f
+           );
 
-    add( "SPAWN_ANIMAL_DENSITY", page_id, to_translation( "Wildlife density multiplier" ),
-         to_translation( "Multiplies amount of wildlife (including zombified and mutated animals and insects) spawned.  Human zombies and robot spawns are unaffected.  0.5 means half as much wildlife, 2 means twice as much wildlife.  A higher number means more wildlife spawning, making food more abundant." ),
-         0.00f, 50.00f, 1.00f, 0.01f
-       );
+        add( "SPAWN_ANIMAL_DENSITY", page_id, to_translation( "Wildlife density multiplier" ),
+             to_translation( "Multiplies amount of wildlife (including zombified and mutated animals and insects) spawned.  Human zombies and robot spawns are unaffected.  0.5 means half as much wildlife, 2 means twice as much wildlife.  A higher number means more wildlife spawning, making food more abundant." ),
+             0.00f, 50.00f, 1.00f, 0.01f
+           );
         add( "SPAWN_DENSITY", page_id, to_translation( "Spawn rate scaling factor" ),
              to_translation( "A scaling factor that determines density of monster spawns.  A higher number means more monsters." ),
              0.0, 50.0, 1.0, 0.1
@@ -3003,8 +3003,8 @@ void options_manager::add_options_world_default()
     add_empty_line();
 
     add_option_group( "world_default", Group( "chargen_point_opts",
-                                      to_translation( "Character Generation Points Options" ),
-                                      to_translation( "Options regarding character generation points." ) ),
+                      to_translation( "Character Generation Points Options" ),
+                      to_translation( "Options regarding character generation points." ) ),
     [&]( const std::string & page_id ) {
         add( "INITIAL_STAT_POINTS", page_id, to_translation( "Initial stat points" ),
              to_translation( "Initial points available to spend on stats on character generation." ),

@@ -62,5 +62,13 @@
     "symbol": ";",
     "color": "brown",
     "melee_damage": { "bash": 8 }
+  },
+  {
+    "id": "e_tool_sharpened",
+    "copy-from": "e_tool",
+    "type": "TOOL",
+    "name": { "str": "sharpened entrenching tool" },
+    "description": "A stout, collapsible spade.  It's commonly used by military forces and favored by hikers for digging.  This one had its edges crudely shapened, turning it into a much more dangerous weapon in melee combat.",
+    "melee_damage": { "bash": 6, "cut": 16 }
   }
 ]

@@ -1186,7 +1186,8 @@ dealt_damage_instance Creature::deal_damage( Creature *source, bodypart_id bp,
     // TODO: Fix this hack.
     /// HACK: Currently there's no definite way to tell if an attack is certainly ranged or melee, therefore range is taken into account.
     /// It is currently based on damage types, but this breaks down here; ferals throw rocks, which is bashing damage, and the code thinks that it is always melee because it's bashing.
-    const bool ranged_attack = rl_dist( pos(), source->pos() ) > 1;
+    /// Attacks which don't originate from a specific creature are also never blocked here as a result.
+    const bool ranged_attack = source ? rl_dist( pos(), source->pos() ) > 1 : false;
     if( ranged_attack ) {
         // If we have a shield, it might passively block ranged impacts
         block_ranged_hit( source, bp, d );
