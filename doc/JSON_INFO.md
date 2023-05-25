@@ -6,6 +6,7 @@ Use the `Home` key to return to the top.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
+- [JSON INFO](#json-info)
 - [Introduction](#introduction)
   - [Overall structure](#overall-structure)
   - [Common properties](#common-properties)
@@ -24,11 +25,11 @@ Use the `Home` key to return to the top.
   - [`data/json/vehicles/`](#datajsonvehicles)
 - [Description and content of each JSON file](#description-and-content-of-each-json-file)
   - [`data/json/` JSONs](#datajson-jsons)
-    - [Ascii_arts](#ascii_arts)
+    - [Ascii\_arts](#ascii_arts)
     - [Addiction types](#addiction-types)
     - [Body Graphs](#body-graphs)
       - [Graph Parts](#graph-parts)
-    - [Body_parts](#body_parts)
+    - [Body\_parts](#body_parts)
 - [On-hit Effects](#on-hit-effects)
     - [Limb scores](#limb-scores)
     - [Character Modifiers](#character-modifiers)
@@ -43,6 +44,8 @@ Use the `Home` key to return to the top.
     - [Item Category](#item-category)
     - [Item Properties](#item-properties)
     - [Item Variables](#item-variables)
+    - [Item faults](#item-faults)
+    - [Item fault fixes](#item-fault-fixes)
     - [Materials](#materials)
       - [Fuel data](#fuel-data)
       - [Burn data](#burn-data)
@@ -76,14 +79,14 @@ Use the `Home` key to return to the top.
       - [Defining common requirements](#defining-common-requirements)
       - [Overlapping recipe component requirements](#overlapping-recipe-component-requirements)
     - [Constructions](#constructions)
-    - [Scent_types](#scent_types)
+    - [Scent\_types](#scent_types)
     - [Scores, Achievements, and Conducts](#scores-achievements-and-conducts)
       - [`event_transformation`](#event_transformation)
       - [`event_statistic`](#event_statistic)
       - [`score`](#score)
       - [`achievement`](#achievement)
       - [`conduct`](#conduct)
-    - [Skills](#skills)
+    - [Skills](#skills-1)
     - [Speed Description](#speed-description)
     - [Mood Face](#mood-face)
     - [Tool Qualities](#tool-qualities)
@@ -114,7 +117,7 @@ Use the `Home` key to return to the top.
     - [Armor](#armor)
       - [Armor Portion Data](#armor-portion-data)
         - [Encumbrance](#encumbrance)
-        - [Encumbrance_modifiers](#encumbrance_modifiers)
+        - [Encumbrance\_modifiers](#encumbrance_modifiers)
         - [Coverage](#coverage)
         - [Covers](#covers)
         - [Specifically Covers](#specifically-covers)
@@ -125,10 +128,11 @@ Use the `Home` key to return to the top.
     - [Books](#books)
       - [Conditional Naming](#conditional-naming)
       - [Color Key](#color-key)
-      - [CBMs](#cbms)
+      - [CBMs](#cbms-1)
     - [Comestibles](#comestibles)
     - [Containers](#containers)
     - [Melee](#melee)
+    - [Memory Cards](#memory-cards)
     - [Gun](#gun)
     - [Gunmod](#gunmod)
     - [Batteries](#batteries)
@@ -221,18 +225,18 @@ Use the `Home` key to return to the top.
         - [`base`](#base)
         - [`growth_multiplier`](#growth_multiplier)
         - [`harvest_multiplier`](#harvest_multiplier)
-    - [clothing_mod](#clothing_mod)
+    - [clothing\_mod](#clothing_mod)
 - [Scenarios](#scenarios)
   - [`description`](#description-1)
   - [`name`](#name-2)
   - [`points`](#points-1)
   - [`items`](#items-3)
   - [`flags`](#flags-2)
-  - [`cbms`](#cbms-1)
+  - [`cbms`](#cbms-2)
   - [`traits`, `forced_traits`, `forbidden_traits`](#traits-forced_traits-forbidden_traits)
   - [`allowed_locs`](#allowed_locs)
   - [`start_name`](#start_name)
-  - [`professions`](#professions)
+  - [`professions`](#professions-1)
   - [`map_special`](#map_special)
   - [`requirement`](#requirement-1)
   - [`eocs`](#eocs)
@@ -240,7 +244,7 @@ Use the `Home` key to return to the top.
   - [`custom_initial_date`](#custom_initial_date)
 - [Starting locations](#starting-locations)
   - [`name`](#name-3)
-  - [`terrain`](#terrain)
+  - [`terrain`](#terrain-1)
   - [`city_sizes`](#city_sizes)
   - [`city_distance`](#city_distance)
   - [`allowed_z_levels`](#allowed_z_levels)
@@ -1343,6 +1347,48 @@ This will make any item instantiated from that prototype get assigned this varia
 the item is spawned the variables set on the prototype no longer affect the item's variables,
 a migration can clear out the item's variables and reassign the prototype ones if reset_item_vars
 flag is set.
+
+### Item faults
+
+Faults can be defined for more specialized damage of an item.
+
+```C++
+{
+  "type": "fault",
+  "id": "fault_gun_chamber_spent", // unique id for the fault
+  "name": { "str": "Spent casing in chamber" }, // fault name for display
+  "description": "This gun currently...", // fault description
+  "item_prefix": "jammed", // optional string, items with this fault will be prefixed with this
+  "flags": [ "JAMMED_GUN" ] // optional flags, see below
+}
+```
+
+`flags` trigger hardcoded C++ chunks that provide effects, see [JSON_FLAGS.md](JSON_FLAGS.md#faults) for a list of possible flags.
+
+### Item fault fixes
+
+Fault fixes are methods to fix faults, the fixes can optionally add other faults, modify damage, degradation and item variables.
+
+```C++
+{
+  "type": "fault_fix",
+  "id": "mend_gun_fouling_clean", // unique id for the fix
+  "name": "Clean fouling", // name for display
+  "success_msg": "You clean your %s.", // message printed when fix is applied
+  "time": "50 m", // time to apply fix
+  "faults_removed": [ "fault_gun_dirt", "fault_gun_blackpowder" ], // faults removed when fix is applied
+  "faults_added": [ "fault_gun_unlubricated" ], // faults added when fix is applied
+  "skills": { "mechanics": 1 }, // skills required to apply fix
+  "set_variables": { "dirt": "0" }, // sets the variables on the item when fix is applied
+  "requirements": [ [ "gun_cleaning", 1 ] ], // requirements array, see below
+  "mod_damage": 1000, // damage to modify on item when fix is applied, can be negative to repair
+  "mod_degradation": 50 // degradation to modify on item when fix is applied, can be negative to reduce degradation
+}
+```
+
+`requirements` is an array of requirements, they can be specified in 2 ways:
+* An array specifying an already defined requirement by it's id and a multiplier, `[ "gun_lubrication", 2 ]` will add `gun_lubrication` requirement and multiply the components and tools ammo required by 2.
+* Inline object specifying the requirement in the same way [recipes define it](#recipe-requirements)
 
 ### Materials
 
@@ -2670,8 +2716,7 @@ Vehicle components when installed on a vehicle.
 "symbol": "0",                // (Optional) ASCII character displayed when part is working
 "symbols": {                  // (Optional) ASCII characters displayed when the part is working,
   "left": "0", "right": "0"   // listed by variant suffix.  See below for more on variants
-"standard_symbols": false,     // (Optional) Use the standard ASCII characters for variants
-                              // must have one of symbol, symbols, or standard_symbols
+                              // must have symbol or symbols
 "looks_like": "small_wheel",  // (Optional) hint to tilesets if this part has no tile,
                               // use the looks_like tile.
 "bonus": 100,                 // Function depends on part type:
@@ -2753,14 +2798,8 @@ Vehicle components when installed on a vehicle.
 
 #### Symbols and Variants
 Vehicle parts can have multiple identical variants that use different symbols (and potentially
-tileset sprites).  They are declared by the `"standard_symbols"` boolean or the "symbols" object.
+tileset sprites).  They are declared by the "symbols" object.
 Variants are used in the vehicle prototype as a suffix following the part id (ie `id_variant`), such as `"frame_nw"` or `"halfboard_cover"`.
-
-setting `"standard_symbols"` to true gives the vehicle the following variants:
-```
-"cover": "^", "cross": "c", "horizontal": "h", "horizontal_2": "=", "vertical": "j",
-"vertical_2": "H", "ne": "u", "nw": "y", "se": "n", "sw": "b"
-```
 
 Otherwise, variants can use any of the following suffices:
 ```
@@ -5347,6 +5386,16 @@ For overmap specials add an entry to `data/json/obsoletion/migration_overmap_spe
     "new_id": "cs_open_sewer",
     "//": "Removed <when> - this will migrate to 'new_id'"
   },
+```
+
+For EOC/dialogue variables you can use `var_migration`. This currently only migrates **Character**, and **Global** vars. If "to" isn't provided the variable will be migrated to a key of "NULL_VALUE".
+
+```json
+{
+    "type": "var_migration",
+    "from": "temp_var",
+    "to": "new_temp_var"
+}
 ```
 
 For recipes, deleting the recipe is enough.

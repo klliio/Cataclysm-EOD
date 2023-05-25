@@ -777,6 +777,7 @@ void game::setup()
     // reset kill counts
     kill_tracker_ptr->clear();
     achievements_tracker_ptr->clear();
+    eoc_events_ptr->clear();
     // reset follower list
     follower_ids.clear();
     scent.reset();
@@ -1296,14 +1297,7 @@ void game::calc_driving_offset( vehicle *veh )
         offset = veh->face_vec();
         velocity = veh->cruise_velocity;
     }
-    float rel_offset;
-    if( std::fabs( velocity ) < min_offset_vel ) {
-        rel_offset = 0;
-    } else if( std::fabs( velocity ) > max_offset_vel ) {
-        rel_offset = ( velocity > 0 ) ? 1 : -1;
-    } else {
-        rel_offset = ( velocity - min_offset_vel ) / ( max_offset_vel - min_offset_vel );
-    }
+    const float rel_offset = inverse_lerp( min_offset_vel, max_offset_vel, velocity );
     // Squeeze into the corners, by making the offset vector longer,
     // the PC is still in view as long as both offset.x and
     // offset.y are <= 1
@@ -7995,8 +7989,8 @@ bool game::take_screenshot() const
 
     // build file name: <map_dir>/screenshots/[<character_name>]_<date>.png
     // NOLINTNEXTLINE(cata-translate-string-literal)
-    const auto tmp_file_name = string_format( "[%s]_%s.png", get_player_character().get_name(),
-                               timestamp_now() );
+    const std::string tmp_file_name = string_format( "[%s]_%s.png", get_player_character().get_name(),
+                                      timestamp_now() );
 
     std::string file_name = ensure_valid_file_name( tmp_file_name );
     auto current_file_path = map_directory.str() + file_name;
@@ -10419,7 +10413,7 @@ bool game::walk_move( const tripoint &dest_loc, const bool via_ramp, const bool 
         cata_event_dispatch::avatar_moves( old_abs_pos, u, m );
 
         // Add trail animation when sprinting
-        if( u.is_running() ) {
+        if( get_option<bool>( "ANIMATIONS" ) && u.is_running() ) {
             std::map<tripoint, nc_color> area_color;
             area_color[oldpos] = c_black;
             if( u.posy() < oldpos.y ) {
@@ -11114,6 +11108,13 @@ bool game::grabbed_furn_move( const tripoint &dp )
     }
     str_req += furniture_contents_weight / 4_kilogram;
     int str = u.get_arm_str();
+
+    if( str < str_req - 3 ) {
+        // Early exit to not have character pointlessly strain themselves if they'll never be able to move the furniture.
+        add_msg( m_info, _( "You need at least %d strength to move the %s." ), str_req - 3,
+                 furntype.name() );
+        return true;
+    }
 
     if( !canmove ) {
         // TODO: What is something?
