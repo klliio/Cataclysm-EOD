@@ -270,6 +270,7 @@ betavoltaic
 betavoltaics
 bevor
 bicephalous
+bicolor
 biddable
 bifocal
 biggun
@@ -368,6 +369,8 @@ breakrooms
 breatharians
 brennt
 brewable
+brigandine
+brigandines
 brimless
 brined
 bringin
@@ -602,6 +605,8 @@ corporality
 corporeality
 corvid
 corythosaurus
+cosplayers
+counterchanged
 countermine
 couters
 coverplate
@@ -662,6 +667,7 @@ cybernetically
 cyberstalking
 cyberterror
 cybug
+cycad
 cyclohexane
 cyclopean
 cyphers
@@ -998,6 +1004,9 @@ fightin
 filenames
 fileset
 filmstrip
+fimbriated
+fimbriation
+finial
 finned
 fireboots
 firebrick
@@ -1214,6 +1223,7 @@ gryposaurus
 gt
 guapote
 gubbins
+guls
 gunblade
 guncotton
 gunfighting
@@ -1465,6 +1475,7 @@ karsk
 kart
 karting
 kasaya
+kastane
 katanas
 katar
 kcal
@@ -1772,6 +1783,7 @@ modularity
 modulations
 mohawks
 moisturized
+mokorotlo
 moldspring
 molluscicide
 monicked
@@ -1837,6 +1849,7 @@ naginata
 naiad
 nailboard
 nakha
+namele
 nanocompound
 nanocrystals
 nanofab
@@ -2275,6 +2288,7 @@ racketus
 radially
 radioisotopes
 rafflesia
+raggiana
 railguns
 raincatcher
 rainsuit
@@ -2429,6 +2443,7 @@ sagely
 salicylate
 sallet
 salsify
+saltire
 saltpan
 saltworks
 salvager
@@ -2499,6 +2514,7 @@ sexten
 sexualities
 sh
 shadowcat
+shahada
 shambler
 shantak
 shantytowns
@@ -2760,6 +2776,7 @@ synthesization
 t
 tacticool
 tadfish
+taegeuk
 taitsu
 takedowns
 tamable
@@ -2868,6 +2885,7 @@ translocator
 transp
 transpositions
 transuranic
+trapezium
 trapezoidal
 travelpack
 traversal
@@ -2878,6 +2896,7 @@ triacetone
 trenchcoat
 trenchcoats
 trenchgun
+triband
 tribesperson
 tribot
 trichloride
@@ -2886,6 +2905,7 @@ triclopean
 tricorne
 trifacet
 triglav
+trigrams
 trilaser
 trilobite
 trioxide
@@ -2958,6 +2978,7 @@ ungulate
 unharvested
 unhealthily
 unhidden
+unhindering
 unhomogenized
 uninstall
 uninstalled
@@ -2971,6 +2992,7 @@ unlively
 unlives
 unlooted
 unlubricated
+unspooled
 unmalted
 unmark
 unmarred
