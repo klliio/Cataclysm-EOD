@@ -20,7 +20,7 @@
     "replace": "grenade_blooper"
   },
   {
-    "id": [ "mark19" ],
+    "id": [ "mark19", "mark19_handheld" ],
     "type": "MIGRATION",
     "replace": "grenade_hmg"
   },
@@ -240,12 +240,12 @@
     "replace": "rifle_huge_double"
   },
   {
-    "id": [ "m2browning" ],
+    "id": [ "m2browning", "m2browning_handheld", "gau19", ],
     "type": "MIGRATION",
     "replace": "rifle_huge_hmg"
   },
   {
-    "id": [ "m134", "m249", "m240", "m60", "rm614_lmg", "rm298", "m1919a4", "m1919handheld" ],
+    "id": [ "m134", "m134_handheld", "m249", "m240", "m60", "rm614_lmg", "rm298", "m1919a4", "m1919handheld" ],
     "type": "MIGRATION",
     "replace": "rifle_lmg"
   },
