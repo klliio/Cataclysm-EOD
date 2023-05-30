@@ -24,7 +24,7 @@
     "description": "Practice disassembling and reassembling a common household appliance to study its internal construction.",
     "skill_used": "mechanics",
     "practice_data": { "min_difficulty": 0, "max_difficulty": 1, "skill_limit": 2 },
-    "proficiencies": [ { "proficiency": "prof_plasticworking", "time_multiplier": 1, "skill_penalty": 0 } ],
+    "proficiencies": [ { "proficiency": "prof_appliance_repair", "time_multiplier": 1, "skill_penalty": 0 } ],
     "time": "1 h",
     "qualities": [ { "id": "SCREW", "level": 1 }, { "id": "WRENCH", "level": 1 } ],
     "tools": [
