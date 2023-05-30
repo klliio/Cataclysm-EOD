@@ -757,6 +757,7 @@
         "weight": 30,
         "append": true
       },
+      {
         "id": "cuban_flag",
         "name": { "str": "Cuban flag" },
         "description": "Blue and white stripes run horizontally across the flag, a red triangle forms over the left side with a white star in its center.",

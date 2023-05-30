@@ -147,7 +147,6 @@
         "using": [ [ "repair_welding_standard", 1 ], [ "sewing_standard", 4 ] ]
       }
     },
-    "flags": [ "SEAT", "BOARDABLE", "NONBELTABLE", "DIFFICULT_PART", "AIRCRAFT_REPAIRABLE_NOPROF" ],
     "breaks_into": [ { "item": "leather", "prob": 50 }, { "item": "scrap", "count": [ 1, 2 ] } ],
     "size": "0 ml",
     "extend": { "flags": [ "NONBELTABLE" ] },
