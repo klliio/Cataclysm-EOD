@@ -3325,7 +3325,7 @@ void options_manager::add_options_debug()
            );
     } );
 
-    add( "ENABLE_EVENTS", "debug", to_translation( "Need proficiency to repair aircraft" ),
+    add( "ENABLE_EVENTS", "debug", to_translation( "Enable event bus system" ),
          to_translation( "Whether event bus system is enaled or not.  Setting this to false improves performance, but achievements and some Magiclysm functionality won't work.  Currently experimental; disabling may break some third-party mods and some other things not stated here." ),
          true
        );
