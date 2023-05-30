@@ -8,11 +8,11 @@
     "category": "CC_*",
     "subcategory": "CSC_*_NESTED",
     "skill_used": "chemistry",
-    "time": "3 m",
-    "batch_time_factors": [ 80, 5 ],
+    "time": "30 s",
+    "batch_time_factors": [ 99, 1 ],
     "book_learn": [ [ "textbook_gaswarfare", 0 ], [ "textbook_anarch", 0 ], [ "manual_launcher", 0 ] ],
     "components": [ [ [ "gasoline", 1 ], [ "avgas", 1 ], [ "chem_acetone", 1 ] ], [ [ "chem_turpentine", 1 ] ] ],
-    "flags": [ "BLIND_HARD" ]
+    "flags": [ "BLIND_HARD", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -23,11 +23,11 @@
     "category": "CC_*",
     "subcategory": "CSC_*_NESTED",
     "skill_used": "chemistry",
-    "time": "3 m",
-    "batch_time_factors": [ 80, 5 ],
+    "time": "30 s",
+    "batch_time_factors": [ 99, 1 ],
     "book_learn": [ [ "textbook_gaswarfare", 0 ], [ "textbook_anarch", 0 ], [ "manual_launcher", 0 ] ],
     "components": [ [ [ "gasoline", 3 ], [ "avgas", 3 ] ], [ [ "crude_lamp_oil", 1 ], [ "lamp_oil", 1 ], [ "motor_oil", 1 ] ] ],
-    "flags": [ "BLIND_HARD" ]
+    "flags": [ "BLIND_HARD", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
@@ -38,14 +38,14 @@
     "category": "CC_*",
     "subcategory": "CSC_*_NESTED",
     "skill_used": "chemistry",
-    "time": "3 m",
-    "batch_time_factors": [ 80, 5 ],
+    "time": "30 s",
+    "batch_time_factors": [ 99, 1 ],
     "book_learn": [ [ "textbook_gaswarfare", 0 ], [ "textbook_anarch", 0 ], [ "manual_launcher", 0 ] ],
     "components": [
       [ [ "gasoline", 2 ], [ "avgas", 2 ] ],
       [ [ "crude_lamp_oil", 1 ], [ "lamp_oil", 1 ], [ "motor_oil", 1 ] ],
       [ [ "chem_turpentine", 1 ] ]
     ],
-    "flags": [ "BLIND_HARD" ]
+    "flags": [ "BLIND_HARD", "NEVER_FAIL" ]
   }
 ]

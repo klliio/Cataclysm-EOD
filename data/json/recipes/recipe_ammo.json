@@ -745,12 +745,12 @@
     "category": "CC_*",
     "subcategory": "CSC_*_NESTED",
     "skill_used": "chemistry",
-    "time": "3 m",
-    "batch_time_factors": [ 80, 5 ],
+    "time": "30 s",
+    "batch_time_factors": [ 99, 1 ],
     "book_learn": [ [ "textbook_gaswarfare", 0 ], [ "textbook_anarch", 0 ], [ "manual_launcher", 0 ] ],
     "proficiencies": [ { "proficiency": "prof_intro_chemistry" } ],
     "components": [ [ [ "gasoline", 2 ], [ "avgas", 2 ] ], [ [ "diesel", 1 ], [ "biodiesel", 1 ], [ "jp8", 1 ] ] ],
-    "flags": [ "BLIND_HARD" ]
+    "flags": [ "BLIND_HARD", "NEVER_FAIL" ]
   },
   {
     "type": "recipe",
