@@ -348,6 +348,7 @@ extern const flag_id flag_USE_PLAYER_ENERGY;
 extern const flag_id flag_USE_UPS;
 extern const flag_id flag_VARSIZE;
 extern const flag_id flag_VEHICLE;
+extern const flag_id flag_VEHICLE_GUN_ONLY;
 extern const flag_id flag_WAIST;
 extern const flag_id flag_WATCH;
 extern const flag_id flag_WATERPROOF;

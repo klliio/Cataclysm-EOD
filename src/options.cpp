@@ -3289,6 +3289,7 @@ void options_manager::add_options_debug()
              to_translation( "How many levels up and down the experimental 3D field of vision reaches.  (This many levels up, this many levels down.)  3D vision of the full height of the world can slow the game down a lot.  Seeing fewer Z-levels is faster." ),
              0, OVERMAP_LAYERS, 4
            );
+        get_option( "FOV_3D_Z_RANGE" ).setPrerequisite( "FOV_3D" );
     } );
 
     add_option_group( "debug", Group( "occlusion_opts", to_translation( "Occlusion Options" ),
@@ -3322,9 +3323,12 @@ void options_manager::add_options_debug()
              to_translation( "Maximum distance for auto occlusion handling.  Values above zero overwrite tileset settings." ),
              0.0, 60.0, 0.0, 0.1
            );
-
-        get_option( "FOV_3D_Z_RANGE" ).setPrerequisite( "FOV_3D" );
     } );
+
+    add( "ENABLE_EVENTS", "debug", to_translation( "Enable event bus system" ),
+         to_translation( "Whether event bus system is enaled or not.  Setting this to false improves performance, but achievements and some Magiclysm functionality won't work.  Currently experimental; disabling may break some third-party mods and some other things not stated here." ),
+         true
+       );
 }
 
 void options_manager::add_options_android()

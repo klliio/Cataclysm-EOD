@@ -587,6 +587,8 @@ class item : public visitable
          */
         int price_no_contents( bool practical, std::optional<int> price_override = std::nullopt ) const;
 
+        units::mass get_min_veh_mass() const;
+
         /**
          * Whether two items should stack when displayed in a inventory menu.
          * This is different from stacks_with, when two previously non-stackable

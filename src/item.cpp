@@ -2929,6 +2929,12 @@ void item::gun_info( const item *mod, std::vector<iteminfo> &info, const iteminf
                                iteminfo::no_flags );
         }
     }
+    if( mod->get_min_veh_mass().value() > 0 ) {
+        if( parts->test( iteminfo_parts::GUN_MIN_VEH_MASS ) ) {
+            info.emplace_back( weight_to_info( "GUN", _( "Minimum Vehicle Mass: " ), get_min_veh_mass() ) );
+        }
+    }
+    info.back().bNewLine = true;
 
     if( mod->ammo_required() && curammo->ammo->critical_multiplier != 1.0 ) {
         if( parts->test( iteminfo_parts::AMMO_DAMAGE_CRIT_MULTIPLIER ) ) {
@@ -6848,6 +6854,11 @@ int item::price_no_contents( bool practical, std::optional<int> price_override )
     }
 
     return price;
+}
+
+units::mass item::get_min_veh_mass() const
+{
+    return type->min_veh_mass;
 }
 
 // TODO: MATERIALS add a density field to materials.json
@@ -13560,10 +13571,12 @@ bool item::is_upgrade() const
 
 int item::get_min_str() const
 {
-    const Character &p = get_player_character();
     if( type->gun ) {
         int min_str = type->min_str;
-        min_str -= p.get_proficiency_bonus( "archery", proficiency_bonus_type::strength );
+        if( has_flag( flag_RELOAD_AND_SHOOT ) ) {
+            const Character &p = get_player_character();
+            min_str -= p.get_proficiency_bonus( "archery", proficiency_bonus_type::strength );
+        }
 
         for( const item *mod : gunmods() ) {
             min_str += mod->type->gunmod->min_str_required_mod;

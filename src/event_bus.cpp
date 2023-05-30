@@ -4,6 +4,7 @@
 
 #include "debug.h"
 #include "event_subscriber.h"
+#include "options.h"
 
 event_subscriber::~event_subscriber()
 {
@@ -38,8 +39,10 @@ event_bus::~event_bus()
 
 void event_bus::subscribe( event_subscriber *s )
 {
-    subscribers.push_back( s );
-    s->on_subscribe( this );
+    if( get_option<bool>( "ENABLE_EVENTS" ) ) {
+        subscribers.push_back( s );
+        s->on_subscribe( this );
+    }
 }
 
 void event_bus::unsubscribe( event_subscriber *s )
