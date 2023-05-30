@@ -9,6 +9,7 @@
 #include "creature.h"
 #include "debug.h"
 #include "enums.h"
+#include "flag.h"
 #include "gun_mode.h"
 #include "item.h"
 #include "itype.h"
@@ -443,6 +444,13 @@ std::vector<vehicle_part *> vehicle::find_all_ready_turrets( bool manual, bool a
     for( vehicle_part *t : turrets() ) {
         if( ( t->enabled && automatic ) || ( !t->enabled && manual ) ) {
             if( turret_query( *t ).query() == turret_data::status::ready ) {
+                turret_data turret_here = turret_query( global_part_pos3( *t ) );
+                if( turret_here.base()->has_flag( flag_VEHICLE_GUN_ONLY ) ) {
+                    if( !has_part( global_part_pos3( *t ), "MOUNTABLE_HEAVY", false ) ||
+                        total_mass() < turret_here.base()->get_min_veh_mass() ) {
+                        continue;
+                    }
+                }
                 res.push_back( t );
             }
         }

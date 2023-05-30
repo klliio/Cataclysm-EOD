@@ -6,5 +6,9 @@
   {
     "id": "ROTOR_INSTALL",
     "type": "json_flag"
+  },
+  {
+    "id": "MOUNTABLE_HEAVY",
+    "type": "json_flag"
   }
 ]

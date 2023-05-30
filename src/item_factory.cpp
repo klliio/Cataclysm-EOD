@@ -3878,6 +3878,7 @@ void Item_factory::load_basic_info( const JsonObject &jo, itype &def, const std:
     assign( jo, "category", def.category_force, strict );
     assign( jo, "weight", def.weight, strict, 0_gram );
     assign( jo, "integral_weight", def.integral_weight, strict, 0_gram );
+    assign( jo, "min_veh_mass", def.min_veh_mass, false, 0_gram );
     assign( jo, "volume", def.volume );
     assign( jo, "longest_side", def.longest_side );
     assign( jo, "price", def.price, false, 0_cent );

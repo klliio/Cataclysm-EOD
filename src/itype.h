@@ -1136,6 +1136,9 @@ struct itype {
         */
         /**@{*/
 
+        /** Minimum vehicle mass needed to fire a weapon. Currently only used for guns with VEHICLE_GUN_ONLY flag.**/
+        units::mass min_veh_mass = 0_gram;
+
         /** Weight of item ( or each stack member ) */
         units::mass weight = 0_gram;
         /** Weight difference with the part it replaces for mods (defaults to weight) */

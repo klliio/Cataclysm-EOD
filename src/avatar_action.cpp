@@ -766,6 +766,13 @@ void avatar_action::fire_wielded_weapon( avatar &you )
         return;
     }
 
+    if( weapon->has_flag( flag_VEHICLE_GUN_ONLY ) ) {
+        add_msg( m_info,
+                 _( "Your %s must be mounted on a vehicle with a sturdy frame and enough mass to fire." ),
+                 weapon->tname() );
+        return;
+    }
+
     if( weapon->is_gunmod() ) {
         add_msg( m_info,
                  _( "The %s must be attached to a gun, it can not be fired separately." ),
@@ -798,6 +805,25 @@ bool avatar_action::fire_turret_manual( avatar &you, map &m, turret_data &turret
     if( !turret.base()->is_gun() ) {
         debugmsg( "Expected turret base to be a gun." );
         return false;
+    }
+
+
+    if( turret.base()->has_flag( flag_VEHICLE_GUN_ONLY ) ) {
+        const optional_vpart_position vp = m.veh_at( you.pos() );
+        vehicle *veh = veh_pointer_or_null( vp );
+        if( !veh ) {
+            debugmsg( "Vehicle not found on fired vehicular weapon tile." );
+            return false;
+        }
+        if( !static_cast<bool>( vp.part_with_feature( "MOUNTABLE_HEAVY", true ) ) ) {
+            add_msg( m_bad, _( "This vehicle's frame is not durable enough to handle the recoil of the %s." ),
+                     turret.name() );
+            return false;
+        }
+        if( veh->total_mass() < turret.base()->get_min_veh_mass() ) {
+            add_msg( m_bad, _( "This vehicle is too light to safely fire the %s." ), turret.name() );
+            return false;
+        }
     }
 
     switch( turret.query() ) {
