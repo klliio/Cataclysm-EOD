@@ -388,7 +388,7 @@
     "replace": "grenade_ammo_flare"
   },
   {
-    "id": [ "40x46mm_m433", "40x46mm_m651", "40x53mm_m430a1" ],
+    "id": [ "25mm_hei", "40x46mm_m433", "40x46mm_m651", "40x53mm_m430a1" ],
     "type": "MIGRATION",
     "replace": "grenade_ammo_hedp"
   },
@@ -414,6 +414,12 @@
   },
   {
     "id": [
+      "25mm_apds",
+      "25mm_apfsds",
+      "25mm_slug",
+      "bp_25mm_slug",
+      "25mm_slug_t",
+      "bp_25mm_slug_t",
       "40x46mm_slug_m118",
       "40x46mm_slug_m199",
       "40x53mm_slug_m169",

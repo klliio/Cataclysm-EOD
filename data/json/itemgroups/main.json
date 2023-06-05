@@ -91,6 +91,11 @@
     "id": "launchers",
     "subtype": "distribution",
     "entries": [
+      { "item": "25mm_autocannon", "prob": 1 },
+      { "item": "25mm_apds", "prob": 1 },
+      { "item": "25mm_apfsds", "prob": 1 },
+      { "item": "25mm_hei", "prob": 1 },
+      { "item": "belt25mm", "contents-group": "25mm_ammo", "prob": 2 },
       { "item": "mm1", "prob": 1 },
       { "item": "m79", "prob": 10 },
       { "item": "m320", "prob": 50 },
