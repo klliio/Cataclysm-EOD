@@ -20,7 +20,7 @@
     "replace": "grenade_blooper"
   },
   {
-    "id": [ "mark19", "mark19_handheld" ],
+    "id": [ "mark19", "mark19_handheld", "25mm_autocannon" ],
     "type": "MIGRATION",
     "replace": "grenade_hmg"
   },
@@ -240,7 +240,7 @@
     "replace": "rifle_huge_double"
   },
   {
-    "id": [ "m2browning", "m2browning_handheld", "gau19", ],
+    "id": [ "m2browning", "m2browning_handheld", "gau19" ],
     "type": "MIGRATION",
     "replace": "rifle_huge_hmg"
   },

@@ -1,6 +1,13 @@
 [
   {
-    "id": [ "40x46mm_m118_casing", "40x46mm_m199_casing", "40x46mm_m195_casing", "40x46mm_m212casing", "40x53mm_m169_casing" ],
+    "id": [
+      "25mm_casing",
+      "40x46mm_m118_casing",
+      "40x46mm_m199_casing",
+      "40x46mm_m195_casing",
+      "40x46mm_m212casing",
+      "40x53mm_m169_casing"
+    ],
     "type": "MIGRATION",
     "replace": "grenade_casing"
   },
@@ -72,7 +79,7 @@
     "replace": "ammolinkrifle"
   },
   {
-    "id": "ammolink40mm",
+    "id": [ "ammolink25mm", "ammolink40mm" ],
     "type": "MIGRATION",
     "replace": "ammolinkgrenade"
   },

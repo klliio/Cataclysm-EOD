@@ -65,6 +65,7 @@
     "id": "vfw_books",
     "type": "item_group",
     "items": [
+      { "item": "textbook_launcher", "prob": 5 },
       [ "mag_traps", 20 ],
       [ "manual_traps", 12 ],
       [ "trappers_companion", 2 ],
@@ -1554,6 +1555,7 @@
     "id": "cop_evidence",
     "subtype": "distribution",
     "entries": [
+      { "item": "textbook_launcher", "prob": 3 },
       { "item": "crackpipe", "prob": 8 },
       { "item": "weed", "prob": 10, "charges": [ 1, 5 ] },
       { "item": "joint", "prob": 10 },

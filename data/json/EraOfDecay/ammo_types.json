@@ -4,5 +4,11 @@
     "id": "salt",
     "name": "salt",
     "default": "salt"
+  },
+  {
+    "type": "ammunition_type",
+    "id": "25mm",
+    "name": "25x137mm",
+    "default": "25mm_hei"
   }
 ]

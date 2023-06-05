@@ -86,5 +86,23 @@
     "color": "brown",
     "symbol": ",",
     "material": [ "leather" ]
+  },
+  {
+    "type": "AMMO",
+    "id": "25mm_primer",
+    "category": "spare_parts",
+    "price": "50 USD",
+    "price_postapoc": "10 USD",
+    "name": { "str": "25x137mm primer" },
+    "symbol": "=",
+    "color": "dark_gray",
+    "description": "An M115 percussion primer from a 25x137mm round.",
+    "material": [ "steel", "powder" ],
+    "volume": "100 ml",
+    "weight": "5 g",
+    "longest_side": "6 mm",
+    "ammo_type": "components",
+    "count": 50,
+    "effects": [ "COOKOFF" ]
   }
 ]

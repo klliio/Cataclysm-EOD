@@ -1,6 +1,6 @@
 [
   {
-    "id": [ "belt40mm" ],
+    "id": [ "belt25mm", "belt40mm" ],
     "type": "MIGRATION",
     "replace": "grenade_belt"
   },

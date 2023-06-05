@@ -657,6 +657,7 @@
     "type": "item_group",
     "id": "mil_surplus",
     "items": [
+      [ "textbook_launcher", 2 ],
       { "group": "mags_surplus", "prob": 400 },
       [ "freeze_dried_meal", 20 ],
       [ "chocolate_military", 20 ],

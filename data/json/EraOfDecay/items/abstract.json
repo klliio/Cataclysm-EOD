@@ -75,5 +75,12 @@
     "name": { "str": "base large shield" },
     "longest_side": "120 cm",
     "techniques": [ "WBLOCK_3" ]
+  },
+  {
+    "abstract": "steel_casing",
+    "copy-from": "casing",
+    "type": "GENERIC",
+    "name": { "str": "steel casing from ammunition cartridge" },
+    "material": [ "steel" ]
   }
 ]
