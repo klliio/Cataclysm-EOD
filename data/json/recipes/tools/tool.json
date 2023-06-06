@@ -650,6 +650,7 @@
       [ [ "sheet_metal_small", 12 ] ],
       [ [ "aquarium_small", 1 ] ],
       [ [ "electrolysis_membrane", 1 ] ],
+      [ [ "lye", 16 ] ],
       [ [ "sheet_metal", 1 ] ],
       [ [ "cable", 400 ] ],
       [ [ "scrap", 16 ] ],

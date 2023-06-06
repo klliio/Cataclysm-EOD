@@ -15,6 +15,7 @@
 #include <vector>
 
 #include "achievement.h"
+#include "action.h"
 #include "activity_type.h"
 #include "auto_pickup.h"
 #include "avatar.h"
@@ -311,6 +312,7 @@ enum npc_chat_menu {
     NPC_CHAT_START_SEMINAR,
     NPC_CHAT_SENTENCE,
     NPC_CHAT_GUARD,
+    NPC_CHAT_MOVE_TO_POS,
     NPC_CHAT_FOLLOW,
     NPC_CHAT_AWAKE,
     NPC_CHAT_MOUNT,
@@ -781,6 +783,9 @@ void game::chat()
                         string_format( _( "Tell %s to guard" ), followers.front()->get_name() ) :
                         _( "Tell someone to guard…" )
                       );
+        nmenu.addentry( NPC_CHAT_MOVE_TO_POS, true, 'G',
+                        follower_count == 1 ? string_format( _( "Tell %s to move to location" ),
+                                followers.front()->get_name() ) : _( "Tell someone to move to location…" ) );
         nmenu.addentry( NPC_CHAT_AWAKE, true, 'w', _( "Tell everyone on your team to wake up" ) );
         nmenu.addentry( NPC_CHAT_MOUNT, true, 'M', _( "Tell everyone on your team to mount up" ) );
         nmenu.addentry( NPC_CHAT_DISMOUNT, true, 'm', _( "Tell everyone on your team to dismount" ) );
@@ -882,6 +887,35 @@ void game::chat()
             } else {
                 talk_function::assign_guard( *followers[npcselect] );
                 yell_msg = string_format( _( "Guard here, %s!" ), followers[npcselect]->get_name() );
+            }
+            break;
+        }
+        case NPC_CHAT_MOVE_TO_POS: {
+            const int npcselect = npc_select_menu( followers, _( "Who should move?" ) );
+            if( npcselect < 0 ) {
+                return;
+            }
+
+            map &here = get_map();
+            std::optional<tripoint> p = look_around();
+
+            if( !p ) {
+                return;
+            }
+
+            if( here.impassable( tripoint( *p ) ) ) {
+                add_msg( m_info, _( "This destination can't be reached." ) );
+                return;
+            }
+
+            if( npcselect == follower_count ) {
+                for( npc *them : followers ) {
+                    them->goto_to_this_pos = here.getglobal( *p );
+                }
+                yell_msg = _( "Everyone move there!" );
+            } else {
+                followers[npcselect]->goto_to_this_pos = here.getglobal( *p );
+                yell_msg = string_format( _( "Move there, %s!" ), followers[npcselect]->get_name() );
             }
             break;
         }
@@ -1960,20 +1994,37 @@ const std::unordered_map<std::string, std::function<bool( dialogue & )>>
     return conditionals;
 }
 
+void dialogue::amend_callstack( const std::string &value )
+{
+    if( !context["callstack"].empty() ) {
+        context["callstack"] += " \\ " + value;
+    } else {
+        context["callstack"] = value;
+    }
+}
+
+std::string dialogue::get_callstack() const
+{
+    if( context.count( "callstack" ) != 0 ) {
+        return "Callstack: " + context.find( "callstack" )->second;
+    }
+    return "";
+}
+
 talker *dialogue::actor( const bool is_beta ) const
 {
     if( !has_beta && !has_alpha ) {
-        debugmsg( "Attempted to use a dialogue with no actors!" );
+        debugmsg( "Attempted to use a dialogue with no actors!  %s", get_callstack() );
     }
     if( is_beta && !has_beta ) {
-        debugmsg( "Tried to use an invalid beta talker." );
+        debugmsg( "Tried to use an invalid beta talker.  %s", get_callstack() );
         // Try to avoid a crash by using the alpha if it exists
         if( has_alpha ) {
             return alpha.get();
         }
     }
     if( !is_beta && !has_alpha ) {
-        debugmsg( "Tried to use an invalid alpha talker." );
+        debugmsg( "Tried to use an invalid alpha talker.  %s", get_callstack() );
         // Try to avoid a crash by using the beta if it exists
         if( has_beta ) {
             return beta.get();
@@ -1991,9 +2042,8 @@ dialogue::dialogue( const dialogue &d ) : has_beta( d.has_beta ), has_alpha( d.h
         beta = d.actor( true )->clone();
     }
     if( !has_alpha && !has_beta ) {
-        debugmsg( "Constructed a dialogue with no actors!" );
+        debugmsg( "Constructed a dialogue with no actors!  %s", get_callstack() );
     }
-
     context = d.get_context();
     conditionals = d.get_conditionals();
 }
@@ -2012,7 +2062,7 @@ dialogue::dialogue( std::unique_ptr<talker> alpha_in,
         beta = std::move( beta_in );
     }
     if( !has_alpha && !has_beta ) {
-        debugmsg( "Constructed a dialogue with no actors!" );
+        debugmsg( "Constructed a dialogue with no actors!  %s", get_callstack() );
     }
 
     context = ctx;
@@ -3773,9 +3823,15 @@ void talk_effect_fun_t::set_cast_spell( const JsonObject &jo, const std::string_
     function = [is_npc, fake, targeted, true_eocs, false_eocs]( dialogue const & d ) {
         Creature *caster = d.actor( is_npc )->get_creature();
         if( !caster ) {
-            debugmsg( "No valid caster for spell." );
+            debugmsg( "No valid caster for spell.  %s", d.get_callstack() );
             run_eoc_vector( false_eocs, d );
+            return;
         } else {
+            if( !fake.is_valid() ) {
+                debugmsg( "%s is not a valid spell.  %s", fake.id.c_str(), d.get_callstack() );
+                run_eoc_vector( false_eocs, d );
+                return;
+            }
             spell sp = fake.get_spell( *caster, 0 );
             if( targeted ) {
                 if( std::optional<tripoint> target = sp.select_target( caster ) ) {
@@ -4003,8 +4059,8 @@ void talk_effect_fun_t::set_run_eocs( const JsonObject &jo, const std::string_vi
         jo.throw_error( "Invalid input for run_eocs" );
     }
     function = [eocs]( dialogue const & d ) {
-        dialogue newDialog( d );
         for( const effect_on_condition_id &eoc : eocs ) {
+            dialogue newDialog( d );
             eoc->activate( newDialog );
         }
     };
@@ -4084,7 +4140,7 @@ void talk_effect_fun_t::set_run_npc_eocs( const JsonObject &jo,
                             dialogue newDialog( get_talker_for( npc ), nullptr, d.get_conditionals(), d.get_context() );
                             eoc->activate( newDialog );
                         } else {
-                            debugmsg( "Tried to use invalid npc: %s", target.evaluate( d ) );
+                            debugmsg( "Tried to use invalid npc: %s. %s", target.evaluate( d ), d.get_callstack() );
                         }
                     }
                 }
@@ -4116,7 +4172,7 @@ void talk_effect_fun_t::set_queue_eocs( const JsonObject &jo, const std::string_
                 // If the target is a monster or item and the eoc is non global it won't be queued and will silently "fail"
                 // this is so monster attacks against other monsters won't give error messages.
             } else {
-                debugmsg( "Cannot queue a non activation effect_on_condition." );
+                debugmsg( "Cannot queue a non activation effect_on_condition.  %s", d.get_callstack() );
             }
         }
     };
@@ -4156,7 +4212,7 @@ void talk_effect_fun_t::set_queue_eoc_with( const JsonObject &jo, const std::str
             // If the target is a monster or item and the eoc is non global it won't be queued and will silently "fail"
             // this is so monster attacks against other monsters won't give error messages.
         } else {
-            debugmsg( "Cannot queue a non activation effect_on_condition." );
+            debugmsg( "Cannot queue a non activation effect_on_condition.  %s", d.get_callstack() );
         }
     };
 }
@@ -4245,7 +4301,7 @@ void talk_effect_fun_t::set_roll_remainder( const JsonObject &jo,
                     not_had.push_back( cur_string.evaluate( d ) );
                 }
             } else {
-                debugmsg( "Invalid roll remainder type." );
+                debugmsg( "Invalid roll remainder type.  %s", d.get_callstack() );
             }
         }
         if( !not_had.empty() ) {
@@ -4269,7 +4325,7 @@ void talk_effect_fun_t::set_roll_remainder( const JsonObject &jo,
                 d.actor( is_npc )->learn_recipe( recipe );
                 name = recipe->result_name();
             } else {
-                debugmsg( "Invalid roll remainder type." );
+                debugmsg( "Invalid roll remainder type.  %s", d.get_callstack() );
             }
             std::string cur_message = message.evaluate( d );
             if( !cur_message.empty() ) {
