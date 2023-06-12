@@ -6,6 +6,7 @@
 #include "map_iterator.h"
 
 static const efftype_id effect_sleep( "sleep" );
+static const efftype_id effect_started_fire( "started_fire" );
 static const efftype_id effect_took_prozac( "took_prozac" );
 static const efftype_id effect_took_xanax( "took_xanax" );
 
@@ -19,6 +20,8 @@ static const trait_id trait_NOMAD( "NOMAD" );
 static const trait_id trait_NOMAD2( "NOMAD2" );
 static const trait_id trait_NOMAD3( "NOMAD3" );
 static const trait_id trait_PROF_FOODP( "PROF_FOODP" );
+static const trait_id trait_PYROMANIA( "PYROMANIA" );
+static const trait_id trait_PYROMANIA_GOOD( "PYROMANIA_GOOD" );
 static const trait_id trait_SPIRITUAL( "SPIRITUAL" );
 
 static const json_character_flag json_flag_NYCTOPHOBIA( "NYCTOPHOBIA" );
@@ -215,6 +218,27 @@ void Character::spiritual_morale_bonus()
     } else {
         rem_morale( MORALE_SPIRITUAL );
     }
+}
+
+bool Character::handle_pyromania_morale( const int base_morale, const int max_morale,
+        const time_duration &decay_dur, const time_duration &max_dur, const bool started_fire )
+{
+    if( has_trait( trait_PYROMANIA ) ) {
+        if( !has_effect( effect_started_fire ) ) {
+            add_msg_if_player( m_good, _( "The fire makes your anxiety subside." ) );
+        }
+        rem_morale( MORALE_PYROMANIA_NOFIRE );
+        add_effect( effect_started_fire, max_dur );
+    }
+    if( has_trait( trait_PYROMANIA_GOOD ) ) {
+        if( started_fire ) {
+            add_morale( MORALE_PYROMANIA_STARTFIRE, base_morale, max_morale, max_dur, decay_dur );
+        } else {
+            add_morale( MORALE_PYROMANIA_NEARFIRE, base_morale, max_morale, max_dur, decay_dur );
+        }
+        return true;
+    }
+    return false;
 }
 
 int Character::get_morale_level() const

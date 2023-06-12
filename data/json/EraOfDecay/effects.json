@@ -27,5 +27,21 @@
     "type": "effect_type",
     "id": "fake_flu",
     "show_in_info": false
+  },
+  {
+    "type": "effect_type",
+    "id": "made_kill",
+    "name": [ "Recent Kill" ],
+    "desc": [ "You have recently killed some creature, and don't feel anxious for now." ],
+    "remove_message": "You feel anxiety coming on.  You need to kill more.",
+    "rating": "good"
+  },
+  {
+    "type": "effect_type",
+    "id": "started_fire",
+    "name": [ "Recent Fire" ],
+    "desc": [ "You have recently lit a fire, or have been near one, and don't feel anxious for now." ],
+    "remove_message": "You feel anxiety coming on.  You need more fire.",
+    "rating": "good"
   }
 ]

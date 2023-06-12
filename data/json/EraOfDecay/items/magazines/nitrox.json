@@ -6,10 +6,10 @@
     "name": { "str": "makeshift scuba tank" },
     "description": "This is a small makeshift tank for storing oxygen and nitrogen mix, welded from sheet metal.  If connected to a suitable mouthpiece, it can be used to breath underwater, but it can contain much less oxygen for the same volume than its better-quality counterparts.",
     "material": [ "steel" ],
-    "capacity": 20,
-    "count": 20,
+    "capacity": 40,
+    "count": 40,
     "pocket_data": [
-      { "pocket_type": "MAGAZINE", "rigid": true, "ammo_restriction": { "nitrox": 20 }, "airtight": true, "watertight": true }
+      { "pocket_type": "MAGAZINE", "rigid": true, "ammo_restriction": { "nitrox": 40 }, "airtight": true, "watertight": true }
     ]
   }
 ]

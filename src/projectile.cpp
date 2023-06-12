@@ -161,15 +161,11 @@ void apply_ammo_effects( const Creature *source, const tripoint &p,
                             player_character.has_trait( trait_PYROMANIA ) ) {
                             for( const auto &fd : here.field_at( pt ) ) {
                                 if( fd.first->has_fire ) {
-                                    player_character.rem_morale( MORALE_PYROMANIA_NOFIRE );
-                                    if( player_character.has_trait( trait_PYROMANIA_GOOD ) ) {
-                                        if( !player_character.has_morale( MORALE_PYROMANIA_STARTFIRE ) ) {
-                                            player_character.add_msg_if_player( m_good,
-                                                                                _( "You feel a surge of euphoria as flames burst out!" ) );
-                                        }
-                                        player_character.add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
-                                        break;
+                                    if( player_character.handle_pyromania_morale( 15, 15, 8_hours, 6_hours ) ) {
+                                        player_character.add_msg_if_player( m_good,
+                                                                            _( "You feel a surge of euphoria as flames burst out!" ) );
                                     }
+                                    break;
                                 }
                             }
                         }

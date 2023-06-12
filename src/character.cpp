@@ -161,6 +161,7 @@ static const ammotype ammo_battery( "battery" );
 static const anatomy_id anatomy_human_anatomy( "human_anatomy" );
 
 static const bionic_id afs_bio_linguistic_coprocessor( "afs_bio_linguistic_coprocessor" );
+static const bionic_id bio_cqb( "bio_cqb" );
 static const bionic_id bio_gills( "bio_gills" );
 static const bionic_id bio_ground_sonar( "bio_ground_sonar" );
 static const bionic_id bio_hydraulics( "bio_hydraulics" );
@@ -1780,6 +1781,35 @@ float Character::stability_roll() const
 
 bool Character::block_ranged_hit( Creature *source, bodypart_id &bp_hit, damage_instance &dam )
 {
+    // Shouldn't block if character is asleep, winded or driving.
+    if( in_sleep_state() || has_effect( effect_narcosis ) ||
+        has_effect( effect_winded ) || is_driving() ) {
+        return false;
+    }
+
+    if( blocks_left < 1 ) {
+        return false;
+    }
+
+    // Feet attacks are too low to block with a shield; do not even waste a block attempt on that.
+    if( bp_hit->has_type( body_part_type::type::foot ) ) {
+        return false;
+    }
+
+    // Melee skill and reaction score governs if you can react in time
+    // Skill of 5 without relevant encumbrance guarantees a block attempt
+    // Technically it should depend on facing the direction from which attack comes, but the game doesn't track facing at the moment.
+    // Therefore an assumption is made that you actually do move the shield to try to catch the bullets *before* your attacked fires.
+    // So no actually hiding behind shields from multiple attackers at once at the moment; that's why blocks are also drained here.
+    // Martial arts on-hit effects do not happen, because this isn't a melee attack that we're dealing with here.
+    float melee_skill = has_active_bionic( bio_cqb ) ? 5 : get_skill_level( skill_melee );
+    if( !x_in_y( melee_skill * 20.0 * get_limb_score( limb_score_reaction ), 100 ) ) {
+        add_msg_debug( debugmode::DF_MELEE, "Block roll failed" );
+        return false;
+    }
+
+    blocks_left--;
+
     // TODO: Handle potentially having multiple shields.
     item_location shield = best_shield( true );
 
@@ -1798,20 +1828,15 @@ bool Character::block_ranged_hit( Creature *source, bodypart_id &bp_hit, damage_
     }
 
     const bool leg_hit = bp_hit->has_type( body_part_type::type::leg );
-    const bool foot_hit = bp_hit->has_type( body_part_type::type::foot );
-    int block_chance = 0;
-    if( !foot_hit && shield_level > 0 ) {
-        // TODO: Take into account skills and stats for block chance
-        if( leg_hit ) {
-            block_chance += 25 * shield_level;
-        } else {
-            block_chance += 60 + ( 10 * shield_level );
-        }
+    int block_chance = 25 * shield_level;
+    if( !leg_hit ) {
+        block_chance += 15;
     }
 
     add_msg( m_debug, _( "block_ranged_hit success rate: %i%%" ), block_chance );
 
     // Now roll coverage to determine if we intercept the shot.
+    // Bullets move much faster than melee attacks, so there's always a chance to just "guess" wrong where exactly it hits.
     if( rng( 1, 100 ) > block_chance ) {
         add_msg( m_debug, _( "block_ranged_hit attempt failed" ) );
         return false;
@@ -1828,6 +1853,7 @@ bool Character::block_ranged_hit( Creature *source, bodypart_id &bp_hit, damage_
     // Get name before handling shield damage, to avoid displaying "none" in place of shield name if the shield is destroyed.
     const std::string thing_blocked_with = shield->tname();
 
+    // On the plus side however, shields act as actual armor when blocking range attacks; this means that much more damage is blocked.
     // TODO: Allow shields to define sub body parts used to block with them in JSON.
     if( shield->covers( sub_body_part_arm_lower_l ) && bp_hit != body_part_arm_l ) {
         for( damage_unit &elem : dam.damage_units ) {
@@ -1898,7 +1924,7 @@ void Character::on_try_dodge()
     // Each attempt consumes an available dodge
     consume_dodge_attempts();
 
-    const int base_burn_rate = get_option<int>( STATIC( "PLAYER_BASE_STAMINA_BURN_RATE" ) );
+    const int base_burn_rate = 15 * get_option<float>( STATIC( "PLAYER_BASE_STAMINA_BURN_RATE" ) );
     mod_stamina( -base_burn_rate * 6 );
     set_activity_level( EXTRA_EXERCISE );
 }

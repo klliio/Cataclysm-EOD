@@ -137,7 +137,6 @@ static const skill_id skill_swimming( "swimming" );
 static const skill_id skill_throw( "throw" );
 
 static const trait_id trait_BRAWLER( "BRAWLER" );
-static const trait_id trait_PYROMANIA_GOOD( "PYROMANIA_GOOD" );
 
 static const trap_str_id tr_practice_target( "tr_practice_target" );
 
@@ -919,13 +918,9 @@ int Character::fire_gun( const tripoint &target, int shots, item &gun )
         if( curammo_effects.count( "FLAME" ) || curammo_effects.count( "PYROPHORIC" ) ||
             curammo_effects.count( "INCENDIARY" ) || curammo_effects.count( "NAPALM" ) ||
             curammo_effects.count( "IGNITE" ) ) {
-            rem_morale( MORALE_PYROMANIA_NOFIRE );
-            if( has_trait( trait_PYROMANIA_GOOD ) ) {
-                if( !has_morale( MORALE_PYROMANIA_STARTFIRE ) ) {
-                    add_msg_if_player( m_good, _( "You feel a surge of euphoria as you fire the %s!" ),
-                                       gun.tname() );
-                }
-                add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
+            if( handle_pyromania_morale( 15, 15, 8_hours, 6_hours ) ) {
+                add_msg_if_player( m_good, _( "You feel a surge of euphoria as you fire the %s!" ),
+                                   gun.tname() );
             }
         }
 

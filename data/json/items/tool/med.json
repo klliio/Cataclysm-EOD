@@ -277,11 +277,12 @@
     "symbol": "#",
     "color": "light_gray",
     "pocket_data": [
-      { "pocket_type": "MAGAZINE", "airtight": true, "watertight": true, "rigid": true, "ammo_restriction": { "oxygen": 24 } }
+      { "pocket_type": "MAGAZINE", "airtight": true, "watertight": true, "rigid": true, "ammo_restriction": { "oxygen": 12 } }
     ],
     "ammo_type": [ "oxygen" ],
-    "capacity": 24,
-    "count": 24,
+    "capacity": 12,
+    "count": 12,
+    "flags": [ "NO_UNLOAD", "NO_RELOAD" ],
     "melee_damage": { "bash": 6 }
   },
   {
@@ -334,11 +335,12 @@
     "symbol": "#",
     "color": "light_gray",
     "pocket_data": [
-      { "pocket_type": "MAGAZINE", "airtight": true, "watertight": true, "rigid": true, "ammo_restriction": { "oxygen": 48 } }
+      { "pocket_type": "MAGAZINE", "airtight": true, "watertight": true, "rigid": true, "ammo_restriction": { "oxygen": 24 } }
     ],
     "ammo_type": [ "oxygen" ],
-    "capacity": 48,
-    "count": 48,
+    "capacity": 24,
+    "count": 24,
+    "flags": [ "NO_UNLOAD", "NO_RELOAD" ],
     "melee_damage": { "bash": 10 }
   },
   {

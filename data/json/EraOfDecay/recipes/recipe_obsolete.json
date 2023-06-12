@@ -11,16 +11,6 @@
     "obsolete": true
   },
   {
-    "result": "tinyweldtank",
-    "type": "recipe",
-    "obsolete": true
-  },
-  {
-    "result": "weldtank",
-    "type": "recipe",
-    "obsolete": true
-  },
-  {
     "result": "lye",
     "type": "recipe",
     "id_suffix": "by_electrolysis",
@@ -84,6 +74,27 @@
   },
   {
     "result": "exploding_arrow_warhead",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "nitrox",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "oxyacetylene",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "butane",
+    "type": "recipe",
+    "obsolete": true
+  },
+  {
+    "result": "gas_butane",
+    "id_suffix": "from_ethanol",
     "type": "recipe",
     "obsolete": true
   }

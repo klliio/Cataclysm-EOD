@@ -382,7 +382,6 @@ static const trait_id trait_MARLOSS_YELLOW( "MARLOSS_YELLOW" );
 static const trait_id trait_M_DEPENDENT( "M_DEPENDENT" );
 static const trait_id trait_NOPAIN( "NOPAIN" );
 static const trait_id trait_PSYCHOPATH( "PSYCHOPATH" );
-static const trait_id trait_PYROMANIA_GOOD( "PYROMANIA_GOOD" );
 static const trait_id trait_SPIRITUAL( "SPIRITUAL" );
 static const trait_id trait_THRESH_MARLOSS( "THRESH_MARLOSS" );
 static const trait_id trait_THRESH_MYCUS( "THRESH_MYCUS" );
@@ -2521,11 +2520,11 @@ std::optional<int> iuse::suture( Character *p, item *it, bool, const tripoint & 
 static std::optional<int> mangle_act( Character &p, item &it )
 {
     if( p.is_mounted() ) {
-        p.add_msg_if_player( m_info, _( "You can't mangle yourself while mounted." ) );
+        p.add_msg_if_player( m_info, _( "You can't cut yourself while mounted." ) );
         return std::nullopt;
     }
     if( !p.enjoys_pain() ) {
-        p.add_msg_if_player( m_info, _( "You refuse to mangle yourself for no reason." ) );
+        p.add_msg_if_player( m_info, _( "You refuse to cut yourself for no reason." ) );
         return std::nullopt;
     }
 
@@ -2537,12 +2536,12 @@ static std::optional<int> mangle_act( Character &p, item &it )
             // TODO: This can result in character dying if a vital part (such as head or torso) is chosen.
             // Need to check for whether the part is vital and at low HP, and prevent cauterizing if so.
             if( !query_yn(
-                    _( "This body part is too damaged and would break if mangled further.  Proceed anyway?" ) ) ) {
+                    _( "This body part is too damaged and would break if cut further.  Proceed anyway?" ) ) ) {
                 return std::nullopt;
             }
         }
 
-        p.add_msg_if_player( m_neutral, _( "You mangle yourself." ) );
+        p.add_msg_if_player( m_neutral, _( "You cut yourself." ) );
         p.apply_damage( nullptr, hpart, 1 );
         if( !p.has_trait( trait_NOPAIN ) ) {
             p.mod_pain( 10 );
@@ -3851,9 +3850,7 @@ std::optional<int> iuse::grenade_inc_act( Character *p, item *it, bool t, const 
             here.add_field( dest, fd_incendiary, 3 );
         }
 
-        p->rem_morale( MORALE_PYROMANIA_NOFIRE );
-        if( p->has_trait( trait_PYROMANIA_GOOD ) ) {
-            p->add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
+        if( p->handle_pyromania_morale( 15, 15, 8_hours, 6_hours ) ) {
             p->add_msg_if_player( m_good, _( "Fire…  Good…" ) );
         }
     }
@@ -3873,9 +3870,7 @@ std::optional<int> iuse::molotov_lit( Character *p, item *it, bool t, const trip
                 const int intensity = 1 + one_in( 3 ) + one_in( 5 );
                 here.add_field( pt, fd_fire, intensity );
             }
-            p->rem_morale( MORALE_PYROMANIA_NOFIRE );
-            if( p->has_trait( trait_PYROMANIA_GOOD ) ) {
-                p->add_morale( MORALE_PYROMANIA_STARTFIRE, 15, 15, 8_hours, 6_hours );
+            if( p->handle_pyromania_morale( 15, 15, 8_hours, 6_hours ) ) {
                 p->add_msg_if_player( m_good, _( "Fire…  Good…" ) );
             }
             return 1;

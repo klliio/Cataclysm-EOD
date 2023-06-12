@@ -91,12 +91,14 @@ static const efftype_id effect_hallu( "hallu" );
 static const efftype_id effect_incorporeal( "incorporeal" );
 static const efftype_id effect_iodine( "iodine" );
 static const efftype_id effect_masked_scent( "masked_scent" );
+static const efftype_id effect_made_kill( "made_kill" );
 static const efftype_id effect_mending( "mending" );
 static const efftype_id effect_narcosis( "narcosis" );
 static const efftype_id effect_nausea( "nausea" );
 static const efftype_id effect_onfire( "onfire" );
 static const efftype_id effect_shakes( "shakes" );
 static const efftype_id effect_sleep( "sleep" );
+static const efftype_id effect_started_fire( "started_fire" );
 static const efftype_id effect_took_antiasthmatic( "took_antiasthmatic" );
 static const efftype_id effect_took_modafinil( "took_modafinil" );
 static const efftype_id effect_took_thorazine( "took_thorazine" );
@@ -1264,10 +1266,8 @@ void suffer::from_other_mutations( Character &you )
         you.mutate();
     }
 
-    const bool needs_fire = !you.has_morale( MORALE_PYROMANIA_NEARFIRE ) &&
-                            !you.has_morale( MORALE_PYROMANIA_STARTFIRE );
-    if( you.has_trait( trait_PYROMANIA ) && needs_fire && !you.in_sleep_state() &&
-        calendar::once_every( 2_hours ) ) {
+    if( you.has_trait( trait_PYROMANIA ) && !you.has_effect( effect_started_fire ) &&
+        !you.in_sleep_state() && calendar::once_every( 2_hours ) ) {
         you.add_morale( MORALE_PYROMANIA_NOFIRE, -1, -30, 24_hours, 24_hours, true );
         if( calendar::once_every( 4_hours ) ) {
             const translation smokin_hot_fiyah =
@@ -1275,7 +1275,7 @@ void suffer::from_other_mutations( Character &you )
             you.add_msg_if_player( m_bad, "%s", smokin_hot_fiyah );
         }
     }
-    if( you.has_trait( trait_KILLER ) && !you.has_morale( MORALE_KILLER_HAS_KILLED ) &&
+    if( you.has_trait( trait_KILLER ) && !you.has_effect( effect_made_kill ) &&
         calendar::once_every( 2_hours ) ) {
         you.add_morale( MORALE_KILLER_NEED_TO_KILL, -1, -30, 24_hours, 24_hours );
         if( calendar::once_every( 4_hours ) ) {

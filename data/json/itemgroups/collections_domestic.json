@@ -612,7 +612,7 @@
       { "item": "catfood_dry", "prob": 2, "charges": 8, "container-item": "bag_plastic" },
       { "item": "nic_gum", "prob": 2, "charges": [ 1, 10 ] },
       { "item": "oxygen_tank", "prob": 2, "charges": [ 0, 12 ] },
-      { "item": "smoxygen_tank", "prob": 1, "charges": [ 0, 24 ] },
+      { "item": "smoxygen_tank", "prob": 1, "charges": [ 0, 12 ] },
       { "group": "religious_books", "prob": 38 },
       { "item": "leathersandals", "prob": 25 },
       { "item": "phonebook", "prob": 5 },
