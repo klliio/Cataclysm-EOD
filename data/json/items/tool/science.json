@@ -681,17 +681,18 @@
     "symbol": "#",
     "color": "light_gray",
     "ammo_type": [ "oxygen" ],
-    "capacity": 600,
-    "count": 600,
+    "capacity": 300,
+    "count": 300,
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE",
         "rigid": true,
-        "ammo_restriction": { "oxygen": 600 },
+        "ammo_restriction": { "oxygen": 300 },
         "watertight": true,
         "airtight": true
       }
     ],
+    "flags": [ "NO_UNLOAD", "NO_RELOAD" ],
     "melee_damage": { "bash": 10 }
   },
   {

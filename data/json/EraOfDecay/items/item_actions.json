@@ -17,6 +17,11 @@
   {
     "type": "item_action",
     "id": "MANGLE",
-    "name": { "str": "Mangle yourself" }
+    "name": { "str": "Cut yourself" }
+  },
+  {
+    "type": "item_action",
+    "id": "COOLER",
+    "name": { "str": "Cool down something (with it)" }
   }
 ]

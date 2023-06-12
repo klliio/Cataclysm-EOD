@@ -25,6 +25,13 @@
     "time": "2 h",
     "book_learn": [ [ "recipe_labchem", 6 ] ],
     "batch_time_factors": [ 30, 5 ],
+    "proficiencies": [
+      { "proficiency": "prof_intro_chemistry" },
+      { "proficiency": "prof_intro_biology" },
+      { "proficiency": "prof_inorganic_chemistry" },
+      { "proficiency": "prof_organic_chemistry" },
+      { "proficiency": "prof_pharmaceutical" }
+    ],
     "qualities": [ { "id": "CHEM", "level": 2 } ],
     "components": [ [ [ "dayquil", 15 ] ], [ [ "ammonia_liquid", 2 ] ], [ [ "chem_sodium", 25 ], [ "chem_lithium", 25 ] ] ]
   },
@@ -39,6 +46,13 @@
     "difficulty": 3,
     "time": "1 h",
     "book_learn": [ [ "recipe_labchem", 6 ] ],
+    "proficiencies": [
+      { "proficiency": "prof_intro_chemistry" },
+      { "proficiency": "prof_intro_biology" },
+      { "proficiency": "prof_inorganic_chemistry" },
+      { "proficiency": "prof_organic_chemistry" },
+      { "proficiency": "prof_pharmaceutical" }
+    ],
     "batch_time_factors": [ 30, 5 ],
     "qualities": [ { "id": "CHEM", "level": 1 } ],
     "components": [
@@ -69,6 +83,13 @@
     "difficulty": 5,
     "time": "2 h",
     "book_learn": [ [ "recipe_labchem", 6 ] ],
+    "proficiencies": [
+      { "proficiency": "prof_intro_chemistry" },
+      { "proficiency": "prof_intro_biology" },
+      { "proficiency": "prof_inorganic_chemistry" },
+      { "proficiency": "prof_organic_chemistry" },
+      { "proficiency": "prof_pharmaceutical" }
+    ],
     "batch_time_factors": [ 30, 5 ],
     "qualities": [ { "id": "CHEM", "level": 2 } ],
     "components": [
@@ -100,6 +121,13 @@
     "time": "2 h",
     "//": "This recipe represents opium extraction.  Assumption is taken that mutated poppy contains the same chemicals as standard opium poppy, but in higher concentrations.  The other byproducts of this process are thebaine, narcotine and papaverine, but they aren't implemented yet.",
     "book_learn": [ [ "recipe_labchem", 6 ] ],
+    "proficiencies": [
+      { "proficiency": "prof_intro_chemistry" },
+      { "proficiency": "prof_intro_biology" },
+      { "proficiency": "prof_inorganic_chemistry" },
+      { "proficiency": "prof_organic_chemistry" },
+      { "proficiency": "prof_pharmaceutical" }
+    ],
     "batch_time_factors": [ 30, 5 ],
     "qualities": [ { "id": "CHEM", "level": 2 }, { "id": "BOIL", "level": 2 } ],
     "components": [
@@ -124,6 +152,13 @@
     "difficulty": 5,
     "time": "1 h 30 m",
     "book_learn": [ [ "recipe_labchem", 6 ] ],
+    "proficiencies": [
+      { "proficiency": "prof_intro_chemistry" },
+      { "proficiency": "prof_intro_biology" },
+      { "proficiency": "prof_inorganic_chemistry" },
+      { "proficiency": "prof_organic_chemistry" },
+      { "proficiency": "prof_pharmaceutical" }
+    ],
     "batch_time_factors": [ 30, 5 ],
     "qualities": [ { "id": "CHEM", "level": 2 }, { "id": "BOIL", "level": 2 } ],
     "components": [
@@ -193,6 +228,7 @@
     "difficulty": 3,
     "time": "30 m",
     "book_learn": [ [ "adv_chemistry", 3 ], [ "textbook_chemistry", 4 ], [ "recipe_labchem", 3 ], [ "atomic_survival", 3 ] ],
+    "proficiencies": [ { "proficiency": "prof_intro_chemistry" }, { "proficiency": "prof_inorganic_chemistry" } ],
     "batch_time_factors": [ 30, 5 ],
     "qualities": [ { "id": "CHEM", "level": 2 } ],
     "components": [ [ [ "scrap", 5 ] ], [ [ "water_clean", 1 ] ], [ [ "chem_sulphuric_acid", 1 ] ] ]
@@ -208,6 +244,15 @@
     "time": "12 h",
     "batch_time_factors": [ 80, 2 ],
     "book_learn": [ [ "adv_chemistry", 6 ], [ "textbook_chemistry", 8 ], [ "recipe_labchem", 7 ] ],
+    "proficiencies": [
+      { "proficiency": "prof_intro_chemistry" },
+      { "proficiency": "prof_intro_biology" },
+      { "proficiency": "prof_inorganic_chemistry" },
+      { "proficiency": "prof_organic_chemistry" },
+      { "proficiency": "prof_pharmaceutical" },
+      { "proficiency": "prof_intro_chem_synth" },
+      { "proficiency": "prof_chem_synth" }
+    ],
     "qualities": [ { "id": "CHEM", "level": 2 }, { "id": "STIR_BAR", "level": 1 } ],
     "tools": [ [ [ "magnetic_stirrer", 100 ] ] ],
     "charges": 239,
@@ -235,6 +280,7 @@
     "time": "5 m",
     "charges": 330,
     "autolearn": true,
+    "proficiencies": [ { "proficiency": "prof_intro_chemistry" } ],
     "qualities": [ { "id": "CONTAIN", "level": 1 } ],
     "components": [ [ [ "chem_chloral", 105 ] ], [ [ "water_clean", 1 ] ] ]
   },

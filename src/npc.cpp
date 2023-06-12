@@ -91,6 +91,7 @@ static const efftype_id effect_controlled( "controlled" );
 static const efftype_id effect_drunk( "drunk" );
 static const efftype_id effect_high( "high" );
 static const efftype_id effect_infection( "infection" );
+static const efftype_id effect_made_kill( "made_kill" );
 static const efftype_id effect_mending( "mending" );
 static const efftype_id effect_npc_flee_player( "npc_flee_player" );
 static const efftype_id effect_npc_suspend( "npc_suspend" );
@@ -115,6 +116,10 @@ static const item_group_id Item_spawn_data_survivor_cutting( "survivor_cutting" 
 static const item_group_id Item_spawn_data_survivor_stabbing( "survivor_stabbing" );
 
 static const json_character_flag json_flag_HYPEROPIC( "HYPEROPIC" );
+static const json_character_flag json_flag_PRED1( "PRED1" );
+static const json_character_flag json_flag_PRED2( "PRED2" );
+static const json_character_flag json_flag_PRED3( "PRED3" );
+static const json_character_flag json_flag_PRED4( "PRED4" );
 
 static const mfaction_str_id monfaction_bee( "bee" );
 static const mfaction_str_id monfaction_human( "human" );
@@ -149,10 +154,12 @@ static const trait_id trait_CANNIBAL( "CANNIBAL" );
 static const trait_id trait_DEBUG_MIND_CONTROL( "DEBUG_MIND_CONTROL" );
 static const trait_id trait_HALLUCINATION( "HALLUCINATION" );
 static const trait_id trait_ILLITERATE( "ILLITERATE" );
+static const trait_id trait_KILLER( "KILLER" );
 static const trait_id trait_KILLER_GOOD( "KILLER_GOOD" );
 static const trait_id trait_MUTE( "MUTE" );
 static const trait_id trait_NO_BASH( "NO_BASH" );
 static const trait_id trait_PROF_DICEMASTER( "PROF_DICEMASTER" );
+static const trait_id trait_PACIFIST( "PACIFIST" );
 static const trait_id trait_PSYCHOPATH( "PSYCHOPATH" );
 static const trait_id trait_SAPIOVORE( "SAPIOVORE" );
 static const trait_id trait_SQUEAMISH( "SQUEAMISH" );
@@ -3009,26 +3016,43 @@ void npc::die( Creature *nkiller )
     }
 
     Character &player_character = get_player_character();
-    // Remove no-kill morale
-    bool player_killed_innocent = false;
-    const bool psycho = player_character.has_trait( trait_PSYCHOPATH );
     if( killer == &player_character ) {
-        player_character.rem_morale( MORALE_KILLER_NEED_TO_KILL );
+        bool player_killed_innocent = false;
+        const bool psycho = player_character.has_trait( trait_PSYCHOPATH ) ||
+                            player_character.has_flag( json_flag_PRED3 ) || player_character.has_flag( json_flag_PRED4 );
         if( ( !guaranteed_hostile() || hit_by_player ) ) {
             player_killed_innocent = true;
-            const bool cannibal = player_character.has_trait( trait_CANNIBAL );
-            if( player_character.has_trait( trait_SAPIOVORE ) || psycho ) {
-                // No morale effect
-            } else if( cannibal ) {
-                player_character.add_morale( MORALE_KILLED_INNOCENT, -5, 0, 2_days, 3_hours );
-            } else {
-                player_character.add_morale( MORALE_KILLED_INNOCENT, -100, 0, 2_days, 3_hours );
+            if( !psycho ) {
+                int morale_penalty = -100;
+                if( player_character.has_trait( trait_CANNIBAL ) ||
+                    player_character.has_trait( trait_SAPIOVORE ) ) {
+                    morale_penalty /= 20;
+                }
+                if( player_character.has_flag( json_flag_PRED2 ) ) {
+                    morale_penalty /= 5;
+                } else if( player_character.has_flag( json_flag_PRED1 ) ) {
+                    morale_penalty /= 4;
+                } else if( player_character.has_trait( trait_PACIFIST ) ) {
+                    morale_penalty *= 5;
+                }
+                player_character.add_morale( MORALE_KILLED_INNOCENT, morale_penalty, 0, 2_days, 3_hours );
             }
         }
-    }
-
-    if( player_character.has_trait( trait_KILLER_GOOD ) && ( !player_killed_innocent || psycho ) ) {
-        player_character.add_morale( MORALE_KILLER_HAS_KILLED, 5, 10, 6_hours, 4_hours );
+        // Remove no-kill morale
+        if( player_character.has_trait( trait_KILLER ) ) {
+            if( !player_character.has_effect( effect_made_kill ) ) {
+                player_character.add_msg_if_player( m_good, _( "Your kill makes your anxiety subside." ) );
+            }
+            player_character.rem_morale( MORALE_KILLER_NEED_TO_KILL );
+            player_character.add_effect( effect_made_kill, 6_hours );
+        }
+        if( player_character.has_trait( trait_KILLER_GOOD ) && ( !player_killed_innocent || psycho ) ) {
+            if( player_character.has_morale( MORALE_KILLER_HAS_KILLED ) ) {
+                const translation snip = SNIPPET.random_from_category( "killer_on_kill" ).value_or( translation() );
+                player_character.add_msg_if_player( m_good, "%s", snip );
+            }
+            player_character.add_morale( MORALE_KILLER_HAS_KILLED, 5, 10, 6_hours, 4_hours );
+        }
     }
 
     place_corpse();

@@ -96,6 +96,7 @@ static const efftype_id effect_hit_by_player( "hit_by_player" );
 static const efftype_id effect_in_pit( "in_pit" );
 static const efftype_id effect_leashed( "leashed" );
 static const efftype_id effect_lightsnare( "lightsnare" );
+static const efftype_id effect_made_kill( "made_kill" );
 static const efftype_id effect_monster_armor( "monster_armor" );
 static const efftype_id effect_monster_saddled( "monster_saddled" );
 static const efftype_id effect_natures_commune( "natures_commune" );
@@ -165,6 +166,7 @@ static const trait_id trait_ANIMALEMPATH2( "ANIMALEMPATH2" );
 static const trait_id trait_BEE( "BEE" );
 static const trait_id trait_FLOWERS( "FLOWERS" );
 static const trait_id trait_INATTENTIVE( "INATTENTIVE" );
+static const trait_id trait_KILLER( "KILLER" );
 static const trait_id trait_KILLER_GOOD( "KILLER_GOOD" );
 static const trait_id trait_MYCUS_FRIEND( "MYCUS_FRIEND" );
 static const trait_id trait_PHEROMONE_AMPHIBIAN( "PHEROMONE_AMPHIBIAN" );
@@ -2538,21 +2540,6 @@ void monster::die( Creature *nkiller )
     g->set_critter_died();
     dead = true;
     set_killer( nkiller );
-    if( get_killer() != nullptr ) {
-        Character *ch = get_killer()->as_character();
-        if( !is_hallucination() && ch != nullptr ) {
-            get_event_bus().send<event_type::character_kills_monster>( ch->getID(), type->id );
-            ch->rem_morale( MORALE_KILLER_NEED_TO_KILL );
-            // TODO: Check if monster would cause guilt on killing; in this case, unless player character doesn't care about guilt, they don't get a bonus.
-            if( ch->is_avatar() && ch->has_trait( trait_KILLER_GOOD ) ) {
-                if( one_in( 4 ) ) {
-                    const translation snip = SNIPPET.random_from_category( "killer_on_kill" ).value_or( translation() );
-                    ch->add_msg_if_player( m_good, "%s", snip );
-                }
-                ch->add_morale( MORALE_KILLER_HAS_KILLED, 5, 10, 6_hours, 4_hours );
-            }
-        }
-    }
     map &here = get_map();
     creature_tracker &creatures = get_creature_tracker();
     if( has_effect_with_flag( json_flag_GRAB_FILTER ) ) {
@@ -2591,8 +2578,17 @@ void monster::die( Creature *nkiller )
         }
     }
 
+    mission::on_creature_death( *this );
+
+    // Also, perform our death function
+    if( is_hallucination() || lifespan_end ) {
+        //Hallucinations always just disappear
+        mdeath::disappear( *this );
+        return;
+    }
+    // Past this, we assume that the monster isn't a hallucination.
     // If we're a queen, make nearby groups of our type start to die out
-    if( !is_hallucination() && has_flag( MF_QUEEN ) ) {
+    if( has_flag( MF_QUEEN ) ) {
         // The submap coordinates of this monster, monster groups coordinates are
         // submap coordinates.
         const tripoint abssub = ms_to_sm_copy( here.getabs( pos() ) );
@@ -2606,14 +2602,6 @@ void monster::die( Creature *nkiller )
             }
         }
     }
-    mission::on_creature_death( *this );
-
-    // Also, perform our death function
-    if( is_hallucination() || lifespan_end ) {
-        //Hallucinations always just disappear
-        mdeath::disappear( *this );
-        return;
-    }
 
     add_msg_if_player_sees( *this, m_good, type->mdeath_effect.death_message.translated(), name() );
 
@@ -2625,6 +2613,30 @@ void monster::die( Creature *nkiller )
             death_spell.cast_all_effects( *this, killer->pos() );
         } else if( type->mdeath_effect.sp.self ) {
             death_spell.cast_all_effects( *this, pos() );
+        }
+    }
+    // Killer morale check moved here, so as to not have morale bonus apply if there would be guilt for killing.
+    if( get_killer() != nullptr ) {
+        Character *ch = get_killer()->as_character();
+        if( ch != nullptr ) {
+            get_event_bus().send<event_type::character_kills_monster>( ch->getID(), type->id );
+            if( ch->is_avatar() ) {
+                if( ch->has_trait( trait_KILLER ) ) {
+                    if( !ch->has_effect( effect_made_kill ) ) {
+                        ch->add_msg_if_player( m_good, _( "Your kill makes your anxiety subside." ) );
+                    }
+                    ch->rem_morale( MORALE_KILLER_NEED_TO_KILL );
+                    ch->add_effect( effect_made_kill, 6_hours );
+                }
+                // No morale bonus if the kill would cause guilt. Also affects kills made after guilt is applied but before it wears off, but I believe this is realistic.
+                if( ch->has_trait( trait_KILLER_GOOD ) && !ch->has_morale( MORALE_KILLED_MONSTER ) ) {
+                    if( !ch->has_morale( MORALE_KILLER_HAS_KILLED ) ) {
+                        const translation snip = SNIPPET.random_from_category( "killer_on_kill" ).value_or( translation() );
+                        ch->add_msg_if_player( m_good, "%s", snip );
+                    }
+                    ch->add_morale( MORALE_KILLER_HAS_KILLED, 5, 10, 6_hours, 4_hours );
+                }
+            }
         }
     }
 

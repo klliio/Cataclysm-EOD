@@ -151,7 +151,6 @@ static const trait_id trait_DEBUG_BIONICS( "DEBUG_BIONICS" );
 static const trait_id trait_ILLITERATE( "ILLITERATE" );
 static const trait_id trait_LIGHTWEIGHT( "LIGHTWEIGHT" );
 static const trait_id trait_NOPAIN( "NOPAIN" );
-static const trait_id trait_PYROMANIA_GOOD( "PYROMANIA_GOOD" );
 static const trait_id trait_TOLERANCE( "TOLERANCE" );
 
 static const trap_str_id tr_firewood_source( "tr_firewood_source" );
@@ -291,10 +290,8 @@ std::optional<int> iuse_transform::use( Character &p, item &it, bool t, const tr
     }
 
     if( possess && need_fire ) {
-        p.rem_morale( MORALE_PYROMANIA_NOFIRE );
-        if( p.has_trait( trait_PYROMANIA_GOOD ) ) {
+        if( p.handle_pyromania_morale( 5, 10, 3_hours, 2_hours ) ) {
             p.add_msg_if_player( m_good, _( "You happily light a fire." ) );
-            p.add_morale( MORALE_PYROMANIA_STARTFIRE, 5, 10, 3_hours, 2_hours );
         }
     }
 
@@ -1270,12 +1267,10 @@ bool firestarter_actor::prep_firestarter_use( const Character &p, tripoint_bub_m
 void firestarter_actor::resolve_firestarter_use( Character &p, const tripoint_bub_ms &pos )
 {
     if( get_map().add_field( pos, fd_fire, 1, 10_minutes ) ) {
-        p.rem_morale( MORALE_PYROMANIA_NOFIRE );
-        if( p.has_trait( trait_PYROMANIA_GOOD ) ) {
+        if( p.handle_pyromania_morale( 5, 10, 6_hours, 4_hours ) ) {
             p.add_msg_if_player( m_good, _( "You happily light a fire." ) );
-            p.add_morale( MORALE_PYROMANIA_STARTFIRE, 5, 10, 6_hours, 4_hours );
         } else {
-            p.add_msg_if_player( _( "You successfully light a fire." ) );
+            p.add_msg_if_player( m_good, _( "You successfully light a fire." ) );
         }
     }
 }
