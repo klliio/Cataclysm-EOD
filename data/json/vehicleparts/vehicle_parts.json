@@ -1534,7 +1534,7 @@
         "qualities": [ { "id": "SCREW_FINE", "level": 1 } ]
       }
     },
-    "flags": [ "ON_CONTROLS", "SECURITY", "ENABLED_DRAINS_EPOWER", "DIFFICULT_PART"  ],
+    "flags": [ "ON_CONTROLS", "SECURITY", "ENABLED_DRAINS_EPOWER", "DIFFICULT_PART" ],
     "breaks_into": "ig_vp_device",
     "variants": [ { "symbols": ",", "symbols_broken": "," } ]
   },
@@ -2756,7 +2756,7 @@
       "removal": { "skills": [ [ "mechanics", 2 ] ], "time": "30 m", "using": [ [ "vehicle_screw", 1 ] ] },
       "repair": { "skills": [ [ "mechanics", 5 ] ], "time": "60 m", "using": [ [ "adhesive", 1 ], [ "soldering_standard", 4 ] ] }
     },
-    "flags": [ "VISION", "CAMERA", "ENABLED_DRAINS_EPOWER" ],
+    "flags": [ "VISION", "CAMERA", "ENABLED_DRAINS_EPOWER", "DIFFICULT_PART" ],
     "breaks_into": [ { "item": "e_scrap", "count": [ 6, 20 ] }, { "item": "plastic_chunk", "count": [ 2, 8 ] } ],
     "variants": [ { "symbols": "o", "symbols_broken": "#" } ]
   },

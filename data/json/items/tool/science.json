@@ -684,9 +684,6 @@
     "material": [ "steel" ],
     "symbol": "#",
     "color": "light_gray",
-    "ammo_type": [ "oxygen" ],
-    "capacity": 300,
-    "count": 300,
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE",

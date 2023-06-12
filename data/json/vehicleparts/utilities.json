@@ -9,7 +9,6 @@
       { "item": "pot", "prob": 50 }
     ],
     "broken_color": "light_cyan",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "light_cyan",
     "damage_modifier": 10,
@@ -32,8 +31,8 @@
       }
     },
     "size": "50 L",
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "abstract": "welding_rig_abstract",
@@ -44,7 +43,6 @@
       { "charges": 0, "item": "welder", "prob": 50 }
     ],
     "broken_color": "light_red",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "light_red",
     "damage_modifier": 10,
@@ -66,8 +64,8 @@
       }
     },
     "size": "50 L",
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "abstract": "craft_rig_abstract",
@@ -84,7 +82,6 @@
       { "item": "press", "prob": 50 }
     ],
     "broken_color": "light_gray",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "light_green",
     "damage_modifier": 10,
@@ -114,8 +111,8 @@
       }
     },
     "size": "50 L",
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "abstract": "chemlab_abstract",
@@ -128,7 +125,6 @@
       { "charges": 0, "item": "hotplate", "prob": 50 }
     ],
     "broken_color": "light_gray",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,
@@ -155,8 +151,8 @@
       }
     },
     "size": "50 L",
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "id": "veh_forge",

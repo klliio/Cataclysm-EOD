@@ -351,7 +351,7 @@
         "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ], [ "rubber_cutting", 1 ] ]
       }
     },
-    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_LIGHT" ],
+    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
     "damage_reduction": { "bash": 6 },
     "variants": [
       { "id": "front", "label": "Front", "symbols": "|/-\\|/-\\", "symbols_broken": "x" },
@@ -455,7 +455,7 @@
         "using": [ [ "adhesive_rubber", 1 ], [ "tire_rubber", 1 ], [ "rubber_cutting", 1 ] ]
       }
     },
-    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_LIGHT" ],
+    "flags": [ "WHEEL", "UNSTABLE_WHEEL", "NEEDS_JACKING", "NEEDS_WHEEL_MOUNT_LIGHT", "SIMPLE_PART" ],
     "damage_reduction": { "bash": 10 },
     "variants": [
       { "id": "front", "label": "Front", "symbols": "o", "symbols_broken": "x" },
