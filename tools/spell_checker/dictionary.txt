@@ -440,6 +440,7 @@ caparison
 caprison
 carapaces
 carboxylic
+capsicum
 carabiner
 carabiners
 carapace
@@ -1365,6 +1366,8 @@ hygroscopic
 hyolith
 hypacrosaurus
 hyperaggressive
+hyperboloid
+hyperboloids
 hyperdimensional
 hypergeometric
 hypervelocity
@@ -1830,6 +1833,7 @@ multiplier
 multipronged
 multitool
 multiversal
+mundanity
 murderball
 murdersaw
 musculoskeletal
@@ -1964,6 +1968,7 @@ offroad
 ohms
 oignon
 oleaginous
+oleoresin
 olieribos
 olor
 omnivore

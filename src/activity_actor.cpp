@@ -3201,6 +3201,8 @@ craft_activity_actor::craft_activity_actor( item_location &it, const bool is_lon
     cached_assistants = 0;
     cached_base_total_moves = 1;
     cached_cur_total_moves = 1;
+    cached_workbench_multiplier = 0;
+    use_cached_workbench_multiplier = false;
 }
 
 bool craft_activity_actor::check_if_craft_okay( item_location &craft_item, Character &crafter )
@@ -3236,6 +3238,8 @@ void craft_activity_actor::start( player_activity &act, Character &crafter )
     }
     activity_override = craft_item.get_item()->get_making().exertion_level();
     cached_crafting_speed = 0;
+    cached_workbench_multiplier = 0;
+    use_cached_workbench_multiplier = false;
 }
 
 void craft_activity_actor::do_turn( player_activity &act, Character &crafter )
@@ -3251,7 +3255,13 @@ void craft_activity_actor::do_turn( player_activity &act, Character &crafter )
     const std::optional<tripoint> location = craft_item.where() == item_location::type::character
             ? std::optional<tripoint>() : std::optional<tripoint>( craft_item.position() );
     const recipe &rec = craft.get_making();
-    const float crafting_speed = crafter.crafting_speed_multiplier( craft, location );
+    if( !use_cached_workbench_multiplier ) {
+        cached_workbench_multiplier = crafter.workbench_crafting_speed_multiplier( craft, location );
+        use_cached_workbench_multiplier = true;
+    }
+    const float crafting_speed = crafter.crafting_speed_multiplier( craft, location,
+                                 use_cached_workbench_multiplier,
+                                 cached_workbench_multiplier );
     const int assistants = crafter.available_assistant_count( craft.get_making() );
 
     if( crafting_speed <= 0.0f ) {
@@ -3314,6 +3324,8 @@ void craft_activity_actor::do_turn( player_activity &act, Character &crafter )
         level_up |= crafter.craft_proficiency_gain( craft, pct_time * five_percent_steps );
         // Invalidate the crafting time cache because proficiencies may have changed
         cached_crafting_speed = 0;
+        // Also reset the multiplier
+        use_cached_workbench_multiplier = false;
     }
 
     // Unlike skill, tools are consumed once at the start and should not be consumed at the end
@@ -4660,6 +4672,9 @@ void disassemble_activity_actor::start( player_activity &act, Character &who )
     target->set_var( "activity_var", who.name );
 
     activity_override = target->get_making().exertion_level();
+
+    cached_workbench_multiplier = 0;
+    use_cached_workbench_multiplier = false;
 }
 
 void disassemble_activity_actor::do_turn( player_activity &act, Character &who )
@@ -4674,7 +4689,12 @@ void disassemble_activity_actor::do_turn( player_activity &act, Character &who )
 
     const std::optional<tripoint> location = target.where() == item_location::type::character
             ? std::optional<tripoint>() : std::optional<tripoint>( target.position() );
-    const float crafting_speed = who.crafting_speed_multiplier( craft, location );
+    if( !use_cached_workbench_multiplier ) {
+        cached_workbench_multiplier = who.workbench_crafting_speed_multiplier( craft, location );
+        use_cached_workbench_multiplier = true;
+    }
+    const float crafting_speed = who.crafting_speed_multiplier( craft, location,
+                                 use_cached_workbench_multiplier, cached_workbench_multiplier );
 
     if( crafting_speed <= 0.0f ) {
         who.cancel_activity();
