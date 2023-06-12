@@ -9,7 +9,7 @@
         "x": 0,
         "y": 0,
         "parts": [
-          "xlframe_cross",
+          "xlframe#cross",
           "seat",
           "seatbelt",
           { "part": "tank", "fuel": "gasoline" },
@@ -23,17 +23,17 @@
         "x": -1,
         "y": 0,
         "parts": [
-          "xlframe_vertical",
-          "stowboard_vertical",
+          "xlframe#vertical",
+          "stowboard#vertical",
           "engine_inline4",
           "alternator_car",
           "battery_car",
           "gyrocopter_rotors",
           "wheel_mount_light",
-          "wheel_motorbike_rear"
+          "wheel_motorbike#rear"
         ]
       },
-      { "x": -2, "y": 0, "parts": [ "xlframe_vertical" ] }
+      { "x": -2, "y": 0, "parts": [ "xlframe#vertical" ] }
     ]
   }
 ]

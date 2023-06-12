@@ -364,13 +364,16 @@
     "symbol": "U",
     "color": "dark_gray",
     "looks_like": "household_water_heater",
-    "weight": "22700 g",
+    "weight": "500 kg",
     "volume": "500 L",
     "price": 20000,
     "to_hit": -5,
     "material": [ "steel" ],
     "use_action": { "type": "deploy_furn", "furn_type": "f_catalytic_cracking_reactor" },
     "qualities": [ [ "EXTRACT", 3 ] ],
+    "pocket_data": [
+      { "pocket_type": "MAGAZINE_WELL", "rigid": true, "item_restriction": [ "large_storage_battery", "storage_battery" ] }
+    ],
     "melee_damage": { "bash": 8 }
   },
   {
@@ -669,6 +672,7 @@
   {
     "id": "oxygen_cylinder",
     "type": "MAGAZINE",
+    "category": "spare_parts",
     "name": { "str": "oxygen cylinder" },
     "description": "A large steel cylinder used for storing pressurized gas.  It is marked with a faded, but legible O2 symbol.",
     "weight": "19050 g",
@@ -680,9 +684,6 @@
     "material": [ "steel" ],
     "symbol": "#",
     "color": "light_gray",
-    "ammo_type": [ "oxygen" ],
-    "capacity": 300,
-    "count": 300,
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE",
@@ -693,6 +694,9 @@
       }
     ],
     "flags": [ "NO_UNLOAD", "NO_RELOAD" ],
+    "ammo_type": [ "oxygen" ],
+    "capacity": 300,
+    "count": 300,
     "melee_damage": { "bash": 10 }
   },
   {

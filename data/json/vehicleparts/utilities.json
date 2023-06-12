@@ -9,7 +9,6 @@
       { "item": "pot", "prob": 50 }
     ],
     "broken_color": "light_cyan",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "light_cyan",
     "damage_modifier": 10,
@@ -32,8 +31,8 @@
       }
     },
     "size": "50 L",
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "abstract": "welding_rig_abstract",
@@ -44,7 +43,6 @@
       { "charges": 0, "item": "welder", "prob": 50 }
     ],
     "broken_color": "light_red",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "light_red",
     "damage_modifier": 10,
@@ -66,8 +64,8 @@
       }
     },
     "size": "50 L",
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "abstract": "craft_rig_abstract",
@@ -84,7 +82,6 @@
       { "item": "press", "prob": 50 }
     ],
     "broken_color": "light_gray",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "light_green",
     "damage_modifier": 10,
@@ -114,8 +111,8 @@
       }
     },
     "size": "50 L",
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "abstract": "chemlab_abstract",
@@ -128,7 +125,6 @@
       { "charges": 0, "item": "hotplate", "prob": 50 }
     ],
     "broken_color": "light_gray",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,
@@ -155,8 +151,8 @@
       }
     },
     "size": "50 L",
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "id": "veh_forge",
@@ -166,7 +162,6 @@
       { "count": [ 4, 6 ], "item": "scrap" }
     ],
     "broken_color": "light_gray",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "red",
     "damage_modifier": 10,
@@ -189,8 +184,8 @@
       }
     },
     "size": "50 L",
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "id": "veh_kiln",
@@ -200,7 +195,6 @@
       { "count": [ 4, 6 ], "item": "scrap" }
     ],
     "broken_color": "light_gray",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "red",
     "damage_modifier": 10,
@@ -223,8 +217,8 @@
       }
     },
     "size": "50 L",
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "id": "veh_oil_press_electric",
@@ -234,8 +228,6 @@
     "description": "A heavy-duty press used to create vegetable oil from nuts or seeds.",
     "categories": [ "utility" ],
     "location": "center",
-    "symbol": "Y",
-    "broken_symbol": "x",
     "color": "green",
     "broken_color": "green",
     "damage_modifier": 10,
@@ -261,17 +253,16 @@
       { "item": "element", "count": [ 0, 2 ] },
       { "item": "pipe", "prob": 50 },
       { "item": "motor_small", "prob": 25 }
-    ]
+    ],
+    "variants": [ { "symbols": "Y", "symbols_broken": "x" } ]
   },
   {
     "type": "vehicle_part",
     "id": "veh_binoculars",
     "name": { "str": "binoculars" },
-    "symbol": "8",
     "looks_like": "binoculars",
     "categories": [ "passengers" ],
     "color": "dark_gray",
-    "broken_symbol": "x",
     "broken_color": "light_gray",
     "damage_modifier": 1,
     "durability": 50,
@@ -285,6 +276,7 @@
       "removal": { "skills": [ [ "mechanics", 1 ] ], "time": "3 m", "using": [ [ "vehicle_screw", 1 ] ] },
       "repair": { "skills": [ [ "mechanics", 2 ] ], "time": "6 m", "using": [ [ "adhesive", 2 ] ] }
     },
-    "breaks_into": [ { "item": "plastic_chunk", "count": [ 2, 5 ] } ]
+    "breaks_into": [ { "item": "plastic_chunk", "count": [ 2, 5 ] } ],
+    "variants": [ { "symbols": "8", "symbols_broken": "x" } ]
   }
 ]

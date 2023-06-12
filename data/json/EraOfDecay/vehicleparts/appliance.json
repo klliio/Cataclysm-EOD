@@ -7,8 +7,6 @@
     "description": "An appliance which is designed to refill all kinds of gas tanks with pressurized gas, with a power cord to connect it to an electric grid.",
     "categories": [ "utility" ],
     "location": "structure",
-    "symbol": "&",
-    "broken_symbol": "x",
     "color": "green",
     "broken_color": "green",
     "damage_modifier": 10,
@@ -27,7 +25,8 @@
       { "item": "pressure_gauge", "prob": 25 },
       { "item": "power_supply", "prob": 25 },
       { "item": "cable", "charges": [ 20, 40 ] }
-    ]
+    ],
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "id": "ap_dry_ice_maker",
@@ -37,8 +36,6 @@
     "description": "A dry ice maker, with a power cord to connect it to an electric grid.",
     "categories": [ "utility" ],
     "location": "structure",
-    "symbol": "&",
-    "broken_symbol": "x",
     "color": "green",
     "broken_color": "green",
     "damage_modifier": 10,
@@ -50,7 +47,8 @@
       { "count": [ 4, 5 ], "item": "steel_lump" },
       { "count": [ 4, 6 ], "item": "steel_chunk" },
       { "count": [ 4, 6 ], "item": "scrap" }
-    ]
+    ],
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "id": "ap_chloroprene_machine",
@@ -60,8 +58,6 @@
     "description": "A chloroprene machine, with a power cord to connect it to an electric grid.",
     "categories": [ "utility" ],
     "location": "structure",
-    "symbol": "&",
-    "broken_symbol": "x",
     "color": "green",
     "broken_color": "green",
     "damage_modifier": 10,
@@ -73,14 +69,14 @@
       { "count": [ 4, 5 ], "item": "steel_lump" },
       { "count": [ 4, 6 ], "item": "steel_chunk" },
       { "count": [ 4, 6 ], "item": "scrap" }
-    ]
+    ],
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "type": "vehicle_part",
     "id": "ap_heavy_lathe",
     "name": { "str": "power lathe" },
     "looks_like": "f_heavy_lathe",
-    "symbol": "7",
     "color": "black_red",
     "categories": [ "utility" ],
     "description": "An industrial-grade lathe, for turning chunks of metal and other hard things into round chunks of metal and other hard things.  Plugged in and ready to go.",
@@ -97,14 +93,14 @@
       { "item": "steel_chunk", "count": [ 2, 4 ] },
       { "item": "steel_lump", "count": [ 1, 2 ] },
       { "item": "steel_plate", "count": [ 1, 2 ] }
-    ]
+    ],
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "type": "vehicle_part",
     "id": "ap_milling_machine",
     "name": { "str": "milling machine" },
     "looks_like": "f_milling_machine",
-    "symbol": "7",
     "color": "black_red",
     "categories": [ "utility" ],
     "description": "An industrial-grade machine tool which uses rotary cutters to remove material by advancing a cutter into a workpiece.  Plugged in and ready to go.",
@@ -121,6 +117,7 @@
       { "item": "steel_chunk", "count": [ 2, 4 ] },
       { "item": "steel_lump", "count": [ 1, 2 ] },
       { "item": "steel_plate", "count": [ 1, 2 ] }
-    ]
+    ],
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   }
 ]

@@ -7,7 +7,6 @@
       { "count": [ 4, 6 ], "item": "scrap" }
     ],
     "broken_color": "light_gray",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,
@@ -29,8 +28,8 @@
         "using": [ [ "repair_welding_standard", 2 ], [ "soldering_standard", 15 ] ]
       }
     },
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "id": "veh_chloroprene_machine",
@@ -40,7 +39,6 @@
       { "count": [ 4, 6 ], "item": "scrap" }
     ],
     "broken_color": "light_gray",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,
@@ -62,8 +60,8 @@
         "using": [ [ "repair_welding_standard", 2 ], [ "soldering_standard", 15 ] ]
       }
     },
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "id": "veh_ammonia_machine_reactor",
@@ -73,7 +71,6 @@
       { "count": [ 4, 6 ], "item": "scrap" }
     ],
     "broken_color": "light_gray",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,
@@ -95,8 +92,8 @@
         "using": [ [ "repair_welding_standard", 2 ], [ "soldering_standard", 15 ] ]
       }
     },
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "id": "veh_ammonia_machine_pipework",
@@ -106,7 +103,6 @@
       { "count": [ 4, 6 ], "item": "scrap" }
     ],
     "broken_color": "light_gray",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,
@@ -128,8 +124,8 @@
         "using": [ [ "repair_welding_standard", 2 ], [ "soldering_standard", 15 ] ]
       }
     },
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   },
   {
     "id": "veh_gaspump",
@@ -139,7 +135,6 @@
       { "count": [ 4, 6 ], "item": "scrap" }
     ],
     "broken_color": "light_gray",
-    "broken_symbol": "x",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,
@@ -161,7 +156,7 @@
         "using": [ [ "repair_welding_standard", 2 ], [ "soldering_standard", 15 ] ]
       }
     },
-    "symbol": "&",
-    "type": "vehicle_part"
+    "type": "vehicle_part",
+    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   }
 ]
