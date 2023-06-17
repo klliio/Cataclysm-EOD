@@ -6164,44 +6164,46 @@ void forage_activity_actor::finish( player_activity &act, Character &who )
     // Survival gives a bigger boost, and Perception is leveled a bit.
     // Both survival and perception affect time to forage
 
-    ///\EFFECT_PER slightly increases forage success chance
-    ///\EFFECT_SURVIVAL increases forage success chance
-    if( veggy_chance < round( who.get_skill_level( skill_survival ) * 3 + who.per_cur - 2 ) ) {
-        const std::vector<item *> dropped =
-            here.put_items_from_loc( group_id, who.pos(), calendar::turn );
-        // map::put_items_from_loc can create multiple items and merge them into one stack.
-        // That stack will then appear multiple times in the vector.
-        // Remember and check the already handled items to prevent rolling
-        // poison/hallucinogen multiple times and print misleading messages.
-        std::vector<item *> handled;
-        for( item *it : dropped ) {
-            if( std::find( handled.rbegin(), handled.rend(), it ) != handled.rend() )  {
-                continue;
+    if( !x_in_y( get_option<int>( "FORAGE_RESULT_MOD" ), 100 ) ) {
+        ///\EFFECT_PER slightly increases forage success chance
+        ///\EFFECT_SURVIVAL increases forage success chance
+        if( veggy_chance < round( who.get_skill_level( skill_survival ) * 3 + who.per_cur - 2 ) ) {
+            const std::vector<item *> dropped =
+                here.put_items_from_loc( group_id, who.pos(), calendar::turn );
+            // map::put_items_from_loc can create multiple items and merge them into one stack.
+            // That stack will then appear multiple times in the vector.
+            // Remember and check the already handled items to prevent rolling
+            // poison/hallucinogen multiple times and print misleading messages.
+            std::vector<item *> handled;
+            for( item *it : dropped ) {
+                if( std::find( handled.rbegin(), handled.rend(), it ) != handled.rend() )  {
+                    continue;
+                }
+                handled.push_back( it );
+                found_something = true;
+                if( it->has_flag( flag_FORAGE_POISON ) && one_in( 10 ) ) {
+                    it->set_flag( flag_HIDDEN_POISON );
+                    it->poison = rng( 2, 7 );
+                } else if( it->has_flag( flag_FORAGE_HALLU ) && one_in( 10 ) ) {
+                    it->set_flag( flag_HIDDEN_HALLU );
+                }
+                add_msg( m_good, _( "You found: %s!" ), it->display_name() );
             }
-            handled.push_back( it );
-            found_something = true;
-            if( it->has_flag( flag_FORAGE_POISON ) && one_in( 10 ) ) {
-                it->set_flag( flag_HIDDEN_POISON );
-                it->poison = rng( 2, 7 );
-            } else if( it->has_flag( flag_FORAGE_HALLU ) && one_in( 10 ) ) {
-                it->set_flag( flag_HIDDEN_HALLU );
-            }
-            add_msg( m_good, _( "You found: %s!" ), it->display_name() );
         }
-    }
-    // 10% to drop a item/items from this group.
-    if( one_in( 10 ) ) {
-        const std::vector<item *> dropped =
-            here.put_items_from_loc( Item_spawn_data_trash_forest, who.pos(), calendar::turn );
-        // same as above
-        std::vector<item *> handled;
-        for( item * const &it : dropped ) {
-            if( std::find( handled.rbegin(), handled.rend(), it ) != handled.rend() ) {
-                continue;
+        // 10% to drop a item/items from this group.
+        if( one_in( 10 ) ) {
+            const std::vector<item *> dropped =
+                here.put_items_from_loc( Item_spawn_data_trash_forest, who.pos(), calendar::turn );
+            // same as above
+            std::vector<item *> handled;
+            for( item * const &it : dropped ) {
+                if( std::find( handled.rbegin(), handled.rend(), it ) != handled.rend() ) {
+                    continue;
+                }
+                handled.push_back( it );
+                add_msg( m_good, _( "You found: %s!" ), it->display_name() );
+                found_something = true;
             }
-            handled.push_back( it );
-            add_msg( m_good, _( "You found: %s!" ), it->display_name() );
-            found_something = true;
         }
     }
 

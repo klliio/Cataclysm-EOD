@@ -93,15 +93,17 @@ static bool check_water_affect_items( avatar &you )
     std::vector<item_location> destroyed;
     std::vector<item_location> wet;
 
-    for( item_location &loc : you.all_items_loc() ) {
-        if( loc->has_flag( flag_WATER_DISSOLVE ) && !loc.protected_from_liquids() ) {
-            dissolved.emplace_back( loc );
-        } else if( loc->has_flag( flag_WATER_BREAK ) && !loc->is_broken()
-                   && !loc.protected_from_liquids() ) {
-            destroyed.emplace_back( loc );
-        } else if( loc->has_flag( flag_WATER_BREAK_ACTIVE ) && !loc->is_broken()
-                   && !loc.protected_from_liquids() ) {
-            wet.emplace_back( loc );
+    if( get_option<bool>( "WATER_RUINS_ITEMS" ) ) {
+        for( item_location &loc : you.all_items_loc() ) {
+            if( loc->has_flag( flag_WATER_DISSOLVE ) && !loc.protected_from_liquids() ) {
+                dissolved.emplace_back( loc );
+            } else if( loc->has_flag( flag_WATER_BREAK ) && !loc->is_broken()
+                       && !loc.protected_from_liquids() ) {
+                destroyed.emplace_back( loc );
+            } else if( loc->has_flag( flag_WATER_BREAK_ACTIVE ) && !loc->is_broken()
+                       && !loc.protected_from_liquids() ) {
+                wet.emplace_back( loc );
+            }
         }
     }
 
@@ -1122,13 +1124,10 @@ void avatar_action::use_item( avatar &you, item_location &loc, std::string const
         return;
     }
 
-    if( loc->wetness && loc->has_flag( flag_WATER_BREAK_ACTIVE ) ) {
-        if( query_yn( _( "This item is still wet and it will break if you turn it on. Proceed?" ) ) ) {
-            loc->deactivate();
-            loc->set_flag( flag_ITEM_BROKEN );
-        } else {
-            return;
-        }
+    if( get_option<bool>( "WATER_RUINS_ITEMS" ) && loc->wetness &&
+        loc->has_flag( flag_WATER_BREAK_ACTIVE ) ) {
+        add_msg( _( "This item is still wet, and would break if you turned it on right now." ) );
+        return;
     }
 
     item_pocket *parent_pocket = nullptr;

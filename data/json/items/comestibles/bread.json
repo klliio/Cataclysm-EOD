@@ -33,7 +33,7 @@
     "material": [ "wheat" ],
     "symbol": "%",
     "color": "white",
-    "flags": [ "SOFT" ],
+    "flags": [ "SOFT", "WATER_DISSOLVE" ],
     "fun": -5,
     "calories": 192,
     "use_action": {
@@ -59,7 +59,7 @@
     "material": [ "wheat" ],
     "symbol": "%",
     "color": "white",
-    "flags": [ "SOFT" ],
+    "flags": [ "SOFT", "WATER_DISSOLVE" ],
     "fun": -5,
     "calories": 192,
     "use_action": {
@@ -85,7 +85,7 @@
     "material": [ "wheat" ],
     "symbol": "%",
     "color": "yellow",
-    "flags": [ "SOFT" ],
+    "flags": [ "SOFT", "WATER_DISSOLVE" ],
     "fun": -1,
     "calories": 192
   },

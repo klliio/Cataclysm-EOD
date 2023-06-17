@@ -13273,7 +13273,7 @@ bool item::process_internal( map &here, Character *carrier, const tripoint &pos,
     // Remaining stuff is only done for active items.
     if( active ) {
 
-        if( wetness && has_flag( flag_WATER_BREAK ) ) {
+        if( get_option<bool>( "WATER_RUINS_ITEMS" ) && wetness && has_flag( flag_WATER_BREAK ) ) {
             deactivate();
             set_flag( flag_ITEM_BROKEN );
         }

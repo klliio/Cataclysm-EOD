@@ -407,8 +407,12 @@ bool SkillLevel::rust( int rust_resist, float rust_multiplier )
     _rustAccumulator += rust_amount;
     _exercise -= rust_amount;
     if( _exercise < 0 ) {
-        _exercise = ( 100 * 100 * pow( unadjustedLevel(), 2U ) ) - 1;
-        --_level;
+        if( get_option<bool>( "SKILL_RUST_DROPS_LEVELS" ) ) {
+            _exercise = ( 100 * 100 * pow( unadjustedLevel(), 2U ) ) - 1;
+            --_level;
+        } else {
+            _exercise = 0;
+        }
     }
 
     return false;

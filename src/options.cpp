@@ -2712,6 +2712,16 @@ void options_manager::add_options_world_default()
              0.01, 10.0, 1.0, 0.01
            );
 
+        add( "BUTCHER_RESULT_MULT", page_id, to_translation( "Butchery products scaling factor" ),
+             to_translation( "A scaling factor that determines amount of products obtained upon butchery.  A higher number means more items." ),
+             0.01, 10.0, 1.0, 0.01
+           );
+
+        add( "FORAGE_RESULT_MOD", page_id, to_translation( "Underbrush foraging reduction" ),
+             to_translation( "An additional chance to gain nothing from foraging an underbrush, in percents.  100 makes finding anything from foraging underbrush impossible." ),
+             0, 100, 0
+           );
+
         add( "NPC_SPAWNTIME", page_id, to_translation( "Random NPC spawn time" ),
              to_translation( "Baseline average number of days between random NPC spawns.  Average duration goes up with the number of NPCs already spawned.  A higher number means fewer NPCs.  Set to 0 days to disable random NPCs." ),
              0.0, 100.0, 4.0, 0.01
@@ -2720,7 +2730,7 @@ void options_manager::add_options_world_default()
 
     add_option_group( "world_default", Group( "item_category_spawn_rate",
                       to_translation( "Item category spawn rate" ),
-                      to_translation( "Spawn rate for item categories.  Values less than or equal to 1 represent a chance for items from category in question to spawn at all.  Values more than 1 represent amount of additional items from category in question to spawn.  Set to 0 to forbid spawning items from category in question." ) ),
+                      to_translation( "Spawn rate for item categories.  Values less than or equal to 1 represent a chance for items from category in question to spawn at all.  Values more than 1 represent amount of additional items from category in question to spawn.  Set to 0 to forbid spawning items from category in question.  Note that this doesn't affect loot from monsters." ) ),
     [&]( const std::string & page_id ) {
 
         add( "SPAWN_RATE_guns", page_id, to_translation( "Guns" ),
@@ -2968,7 +2978,12 @@ void options_manager::add_options_world_default()
     add_empty_line();
 
     add( "EMP_DISABLE_ELECTRONICS", "world_default", to_translation( "Electronic items ruined by EMP" ),
-         to_translation( "If true, EMP effect can permanently render electric and electronic items useless." ),
+         to_translation( "If true, EMP effect can permanently render electric and electronic items useless.  If false, this feature is disabled." ),
+         true
+       );
+
+    add( "WATER_RUINS_ITEMS", "world_default", to_translation( "Items ruined by water" ),
+         to_translation( "If true, diving into water will damage some items; electronics become unusable, and some items (such as medicine) may dissolve, unless they are stored in watertight containers.  If false, this feature is disabled." ),
          true
        );
 
@@ -3078,6 +3093,24 @@ void options_manager::add_options_world_default()
          0.00f, 100.00f, 0.00f, 0.01f
        );
 
+    add( "SKILL_RUST", "world_default",
+         to_translation( "Enable skill rust" ),
+         to_translation( "If true, practical experience gained in skills may be lost if those skills are not regularly practiced, unless max skill level is reached.  If false, this feature is disabled." ),
+         true
+       );
+
+    add( "SKILL_RUST_DROPS_LEVELS", "world_default",
+         to_translation( "Enable skill level loss from skill rust" ),
+         to_translation( "If true, skill rust can result in the skill dropping a level.  If false, this can never happen.  This option only has an effect if skill rust is enabled." ),
+         true
+       );
+
+    add( "CARDIO_CAN_DROP", "world_default",
+         to_translation( "Enable cardio reduction" ),
+         to_translation( "If true, character's cardio can decrease due to low amount of calories burned within a day, which would in turn reduce max stamina and weariness.  If false, cardio can only increase as a result of burning a lot of calories within a day." ),
+         true
+       );
+
     add_empty_line();
 
     add( "VITAMIN_RATE", "world_default", to_translation( "Vitamin consumption rate multiplier" ),
@@ -3105,6 +3138,11 @@ void options_manager::add_options_world_default()
     add( "STOMACH_CAPACITY", "world_default", to_translation( "Stomach capacity multiplier" ),
          to_translation( "Multiplier for how large volume of food the character's stomach can hold.  0.5 is half as much, 2 is twice as much.  Higher value makes characters be able to eat larger volumes food at once." ),
          0.01f, 100.00f, 1.00f, 0.01f // 0 would make eating impossible and so is forbidden.
+       );
+
+    add( "EAT_FROZEN", "world_default", to_translation( "Allow eating frozen food" ),
+         to_translation( "If true, any frozen items can be eaten as-is without defrosting.  If false, only certain items can be eaten while frozen." ),
+         false
        );
 
     add_empty_line();
@@ -3266,6 +3304,78 @@ void options_manager::add_options_world_default()
          to_translation( "Helicopter fuel consumption multiplier" ),
          to_translation( "Multiplies the amount of fuel consumed by helicopters while flying.  0.5 is half as much, 2 is twice as much.  Higher value makes helicopters cost more fuel to use." ),
          0.01f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "VPARTS_NEED_LIFTING", "world_default",
+         to_translation( "Enable lifting requirements for vehicle parts" ),
+         to_translation( "If true, minimum strength or lifting quality requirements need to be met in order to install or remove vehicle parts.  If false, this feature is disabled.  Jacking requirements for certain vehicle parts (such as wheels) are unaffected by this option." ),
+         true
+       );
+
+    add( "VEH_SPAWN_RUNNING", "world_default",
+         to_translation( "Enable running vehicles spawn" ),
+         to_translation( "If true, vehicles can sometimes spawn with running engine and active lights, fridges and freezers.  If false, all vehicles spawn with everything that consumes power or fuel turned off." ),
+         false
+       );
+
+    add( "VEH_MIN_FUEL", "world_default",
+         to_translation( "Minimum vehicle fuel" ),
+         to_translation( "Minimum fullness of vehicle fuel tanks at the time of spawn.  0 means that vehicles can spawn with empty fuel tanks, 1 means that vehicles will always spawn with full fuel tanks.  Should be not higher than maximum vehicle fuel." ),
+         0.00f, 1.00f, 0.05f, 0.01f
+       );
+
+    add( "VEH_MAX_FUEL", "world_default",
+         to_translation( "Maximum vehicle fuel" ),
+         to_translation( "Maximum fullness of vehicle fuel tanks at the time of spawn.  0 means that vehicles will always spawn with empty fuel tanks, 1 means that vehicles can spawn with full fuel tanks.  Should be not lower than minimum vehicle fuel." ),
+         0.00f, 1.00f, 0.95f, 0.01f
+       );
+
+    add( "VEH_DESTROY_SEATS", "world_default",
+         to_translation( "Destroyed seats on vehicles chance" ),
+         to_translation( "Extra probability in percents to spawn any damaged vehicle with destroyed seats and seatbelts in addition to usual damage." ),
+         0, 100, 0
+       );
+
+    add( "VEH_DESTROY_CONTROLS", "world_default",
+         to_translation( "Destroyed controls on vehicles chance" ),
+         to_translation( "Extra probability in percents to spawn any damaged vehicle with destroyed controls in addition to usual damage." ),
+         0, 100, 0
+       );
+
+    add( "VEH_DESTROY_TANK", "world_default",
+         to_translation( "Destroyed fuel tanks on vehicles chance" ),
+         to_translation( "Extra probability in percents to spawn any damaged vehicle with destroyed and empty fuel tanks in addition to usual damage." ),
+         0, 100, 0
+       );
+
+    add( "VEH_DESTROY_ENGINE", "world_default",
+         to_translation( "Destroyed engines on vehicles chance" ),
+         to_translation( "Extra probability in percents to spawn any damaged vehicle with destroyed or faulty engines in addition to usual damage." ),
+         0, 100, 0
+       );
+
+    add( "VEH_DESTROY_TIRES", "world_default",
+         to_translation( "Destroyed tires on vehicles chance" ),
+         to_translation( "Extra probability in percents to spawn any damaged vehicle with enough destroyed tires to make it not driveable, in addition to usual damage." ),
+         0, 100, 0
+       );
+
+    add( "VEH_START_LOCKED", "world_default",
+         to_translation( "Locked doors on vehicles chance" ),
+         to_translation( "Extra probability in percents to spawn any damaged vehicle with doors locked.  Only applies to vehicles with intact alarms." ),
+         0, 100, 0
+       );
+
+    add( "VEH_DESTROY_ALARM", "world_default",
+         to_translation( "Destroyed alarms on vehicles chance" ),
+         to_translation( "Extra probability in percents to spawn any damaged vehicle with alarm destroyed." ),
+         0, 100, 0
+       );
+
+    add( "VEH_HEAVY_DAMAGE", "world_default",
+         to_translation( "Heavily damaged vehicles chance" ),
+         to_translation( "Extra probability in percents to spawn any damaged vehicle with severe structural damage." ),
+         0, 100, 0
        );
 
     add( "CORPSES_REVIVE", "world_default", to_translation( "Corpses revive as zombies" ),

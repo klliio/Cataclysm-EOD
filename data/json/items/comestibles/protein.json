@@ -44,7 +44,7 @@
     "price": 1100,
     "price_postapoc": 100,
     "charges": 9,
-    "flags": [ "EDIBLE_FROZEN" ],
+    "flags": [ "EDIBLE_FROZEN", "WATER_DISSOLVE" ],
     "material": [ "powder" ],
     "symbol": "%",
     "color": "white",

@@ -11322,18 +11322,20 @@ void game::water_affect_items( Character &ch ) const
     std::vector<item_location> destroyed;
     std::vector<item_location> wet;
 
-    for( item_location &loc : ch.all_items_loc() ) {
-        // check flag first because its cheaper
-        if( loc->has_flag( flag_WATER_DISSOLVE ) && !loc.protected_from_liquids() ) {
-            dissolved.emplace_back( loc );
-        } else if( loc->has_flag( flag_WATER_BREAK ) && !loc->is_broken()
-                   && !loc.protected_from_liquids() ) {
-            destroyed.emplace_back( loc );
-        } else if( loc->has_flag( flag_WATER_BREAK_ACTIVE ) && !loc->is_broken()
-                   && !loc.protected_from_liquids() ) {
-            wet.emplace_back( loc );
-        } else if( loc->typeId() == itype_towel && !loc.protected_from_liquids() ) {
-            loc->convert( itype_towel_wet ).active = true;
+    if( get_option<bool>( "WATER_RUINS_ITEMS" ) ) {
+        for( item_location &loc : ch.all_items_loc() ) {
+            // check flag first because its cheaper
+            if( loc->has_flag( flag_WATER_DISSOLVE ) && !loc.protected_from_liquids() ) {
+                dissolved.emplace_back( loc );
+            } else if( loc->has_flag( flag_WATER_BREAK ) && !loc->is_broken()
+                       && !loc.protected_from_liquids() ) {
+                destroyed.emplace_back( loc );
+            } else if( loc->has_flag( flag_WATER_BREAK_ACTIVE ) && !loc->is_broken()
+                       && !loc.protected_from_liquids() ) {
+                wet.emplace_back( loc );
+            } else if( loc->typeId() == itype_towel && !loc.protected_from_liquids() ) {
+                loc->convert( itype_towel_wet ).active = true;
+            }
         }
     }
 

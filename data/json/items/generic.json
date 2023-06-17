@@ -2577,6 +2577,7 @@
     "material": [ "powder_nonflam" ],
     "weight": "2340 g",
     "volume": "1 L",
+    "flags": [ "WATER_DISSOLVE" ],
     "melee_damage": { "bash": 4 }
   },
   {
@@ -2593,6 +2594,7 @@
     "material": [ "powder_nonflam" ],
     "weight": "2340 g",
     "volume": "1 L",
+    "flags": [ "WATER_DISSOLVE" ],
     "melee_damage": { "bash": 4 }
   },
   {

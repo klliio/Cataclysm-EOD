@@ -1268,7 +1268,8 @@ std::function<bool( const item & )> recipe::get_component_filter(
     std::function<bool( const item & )> frozen_filter = return_true<item>;
     if( result.has_temperature() && !hot_result() ) {
         frozen_filter = []( const item & component ) {
-            return !component.has_flag( flag_FROZEN ) || component.has_flag( flag_EDIBLE_FROZEN );
+            return !component.has_flag( flag_FROZEN ) || component.has_flag( flag_EDIBLE_FROZEN ) ||
+                   get_option<bool>( "EAT_FROZEN" );
         };
     }
 

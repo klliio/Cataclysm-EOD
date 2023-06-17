@@ -734,7 +734,7 @@
     "material": [ "powder", "egg" ],
     "primary_material": "powder",
     "volume": "250 ml",
-    "flags": [ "EDIBLE_FROZEN", "NO_AUTO_CONSUME" ],
+    "flags": [ "EDIBLE_FROZEN", "NO_AUTO_CONSUME", "WATER_DISSOLVE" ],
     "charges": 16,
     "fun": -4,
     "freezing_point": -274

@@ -3459,6 +3459,13 @@ void Character::apply_skill_boost()
 
 void Character::do_skill_rust()
 {
+    if( !get_option<bool>( "SKILL_RUST" ) ) {
+        return;
+    }
+    bool oldSkillRusty = false;
+    int oldSkillLevel = 0;
+    int newSkillLevel = 0;
+    const int rust_resist = enchantment_cache->modify_value( enchant_vals::mod::SKILL_RUST_RESIST, 0 );
     for( std::pair<const skill_id, SkillLevel> &pair : *_skills ) {
         const Skill &aSkill = *pair.first;
         SkillLevel &skill_level_obj = pair.second;
@@ -3468,27 +3475,24 @@ void Character::do_skill_rust()
               ( has_flag( json_flag_PRED3 ) && calendar::once_every( 4_hours ) ) ||
               ( has_flag( json_flag_PRED4 ) && calendar::once_every( 3_hours ) ) ) ) {
             // Their brain is optimized to remember this
-            if( one_in( 13 ) ) {
-                // They've already passed the roll to avoid rust at
-                // this point, but print a message about it now and
-                // then.
-                //
-                // 13 combat skills.
-                // This means PRED2/PRED3/PRED4 think of hunting on
-                // average every 8/4/3 hours, enough for immersion
-                // without becoming an annoyance.
-                //
-                add_msg_if_player( _( "Your heart races as you recall your most recent hunt." ) );
-                mod_stim( 1 );
-            }
             continue;
         }
 
-        const int rust_resist = enchantment_cache->modify_value( enchant_vals::mod::SKILL_RUST_RESIST, 0 );
+        oldSkillRusty = skill_level_obj.isRusty();
+        oldSkillLevel = skill_level_obj.level();
         if( skill_level_obj.rust( rust_resist, mutation_value( "skill_rust_multiplier" ) ) ) {
             add_msg_if_player( m_warning,
                                _( "Your knowledge of %s begins to fade, but your memory banks retain it!" ), aSkill.name() );
             mod_power_level( -bio_memory->power_trigger );
+        }
+        newSkillLevel = skill_level_obj.level();
+        if( newSkillLevel < oldSkillLevel ) {
+            add_msg_if_player( m_bad,
+                               _( "Your practical skill in %s may need some refreshing.  It has dropped to %d." ), aSkill.name(),
+                               newSkillLevel );
+        } else if( !oldSkillRusty && skill_level_obj.isRusty() ) {
+            add_msg_if_player( m_bad,
+                               _( "Your practical skill in %s has started rusting from the lack of practice." ), aSkill.name() );
         }
     }
 }
