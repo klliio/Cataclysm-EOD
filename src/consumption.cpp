@@ -799,7 +799,7 @@ ret_val<edible_rating> Character::can_eat( const item &food ) const
         }
     }
     if( food.has_own_flag( flag_FROZEN ) && !food.has_flag( flag_EDIBLE_FROZEN ) &&
-        !food.has_flag( flag_MELTS ) ) {
+        !food.has_flag( flag_MELTS ) && !get_option<bool>( "EAT_FROZEN" ) ) {
         if( edible ) {
             return ret_val<edible_rating>::make_failure(
                        _( "Must be defrosted before eating." ) );
@@ -1589,7 +1589,7 @@ bool Character::can_consume_as_is( const item &it ) const
 {
     if( it.is_comestible() ) {
         return !it.has_flag( flag_FROZEN ) || it.has_flag( flag_EDIBLE_FROZEN ) ||
-               it.has_flag( flag_MELTS );
+               it.has_flag( flag_MELTS ) || get_option<bool>( "EAT_FROZEN" );
     }
     return false;
 }

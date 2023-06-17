@@ -253,19 +253,26 @@ void vehicle::init_state( map &placed_on, int init_veh_fuel, int init_veh_status
                           bool may_spawn_locked )
 {
     // vehicle parts excluding engines in non-owned vehicles are by default turned off
-    for( vehicle_part &pt : parts ) {
-        pt.enabled = !has_owner() && pt.is_engine();
+    if( get_option<bool>( "VEH_SPAWN_RUNNING" ) ) {
+        for( vehicle_part &pt : parts ) {
+            pt.enabled = !has_owner() && pt.is_engine();
+        }
+    } else {
+        // If vehicles are set to never spawn running, then everything is turned off by default.
+        for( vehicle_part &pt : parts ) {
+            pt.enabled = false;
+        }
     }
 
-    bool destroySeats = false;
-    bool destroyControls = false;
-    bool destroyTank = false;
-    bool destroyEngine = false;
-    bool destroyTires = false;
+    bool destroySeats = x_in_y( get_option<int>( "VEH_DESTROY_SEATS" ), 100 );
+    bool destroyControls = x_in_y( get_option<int>( "VEH_DESTROY_CONTROLS" ), 100 );
+    bool destroyTank = x_in_y( get_option<int>( "VEH_DESTROY_TANK" ), 100 );
+    bool destroyEngine = x_in_y( get_option<int>( "VEH_DESTROY_ENGINE" ), 100 );
+    bool destroyTires = x_in_y( get_option<int>( "VEH_DESTROY_TIRES" ), 100 );
     bool blood_covered = false;
     bool blood_inside = false;
-    bool has_no_key = false;
-    bool destroyAlarm = false;
+    bool has_no_key = x_in_y( get_option<int>( "VEH_START_LOCKED" ), 100 );
+    bool destroyAlarm = x_in_y( get_option<int>( "VEH_DESTROY_ALARM" ), 100 );
 
     // More realistically it should be -5 days old
     last_update = calendar::turn_zero;
@@ -283,9 +290,16 @@ void vehicle::init_state( map &placed_on, int init_veh_fuel, int init_veh_status
         }
         const int max = vp.ammo_capacity( fuel->ammo->type );
         if( init_veh_fuel < 0 ) {
+            const double min = get_option<float>( "VEH_MIN_FUEL" );
+            double max = get_option<float>( "VEH_MAX_FUEL" );
+            if( min > max ) {
+                debugmsg( "Options set up incorrectly: minimum vehicle fuel shouldn't be higher than maximum vehicle fuel." );
+                max = min;
+            }
             // map.emplace(...).first returns iterator to the new or existing element
-            const double roll = fuels.emplace( fuel, normal_roll( 0.3, 0.15 ) ).first->second;
-            vp.ammo_set( fuel, max * std::clamp( roll, 0.05, 0.95 ) );
+            const double roll = fuels.emplace( fuel, normal_roll( 0.3,
+                                               0.15 ) * ( ( min + max ) / 0.6 ) ).first->second;
+            vp.ammo_set( fuel, max * std::clamp( roll, min, max ) );
         } else if( init_veh_fuel == 0 ) {
             vp.ammo_unset();
         } else if( init_veh_fuel > 0 && init_veh_fuel < 100 ) {
@@ -342,19 +356,21 @@ void vehicle::init_state( map &placed_on, int init_veh_fuel, int init_veh_status
         //Leave engine running in some vehicles, if the engine has not been destroyed
         //chance decays from 1 in 4 vehicles on day 0 to 1 in (day + 4) in the future.
         int current_day = std::max( to_days<int>( calendar::turn - calendar::turn_zero ), 0 );
-        if( init_veh_fuel != 0 && !engines.empty() &&
+        if( get_option<bool>( "VEH_SPAWN_RUNNING" ) && init_veh_fuel != 0 && !engines.empty() &&
             one_in( current_day + 4 ) && !destroyEngine && !has_no_key &&
             has_engine_type_not( fuel_type_muscle, true ) ) {
             engine_on = true;
         }
 
-        bool light_head  = one_in( 20 );
-        bool light_whead  = one_in( 20 ); // wide-angle headlight
-        bool light_dome  = one_in( 16 );
-        bool light_aisle = one_in( 8 );
-        bool light_hoverh = one_in( 4 ); // half circle overhead light
-        bool light_overh = one_in( 4 );
-        bool light_atom  = one_in( 2 );
+        bool light_head = get_option<bool>( "VEH_SPAWN_RUNNING" ) && one_in( 20 );
+        bool light_whead = get_option<bool>( "VEH_SPAWN_RUNNING" ) && one_in( 20 ); // wide-angle headlight
+        bool light_dome = get_option<bool>( "VEH_SPAWN_RUNNING" ) && one_in( 16 );
+        bool light_aisle = get_option<bool>( "VEH_SPAWN_RUNNING" ) && one_in( 8 );
+        bool light_hoverh = get_option<bool>( "VEH_SPAWN_RUNNING" ) &&
+                            one_in( 4 ); // half circle overhead light
+        bool light_overh = get_option<bool>( "VEH_SPAWN_RUNNING" ) && one_in( 4 );
+        bool light_atom = one_in(
+                              2 ); // Option doesn't affect atomic lights since they don't use up power and could stay on forever.
         for( vehicle_part &vp : parts ) {
             const vpart_info vpi = vp.info();
             if( vpi.has_flag( VPFLAG_CONE_LIGHT ) ) {
@@ -382,16 +398,18 @@ void vehicle::init_state( map &placed_on, int init_veh_fuel, int init_veh_status
             blood_inside = true;
         }
 
-        for( const vpart_reference &vp : get_parts_including_carried( "FRIDGE" ) ) {
-            vp.part().enabled = true;
-        }
+        if( get_option<bool>( "VEH_SPAWN_RUNNING" ) ) {
+            for( const vpart_reference &vp : get_parts_including_carried( "FRIDGE" ) ) {
+                vp.part().enabled = true;
+            }
 
-        for( const vpart_reference &vp : get_parts_including_carried( "FREEZER" ) ) {
-            vp.part().enabled = true;
-        }
+            for( const vpart_reference &vp : get_parts_including_carried( "FREEZER" ) ) {
+                vp.part().enabled = true;
+            }
 
-        for( const vpart_reference &vp : get_parts_including_carried( "WATER_PURIFIER" ) ) {
-            vp.part().enabled = true;
+            for( const vpart_reference &vp : get_parts_including_carried( "WATER_PURIFIER" ) ) {
+                vp.part().enabled = true;
+            }
         }
     }
 
@@ -400,7 +418,7 @@ void vehicle::init_state( map &placed_on, int init_veh_fuel, int init_veh_status
         const size_t p = vp.part_index();
         vehicle_part &pt = vp.part();
 
-        if( vp.has_feature( VPFLAG_REACTOR ) ) {
+        if( vp.has_feature( VPFLAG_REACTOR ) && get_option<bool>( "VEH_SPAWN_RUNNING" ) ) {
             // De-hardcoded reactors. Should always start active
             pt.enabled = true;
         }
@@ -521,7 +539,8 @@ void vehicle::init_state( map &placed_on, int init_veh_fuel, int init_veh_status
     }
 
     // Additional 50% chance for heavy damage to disabled vehicles
-    if( veh_status == 1 && one_in( 2 ) ) {
+    if( ( veh_status == 1 && one_in( 2 ) ) || ( veh_status == -1 &&
+            x_in_y( get_option<int>( "VEH_HEAVY_DAMAGE" ), 100 ) ) ) {
         smash( placed_on, 0.5 );
     }
 

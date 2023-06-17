@@ -6,6 +6,7 @@
     "name": { "str_sp": "paprika powder" },
     "description": "A spice made from dried and ground red peppers.  Unlike chili powder, it is made from peppers that are less spicy.",
     "color": "red",
-    "weight": "3 g"
+    "weight": "3 g",
+    "flags": [ "WATER_DISSOLVE" ]
   }
 ]

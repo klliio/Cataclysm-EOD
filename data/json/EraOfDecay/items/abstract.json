@@ -13,7 +13,8 @@
     "category": "chems",
     "color": "white",
     "ammo_type": "components",
-    "count": 1
+    "count": 1,
+    "flags": [ "WATER_DISSOLVE" ]
   },
   {
     "abstract": "reagent_liquid",
@@ -30,7 +31,7 @@
     "symbol": "~",
     "category": "chems",
     "color": "light_gray",
-    "flags": [ "INEDIBLE" ]
+    "flags": [ "INEDIBLE", "WATER_DISSOLVE" ]
   },
   {
     "abstract": "reagent_gas",
@@ -48,7 +49,7 @@
     "category": "chems",
     "color": "light_gray",
     "stack_size": 1,
-    "flags": [ "INEDIBLE" ]
+    "flags": [ "INEDIBLE", "WATER_DISSOLVE" ]
   },
   {
     "abstract": "shield_abstract",

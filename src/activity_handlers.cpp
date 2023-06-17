@@ -73,6 +73,7 @@
 #include "mtype.h"
 #include "npc.h"
 #include "omdata.h"
+#include "options.h"
 #include "output.h"
 #include "overmapbuffer.h"
 #include "pimpl.h"
@@ -919,10 +920,12 @@ static bool butchery_drops_harvest( item *corpse_item, const mtype &mt, Characte
         int roll = 0;
         // mass_ratio will override the use of base_num, scale_num, and max
         if( entry.mass_ratio != 0.00f ) {
-            roll = static_cast<int>( std::round( entry.mass_ratio * monster_weight ) );
+            roll = static_cast<int>( std::round( entry.mass_ratio * monster_weight *
+                                                 get_option<float>( "BUTCHER_RESULT_MULT" ) ) );
             roll = corpse_damage_effect( roll, entry.type, corpse_item->damage_level() );
         } else {
-            roll = std::min<int>( entry.max, std::round( rng_float( min_num, max_num ) ) );
+            roll = std::min<int>( entry.max, std::round( rng_float( min_num,
+                                  max_num ) * get_option<float>( "BUTCHER_RESULT_MULT" ) ) );
             // will not give less than min_num defined in the JSON
             roll = std::max<int>( corpse_damage_effect( roll, entry.type, corpse_item->damage_level() ),
                                   entry.base_num.first );

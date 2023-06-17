@@ -2099,6 +2099,8 @@ std::pair<bool, std::string> veh_interact::calc_lift_requirements( const vpart_i
         str = veh->lift_strength();
         use_aid = ( max_jack >= lifting_quality_to_mass( lvl ) ) || can_self_jack();
         use_str = player_character.can_lift( *veh );
+    } else if( !get_option<bool>( "VPARTS_NEED_LIFTING" ) ) {
+        use_str = true;
     } else {
         item base( sel_vpart_info.base_item );
         qual = qual_LIFT;

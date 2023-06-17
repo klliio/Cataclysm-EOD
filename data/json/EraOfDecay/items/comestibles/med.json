@@ -107,7 +107,7 @@
     "color": "white",
     "looks_like": "calcium_tablet",
     "container": "bottle_plastic_pill_supplement",
-    "flags": [ "IRREPLACEABLE_CONSUMABLE", "EDIBLE_FROZEN" ],
+    "flags": [ "IRREPLACEABLE_CONSUMABLE", "EDIBLE_FROZEN", "WATER_DISSOLVE" ],
     "use_action": { "type": "consume_drug", "activation_message": "You take the %s.", "vitamins": [ [ "vitC", 75 ] ] }
   },
   {
@@ -125,7 +125,7 @@
     "color": "white",
     "looks_like": "calcium_tablet",
     "container": "bottle_plastic_small",
-    "flags": [ "IRREPLACEABLE_CONSUMABLE", "EDIBLE_FROZEN" ],
+    "flags": [ "IRREPLACEABLE_CONSUMABLE", "EDIBLE_FROZEN", "WATER_DISSOLVE" ],
     "use_action": {
       "type": "consume_drug",
       "activation_message": "You take the iron dietary supplement.",
@@ -148,7 +148,7 @@
     "symbol": "!",
     "color": "light_green",
     "container": "bottle_plastic_pill_prescription",
-    "flags": [ "EDIBLE_FROZEN" ],
+    "flags": [ "EDIBLE_FROZEN", "WATER_DISSOLVE" ],
     "//": "Should act as a mood stabilizer instead, to counter Mood Swings trait, once that is implemented.",
     "use_action": [ "PROZAC" ]
   },
@@ -236,7 +236,7 @@
     "color": "yellow",
     "container": "bottle_plastic_pill_supplement",
     "looks_like": "calcium_tablet",
-    "flags": [ "EDIBLE_FROZEN" ],
+    "flags": [ "EDIBLE_FROZEN", "WATER_DISSOLVE" ],
     "use_action": { "type": "consume_drug", "activation_message": "You take your %s.", "vitamins": [ [ "iron", 90 ] ] }
   }
 ]

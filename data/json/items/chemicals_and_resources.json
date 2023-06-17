@@ -89,6 +89,7 @@
     "volume": "250 ml",
     "weight": "20 g",
     "ammo_type": "components",
+    "flags": [ "WATER_DISSOLVE" ],
     "count": 50
   },
   {
@@ -329,7 +330,7 @@
     "name": { "str_sp": "commercial fertilizer" },
     "weight": "27 g",
     "color": "yellow",
-    "flags": [ "FERTILIZER" ],
+    "flags": [ "FERTILIZER", "WATER_DISSOLVE" ],
     "use_action": [ "PLANTBLECH" ],
     "container": "bag_canvas",
     "comestible_type": "FOOD",
@@ -355,7 +356,7 @@
     "weight": "1 g",
     "//": "Typically sold in larger quantities, but that's handled in the charge count.",
     "color": "pink",
-    "flags": [ "EDIBLE_FROZEN" ],
+    "flags": [ "EDIBLE_FROZEN", "WATER_DISSOLVE" ],
     "use_action": [ "FUNGICIDE" ],
     "stim": -7,
     "container": "bag_plastic",
@@ -389,6 +390,7 @@
     "price_postapoc": 1000,
     "material": [ "powder" ],
     "volume": "125ml",
+    "flags": [ "WATER_DISSOLVE" ],
     "charges": 400,
     "stack_size": 200
   },
@@ -526,6 +528,7 @@
     "volume": "151 ml",
     "weight": "500 mg",
     "ammo_type": "components",
+    "flags": [ "WATER_DISSOLVE" ],
     "count": 1000
   },
   {
@@ -667,6 +670,7 @@
     "volume": "50 ml",
     "weight": "961 mg",
     "ammo_type": "components",
+    "flags": [ "WATER_DISSOLVE" ],
     "count": 100
   },
   {
@@ -888,6 +892,7 @@
     "weight": "151 mg",
     "ammo_type": "components",
     "container": "bag_plastic",
+    "flags": [ "WATER_DISSOLVE" ],
     "count": 1000
   },
   {
@@ -1157,7 +1162,7 @@
     "material": [ "powder" ],
     "volume": "250 ml",
     "weight": "14 g",
-    "flags": [ "DETERGENT" ],
+    "flags": [ "DETERGENT", "WATER_DISSOLVE" ],
     "ammo_type": "components",
     "container": "box_small",
     "count": 20
@@ -1246,6 +1251,7 @@
     "volume": "164ml",
     "weight": "1 g",
     "ammo_type": "components",
+    "flags": [ "WATER_DISSOLVE" ],
     "count": 100
   },
   {
@@ -1368,7 +1374,7 @@
     "material": [ "powder" ],
     "volume": "1 ml",
     "weight": "500 mg",
-    "flags": [ "INEDIBLE" ]
+    "flags": [ "INEDIBLE", "WATER_DISSOLVE" ]
   },
   {
     "type": "AMMO",
