@@ -1257,7 +1257,7 @@
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
-        "rigid": true,
+        "magazine_well": "500 ml",
         "default_magazine": "medium_storage_battery",
         "item_restriction": [
           "medium_storage_battery",
@@ -1327,7 +1327,7 @@
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
-        "rigid": true,
+        "magazine_well": "1250 ml",
         "item_restriction": [
           "medium_battery_cell",
           "medium_plus_battery_cell",
@@ -1399,7 +1399,7 @@
     "pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
-        "rigid": true,
+        "magazine_well": "500 ml",
         "item_restriction": [
           "medium_battery_cell",
           "medium_plus_battery_cell",
