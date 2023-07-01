@@ -270,7 +270,10 @@
     "//2": "Stuff you might find in a jobsite, a hardware store, or a home workshop.",
     "items": [
       { "item": "chem_petroleumjelly", "prob": 5 },
-      { "item": "nuts_bolts", "prob": 80, "charges": [ 5, 10 ], "container-item": "box_small" },
+      { "item": "nuts_bolts", "prob": 80, "charges": 500, "container-item": "box_small" },
+      { "item": "brazing_rod_bronze", "prob": 15, "charges": 1500 },
+      { "item": "welding_rod_steel", "prob": 20, "charges": 1500 },
+      { "item": "welding_wire_steel", "prob": 20, "charges": 1500 },
       [ "concrete", 20 ],
       {
         "collection": [
@@ -359,6 +362,7 @@
     "//": "General laboratory reagents and expendibles.  This list contains most conceivable chemicals in the game.  More specific lists for each type of lab would be reasonable eventually.",
     "items": [
       { "group": "ores", "prob": 1 },
+      { "item": "chem_lithium", "prob": 10, "charges-min": 100 },
       { "item": "chem_lithium_carbonate", "prob": 2 },
       { "item": "chem_lithium_hydroxide", "prob": 2 },
       { "item": "chem_benzotrichloride", "prob": 3 },
@@ -454,7 +458,7 @@
       { "item": "chem_carbide", "prob": 10, "charges-min": 100 },
       { "item": "mercury", "prob": 10, "charges-min": 100 },
       { "item": "chem_sodium", "prob": 10, "charges-min": 100 },
-      { "item": "chem_lithium", "prob": 10, "charges-min": 100 },
+      { "item": "chem_potassium", "prob": 10, "charges-min": 100 },
       [ "chem_ammonium_nitrate", 10 ],
       { "item": "chem_chromium_oxide", "prob": 10, "charges-min": 100 },
       { "item": "chem_zinc_powder", "prob": 10, "charges-min": 100 },
@@ -599,7 +603,7 @@
         ],
         "prob": 35
       },
-      { "item": "nuts_bolts", "prob": 80, "charges": [ 20, 40 ], "container-item": "box_small" },
+      { "item": "nuts_bolts", "prob": 80, "charges": 500, "container-item": "box_small" },
       [ "jumper_cable", 15 ],
       [ "jumper_cable_heavy", 5 ],
       [ "stereo", 25 ],

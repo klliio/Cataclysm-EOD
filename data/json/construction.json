@@ -5134,6 +5134,20 @@
   },
   {
     "type": "construction",
+    "id": "app_catalytic_cracking_reactor",
+    "group": "place_catalytic_cracking_reactor",
+    "category": "APPLIANCE",
+    "//1": "maybe some applied science? this seems to be some semi-advanced hardware",
+    "required_skills": [ [ "fabrication", 0 ] ],
+    "//2": "I set lower activity and longer time for putting a lot of light and/or small items together. When possible, I'd like it to take more time to disassemble as well.",
+    "time": "40 m",
+    "components": [ [ [ "catalytic_cracking_reactor", 1 ] ] ],
+    "pre_special": "check_empty",
+    "post_special": "done_appliance",
+    "activity_level": "LIGHT_EXERCISE"
+  },
+  {
+    "type": "construction",
     "id": "app_hydraulic_press",
     "group": "place_hydraulic_press",
     "category": "APPLIANCE",
@@ -5382,6 +5396,18 @@
   },
   {
     "type": "construction",
+    "id": "app_wall_light",
+    "group": "place_wall_light",
+    "category": "APPLIANCE",
+    "required_skills": [ [ "fabrication", 0 ] ],
+    "time": "5 s",
+    "components": [ [ [ "wall_light", 1 ] ] ],
+    "pre_flags": "WALL",
+    "post_special": "done_appliance",
+    "activity_level": "NO_EXERCISE"
+  },
+  {
+    "type": "construction",
     "id": "app_standing_lamp",
     "group": "place_standing_lamp",
     "category": "APPLIANCE",
@@ -5478,6 +5504,19 @@
     "time": "5 m",
     "qualities": [ [ { "id": "WRENCH", "level": 1 } ] ],
     "components": [ [ [ "compact_ASRG_containment", 1 ] ] ],
+    "pre_special": "check_empty",
+    "post_special": "done_appliance",
+    "activity_level": "LIGHT_EXERCISE"
+  },
+  {
+    "type": "construction",
+    "id": "app_active_backup_generator",
+    "group": "place_active_backup_generator",
+    "category": "APPLIANCE",
+    "required_skills": [ [ "mechanics", 1 ] ],
+    "time": "5 m",
+    "qualities": [ [ { "id": "WRENCH", "level": 1 } ] ],
+    "components": [ [ [ "active_backup_generator", 1 ] ] ],
     "pre_special": "check_empty",
     "post_special": "done_appliance",
     "activity_level": "LIGHT_EXERCISE"
@@ -6256,7 +6295,6 @@
       [ [ "pillow", 19 ], [ "down_pillow", 19 ], [ "makeshift_pillow", 19 ], [ "mattress", 4 ] ],
       [ [ "down_blanket", 3 ], [ "blanket", 3 ], [ "fur_blanket", 3 ] ]
     ],
-    "pre_terrain": "t_floor",
     "post_terrain": "f_pillow_fort"
   },
   {
