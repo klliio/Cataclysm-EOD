@@ -50,6 +50,7 @@
     "type": "effect_type",
     "id": "dragging",
     "name": [ "Dragging" ],
+    "show_in_info": true,
     "desc": [ "AI tag for when a monster is dragging you behind it.  This is a bug if you have it." ]
   },
   {
@@ -420,6 +421,15 @@
     "show_in_info": true,
     "base_mods": { "dodge_mod": [ -8 ] },
     "desc": [ "You're grabbing the tail of somebody." ],
+    "flags": [ "GRAB_FILTER" ]
+  },
+  {
+    "type": "effect_type",
+    "id": "grabbing_gastropod_foot",
+    "name": [ "Grabbing G. Foot" ],
+    "show_in_info": true,
+    "base_mods": { "dodge_mod": [ -8 ] },
+    "desc": [ "You're grabbing the snail like lower body of somebody." ],
     "flags": [ "GRAB_FILTER" ]
   },
   {
@@ -3247,10 +3257,10 @@
     "limb_score_mods": [
       { "limb_score": "manip", "modifier": 0.0 },
       { "limb_score": "grip", "modifier": 0.0 },
-      { "limb_score": "lift", "modifier": 0.6, "scaling": -0.01 },
+      { "limb_score": "lift", "modifier": 0.6, "scaling": -0.015 },
       { "limb_score": "block", "modifier": 0.25, "scaling": -0.01 },
       { "limb_score": "breathing", "modifier": 0.75, "scaling": -0.005 },
-      { "limb_score": "balance", "modifier": 0.6, "scaling": -0.01 },
+      { "limb_score": "balance", "modifier": 0.6, "scaling": -0.016 },
       { "limb_score": "move_speed", "modifier": 0.6, "scaling": -0.01 },
       { "limb_score": "footing", "modifier": 0.6, "scaling": -0.01 },
       { "limb_score": "swim", "modifier": 0.0 }
@@ -4222,7 +4232,7 @@
     "type": "effect_type",
     "id": "molting",
     "name": [ "Molting" ],
-    "desc": [ "Your exoskeleton feels uncomfortably tight.  Perhaps you should find somewhere to rest." ],
+    "desc": [ "You feel a strong urge to hide somewhere safe." ],
     "apply_message": "Your chitin plating itches against your body.",
     "rating": "bad",
     "base_mods": {
@@ -4241,9 +4251,7 @@
     "type": "effect_type",
     "id": "molting_imminent",
     "name": [ "Imminent Molting" ],
-    "desc": [
-      "Your exoskeleton has grown so tight and rigid that it grips you like a vise.  You must seek shelter for the coming molt."
-    ],
+    "desc": [ "Seek shelter, you will be helpless when it begins." ],
     "apply_message": "You can hardly move in your tightening exoskeleton, and you feel a strong impulse to hunker down somewhere safe.",
     "rating": "bad",
     "base_mods": {

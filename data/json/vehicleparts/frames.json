@@ -16,55 +16,55 @@
     "categories": [ "hull" ],
     "damage_reduction": { "all": 20 },
     "variants": [
-      { "id": "horizontal", "label": "Horizontal", "symbols": "──││──││", "symbols_broken": "#" },
+      { "id": "horizontal", "label": "Horizontal", "symbols": "──│───│─", "symbols_broken": "#" },
       {
         "id": "horizontal_front",
         "label": "Front Horizontal",
-        "symbols": "──││──││",
+        "symbols": "──│───│─",
         "symbols_broken": "#"
       },
       {
         "id": "horizontal_rear",
         "label": "Rear Horizontal",
-        "symbols": "──││──││",
+        "symbols": "──│───│─",
         "symbols_broken": "#"
       },
       {
         "id": "horizontal_2",
         "label": "Thick Horizontal",
-        "symbols": "━━┃┃━━┃┃",
+        "symbols": "━━┃━━━┃━",
         "symbols_broken": "#"
       },
       {
         "id": "horizontal_2_front",
         "label": "Front Thick Horizontal",
-        "symbols": "━━┃┃━━┃┃",
+        "symbols": "━━┃━━━┃━",
         "symbols_broken": "#"
       },
-      { "id": "vertical", "label": "Vertical", "symbols": "│/─\\│/─\\", "symbols_broken": "#" },
-      { "id": "vertical_left", "label": "Left Vertical", "symbols": "│/─\\│/─\\", "symbols_broken": "#" },
-      { "id": "vertical_right", "label": "Right Vertical", "symbols": "│/─\\│/─\\", "symbols_broken": "#" },
-      { "id": "vertical_T_left", "label": "Left T Joint", "symbols": "│/─\\│/─\\", "symbols_broken": "#" },
-      { "id": "vertical_T_right", "label": "Right T Joint", "symbols": "│/─\\│/─\\", "symbols_broken": "#" },
-      { "id": "vertical_2", "label": "Thick Vertical", "symbols": "┃┃━━┃┃━━", "symbols_broken": "#" },
+      { "id": "vertical", "label": "Vertical", "symbols": "│\\─/│\\─/", "symbols_broken": "#" },
+      { "id": "vertical_left", "label": "Left Vertical", "symbols": "│\\─/│\\─/", "symbols_broken": "#" },
+      { "id": "vertical_right", "label": "Right Vertical", "symbols": "│\\─/│\\─/", "symbols_broken": "#" },
+      { "id": "vertical_T_left", "label": "Left T Joint", "symbols": "│\\─/│\\─/", "symbols_broken": "#" },
+      { "id": "vertical_T_right", "label": "Right T Joint", "symbols": "│\\─/│\\─/", "symbols_broken": "#" },
+      { "id": "vertical_2", "label": "Thick Vertical", "symbols": "┃┃━┃┃┃━┃", "symbols_broken": "#" },
       {
         "id": "vertical_2_left",
         "label": "Left Thick Vertical",
-        "symbols": "┃┃━━┃┃━━",
+        "symbols": "┃┃━┃┃┃━┃",
         "symbols_broken": "#"
       },
       {
         "id": "vertical_2_right",
         "label": "Right Thick Vertical",
-        "symbols": "┃┃━━┃┃━━",
+        "symbols": "┃┃━┃┃┃━┃",
         "symbols_broken": "#"
       },
-      { "id": "cover", "label": "Cover", "symbols": "^^>>vv<<", "symbols_broken": "#" },
+      { "id": "cover", "label": "Cover", "symbols": "^^<vvv>^", "symbols_broken": "#" },
       { "id": "cross", "label": "Cross", "symbols": "┼X┼X┼X┼X", "symbols_broken": "#" },
-      { "id": "ne", "label": "Front Right", "symbols": "┐┐┘┘└└┌┌", "symbols_broken": "#" },
-      { "id": "nw", "label": "Front Left", "symbols": "┌┌┐┐┘┘└└", "symbols_broken": "#" },
-      { "id": "se", "label": "Rear Right", "symbols": "┘┘└└┌┌┐┐", "symbols_broken": "#" },
-      { "id": "sw", "label": "Rear Left", "symbols": "└└┌┌┐┐┘┘", "symbols_broken": "#" }
+      { "id": "ne", "label": "Front Right", "symbols": "┐┐┌└└└┘┐", "symbols_broken": "#" },
+      { "id": "nw", "label": "Front Left", "symbols": "┌┌└┘┘┘┐┌", "symbols_broken": "#" },
+      { "id": "se", "label": "Rear Right", "symbols": "┘┘┐┌┌┌└┘", "symbols_broken": "#" },
+      { "id": "sw", "label": "Rear Left", "symbols": "└└┘┐┐┐┌└", "symbols_broken": "#" }
     ]
   },
   {
@@ -197,7 +197,6 @@
     "copy-from": "frame_abstract",
     "name": { "str": "extra light frame" },
     "item": "xlframe",
-    "color": "light_gray",
     "durability": 150,
     "description": "A light metal framework.  Other vehicle components can be mounted on it, and it can be attached to other frames to increase the vehicle's size.",
     "breaks_into": [ { "item": "scrap_aluminum", "count": [ 5, 30 ] } ],
@@ -223,7 +222,6 @@
     "copy-from": "frame_abstract",
     "name": { "str": "foldable extra light frame" },
     "item": "foldxlframe",
-    "color": "light_gray",
     "durability": 150,
     "description": "A light metal framework.  Other vehicle components can be mounted on it, and it can be attached to other frames to increase the vehicle's size.",
     "folded_volume": "2500 ml",

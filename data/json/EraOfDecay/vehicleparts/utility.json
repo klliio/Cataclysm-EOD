@@ -6,7 +6,6 @@
       { "count": [ 4, 6 ], "item": "steel_chunk" },
       { "count": [ 4, 6 ], "item": "scrap" }
     ],
-    "broken_color": "light_gray",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,
@@ -38,7 +37,6 @@
       { "count": [ 4, 6 ], "item": "steel_chunk" },
       { "count": [ 4, 6 ], "item": "scrap" }
     ],
-    "broken_color": "light_gray",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,
@@ -70,7 +68,6 @@
       { "count": [ 4, 6 ], "item": "steel_chunk" },
       { "count": [ 4, 6 ], "item": "scrap" }
     ],
-    "broken_color": "light_gray",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,
@@ -102,7 +99,6 @@
       { "count": [ 4, 6 ], "item": "steel_chunk" },
       { "count": [ 4, 6 ], "item": "scrap" }
     ],
-    "broken_color": "light_gray",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,
@@ -134,7 +130,6 @@
       { "count": [ 4, 6 ], "item": "steel_chunk" },
       { "count": [ 4, 6 ], "item": "scrap" }
     ],
-    "broken_color": "light_gray",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,

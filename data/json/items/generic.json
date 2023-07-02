@@ -2927,7 +2927,6 @@
     "price": 1500,
     "price_postapoc": 100,
     "material": [ "cotton" ],
-    "repairs_like": "tshirt",
     "weight": "774 g",
     "volume": "1750 ml",
     "flags": [ "SLEEP_AID" ],
@@ -3801,7 +3800,6 @@
   },
   {
     "id": "wallet",
-    "repairs_like": "backpack",
     "type": "GENERIC",
     "category": "container",
     "name": { "str": "wallet" },
@@ -3856,7 +3854,6 @@
   },
   {
     "id": "wallet_leather",
-    "repairs_like": "leather_belt",
     "type": "GENERIC",
     "copy-from": "wallet",
     "name": { "str": "leather wallet" },
@@ -3865,7 +3862,6 @@
   },
   {
     "id": "wallet_large",
-    "repairs_like": "leather_belt",
     "type": "GENERIC",
     "copy-from": "wallet",
     "name": { "str": "large wallet" },
@@ -3906,7 +3902,6 @@
   },
   {
     "id": "wallet_stylish",
-    "repairs_like": "leather_belt",
     "type": "GENERIC",
     "copy-from": "wallet",
     "name": { "str": "stylish wallet" },
@@ -3916,7 +3911,6 @@
   },
   {
     "id": "wallet_travel",
-    "repairs_like": "leather_belt",
     "type": "TOOL_ARMOR",
     "category": "clothing",
     "symbol": ";",

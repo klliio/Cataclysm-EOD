@@ -145,6 +145,7 @@ static const ammotype ammo_battery( "battery" );
 static const bionic_id bio_shock( "bio_shock" );
 static const bionic_id bio_tools( "bio_tools" );
 
+static const construction_str_id construction_constr_clear_rubble( "constr_clear_rubble" );
 static const construction_str_id construction_constr_fill_pit( "constr_fill_pit" );
 static const construction_str_id construction_constr_pit( "constr_pit" );
 static const construction_str_id construction_constr_pit_shallow( "constr_pit_shallow" );
@@ -335,7 +336,6 @@ static const proficiency_id proficiency_prof_wound_care( "prof_wound_care" );
 static const proficiency_id proficiency_prof_wound_care_expert( "prof_wound_care_expert" );
 
 static const quality_id qual_AXE( "AXE" );
-static const quality_id qual_DIG( "DIG" );
 static const quality_id qual_GLARE( "GLARE" );
 static const quality_id qual_LOCKPICK( "LOCKPICK" );
 static const quality_id qual_PRY( "PRY" );
@@ -3119,43 +3119,22 @@ std::optional<int> iuse::fill_pit( Character *p, item */* it */, bool t, const t
     return 0;
 }
 
-/**
- * Explanation of ACT_CLEAR_RUBBLE activity values:
- *
- * coords[0]: Where the rubble is.
- * index: The bonus, for calculating hunger and thirst penalties.
- */
-
-std::optional<int> iuse::clear_rubble( Character *p, item *it, bool, const tripoint & )
+std::optional<int> iuse::clear_rubble( Character *p, item */* it */, bool t, const tripoint & )
 {
+    if( !p || t ) {
+        return std::nullopt;
+    }
     if( p->cant_do_mounted() ) {
         return std::nullopt;
     }
-    const std::function<bool( const tripoint & )> f = []( const tripoint & pnt ) {
-        return get_map().has_flag( ter_furn_flag::TFLAG_RUBBLE, pnt );
-    };
 
-    const std::optional<tripoint> pnt_ = choose_adjacent_highlight(
-            _( "Clear rubble where?" ), _( "There is no rubble to clear nearby." ), f, false );
-    if( !pnt_ ) {
-        return std::nullopt;
-    }
-    const tripoint &pnt = *pnt_;
-    if( !f( pnt ) ) {
-        p->add_msg_if_player( m_bad, _( "There's no rubble to clear." ) );
-        return std::nullopt;
-    }
+    std::vector<construction> const &cnstr = get_constructions();
+    auto const build = std::find_if( cnstr.begin(), cnstr.end(), []( const construction & it ) {
+        return it.str_id == construction_constr_clear_rubble;
+    } );
 
-    int bonus = std::max( it->get_quality( qual_DIG ) - 1, 1 );
-    const std::vector<npc *> helpers = p->get_crafting_helpers();
-    const std::size_t helpersize = p->get_num_crafting_helpers( 3 );
-    const int moves = to_moves<int>( 30_seconds ) * ( 1.0f - ( helpersize / 10.0f ) );
-    for( std::size_t i = 0; i < helpersize; i++ ) {
-        add_msg( m_info, _( "%s helps with this task…" ), helpers[i]->get_name() );
-    }
-    p->assign_activity( clear_rubble_activity_actor( moves / bonus ) );
-    p->activity.placement = get_map().getglobal( pnt );
-    return 1;
+    place_construction( { build->group } );
+    return 0;
 }
 
 std::optional<int> iuse::siphon( Character *p, item *, bool, const tripoint & )
@@ -3849,7 +3828,7 @@ std::optional<int> iuse::c4( Character *p, item *it, bool, const tripoint & )
     p->add_msg_if_player( n_gettext( "You set the timer to %d second.",
                                      "You set the timer to %d seconds.", time ), time );
     it->convert( itype_c4armed );
-    it->charges = time;
+    it->countdown_point = calendar::turn + time_duration::from_seconds( time );
     it->active = true;
     return 1;
 }
@@ -4015,7 +3994,7 @@ std::optional<int> iuse::mininuke( Character *p, item *it, bool, const tripoint 
                           to_string( time_duration::from_turns( time ) ) );
     get_event_bus().send<event_type::activates_mininuke>( p->getID() );
     it->convert( itype_mininuke_act );
-    it->charges = time;
+    it->countdown_point = calendar::turn + time_duration::from_seconds( time );
     it->active = true;
     return 1;
 }
@@ -7837,9 +7816,10 @@ std::optional<int> iuse::remoteveh( Character *p, item *it, bool t, const tripoi
         }
     } else if( choice == 1 ) {
         const auto rctrl_parts = veh->get_avail_parts( "REMOTE_CONTROLS" );
+        const auto electronics_parts = veh->get_avail_parts( "CTRL_ELECTRONIC" );
         // Revert to original behavior if we can't find remote controls.
         if( empty( rctrl_parts ) ) {
-            veh->interact_with( pos );
+            veh->interact_with( electronics_parts.begin()->pos() );
         } else {
             veh->interact_with( rctrl_parts.begin()->pos() );
         }
@@ -9116,8 +9096,9 @@ std::optional<int> iuse::ebooksave( Character *p, item *it, bool t, const tripoi
     }
 
     const item_location book = game_menus::inv::titled_filter_menu(
-    [&ebooks]( const item & itm ) {
-        return itm.is_book() && itm.type->book->is_scannable && !ebooks.count( itm.typeId() );
+    [&ebooks, &p]( const item & itm ) {
+        return itm.is_book() && itm.type->book->is_scannable && !ebooks.count( itm.typeId() ) &&
+               itm.is_owned_by( *p, true );
     },
     *p->as_avatar(), _( "Scan which book?" ), PICKUP_RANGE );
 

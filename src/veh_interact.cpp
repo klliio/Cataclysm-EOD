@@ -178,11 +178,49 @@ player_activity veh_interact::serialize_activity()
     res.values.push_back( -dd.x );   // values[4]
     res.values.push_back( -dd.y );   // values[5]
     res.values.push_back( veh->index_of_part( vpt ) ); // values[6]
-    res.str_values.emplace_back( vp->get_id().str() );
+    res.str_values.emplace_back( vp->id.str() );
     res.str_values.emplace_back( "" ); // previously stored the part variant, now obsolete
     res.targets.emplace_back( std::move( refill_target ) );
 
     return res;
+}
+
+void orient_part( vehicle *veh, const vpart_info &vpinfo, int partnum,
+                  const std::optional<point> &part_placement )
+{
+
+    avatar &player_character = get_avatar();
+    // Stash offset and set it to the location of the part so look_around will
+    // start there.
+    const tripoint old_view_offset = player_character.view_offset;
+    tripoint offset = veh->global_pos3();
+    // Appliances are one tile so the part placement there is always point_zero
+    if( part_placement ) {
+        point copied_placement = *part_placement ;
+        offset += copied_placement ;
+    }
+    player_character.view_offset = offset - player_character.pos();
+
+    point delta;
+    do {
+        popup( _( "Press space, choose a facing direction for the new %s and "
+                  "confirm with enter." ),
+               vpinfo.name() );
+
+        const std::optional<tripoint> chosen = g->look_around();
+        if( !chosen ) {
+            continue;
+        }
+        delta = ( *chosen - offset ).xy();
+        // atan2 only gives reasonable values when delta is not all zero
+    } while( delta == point_zero );
+
+    // Restore previous view offsets.
+    player_character.view_offset = old_view_offset;
+
+    units::angle dir = normalize( atan2( delta ) - veh->face.dir() );
+
+    veh->part( partnum ).direction = dir;
 }
 
 player_activity veh_interact::run( vehicle &veh, const point &p )
@@ -555,7 +593,7 @@ void veh_interact::do_main_loop()
 void veh_interact::cache_tool_availability()
 {
     Character &player_character = get_player_character();
-    crafting_inv = player_character.crafting_inventory();
+    crafting_inv = &player_character.crafting_inventory();
 
     cache_tool_availability_update_lifting( player_character.pos() );
     int mech_jack = 0;
@@ -982,8 +1020,9 @@ void veh_interact::do_install()
         tab_vparts.clear();
         std::copy_if( can_mount.begin(), can_mount.end(), std::back_inserter( tab_vparts ),
                       tab_filters[tab] );
-        // filtered list can be empty
-        sel_vpart_info = tab_vparts.empty() ? nullptr : tab_vparts[pos];
+        // tab_vparts can be empty or pos out of bounds
+        sel_vpart_info = pos >= 0 && pos < static_cast<int>( tab_vparts.size() )
+                         ? tab_vparts[pos] : nullptr;
 
         const bool can_install = update_part_requirements();
         ui_manager::redraw();
@@ -998,9 +1037,11 @@ void veh_interact::do_install()
             .max_length( 100 )
             .edit( filter );
             tab = tab_filters.size() - 1; // Move to the user filter tab.
+            pos = 0;
         } else if( action == "REPAIR" ) {
             filter.clear();
             tab = 0;
+            pos = 0;
         } else if( action == "INSTALL" || action == "CONFIRM" ) {
             if( !can_install || sel_vpart_info == nullptr ) {
                 continue;
@@ -1058,6 +1099,7 @@ void veh_interact::do_install()
             w_msg_scroll_offset--;
         } else {
             move_in_list( pos, action, tab_vparts.size(), 2 );
+            pos = std::max( pos, 0 ); // move_in_list sets pos to -1 when moving up in empty list
         }
     }
 }
@@ -2175,7 +2217,7 @@ int veh_interact::part_at( const point &d )
 bool veh_interact::can_potentially_install( const vpart_info &vpart )
 {
     bool engine_reqs_met = true;
-    bool can_make = vpart.install_requirements().can_make_with_inventory( crafting_inv,
+    bool can_make = vpart.install_requirements().can_make_with_inventory( *crafting_inv,
                     is_crafting_component );
     bool hammerspace = get_player_character().has_trait( trait_DEBUG_HS );
 
@@ -2223,7 +2265,7 @@ void veh_interact::move_cursor( const point &d, int dstart_at )
     can_mount.clear();
     if( !obstruct ) {
         std::vector<const vpart_info *> req_missing;
-        for( const auto &[id, vpi] : vpart_info::all() ) {
+        for( const vpart_info &vpi : vehicles::parts::get_all() ) {
             if( has_critter && vpi.has_flag( VPFLAG_OBSTACLE ) ) {
                 continue;
             }
@@ -3148,7 +3190,9 @@ void veh_interact::complete_vehicle( Character &you )
                 break;
             }
             ::vehicle_part &vp_new = veh->part( partnum );
-            do_change_shape_menu( vp_new );
+            if( vp_new.info().variants.size() > 1 ) {
+                do_change_shape_menu( vp_new );
+            }
 
             // Need map-relative coordinates to compare to output of look_around.
             // Need to call coord_translate() directly since it's a new part.
@@ -3157,31 +3201,7 @@ void veh_interact::complete_vehicle( Character &you )
             if( vpinfo.has_flag( VPFLAG_CONE_LIGHT ) ||
                 vpinfo.has_flag( VPFLAG_WIDE_CONE_LIGHT ) ||
                 vpinfo.has_flag( VPFLAG_HALF_CIRCLE_LIGHT ) ) {
-                // Stash offset and set it to the location of the part so look_around will
-                // start there.
-                const tripoint old_view_offset = you.view_offset;
-                const tripoint offset = veh->global_pos3() + q;
-                you.view_offset = offset - you.pos();
-
-                point delta;
-                do {
-                    popup( _( "Press space, choose a facing direction for the new %s and "
-                              "confirm with enter." ),
-                           vpinfo.name() );
-                    const std::optional<tripoint> chosen = g->look_around();
-                    if( !chosen ) {
-                        continue;
-                    }
-                    delta = ( *chosen - offset ).xy();
-                    // atan2 only gives reasonable values when delta is not all zero
-                } while( delta == point_zero );
-
-                // Restore previous view offsets.
-                you.view_offset = old_view_offset;
-
-                units::angle dir = normalize( atan2( delta ) - veh->face.dir() );
-
-                vp_new.direction = dir;
+                orient_part( veh, vpinfo, partnum, q );
             }
 
             const tripoint vehp = veh->global_pos3() + tripoint( q, 0 );
@@ -3266,7 +3286,7 @@ void veh_interact::complete_vehicle( Character &you )
         case 'o': {
             const bool appliance_removal = static_cast<char>( you.activity.index ) == 'O';
             const bool wall_wire_removal = appliance_removal &&
-                                           veh->part( vehicle_part ).info().get_id() == vpart_ap_wall_wiring;
+                                           veh->part( vehicle_part ).info().id == vpart_ap_wall_wiring;
             const inventory &inv = you.crafting_inventory();
             if( vehicle_part >= veh->part_count() ) {
                 vehicle_part = veh->get_next_shifted_index( vehicle_part, you );

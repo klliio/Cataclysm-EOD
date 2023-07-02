@@ -144,6 +144,7 @@ Use the `Home` key to return to the top.
       - [`effects_activated`](#effects_activated)
     - [Software Data](#software-data)
     - [Use Actions](#use-actions)
+      - [Delayed Item Actions](#delayed-item-actions)
     - [Random Descriptions](#random-descriptions)
 - [`json/` JSONs](#json-jsons)
     - [Harvest](#harvest)
@@ -2228,6 +2229,7 @@ about the event.
 For example, consider the `gains_skill_level` event.  You can see this
 specification for it in `event.h`:
 
+<!-- {% raw %} -->
 ```C++
 template<>
 struct event_spec<event_type::gains_skill_level> {
@@ -2239,7 +2241,7 @@ struct event_spec<event_type::gains_skill_level> {
     };
 };
 ```
-
+<!-- {% endraw %} -->
 From this, you can see that this event type has three fields:
 * `character`, with the id of the character gaining the level.
 * `skill`, with the id of the skill gained.
@@ -2806,7 +2808,7 @@ Vehicle components when installed on a vehicle.
 #### Symbols and Variants
 Vehicle parts can have cosmetic variants that use different symbols and tileset sprites.  They are declared by the "variants" object.  Variants are used in the vehicle prototype as a suffix following the part id (ie `id#variant`), for example `"frame#nw"` or `"halfboard#cover"`.
 
-`symbols` and `symbols_broken` can be either a string of 1 character or 8 characters long (length is measured in console characters). A 1 character string is equivalent to 8 characters one where all characters are equal to first. An 8 character string represents the 8 symbols used for parts which can rotate; `abcdefgh` will put `a` when part is rotated north, `b` for NE, `c` for east etc.
+`symbols` and `symbols_broken` can be either a string of 1 character (A 1 character string is effectively 8 of that characters) or 8 characters long. The length is measured in console characters. An 8 character string represents the 8 symbols used for parts which can rotate; `abcdefgh` will put `a` when part is rotated north, `b` for NW, `c` for west, `d` for SW etc.
 
 A subset of unicode box drawing characters is supported as symbols: `│ ─ ┼ ┌ ┐ ┘ └`, thick vertical and thick horizontal lines `┃ ━` are partially supported, they're rendered as `H` and `=` because there are no equivalents in curses ACS encoding.
 
@@ -3581,6 +3583,8 @@ Any Item can be a container. To add the ability to contain things to an item, yo
 	// If multiple of "flag_restriction", "material_restriction" and "item_restriction" are used simultaneously then any item that matches any of them will be accepted.
 
     "sealed_data": { "spoil_multiplier": 0.0 } // If a pocket has sealed_data, it will be sealed when the item spawns.  The sealed version of the pocket will override the unsealed version of the same datatype.
+
+    "inherits_flags": true // if a pocket inherits flags it means any flags that the items inside have contribute to the item that has the pockets itself.
   }
 ]
 ```
@@ -3747,6 +3751,7 @@ Alternately, every item (book, tool, armor, even food) can be used as a gunmod i
 },
 "to_hit": 3,          // To-hit bonus if using it as a melee weapon
 "turns_per_charge": 20, // Charges consumed over time, deprecated in favor of power_draw
+"fuel_efficiency": 0.2, // When combined with being a UPS this item will burn fuel for its given energy value to produce energy with the efficiency provided. Needs to be > 0 for this to work
 "use_action": [ "firestarter" ], // Action performed when tool is used, see special definition below
 "qualities": [ [ "SCREW", 1 ] ], // Inherent item qualities like hammering, sawing, screwing (see tool_qualities.json)
 "charged_qualities": [ [ "DRILL", 3 ] ], // Qualities available if tool has at least charges_per_use charges left
@@ -4169,7 +4174,44 @@ The contents of use_action fields can either be a string indicating a built-in f
     "description" :"This debugs the game", // usage description
     "effect_on_conditions" : ["test_cond"] // ids of the effect_on_conditions to activate
     }
+"use_action": {
+    "type": "message",      // Displays message text
+    "message": "Read this.",// Message that is shown
+    "name": "Light fuse"    // Optional name for the action. Default "Activate".
+}
 ```
+
+#### Delayed Item Actions
+
+Item use actions can be used with a timer delay.
+
+Item `"transform"` action can set and start the timer. This timer starts when the player activates the item.
+```
+"use_action": {
+    "type": "transform"
+    "target": "grenade_act",
+    "target_timer": "5 seconds"  // Sets timer on item to this
+}
+```
+
+Timer inherent to the item itself can be set by defining `"countdown_interval"` in item json. This timer is started at the birth of the item.
+
+```
+    "id": "migo_plate_undergrown",
+    "name": { "str": "undergrown iridescent carapace plate" },
+    "countdown_interval": "24 hours",
+```
+
+Once the duration of the timer has passed the `"countdown_action"` is executed. This action can be any use action but many actions do not behave well when they are not triggered by the player.
+
+```
+"countdown_action": {
+    "type": "explosion",
+    "explosion": { "power": 240, "shrapnel": { "casing_mass": 217, "fragment_mass": 0.08 } }
+}
+```
+
+Additionally `"revert_to"` can be defined in item definitions (not in use action). The item is deactivated and turned to this type after the `"countdown_action"`. If no revert_to is specified the item is destroyed.
 
 ### Random Descriptions
 

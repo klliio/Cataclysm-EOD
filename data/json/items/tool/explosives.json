@@ -55,16 +55,8 @@
     "material": [ "plastic" ],
     "symbol": ";",
     "color": "light_gray",
-    "initial_charges": 9,
-    "max_charges": 9,
-    "turns_per_charge": 1,
-    "use_action": {
-      "type": "explosion",
-      "sound_volume": 0,
-      "sound_msg": "Tick.",
-      "no_deactivate_msg": "Your %s can't be deactivated; throw or drop it to get rid of it.",
-      "explosion": { "power": 2000 }
-    },
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated; throw or drop it to get rid of it." },
+    "countdown_action": { "type": "explosion", "explosion": { "power": 2000 } },
     "flags": [ "TRADER_AVOID", "BOMB" ]
   },
   {
@@ -86,7 +78,7 @@
       "need_wielding": true,
       "target": "dynamite_act",
       "msg": "You light the fuse on your %s.",
-      "target_charges": 20,
+      "target_timer": "20 seconds",
       "active": true,
       "need_fire": 1,
       "menu_text": "Light fuse",
@@ -110,17 +102,11 @@
     "material": [ "paper", "powder" ],
     "symbol": "*",
     "color": "red",
-    "turns_per_charge": 1,
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated; throw or drop it to get rid of it.", "name": "Light fuse" },
     "explode_in_fire": true,
     "explosion": { "power": 938 },
-    "use_action": {
-      "type": "explosion",
-      "sound_volume": 0,
-      "sound_msg": "ssss…",
-      "no_deactivate_msg": "Your %s can't be deactivated; throw or drop it to get rid of it.",
-      "explosion": { "power": 938 }
-    },
     "flags": [ "TRADER_AVOID", "BOMB" ],
+    "countdown_action": { "type": "explosion", "explosion": { "power": 938 } },
     "melee_damage": { "bash": 4 }
   },
   {
@@ -142,8 +128,7 @@
       "need_wielding": true,
       "target": "dynamite_bomb_act",
       "msg": "You light the fuse on your %s.",
-      "target_charges": 20,
-      "active": true,
+      "target_timer": "20 seconds",
       "need_fire": 1,
       "menu_text": "Light fuse",
       "type": "transform"
@@ -166,17 +151,11 @@
     "material": [ "steel" ],
     "symbol": "*",
     "color": "red",
-    "turns_per_charge": 1,
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated; drop it to get rid of it.", "name": "Light fuse" },
     "explode_in_fire": true,
     "explosion": { "power": 938, "shrapnel": { "casing_mass": 1597, "fragment_mass": 0.5 } },
-    "use_action": {
-      "type": "explosion",
-      "sound_volume": 0,
-      "sound_msg": "ssss…",
-      "no_deactivate_msg": "Your %s can't be deactivated; drop it to get rid of it.",
-      "explosion": { "power": 938, "shrapnel": { "casing_mass": 1597, "fragment_mass": 0.5 } }
-    },
     "flags": [ "TRADER_AVOID", "BOMB" ],
+    "countdown_action": { "type": "explosion", "explosion": { "power": 938, "shrapnel": { "casing_mass": 1597, "fragment_mass": 0.5 } } },
     "melee_damage": { "bash": 4 }
   },
   {
@@ -199,8 +178,7 @@
       "need_wielding": true,
       "target": "EMPbomb_act",
       "msg": "You arm your %s.",
-      "target_charges": 50,
-      "active": true,
+      "target_timer": "50 seconds",
       "menu_text": "Arm bomb",
       "type": "transform"
     },
@@ -223,18 +201,13 @@
     "explode_in_fire": true,
     "explosion": { "power": 600, "shrapnel": { "casing_mass": 3214, "fragment_mass": 0.5 } },
     "color": "light_gray",
-    "initial_charges": 50,
-    "max_charges": 50,
-    "turns_per_charge": 1,
-    "use_action": {
+    "use_action": { "type": "message", "message": "You've already activated the %s, try throwing it instead.", "name": "Arm bomb" },
+    "countdown_action": {
       "type": "explosion",
       "draw_explosion_radius": 10,
       "draw_explosion_color": "light_blue",
       "emp_blast_radius": 10,
-      "sound_volume": 0,
-      "sound_msg": "Tick.",
-      "explosion": { "power": 600, "shrapnel": { "casing_mass": 3214, "fragment_mass": 0.5 } },
-      "no_deactivate_msg": "Your %s can't be deactivated; drop it to get rid of it."
+      "explosion": { "power": 600, "shrapnel": { "casing_mass": 3214, "fragment_mass": 0.5 } }
     },
     "flags": [ "TRADER_AVOID", "BOMB" ],
     "melee_damage": { "bash": 12 }
@@ -347,8 +320,7 @@
       "need_wielding": true,
       "target": "flashbang_act",
       "msg": "You pull the pin on your %s.",
-      "target_charges": 2,
-      "active": true,
+      "target_timer": "5 seconds",
       "menu_text": "Pull pin",
       "type": "transform"
     },
@@ -363,17 +335,9 @@
     "description": "A military-grade stun hand grenade, also known as flashbang.  Its pin and lever are missing, suggesting that it'll explode soon with intense light and sound, blinding, deafening and disorienting anyone nearby.  It can't be deactivated; throw it to get rid of it.",
     "price": 0,
     "price_postapoc": 0,
-    "initial_charges": 2,
-    "max_charges": 2,
-    "turns_per_charge": 1,
-    "use_action": {
-      "type": "explosion",
-      "do_flashbang": true,
-      "sound_volume": 0,
-      "sound_msg": "Tick.",
-      "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it."
-    },
-    "flags": [ "BOMB", "GRENADE", "TRADER_AVOID" ]
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, throw it to get rid of it.", "name": "Pull pin" },
+    "countdown_action": { "type": "explosion", "do_flashbang": true },
+    "flags": [ "TRADER_AVOID", "BOMB", "GRENADE" ]
   },
   {
     "id": "fungicidalbomb",
@@ -388,6 +352,7 @@
       "menu_text": "Pull pin",
       "msg": "You pull the pin on your %s.",
       "type": "transform",
+      "target_timer": "50 seconds",
       "target": "fungicidalbomb_act"
     }
   },
@@ -412,6 +377,7 @@
       "menu_text": "Pull pin",
       "msg": "You pull the pin on your %s.",
       "type": "transform",
+      "target_timer": "60 seconds",
       "target": "fungicidalbomb_makeshift_act"
     }
   },
@@ -421,7 +387,6 @@
     "type": "GENERIC",
     "name": { "str": "armed makeshift fungicidal gas canister" },
     "description": "A makeshift canister hand grenade filled with fungicidal solution.  Its pin is missing, and it's currently expelling a volatile spray that is highly toxic to fungal lifeforms and, to a lesser degree, other lifeforms as well.  It can't be deactivated; throw it to get rid of it.",
-    "countdown_interval": 60,
     "emits": [ "emit_small_fungicidal_stream" ]
   },
   {
@@ -434,11 +399,13 @@
     "price_postapoc": 250,
     "use_action": {
       "need_wielding": true,
-      "menu_text": "Pull pin",
+      "target": "gasbomb_makeshift_act",
       "msg": "You pull the pin on your %s.",
-      "type": "transform",
-      "target": "gasbomb_makeshift_act"
-    }
+      "target_timer": "60 seconds",
+      "menu_text": "Arm",
+      "type": "transform"
+    },
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB" ]
   },
   {
     "id": "gasbomb_makeshift_act",
@@ -446,7 +413,6 @@
     "type": "GENERIC",
     "name": { "str": "armed makeshift gas canister" },
     "description": "A makeshift canister hand grenade filled with toxic solution.  Its pin is missing, and it's currently expelling a volatile spray that is toxic to most lifeforms, and obscuring vision and scent.  It can't be deactivated; throw it to get rid of it.",
-    "countdown_interval": 60,
     "emits": [ "emit_small_toxic_stream" ]
   },
   {
@@ -468,8 +434,7 @@
       "need_wielding": true,
       "target": "grenade_act",
       "msg": "You pull the pin on your %s.",
-      "target_charges": 5,
-      "active": true,
+      "target_timer": "5 seconds",
       "menu_text": "Pull pin",
       "type": "transform"
     },
@@ -493,16 +458,8 @@
     "color": "green",
     "explode_in_fire": true,
     "explosion": { "power": 240, "shrapnel": { "casing_mass": 217, "fragment_mass": 0.08 } },
-    "initial_charges": 5,
-    "max_charges": 5,
-    "turns_per_charge": 1,
-    "use_action": {
-      "type": "explosion",
-      "sound_volume": 0,
-      "sound_msg": "Tick.",
-      "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it.",
-      "explosion": { "power": 240, "shrapnel": { "casing_mass": 217, "fragment_mass": 0.08 } }
-    },
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, throw it to get rid of it.", "name": "Pull pin" },
+    "countdown_action": { "type": "explosion", "explosion": { "power": 240, "shrapnel": { "casing_mass": 217, "fragment_mass": 0.08 } } },
     "flags": [ "BOMB", "GRENADE", "TRADER_AVOID", "DANGEROUS" ],
     "melee_damage": { "bash": 6 }
   },
@@ -526,8 +483,7 @@
       "need_wielding": true,
       "target": "grenade_emp_act",
       "msg": "You arm your %s.",
-      "target_charges": 3,
-      "active": true,
+      "target_timer": "3 seconds",
       "menu_text": "Arm",
       "type": "transform"
     },
@@ -548,19 +504,14 @@
     "material": [ "steel", "plastic" ],
     "symbol": "*",
     "color": "cyan",
-    "initial_charges": 3,
-    "max_charges": 3,
-    "turns_per_charge": 1,
-    "use_action": {
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, throw it to get rid of it.", "name": "Pull pin" },
+    "countdown_action": {
       "type": "explosion",
       "fields_type": "fd_electricity",
       "fields_radius": 1,
       "fields_min_intensity": 2,
       "fields_max_intensity": 10,
-      "emp_blast_radius": 4,
-      "sound_volume": 0,
-      "sound_msg": "Tick.",
-      "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it."
+      "emp_blast_radius": 4
     },
     "flags": [ "TRADER_AVOID" ],
     "melee_damage": { "bash": 5 }
@@ -584,8 +535,7 @@
       "need_wielding": true,
       "target": "grenade_inc_act",
       "msg": "You pull the pin on your %s.",
-      "target_charges": 4,
-      "active": true,
+      "target_timer": "4 seconds",
       "menu_text": "Pull pin",
       "type": "transform"
     },
@@ -607,35 +557,22 @@
     "material": [ "plastic" ],
     "symbol": "*",
     "color": "light_red",
-    "initial_charges": 4,
-    "max_charges": 4,
-    "turns_per_charge": 1,
-    "revert_to": "canister_empty",
-    "use_action": [ "GRENADE_INC_ACT" ],
+    "countdown_action": "GRENADE_INC_ACT",
     "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ],
     "melee_damage": { "bash": 6 }
   },
   {
-    "abstract": "grenade_canister",
+    "id": "gasbomb",
+    "looks_like": "smokebomb",
     "type": "GENERIC",
     "category": "weapons",
-    "name": { "str": "canister grenade" },
+    "name": { "str": "tear gas grenade" },
     "weight": "250 g",
     "volume": "540 ml",
     "longest_side": "15 cm",
     "material": [ "steel" ],
     "symbol": "*",
     "color": "dark_gray",
-    "use_action": { "type": "countdown", "name": "Pull pin", "message": "You pull the pin on your %s." },
-    "countdown_interval": 5,
-    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE", "ACT_IN_FIRE" ]
-  },
-  {
-    "id": "gasbomb",
-    "copy-from": "grenade_canister",
-    "looks_like": "smokebomb",
-    "type": "GENERIC",
-    "name": { "str": "tear gas grenade" },
     "price": 3600,
     "price_postapoc": 250,
     "description": "A canister hand grenade filled with CS gas in powder form.  To use it, wield it and then activate it to pull the pin.  It'll then immediately begin to expel an irritating gas that damages and slows those who enter it, as well as obscuring vision and scent, lasting for 2 minutes.",
@@ -643,9 +580,11 @@
       "need_wielding": true,
       "menu_text": "Pull pin",
       "msg": "You pull the pin on your %s.",
+      "target_timer": "120 seconds",
       "type": "transform",
       "target": "gasbomb_act"
-    }
+    },
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE" ]
   },
   {
     "id": "gasbomb_act",
@@ -656,7 +595,6 @@
     "price_postapoc": 0,
     "description": "A canister hand grenade filled with CS gas in powder form.  Its pin is missing, and it's currently expelling an irritating gas that damages and slows those who enter it, as well as obscuring vision and scent.  It can't be deactivated; throw it to get rid of it.",
     "emits": [ "emit_tear_gas_stream" ],
-    "countdown_interval": 120,
     "countdown_action": { "type": "transform", "target": "canister_empty" },
     "flags": [ "TRADER_AVOID", "DANGEROUS" ]
   },
@@ -673,6 +611,7 @@
       "menu_text": "Pull pin",
       "msg": "You pull the pin on your %s.",
       "type": "transform",
+      "target_timer": "50 seconds",
       "target": "insecticidalbomb_act"
     }
   },
@@ -697,6 +636,7 @@
       "menu_text": "Pull pin",
       "msg": "You pull the pin on your %s.",
       "type": "transform",
+      "target_timer": "100 seconds",
       "target": "insecticidalbomb_makeshift_act"
     }
   },
@@ -772,17 +712,13 @@
     "material": [ "steel" ],
     "symbol": "*",
     "color": "light_green",
-    "turns_per_charge": 1,
-    "max_charges": 9,
-    "use_action": {
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, drop it to get rid of it." },
+    "countdown_action": {
       "type": "explosion",
       "fields_type": "fd_nuke_gas",
       "fields_radius": 18,
       "fields_min_intensity": 3,
       "fields_max_intensity": 3,
-      "sound_volume": 0,
-      "sound_msg": "Tick.",
-      "no_deactivate_msg": "Your %s can't be deactivated, drop it to get rid of it.",
       "explosion": { "power": 9000000 }
     },
     "flags": [ "LEAK_DAM", "RADIOACTIVE", "TRADER_AVOID", "BOMB" ],
@@ -804,8 +740,6 @@
     "material": [ "glass" ],
     "symbol": "*",
     "color": "light_gray",
-    "initial_charges": 1,
-    "max_charges": 1,
     "use_action": {
       "need_wielding": true,
       "target": "molotov_lit",
@@ -861,8 +795,7 @@
       "need_wielding": true,
       "target": "scrambler_act",
       "msg": "You arm your %s.",
-      "target_charges": 3,
-      "active": true,
+      "target_timer": "3 seconds",
       "menu_text": "Arm",
       "type": "transform"
     },
@@ -883,18 +816,8 @@
     "material": [ "steel", "plastic" ],
     "symbol": "*",
     "color": "yellow",
-    "initial_charges": 3,
-    "max_charges": 3,
-    "turns_per_charge": 1,
-    "use_action": {
-      "type": "explosion",
-      "draw_explosion_radius": 4,
-      "draw_explosion_color": "cyan",
-      "scrambler_blast_radius": 4,
-      "sound_volume": 0,
-      "sound_msg": "Tick.",
-      "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it."
-    },
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, throw it to get rid of it.", "name": "Arm" },
+    "countdown_action": { "type": "explosion", "draw_explosion_radius": 4, "draw_explosion_color": "cyan", "scrambler_blast_radius": 4 },
     "flags": [ "TRADER_AVOID" ],
     "melee_damage": { "bash": 5 }
   },
@@ -903,31 +826,24 @@
     "copy-from": "gasbomb",
     "type": "GENERIC",
     "name": { "str": "M18 smoke grenade" },
-    "weight": "539 g",
-    "volume": "500 ml",
-    "longest_side": "146 mm",
     "description": "A military-grade canister hand grenade filled with a smoke mixture.  To use it, wield it and then activate it to pull the pin.  It'll then immediately begin to expel a thick smoke that slows down those who enter it, as well as obscuring vision and scent, lasting for 1 minute.",
     "price": 1800,
     "price_postapoc": 0,
-    "use_action": {
-      "need_wielding": true,
-      "menu_text": "Pull pin",
-      "msg": "You pull the pin on your %s.",
-      "type": "transform",
-      "target": "smokebomb_act"
-    }
-  },
-  {
-    "id": "smokebomb_act",
-    "copy-from": "gasbomb_act",
-    "type": "GENERIC",
-    "name": { "str": "armed M18 smoke grenade" },
     "weight": "539 g",
     "volume": "500 ml",
     "longest_side": "146 mm",
+    "use_action": { "need_wielding": true, "type": "transform", "target_timer": "60 seconds", "target": "smokebomb_act" }
+  },
+  {
+    "id": "smokebomb_act",
+    "copy-from": "smokebomb",
+    "type": "GENERIC",
+    "name": { "str": "armed M18 smoke grenade" },
     "description": "A military-grade canister hand grenade filled with a smoke mixture.  Its pin is missing, and it's currently expelling a a thick smoke that slows down those who enter it, as well as obscuring vision and scent.  It can't be deactivated; throw it to get rid of it.",
-    "countdown_interval": 60,
-    "emits": [ "emit_smoke_stream" ]
+    "emits": [ "emit_smoke_stream" ],
+    "countdown_action": { "type": "transform", "target": "canister_empty" },
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, throw it to get rid of it.", "name": "Pull pin" },
+    "flags": [ "TRADER_AVOID" ]
   },
   {
     "id": "tool_rocket_candy",
@@ -947,8 +863,7 @@
       "need_wielding": true,
       "target": "tool_rocket_candy_act",
       "msg": "You light your %s.",
-      "moves": 75,
-      "need_fire": 1,
+      "target_timer": "20 seconds",
       "menu_text": "Light",
       "type": "transform"
     },
@@ -970,9 +885,8 @@
     "symbol": "*",
     "color": "green",
     "emits": [ "emit_smoke_plume" ],
-    "countdown_interval": 20,
     "countdown_action": { "type": "transform", "target": "null" },
-    "flags": [ "BOMB", "DANGEROUS", "TRADER_AVOID", "DANGEROUS" ],
+    "flags": [ "BOMB", "DANGEROUS", "TRADER_AVOID" ],
     "melee_damage": { "bash": 1 }
   },
   {
@@ -992,8 +906,7 @@
       "need_wielding": true,
       "target": "military_explosive_small_grenade_act",
       "msg": "You pull the pin on your %s.",
-      "target_charges": 5,
-      "active": true,
+      "target_timer": "5 seconds",
       "menu_text": "Pull pin",
       "type": "transform"
     },
@@ -1006,18 +919,10 @@
     "name": { "str": "primed makeshift grenade" },
     "description": "A throwable improvised explosive device outfitted with a mechanical delayed fuze from a real grenade.  Its pin and lever are missing, suggesting that it'll explode soon, scattering shrapnel.  It can't be deactivated; throw it to get rid of it",
     "price": 0,
-    "initial_charges": 5,
-    "max_charges": 5,
-    "turns_per_charge": 1,
     "explode_in_fire": true,
     "explosion": { "power": 460, "shrapnel": { "casing_mass": 200, "fragment_mass": 0.4 } },
-    "use_action": {
-      "type": "explosion",
-      "sound_volume": 0,
-      "sound_msg": "Tick.",
-      "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it.",
-      "explosion": { "power": 460, "shrapnel": { "casing_mass": 200, "fragment_mass": 0.4 } }
-    },
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, throw it to get rid of it.", "name": "Pull pin" },
+    "countdown_action": { "type": "explosion", "explosion": { "power": 460, "shrapnel": { "casing_mass": 200, "fragment_mass": 0.4 } } },
     "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ]
   },
   {
@@ -1037,8 +942,7 @@
       "need_wielding": true,
       "target": "military_explosive_grenade_act",
       "msg": "You pull the pin on your %s.",
-      "target_charges": 5,
-      "active": true,
+      "target_timer": "5 seconds",
       "menu_text": "Pull pin",
       "type": "transform"
     },
@@ -1051,18 +955,10 @@
     "name": { "str": "primed large makeshift grenade" },
     "description": "A throwable improvised explosive device outfitted with a mechanical delayed fuze from a real grenade, with extra size and weight to increase power at the cost of throwing range.  Its pin and lever are missing, suggesting that it'll explode soon, scattering shrapnel.  It can't be deactivated; throw it to get rid of it.",
     "price": 0,
-    "initial_charges": 5,
-    "max_charges": 5,
-    "turns_per_charge": 1,
     "explode_in_fire": true,
     "explosion": { "power": 920, "shrapnel": { "casing_mass": 400, "fragment_mass": 0.4 } },
-    "use_action": {
-      "type": "explosion",
-      "sound_volume": 0,
-      "sound_msg": "Tick.",
-      "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it.",
-      "explosion": { "power": 920, "shrapnel": { "casing_mass": 400, "fragment_mass": 0.4 } }
-    },
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, throw it to get rid of it.", "name": "Pull pin" },
+    "countdown_action": { "type": "explosion", "explosion": { "power": 920, "shrapnel": { "casing_mass": 400, "fragment_mass": 0.4 } } },
     "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ]
   },
   {
@@ -1082,12 +978,13 @@
     "material": [ "steel" ],
     "symbol": "*",
     "color": "light_gray",
+    "explode_in_fire": true,
+    "explosion": { "power": 920, "shrapnel": { "casing_mass": 410, "fragment_mass": 0.5 } },
     "use_action": {
       "need_wielding": true,
       "target": "military_explosive_pipebomb_act",
       "msg": "You pull the pin on your %s.",
-      "target_charges": 5,
-      "active": true,
+      "target_timer": "5 seconds",
       "menu_text": "Pull pin",
       "type": "transform"
     },
@@ -1103,14 +1000,8 @@
     "description": "A throwable makeshift explosive device, consisting of a section of steel pipe filled with explosive material and outfitted with a mechanical delayed fuze from a real grenade.",
     "price": 0,
     "color": "light_gray",
-    "initial_charges": 5,
-    "max_charges": 5,
-    "turns_per_charge": 1,
-    "use_action": {
-      "type": "explosion",
-      "no_deactivate_msg": "You've already pulled the %s's pin, try throwing it instead.",
-      "explosion": { "power": 920, "shrapnel": { "casing_mass": 410, "fragment_mass": 0.5 } }
-    },
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, throw it to get rid of it.", "name": "Pull pin" },
+    "countdown_action": { "type": "explosion", "explosion": { "power": 920, "shrapnel": { "casing_mass": 410, "fragment_mass": 0.5 } } },
     "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ]
   },
   {
@@ -1130,8 +1021,7 @@
       "need_wielding": true,
       "target": "small_homemade_grenade_act",
       "msg": "You light the fuse on your %s.",
-      "target_charges": 5,
-      "active": true,
+      "target_timer": "5 seconds",
       "need_fire": 1,
       "menu_text": "Light fuse",
       "type": "transform"
@@ -1145,18 +1035,10 @@
     "name": { "str": "lit makeshift fuse grenade" },
     "description": "A throwable improvised explosive device outfitted with a fuse.  Its fuse is lit and hissing, suggesting that it'll explode soon.  It can't be deactivated; throw or drop it to get rid of it.",
     "price": 0,
-    "initial_charges": 5,
-    "max_charges": 5,
-    "turns_per_charge": 1,
     "explode_in_fire": true,
     "explosion": { "power": 150, "shrapnel": { "casing_mass": 200, "fragment_mass": 0.4 } },
-    "use_action": {
-      "type": "explosion",
-      "sound_volume": 0,
-      "sound_msg": "ssss…",
-      "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it.",
-      "explosion": { "power": 150, "shrapnel": { "casing_mass": 200, "fragment_mass": 0.4 } }
-    },
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, throw it to get rid of it.", "name": "Light fuse" },
+    "countdown_action": { "type": "explosion", "explosion": { "power": 150, "shrapnel": { "casing_mass": 200, "fragment_mass": 0.4 } } },
     "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ]
   },
   {
@@ -1173,9 +1055,8 @@
     "use_action": {
       "need_wielding": true,
       "target": "homemade_grenade_act",
-      "msg": "You light the fuse on the improvised grenade.  Throw it before it blows in your face!",
-      "target_charges": 5,
-      "active": true,
+      "msg": "You light the fuse on your %s.",
+      "target_timer": "5 seconds",
       "need_fire": 1,
       "menu_text": "Light fuse",
       "type": "transform"
@@ -1189,18 +1070,10 @@
     "name": { "str": "lit large makeshift fuse grenade" },
     "description": "A throwable improvised explosive device outfitted with a fuse, with extra size and weight to increase power at the cost of throwing range.  Its fuse is lit and hissing, suggesting that it'll explode soon.  It can't be deactivated; throw or drop it to get rid of it.",
     "price": 0,
-    "initial_charges": 5,
-    "max_charges": 5,
-    "turns_per_charge": 1,
     "explode_in_fire": true,
     "explosion": { "power": 300, "shrapnel": { "casing_mass": 400, "fragment_mass": 0.4 } },
-    "use_action": {
-      "type": "explosion",
-      "sound_volume": 0,
-      "sound_msg": "ssss…",
-      "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it.",
-      "explosion": { "power": 300, "shrapnel": { "casing_mass": 400, "fragment_mass": 0.4 } }
-    },
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, throw it to get rid of it.", "name": "Light fuse" },
+    "countdown_action": { "type": "explosion", "explosion": { "power": 300, "shrapnel": { "casing_mass": 400, "fragment_mass": 0.4 } } },
     "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ]
   },
   {
@@ -1222,8 +1095,7 @@
       "need_wielding": true,
       "target": "pipebomb_act",
       "msg": "You light the fuse on your %s.",
-      "target_charges": 5,
-      "active": true,
+      "target_timer": "6 seconds",
       "need_fire": 1,
       "menu_text": "Light fuse",
       "type": "transform"
@@ -1245,18 +1117,10 @@
     "material": [ "steel" ],
     "symbol": "*",
     "color": "light_gray",
-    "initial_charges": 5,
-    "max_charges": 5,
-    "turns_per_charge": 1,
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, throw it to get rid of it.", "name": "Light fuse" },
     "explode_in_fire": true,
     "explosion": { "power": 300, "shrapnel": { "casing_mass": 410, "fragment_mass": 0.5 } },
-    "use_action": {
-      "type": "explosion",
-      "sound_volume": 0,
-      "sound_msg": "ssss…",
-      "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it.",
-      "explosion": { "power": 300, "shrapnel": { "casing_mass": 410, "fragment_mass": 0.5 } }
-    },
+    "countdown_action": { "type": "explosion", "explosion": { "power": 300, "shrapnel": { "casing_mass": 410, "fragment_mass": 0.5 } } },
     "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ],
     "melee_damage": { "bash": 5 }
   },
@@ -1277,8 +1141,7 @@
       "need_wielding": true,
       "target": "homemade_bomb_act",
       "msg": "You light the fuse on your %s.",
-      "target_charges": 20,
-      "active": true,
+      "target_timer": "20 seconds",
       "need_fire": 1,
       "menu_text": "Light fuse",
       "type": "transform"
@@ -1298,16 +1161,11 @@
     "material": [ "steel", "plastic" ],
     "symbol": "*",
     "color": "light_red",
-    "initial_charges": 20,
-    "max_charges": 20,
-    "turns_per_charge": 1,
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, drop it to get rid of it.", "name": "Light fuse" },
     "explode_in_fire": true,
     "explosion": { "power": 2320, "shrapnel": { "casing_mass": 3000, "fragment_mass": 0.5, "drop": "scrap", "recovery": 20 } },
-    "use_action": {
+    "countdown_action": {
       "type": "explosion",
-      "sound_volume": 0,
-      "sound_msg": "ssss…",
-      "no_deactivate_msg": "Your %s can't be deactivated, throw it to get rid of it.",
       "explosion": { "power": 2320, "shrapnel": { "casing_mass": 3000, "fragment_mass": 0.5, "drop": "scrap", "recovery": 20 } }
     },
     "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ]
@@ -1329,8 +1187,7 @@
       "need_wielding": true,
       "target": "homemade_demolition_charge_act",
       "msg": "You light the fuse on your %s.",
-      "target_charges": 20,
-      "active": true,
+      "target_timer": "20 seconds",
       "need_fire": 1,
       "menu_text": "Light fuse",
       "type": "transform"
@@ -1352,18 +1209,10 @@
     "material": [ "plastic" ],
     "symbol": "*",
     "color": "red",
-    "initial_charges": 20,
-    "max_charges": 20,
-    "turns_per_charge": 1,
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, drop it to get rid of it.", "name": "Light fuse" },
     "explode_in_fire": true,
     "explosion": { "power": 2590 },
-    "use_action": {
-      "type": "explosion",
-      "sound_volume": 0,
-      "sound_msg": "ssss…",
-      "no_deactivate_msg": "Your %s can't be deactivated, drop it to get rid of it.",
-      "explosion": { "power": 2590 }
-    },
+    "countdown_action": { "type": "explosion", "explosion": { "power": 2590 } },
     "flags": [ "TRADER_AVOID" ],
     "melee_damage": { "bash": 4 }
   },
@@ -1383,10 +1232,9 @@
     "use_action": {
       "target": "half_barrel_bomb_act",
       "msg": "You light the fuse on your %s.",
-      "target_charges": 100,
-      "active": true,
-      "need_fire": 1,
+      "target_timer": "100 seconds",
       "menu_text": "Light fuse",
+      "need_fire": 1,
       "type": "transform"
     },
     "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ALLOWS_REMOTE_USE", "ACT_IN_FIRE" ],
@@ -1405,16 +1253,14 @@
     "material": [ "steel" ],
     "symbol": "(",
     "color": "light_red",
-    "initial_charges": 100,
-    "max_charges": 100,
-    "turns_per_charge": 1,
+    "use_action": {
+      "type": "message",
+      "message": "Your %s can't be deactivated, drop it to get rid of it.",
+      "name": "Light fuse"
+    },
     "explode_in_fire": true,
     "explosion": { "power": 34400, "shrapnel": { "casing_mass": 12600, "fragment_mass": 600 } },
-    "use_action": {
-      "type": "explosion",
-      "no_deactivate_msg": "Your %s can't be deactivated, drop it to get rid of it.",
-      "explosion": { "power": 34400, "shrapnel": { "casing_mass": 12600, "fragment_mass": 600 } }
-    },
+    "countdown_action": { "type": "explosion", "explosion": { "power": 34400, "shrapnel": { "casing_mass": 12600, "fragment_mass": 600 } } },
     "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ],
     "melee_damage": { "bash": 20 }
   },
@@ -1434,10 +1280,9 @@
     "use_action": {
       "target": "full_barrel_bomb_act",
       "msg": "You light the fuse on your %s.",
-      "target_charges": 100,
-      "active": true,
-      "need_fire": 1,
+      "target_timer": "100 seconds",
       "menu_text": "Light fuse",
+      "need_fire": 1,
       "type": "transform"
     },
     "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "ALLOWS_REMOTE_USE", "ACT_IN_FIRE" ],
@@ -1456,16 +1301,14 @@
     "material": [ "steel" ],
     "symbol": "(",
     "color": "light_red",
-    "initial_charges": 100,
-    "max_charges": 100,
-    "turns_per_charge": 1,
+    "use_action": {
+      "type": "message",
+      "message": "You've already activated the bomb - clear the area immediately!",
+      "name": "Activate fuze"
+    },
     "explode_in_fire": true,
     "explosion": { "power": 69200, "shrapnel": { "casing_mass": 12000, "fragment_mass": 600 } },
-    "use_action": {
-      "type": "explosion",
-      "no_deactivate_msg": "You've already activated the bomb - clear the area immediately!",
-      "explosion": { "power": 69200, "shrapnel": { "casing_mass": 12000, "fragment_mass": 600 } }
-    },
+    "countdown_action": { "type": "explosion", "explosion": { "power": 69200, "shrapnel": { "casing_mass": 12000, "fragment_mass": 600 } } },
     "flags": [ "BOMB", "TRADER_AVOID", "DANGEROUS" ],
     "melee_damage": { "bash": 20 }
   }
