@@ -102,7 +102,11 @@
     "material": [ "paper", "powder" ],
     "symbol": "*",
     "color": "red",
-    "use_action": { "type": "message", "message": "Your %s can't be deactivated; throw or drop it to get rid of it.", "name": "Light fuse" },
+    "use_action": {
+      "type": "message",
+      "message": "Your %s can't be deactivated; throw or drop it to get rid of it.",
+      "name": "Light fuse"
+    },
     "explode_in_fire": true,
     "explosion": { "power": 938 },
     "flags": [ "TRADER_AVOID", "BOMB" ],
@@ -1253,11 +1257,7 @@
     "material": [ "steel" ],
     "symbol": "(",
     "color": "light_red",
-    "use_action": {
-      "type": "message",
-      "message": "Your %s can't be deactivated, drop it to get rid of it.",
-      "name": "Light fuse"
-    },
+    "use_action": { "type": "message", "message": "Your %s can't be deactivated, drop it to get rid of it.", "name": "Light fuse" },
     "explode_in_fire": true,
     "explosion": { "power": 34400, "shrapnel": { "casing_mass": 12600, "fragment_mass": 600 } },
     "countdown_action": { "type": "explosion", "explosion": { "power": 34400, "shrapnel": { "casing_mass": 12600, "fragment_mass": 600 } } },
