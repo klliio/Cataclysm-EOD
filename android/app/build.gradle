@@ -248,10 +248,10 @@ android {
         versionCode Integer.valueOf(System.env.UPSTREAM_BUILD_NUMBER ?: 1)
         versionName new File("$version_header_path").text.split('\"')[1]
         if (buildAsApplication) {
-            applicationId "com.cleverraven.cataclysmdda"
-            setProperty("archivesBaseName", "cataclysmdda-" + versionName)
+            applicationId "com.atomicfox556.cataclysmeod"
+            setProperty("archivesBaseName", "cataclysmeod-" + versionName)
         }
-        resValue "string", "app_name", "Cataclysm DDA"
+        resValue "string", "app_name", "Cataclysm EOD"
 
         splits {
             // Configures multiple APKs based on ABI.
@@ -291,17 +291,16 @@ android {
     productFlavors {
         stable {
             dimension "version"
-            resValue "string", "app_name", "Cataclysm DDA"
+            resValue "string", "app_name", "Cataclysm EOD"
         }
         experimental {
             dimension "version"
             applicationIdSuffix ".experimental"
-            resValue "string", "app_name", "Cataclysm DDA (experimental)"
+            resValue "string", "app_name", "Cataclysm EOD (experimental)"
         }
     }
 
     signingConfigs {
-        if (keystoreProperties.getProperty('storeFile') != null) {
             if (file(keystoreProperties.getProperty('storeFile')).exists()) {
                 release {
                     storeFile file(keystoreProperties.getProperty("storeFile"))
@@ -312,7 +311,6 @@ android {
             } else {
                 throw new GradleException("Keystore file " + keystoreProperties.getProperty("storeFile") + " was not found.\n")
             }
-        }
         if (keystoreProperties.getProperty('debug_storeFile') != null) {
             if (file(keystoreProperties.getProperty('debug_storeFile')).exists()) {
                 debug {
