@@ -81,7 +81,6 @@
       { "charges": 0, "item": "food_processor", "prob": 50 },
       { "item": "press", "prob": 50 }
     ],
-    "broken_color": "light_gray",
     "categories": [ "utility" ],
     "color": "light_green",
     "damage_modifier": 10,
@@ -124,7 +123,6 @@
       { "charges": 0, "item": "chemistry_set", "prob": 50 },
       { "charges": 0, "item": "hotplate", "prob": 50 }
     ],
-    "broken_color": "light_gray",
     "categories": [ "utility" ],
     "color": "yellow",
     "damage_modifier": 10,

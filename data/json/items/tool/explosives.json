@@ -387,7 +387,6 @@
     "type": "GENERIC",
     "name": { "str": "armed makeshift fungicidal gas canister" },
     "description": "A makeshift canister hand grenade filled with fungicidal solution.  Its pin is missing, and it's currently expelling a volatile spray that is highly toxic to fungal lifeforms and, to a lesser degree, other lifeforms as well.  It can't be deactivated; throw it to get rid of it.",
-    "countdown_interval": 60,
     "emits": [ "emit_small_fungicidal_stream" ]
   },
   {
@@ -564,10 +563,16 @@
   },
   {
     "id": "gasbomb",
-    "copy-from": "grenade_canister",
     "looks_like": "smokebomb",
     "type": "GENERIC",
+    "category": "weapons",
     "name": { "str": "tear gas grenade" },
+    "weight": "250 g",
+    "volume": "540 ml",
+    "longest_side": "15 cm",
+    "material": [ "steel" ],
+    "symbol": "*",
+    "color": "dark_gray",
     "price": 3600,
     "price_postapoc": 250,
     "description": "A canister hand grenade filled with CS gas in powder form.  To use it, wield it and then activate it to pull the pin.  It'll then immediately begin to expel an irritating gas that damages and slows those who enter it, as well as obscuring vision and scent, lasting for 2 minutes.",
@@ -578,7 +583,8 @@
       "target_timer": "120 seconds",
       "type": "transform",
       "target": "gasbomb_act"
-    }
+    },
+    "flags": [ "RADIO_MODABLE", "RADIO_INVOKE_PROC", "BOMB", "GRENADE" ]
   },
   {
     "id": "gasbomb_act",
@@ -1134,7 +1140,7 @@
     "use_action": {
       "need_wielding": true,
       "target": "homemade_bomb_act",
-      "msg": "You light the fuse on your %s."",
+      "msg": "You light the fuse on your %s.",
       "target_timer": "20 seconds",
       "need_fire": 1,
       "menu_text": "Light fuse",
