@@ -412,10 +412,14 @@
     "color": "light_gray"
   },
   {
-    "type": "GENERIC",
-    "category": "other",
+    "type": "TOOL",
     "id": "hd_compressor_unit",
-    "name": { "str_sp": "high pressure compressor unit" },
+    "name": { "str": "high pressure compressor unit" },
+    "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK" ],
+    "pocket_data": [
+      { "pocket_type": "MAGAZINE_WELL", "item_restriction": [ "battery_car", "storage_battery", "large_storage_battery" ] }
+    ],
+    "melee_damage": { "bash": 20 },
     "description": "A machine designed to compress an input gas to a very high pressure.  Can be placed and plugged into a power source.",
     "weight": "52500 g",
     "material": [ "steel" ],

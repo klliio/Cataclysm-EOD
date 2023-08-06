@@ -1,34 +1,5 @@
 [
   {
-    "id": "ap_gaspump",
-    "type": "vehicle_part",
-    "name": { "str": "gas pump" },
-    "item": "gaspump",
-    "description": "An appliance which is designed to refill all kinds of gas tanks with pressurized gas, with a power cord to connect it to an electric grid.",
-    "categories": [ "utility" ],
-    "location": "structure",
-    "color": "green",
-    "broken_color": "green",
-    "damage_modifier": 10,
-    "damage_reduction": { "all": 20 },
-    "durability": 80,
-    "flags": [ "OBSTACLE", "APPLIANCE" ],
-    "pseudo_tools": [ { "id": "gaspump" } ],
-    "breaks_into": [
-      { "item": "steel_lump", "count": [ 2, 4 ] },
-      { "item": "steel_chunk", "count": [ 2, 4 ] },
-      { "item": "scrap", "count": [ 2, 4 ] },
-      { "item": "hd_pipe", "count": [ 1, 2 ] },
-      { "item": "hd_pipe_fittings", "prob": 50 },
-      { "item": "hd_compressor", "prob": 25 },
-      { "item": "hd_valve", "prob": 25 },
-      { "item": "pressure_gauge", "prob": 25 },
-      { "item": "power_supply", "prob": 25 },
-      { "item": "cable", "charges": [ 20, 40 ] }
-    ],
-    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
-  },
-  {
     "id": "ap_dry_ice_maker",
     "type": "vehicle_part",
     "name": { "str": "dry ice maker" },
