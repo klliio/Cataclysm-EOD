@@ -741,8 +741,9 @@
     "id": "BOVINE_BULK",
     "name": { "str": "Bovine Bulk" },
     "points": 2,
-    "description": "You've added a lot of weight, much of it muscle!  You get a 10% bonus to all hit points.  Swimming will be more difficult from now on.",
+    "description": "Your flesh has become dense with fat and muscle.  This makes you harder to take down, but also a poor swimmer.",
     "types": [ "BUILD" ],
+    "prereqs": [ "DENSE_BONES" ],
     "changes_to": [ "BOVINE_BULK2" ],
     "category": [ "CATTLE" ],
     "movecost_modifier": 1.02,
@@ -754,7 +755,7 @@
     "id": "BOVINE_BULK2",
     "name": { "str": "Bull Roids" },
     "points": 4,
-    "description": "There is no way you'd be allowed to compete in pre-Cataclysm sports.  You get a 20% bonus to all hit points.  Swimming is no longer recommended for someone built like you.",
+    "description": "Your bulk has rendered you a veritable living wall.  Be careful around water though; while you're as sturdy as a rock, you'll sink like one too.",
     "types": [ "BUILD" ],
     "prereqs": [ "BOVINE_BULK" ],
     "category": [ "CATTLE" ],
@@ -1112,7 +1113,7 @@
     "description": "For your whole life you've been forbidden from indulging in your peculiar tastes.  Now the world's ended, and you'll be damned if anyone is going to tell you that you can't eat people.",
     "starting_trait": true,
     "valid": false,
-    "cancels": [ "VEGETARIAN", "HERBIVORE", "RUMINANT", "GRAZER" ],
+    "cancels": [ "VEGETARIAN", "VEGAN", "HERBIVORE", "RUMINANT", "GRAZER" ],
     "flags": [ "CANNIBAL" ]
   },
   {
@@ -1123,7 +1124,7 @@
     "description": "You're convinced that these things that look vaguely human from elsewhere are definitely not people.  Therefore it's okay to eat them, right?",
     "starting_trait": true,
     "valid": false,
-    "cancels": [ "VEGETARIAN", "HERBIVORE", "RUMINANT", "GRAZER", "CANNIBAL" ],
+    "cancels": [ "VEGETARIAN", "VEGAN", "HERBIVORE", "RUMINANT", "GRAZER", "CANNIBAL" ],
     "flags": [ "STRICT_HUMANITARIAN" ]
   },
   {
@@ -1521,7 +1522,7 @@
     "starting_trait": true,
     "vitamins_absorb_multi": [ [ "flesh", [ [ "vitC", 0 ], [ "calcium", 0 ], [ "iron", 0 ] ] ] ],
     "types": [ "DIET" ],
-    "cancels": [ "CANNIBAL", "STRICT_HUMANITARIAN" ],
+    "cancels": [ "CANNIBAL", "STRICT_HUMANITARIAN", "VEGAN" ],
     "changes_to": [ "HERBIVORE" ],
     "category": [ "CATTLE", "RABBIT" ]
   },
@@ -1852,7 +1853,9 @@
     "points": -4,
     "description": "You're very strictly vegan, eating animal products is out of the question, even if it means death.  You also can't bear to wear clothing made of animal products, such as leather or fur.",
     "starting_trait": true,
-    "valid": true
+    "valid": false,
+    "types": [ "DIET" ],
+    "cancels": [ "CANNIBAL", "STRICT_HUMANITARIAN", "VEGETARIAN" ]
   },
   {
     "type": "mutation",
@@ -3943,10 +3946,11 @@
     "name": { "str": "Padded Feet" },
     "points": 1,
     "visibility": 1,
-    "description": "The bottoms of your feet are strongly padded.  You receive no movement penalty for not wearing shoes, and even receive a 10% bonus when moving barefoot.",
+    "description": "The bottoms of your feet are strongly padded.  You receive no movement penalty for not wearing shoes, and even receive a 10% bonus when moving barefoot.  Also, your steps are significantly quieter, as added tissue dampens the noise.",
     "types": [ "SOLES" ],
     "category": [ "BATRACHIAN", "RABBIT", "URSINE", "FELINE", "LUPINE", "SPIDER", "BEAST" ],
-    "flags": [ "TOUGH_FEET" ]
+    "flags": [ "TOUGH_FEET" ],
+    "enchantments": [ { "condition": "ALWAYS", "values": [ { "value": "FOOTSTEP_NOISE", "multiply": -0.5 } ] } ]
   },
   {
     "type": "mutation",
@@ -3999,7 +4003,8 @@
           "and": [
             { "u_has_move_mode": "crouch" },
             { "not": "u_can_drop_weapon" },
-            { "u_has_any_trait": [ "THRESH_LUPINE", "THRESH_FELINE", "THRESH_BEAST" ] }
+            { "u_has_any_trait": [ "THRESH_LUPINE", "THRESH_FELINE", "THRESH_BEAST" ] },
+            { "u_has_trait": "PAWS" }
           ]
         },
         "values": [ { "value": "MOVE_COST", "multiply": -0.15 }, { "value": "CARRY_WEIGHT", "multiply": 0.35 } ]
@@ -4022,12 +4027,12 @@
             { "u_has_move_mode": "walk" },
             {
               "and": [
-                { "not": "u_can_drop_weapon" },
                 { "not": { "u_has_trait": "THRESH_LUPINE" } },
                 { "not": { "u_has_trait": "THRESH_FELINE" } },
                 { "not": { "u_has_trait": "THRESH_BEAST" } }
               ]
-            }
+            },
+            { "not": { "u_has_trait": "PAWS" } }
           ]
         },
         "values": [ { "value": "MOVE_COST", "multiply": -0.1 } ]
@@ -4649,8 +4654,8 @@
     "threshreq": [ "THRESH_INSECT" ],
     "allow_soft_gear": true,
     "attacks": {
-      "attack_text_u": "You sting %s with your tail",
-      "attack_text_npc": "%1$s stings %2$s with their tail",
+      "attack_text_u": "You sting %s with your tail!",
+      "attack_text_npc": "%1$s stings %2$s with their tail!",
       "chance": 20,
       "base_damage": { "damage_type": "stab", "amount": 20 }
     }
@@ -7071,7 +7076,7 @@
     "points": -3,
     "description": "Your body's ability to digest meat is severely hampered.  Eating meat has a good chance of making you vomit it back up; even if you manage to keep it down, its nutritional value is greatly reduced.",
     "types": [ "DIET" ],
-    "prereqs": [ "VEGETARIAN" ],
+    "prereqs": [ "VEGETARIAN", "VEGAN" ],
     "leads_to": [ "RUMINANT" ],
     "category": [ "CATTLE", "RABBIT" ]
   },
@@ -8661,6 +8666,17 @@
     "valid": false,
     "description": "Lets you instantly install torsion ratchets for your eight legs.",
     "debug": true
+  },
+  {
+    "type": "mutation",
+    "id": "DEBUG_SPEED",
+    "name": { "str": "Debug Speed" },
+    "points": 99,
+    "valid": false,
+    "description": "With this, you'll be fixing those bugs faster than ever!",
+    "enchantments": [ { "condition": "ALWAYS", "values": [ { "value": "SPEED", "multiply": 10 } ] } ],
+    "debug": true,
+    "active": true
   },
   {
     "type": "mutation",

@@ -73,5 +73,13 @@
       [ [ "plastic_chunk", 10 ] ],
       [ [ "cable", 50 ] ]
     ]
+  },
+  {
+    "result": "brazier",
+    "type": "uncraft",
+    "activity_level": "MODERATE_EXERCISE",
+    "time": "15 m",
+    "qualities": [ { "id": "HAMMER", "level": 2 }, { "id": "SAW_M", "level": 2 } ],
+    "components": [ [ [ "steel_lump", 4 ] ], [ [ "steel_chunk", 1 ] ], [ [ "scrap", 4 ] ] ]
   }
 ]

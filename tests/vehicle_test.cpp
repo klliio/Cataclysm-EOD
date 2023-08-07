@@ -88,19 +88,17 @@ TEST_CASE( "add_item_to_broken_vehicle_part", "[vehicle]" )
     REQUIRE( veh_ptr != nullptr );
 
     const tripoint pos = vehicle_origin + tripoint_west;
-    auto cargo_parts = veh_ptr->get_parts_at( pos, "CARGO", part_status_flag::any );
-    REQUIRE( !cargo_parts.empty( ) );
-    vehicle_part *cargo_part = cargo_parts.front();
-    REQUIRE( cargo_part != nullptr );
+    const std::optional<vpart_reference> ovp_cargo = get_map().veh_at( pos ).cargo();
+    REQUIRE( ovp_cargo );
     //Must not be broken yet
-    REQUIRE( !cargo_part->is_broken() );
+    REQUIRE( !ovp_cargo->part().is_broken() );
     //For some reason (0 - cargo_part->hp()) is just not enough to destroy a part
-    REQUIRE( veh_ptr->mod_hp( *cargo_part, -( 1 + cargo_part->hp() ) ) );
+    REQUIRE( veh_ptr->mod_hp( ovp_cargo->part(), -( 1 + ovp_cargo->part().hp() ) ) );
     //Now it must be broken
-    REQUIRE( cargo_part->is_broken() );
+    REQUIRE( ovp_cargo->part().is_broken() );
     //Now part is really broken, adding an item should fail
     const item itm2 = item( "jeans" );
-    REQUIRE( !veh_ptr->add_item( *cargo_part, itm2 ) );
+    REQUIRE( !veh_ptr->add_item( ovp_cargo->part(), itm2 ) );
 }
 
 TEST_CASE( "starting_bicycle_damaged_pedal", "[vehicle]" )
@@ -224,11 +222,11 @@ static void unfold_and_check( const vehicle_preset &veh_preset, const damage_pre
     // set damage/degradation on every part
     vehicle &veh = ovp->vehicle();
     for( const vpart_reference &vpr : veh.get_all_parts() ) {
-        item base = vpr.part().get_base();
+        vehicle_part &vp = vpr.part();
+        item base = vp.get_base();
         base.set_degradation( damage_preset.degradation );
         base.set_damage( damage_preset.damage );
-        vpr.part().set_base( std::move( base ) );
-        veh.set_hp( vpr.part(), vpr.info().durability, true );
+        vp.set_base( std::move( base ) );
     }
 
     // fold into an item
@@ -260,10 +258,15 @@ static void unfold_and_check( const vehicle_preset &veh_preset, const damage_pre
 
     // verify the damage/degradation roundtripped via serialization on every part
     for( const vpart_reference &vpr : ovp_unfolded->vehicle().get_all_parts() ) {
-        const item &base = vpr.part().get_base();
-        CHECK( base.damage() == damage_preset.expect_damage );
-        CHECK( base.degradation() == damage_preset.expect_degradation );
-        CHECK( ( vpr.part().max_damage() - vpr.part().damage() ) == damage_preset.expect_hp );
+        vehicle_part &vp = vpr.part();
+        CAPTURE( vp.name() );
+        const item &base = vp.get_base();
+        const bool expect_degradation = base.type->degrade_increments() > 0;
+        if( expect_degradation ) {
+            CHECK( base.damage() == damage_preset.expect_damage );
+            CHECK( base.degradation() == damage_preset.expect_degradation );
+        }
+        CHECK( ( vp.max_damage() - vp.damage() ) == damage_preset.expect_hp );
     }
 
     m.destroy_vehicle( &ovp_unfolded->vehicle() );
@@ -282,8 +285,8 @@ TEST_CASE( "Unfolding_vehicle_parts_and_testing_degradation", "[item][degradatio
         {    0,    0,    0,    0, 4000 },
         { 1000, 1000, 1000, 1000, 3000 },
         { 2000, 2000, 2000, 2000, 2000 },
-        { 1800, 2000, 2000, 2000, 2000 },
-        { 3000, 3999, 3999, 3999,    1 },
+        { 2500, 1500, 2500, 1500, 1500 },
+        { 3999, 3999, 3999, 3999,    1 },
     };
 
     for( const vehicle_preset &veh_preset : vehicle_presets ) {

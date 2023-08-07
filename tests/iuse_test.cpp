@@ -28,7 +28,7 @@ static const efftype_id effect_high( "high" );
 static const efftype_id effect_paincysts( "paincysts" );
 static const efftype_id effect_shakes( "shakes" );
 static const efftype_id effect_slimed( "slimed" );
-static const efftype_id effect_smoke( "smoke" );
+static const efftype_id effect_smoke_lungs( "smoke_lungs" );
 static const efftype_id effect_spores( "spores" );
 static const efftype_id effect_tapeworm( "tapeworm" );
 static const efftype_id effect_teargas( "teargas" );
@@ -251,13 +251,13 @@ TEST_CASE( "oxygen_tank", "[iuse][oxygen_bottle]" )
     REQUIRE( dummy.get_painkiller() == 0 );
 
     GIVEN( "avatar is suffering from smoke inhalation" ) {
-        dummy.add_effect( effect_smoke, 1_hours );
-        REQUIRE( dummy.has_effect( effect_smoke ) );
+        dummy.add_effect( effect_smoke_lungs, 1_hours );
+        REQUIRE( dummy.has_effect( effect_smoke_lungs ) );
 
         THEN( "a dose of oxygen relieves the smoke inhalation" ) {
             dummy.invoke_item( &oxygen );
             CHECK( oxygen.ammo_remaining() == charges_before - 2 );
-            CHECK_FALSE( dummy.has_effect( effect_smoke ) );
+            CHECK_FALSE( dummy.has_effect( effect_smoke_lungs ) );
 
             AND_THEN( "it acts as a mild painkiller" ) {
                 CHECK( dummy.get_painkiller() == 2 );
@@ -296,7 +296,7 @@ TEST_CASE( "oxygen_tank", "[iuse][oxygen_bottle]" )
     }
 
     GIVEN( "avatar has no ill effects for the oxygen to treat" ) {
-        REQUIRE_FALSE( dummy.has_effect( effect_smoke ) );
+        REQUIRE_FALSE( dummy.has_effect( effect_smoke_lungs ) );
         REQUIRE_FALSE( dummy.has_effect( effect_teargas ) );
         REQUIRE_FALSE( dummy.has_effect( effect_asthma ) );
 
@@ -579,12 +579,12 @@ TEST_CASE( "inhaler", "[iuse][inhaler]" )
     REQUIRE( dummy.has_item( *inhaler_loc ) );
 
     GIVEN( "avatar is suffering from smoke inhalation" ) {
-        dummy.add_effect( effect_smoke, 1_hours );
-        REQUIRE( dummy.has_effect( effect_smoke ) );
+        dummy.add_effect( effect_smoke_lungs, 1_hours );
+        REQUIRE( dummy.has_effect( effect_smoke_lungs ) );
 
         THEN( "inhaler relieves it" ) {
             dummy.use( inhaler_loc );
-            CHECK_FALSE( dummy.has_effect( effect_smoke ) );
+            CHECK_FALSE( dummy.has_effect( effect_smoke_lungs ) );
         }
     }
 

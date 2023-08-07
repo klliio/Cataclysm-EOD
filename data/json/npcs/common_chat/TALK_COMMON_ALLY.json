@@ -216,6 +216,7 @@
       },
       { "text": "Let's talk about your current activity.", "topic": "TALK_ACTIVITIES" },
       { "text": "Let's talk about the camp.", "topic": "TALK_CAMP" },
+      { "text": "Change your martial arts style.", "topic": "TALK_DONE", "effect": "pick_style" },
       { "text": "Let's go.", "topic": "TALK_DONE" }
     ]
   },
@@ -930,6 +931,12 @@
         "topic": "TALK_DONE",
         "condition": { "and": [ { "not": "npc_has_activity" }, { "not": { "npc_has_trait": "HALLUCINATION" } } ] },
         "effect": "do_eread"
+      },
+      {
+        "text": "Please study from books you have in order.",
+        "topic": "TALK_DONE",
+        "condition": { "and": [ { "not": "npc_has_activity" }, { "not": { "npc_has_trait": "HALLUCINATION" } } ] },
+        "effect": "do_read_repeatedly"
       },
       {
         "text": "Please start deconstructing any vehicles in a deconstruction zone.",
