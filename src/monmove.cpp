@@ -1855,6 +1855,7 @@ bool monster::move_to( const tripoint &p, bool force, bool step_on_critter,
                                 name(), swims() ||
                                 has_flag( mon_flag_AQUATIC ) ? _( "dives" ) : _( "sinks" ), here.tername( destination ) );
     }
+	}
 
     optional_vpart_position vp_orig = here.veh_at( pos() );
     if( vp_orig ) {

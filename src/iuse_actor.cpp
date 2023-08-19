@@ -1899,18 +1899,18 @@ bool cauterize_actor::cauterize_effect( Character &p, item &it, bool force )
     return false;
 }
 
-std::optional<int> cauterize_actor::use( Character &p, item &it, bool t, const tripoint & ) const
+std::optional<int> cauterize_actor::use( Character *p, item &it, bool t, const tripoint & ) const
 {
     if( t ) {
         return std::nullopt;
     }
     bool did_cauterize = false;
 
-    if( p.has_effect( effect_bleed ) ) {
-        did_cauterize = cauterize_effect( p, it, false );
-    } else if( p.enjoys_pain() ) {
+    if( p->has_effect( effect_bleed ) ) {
+        did_cauterize = cauterize_effect( *p, it, false );
+    } else if( p->enjoys_pain() ) {
         if( query_yn( _( "Cauterize yourself for fun?" ) ) ) {
-            did_cauterize = cauterize_effect( p, it, true );
+            did_cauterize = cauterize_effect( *p, it, true );
         }
     }
 
@@ -1919,7 +1919,7 @@ std::optional<int> cauterize_actor::use( Character &p, item &it, bool t, const t
     }
 
     if( flame ) {
-        p.use_charges( itype_fire, 4 );
+        p->use_charges( itype_fire, 4 );
         return 0;
     } else {
         return cost >= 0 ? cost : it.ammo_required();

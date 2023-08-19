@@ -2719,7 +2719,7 @@ void monster::die( Creature *nkiller )
     }
     // Past this, we assume that the monster isn't a hallucination.
     // If we're a queen, make nearby groups of our type start to die out
-    if( has_flag( MF_QUEEN ) ) {
+    if( has_flag( mon_flag_QUEEN ) ) {
         // The submap coordinates of this monster, monster groups coordinates are
         // submap coordinates.
         const tripoint abssub = ms_to_sm_copy( here.getabs( pos() ) );

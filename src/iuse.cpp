@@ -3815,9 +3815,9 @@ std::optional<int> iuse::grenade_inc_act( Character *p, item *, bool, const trip
         here.add_field( dest, fd_incendiary, 3 );
     }
 
-        if( p->handle_pyromania_morale( 15, 15, 8_hours, 6_hours ) ) {
-            p->add_msg_if_player( m_good, _( "Fire…  Good…" ) );
-        }
+    avatar &player = get_avatar();
+    if( player.sees( pos ) && player.handle_pyromania_morale( 15, 15, 8_hours, 6_hours ) ) {
+        add_msg( m_good, _( "Fire…  Good…" ) );
     }
     return 0;
 }
@@ -3831,8 +3831,9 @@ std::optional<int> iuse::molotov_lit( Character *p, item *it, bool, const tripoi
             const int intensity = 1 + one_in( 3 ) + one_in( 5 );
             here.add_field( pt, fd_fire, intensity );
         }
-        if( p->handle_pyromania_morale( 15, 15, 8_hours, 6_hours ) ) {
-            p->add_msg_if_player( m_good, _( "Fire…  Good…" ) );
+        avatar &player = get_avatar();
+        if( player.sees( pos ) && player.handle_pyromania_morale( 15, 15, 8_hours, 6_hours ) ) {
+            add_msg( m_good, _( "Fire…  Good…" ) );
         }
         return 1;
     }

@@ -122,7 +122,7 @@
       { "proficiency": "prof_blacksmithing" },
       { "proficiency": "prof_toolsmithing" }
     ],
-    "components": [ [ [ "nail", 1 ], [ "scrap", 1 ], [ "nuts_bolts", 1 ] ] ],
+    "components": [ [ [ "nail", 1 ], [ "scrap", 1 ], [ "nuts_bolts", 1 ] ] ]
   },
   {
     "type": "recipe",
