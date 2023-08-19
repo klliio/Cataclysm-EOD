@@ -12323,7 +12323,7 @@ bool character_martial_arts::pick_style( const Character &you ) // Style selecti
     kmenu.desc_enabled = true;
     kmenu.addentry_desc( KEEP_HANDS_FREE, true, 'h',
                          keep_hands_free ? _( "Keep hands free (on)" ) : _( "Keep hands free (off)" ),
-                         _( "When this is enabled, player won't wield things unless explicitly told to." ) );
+                         _( "When this is enabled, items won't be wielded unless explicitly told to." ) );
 
     kmenu.selected = STYLE_OFFSET;
 
