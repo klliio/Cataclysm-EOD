@@ -100,7 +100,7 @@
     "material": [ "steel", "powder" ],
     "volume": "100 ml",
     "weight": "5 g",
-    "longest_side": "6 mm",
+    "longest_side": "8 mm",
     "ammo_type": "components",
     "count": 50,
     "effects": [ "COOKOFF" ]

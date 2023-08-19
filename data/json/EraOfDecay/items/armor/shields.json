@@ -1649,7 +1649,7 @@
     "name": { "str": "ballistic shield" },
     "description": "A heavy composite shield used by SWAT teams and other armed forces.  It can handle the occasional pistol bullet, but its heavy-duty nature means it's quite encumbering and doesn't cover the legs very well.",
     "weight": "6300 g",
-    "volume": "4 L",
+    "volume": "5 L",
     "price": "1000 USD",
     "price_postapoc": "50 USD",
     "material": [ "kevlar_rigid" ],
