@@ -51,6 +51,6 @@
     "id": "gas_pressuring",
     "type": "requirement",
     "//": "Moving pressurized gases from one tank to another.",
-    "tools": [ [ [ "gaspump", 1 ], [ "air_compressor_tool", 1 ], [ "pseudo_app_hd_compressor_unit", 1 ] ] ]
+    "tools": [ [ [ "air_compressor_tool", 1 ], [ "pseudo_app_hd_compressor_unit", 1 ] ] ]
   }
 ]

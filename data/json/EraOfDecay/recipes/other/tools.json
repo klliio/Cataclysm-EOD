@@ -1,6 +1,6 @@
 [
   {
-    "result": "gaspump",
+    "result": "hd_compressor_unit",
     "type": "recipe",
     "activity_level": "MODERATE_EXERCISE",
     "category": "CC_OTHER",
@@ -35,8 +35,10 @@
       [ [ "hd_pipe_fittings", 2 ] ],
       [ [ "hd_valve", 1 ] ],
       [ [ "pressure_gauge", 1 ] ],
-      [ [ "cable", 50 ] ],
+      [ [ "cable", 20 ] ],
       [ [ "hd_compressor", 1 ] ],
+      [ [ "motor_small", 1 ] ],
+      [ [ "sheet_metal_small", 6 ] ],
       [ [ "power_supply", 1 ] ]
     ]
   },

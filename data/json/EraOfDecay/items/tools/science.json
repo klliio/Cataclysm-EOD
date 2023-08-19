@@ -1,26 +1,5 @@
 [
   {
-    "id": "gaspump",
-    "type": "TOOL",
-    "name": { "str": "gas pump" },
-    "description": "An appliance which is designed to refill all kinds of gas tanks with pressurized gas, with the option of mixing multiple gases or just filling a tank with compressed air.",
-    "weight": "40 kg",
-    "volume": "15 L",
-    "longest_side": "60 cm",
-    "price": 8000,
-    "price_postapoc": 1200,
-    "to_hit": -4,
-    "material": [ "steel" ],
-    "symbol": ";",
-    "color": "light_gray",
-    "ammo": [ "battery" ],
-    "flags": [ "ALLOWS_REMOTE_USE", "WATER_BREAK" ],
-    "pocket_data": [
-      { "pocket_type": "MAGAZINE_WELL", "item_restriction": [ "battery_car", "storage_battery", "large_storage_battery" ] }
-    ],
-    "melee_damage": { "bash": 20 }
-  },
-  {
     "id": "electric_arc_apparatus",
     "type": "TOOL",
     "name": { "str": "electric arc apparatus", "str_pl": "electric arc apparatuses" },

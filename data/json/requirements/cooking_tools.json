@@ -13,6 +13,7 @@
     "//8": "A good way to judge input needed is how many seconds it takes to microwave.  1kW is a good estimate for microwave power usage, and the ratios are relatively consistent between different foodstuffs.",
     "tools": [
       [
+        [ "magnetic_stirrer", 35 ],
         [ "hotplate_induction", 25 ],
         [ "microwave", 25 ],
         [ "hotplate", 35 ],
@@ -79,6 +80,8 @@
     "//7": "for each unit of water add an additional count of this per 15 minutes the water is kept boiling.",
     "tools": [
       [
+        [ "magnetic_stirrer", 200 ],
+        [ "oven", 1000 ],
         [ "coffeemaker", 125 ],
         [ "hotplate_induction", 125 ],
         [ "hotplate", 200 ],

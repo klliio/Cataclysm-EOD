@@ -208,7 +208,7 @@
     "type": "vehicle_part",
     "name": { "str": "wooden barrel (100L)" },
     "item": "wooden_barrel",
-    "location": "center",
+    "location": "fuel_source",
     "categories": [ "movement" ],
     "color": "brown",
     "broken_color": "brown",

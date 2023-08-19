@@ -181,6 +181,9 @@ static const matec_id RAPID( "RAPID" );
 
 static const material_id material_wool( "wool" );
 
+static const mon_flag_str_id mon_flag_POISON( "POISON" );
+static const mon_flag_str_id mon_flag_REVIVES( "REVIVES" );
+
 static const morale_type morale_null( "morale_null" );
 
 static const mtype_id debug_mon( "debug_mon" );
@@ -585,7 +588,7 @@ item item::make_corpse( const mtype_id &mt, time_point turn, const std::string &
     item result( corpse_type, turn );
     result.corpse = &mt.obj();
 
-    if( result.corpse->has_flag( MF_REVIVES ) ) {
+    if( result.corpse->has_flag( mon_flag_REVIVES ) ) {
         if( one_in( 20 ) ) {
             result.set_flag( flag_REVIVE_SPECIAL );
         }
@@ -659,7 +662,7 @@ item &item::activate()
 
 bool item::activate_thrown( const tripoint &pos )
 {
-    return type->invoke( get_avatar(), *this, pos ).value_or( 0 );
+    return type->invoke( nullptr, *this, pos ).value_or( 0 );
 }
 
 units::energy item::mod_energy( const units::energy &qty )
@@ -873,7 +876,11 @@ void item::set_damage( int qty )
 
 void item::set_degradation( int qty )
 {
-    degradation_ = std::clamp( qty, 0, max_damage() );
+    if( type->degrade_increments() > 0 ) {
+        degradation_ = std::clamp( qty, 0, max_damage() );
+    } else {
+        degradation_ = 0;
+    }
     set_damage( damage_ );
 }
 
@@ -5133,6 +5140,12 @@ void item::bionic_info( std::vector<iteminfo> &info, const iteminfo_query *parts
 
     insert_separation_line( info );
 
+    if( bid->required_bionic ) {
+        info.emplace_back( "CBM", string_format( "* This CBM requires another CBM to also be installed: %s",
+                           bid->required_bionic->name ) );
+    }
+    insert_separation_line( info );
+
     // TODO refactor these almost identical blocks
     if( !bid->encumbrance.empty() ) {
         info.emplace_back( "DESCRIPTION", _( "<bold>Encumbrance</bold>:" ),
@@ -8355,7 +8368,7 @@ const std::vector<itype_id> &item::brewing_results() const
 
 bool item::can_revive() const
 {
-    return is_corpse() && ( corpse->has_flag( MF_REVIVES ) || has_var( "zombie_form" ) ) &&
+    return is_corpse() && ( corpse->has_flag( mon_flag_REVIVES ) || has_var( "zombie_form" ) ) &&
            damage() < max_damage() &&
            !( has_flag( flag_FIELD_DRESS ) || has_flag( flag_FIELD_DRESS_FAILED ) ||
               has_flag( flag_QUARTERED ) ||
@@ -8523,9 +8536,9 @@ float item::_resist( const damage_type_id &dmg_type, bool to_self, int resist_va
         return _environmental_resist( dmg_type, to_self, resist_value, bp_null, armor_mats );
     }
 
+    std::optional<std::pair<damage_type_id, float>> derived;
     if( !dmg_type->derived_from.first.is_null() ) {
-        return dmg_type->derived_from.second * _resist( dmg_type->derived_from.first, to_self,
-                resist_value, bp_null, armor_mats, avg_thickness );
+        derived = dmg_type->derived_from;
     }
 
     float resist = 0.0f;
@@ -8543,7 +8556,13 @@ float item::_resist( const damage_type_id &dmg_type, bool to_self, int resist_va
                 int internal_roll;
                 resist_value < 0 ? internal_roll = rng( 0, 99 ) : internal_roll = resist_value;
                 if( internal_roll < m->cover ) {
-                    resist += m->id->resist( dmg_type ) * m->thickness;
+                    float tmp_add = 0.f;
+                    if( derived.has_value() && !m->id->has_dedicated_resist( dmg_type ) ) {
+                        tmp_add = m->id->resist( derived->first ) * m->thickness * derived->second;
+                    } else {
+                        tmp_add = m->id->resist( dmg_type ) * m->thickness;
+                    }
+                    resist += tmp_add;
                 }
             }
             return ( resist + mod ) * damage_scale;
@@ -8555,7 +8574,13 @@ float item::_resist( const damage_type_id &dmg_type, bool to_self, int resist_va
     if( !mats.empty() ) {
         const int total = type->mat_portion_total == 0 ? 1 : type->mat_portion_total;
         for( const auto &m : mats ) {
-            resist += m.first->resist( dmg_type ) * m.second;
+            float tmp_add = 0.f;
+            if( derived.has_value() && !m.first->has_dedicated_resist( dmg_type ) ) {
+                tmp_add = m.first->resist( derived->first ) * m.second * derived->second;
+            } else {
+                tmp_add = m.first->resist( dmg_type ) * m.second;
+            }
+            resist += tmp_add;
         }
         // Average based portion of materials
         resist /= total;
@@ -8574,6 +8599,11 @@ float item::_environmental_resist( const damage_type_id &dmg_type, const bool to
         return std::numeric_limits<float>::max();
     }
 
+    std::optional<std::pair<damage_type_id, float>> derived;
+    if( !dmg_type->derived_from.first.is_null() ) {
+        derived = dmg_type->derived_from;
+    }
+
     float resist = 0.0f;
     float mod = get_clothing_mod_val_for_damage_type( dmg_type );
 
@@ -8581,7 +8611,13 @@ float item::_environmental_resist( const damage_type_id &dmg_type, const bool to
         // If we have armour portion materials for this body part, use that instead
         if( !armor_mats.empty() ) {
             for( const part_material *m : armor_mats ) {
-                resist += m->id->resist( dmg_type ) * m->cover * 0.01f;
+                float tmp_add = 0.f;
+                if( derived.has_value() && !m->id->has_dedicated_resist( dmg_type ) ) {
+                    tmp_add = m->id->resist( derived->first ) * m->cover * 0.01f * derived->second;
+                } else {
+                    tmp_add = m->id->resist( dmg_type ) * m->cover * 0.01f;
+                }
+                resist += tmp_add;
             }
             const int env = get_env_resist( base_env_resist );
             if( env < 10 ) {
@@ -8597,7 +8633,13 @@ float item::_environmental_resist( const damage_type_id &dmg_type, const bool to
         // Not sure why cut and bash get an armor thickness bonus but acid/fire doesn't,
         // but such is the way of the code.
         for( const auto &m : mats ) {
-            resist += m.first->resist( dmg_type ) * m.second;
+            float tmp_add = 0.f;
+            if( derived.has_value() && !m.first->has_dedicated_resist( dmg_type ) ) {
+                tmp_add = m.first->resist( derived->first ) * m.second * derived->second;
+            } else {
+                tmp_add = m.first->resist( dmg_type ) * m.second;
+            }
+            resist += tmp_add;
         }
         // Average based portion of materials
         resist /= total;
@@ -8880,6 +8922,10 @@ void item::mitigate_damage( damage_unit &du, const bodypart_id &bp, int roll ) c
 {
     const resistances res = resistances( *this, false, roll, bp );
     const float mitigation = res.get_effective_resist( du );
+    // get_effective_resist subtracts the flat penetration value before multiplying the remaining armor.
+    // therefore, res_pen is reduced by the full value of the item's armor value even though mitigation might be smaller (such as an attack with a 0.5 armor multiplier)
+    du.res_pen -= res.type_resist( du.type );
+    du.res_pen = std::max( 0.0f, du.res_pen );
     du.amount -= mitigation;
     du.amount = std::max( 0.0f, du.amount );
 }
@@ -8888,6 +8934,10 @@ void item::mitigate_damage( damage_unit &du, const sub_bodypart_id &bp, int roll
 {
     const resistances res = resistances( *this, false, roll, bp );
     const float mitigation = res.get_effective_resist( du );
+    // get_effective_resist subtracts the flat penetration value before multiplying the remaining armor.
+    // therefore, res_pen is reduced by the full value of the item's armor value even though mitigation might be smaller (such as an attack with a 0.5 armor multiplier)
+    du.res_pen -= res.type_resist( du.type );
+    du.res_pen = std::max( 0.0f, du.res_pen );
     du.amount -= mitigation;
     du.amount = std::max( 0.0f, du.amount );
 }
@@ -10348,6 +10398,8 @@ int item::gun_range( const Character *p ) const
     if( has_flag( flag_STR_DRAW ) ) {
         ret += std::max( 0.0, ( p->get_str() - get_min_str() ) * 0.5 );
     }
+
+    ret = p->enchantment_cache->modify_value( enchant_vals::mod::RANGE, ret );
 
     return std::max( 0, ret );
 }
@@ -11833,7 +11885,8 @@ void item::set_item_temperature( units::temperature new_temperature )
 int item::fill_with( const item &contained, const int amount,
                      const bool unseal_pockets,
                      const bool allow_sealed,
-                     const bool ignore_settings )
+                     const bool ignore_settings,
+                     const bool into_bottom )
 {
     if( amount <= 0 ) {
         return 0;
@@ -11877,7 +11930,7 @@ int item::fill_with( const item &contained, const int amount,
             }
         }
 
-        if( !pocket->insert_item( contained_item ).success() ) {
+        if( !pocket->insert_item( contained_item, into_bottom ).success() ) {
             if( count_by_charges ) {
                 debugmsg( "charges per remaining pocket volume does not fit in that very volume" );
             } else {
@@ -12908,7 +12961,7 @@ bool item::process_extinguish( map &here, Character *carrier, const tripoint &po
         if( type->revert_to ) {
             convert( *type->revert_to );
         } else {
-            type->invoke( carrier != nullptr ? *carrier : get_avatar(), *this, pos, "transform" );
+            type->invoke( carrier, *this, pos, "transform" );
         }
 
     }
@@ -13260,21 +13313,16 @@ bool item::process_tool( Character *carrier, const tripoint &pos )
         return false;
     }
 
-    avatar &player_character = get_avatar();
     // if insufficient available charges shutdown the tool
     if( ( type->tool->turns_per_charge > 0 || type->tool->power_draw > 0_W ) &&
         ammo_remaining( carrier, true ) == 0 ) {
         if( carrier && has_flag( flag_USE_UPS ) ) {
             carrier->add_msg_if_player( m_info, _( "You need an UPS to run the %s!" ), tname() );
         }
-
-        // invoking the object can convert the item to another type
-        const bool had_revert_to = type->revert_to.has_value();
-        type->invoke( carrier != nullptr ? *carrier : player_character, *this, pos );
         if( carrier ) {
             carrier->add_msg_if_player( m_info, _( "The %s ran out of energy!" ), tname() );
         }
-        if( had_revert_to ) {
+        if( type->revert_to.has_value() ) {
             deactivate( carrier );
             return false;
         } else {
@@ -13298,7 +13346,7 @@ bool item::process_tool( Character *carrier, const tripoint &pos )
         ammo_consume( energy, pos, carrier );
     }
 
-    type->tick( carrier != nullptr ? *carrier : player_character, *this, pos );
+    type->tick( carrier, *this, pos );
     return false;
 }
 
@@ -13416,7 +13464,7 @@ bool item::process_internal( map &here, Character *carrier, const tripoint &pos,
         if( calendar::turn >= countdown_point ) {
             active = false;
             if( type->countdown_action ) {
-                type->countdown_action.call( carrier ? *carrier : get_avatar(), *this, false, pos );
+                type->countdown_action.call( carrier, *this, false, pos );
             }
             countdown_point = calendar::turn_max;
             if( type->revert_to ) {
@@ -13564,7 +13612,7 @@ bool item::is_dangerous() const
 
 bool item::is_tainted() const
 {
-    return corpse && corpse->has_flag( MF_POISON );
+    return corpse && corpse->has_flag( mon_flag_POISON );
 }
 
 bool item::is_soft() const
@@ -13977,7 +14025,7 @@ bool item::on_drop( const tripoint &pos, map &m )
     avatar &player_character = get_avatar();
     player_character.flag_encumbrance();
     player_character.invalidate_weight_carried_cache();
-    return type->drop_action && type->drop_action.call( player_character, *this, false, pos );
+    return type->drop_action && type->drop_action.call( &player_character, *this, false, pos );
 }
 
 time_duration item::age() const

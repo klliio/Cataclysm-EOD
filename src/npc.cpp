@@ -87,7 +87,6 @@
 #include "name.h"
 
 static const efftype_id effect_bouldering( "bouldering" );
-static const efftype_id effect_contacts( "contacts" );
 static const efftype_id effect_controlled( "controlled" );
 static const efftype_id effect_drunk( "drunk" );
 static const efftype_id effect_high( "high" );
@@ -116,7 +115,6 @@ static const item_group_id Item_spawn_data_survivor_bashing( "survivor_bashing" 
 static const item_group_id Item_spawn_data_survivor_cutting( "survivor_cutting" );
 static const item_group_id Item_spawn_data_survivor_stabbing( "survivor_stabbing" );
 
-static const json_character_flag json_flag_HYPEROPIC( "HYPEROPIC" );
 static const json_character_flag json_flag_PRED1( "PRED1" );
 static const json_character_flag json_flag_PRED2( "PRED2" );
 static const json_character_flag json_flag_PRED3( "PRED3" );
@@ -125,6 +123,8 @@ static const json_character_flag json_flag_PRED4( "PRED4" );
 static const mfaction_str_id monfaction_bee( "bee" );
 static const mfaction_str_id monfaction_human( "human" );
 static const mfaction_str_id monfaction_player( "player" );
+
+static const mon_flag_str_id mon_flag_RIDEABLE_MECH( "RIDEABLE_MECH" );
 
 static const overmap_location_str_id overmap_location_source_of_ammo( "source_of_ammo" );
 static const overmap_location_str_id overmap_location_source_of_anything( "source_of_anything" );
@@ -154,7 +154,6 @@ static const trait_id trait_BEE( "BEE" );
 static const trait_id trait_CANNIBAL( "CANNIBAL" );
 static const trait_id trait_DEBUG_MIND_CONTROL( "DEBUG_MIND_CONTROL" );
 static const trait_id trait_HALLUCINATION( "HALLUCINATION" );
-static const trait_id trait_ILLITERATE( "ILLITERATE" );
 static const trait_id trait_KILLER( "KILLER" );
 static const trait_id trait_KILLER_GOOD( "KILLER_GOOD" );
 static const trait_id trait_MUTE( "MUTE" );
@@ -1307,35 +1306,31 @@ void npc::starting_weapon( const npc_class_id &type )
 
 bool npc::can_read( const item &book, std::vector<std::string> &fail_reasons )
 {
-    if( !book.is_book() ) {
-        fail_reasons.push_back( string_format( _( "This %s is not good reading material." ),
-                                               book.tname() ) );
-        return false;
-    }
     Character *pl = dynamic_cast<Character *>( this );
     if( !pl ) {
         return false;
     }
-    const auto &type = book.type->book;
-    const skill_id &skill = type->skill;
-    const int skill_level = pl->get_knowledge_level( skill );
-    if( skill && skill_level < type->req ) {
+    read_condition_result condition = check_read_condition( book );
+    if( condition & read_condition_result::NOT_BOOK ) {
+        fail_reasons.push_back( string_format( _( "This %s is not good reading material." ),
+                                               book.tname() ) );
+        return false;
+    }
+    if( condition & read_condition_result::CANT_UNDERSTAND ) {
         fail_reasons.push_back( string_format( _( "I'm not smart enough to read this book." ) ) );
         return false;
     }
-    if( !skill || skill_level >= type->level ) {
+    if( condition & read_condition_result::MASTERED ) {
         fail_reasons.push_back( string_format( _( "I won't learn anything from this book." ) ) );
         return false;
     }
 
     // Check for conditions that disqualify us
-    if( type->intel > 0 && has_trait( trait_ILLITERATE ) ) {
+    if( condition & read_condition_result::ILLITERATE ) {
         fail_reasons.emplace_back( _( "I can't read!" ) );
-    } else if( has_flag( json_flag_HYPEROPIC ) && !worn_with_flag( flag_FIX_FARSIGHT ) &&
-               !has_effect( effect_contacts ) &&
-               !has_flag( STATIC( json_character_flag( "ENHANCED_VISION" ) ) ) ) {
+    } else if( condition & read_condition_result::NEED_GLASSES ) {
         fail_reasons.emplace_back( _( "I can't read without my glasses." ) );
-    } else if( fine_detail_vision_mod() > 4 ) {
+    } else if( condition & read_condition_result::TOO_DARK ) {
         // Too dark to read only applies if the player can read to himself
         fail_reasons.emplace_back( _( "It's too dark to read!" ) );
         return false;
@@ -2649,7 +2644,7 @@ void npc::npc_dismount()
         return;
     }
     remove_effect( effect_riding );
-    if( mounted_creature->has_flag( MF_RIDEABLE_MECH ) &&
+    if( mounted_creature->has_flag( mon_flag_RIDEABLE_MECH ) &&
         !mounted_creature->type->mech_weapon.is_empty() ) {
         get_wielded_item().remove_item();
     }

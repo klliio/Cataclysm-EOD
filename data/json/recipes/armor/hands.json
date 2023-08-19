@@ -636,7 +636,7 @@
     "type": "recipe",
     "copy-from": "gloves_plate",
     "time": "7 h",
-    "using": [ [ "blacksmithing_standard", 18 ], [ "steel_standard", 4 ], [ "clasps", 1 ], [ "strap_small", 1 ] ],
+    "using": [ [ "blacksmithing_standard", 16 ], [ "steel_standard", 4 ], [ "clasps", 1 ], [ "strap_small", 1 ] ],
     "qualities": [ { "id": "CHISEL", "level": 3 } ],
     "tools": [ [ [ "swage", -1 ] ] ]
   },
@@ -645,7 +645,7 @@
     "type": "recipe",
     "copy-from": "gloves_plate",
     "time": "7 h 50 m",
-    "using": [ [ "blacksmithing_standard", 30 ], [ "steel_standard", 9 ], [ "clasps", 2 ], [ "strap_small", 2 ] ],
+    "using": [ [ "blacksmithing_standard", 36 ], [ "steel_standard", 9 ], [ "clasps", 2 ], [ "strap_small", 2 ] ],
     "qualities": [ { "id": "CHISEL", "level": 3 } ],
     "tools": [ [ [ "swage", -1 ] ] ]
   },
@@ -1140,7 +1140,7 @@
     "book_learn": [ [ "textbook_armwest", 7 ] ],
     "using": [
       [ "fabric_leather_fur_hide", 1 ],
-      [ "blacksmithing_standard", 16 ],
+      [ "blacksmithing_standard", 8 ],
       [ "lc_steel_standard", 2 ],
       [ "armor_chainmail_assembling", 1 ]
     ],
@@ -1161,7 +1161,7 @@
     "time": "2 d 16 h",
     "using": [
       [ "fabric_leather_fur_hide", 2 ],
-      [ "blacksmithing_standard", 22 ],
+      [ "blacksmithing_standard", 12 ],
       [ "lc_steel_standard", 3 ],
       [ "armor_chainmail_assembling", 2 ]
     ],
@@ -1180,7 +1180,7 @@
     "book_learn": [ [ "textbook_armwest", 7 ] ],
     "using": [
       [ "fabric_leather_fur_hide", 1 ],
-      [ "blacksmithing_standard", 16 ],
+      [ "blacksmithing_standard", 8 ],
       [ "mc_steel_standard", 2 ],
       [ "armor_chainmail_assembling", 1 ]
     ],
@@ -1201,7 +1201,7 @@
     "time": "2 d 16 h",
     "using": [
       [ "fabric_leather_fur_hide", 2 ],
-      [ "blacksmithing_standard", 22 ],
+      [ "blacksmithing_standard", 12 ],
       [ "mc_steel_standard", 3 ],
       [ "armor_chainmail_assembling", 2 ]
     ],
@@ -1220,7 +1220,7 @@
     "book_learn": [ [ "textbook_armwest", 7 ] ],
     "using": [
       [ "fabric_leather_fur_hide", 1 ],
-      [ "blacksmithing_standard", 16 ],
+      [ "blacksmithing_standard", 8 ],
       [ "hc_steel_standard", 2 ],
       [ "armor_chainmail_assembling", 1 ]
     ],
@@ -1241,7 +1241,7 @@
     "time": "2 d 16 h",
     "using": [
       [ "fabric_leather_fur_hide", 2 ],
-      [ "blacksmithing_standard", 22 ],
+      [ "blacksmithing_standard", 12 ],
       [ "hc_steel_standard", 3 ],
       [ "armor_chainmail_assembling", 2 ]
     ],
@@ -1260,7 +1260,7 @@
     "book_learn": [ [ "textbook_armwest", 7 ] ],
     "using": [
       [ "fabric_leather_fur_hide", 1 ],
-      [ "blacksmithing_standard", 16 ],
+      [ "blacksmithing_standard", 8 ],
       [ "lc_steel_standard", 2 ],
       [ "armor_chainmail_assembling", 1 ],
       [ "carbon", 2 ]
@@ -1283,7 +1283,7 @@
     "time": "3 d 4 h",
     "using": [
       [ "fabric_leather_fur_hide", 2 ],
-      [ "blacksmithing_standard", 22 ],
+      [ "blacksmithing_standard", 12 ],
       [ "lc_steel_standard", 3 ],
       [ "armor_chainmail_assembling", 2 ],
       [ "carbon", 3 ]
@@ -1303,12 +1303,12 @@
     "book_learn": [ [ "textbook_armwest", 7 ] ],
     "using": [
       [ "fabric_leather_fur_hide", 1 ],
-      [ "blacksmithing_standard", 16 ],
+      [ "blacksmithing_standard", 8 ],
       [ "mc_steel_standard", 2 ],
       [ "armor_chainmail_assembling", 1 ]
     ],
     "qualities": [ { "id": "CHISEL", "level": 3 } ],
-    "tools": [ [ [ "tongs", -1 ] ], [ [ "hotcut", -1 ] ], [ [ "metal_tank", -1 ] ], [ [ "water", -120 ], [ "water_clean", -120 ] ] ],
+    "tools": [ [ [ "hotcut", -1 ] ], [ [ "metal_tank", -1 ] ], [ [ "water", -120 ], [ "water_clean", -120 ] ] ],
     "proficiencies": [
       { "proficiency": "prof_armorsmithing" },
       { "proficiency": "prof_closures", "time_multiplier": 1.25, "skill_penalty": 0.15 },
@@ -1325,12 +1325,12 @@
     "time": "3 d 6 h",
     "using": [
       [ "fabric_leather_fur_hide", 2 ],
-      [ "blacksmithing_standard", 22 ],
+      [ "blacksmithing_standard", 12 ],
       [ "mc_steel_standard", 3 ],
       [ "armor_chainmail_assembling", 2 ]
     ],
     "qualities": [ { "id": "CHISEL", "level": 3 } ],
-    "tools": [ [ [ "tongs", -1 ] ], [ [ "hotcut", -1 ] ], [ [ "metal_tank", -1 ] ], [ [ "water", -120 ], [ "water_clean", -120 ] ] ]
+    "tools": [ [ [ "hotcut", -1 ] ], [ [ "metal_tank", -1 ] ], [ [ "water", -120 ], [ "water_clean", -120 ] ] ]
   },
   {
     "result": "lc_mitten_gaunt",
@@ -1344,7 +1344,7 @@
     "book_learn": [ [ "textbook_armwest", 7 ] ],
     "using": [
       [ "fabric_leather_fur_hide", 1 ],
-      [ "blacksmithing_standard", 16 ],
+      [ "blacksmithing_standard", 12 ],
       [ "lc_steel_standard", 3 ],
       [ "armor_chainmail_assembling", 1 ]
     ],
@@ -1365,7 +1365,7 @@
     "time": "3 d 10 h",
     "using": [
       [ "fabric_leather_fur_hide", 2 ],
-      [ "blacksmithing_standard", 22 ],
+      [ "blacksmithing_standard", 16 ],
       [ "lc_steel_standard", 4 ],
       [ "armor_chainmail_assembling", 2 ]
     ],
@@ -1419,7 +1419,7 @@
     "book_learn": [ [ "textbook_armwest", 7 ] ],
     "using": [
       [ "fabric_leather_fur_hide", 1 ],
-      [ "blacksmithing_standard", 16 ],
+      [ "blacksmithing_standard", 12 ],
       [ "mc_steel_standard", 3 ],
       [ "armor_chainmail_assembling", 1 ]
     ],
@@ -1440,7 +1440,7 @@
     "time": "3 d 10 h",
     "using": [
       [ "fabric_leather_fur_hide", 2 ],
-      [ "blacksmithing_standard", 22 ],
+      [ "blacksmithing_standard", 16 ],
       [ "mc_steel_standard", 4 ],
       [ "armor_chainmail_assembling", 2 ]
     ],
@@ -1459,7 +1459,7 @@
     "book_learn": [ [ "textbook_armwest", 7 ] ],
     "using": [
       [ "fabric_leather_fur_hide", 1 ],
-      [ "blacksmithing_standard", 16 ],
+      [ "blacksmithing_standard", 12 ],
       [ "hc_steel_standard", 3 ],
       [ "armor_chainmail_assembling", 1 ]
     ],
@@ -1480,7 +1480,7 @@
     "time": "3 d 10 h",
     "using": [
       [ "fabric_leather_fur_hide", 2 ],
-      [ "blacksmithing_standard", 22 ],
+      [ "blacksmithing_standard", 16 ],
       [ "hc_steel_standard", 4 ],
       [ "armor_chainmail_assembling", 2 ]
     ],
@@ -1499,7 +1499,7 @@
     "book_learn": [ [ "textbook_armwest", 7 ] ],
     "using": [
       [ "fabric_leather_fur_hide", 1 ],
-      [ "blacksmithing_standard", 16 ],
+      [ "blacksmithing_standard", 12 ],
       [ "lc_steel_standard", 3 ],
       [ "armor_chainmail_assembling", 1 ],
       [ "carbon", 2 ]
@@ -1522,7 +1522,7 @@
     "time": "3 d 17 h",
     "using": [
       [ "fabric_leather_fur_hide", 2 ],
-      [ "blacksmithing_standard", 22 ],
+      [ "blacksmithing_standard", 16 ],
       [ "lc_steel_standard", 4 ],
       [ "armor_chainmail_assembling", 2 ],
       [ "carbon", 3 ]
@@ -1542,12 +1542,12 @@
     "book_learn": [ [ "textbook_armwest", 7 ] ],
     "using": [
       [ "fabric_leather_fur_hide", 1 ],
-      [ "blacksmithing_standard", 16 ],
+      [ "blacksmithing_standard", 12 ],
       [ "mc_steel_standard", 3 ],
       [ "armor_chainmail_assembling", 1 ]
     ],
     "qualities": [ { "id": "CHISEL", "level": 3 } ],
-    "tools": [ [ [ "tongs", -1 ] ], [ [ "hotcut", -1 ] ], [ [ "metal_tank", -1 ] ], [ [ "water", -120 ], [ "water_clean", -120 ] ] ],
+    "tools": [ [ [ "hotcut", -1 ] ], [ [ "metal_tank", -1 ] ], [ [ "water", -120 ], [ "water_clean", -120 ] ] ],
     "proficiencies": [
       { "proficiency": "prof_armorsmithing" },
       { "proficiency": "prof_closures", "time_multiplier": 1.25, "skill_penalty": 0.15 },
@@ -1564,12 +1564,12 @@
     "time": "3 d 23 h",
     "using": [
       [ "fabric_leather_fur_hide", 2 ],
-      [ "blacksmithing_standard", 22 ],
+      [ "blacksmithing_standard", 16 ],
       [ "mc_steel_standard", 4 ],
       [ "armor_chainmail_assembling", 2 ]
     ],
     "qualities": [ { "id": "CHISEL", "level": 3 } ],
-    "tools": [ [ [ "tongs", -1 ] ], [ [ "hotcut", -1 ] ], [ [ "metal_tank", -1 ] ], [ [ "water", -120 ], [ "water_clean", -120 ] ] ]
+    "tools": [ [ [ "hotcut", -1 ] ], [ [ "metal_tank", -1 ] ], [ [ "water", -120 ], [ "water_clean", -120 ] ] ]
   },
   {
     "result": "lc_brigandine_hands",
@@ -1583,7 +1583,7 @@
     "book_learn": [ [ "textbook_armwest", 5 ] ],
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "lc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
@@ -1608,7 +1608,7 @@
     "book_learn": [ [ "textbook_armwest", 5 ] ],
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "lc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
@@ -1630,7 +1630,7 @@
     "time": "7 h",
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "lc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
@@ -1646,7 +1646,7 @@
     "time": "5 h",
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "lc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
@@ -1665,7 +1665,7 @@
     "book_learn": [ [ "textbook_armwest", 5 ] ],
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "mc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
@@ -1687,7 +1687,7 @@
     "time": "7 h",
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "mc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
@@ -1703,7 +1703,7 @@
     "time": "5 h",
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "mc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
@@ -1722,7 +1722,7 @@
     "book_learn": [ [ "textbook_armwest", 5 ] ],
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "hc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
@@ -1744,7 +1744,7 @@
     "time": "7 h",
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "hc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
@@ -1760,7 +1760,7 @@
     "time": "5 h",
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "hc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
@@ -1779,7 +1779,7 @@
     "book_learn": [ [ "textbook_armwest", 5 ] ],
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "lc_steel_standard", 1 ],
       [ "fastener_small", 2 ],
       [ "carbon", 1 ]
@@ -1803,7 +1803,7 @@
     "time": "15 h",
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "lc_steel_standard", 1 ],
       [ "fastener_small", 2 ],
       [ "carbon", 1 ]
@@ -1820,7 +1820,7 @@
     "time": "13 h",
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "lc_steel_standard", 1 ],
       [ "fastener_small", 2 ],
       [ "carbon", 1 ]
@@ -1840,7 +1840,7 @@
     "book_learn": [ [ "textbook_armwest", 5 ] ],
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "mc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
@@ -1863,7 +1863,7 @@
     "time": "19 h",
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "mc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
@@ -1879,7 +1879,7 @@
     "time": "17 h",
     "using": [
       [ "tailoring_canvas_patchwork", 2 ],
-      [ "blacksmithing_standard", 8 ],
+      [ "blacksmithing_standard", 4 ],
       [ "mc_steel_standard", 1 ],
       [ "fastener_small", 2 ]
     ],
