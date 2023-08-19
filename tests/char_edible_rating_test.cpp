@@ -227,8 +227,8 @@ TEST_CASE( "who_can_eat_inedible_animal_food", "[can_eat][edible_rating][inedibl
             REQUIRE_FALSE( dummy.has_trait( trait_THRESH_BIRD ) );
             REQUIRE_FALSE( dummy.has_trait( trait_THRESH_CATTLE ) );
 
-            const std::string expect_reason_cattle = "This is only edible for cattle.";
-            const std::string expect_reason_bird = "This is only edible for birds.";
+            const std::string expect_reason_cattle = "You wouldn't be able to digest this.";
+            const std::string expect_reason_bird = "You wouldn't be able to digest this.";
 
             THEN( "they cannot eat bird food" ) {
                 expect_cannot_eat( dummy, birdfood, expect_reason_bird );

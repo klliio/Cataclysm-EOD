@@ -122,36 +122,5 @@
     },
     "type": "vehicle_part",
     "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
-  },
-  {
-    "id": "veh_gaspump",
-    "breaks_into": [
-      { "count": [ 4, 5 ], "item": "steel_lump" },
-      { "count": [ 4, 6 ], "item": "steel_chunk" },
-      { "count": [ 4, 6 ], "item": "scrap" }
-    ],
-    "categories": [ "utility" ],
-    "color": "yellow",
-    "damage_modifier": 10,
-    "damage_reduction": { "all": 29 },
-    "description": "A gas pump, powered by the vehicle's batteries.  Useful for handling and pressurizing all kinds of gases.",
-    "durability": 80,
-    "flags": [ "OBSTACLE", "DIFFICULT_PART" ],
-    "pseudo_tools": [ { "id": "gaspump" } ],
-    "item": "gaspump",
-    "location": "center",
-    "looks_like": "chemlab",
-    "name": { "str": "mounted gas pump" },
-    "requirements": {
-      "install": { "skills": [ [ "mechanics", 6 ] ], "time": "1 h", "using": [ [ "vehicle_wrench_2", 1 ] ] },
-      "removal": { "skills": [ [ "mechanics", 5 ] ], "time": "30 m", "using": [ [ "vehicle_wrench_2", 1 ] ] },
-      "repair": {
-        "skills": [ [ "mechanics", 6 ] ],
-        "time": "1 h",
-        "using": [ [ "repair_welding_standard", 2 ], [ "soldering_standard", 15 ] ]
-      }
-    },
-    "type": "vehicle_part",
-    "variants": [ { "symbols": "&", "symbols_broken": "x" } ]
   }
 ]

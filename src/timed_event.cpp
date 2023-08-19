@@ -42,12 +42,10 @@ static const itype_id itype_petrified_eye( "petrified_eye" );
 static const map_extra_id map_extra_mx_dsa_alrp( "mx_dsa_alrp" );
 
 static const mtype_id mon_amigara_horror( "mon_amigara_horror" );
-static const mtype_id mon_copbot( "mon_copbot" );
 static const mtype_id mon_dark_wyrm( "mon_dark_wyrm" );
 static const mtype_id mon_dermatik( "mon_dermatik" );
 static const mtype_id mon_dsa_alien_dispatch( "mon_dsa_alien_dispatch" );
 static const mtype_id mon_eyebot( "mon_eyebot" );
-static const mtype_id mon_riotbot( "mon_riotbot" );
 static const mtype_id mon_sewer_snake( "mon_sewer_snake" );
 static const mtype_id mon_spider_cellar_giant( "mon_spider_cellar_giant" );
 static const mtype_id mon_spider_widow_giant( "mon_spider_widow_giant" );
@@ -101,19 +99,6 @@ void timed_event::actualize()
         case timed_event_type::HELP:
             debugmsg( "Currently disabled while NPC and monster factions are being rewritten." );
             break;
-
-        case timed_event_type::ROBOT_ATTACK: {
-            const tripoint_abs_sm u_pos = player_character.global_sm_location();
-            if( rl_dist( u_pos, map_point ) <= 4 ) {
-                const mtype_id &robot_type = one_in( 2 ) ? mon_copbot : mon_riotbot;
-
-                get_event_bus().send<event_type::becomes_wanted>( player_character.getID() );
-                point rob( u_pos.x() > map_point.x() ? 0 - SEEX * 2 : SEEX * 4,
-                           u_pos.y() > map_point.y() ? 0 - SEEY * 2 : SEEY * 4 );
-                g->place_critter_at( robot_type, tripoint( rob, u_pos.z() ) );
-            }
-        }
-        break;
 
         case timed_event_type::SPAWN_WYRMS: {
             if( here.get_abs_sub().z() >= 0 ) {
@@ -334,7 +319,7 @@ void timed_event::per_turn()
     switch( type ) {
         case timed_event_type::WANTED: {
             // About once every 5 minutes. Suppress in classic zombie mode.
-            if( here.get_abs_sub().z() >= 0 && one_in( 50 ) && get_option<bool>( "ENABLE_ROBOT_RESPONSE" ) ) {
+            if( get_option<bool>( "ENABLE_ROBOT_RESPONSE" ) && here.get_abs_sub().z() >= 0 && one_in( 50 ) ) {
                 point place = here.random_outdoor_tile();
                 if( place.x == -1 && place.y == -1 ) {
                     // We're safely indoors!

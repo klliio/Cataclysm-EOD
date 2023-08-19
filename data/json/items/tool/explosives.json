@@ -233,8 +233,7 @@
       "need_wielding": true,
       "target": "firecracker_act",
       "msg": "You light the fuse on your %s.",
-      "target_charges": 2,
-      "active": true,
+      "target_timer": "2 seconds",
       "need_fire": 1,
       "menu_text": "Light fuse",
       "type": "transform"
@@ -256,16 +255,12 @@
     "color": "red",
     "explode_in_fire": true,
     "explosion": { "power": 15 },
-    "initial_charges": 2,
-    "max_charges": 2,
-    "turns_per_charge": 1,
     "use_action": {
-      "type": "explosion",
-      "sound_volume": 0,
-      "sound_msg": "ssss…",
-      "no_deactivate_msg": "Your %s can't be deactivated; throw it to get rid of it.",
-      "explosion": { "power": 15 }
+      "type": "message",
+      "message": "Your %s can't be deactivated; throw or drop it to get rid of it.",
+      "name": "Light fuse"
     },
+    "countdown_action": { "type": "explosion", "explosion": { "power": 15 } },
     "flags": [ "TRADER_AVOID" ],
     "melee_damage": { "bash": 1 }
   },
@@ -282,9 +277,6 @@
     "material": [ "paper" ],
     "symbol": "*",
     "color": "red",
-    "initial_charges": 25,
-    "max_charges": 25,
-    "charges_per_use": 1,
     "use_action": [ "FIRECRACKER_PACK" ],
     "melee_damage": { "bash": 1 }
   },
@@ -301,8 +293,7 @@
     "material": [ "paper" ],
     "symbol": "*",
     "color": "red",
-    "turns_per_charge": 7,
-    "use_action": [ "FIRECRACKER_PACK_ACT" ],
+    "tick_action": [ "FIRECRACKER_PACK_ACT" ],
     "flags": [ "TRADER_AVOID" ]
   },
   {
@@ -599,6 +590,7 @@
     "price_postapoc": 0,
     "description": "A canister hand grenade filled with CS gas in powder form.  Its pin is missing, and it's currently expelling an irritating gas that damages and slows those who enter it, as well as obscuring vision and scent.  It can't be deactivated; throw it to get rid of it.",
     "emits": [ "emit_tear_gas_stream" ],
+    "countdown_interval": "50 seconds",
     "countdown_action": { "type": "transform", "target": "canister_empty" },
     "flags": [ "TRADER_AVOID", "DANGEROUS" ]
   },
@@ -748,7 +740,6 @@
       "need_wielding": true,
       "target": "molotov_lit",
       "msg": "You light the rag on your %s.",
-      "target_charges": 1,
       "active": true,
       "moves": 75,
       "need_fire": 1,
@@ -773,10 +764,7 @@
     "material": [ "glass" ],
     "symbol": "*",
     "color": "light_gray",
-    "initial_charges": 1,
-    "max_charges": 1,
-    "turns_per_charge": 1,
-    "use_action": [ "MOLOTOV_LIT" ],
+    "tick_action": [ "MOLOTOV_LIT" ],
     "flags": [ "LIGHT_15", "TRADER_AVOID", "NPC_THROW_NOW", "WATER_EXTINGUISH" ],
     "melee_damage": { "bash": 2 }
   },
