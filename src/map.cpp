@@ -8498,7 +8498,8 @@ void map::spawn_monsters_submap( const tripoint &gp, bool ignore_sight, bool spa
         for( int j = 0; j < i.count; j++ ) {
             monster tmp( i.type );
 
-            if( tmp.type->in_species( species_FERAL ) || ( tmp.type->in_species( species_HUMAN ) && !tmp.type->in_species( species_ZOMBIE ) ) ) {
+            if( tmp.type->in_species( species_FERAL ) || ( tmp.type->in_species( species_HUMAN ) &&
+                    !tmp.type->in_species( species_ZOMBIE ) ) ) {
                 // Include non-undead humans for this check (i.e. ferals would be included). Cold and flu wouldn't survive on zombies.
                 if( one_in( 100 ) ) {
                     // Same chances and duration of flu vs. cold as for the player.

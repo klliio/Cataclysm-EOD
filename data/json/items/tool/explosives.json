@@ -255,7 +255,11 @@
     "color": "red",
     "explode_in_fire": true,
     "explosion": { "power": 15 },
-    "use_action": { "type": "message", "message": "Your %s can't be deactivated; throw or drop it to get rid of it.", "name": "Light fuse" },
+    "use_action": {
+      "type": "message",
+      "message": "Your %s can't be deactivated; throw or drop it to get rid of it.",
+      "name": "Light fuse"
+    },
     "countdown_action": { "type": "explosion", "explosion": { "power": 15 } },
     "flags": [ "TRADER_AVOID" ],
     "melee_damage": { "bash": 1 }

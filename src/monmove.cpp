@@ -1840,22 +1840,22 @@ bool monster::move_to( const tripoint &p, bool force, bool step_on_critter,
                                         name(), here.tername( pos() ) );
             }
         } else if( was_water && !will_be_water ) {
-        // Use more dramatic messages for swimming monsters
-        add_msg_if_player_sees( *this, m_warning,
-                                //~ Message when a monster emerges from water
-                                //~ %1$s: monster name, %2$s: leaps/emerges, %3$s: terrain name
-                                pgettext( "monster movement", "A %1$s %2$s from the %3$s!" ),
-                                name(), swims() ||
-                                has_flag( mon_flag_AQUATIC ) ? _( "leaps" ) : _( "emerges" ), here.tername( pos() ) );
-    } else if( !was_water && will_be_water ) {
-        add_msg_if_player_sees( *this, m_warning, pgettext( "monster movement",
-                                //~ Message when a monster enters water
-                                //~ %1$s: monster name, %2$s: dives/sinks, %3$s: terrain name
-                                "A %1$s %2$s into the %3$s!" ),
-                                name(), swims() ||
-                                has_flag( mon_flag_AQUATIC ) ? _( "dives" ) : _( "sinks" ), here.tername( destination ) );
+            // Use more dramatic messages for swimming monsters
+            add_msg_if_player_sees( *this, m_warning,
+                                    //~ Message when a monster emerges from water
+                                    //~ %1$s: monster name, %2$s: leaps/emerges, %3$s: terrain name
+                                    pgettext( "monster movement", "A %1$s %2$s from the %3$s!" ),
+                                    name(), swims() ||
+                                    has_flag( mon_flag_AQUATIC ) ? _( "leaps" ) : _( "emerges" ), here.tername( pos() ) );
+        } else if( !was_water && will_be_water ) {
+            add_msg_if_player_sees( *this, m_warning, pgettext( "monster movement",
+                                    //~ Message when a monster enters water
+                                    //~ %1$s: monster name, %2$s: dives/sinks, %3$s: terrain name
+                                    "A %1$s %2$s into the %3$s!" ),
+                                    name(), swims() ||
+                                    has_flag( mon_flag_AQUATIC ) ? _( "dives" ) : _( "sinks" ), here.tername( destination ) );
+        }
     }
-	}
 
     optional_vpart_position vp_orig = here.veh_at( pos() );
     if( vp_orig ) {

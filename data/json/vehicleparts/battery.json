@@ -11,10 +11,7 @@
     "durability": 120,
     "description": "A battery for storing electrical power, and discharging it to power electrical devices built into the vehicle.",
     "folded_volume": "10 L",
-    "breaks_into": [
-      { "item": "plastic_chunk", "count": [ 10, 20 ] },
-      { "item": "scrap", "count": [ 2, 3 ] }
-    ],
+    "breaks_into": [ { "item": "plastic_chunk", "count": [ 10, 20 ] }, { "item": "scrap", "count": [ 2, 3 ] } ],
     "requirements": {
       "install": { "skills": [ [ "mechanics", 0 ] ], "time": "50 s", "qualities": [ { "id": "WRENCH", "level": 1 } ] },
       "removal": { "skills": [ [ "mechanics", 0 ] ], "time": "50 s", "qualities": [ { "id": "WRENCH", "level": 1 } ] },
@@ -32,10 +29,7 @@
     "item": "battery_motorbike",
     "durability": 100,
     "folded_volume": "1500 ml",
-    "breaks_into": [
-      { "item": "plastic_chunk", "count": [ 2, 4 ] },
-      { "item": "scrap", "count": [ 0, 1 ] }
-    ]
+    "breaks_into": [ { "item": "plastic_chunk", "count": [ 2, 4 ] }, { "item": "scrap", "count": [ 0, 1 ] } ]
   },
   {
     "id": "battery_motorbike_small",
@@ -45,10 +39,7 @@
     "item": "battery_motorbike_small",
     "durability": 30,
     "folded_volume": "750 ml",
-    "breaks_into": [
-      { "item": "plastic_chunk", "count": [ 2, 4 ] },
-      { "item": "scrap", "count": [ 0, 1 ] }
-    ]
+    "breaks_into": [ { "item": "plastic_chunk", "count": [ 2, 4 ] }, { "item": "scrap", "count": [ 0, 1 ] } ]
   },
   {
     "id": "large_storage_battery",

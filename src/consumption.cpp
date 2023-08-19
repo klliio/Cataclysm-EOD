@@ -755,7 +755,8 @@ ret_val<edible_rating> Character::can_eat( const item &food ) const
             return ret_val<edible_rating>::make_failure( _( "You wouldn't be able to digest this." ) );
         }
         if( !food.has_flag( flag_CATTLE ) && !food.has_flag( flag_FELINE ) &&
-            !food.has_flag( flag_LUPINE ) && !food.has_flag( flag_BIRD ) && !food.has_flag ( flag_RABBIT ) && !food.has_flag ( flag_MOUSE ) && !food.has_flag ( flag_RAT ) ) {
+            !food.has_flag( flag_LUPINE ) && !food.has_flag( flag_BIRD ) && !food.has_flag( flag_RABBIT ) &&
+            !food.has_flag( flag_MOUSE ) && !food.has_flag( flag_RAT ) ) {
             return ret_val<edible_rating>::make_failure( _( "This is inedible." ) );
         }
     } // TODO: Rewrite this block to make use of a single flag for comestibles made up of rough plant material.
