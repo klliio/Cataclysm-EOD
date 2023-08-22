@@ -1,4 +1,5 @@
-{
+[
+  {
     "type": "recipe",
     "activity_level": "LIGHT_EXERCISE",
     "result": "carrot_patty",
@@ -6,51 +7,42 @@
     "subcategory": "CSC_FOOD_VEGGI",
     "skill_used": "cooking",
     "difficulty": 3,
-    "time": "10 m",
+    "time": "30 m",
     "batch_time_factors": [ 50, 1 ],
     "book_learn": [ [ "cookbook_slavic_specialties", 3 ] ],
-    "qualities": [ { "id": "COOK", "level": 2 }, { "id": "CUT", "level": 3 } ],
-    "tools": [ [ [ "surface_heat", 13, "LIST" ] ], [ [ "frying_oil", 1, "LIST" ] ] ],
-    "//": "power use = 5 for flour, 1 for water, 1 for sugar, 1 for oil",
+    "qualities": [ { "id": "COOK", "level": 2 }, { "id": "CUT", "level": 2 }, { "id": "CONTAIN", "level": 1 } ],
+    "tools": [ [ [ "surface_heat", 29, "LIST" ] ], [ [ "frying_oil", 1, "LIST" ] ] ],
+    "//": "power use = 8 for flour, 9 for eggs, 12 for carrots",
     "charges": 12,
-    "proficiencies": [
-      { "proficiency": "prof_knife_skills" },
-      { "proficiency": "prof_frying" }
-    ],
+    "proficiencies": [ { "proficiency": "prof_food_prep" }, { "proficiency": "prof_knife_skills" }, { "proficiency": "prof_frying" } ],
     "components": [
-      [ [ "flour_any", 5, "LIST" ] ],
-      [ [ "water_clean", 1 ] ],
+      [ [ "flour_any", 8, "LIST" ] ],
+      [ [ "eggs_any_shape", 3, "LIST" ] ],
       [ [ "salt", 1 ] ],
-      [ [ "sugar_standard", 1, "LIST" ] ],
-      [ [ "fry_oil", 1, "LIST" ] ],
-      [ [ "carrot", 2, "LIST" ] ]
-    ] 
-},
-{
-     "type": "recipe",
+      [ [ "carrot", 8 ], [ "irradiated_carrot", 8 ], [ "carrot_wild", 8 ] ]
+    ]
+  },
+  {
+    "type": "recipe",
     "activity_level": "LIGHT_EXERCISE",
-    "result": "carrot_patty",
+    "result": "zucchini_patty",
     "category": "CC_FOOD",
     "subcategory": "CSC_FOOD_VEGGI",
     "skill_used": "cooking",
     "difficulty": 3,
-    "time": "13 m",
+    "time": "30 m",
     "batch_time_factors": [ 50, 1 ],
     "book_learn": [ [ "cookbook_slavic_specialties", 3 ] ],
-    "qualities": [ { "id": "COOK", "level": 2 }, { "id": "CUT", "level": 3 } ],
-    "tools": [ [ [ "surface_heat", 13, "LIST" ] ], [ [ "frying_oil", 1, "LIST" ] ] ],
-    "//": "power use = 5 for flour, 1 for water, 1 for sugar, 1 for oil",
+    "qualities": [ { "id": "COOK", "level": 2 }, { "id": "CUT", "level": 2 }, { "id": "CONTAIN", "level": 1 } ],
+    "tools": [ [ [ "surface_heat", 31, "LIST" ] ], [ [ "frying_oil", 1, "LIST" ] ] ],
+    "//": "power use = 8 for flour, 9 for eggs, 14 for zucchinis",
     "charges": 12,
-    "proficiencies": [
-      { "proficiency": "prof_knife_skills" },
-      { "proficiency": "prof_frying" }
-    ],
+    "proficiencies": [ { "proficiency": "prof_food_prep" }, { "proficiency": "prof_knife_skills" }, { "proficiency": "prof_frying" } ],
     "components": [
-      [ [ "flour_any", 5, "LIST" ] ],
-      [ [ "water_clean", 1 ] ],
+      [ [ "flour_any", 8, "LIST" ] ],
+      [ [ "eggs_any_shape", 3, "LIST" ] ],
       [ [ "salt", 1 ] ],
-      [ [ "sugar_standard", 1, "LIST" ] ],
-      [ [ "fry_oil", 1, "LIST" ] ],
-      [ [ "zucchini", 1, "LIST" ] ]
-    ] 
-}
+      [ [ "zucchini", 4 ], [ "zucchini_cut", 4 ], [ "irradiated_zucchini", 4 ] ]
+    ]
+  }
+]
