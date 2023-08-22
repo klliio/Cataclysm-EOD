@@ -1,0 +1,48 @@
+[
+  {
+    "type": "recipe",
+    "activity_level": "LIGHT_EXERCISE",
+    "result": "carrot_patty",
+    "category": "CC_FOOD",
+    "subcategory": "CSC_FOOD_VEGGI",
+    "skill_used": "cooking",
+    "difficulty": 3,
+    "time": "30 m",
+    "batch_time_factors": [ 50, 1 ],
+    "book_learn": [ [ "cookbook_slavic_specialties", 3 ] ],
+    "qualities": [ { "id": "COOK", "level": 2 }, { "id": "CUT", "level": 2 }, { "id": "CONTAIN", "level": 1 } ],
+    "tools": [ [ [ "surface_heat", 29, "LIST" ] ], [ [ "frying_oil", 1, "LIST" ] ] ],
+    "//": "power use = 8 for flour, 9 for eggs, 12 for carrots",
+    "charges": 12,
+    "proficiencies": [ { "proficiency": "prof_food_prep" }, { "proficiency": "prof_knife_skills" }, { "proficiency": "prof_frying" } ],
+    "components": [
+      [ [ "flour_any", 8, "LIST" ] ],
+      [ [ "eggs_any_shape", 3, "LIST" ] ],
+      [ [ "salt", 1 ] ],
+      [ [ "carrot", 8 ], [ "irradiated_carrot", 8 ], [ "carrot_wild", 8 ] ]
+    ]
+  },
+  {
+    "type": "recipe",
+    "activity_level": "LIGHT_EXERCISE",
+    "result": "zucchini_patty",
+    "category": "CC_FOOD",
+    "subcategory": "CSC_FOOD_VEGGI",
+    "skill_used": "cooking",
+    "difficulty": 3,
+    "time": "30 m",
+    "batch_time_factors": [ 50, 1 ],
+    "book_learn": [ [ "cookbook_slavic_specialties", 3 ] ],
+    "qualities": [ { "id": "COOK", "level": 2 }, { "id": "CUT", "level": 2 }, { "id": "CONTAIN", "level": 1 } ],
+    "tools": [ [ [ "surface_heat", 31, "LIST" ] ], [ [ "frying_oil", 1, "LIST" ] ] ],
+    "//": "power use = 8 for flour, 9 for eggs, 14 for zucchinis",
+    "charges": 12,
+    "proficiencies": [ { "proficiency": "prof_food_prep" }, { "proficiency": "prof_knife_skills" }, { "proficiency": "prof_frying" } ],
+    "components": [
+      [ [ "flour_any", 8, "LIST" ] ],
+      [ [ "eggs_any_shape", 3, "LIST" ] ],
+      [ [ "salt", 1 ] ],
+      [ [ "zucchini", 4 ], [ "zucchini_cut", 4 ], [ "irradiated_zucchini", 4 ] ]
+    ]
+  }
+]
