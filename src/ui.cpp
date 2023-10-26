@@ -382,7 +382,7 @@ void uilist::filterlist()
     int f = 0;
     for( size_t i = 0; i < entries.size(); i++ ) {
         bool visible = true;
-		if( !categories.empty() && !category_filter( entries[i], categories[current_category].first ) ) {
+        if( !categories.empty() && !category_filter( entries[i], categories[current_category].first ) ) {
             continue;
         }
         if( filtering && !filter.empty() ) {
