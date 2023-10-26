@@ -660,7 +660,7 @@ void uilist::calc_data()
     if( !categories.empty() ) {
         additional_lines += category_lines + 1;
     }
-	if( desc_enabled ) {
+    if( desc_enabled ) {
         additional_lines += desc_lines + 1; // add one for description separator line
     }
 
