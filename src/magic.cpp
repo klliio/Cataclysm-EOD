@@ -1785,7 +1785,7 @@ void known_magic::serialize( JsonOut &json ) const
     }
     json.end_array();
     json.member( "invlets", invlets );
-	json.member( "favorites", favorites );
+    json.member( "favorites", favorites );
 
     json.end_object();
 }
