@@ -1805,7 +1805,7 @@ void known_magic::deserialize( const JsonObject &data )
         }
     }
     data.read( "invlets", invlets );
-	data.read( "favorites", favorites );
+    data.read( "favorites", favorites );
 }
 
 bool known_magic::knows_spell( const std::string &sp ) const
