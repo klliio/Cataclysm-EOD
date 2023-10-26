@@ -378,6 +378,11 @@ class uilist // NOLINT(cata-xy)
                            const std::string &txt, const std::string &column,
                            const std::string &desc = std::string() );
         void settext( const std::string &str );
+		
+		void add_category( const std::string &key, const std::string &name );
+        void set_category( const std::string &key );
+        void set_category_filter( const std::function<bool( const uilist_entry &, const std::string & )>
+                                  &fun );
 
         void reset();
 
@@ -501,10 +506,15 @@ class uilist // NOLINT(cata-xy)
         int vmax = 0;
 
         int desc_lines = 0;
+		int category_lines = 0;
 
         bool started = false;
 
         bool recalc_start = false;
+		
+		std::vector<std::pair<std::string, std::string>> categories;
+        std::function<bool( const uilist_entry &, const std::string & )> category_filter;
+        int current_category = 0;
 
         int find_entry_by_coordinate( const point &p ) const;
 
