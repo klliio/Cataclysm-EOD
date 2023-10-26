@@ -622,7 +622,7 @@ class known_magic
         std::map<spell_id, spell> spellbook;
         // invlets assigned to spell_id
         std::map<spell_id, int> invlets;
-		// list of favorite spells
+        // list of favorite spells
         std::unordered_set<spell_id> favorites;
         // the base mana a Character would start with
         int mana_base = 0; // NOLINT(cata-serialize)
