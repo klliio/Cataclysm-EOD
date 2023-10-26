@@ -723,7 +723,7 @@ void uilist::apply_scrollbar()
     } else {
         estart = 1;
     }
-	estart += category_lines > 0 ? category_lines + 1 : 0;
+    estart += category_lines > 0 ? category_lines + 1 : 0;
 
     uilist_scrollbar->offset_x( sbside )
     .offset_y( estart )
