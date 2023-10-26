@@ -774,7 +774,7 @@ void uilist::show( ui_adaptor &ui )
         print_line( text_lines + 1 );
         estart += text_lines + 1; // +1 for the horizontal line.
     }
-	if( !categories.empty() ) {
+    if( !categories.empty() ) {
         mvwprintz( window, point( 1, estart ), c_yellow, "<< %s >>", categories[current_category].second );
         print_line( estart + category_lines );
         estart += category_lines + 1;
