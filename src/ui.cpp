@@ -642,7 +642,7 @@ void uilist::calc_data()
             desc_enabled = false;
         }
     }
-	if( !categories.empty() ) {
+    if( !categories.empty() ) {
         category_lines = 0;
         for( const std::pair<std::string, std::string> &pair : categories ) {
             // -2 for borders, -2 for padding
