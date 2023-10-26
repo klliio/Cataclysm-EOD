@@ -511,8 +511,8 @@ class uilist // NOLINT(cata-xy)
         bool started = false;
 
         bool recalc_start = false;
-		
-		std::vector<std::pair<std::string, std::string>> categories;
+
+        std::vector<std::pair<std::string, std::string>> categories;
         std::function<bool( const uilist_entry &, const std::string & )> category_filter;
         int current_category = 0;
 
