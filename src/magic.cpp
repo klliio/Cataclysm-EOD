@@ -2595,7 +2595,7 @@ int known_magic::select_spell( Character &guy )
         } else if( key == "favorites" )
         {
             return guy.magic->is_favorite( known_spells[entry.retval]->id() );
-		}
+        }
         return known_spells[entry.retval]->spell_class().is_valid() && known_spells[entry.retval]->spell_class().str() == key;
     } );
     spell_menu.set_category( "all" );
