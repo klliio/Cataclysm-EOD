@@ -2568,8 +2568,8 @@ int known_magic::select_spell( Character &guy )
     spell_menu.hilight_disabled = true;
     spellcasting_callback cb( known_spells, casting_ignore );
     spell_menu.callback = &cb;
-	spell_menu.add_category( "all", _( "All" ) );
-	spell_menu.add_category( "favorites", _( "Favorites" ) );
+    spell_menu.add_category( "all", _( "All" ) );
+    spell_menu.add_category( "favorites", _( "Favorites" ) );
 
     std::vector<std::pair<std::string, std::string>> categories;
     for( const spell *s : known_spells ) {
