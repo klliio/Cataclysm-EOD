@@ -2178,7 +2178,7 @@ class spellcasting_callback : public uilist_callback
         }
 
         void refresh( uilist *menu ) override {
-			const std::string space( menu->pad_right - 2, ' ' );
+            const std::string space( menu->pad_right - 2, ' ' );
             mvwputch( menu->window, point( menu->w_width - menu->pad_right, 0 ), c_magenta, LINE_OXXX );
             mvwputch( menu->window, point( menu->w_width - menu->pad_right, menu->w_height - 1 ), c_magenta,
                       LINE_XXOX );
