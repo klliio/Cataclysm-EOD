@@ -755,7 +755,7 @@ void uilist::show( ui_adaptor &ui )
         wprintz( window, title_color, title );
         wprintz( window, border_color, " >" );
     }
-	 const auto print_line = [&]( int line ) {
+    const auto print_line = [&]( int line ) {
         mvwputch( window, point( 0, line ), border_color, LINE_XXXO );
         for( int i = 1; i < w_width - 1; ++i ) {
             mvwputch( window, point( i, line ), border_color, LINE_OXOX );
