@@ -2564,7 +2564,7 @@ int known_magic::select_spell( Character &guy )
     spell_menu.additional_actions.emplace_back( "CAST_IGNORE", translation() );
     spell_menu.additional_actions.emplace_back( "SCROLL_UP_SPELL_MENU", translation() );
     spell_menu.additional_actions.emplace_back( "SCROLL_DOWN_SPELL_MENU", translation() );
-	spell_menu.additional_actions.emplace_back( "SCROLL_FAVORITE", translation() );
+    spell_menu.additional_actions.emplace_back( "SCROLL_FAVORITE", translation() );
     spell_menu.hilight_disabled = true;
     spellcasting_callback cb( known_spells, casting_ignore );
     spell_menu.callback = &cb;
