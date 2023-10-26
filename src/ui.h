@@ -506,7 +506,7 @@ class uilist // NOLINT(cata-xy)
         int vmax = 0;
 
         int desc_lines = 0;
-		int category_lines = 0;
+        int category_lines = 0;
 
         bool started = false;
 
