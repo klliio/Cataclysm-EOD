@@ -2173,7 +2173,7 @@ class spellcasting_callback : public uilist_callback
             } else if( action == "SCROLL_FAVORITE" ) {
                 get_player_character().magic->toggle_favorite( known_spells[entnum]->id() );
                 reflesh_favorite( menu, known_spells );
-				}
+            }
             return false;
         }
 
