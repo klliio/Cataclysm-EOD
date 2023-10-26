@@ -2184,7 +2184,7 @@ class spellcasting_callback : public uilist_callback
                       LINE_XXOX );
             for( int i = 1; i < menu->w_height - 1; i++ ) {
                 mvwputch( menu->window, point( menu->w_width - menu->pad_right, i ), c_magenta, LINE_XOXO );
-				mvwputch( menu->window, point( menu->w_width - menu->pad_right + 1, i ), menu->text_color, space );
+                mvwputch( menu->window, point( menu->w_width - menu->pad_right + 1, i ), menu->text_color, space );
             }
             std::string ignore_string = casting_ignore ? _( "Ignore Distractions" ) :
                                         _( "Popup Distractions" );
