@@ -2574,7 +2574,7 @@ int known_magic::select_spell( Character &guy )
     std::vector<std::pair<std::string, std::string>> categories;
     for( const spell *s : known_spells ) {
         if( s->can_cast( guy ) && s->spell_class().is_valid() ) {
-             categories.emplace_back( s->spell_class().str(), s->spell_class().obj().name() );
+            categories.emplace_back( s->spell_class().str(), s->spell_class().obj().name() );
             std::sort( categories.begin(), categories.end(), []( const std::pair<std::string, std::string> &a,
             const std::pair<std::string, std::string> &b ) {
                 return localized_compare( a.second, b.second );
