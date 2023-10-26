@@ -1130,7 +1130,7 @@ void uilist::query( bool loop, int timeout )
             recalc_start = true;
         } else if( filtering && ret_act == "UILIST.FILTER" ) {
             inputfilter();
-			} else if( !categories.empty() && ( ret_act == "LEFT" || ret_act == "RIGHT" ) ) {
+        } else if( !categories.empty() && ( ret_act == "LEFT" || ret_act == "RIGHT" ) ) {
             current_category += ret_act == "LEFT" ? -1 : 1;
             if( current_category < 0 ) {
                 current_category = categories.size() - 1;
