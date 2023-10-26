@@ -297,7 +297,7 @@ void uilist::init()
     max_entry_len = 0;
     max_column_len = 0;      // for calculating space for second column
     uilist_scrollbar = std::make_unique<scrollbar>();
-	categories.clear();
+    categories.clear();
     current_category = 0;
     category_lines = 2;
 
