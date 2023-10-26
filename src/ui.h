@@ -378,8 +378,8 @@ class uilist // NOLINT(cata-xy)
                            const std::string &txt, const std::string &column,
                            const std::string &desc = std::string() );
         void settext( const std::string &str );
-		
-		void add_category( const std::string &key, const std::string &name );
+
+        void add_category( const std::string &key, const std::string &name );
         void set_category( const std::string &key );
         void set_category_filter( const std::function<bool( const uilist_entry &, const std::string & )>
                                   &fun );
