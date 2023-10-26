@@ -2606,7 +2606,7 @@ int known_magic::select_spell( Character &guy )
         spell_menu.addentry( static_cast<int>( i ), known_spells[i]->can_cast( guy ),
                              get_invlet( known_spells[i]->id(), used_invlets ), known_spells[i]->name() );
     }
-	reflesh_favorite( &spell_menu, known_spells );
+    reflesh_favorite( &spell_menu, known_spells );
 
     spell_menu.query();
 
