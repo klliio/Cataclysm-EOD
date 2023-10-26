@@ -2592,7 +2592,7 @@ int known_magic::select_spell( Character &guy )
         if( key == "all" )
         {
             return true;
-        }else if( key == "favorites" )
+        } else if( key == "favorites" )
         {
             return guy.magic->is_favorite( known_spells[entry.retval]->id() );
 		}
