@@ -3103,6 +3103,30 @@
         "weight": 25,
         "color": "green",
         "append": true
+      },
+      {
+        "id": "stockings_pride_straight",
+        "name": { "str": "pair of straight flag stockings", "str_pl": "pairs of straight flag stockings" },
+        "description": "This one has patterns akin to the straight flag.",
+        "weight": 45,
+        "color": "white",
+        "append": true
+      },
+      {
+        "id": "stockings_pride_bear",
+        "name": { "str": "pair of bear subculture flag stockings", "str_pl": "pairs of bear subculture flag stockings" },
+        "description": "This one has patterns akin to the bear subculture flag.",
+        "weight": 15,
+        "color": "yellow",
+        "append": true
+      },
+      {
+        "id": "stockings_pride_leather",
+        "name": { "str": "pair of leather subculture flag stockings", "str_pl": "pairs of leather subculture flag stockings" },
+        "description": "This one has patterns akin to the leather subculture flag.",
+        "weight": 15,
+        "color": "blue",
+        "append": true
       }
     ]
   },
