@@ -27,7 +27,7 @@
         "type": "transform"
       }
     ],
-		"flags": [ "DURABLE_MELEE", "FIRESTARTER", "BELT_CLIP" ],
+		"flags": [ "DURABLE_MELEE", "BELT_CLIP" ],
 		"pocket_data": [
       {
         "pocket_type": "MAGAZINE_WELL",
