@@ -100,7 +100,7 @@
       }
     ]
   },
-{
+  {
     "id": "rc_scout_car_on",
     "copy-from": "rc_scout_car",
     "type": "TOOL",
