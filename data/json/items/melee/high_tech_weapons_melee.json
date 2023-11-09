@@ -46,9 +46,9 @@
     "name": { "str": "plasma saber (on)", "str_pl": "plasma sabers (on)" },
     "description": "An activated plasma saber consisted of a superheated plasma blade, powered by a focusing crystal in adition to a battery, that was emitted from a usually metal hilt and could be shut off at will. The weapon requires skill and training in order not to cause permanent harm to the user and is greatly enhanced when used in conjunction with the Force.",
     "material": [ "steel" ],
-	"longest_side": "180 cm",
-	"cutting": 80,
-	"revert_to": "plasma_saber",
+    "longest_side": "180 cm",
+    "cutting": 80,
+    "revert_to": "plasma_saber",
     "power_draw": 5000,
     "use_action": [
       { "type": "firestarter", "moves": 200, "moves_slow": 2000 },
