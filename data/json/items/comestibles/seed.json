@@ -607,9 +607,9 @@
     "name": { "str_sp": "spinach seeds" },
     "color": "green",
     "description": "Some spinach seeds.",
-    "charges": 3
+    "charges": 3,
     "flags": [ "PLANTABLE_SEED", "NUTRIENT_OVERRIDE", "INEDIBLE" ],
-    "seed_data": { "plant_name": "spinach", "fruit": "spinach", "grow": "50 days" },
+    "seed_data": { "plant_name": "spinach", "fruit": "spinach", "grow": "50 days" }
   },
   {
     "type": "COMESTIBLE",
