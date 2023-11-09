@@ -62,6 +62,6 @@
         "type": "transform"
       }
     ],
-    "flags": [ "LIGHT_50", "DURABLE_MELEE", "TRADER_AVOID", "FIRESTARTER", "STAB", "NONCONDUCTIVE" ]
+    "flags": [ "LIGHT_50", "DURABLE_MELEE", "TRADER_AVOID", "FIRESTARTER", "NONCONDUCTIVE" ]
   }
 ]
