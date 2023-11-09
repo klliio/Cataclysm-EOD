@@ -33,7 +33,6 @@
         "pocket_type": "MAGAZINE_WELL",
         "flag_restriction": [ "BATTERY_HEAVY" ],
         "default_magazine": "heavy_plus_battery_cell"
-        "item_restriction": [ "medium_plus_battery_cell", "medium_battery_cell", "medium_atomic_battery_cell", "medium_disposable_cell" ]
       }
     ]
   },
