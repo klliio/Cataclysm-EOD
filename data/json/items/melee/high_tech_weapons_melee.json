@@ -1,0 +1,62 @@
+[
+  {
+    "id": "plasma_saber",
+    "type": "TOOL",
+    "category": "weapons",
+    "name": { "str": "plasma saber (off)", "str_pl": "plasma sabers (off)" },
+    "description": "Plasma sabers when activated consisted of a superheated plasma blade, powered by a focusing crystal in adition to a battery, that was emitted from a usually metal hilt and could be shut off at will. The weapon requires skill and training in order not to cause permanent harm to the user and is greatly enhanced when used in conjunction with the Force.",
+    "weight": "1000 g",
+    "volume": "500 ml",
+    "longest_side": "20 cm",
+    "price": 5000,
+    "price_postapoc": 3000,
+    "to_hit": -1,
+    "melee_damage": { "bash": 9 },
+    "material": [ "steel" ],
+    "symbol": "/",
+    "color": "light_gray",
+    "ammo": [ "battery" ],
+    "charges_per_use": 1,
+    "use_action": [
+      {
+        "target": "plasma_saber_on",
+        "msg": "The plasma saber activates.",
+        "active": true,
+        "need_charges": 1,
+        "need_charges_msg": "The plasma saber power cell is empty.",
+        "type": "transform"
+      }
+    ],
+    "flags": [ "DURABLE_MELEE", "BELT_CLIP" ],
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE_WELL",
+        "flag_restriction": [ "BATTERY_HEAVY" ],
+        "default_magazine": "heavy_plus_battery_cell"
+      }
+    ]
+  },
+  {
+    "id": "plasma_saber_on",
+    "copy-from": "plasma_saber",
+    "type": "TOOL",
+    "name": { "str": "plasma saber (on)", "str_pl": "plasma sabers (on)" },
+    "description": "An activated plasma saber consisted of a superheated plasma blade, powered by a focusing crystal in adition to a battery, that was emitted from a usually metal hilt and could be shut off at will. The weapon requires skill and training in order not to cause permanent harm to the user and is greatly enhanced when used in conjunction with the Force.",
+    "material": [ "steel" ],
+    "longest_side": "180 cm",
+    "melee_damage": { "cutting": 60 },
+    "qualities": [ [ "CUT", 10 ], [ "BUTCHER", -1 ], [ "SAW_M", 2 ] ],
+    "revert_to": "plasma_saber",
+    "power_draw": 5000,
+    "use_action": [
+      { "type": "firestarter", "moves": 200, "moves_slow": 2000 },
+      {
+        "target": "plasma_saber",
+        "msg": "The plasma saber deactivates.",
+        "menu_text": "Turn off",
+        "type": "transform"
+      }
+    ],
+    "flags": [ "LIGHT_50", "DURABLE_MELEE", "TRADER_AVOID", "FIRESTARTER", "NONCONDUCTIVE" ]
+  }
+]

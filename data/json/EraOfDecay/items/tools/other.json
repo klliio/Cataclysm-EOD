@@ -70,5 +70,51 @@
     "name": { "str": "sharpened entrenching tool" },
     "description": "A stout, collapsible spade.  It's commonly used by military forces and favored by hikers for digging.  This one had its edges crudely shapened, turning it into a much more dangerous weapon in melee combat.",
     "melee_damage": { "bash": 6, "cut": 16 }
+  },
+  {
+    "id": "rc_scout_car",
+    "copy-from": "rc_scout_car",
+    "type": "TOOL",
+    "name": { "str": "RC scout car" },
+    "description": "A small wheeled drone, nimble and almost undetectable it mounts a robotic eye for espionage work.  Once turned on, a remote controller will let you use it as a mobile camera.",
+    "symbol": "e",
+    "ammo": [ "battery" ],
+    "charges_per_use": 1,
+    "proportional": { "weight": 0.73, "volume": 0.75, "price": 0.8 },
+    "use_action": {
+      "target": "rc_scout_car_on",
+      "menu_text": "Activate RC scout car",
+      "msg": "You activate the RC scout car.",
+      "active": true,
+      "type": "transform"
+    },
+    "flags": [ "RADIO_CONTAINER" ],
+    "pocket_data": [
+      {
+        "pocket_type": "MAGAZINE_WELL",
+        "holster": true,
+        "rigid": true,
+        "max_contains_volume": "2 L",
+        "max_contains_weight": "2 kg",
+        "item_restriction": [ "light_minus_disposable_cell", "light_minus_battery_cell", "light_minus_atomic_battery_cell" ]
+      }
+    ]
+  },
+  {
+    "id": "rc_scout_car_on",
+    "copy-from": "rc_scout_car",
+    "type": "TOOL",
+    "name": { "str": "RC scout car (on)", "str_pl": "RC scout cars (on)" },
+    "description": "This RC scout car is on, and continuously transmitting a video-feed of its immediate surroundings.  Use a remote control to drive it around.",
+    "turns_per_charge": 5,
+    "revert_to": "rc_scout_car",
+    "use_action": {
+      "target": "rc_scout_car",
+      "menu_text": "Deactivate RC scout car",
+      "msg": "You deactivate the RC scout car.",
+      "type": "transform"
+    },
+    "emits": [ "emit_clairvoyant" ],
+    "flags": [ "LIGHT_15", "RADIO_CONTAINER", "RADIOCAR" ]
   }
 ]
