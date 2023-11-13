@@ -44,8 +44,8 @@
     "description": "An activated plasma saber consisted of a superheated plasma blade, powered by a focusing crystal in adition to a battery, that was emitted from a usually metal hilt and could be shut off at will. The weapon requires skill and training in order not to cause permanent harm to the user and is greatly enhanced when used in conjunction with the Force.",
     "material": [ "steel" ],
     "longest_side": "180 cm",
-"melee_damage": { "cutting": 60 },
-"qualities": [ [ "CUT", 10 ], [ "BUTCHER", -1 ], [ "SAW_M", 2 ] ],
+    "melee_damage": { "cutting": 60 },
+    "qualities": [ [ "CUT", 10 ], [ "BUTCHER", -1 ], [ "SAW_M", 2 ] ],
     "revert_to": "plasma_saber",
     "power_draw": 5000,
     "use_action": [
