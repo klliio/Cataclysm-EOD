@@ -76,7 +76,7 @@
     "type": "TOOL",
 	  "weight": "1 kg",
 	  "volume": "1 L",
-    "type": "TOOL",
+	  "price_postapoc": 5000,
     "name": { "str": "RC scout car" },
     "description": "A small wheeled drone, nimble and almost undetectable it mounts a robotic eye for espionage work.  Once turned on, a remote controller will let you use it as a mobile camera.",
     "symbol": "e",
