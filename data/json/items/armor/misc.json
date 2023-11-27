@@ -331,5 +331,5 @@
     "environmental_protection": 1,
     "flags": [ "VARSIZE" ],
     "armor": [ { "encumbrance": 5, "coverage": 60, "covers": [ "head" ] } ]
-    }
+  }
 ]
