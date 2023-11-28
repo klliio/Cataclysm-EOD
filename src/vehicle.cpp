@@ -309,24 +309,24 @@ void vehicle::init_state( map &placed_on, int init_veh_fuel, int init_veh_status
             vp.ammo_unset(); // clear if no valid fuel
             return;
         }
-        const int max = vp.ammo_capacity( fuel->ammo->type );
+        const int tank_max = vp.ammo_capacity( fuel->ammo->type );
         if( init_veh_fuel < 0 ) {
-            const double min = get_option<float>( "VEH_MIN_FUEL" );
-            double max = get_option<float>( "VEH_MAX_FUEL" );
-            if( min > max ) {
+            const double fuel_min = get_option<float>( "VEH_MIN_FUEL" );
+            double fuel_max = get_option<float>( "VEH_MAX_FUEL" );
+            if( fuel_min > fuel_max ) {
                 debugmsg( "Options set up incorrectly: minimum vehicle fuel shouldn't be higher than maximum vehicle fuel." );
-                max = min;
+                fuel_max = fuel_min;
             }
             // map.emplace(...).first returns iterator to the new or existing element
             const double roll = fuels.emplace( fuel, normal_roll( 0.3,
-                                               0.15 ) * ( ( min + max ) / 0.6 ) ).first->second;
-            vp.ammo_set( fuel, max * std::clamp( roll, min, max ) );
+                                               0.15 ) * ( ( fuel_min + fuel_max ) / 0.6 ) ).first->second;
+            vp.ammo_set( fuel, tank_max * std::clamp( roll, fuel_min, fuel_max ) );
         } else if( init_veh_fuel == 0 ) {
             vp.ammo_unset();
         } else if( init_veh_fuel > 0 && init_veh_fuel < 100 ) {
-            vp.ammo_set( fuel, max * init_veh_fuel / 100 );
+            vp.ammo_set( fuel, tank_max * init_veh_fuel / 100 );
         } else { // init_veh_fuel >= 100
-            vp.ammo_set( fuel, max );
+            vp.ammo_set( fuel, tank_max );
         }
     };
     // veh_status is initial vehicle damage
