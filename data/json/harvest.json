@@ -1925,6 +1925,7 @@
   {
     "id": "fungaloid",
     "type": "harvest",
+    "message": "<fungaloid_harvest>",
     "entries": [
       { "drop": "veggy_tainted", "type": "flesh", "mass_ratio": 0.5 },
       { "drop": "plant_sac", "type": "offal", "mass_ratio": 0.2 },
@@ -1962,6 +1963,7 @@
   {
     "id": "biollante",
     "type": "harvest",
+    "message": "<triffid_harvest>",
     "//": "todo: add biollante item",
     "entries": [
       { "drop": "stick_fiber", "type": "bone", "mass_ratio": 0.5 },
@@ -1972,6 +1974,7 @@
   {
     "id": "triffid_small",
     "type": "harvest",
+    "message": "<triffid_harvest>",
     "entries": [
       { "drop": "stick_fiber", "type": "bone", "mass_ratio": 0.5 },
       { "drop": "veggy", "type": "flesh", "mass_ratio": 0.2 },
@@ -1981,6 +1984,7 @@
   {
     "id": "triffid_paralytic",
     "type": "harvest",
+    "message": "<triffid_harvest>",
     "entries": [
       { "drop": "stick_fiber", "type": "bone", "mass_ratio": 0.4 },
       { "drop": "veggy", "type": "flesh", "mass_ratio": 0.2 },
@@ -1993,6 +1997,7 @@
     "id": "triffid_acid",
     "//": "acid blood type for plant based creaturs.",
     "type": "harvest",
+    "message": "<triffid_harvest>",
     "entries": [
       { "drop": "blood_acid_plant", "type": "blood", "mass_ratio": 0.1 },
       { "drop": "stick_fiber", "type": "bone", "mass_ratio": 0.5 },
@@ -2003,6 +2008,7 @@
   {
     "id": "triffid_fungal_fighter",
     "type": "harvest",
+    "message": "<triffid_harvest>",
     "entries": [
       { "drop": "stick_fiber", "type": "bone", "mass_ratio": 0.4 },
       { "drop": "veggy", "type": "flesh", "mass_ratio": 0.2 },
@@ -2015,6 +2021,7 @@
   {
     "id": "triffid_queen",
     "type": "harvest",
+    "message": "<triffid_harvest>",
     "entries": [
       { "drop": "log", "type": "bone", "mass_ratio": 0.35 },
       { "drop": "stick_fiber", "type": "bone", "mass_ratio": 0.15 },
