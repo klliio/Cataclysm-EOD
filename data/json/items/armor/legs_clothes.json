@@ -2279,7 +2279,9 @@
         "weight": 10,
         "color": "green",
         "append": true
-      },
+      }
+    ]
+  },
   {
     "id": "skirt_bostonchan",
     "type": "ARMOR",
