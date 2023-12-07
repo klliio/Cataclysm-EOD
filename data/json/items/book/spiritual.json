@@ -705,5 +705,48 @@
     "weight": "292 g",
     "volume": "750 ml",
     "copy-from": "holybook_abstract"
+  },
+  {
+    "id": "holybook_taoism",
+    "type": "BOOK",
+    "name": { "str": "Tao Te Ching", "str_pl": "copies of Tao Te Ching" },
+    "description": "An English translation of the collection of poetry and sayings that guides Taoist thought and actions.",
+    "weight": "540 g",
+    "volume": "1 L",
+    "looks_like": "holybook_tripitaka",
+    "copy-from": "holybook_abstract"
+  },
+  {
+    "id": "holybook_confucianism",
+    "type": "BOOK",
+    "name": { "str": "Lunyu", "str_pl": "copies of the Lunyu" },
+    "description": "An English translation of the most-revered sacred scripture in the Confucian tradition, compiled by the succeeding generations of Confucius's disciples.  It is sometimes viewed as a philosophy and sometimes as a religion.",
+    "weight": "540 g",
+    "volume": "1 L",
+    "looks_like": "holybook_tripitaka",
+    "copy-from": "holybook_abstract",
+    "delete": { "flags": [ "INSPIRATIONAL" ] }
+  },
+  {
+    "id": "holybook_paganism",
+    "type": "BOOK",
+    "name": { "str": "Book of Pagan prayer", "str_pl": "copies of Book of Pagan prayer" },
+    "description": "A comprehensive selection of prayers to guide the reader on Pagan and Wiccan worship.",
+    "weight": "540 g",
+    "volume": "1 L",
+    "looks_like": "holybook_havamal",
+    "//": "ISBN 1-57863-255-2",
+    "copy-from": "holybook_abstract"
+  },
+  {
+    "id": "holybook_shamanism",
+    "type": "BOOK",
+    "name": { "str": "Book of shamanistic and folk practices", "str_pl": "copies of Book of shamanistic and folk practices" },
+    "description": "A comprehensive book detailing the practices of a single region of shamanistic or folk beliefs.",
+    "weight": "540 g",
+    "volume": "1 L",
+    "looks_like": "holybook_havamal",
+    "//": "There's hundreds of shamanistic religions and folk beliefs, we can't model them all.",
+    "copy-from": "holybook_abstract"
   }
 ]
