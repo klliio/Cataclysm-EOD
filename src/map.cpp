@@ -7973,7 +7973,7 @@ void map::grow_plant( const tripoint &p )
     const time_duration plantEpoch = seed->get_plant_epoch();
     if( seed->age() >= plantEpoch * furn.plant->growth_multiplier &&
         !furn.has_flag( ter_furn_flag::TFLAG_GROWTH_HARVEST ) ) {
-        if( seed->age() < plantEpoch * 2 ) {
+        if( seed->age() < plantEpoch * 2 * furn.plant->growth_multiplier ) {
             if( has_flag_furn( ter_furn_flag::TFLAG_GROWTH_SEEDLING, p ) ) {
                 return;
             }

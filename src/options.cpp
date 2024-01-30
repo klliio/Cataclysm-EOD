@@ -3041,7 +3041,7 @@ void options_manager::add_options_world_default()
          to_translation( "Multiplier for experience gained from practicing skills and reading books.  0.5 is half as fast as default, 2 is twice as fast, 0 disables skill training except for NPC training.  Higher value makes characters train skills faster." ),
          0.00f, 100.00f, 1.00f, 0.01f
        );
-    
+
     add( "PROFICIENCY_TRAINING_SPEED", "world_default", to_translation( "Proficiency training speed" ),
          to_translation( "Scales experience gained from practicing proficiencies.  0.5 is half as fast as default, 2.0 is twice as fast, 0.0 disables proficiency training except for NPC training." ),
          0.0, 100.0, 1.0, 0.1
@@ -3141,6 +3141,18 @@ void options_manager::add_options_world_default()
     add( "EAT_FROZEN", "world_default", to_translation( "Allow eating frozen food" ),
          to_translation( "If true, any frozen items can be eaten as-is without defrosting.  If false, only certain items can be eaten while frozen." ),
          false
+       );
+
+    add_empty_line();
+
+    add( "PLANT_GROWTH_RATE", "world_default", to_translation( "Plant growth speed multiplier" ),
+         to_translation( "Multiplier for how fast plants grow in relation to their base speed. 0.5 is twice as fast, 2 is half as fast. Higher values make plants grow slower. Exteme values may yield unexpected results." ),
+         0.00f, 100.00f, 1.00f, 0.01f
+       );
+
+    add( "HARVEST_MULTIPLIER", "world_default", to_translation( "Plant harvest multiplier" ),
+         to_translation( "Multiplier for how much is harvested from a plant. A higher value has higher yields from crops." ),
+         0.01f, 100.00f, 1.00f, 0.01f
        );
 
     add_empty_line();

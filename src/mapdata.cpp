@@ -19,6 +19,7 @@
 #include "iexamine_actors.h"
 #include "item_group.h"
 #include "json.h"
+#include "options.h"
 #include "output.h"
 #include "rng.h"
 #include "string_formatter.h"
@@ -466,7 +467,8 @@ bool furn_workbench_info::load( const JsonObject &jsobj, const std::string_view 
 }
 
 plant_data::plant_data() : transform( furn_str_id::NULL_ID() ), base( furn_str_id::NULL_ID() ),
-    growth_multiplier( 1.0f ), harvest_multiplier( 1.0f ) {}
+    growth_multiplier( get_option<float>( "PLANT_GROWTH_RATE" ) ),
+    harvest_multiplier( get_option<float>( "HARVEST_MULTIPLIER" ) ) {}
 
 bool plant_data::load( const JsonObject &jsobj, const std::string_view member )
 {
