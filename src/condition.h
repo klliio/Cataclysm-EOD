@@ -130,7 +130,8 @@ struct conditional_t {
         void set_is_on_terrain_with_flag( const JsonObject &jo, const std::string &member,
                                           bool is_npc = false );
         void set_is_in_field( const JsonObject &jo, const std::string &member, bool is_npc = false );
-        void set_has_wielded_with_weapon_category( const JsonObject &jo, const std::string &member, bool is_npc = false );
+        void set_has_wielded_with_weapon_category( const JsonObject &jo, const std::string &member,
+                bool is_npc = false );
         void set_one_in_chance( const JsonObject &jo, const std::string &member );
         void set_query( const JsonObject &jo, const std::string &member, bool is_npc = false );
         void set_x_in_y_chance( const JsonObject &jo, std::string_view member );
