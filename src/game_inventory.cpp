@@ -55,6 +55,7 @@
 #include "type_id.h"
 #include "ui_manager.h"
 #include "units.h"
+#include "units_fwd.h"
 #include "units_utility.h"
 #include "value_ptr.h"
 #include "vehicle_selector.h"
@@ -860,6 +861,26 @@ class comestible_inventory_preset : public inventory_selector_preset
 
 static std::string get_consume_needs_hint( Character &you )
 {
+    units::volume stomach_increments = you.stomach.capacity( you ) / 8;
+    nc_color stomach_color;
+    if( stomach_increments >= you.stomach.contains() ) {
+        stomach_color = c_light_red;
+    } else if( stomach_increments * 2 >= you.stomach.contains() ) {
+        stomach_color = c_red;
+    } else if( stomach_increments * 3 >= you.stomach.contains() ) {
+        stomach_color = c_red;
+    } else if( stomach_increments * 4 >= you.stomach.contains() ) {
+        stomach_color = c_yellow;
+    } else if( stomach_increments * 5 >= you.stomach.contains() ) {
+        stomach_color = c_yellow;
+    } else if( stomach_increments * 6 >= you.stomach.contains() ) {
+        stomach_color = c_green;
+    } else if( stomach_increments * 7 >= you.stomach.contains() ) {
+        stomach_color = c_green;
+    } else {
+        stomach_color = c_green;
+    }
+
     std::string hint = std::string();
     auto desc = display::hunger_text_color( you );
     hint.append( string_format( "%s %s", _( "Food:" ), colorize( desc.first, desc.second ) ) );
@@ -876,6 +897,9 @@ static std::string get_consume_needs_hint( Character &you )
     hint.append( string_format( " %s ", LINE_XOXO_S ) );
     hint.append( string_format( "%s %s", _( "Weight:" ), display::weight_string( you ) ) );
     hint.append( string_format( " %s ", LINE_XOXO_S ) );
+    hint.append( string_format( "%s %s/%s", _( "Stomach Capacity:" ),
+                                colorize( format_volume( you.stomach.contains() ), stomach_color ),
+                                colorize( format_volume( you.stomach.capacity( you ) ), c_white ) ) );
 
     int kcal_ingested_today = you.as_avatar()->get_daily_ingested_kcal( false );
     int kcal_ingested_yesterday = you.as_avatar()->get_daily_ingested_kcal( true );
