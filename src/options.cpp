@@ -3157,6 +3157,14 @@ void options_manager::add_options_world_default()
 
     add_empty_line();
 
+    add( "BURST_FIRE_RECOIL", "world_default", to_translation( "Burst fire recoil multiplier" ),
+         to_translation( "Multiplier for how much burst recoil is delayed until after the end of a burst. 0.5 is half, 2 is double." ),
+         0.00f, 2.00f, 1.00f, 0.01f
+       );
+
+    add_empty_line();
+
+
     add( "PLAYER_HEALING_RATE", "world_default", to_translation( "Player heal speed multiplier" ),
          to_translation( "Multiplier for base speed at which player character heals damage, further modified by many other factors.  0.5 is half as fast as default, 2 is twice as fast, 0 disables natural healing.  Higher value makes player character recover lost HP faster." ),
          0.00f, 100.00f, 1.00f, 0.01f

@@ -919,7 +919,7 @@ int Character::fire_gun( const tripoint &target, int shots, item &gun )
         }
 
         int qty = gun.gun_recoil( *this, bipod );
-        delay  += qty * absorb;
+        delay  += qty * absorb * get_option<float>( "BURST_FIRE_RECOIL" );
         // Temporarily scale by 5x as we adjust MAX_RECOIL, factoring in the recoil enchantment also.
         recoil += enchantment_cache->modify_value( enchant_vals::mod::RECOIL_MODIFIER, 5.0 ) *
                   ( qty * ( 1.0 - absorb ) );
